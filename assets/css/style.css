@@ -1,1 +1,78 @@
-style.css
+/* Google Fonts for Royal Feel */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+:root { 
+    --main-bg: #0f021f; 
+    --gold: #f1c40f; 
+    --text-light: #f4f4f4; 
+    --card-bg: #1e0540; 
+    --shiva-blue: #00d2ff; 
+}
+
+body { 
+    margin: 0; 
+    font-family: 'Poppins', sans-serif; 
+    background: var(--main-bg); 
+    color: var(--text-light); 
+    scroll-behavior: smooth; 
+}
+
+/* Royal Logo */
+.logo { 
+    font-family: 'Cinzel', serif; 
+    font-size: 1.8rem; 
+    font-weight: bold; 
+    letter-spacing: 2px; 
+    text-decoration: none;
+    text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+    background: linear-gradient(to bottom, #f1c40f 22%, #b8860b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Navigation Bar */
+nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 8%; 
+    background: #090116; 
+    position: sticky; 
+    top: 0; 
+    z-index: 100; 
+    border-bottom: 2px solid var(--gold); 
+}
+
+.nav-links a { 
+    color: white; 
+    text-decoration: none; 
+    margin-left: 20px; 
+    font-size: 0.9rem; 
+    transition: 0.3s; 
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+/* Pricing Cards */
+.price-card { 
+    background: var(--card-bg); 
+    padding: 30px; 
+    border-radius: 20px; 
+    border: 1px solid rgba(241, 196, 15, 0.3); 
+    text-align: center; 
+    transition: 0.3s; 
+}
+
+.price-card:hover { 
+    transform: translateY(-10px); 
+    border-color: var(--gold);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5); 
+}
+
+/* Footer Styling */
+footer { 
+    text-align: center; 
+    padding: 40px; 
+    background: #05000a; 
+    border-top: 1px solid #333; 
+}
