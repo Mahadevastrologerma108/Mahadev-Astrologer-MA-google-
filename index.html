@@ -3,114 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahadev Astrologer MA | Sahi Margdarshan, Sahi Bhavishya</title>
-    
-    <meta name="description" content="Mahadev Astrologer MA - Best Astrology services for Kundli, Vrat, and Festivals. Get expert guidance from Mahadev Astrologer.">
-    <meta name="keywords" content="Astrologer, Kundli, Mahadev Astrologer MA, Vrat Vidhi, Hindu Festivals, Astrology Consultation">
-    
+    <title>Mahadev Astrologer MA | Services & Panchang</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --main-bg: #120129; --gold: #f1c40f; --text-light: #f4f4f4; --card-bg: #1e0540; --shiva-blue: #00d2ff; }
+        :root { --main-bg: #0f021f; --gold: #f1c40f; --text-light: #f4f4f4; --card-bg: #1e0540; --shiva-blue: #00d2ff; }
+        * { box-sizing: border-box; }
         body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--main-bg); color: var(--text-light); scroll-behavior: smooth; }
         
         /* Navigation */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: #090116; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--gold); }
-        .logo { font-size: 1.6rem; font-weight: bold; color: var(--gold); letter-spacing: 1px; text-decoration: none; }
-        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
+        .logo { font-size: 1.4rem; font-weight: bold; color: var(--gold); text-decoration: none; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9rem; font-weight: 500; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* Hero Section */
-        .hero { text-align: center; padding: 120px 20px; background: linear-gradient(rgba(18,1,41,0.8), rgba(18,1,41,0.8)), url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&q=80'); background-size: cover; background-position: center; }
-        .hero h1 { font-size: 3.5rem; color: var(--gold); margin-bottom: 10px; }
-        .hero p { font-size: 1.4rem; color: var(--shiva-blue); margin-bottom: 30px; font-weight: 500; }
-        .btn-main { background: var(--gold); color: #000; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: 0.3s; display: inline-block; }
-        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(241, 196, 15, 0.6); }
-
-        /* Sections */
+        /* Sections General */
         section { padding: 80px 8%; }
-        h2 { text-align: center; color: var(--gold); margin-bottom: 40px; font-size: 2rem; }
+        h2 { text-align: center; color: var(--gold); margin-bottom: 40px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Condition 3: Festivals */
-        .festivals { background: var(--card-bg); }
-        .fest-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .fest-card { background: var(--main-bg); padding: 25px; border: 1px solid rgba(241, 196, 15, 0.3); border-radius: 15px; text-align: center; }
-        .fest-card h4 { color: var(--gold); margin-bottom: 8px; }
+        /* Home/Service Section */
+        .hero { text-align: center; padding: 100px 20px; background: linear-gradient(rgba(15,2,31,0.8), rgba(15,2,31,0.8)), url('https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4c5?auto=format&fit=crop&q=80'); background-size: cover; }
+        
+        .price-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+        .price-card { background: var(--card-bg); padding: 30px; border-radius: 20px; border: 1px solid var(--gold); text-align: center; transition: 0.3s; }
+        .price-card:hover { transform: translateY(-10px); background: #2a0a5a; }
+        .price-card i { font-size: 3rem; color: var(--shiva-blue); margin-bottom: 15px; }
+        .price-card h3 { color: var(--gold); font-size: 1.5rem; margin-bottom: 10px; }
+        .price-card .amount { font-size: 2rem; font-weight: bold; display: block; margin-bottom: 20px; }
+        .btn-book { background: var(--gold); color: #000; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; }
 
-        /* Condition 4: Spiritual Guide */
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; border: 2px solid var(--gold); }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .blog-post { background: var(--card-bg); padding: 30px; border-radius: 15px; border-left: 5px solid var(--gold); }
+        /* Panchang Section */
+        .panchang { background: #160233; }
+        .panchang-table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 15px; overflow: hidden; }
+        .panchang-table th, .panchang-table td { padding: 15px; text-align: center; border-bottom: 1px solid #333; }
+        .panchang-table th { background: var(--gold); color: #000; }
 
-        /* Footer: Mandatory Pages Linking to /pages/ folder */
-        footer { background: #05000a; padding: 50px 8% 20px 8%; text-align: center; border-top: 1px solid #333; }
-        .footer-links { margin-bottom: 30px; }
-        .footer-links a { color: #bbb; text-decoration: none; margin: 0 15px; font-size: 0.85rem; transition: 0.3s; }
-        .footer-links a:hover { color: var(--gold); }
-        .copy-text { font-size: 0.8rem; color: #555; margin-top: 20px; }
+        /* Guide Section */
+        .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .guide-box { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border-left: 4px solid var(--shiva-blue); }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .nav-links { display: none; }
-        }
+        /* Updates Section */
+        .updates { background: #090116; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 15px; overflow: hidden; border: 1px solid var(--gold); }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        footer { text-align: center; padding: 40px; background: #05000a; border-top: 1px solid #333; }
+        .footer-links a { color: #888; text-decoration: none; margin: 0 10px; font-size: 0.8rem; }
+
+        @media (max-width: 768px) { .nav-links { display: none; } .hero h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="index.html" class="logo">MAHADEV ASTROLOGER MA</a>
+    <a href="#home" class="logo">MAHADEV ASTROLOGER MA</a>
     <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="pages/about.html">About Me</a>
-        <a href="#festivals">Vrat-Tyohar</a>
-        <a href="#guide">Spiritual Guide</a>
+        <a href="#home">Home</a>
+        <a href="#panchang">Panchang</a>
+        <a href="#guide">Guide</a>
+        <a href="#updates">Updates</a>
     </div>
 </nav>
 
 <section class="hero" id="home">
     <h1>Har Har Mahadev</h1>
-    <p>Mahadev Astrologer MA: Aapki Har Samsya Ka Jyotishiya Samadhan</p>
-    <a href="#contact" class="btn-main"><i class="fas fa-calendar-check"></i> Appointment Book Karein</a>
-</section>
-
-<section class="festivals" id="festivals">
-    <h2>Shubh Muhurat aur Tyohar</h2>
-    <div class="fest-grid">
-        <div class="fest-card"><h4>Amavasya</h4><p>26 Jan 2026</p></div>
-        <div class="fest-card"><h4>Purnima</h4><p>11 Feb 2026</p></div>
-        <div class="fest-card"><h4>Maha Shivratri</h4><p>15 Feb 2026</p></div>
-        <div class="fest-card"><h4>Holi</h4><p>03 Mar 2026</p></div>
+    <p>Professional Astrology Services & Consultations</p>
+    
+    <div class="price-container">
+        <div class="price-card">
+            <i class="fas fa-scroll"></i>
+            <h3>Kundli Vishleshan</h3>
+            <span class="amount">₹501</span>
+            <p>Jeevan ke har pehlu ki vistaar se jankari.</p>
+            <a href="https://wa.me/YOUR_NUMBER" class="btn-book">Book Now</a>
+        </div>
+        <div class="price-card">
+            <i class="fas fa-ring"></i>
+            <h3>Vivah Match</h3>
+            <span class="amount">₹351</span>
+            <p>Gunn milan aur manglik dosh ka samadhan.</p>
+            <a href="https://wa.me/YOUR_NUMBER" class="btn-book">Book Now</a>
+        </div>
+        <div class="price-card">
+            <i class="fas fa-gem"></i>
+            <h3>Ratna Salah</h3>
+            <span class="amount">FREE</span>
+            <p>Grahon ke anusar sahi ratna ki pehchan.</p>
+            <a href="https://wa.me/YOUR_NUMBER" class="btn-book">Consult Now</a>
+        </div>
     </div>
 </section>
 
+<section class="panchang" id="panchang">
+    <h2>Maasik Panchang</h2>
+    <table class="panchang-table">
+        <tr><th>Tithi/Festival</th><th>Date</th><th>Timing</th></tr>
+        <tr><td>Amavasya</td><td>26 Jan 2026</td><td>Pura Din</td></tr>
+        <tr><td>Maha Shivratri</td><td>15 Feb 2026</td><td>Nishita Kaal</td></tr>
+        <tr><td>Purnima</td><td>03 Mar 2026</td><td>Subah 08:00 Se</td></tr>
+    </table>
+</section>
+
 <section class="guide" id="guide">
-    <h2>Sadhana aur Margdarshan</h2>
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:40px;">
-        <div>
-            <h3 style="color:var(--shiva-blue);"><i class="fab fa-youtube"></i> Latest Video</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-            </div>
+    <h2>Latest Spiritual Guide</h2>
+    <div class="guide-grid">
+        <div class="guide-box">
+            <h3 style="color:var(--gold);">Saraswati Puja Vidhi</h3>
+            <p>Basant Panchami ke din maa saraswati ki pooja kaise karein, jaaniye sahi vidhi aur shubh muhurat...</p>
+            <a href="pages/about.html" style="color:var(--shiva-blue); text-decoration:none;">Poora Padhein →</a>
         </div>
-        <div class="blog-post">
-            <h3 style="color:var(--gold);">Dharmik Gyan</h3>
-            <h4>Maha Shivratri Ki Mahima</h4>
-            <p style="color:#ccc; font-size:0.95rem; line-height:1.8;">Shivratri ke din subah jaldi uthkar snan karein aur Shiv mandir mein jal abhishek karein...</p>
-            <a href="pages/about.html" style="color:var(--gold); text-decoration:none; font-weight:bold;">Sikhein Kaise Karein Vrat →</a>
+        <div class="guide-box">
+            <h3 style="color:var(--gold);">Dhan Prapti Upay</h3>
+            <p>Shukrawar ke din Lakshmi maa ko prasann karne ke liye karein ye vishesh upay...</p>
+            <a href="pages/about.html" style="color:var(--shiva-blue); text-decoration:none;">Poora Padhein →</a>
         </div>
+    </div>
+</section>
+
+<section class="updates" id="updates">
+    <h2>New Updates & Videos</h2>
+    <div style="max-width: 800px; margin: 0 auto;">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <p style="text-align:center; margin-top:20px;">Hamare YouTube channel par naye videos dekhein aur update rahein.</p>
     </div>
 </section>
 
 <footer>
-    <div class="logo" style="margin-bottom: 20px; font-size: 1.2rem;">MAHADEV ASTROLOGER MA</div>
     <div class="footer-links">
         <a href="pages/about.html">About Me</a>
         <a href="pages/privacy.html">Privacy Policy</a>
         <a href="pages/disclaimer.html">Disclaimer</a>
-        <a href="pages/terms.html">Terms & Conditions</a>
+        <a href="pages/terms.html">Terms</a>
     </div>
-    <div class="copy-text">
-        &copy; 2026 Mahadev Astrologer MA. Sabhi Adhikaar Surakshit Hain.
-    </div>
+    <p style="margin-top:20px;">&copy; 2026 Mahadev Astrologer MA. All Rights Reserved.</p>
 </footer>
 
 </body>
