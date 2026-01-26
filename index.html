@@ -3,50 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahadev Astrologer MA</title>
+    <title>Mahadev Astrologer MA | Professional Astrology Services</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
 <nav>
-    <a href="index.html" class="logo">MAHADEV ASTROLOGER MA</a>
+    <a href="index.html" class="logo" style="color:var(--gold); text-decoration:none; font-family:'Cinzel';">MAHADEV ASTROLOGER</a>
     <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="panchang/index.html">Panchang</a>
         <a href="latest-guide/index.html">Guide</a>
-        <a href="pages/about.html">About</a>
     </div>
 </nav>
 
-<section id="home" style="text-align:center; padding: 100px 20px;">
-    <h1 style="font-size: 3rem; color: #f1c40f;">Har Har Mahadev</h1>
+<section class="services-section">
+    <h1 style="font-family:'Cinzel'; color:var(--gold);">Hamari Sevaein</h1>
+    <p style="color:var(--shiva-blue);">Har Seva ke sath <span style="color:white; font-weight:bold;">Detailed PDF Report FREE</span> 🎁</p>
+
     <div class="price-container">
         <div class="price-card">
-            <i class="fas fa-scroll" style="font-size: 2rem; color: #f1c40f; margin-bottom: 15px;"></i>
-            <h3>Kundli Vishleshan</h3>
-            <p style="font-size: 1.5rem; font-weight: bold;">₹501</p>
-            <a href="https://wa.me/91XXXXXXXXXX" class="btn-book">Book Now</a>
+            <i class="fas fa-file-invoice"></i>
+            <h3>Kundli Making</h3>
+            <p>Nayi Janm-Patrika (PDF report ke saath).</p>
+            <h3>₹501</h3>
+            <button class="btn-book" onclick="openModal()">Book Now</button>
         </div>
+
         <div class="price-card">
-            <i class="fas fa-ring" style="font-size: 2rem; color: #f1c40f; margin-bottom: 15px;"></i>
-            <h3>Vivah Match</h3>
-            <p style="font-size: 1.5rem; font-weight: bold;">₹351</p>
-            <a href="https://wa.me/91XXXXXXXXXX" class="btn-book">Book Now</a>
+            <i class="fas fa-heart"></i>
+            <h3>Kundli Matching</h3>
+            <p>Gun milan aur manglik dosh vishleshan.</p>
+            <h3>₹351</h3>
+            <button class="btn-book" onclick="openModal()">Book Now</button>
+        </div>
+
+        <div class="price-card">
+            <i class="fas fa-hand-paper"></i>
+            <h3>Palmistry</h3>
+            <p>Hast-rekha se jeevan aur career ka gyan.</p>
+            <h3>₹351</h3>
+            <button class="btn-book" onclick="openModal()">Book Now</button>
+        </div>
+
+        <div class="price-card">
+            <i class="fas fa-list-ol"></i>
+            <h3>Numerology</h3>
+            <p>Anko ka khel aur bhagyashali numbers.</p>
+            <h3>₹251</h3>
+            <button class="btn-book" onclick="openModal()">Book Now</button>
+        </div>
+
+        <div class="price-card" style="border: 2px solid var(--gold);">
+            <i class="fas fa-star-and-crescent"></i>
+            <h3 style="color:var(--gold);">Combine Analysis</h3>
+            <p>Palmistry + Kundli ka sabse sateek vishleshan.</p>
+            <h3 style="color:var(--gold);">₹801</h3>
+            <button class="btn-book" style="background:var(--gold); color:black;" onclick="openModal()">Premium Choice</button>
         </div>
     </div>
 </section>
 
-<footer>
-    <div class="footer-links">
-        <a href="pages/about.html">About Me</a>
-        <a href="pages/privacy.html">Privacy Policy</a>
-        <a href="pages/disclaimer.html">Disclaimer</a>
-        <a href="pages/terms.html">Terms</a>
+<section style="padding:40px 5%; text-align:center; background:rgba(255,255,255,0.05);">
+    <h2 style="color:var(--gold);">Aapki Privacy, Hamari Priority</h2>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-top:20px;">
+        <p><i class="fas fa-user-secret" style="color:var(--gold);"></i> 100% Anonymous Chat</p>
+        <p><i class="fas fa-lock" style="color:var(--gold);"></i> Encrypted Consultation</p>
+        <p><i class="fas fa-phone-slash" style="color:var(--gold);"></i> No Unwanted Calls</p>
     </div>
-    <p style="margin-top: 20px;">&copy; 2026 Mahadev Astrologer MA</p>
+</section>
+
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 style="color:var(--gold);">Kaise judna chahenge?</h2>
+        <p style="font-size:0.8rem; margin-bottom:20px;">(PDF Report sabhi options mein FREE hai)</p>
+        
+        <a href="https://wa.me/91XXXXXXXXXX" class="option-btn wa-btn">
+            <i class="fab fa-whatsapp"></i> WhatsApp (Hindi Call/Chat)
+        </a>
+        
+        <a href="https://t.me/YourUsername" class="option-btn tg-btn">
+            <i class="fab fa-telegram"></i> Telegram (100% Privacy)
+        </a>
+
+        <div style="margin-top:20px; font-size:0.85rem; border-top:1px solid #444; padding-top:15px;">
+            <p>🗣️ <b>Bhasha:</b> Call (Hindi) | Chat/PDF (Hinglish/English)</p>
+            <p>🔒 <b>Private:</b> Bina number share kiye Telegram chunien.</p>
+        </div>
+    </div>
+</div>
+
+<footer style="text-align:center; padding:40px; background:#05000a;">
+    <p>&copy; 2026 Mahadev Astrologer MA</p>
 </footer>
 
-<script src="assets/js/script.js"></script>
+<script>
+    function openModal() { document.getElementById("bookingModal").style.display = "block"; }
+    function closeModal() { document.getElementById("bookingModal").style.display = "none"; }
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("bookingModal")) { closeModal(); }
+    }
+</script>
+
 </body>
 </html>
