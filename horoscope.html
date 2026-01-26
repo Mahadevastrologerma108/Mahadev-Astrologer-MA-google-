@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Rashifal Page Specific Styles */
         .horoscope-container { padding: 60px 5%; text-align: center; }
         .horoscope-grid {
             display: grid;
@@ -21,7 +20,6 @@
             border-radius: 15px;
             border: 1px solid rgba(241, 196, 15, 0.2);
             transition: 0.3s;
-            cursor: pointer;
         }
         .rashi-card:hover { transform: translateY(-5px); border-color: var(--gold); }
         .rashi-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; display: block; }
@@ -59,85 +57,41 @@
 <section class="horoscope-container">
     <h1 style="font-family:'Cinzel'; color:var(--gold);">Aaj Ka Rashifal</h1>
     <p style="color:var(--shiva-blue);">Sitaron ki chaal aur aapka bhavishya</p>
-
     <div class="horoscope-grid">
-        <div class="rashi-card">
-            <i class="fas fa-zodiac-aries"></i>
-            <h3>Mesh (Aries)</h3>
-            <p>Aaj aapka atmavishwas badhega. Naye kaam ki shuruat ke liye din shubh hai.</p>
-        </div>
-        <div class="rashi-card">
-            <i class="fas fa-zodiac-taurus"></i>
-            <h3>Vrishabh (Taurus)</h3>
-            <p>Aarthik mamlo mein savdhani rakhein. Pariwar ka pura sahyog milega.</p>
-        </div>
-        <div class="rashi-card">
-            <i class="fas fa-zodiac-gemini"></i>
-            <h3>Mithun (Gemini)</h3>
-            <p>Doston ke saath samay bitega. Career mein tarakki ke naye avsar milenge.</p>
-        </div>
-        <div class="rashi-card">
-            <i class="fas fa-zodiac-cancer"></i>
-            <h3>Kark (Cancer)</h3>
-            <p>Swasthya ka dhyan rakhein. Man mein shanti bani rahegi.</p>
-        </div>
-        <div class="rashi-card">
-            <i class="fas fa-zodiac-leo"></i>
-            <h3>Singh (Leo)</h3>
-            <p>Samaj mein maan-samman badhega. Koi ruka hua kaam pura hoga.</p>
-        </div>
-        <div class="rashi-card">
-            <i class="fas fa-zodiac-virgo"></i>
-            <h3>Kanya (Virgo)</h3>
-            <p>Mehnat ka fal milega. Vyapar mein labh ke yog ban rahe hain.</p>
-        </div>
-        <div class="rashi-card">
-            <i class="fas fa-zodiac-libra"></i>
-            <h3>Tula (Libra)</h3>
-            <p>Rishton mein madhurta aayegi. Aaj aap bahut srijanatmak rahenge.</p>
-        </div>
-        <div class="rashi-card">
-            <i class="fas fa-zodiac-scorpio"></i>
-            <h3>Vrishchik (Scorpio)</h3>
-            <p>Fisul-kharchi se bachein. Krodh par niyantran rakhna zaroori hai.</p>
-        </div>
-        <div class="rashi-card">
-            <i class="fas fa-zodiac-sagittarius"></i>
-            <h3>Dhanu (Sagittarius)</h3>
-            <p>Yatra ke yog hain. Dharmik kaaryon mein ruchi badhegi.</p>
-        </div>
-        <div class="rashi-card">
-            <i class="fas fa-zodiac-capricorn"></i>
-            <h3>Makar (Capricorn)</h3>
-            <p>Career mein naye badlav aayenge. Senior ka support milega.</p>
-        </div>
-        <div class="rashi-card">
-            <i class="fas fa-zodiac-aquarius"></i>
-            <h3>Kumbh (Aquarius)</h3>
-            <p>Samaajik daira badhega. Naye rishte banne ke yog hain.</p>
-        </div>
-        <div class="rashi-card">
-            <i class="fas fa-zodiac-pisces"></i>
-            <h3>Meen (Pisces)</h3>
-            <p>Aaj aapka din bhagyashali rahega. Sabhi adhure kaam pure honge.</p>
-        </div>
+        <div class="rashi-card"><i class="fas fa-zodiac-aries"></i><h3>Mesh</h3><p>Aaj aapka din shubh hai.</p></div>
+        <div class="rashi-card"><i class="fas fa-zodiac-taurus"></i><h3>Vrishabh</h3><p>Aarthik labh ke yog hain.</p></div>
+        <div class="rashi-card"><i class="fas fa-zodiac-gemini"></i><h3>Mithun</h3><p>Career mein tarakki hogi.</p></div>
+        <div class="rashi-card"><i class="fas fa-zodiac-cancer"></i><h3>Kark</h3><p>Swasthya ka dhyan rakhein.</p></div>
+        <div class="rashi-card"><i class="fas fa-zodiac-leo"></i><h3>Singh</h3><p>Maan-samman badhega.</p></div>
+        <div class="rashi-card"><i class="fas fa-zodiac-virgo"></i><h3>Kanya</h3><p>Mehnat ka phal milega.</p></div>
+        <div class="rashi-card"><i class="fas fa-zodiac-libra"></i><h3>Tula</h3><p>Naye rishte banenge.</p></div>
+        <div class="rashi-card"><i class="fas fa-zodiac-scorpio"></i><h3>Vrishchik</h3><p>Yatra ke yog hain.</p></div>
+        <div class="rashi-card"><i class="fas fa-zodiac-sagittarius"></i><h3>Dhanu</h3><p>Dharmik kaaryon mein ruchi.</p></div>
+        <div class="rashi-card"><i class="fas fa-zodiac-capricorn"></i><h3>Makar</h3><p>Ruka hua dhan milega.</p></div>
+        <div class="rashi-card"><i class="fas fa-zodiac-aquarius"></i><h3>Kumbh</h3><p>Naya kaam shuru karein.</p></div>
+        <div class="rashi-card"><i class="fas fa-zodiac-pisces"></i><h3>Meen</h3><p>Khushkhabri milegi.</p></div>
     </div>
 </section>
 
-<footer style="text-align:center; padding:40px; background:#05000a;">
-    <p>&copy; 2026 Mahadev Astrologer MA</p>
+<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<footer style="text-align:center; padding:40px; background:#05000a; border-top:1px solid #222;">
+    <p style="color:white; margin-bottom:15px;">&copy; 2026 Mahadev Astrologer MA</p>
+    <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+        <a href="about.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">About</a>
+        <a href="privacy.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">Privacy</a>
+        <a href="disclaimer.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">Disclaimer</a>
+        <a href="terms.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">Terms</a>
+    </div>
 </footer>
 
 <script>
     function toggleSidebar() {
         var sidebar = document.getElementById("mobileSidebar");
-        if (sidebar.style.width === "250px") {
-            sidebar.style.width = "0";
-        } else {
-            sidebar.style.width = "250px";
-        }
+        sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
     }
 </script>
-
 </body>
 </html>
