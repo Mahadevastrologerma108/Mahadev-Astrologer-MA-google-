@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astrology Guide | Mahadev Astrologer MA</title>
+    <title>Panchang & Muhurat | Mahadev Astrologer MA</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .day {
+            background: var(--card-bg);
+            border: 1px solid #444;
+            padding: 15px 5px;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .day.header { background: var(--gold); color: #000; font-weight: bold; }
+        .day.event { border-color: var(--gold); box-shadow: 0 0 5px var(--gold); }
+        .event-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; margin: 5px auto; }
+    </style>
 </head>
 <body>
 
@@ -15,8 +34,8 @@
         <div class="nav-links">
             <a href="../index.html">Home</a>
             <a href="../horoscope.html">Rashifal</a>
-            <a href="../panchang/index.html">Panchang</a>
-            <a href="index.html" style="color:var(--gold);">Guide</a>
+            <a href="index.html" style="color:var(--gold);">Panchang</a>
+            <a href="../latest-guide/index.html">Guide</a>
         </div>
         <div class="hamburger" onclick="toggleSidebar()">
             <div></div><div></div><div></div>
@@ -29,25 +48,33 @@
     <div class="sidebar-content">
         <a href="../index.html" onclick="toggleSidebar()">Home</a>
         <a href="../horoscope.html" onclick="toggleSidebar()">Rashifal</a>
-        <a href="../panchang/index.html" onclick="toggleSidebar()">Panchang</a>
-        <a href="index.html" onclick="toggleSidebar()">Guide</a>
+        <a href="index.html" onclick="toggleSidebar()">Panchang</a>
+        <a href="../latest-guide/index.html" onclick="toggleSidebar()">Guide</a>
     </div>
 </div>
 
 <section style="padding: 60px 8%;">
-    <h1 style="color: var(--gold); text-align: center; font-family: 'Cinzel', serif;">Astrology Learning Guide</h1>
-    <p style="text-align: center; color: var(--shiva-blue); margin-bottom: 40px;">Grahon aur Nakshatran ka saral gyan</p>
+    <h1 style="color: var(--gold); text-align: center; font-family: 'Cinzel', serif;">January 2026 Panchang</h1>
+    <p style="text-align: center; color: var(--shiva-blue);">Shubh Muhurat aur Vrat ki Jankari</p>
 
-    <div class="price-card" style="margin-bottom: 30px;">
-        <h3 style="color: var(--gold);"><i class="fas fa-book-open"></i> Beginner's Guide to Kundli</h3>
-        <p>Janmiye kundli ke 12 bhavo ka mahatva aur wo aapke jeevan ko kaise prabhavit karte hain.</p>
-        <a href="#" style="color:var(--gold); text-decoration:none;">Read More...</a>
+    <div class="calendar-grid">
+        <div class="day header">Sun</div><div class="day header">Mon</div><div class="day header">Tue</div>
+        <div class="day header">Wed</div><div class="day header">Thu</div><div class="day header">Fri</div><div class="day header">Sat</div>
+
+        <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div>
+        <div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div><div class="day">12</div><div class="day">13</div><div class="day">14</div>
+        <div class="day event">15 <div class="event-dot"></div><small>Makar Sankranti</small></div>
+        <div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div><div class="day">22</div>
+        <div class="day">23</div><div class="day">24</div><div class="day">25</div><div class="day event">26 <div class="event-dot"></div><small>Amavasya</small></div>
+        <div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day">31</div>
     </div>
 
-    <div class="price-card">
-        <h3 style="color: var(--gold);"><i class="fas fa-gem"></i> Ratna (Gemstones) Guide</h3>
-        <p>Kaunsa ratna aapki rashi ke liye shubh hai? Jannein dharan karne ki sahi vidhi.</p>
-        <a href="#" style="color:var(--gold); text-decoration:none;">Read More...</a>
+    <div class="price-card" style="margin-top: 50px; text-align: left; border-left: 5px solid var(--gold);">
+        <h3 style="color: var(--gold);"><i class="fas fa-star"></i> Is Mahine ke Vishesh Muhurat</h3>
+        <ul style="list-style: none; padding: 0; line-height: 2;">
+            <li><i class="fas fa-check-circle" style="color: var(--gold);"></i> <b>15 Jan:</b> Makar Sankranti (Daan-Punya ka samay)</li>
+            <li><i class="fas fa-check-circle" style="color: var(--gold);"></i> <b>26 Jan:</b> Maghi Amavasya (Pitra Puja Muhurat)</li>
+        </ul>
     </div>
 </section>
 
