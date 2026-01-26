@@ -164,5 +164,37 @@
     }
 </script>
 
+<script>
+    // 1. Sidebar Toggle (Mobile Menu ke liye)
+    function toggleSidebar() {
+        var sidebar = document.getElementById("mobileSidebar");
+        if (sidebar.style.width === "250px") {
+            sidebar.style.width = "0";
+        } else {
+            sidebar.style.width = "250px";
+        }
+    }
+
+    // 2. Booking Modal (WhatsApp/Telegram Popup ke liye)
+    function openModal() { 
+        if(document.getElementById("bookingModal")) {
+            document.getElementById("bookingModal").style.display = "block"; 
+        }
+    }
+    function closeModal() { 
+        if(document.getElementById("bookingModal")) {
+            document.getElementById("bookingModal").style.display = "none"; 
+        }
+    }
+
+    // Modal ke bahar click karne par band karne ke liye logic
+    window.onclick = function(event) {
+        var modal = document.getElementById("bookingModal");
+        if (event.target == modal) { 
+            closeModal(); 
+        }
+    }
+</script>
+
 </body>
 </html>
