@@ -6,20 +6,18 @@
     <title>Mahadev Astrologer MA | Professional Astrology Services</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    </head>
+</head>
 <body>
 
 <nav class="royal-nav">
     <div class="nav-container">
         <a href="index.html" class="nav-logo">MAHADEV ASTROLOGER</a>
-        
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="horoscope.html">Rashifal</a>
             <a href="panchang/index.html">Panchang</a>
             <a href="latest-guide/index.html">Guide</a>
         </div>
-
         <div class="hamburger" onclick="toggleSidebar()">
             <div></div><div></div><div></div>
         </div>
@@ -87,80 +85,39 @@
     </a>
 </section>
 
-<section style="padding:40px 5%; text-align:center; background:rgba(255,255,255,0.05);">
-    <h2 style="color:var(--gold);">Aapki Privacy, Hamari Priority</h2>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-top:20px;">
-        <p><i class="fas fa-user-secret" style="color:var(--gold);"></i> 100% Anonymous Chat</p>
-        <p><i class="fas fa-lock" style="color:var(--gold);"></i> Encrypted Consultation</p>
-        <p><i class="fas fa-phone-slash" style="color:var(--gold);"></i> No Unwanted Calls</p>
-    </div>
-</section>
-
 <div id="bookingModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h2 style="color:var(--gold);">Kaise judna chahenge?</h2>
-        <p style="font-size:0.8rem; margin-bottom:20px;">(PDF Report sabhi options mein FREE hai)</p>
-        <a href="https://wa.me/91XXXXXXXXXX" class="option-btn wa-btn"><i class="fab fa-whatsapp"></i> WhatsApp (Hindi Call/Chat)</a>
-        <a href="https://t.me/YourUsername" class="option-btn tg-btn"><i class="fab fa-telegram"></i> Telegram (100% Privacy)</a>
+        <a href="https://wa.me/91XXXXXXXXXX" class="option-btn wa-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://t.me/YourUsername" class="option-btn tg-btn"><i class="fab fa-telegram"></i> Telegram</a>
     </div>
 </div>
-
-<footer style="text-align:center; padding:40px; background:#05000a;">
-    <p>&copy; 2026 Mahadev Astrologer MA</p>
 
 <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
 </a>
 
-<style>
-.whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25d366;
-    color: #FFF;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-    z-index: 10000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-</style>
-
+<footer style="text-align:center; padding:40px; background:#05000a; border-top:1px solid #222;">
+    <p style="color:white; margin-bottom:15px;">&copy; 2026 Mahadev Astrologer MA</p>
+    <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+        <a href="about.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">About</a>
+        <a href="privacy.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">Privacy</a>
+        <a href="disclaimer.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">Disclaimer</a>
+        <a href="terms.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">Terms</a>
+    </div>
 </footer>
 
 <script>
-    // Sidebar Toggle
     function toggleSidebar() {
         var sidebar = document.getElementById("mobileSidebar");
-        if (sidebar.style.width === "250px") {
-            sidebar.style.width = "0";
-        } else {
-            sidebar.style.width = "250px";
-        }
+        sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
     }
-
-    // Modal Controls
-    function openModal() { 
-        document.getElementById("bookingModal").style.display = "block"; 
-    }
-    function closeModal() { 
-        document.getElementById("bookingModal").style.display = "none"; 
-    }
-
-    // Close modal on outside click
+    function openModal() { document.getElementById("bookingModal").style.display = "block"; }
+    function closeModal() { document.getElementById("bookingModal").style.display = "none"; }
     window.onclick = function(event) {
-        var modal = document.getElementById("bookingModal");
-        if (event.target == modal) { closeModal(); }
+        if (event.target == document.getElementById("bookingModal")) { closeModal(); }
     }
 </script>
-
 </body>
 </html>
