@@ -60,3 +60,19 @@ nav {
     .nav-links { gap: 10px; font-size: 0.7rem; }
     .price-container { grid-template-columns: 1fr; }
 }
+
+/* --- NEW ROYAL NAVIGATION & SIDEBAR (ADDED JAN 2026) --- */
+
+.royal-nav { background: #090116; border-bottom: 2px solid var(--gold); padding: 15px 5%; position: sticky; top: 0; z-index: 5000; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; }
+.nav-logo { font-family: 'Cinzel'; color: var(--gold); font-weight: bold; font-size: 1.3rem; text-decoration: none; }
+.nav-links { display: flex; gap: 25px; }
+.nav-links a { color: white; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.hamburger div { width: 25px; height: 3px; background: var(--gold); border-radius: 2px; }
+.sidebar { height: 100%; width: 0; position: fixed; z-index: 6000; top: 0; right: 0; background-color: #0f021f; overflow-x: hidden; transition: 0.5s; padding-top: 60px; box-shadow: -5px 0 15px rgba(0,0,0,0.5); }
+.sidebar-content { display: flex; flex-direction: column; padding: 20px 40px; }
+.sidebar-content a { padding: 15px 0; text-decoration: none; font-size: 1.2rem; color: white; display: block; border-bottom: 1px solid rgba(241,196,15,0.1); }
+.close-btn { position: absolute; top: 20px; right: 25px; font-size: 36px; color: var(--gold); cursor: pointer; }
+@media screen and (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } }
