@@ -199,3 +199,16 @@ body {
     .calendar-grid { gap: 4px; }
     .calendar-day { font-size: 0.75rem; }
 }
+/* ==========================================
+   PRICE CARDS HOVER EFFECT
+   ========================================== */
+.price-card {
+    transition: all 0.3s ease-in-out;
+}
+
+.price-card:hover {
+    border-color: var(--gold) !important; /* Golden border on hover */
+    background: rgba(245, 197, 66, 0.08) !important; /* Halki golden chamak */
+    transform: translateY(-8px); /* Card thoda upar uthega */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Niche shadow aayegi */
+} 
