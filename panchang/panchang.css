@@ -34,3 +34,63 @@
     padding: 20px; border-radius: 10px; border-left: 3px solid var(--gold); 
 }
 .nav-btn { background: none; border: 1px solid var(--gold); color: var(--gold); padding: 5px 15px; cursor: pointer; border-radius: 4px; }
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .panchang-grid {
+        grid-template-columns: 1fr !important; /* Mobile par ek column */
+        gap: 15px;
+    }
+
+    .cal-wrapper {
+        grid-template-columns: 1fr !important; /* Sidebar niche aa jayega */
+    }
+
+    .event-sidebar {
+        border-left: none !important;
+        border-top: 3px solid #ffd700;
+        margin-top: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    header.main-header .header-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* Calendar Grid Styling */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.calendar-day {
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    font-size: 0.9rem;
+    color: #eee;
+}
+
+.calendar-day.today {
+    background: #ffd700;
+    color: #000;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.day-header {
+    font-weight: bold;
+    color: #ffd700;
+    text-align: center;
+    padding-bottom: 5px;
+}
