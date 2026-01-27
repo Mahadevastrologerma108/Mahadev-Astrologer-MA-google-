@@ -8,27 +8,49 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         body { background: #0a0a14; color: white; margin: 0; }
-        .guide-container { padding: 120px 20px 40px; max-width: 800px; margin: auto; }
+        .guide-container { padding: 120px 20px 40px; max-width: 900px; margin: auto; }
+        
+        /* Zodiac Grid Styling */
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            margin: 30px 0 60px;
+        }
+        .zodiac-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(245, 197, 66, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .zodiac-card:hover {
+            border-color: var(--gold);
+            background: rgba(245, 197, 66, 0.07);
+            transform: translateY(-5px);
+        }
+        .zodiac-symbol { font-size: 2rem; display: block; margin-bottom: 8px; }
+        .rashi-name { color: var(--gold); font-family: 'Cinzel'; font-weight: bold; display: block; font-size: 0.9rem; }
+        .swami-name { color: #aaa; font-size: 0.75rem; margin-top: 4px; display: block; }
+
+        /* General Guide Card Styling */
         .guide-card {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(245, 197, 66, 0.1);
             border-radius: 12px;
             padding: 20px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             transition: 0.3s;
             display: flex;
             gap: 15px;
             align-items: center;
         }
-        .guide-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-            background: rgba(245, 197, 66, 0.05);
-        }
-        .guide-icon { font-size: 2.5rem; color: var(--gold); }
+        .guide-card:hover { border-color: var(--gold); background: rgba(245, 197, 66, 0.05); }
+        .guide-icon { font-size: 2.2rem; color: var(--gold); }
         .guide-info h3 { margin: 0; font-family: 'Cinzel'; color: var(--gold); font-size: 1.1rem; }
-        .guide-info p { margin: 5px 0 0; color: #ccc; font-size: 0.9rem; line-height: 1.4; }
-        .read-more { color: var(--gold); text-decoration: none; font-size: 0.8rem; font-weight: bold; margin-top: 10px; display: inline-block; }
+        .guide-info p { margin: 5px 0 0; color: #ccc; font-size: 0.85rem; line-height: 1.4; }
+        .read-more { color: var(--gold); text-decoration: none; font-size: 0.75rem; font-weight: bold; margin-top: 8px; display: inline-block; }
     </style>
 </head>
 <body>
@@ -59,9 +81,27 @@
     <div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1040;"></div>
 
     <div class="guide-container">
-        <h1 class="gold-text" style="text-align: center; font-family: 'Cinzel';">Latest Astrology Guides</h1>
-        <p style="text-align: center; color: #888; margin-bottom: 40px;">Deep insights into Vedic Wisdom</p>
+        <h1 class="gold-text" style="text-align: center; font-family: 'Cinzel'; margin-bottom: 10px;">Vedic Wisdom Guides</h1>
+        <p style="text-align: center; color: #888; margin-bottom: 40px;">Deep insights into the cosmos & planets</p>
 
+        <h2 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.2rem; border-left: 3px solid var(--gold); padding-left: 15px; margin-bottom: 20px;">12 Rashiyan aur Unke Swami</h2>
+        
+        <div class="zodiac-grid">
+            <div class="zodiac-card"><span class="zodiac-symbol">♈</span><span class="rashi-name">Mesh</span><span class="swami-name">Mangal</span></div>
+            <div class="zodiac-card"><span class="zodiac-symbol">♉</span><span class="rashi-name">Vrishabh</span><span class="swami-name">Shukra</span></div>
+            <div class="zodiac-card"><span class="zodiac-symbol"> Gemini ♊</span><span class="rashi-name">Mithun</span><span class="swami-name">Budh</span></div>
+            <div class="zodiac-card"><span class="zodiac-symbol">♋</span><span class="rashi-name">Karka</span><span class="swami-name">Chandra</span></div>
+            <div class="zodiac-card"><span class="zodiac-symbol">♌</span><span class="rashi-name">Simha</span><span class="swami-name">Surya</span></div>
+            <div class="zodiac-card"><span class="zodiac-symbol">♍</span><span class="rashi-name">Kanya</span><span class="swami-name">Budh</span></div>
+            <div class="zodiac-card"><span class="zodiac-symbol">♎</span><span class="rashi-name">Tula</span><span class="swami-name">Shukra</span></div>
+            <div class="zodiac-card"><span class="zodiac-symbol">♏</span><span class="rashi-name">Vrishchik</span><span class="swami-name">Mangal</span></div>
+            <div class="zodiac-card"><span class="zodiac-symbol">♐</span><span class="rashi-name">Dhanu</span><span class="swami-name">Guru</span></div>
+            <div class="zodiac-card"><span class="zodiac-symbol">♑</span><span class="rashi-name">Makar</span><span class="swami-name">Shani</span></div>
+            <div class="zodiac-card"><span class="zodiac-symbol">♒</span><span class="rashi-name">Kumbh</span><span class="swami-name">Shani</span></div>
+            <div class="zodiac-card"><span class="zodiac-symbol">♓</span><span class="rashi-name">Meen</span><span class="swami-name">Guru</span></div>
+        </div>
+
+        <h2 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.2rem; border-left: 3px solid var(--gold); padding-left: 15px; margin-bottom: 20px;">Detailed Articles</h2>
         <div class="guide-list">
             <div class="guide-card">
                 <div class="guide-icon">🔱</div>
@@ -71,33 +111,14 @@
                     <a href="#" class="read-more">READ GUIDE →</a>
                 </div>
             </div>
-
-            <div class="guide-card">
-                <div class="guide-icon">🌙</div>
-                <div class="guide-info">
-                    <h3>Moon Sign vs Sun Sign</h3>
-                    <p>Jaaniye kyun Hindu Jyotish mein Chandra Rashi ko itna mahatva diya gaya hai.</p>
-                    <a href="#" class="read-more">READ GUIDE →</a>
-                </div>
             </div>
-
-            <div class="guide-card">
-                <div class="guide-icon">💎</div>
-                <div class="guide-info">
-                    <h3>Gemstone Wisdom</h3>
-                    <p>Kaun sa ratna aapke bhagya ko chamka sakta hai? Sahi chunaav kaise karein.</p>
-                    <a href="#" class="read-more">READ GUIDE →</a>
-                </div>
-            </div>
-        </div>
 
         <div style="text-align: center; margin-top: 50px;">
-            <a href="../index.html" style="color: var(--gold); text-decoration: none; font-family: 'Cinzel'; border: 1px solid var(--gold); padding: 10px 20px; border-radius: 5px; transition: 0.3s;" onmouseover="this.style.background='rgba(245,197,66,0.1)'" onmouseout="this.style.background='transparent'">← Back to Home</a>
+            <a href="../index.html" style="color: var(--gold); text-decoration: none; font-family: 'Cinzel'; border: 1px solid var(--gold); padding: 10px 20px; border-radius: 5px; transition: 0.3s;">← Back to Home</a>
         </div>
     </div>
 
     <script>
-        // Menu Logic for Guides Page
         const mobileMenu = document.getElementById('mobile-menu');
         const navDrawer = document.getElementById('nav-drawer');
         const menuOverlay = document.getElementById('menu-overlay');
