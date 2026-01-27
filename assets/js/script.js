@@ -31,31 +31,35 @@ if(overlay) {
 }
 
 // ==========================================
-// 2. APPOINTMENT FORM LOGIC (Dynamic Fields)
+// 2. APPOINTMENT FORM LOGIC (The Exact Rules)
 // ==========================================
 function updateForm() {
     const service = document.getElementById('service-select').value;
-    const commonFields = document.getElementById('common-dob');
-    const kundliFields = document.getElementById('kundli-pair-fields');
-    const palmistryFields = document.getElementById('palmistry-fields');
+    
+    const singleSection = document.getElementById('single-person-details');
+    const makingExtra = document.getElementById('making-extra-fields');
+    const matchingSection = document.getElementById('matching-details');
+    const palmistrySection = document.getElementById('palmistry-details');
 
-    // Reset: Sabse pehle sab kuch chupa do
-    if (commonFields) commonFields.style.display = 'none';
-    if (kundliFields) kundliFields.style.display = 'none';
-    if (palmistryFields) palmistryFields.style.display = 'none';
+    // Default: Sab chupao (Reset)
+    singleSection.style.display = 'none';
+    makingExtra.style.display = 'none';
+    matchingSection.style.display = 'none';
+    palmistrySection.style.display = 'none';
 
-    // Service ke hisab se sahi fields dikhao
-    if (service === 'kundli_making' || service === 'numerology') {
-        // Kundli Making aur Numerology dono mein single DOB/Time chahiye
-        commonFields.style.display = 'block';
+    if (service === 'kundli_making') {
+        singleSection.style.display = 'block'; // Name & DOB
+        makingExtra.style.display = 'block';   // Place & Time (Mandatory)
     } 
     else if (service === 'kundli_matching') {
-        // Matching mein Male aur Female dono ki details dikhao
-        kundliFields.style.display = 'block';
+        matchingSection.style.display = 'block'; // Male & Female ki sab details
     } 
     else if (service === 'palmistry') {
-        // Palmistry mein sirf photo upload aur instructions dikhao
-        palmistryFields.style.display = 'block';
+        palmistrySection.style.display = 'block'; // Sirf Name aur Pic Instruction
+    } 
+    else if (service === 'numerology') {
+        singleSection.style.display = 'block'; // Sirf Name aur DOB
+        makingExtra.style.display = 'none';    // Time/Place gayab
     }
 }
 
