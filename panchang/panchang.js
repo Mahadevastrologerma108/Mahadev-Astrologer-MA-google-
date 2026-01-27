@@ -1,64 +1,65 @@
-let currentViewDate = new Date(2026, 0, 1);
+// Paths as per your professional structure
+const eventPath = '../assets/data/calendar_events.json';
+const detailPath = '../assets/data/panchang_details.json';
 
-async function initPanchang() {
-    const now = new Date();
-    const today = now.toISOString().split('T')[0];
-    
-    // Display Aaj ki Date
-    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-    document.getElementById('display-date').innerText = now.toLocaleDateString('hi-IN', options);
+// Month names array to match your JSON keys
+const monthNames = ["January", "February", "March", "April", "May", "June", 
+                    "July", "August", "September", "October", "November", "December"];
 
-    const response = await fetch('../assets/data/panchang2026.json');
-    const data = await response.json();
+async function loadPanchangSystem() {
+    try {
+        const [resEvents, resDetails] = await Promise.all([
+            fetch(eventPath),
+            fetch(detailPath)
+        ]);
 
-    // 1. Update Today's View
-    if (data[today]) {
-        const d = data[today];
-        document.getElementById('pan-tithi').innerText = d.tithi;
-        document.getElementById('pan-nak').innerText = d.nakshatra;
-        document.getElementById('pan-sun').innerText = d.sunrise + " / " + d.sunset;
-        document.getElementById('pan-muh').innerText = d.muhurat;
-        if(d.festival !== "None") {
-            document.getElementById('fest-box').style.display = 'block';
-            document.getElementById('today-fest').innerText = d.festival;
+        const allEvents = await resEvents.json();
+        const allDetails = await resDetails.json();
+
+        // 1. Aaj ki date nikalein
+        const now = new Date();
+        const todayStr = now.toISOString().split('T')[0]; // Format: 2026-01-27
+        const currentMonthName = monthNames[now.getMonth()];
+
+        // 2. Aaj ka main Panchang show karein (Top Box)
+        if (allDetails[todayStr]) {
+            displayDailyPanchang(allDetails[todayStr]);
         }
-    }
-    
-    // 2. Render Monthly Calendar
-    renderMonthlyCalendar(data);
-}
 
-function renderMonthlyCalendar(data) {
-    const grid = document.getElementById('calendar-grid');
-    const list = document.getElementById('event-list');
-    const monthYearLabel = document.getElementById('month-name');
-    
-    grid.innerHTML = ''; list.innerHTML = '';
-    const year = currentViewDate.getFullYear();
-    const month = currentViewDate.getMonth();
-    monthYearLabel.innerText = currentViewDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+        // 3. Calendar mein current month ke events dikhayein
+        const currentMonthEvents = allEvents[currentMonthName];
+        displayMonthEvents(currentMonthEvents);
 
-    // Fill Calendar
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+        console.log(`Panchang Loaded for ${currentMonthName}! ✅`);
 
-    for (let i = 0; i < firstDay; i++) grid.innerHTML += `<div></div>`;
-
-    for (let d = 1; d <= daysInMonth; d++) {
-        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-        const eventName = data[dateStr] ? data[dateStr].festival : "None";
-        const hasEvent = eventName !== "None";
-
-        grid.innerHTML += `<div class="cal-date ${hasEvent ? 'event-highlight' : ''}">${d}</div>`;
-        if (hasEvent) {
-            list.innerHTML += `<li><strong>${d}:</strong> ${eventName}</li>`;
-        }
+    } catch (error) {
+        console.error("Data load nahi hua, path check karein:", error);
     }
 }
 
-function changeMonth(step) {
-    currentViewDate.setMonth(currentViewDate.getMonth() + step);
-    initPanchang();
+// Function: Aaj ka data UI par dikhane ke liye
+function displayDailyPanchang(data) {
+    // Ye IDs aapke HTML mein honi chahiye
+    const tithiEl = document.getElementById('tithi-val');
+    const festEl = document.getElementById('fest-val');
+    
+    if(tithiEl) tithiEl.innerText = data.tithi;
+    if(festEl) festEl.innerText = data.festival !== "None" ? data.festival : "Koi bada tyohar nahi";
 }
 
-window.onload = initPanchang;
+// Function: Calendar list mein tyohar dikhane ke liye
+function displayMonthEvents(events) {
+    const listContainer = document.getElementById('event-list'); // HTML list ID
+    if(!listContainer) return;
+
+    listContainer.innerHTML = ""; // Purana data saaf karein
+
+    Object.keys(events).forEach(date => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<strong>${date.split('-')[2]}:</strong> ${events[date]}`;
+        listContainer.appendChild(listItem);
+    });
+}
+
+// System Start!
+loadPanchangSystem();
