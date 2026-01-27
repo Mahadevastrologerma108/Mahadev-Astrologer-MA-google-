@@ -4,74 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahadev Astrologer MA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
     <header class="main-header">
         <div class="header-container">
-            <div class="logo-box">
-                <img src="assets/logo.png" alt="Logo" class="nav-logo">
-            </div>
-            <div class="menu-toggle" id="mobile-menu">
-                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-            </div>
+            <img src="assets/images/logo.png" alt="Logo" class="nav-logo">
+            <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:1.8rem;">☰</div>
             <nav class="nav-menu" id="nav-drawer">
-                <div class="drawer-header">
-                    <img src="assets/logo.png" alt="Logo" class="drawer-logo">
-                    <span class="close-btn" id="close-drawer">&times;</span>
-                </div>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#appointment">Book Consultation</a></li>
-                    <li><a href="pages/panchang.html">Panchang 2026</a></li>
+                    <li><a href="horoscope.html">Horoscope</a></li>
+                    <li><a href="panchang/panchang.html">Panchang 2026</a></li>
+                    <li><a href="latest-guide/index.html">Guides</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <div class="menu-overlay" id="overlay"></div>
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="gold-text">Mahadev Astrologer MA</h1>
-            <p>Ancient Wisdom for Modern Life</p>
-            <a href="#appointment" class="cta-btn">Start Consultation</a>
-        </div>
+
+    <section id="hero" style="padding-top:120px; text-align:center;">
+        <h1 class="gold-text" style="font-size: 2.5rem;">Divine Wisdom</h1>
+        <p>Expert Astrology Solutions for You</p>
     </section>
-    <section id="appointment" class="appointment-section">
-        <h2 class="gold-text">Appointment Details</h2>
-        <div class="form-card">
-            <div class="form-group">
-                <label>Choose Service</label>
-                <select id="service-select" onchange="updateForm()">
-                    <option value="kundli">Kundali Making / Matching</option>
-                    <option value="numerology" selected>Numerology (Lucky Numbers)</option>
-                    <option value="palmistry">Palmistry (Photo Reading)</option>
-                </select>
+
+    <section class="form-card">
+        <h2 class="gold-text">Appointment</h2>
+        <select id="service-select" class="input-field" onchange="updateForm()">
+            <option value="kundli">Kundali Matching</option>
+            <option value="numerology">Numerology</option>
+            <option value="palmistry">Palmistry</option>
+        </select>
+        <form id="consultation-form">
+            <input type="text" placeholder="Name" class="input-field" required>
+            <div id="extra-fields">
+                <input type="date" class="input-field">
             </div>
-
-            <form id="consultation-form">
-                <input type="text" placeholder="Full Name" required class="input-field">
-                <div class="form-group">
-                    <label>Date of Birth</label>
-                    <input type="date" id="dob" required class="input-field">
-                </div>
-
-                <div id="extra-fields" style="display:none;">
-                    <input type="time" id="birth-time" class="input-field" placeholder="Time">
-                    <input type="text" id="birth-place" class="input-field" placeholder="Birth Place (City)">
-                </div>
-
-                <div id="palmistry-fields" style="display:none;">
-                    <label>Upload Palm Photos</label>
-                    <input type="file" accept="image/*" capture="camera" class="input-field">
-                </div>
-
-                <button type="submit" class="gold-btn">Submit to WhatsApp</button>
-            </form>
-        </div>
+            <div id="palmistry-fields" style="display:none;">
+                <label>Palm Photo</label>
+                <input type="file" class="input-field">
+            </div>
+            <button type="submit" class="gold-btn">BOOK NOW</button>
+        </form>
     </section>
-    <script src="script.js"></script>
+
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
