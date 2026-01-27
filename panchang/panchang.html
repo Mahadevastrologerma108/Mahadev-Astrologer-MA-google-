@@ -6,127 +6,77 @@
     <title>Daily Panchang 2026 | Mahadev Astrologer MA</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <style>
-        .panchang-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .panchang-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(245, 197, 66, 0.2);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        .muhurat-highlight {
-            border: 1px solid var(--gold);
-            background: rgba(245, 197, 66, 0.05);
-        }
-    </style>
 </head>
-<body>
+<body style="background: #0a0a14; color: white; font-family: 'Poppins';">
 
     <header class="main-header" style="background: rgba(10, 10, 20, 0.95); border-bottom: 1px solid rgba(245,197,66,0.2); height: 70px;">
         <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%;">
-            <div class="brand-logo">
-                <a href="../index.html" style="text-decoration: none;">
-                    <span style="font-family: 'Cinzel'; color: var(--gold); font-size: 1.1rem; font-weight: bold; letter-spacing: 1px;">MAHADEV ASTROLOGER MA</span>
-                </a>
-            </div>
-            <a href="../index.html" style="color: var(--gold); text-decoration: none; font-size: 0.9rem;">← Back to Home</a>
+            <a href="../index.html" style="text-decoration: none; font-family: 'Cinzel'; color: var(--gold);">MAHADEV ASTROLOGER MA</a>
+            <a href="../index.html" style="color: var(--gold); text-decoration: none; font-size: 0.8rem; border: 1px solid var(--gold); padding: 5px 10px; border-radius: 5px;">HOME</a>
         </div>
     </header>
 
-    <section style="padding: 100px 20px 40px; text-align: center; max-width: 1000px; margin: 0 auto;">
-        <h1 class="gold-text" style="font-family: 'Cinzel'; margin-bottom: 10px;">Daily Panchang 2026</h1>
-        <p style="color: #ccc;">Find accurate Tithi, Nakshatra, and Shubh Muhurat for today.</p>
+    <section style="padding: 100px 20px 40px; text-align: center; max-width: 800px; margin: 0 auto;">
+        <h1 class="gold-text" style="font-family: 'Cinzel'; font-size: 1.8rem;">Aaj Ka Panchang</h1>
+        <div id="display-date" class="gold-text" style="margin-bottom: 30px; font-weight: 600;"></div>
 
-        <div id="current-date" class="gold-text" style="font-size: 1.5rem; margin-top: 20px; font-weight: bold;">
+        <div id="fest-box" style="display:none; background: rgba(245,197,66,0.1); border: 1px dashed var(--gold); padding: 15px; border-radius: 10px; margin-bottom: 30px;">
+            <span style="font-size: 1.2rem;">🚩</span> <strong id="today-fest" style="color: var(--gold);"></strong>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: left;">
+            <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+                <p style="color: var(--gold); font-size: 0.8rem; margin: 0;">Tithi</p>
+                <h4 id="pan-tithi">--</h4>
             </div>
-
-        <div class="panchang-grid">
-            <div class="panchang-card">
-                <h3 class="gold-text">Tithi & Yoga</h3>
-                <p id="tithi-data" style="color: #fff;">Loading...</p>
-                <hr style="border: 0.5px solid rgba(245,197,66,0.1); margin: 10px 0;">
-                <p id="yoga-data" style="color: #fff;">Loading...</p>
+            <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+                <p style="color: var(--gold); font-size: 0.8rem; margin: 0;">Nakshatra</p>
+                <h4 id="pan-nak">--</h4>
             </div>
-
-            <div class="panchang-card">
-                <h3 class="gold-text">Sun & Moon</h3>
-                <p style="color: #ccc; font-size: 0.8rem;">Sunrise: <span id="sunrise" style="color: #fff;">--:--</span></p>
-                <p style="color: #ccc; font-size: 0.8rem;">Sunset: <span id="sunset" style="color: #fff;">--:--</span></p>
+            <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+                <p style="color: var(--gold); font-size: 0.8rem; margin: 0;">Sunrise / Sunset</p>
+                <h4 id="pan-sun">--</h4>
             </div>
-
-            <div class="panchang-card muhurat-highlight">
-                <h3 class="gold-text">Abhijit Muhurat</h3>
-                <p id="abhijit-muhurat" style="color: #fff; font-weight: bold;">Loading...</p>
-                <p style="color: #888; font-size: 0.7rem;">(Best time for new beginnings)</p>
+            <div style="background: rgba(245,197,66,0.1); padding: 20px; border-radius: 10px; border: 1px solid var(--gold);">
+                <p style="color: var(--gold); font-size: 0.8rem; margin: 0;">Abhijit Muhurat</p>
+                <h4 id="pan-muh" style="color: #fff;">--</h4>
             </div>
         </div>
 
-        <div style="margin-top: 50px; padding: 30px; background: rgba(255,255,255,0.02); border-radius: 15px;">
-            <h2 class="gold-text" style="font-family: 'Cinzel'; font-size: 1.2rem;">Detailed 2026 Calendar</h2>
-            <p style="color: #888; margin-bottom: 20px;">Download or View the complete Hindu Festival List 2026.</p>
-            <button class="gold-btn" style="padding: 10px 30px;">VIEW FULL CALENDAR</button>
-        </div>
+        <button class="gold-btn" style="width: 100%; margin-top: 30px;" onclick="location.href='../horoscope.html'">CHECK TODAY'S RASHIFAL</button>
     </section>
 
-    <footer style="padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px;">
-        <p style="font-size: 0.8rem; color: #666;">&copy; 2026 Mahadev Astrologer MA. Har Har Mahadev.</p>
-    </footer>
+    <script>
+        async function loadPanchang() {
+            const now = new Date();
+            const today = now.toISOString().split('T')[0];
+            
+            // Format date for display
+            const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+            document.getElementById('display-date').innerText = now.toLocaleDateString('hi-IN', options);
 
-    <<script>
-    // 🔱 2026 PANCHANG DATABASE (Sample Data)
-    const panchangData = {
-        "2026-01-27": {
-            tithi: "Magha Shukla Navami",
-            yoga: "Shukla Yoga",
-            sunrise: "07:12 AM",
-            sunset: "06:01 PM",
-            muhurat: "12:12 PM - 12:56 PM"
-        },
-        "2026-01-28": {
-            tithi: "Magha Shukla Dashami",
-            yoga: "Brahma Yoga",
-            sunrise: "07:11 AM",
-            sunset: "06:02 PM",
-            muhurat: "12:13 PM - 12:57 PM"
+            try {
+                const response = await fetch('../assets/data/panchang2026.json');
+                const data = await response.json();
+                const dayData = data[today];
+
+                if (dayData) {
+                    document.getElementById('pan-tithi').innerText = dayData.tithi;
+                    document.getElementById('pan-nak').innerText = dayData.nakshatra;
+                    document.getElementById('pan-sun').innerText = `${dayData.sunrise} / ${dayData.sunset}`;
+                    document.getElementById('pan-muh').innerText = dayData.muhurat;
+                    
+                    if (dayData.festival !== "None") {
+                        document.getElementById('fest-box').style.display = 'block';
+                        document.getElementById('today-fest').innerText = dayData.festival;
+                    }
+                }
+            } catch (error) {
+                console.log("Data fetch error, showing default.");
+            }
         }
-        // Isme hum saare 365 din ka data easily add kar sakte hain
-    };
+        window.onload = loadPanchang;
+    </script>
 
-    function updatePanchang() {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const todayKey = `${year}-${month}-${day}`;
-
-        // Display Date in Hindi/English
-        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('current-date').innerText = now.toLocaleDateString('hi-IN', dateOptions);
-
-        // Fetch from Database
-        const todayData = panchangData[todayKey];
-
-        if (todayData) {
-            document.getElementById('tithi-data').innerText = "Tithi: " + todayData.tithi;
-            document.getElementById('yoga-data').innerText = "Yoga: " + todayData.yoga;
-            document.getElementById('sunrise').innerText = todayData.sunrise;
-            document.getElementById('sunset').innerText = todayData.sunset;
-            document.getElementById('abhijit-muhurat').innerText = todayData.muhurat;
-        } else {
-            // Fallback agar data missing ho
-            document.getElementById('tithi-data').innerText = "Check Daily Horoscope for Tithi";
-            document.getElementById('abhijit-muhurat').innerText = "11:45 AM - 12:30 PM (Approx)";
-        }
-    }
-
-    // Run on load
-    window.onload = updatePanchang;
-</script>
 </body>
 </html>
