@@ -29,7 +29,7 @@
         <p>Expert Astrology Solutions for You</p>
     </section>
 
-    <section class="form-card">
+   <section class="form-card">
         <h2 class="gold-text">Appointment</h2>
         <select id="service-select" class="input-field" onchange="updateForm()">
             <option value="kundli">Kundali Matching</option>
@@ -38,13 +38,24 @@
         </select>
         <form id="consultation-form">
             <input type="text" placeholder="Name" class="input-field" required>
+            
             <div id="extra-fields">
                 <input type="date" class="input-field">
             </div>
+            
             <div id="palmistry-fields" style="display:none;">
-                <label>Palm Photo</label>
+                <label style="color: #888; font-size: 0.8rem;">Upload Palm Photo</label>
                 <input type="file" class="input-field">
             </div>
+
+            <div style="margin: 15px 0; display: flex; align-items: flex-start; gap: 10px; font-size: 0.8rem; color: #ccc; text-align: left;">
+                <input type="checkbox" id="save-data" style="margin-top: 3px; accent-color: var(--gold);">
+                <label for="save-data">
+                    Save my details for future consultations. 
+                    <span style="display: block; font-size: 0.7rem; color: #777;">(Optional: Hum aapka data bina permission save nahi karte)</span>
+                </label>
+            </div>
+
             <button type="submit" class="gold-btn">BOOK NOW</button>
         </form>
     </section>
