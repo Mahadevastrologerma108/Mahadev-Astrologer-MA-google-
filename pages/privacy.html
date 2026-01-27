@@ -3,69 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Mahadev Astrologer MA</title>
-    <style>
-        :root { --main-bg: #120129; --gold: #f1c40f; --text-light: #f4f4f4; --card-bg: #1e0540; }
-        body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--main-bg); color: var(--text-light); line-height: 1.6; }
-        nav { padding: 15px 8%; background: #090116; border-bottom: 2px solid var(--gold); }
-        .logo { font-size: 1.4rem; font-weight: bold; color: var(--gold); text-decoration: none; }
-        .content { padding: 40px 10%; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: 15px; }
-        h1 { color: var(--gold); }
-        h3 { color: var(--gold); margin-top: 25px; }
-    </style>
+    <title>Privacy Policy | Mahadev Astrologer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-    <nav><a href="../index.html" class="logo">MAHADEV ASTROLOGER MA</a></nav>
-    <div class="content">
-        <div class="card">
-            <h1>Privacy Policy</h1>
-            <p>Mahadev Astrologer MA par aapka swagat hai. Hum aapki privacy ka poora samman karte hain.</p>
+
+    <section style="padding: 100px 20px; max-width: 800px; margin: auto; color: #bbb; line-height: 1.6;">
+        <h1 class="gold-text" style="font-size: 1.5rem;">Privacy Policy</h1>
+        
+        <div style="background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid rgba(245,197,66,0.1);">
+            <p>At <strong>Mahadev Astrologer MA</strong>, we prioritize your privacy above all else. Humara system aapki privacy ko dhyan mein rakh kar design kiya gaya hai.</p>
             
-            <h3>1. Jaankari Jo Hum Lete Hain</h3>
-            <p>Jab aap appointment ke liye form bharte hain, toh hum sirf aapka Naam, Janm Tarikh, Samay aur Sthan ki jaankari lete hain taaki hum aapki kundli ka vishleshan kar sakein.</p>
+            <h3 style="color: var(--gold);">1. No Data Storage Policy</h3>
+            <p>Hum kisi bhi user ka personal data (Name, DOB, Time) apne server par store nahi karte hain. Aap jo bhi details form mein bharte hain, wo seedhe WhatsApp ke madhyam se hamare paas pahunchti hai.</p>
             
-            <h3>2. Data Ka Upyog</h3>
-            <p>Aapka data kisi bhi teesre paksh (third party) ko becha ya share nahi kiya jata. Ye sirf aapko astrology service dene ke liye use hota hai.</p>
+            <h3 style="color: var(--gold);">2. Client Permission (Optional)</h3>
+            <p>Agar aap chahte hain ki future guidance ke liye aapko baar-baar details na deni padein, toh aap humein apni details save karne ki permission de sakte hain. Ye poori tarah aapki marzi par nirbhar hai.</p>
             
-            <h3>3. Suraksha</h3>
-            <p>Hum aapke data ko puri tarah surakshit rakhne ki koshish karte hain.</p>
-            
-            <br><a href="../index.html" style="color: var(--gold); text-decoration: none;">← Back to Home</a>
+            <h3 style="color: var(--gold);">3. Data Security</h3>
+            <p>Aapki aur hamari baatchit end-to-end encrypted rehti hai. Hum aapka contact number ya details kisi bhi third-party ko kabhi nahi bechte.</p>
+
+            <p style="margin-top: 20px; font-size: 0.85rem; border-top: 1px solid #333; padding-top: 15px;">By ticking the consent box on our forms, you agree to our privacy handling process.</p>
         </div>
-    </div>
+    </section>
 
-<script>
-    // 1. Sidebar Toggle (Mobile Menu ke liye)
-    function toggleSidebar() {
-        var sidebar = document.getElementById("mobileSidebar");
-        if (sidebar.style.width === "250px") {
-            sidebar.style.width = "0";
-        } else {
-            sidebar.style.width = "250px";
-        }
-    }
-
-    // 2. Booking Modal (WhatsApp/Telegram Popup ke liye)
-    function openModal() { 
-        if(document.getElementById("bookingModal")) {
-            document.getElementById("bookingModal").style.display = "block"; 
-        }
-    }
-    function closeModal() { 
-        if(document.getElementById("bookingModal")) {
-            document.getElementById("bookingModal").style.display = "none"; 
-        }
-    }
-
-    // Modal ke bahar click karne par band karne ke liye logic
-    window.onclick = function(event) {
-        var modal = document.getElementById("bookingModal");
-        if (event.target == modal) { 
-            closeModal(); 
-        }
-    }
-</script>
-
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>
