@@ -9,83 +9,103 @@
 </head>
 <body>
 
-    <header class="main-header" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 20, 0.95); border-bottom: 1px solid rgba(245,197,66,0.2); height: 70px;">
-        <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%;">
-            
+    <header class="main-header">
+        <div class="header-container">
             <div class="brand-logo">
                 <a href="index.html" style="text-decoration: none;">
-                    <span style="font-family: 'Cinzel'; color: var(--gold); font-size: 1.1rem; font-weight: bold; letter-spacing: 1px;">
-                        MAHADEV ASTROLOGER MA
-                    </span>
+                    <span class="gold-text-logo">MAHADEV ASTROLOGER MA</span>
                 </a>
             </div>
 
-            <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2rem; padding: 5px; display: block;">
-                ☰
-            </div>
+            <div id="mobile-menu">☰</div>
 
             <nav class="nav-menu" id="nav-drawer">
-            <div id="close-menu" style="text-align: right; font-size: 2.2rem; color: var(--gold); cursor: pointer; padding: 10px 20px 0 0; line-height: 1;">&times;</div>
-            
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="horoscope.html">Horoscope</a></li>
-                <li><a href="panchang/panchang.html">Panchang 2026</a></li>
-                <li><a href="latest-guide/index.html">Guides</a></li>
-            </ul>
-        </nav>
+                <div id="close-menu">&times;</div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="horoscope.html">Horoscope</a></li>
+                    <li><a href="panchang/panchang.html">Panchang 2026</a></li>
+                    <li><a href="latest-guide/index.html">Guides</a></li>
+                </ul>
+            </nav>
 
-        <div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1040;"></div>
+            <div id="menu-overlay"></div>
         </div>
     </header>
 
-    <section id="hero" style="padding: 140px 20px 60px; text-align: center;">
-        <h1 class="gold-text" style="font-size: 2.8rem; margin-bottom: 10px;">MAHADEV ASTROLOGER MA</h1>
-        <p style="color: #ccc; letter-spacing: 1px;">Expert Astrology Solutions for Your Better Future</p>
+    <section id="hero">
+        <h1 class="gold-text main-title">MAHADEV ASTROLOGER MA</h1>
+        <p class="hero-subtitle">Expert Astrology Solutions for Your Better Future</p>
     </section>
 
-    <section class="form-card" style="max-width: 500px; margin: 0 auto 50px; padding: 30px; background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.1); border-radius: 15px;">
-        <h2 class="gold-text" style="text-align: center; margin-bottom: 25px;">Book Appointment</h2>
-        
-        <label style="color: var(--gold); font-size: 0.8rem; margin-bottom: 5px; display: block;">Select Service</label>
-        <select id="service-select" class="input-field" onchange="updateForm()" style="width: 100%; margin-bottom: 20px;">
-            <option value="kundli">Kundali Matching</option>
-            <option value="numerology">Numerology</option>
-            <option value="palmistry">Palmistry</option>
-        </select>
+    <section class="form-card">
+        <h2 class="gold-text">Book Appointment</h2>
+
+        <div class="form-group">
+            <label class="input-label">Select Service</label>
+            <select id="service-select" class="input-field" onchange="updateForm()">
+                <option value="kundli_making">1. Kundali Making (Janm Patrika)</option>
+                <option value="kundli_matching">2. Kundali Matching (Gun Milan)</option>
+                <option value="palmistry">3. Palmistry (Hastrekha)</option>
+                <option value="numerology">4. Numerology (Ank Jyotish)</option>
+            </select>
+        </div>
 
         <form id="consultation-form">
-            <input type="text" placeholder="Your Full Name" class="input-field" required style="width: 100%; margin-bottom: 15px;">
+            <input type="text" id="user-name" placeholder="Client Full Name" class="input-field" required>
 
-            <div id="extra-fields">
-                <label style="color: #888; font-size: 0.8rem;">Date of Birth</label>
-                <input type="date" class="input-field" style="width: 100%; margin-bottom: 15px;">
+            <div id="single-person-details" style="display:block;">
+                <label class="input-label-small">Birth Details (Mandatory)</label>
+                <input type="date" id="single-dob" class="input-field">
+                
+                <div id="making-extra-fields">
+                    <input type="time" id="single-time" class="input-field">
+                    <input type="text" id="single-place" placeholder="Birth Place (City, State)" class="input-field">
+                </div>
             </div>
 
-            <div id="palmistry-fields" style="display:none;">
-                <label style="color: #888; font-size: 0.8rem;">Upload Palm Photo</label>
-                <input type="file" class="input-field" style="width: 100%; margin-bottom: 15px;">
+            <div id="matching-details" style="display:none;">
+                <div class="details-box">
+                    <p class="box-title">👦 Male (Ladka) Details</p>
+                    <input type="date" id="male-dob" class="input-field">
+                    <input type="time" id="male-time" class="input-field">
+                    <input type="text" id="male-place" placeholder="Birth Place" class="input-field">
+                </div>
+                <div class="details-box">
+                    <p class="box-title">👧 Female (Ladki) Details</p>
+                    <input type="date" id="female-dob" class="input-field">
+                    <input type="time" id="female-time" class="input-field">
+                    <input type="text" id="female-place" placeholder="Birth Place" class="input-field">
+                </div>
             </div>
 
-            <div style="margin: 20px 0; display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #ccc; text-align: left;">
-                <input type="checkbox" id="save-data" style="margin-top: 4px; accent-color: var(--gold);">
-                <label for="save-data" style="cursor: pointer;">
+            <div id="palmistry-details" style="display:none;">
+                <div class="instruction-box">
+                    <p class="instruction-title">📸 Photo Instructions:</p>
+                    <p>Dono hatho ki (Right & Left) aage (Front) aur peeche (Back) se total 4 saaf photos WhatsApp par bhejein.</p>
+                </div>
+                <input type="file" class="input-field" multiple>
+            </div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="save-data">
+                <label for="save-data">
                     Save my details for future consultations. 
-                    <span style="display: block; font-size: 0.75rem; color: #777;">(Optional: Agli baar details nahi bharni padengi)</span>
+                    <span>(Agli baar details nahi bharni padengi)</span>
                 </label>
             </div>
 
-            <button type="submit" class="gold-btn" style="width: 100%; padding: 15px; font-weight: bold;">SUBMIT TO WHATSAPP</button>
+            <button type="submit" class="gold-btn">SUBMIT TO WHATSAPP</button>
         </form>
     </section>
 
-    <footer style="padding: 40px 20px; text-align: center; border-top: 1px solid #222; margin-top: 50px; background: rgba(0,0,0,0.2);">
-        <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">&copy; 2026 Mahadev Astrologer MA. All Rights Reserved.</p>
-        <div style="font-size: 0.8rem; letter-spacing: 0.5px;">
-            <a href="pages/about.html" style="color: var(--gold); text-decoration: none; margin: 0 10px;">About Us</a> | 
-            <a href="pages/privacy.html" style="color: var(--gold); text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
-            <a href="pages/disclaimer.html" style="color: var(--gold); text-decoration: none; margin: 0 10px;">Disclaimer</a> |
-            <a href="pages/terms.html" style="color: var(--gold); text-decoration: none; margin: 0 10px;">Terms</a>
+    <footer class="main-footer">
+        <p class="copyright">&copy; 2026 Mahadev Astrologer MA. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="pages/about.html">About Us</a> | 
+            <a href="pages/privacy.html">Privacy Policy</a> |
+            <a href="pages/disclaimer.html">Disclaimer</a> |
+            <a href="pages/terms.html">Terms</a>
         </div>
     </footer>
 
