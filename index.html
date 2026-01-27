@@ -3,121 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahadev Astrologer MA | Professional Astrology Services</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Mahadev Astrologer MA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav class="royal-nav">
-    <div class="nav-container">
-        <a href="index.html" class="nav-logo">MAHADEV ASTROLOGER</a>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="horoscope.html">Rashifal</a>
-            <a href="panchang/index.html">Panchang</a>
-            <a href="latest-guide/index.html">Guide</a>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-box">
+                <img src="assets/logo.png" alt="Logo" class="nav-logo">
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            </div>
+            <nav class="nav-menu" id="nav-drawer">
+                <div class="drawer-header">
+                    <img src="assets/logo.png" alt="Logo" class="drawer-logo">
+                    <span class="close-btn" id="close-drawer">&times;</span>
+                </div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#appointment">Book Consultation</a></li>
+                    <li><a href="pages/panchang.html">Panchang 2026</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="hamburger" onclick="toggleSidebar()">
-            <div></div><div></div><div></div>
+    </header>
+    <div class="menu-overlay" id="overlay"></div>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="gold-text">Mahadev Astrologer MA</h1>
+            <p>Ancient Wisdom for Modern Life</p>
+            <a href="#appointment" class="cta-btn">Start Consultation</a>
         </div>
-    </div>
-</nav>
+    </section>
+    <section id="appointment" class="appointment-section">
+        <h2 class="gold-text">Appointment Details</h2>
+        <div class="form-card">
+            <div class="form-group">
+                <label>Choose Service</label>
+                <select id="service-select" onchange="updateForm()">
+                    <option value="kundli">Kundali Making / Matching</option>
+                    <option value="numerology" selected>Numerology (Lucky Numbers)</option>
+                    <option value="palmistry">Palmistry (Photo Reading)</option>
+                </select>
+            </div>
 
-<div id="mobileSidebar" class="sidebar">
-    <span class="close-btn" onclick="toggleSidebar()">&times;</span>
-    <div class="sidebar-content">
-        <a href="index.html" onclick="toggleSidebar()">Home</a>
-        <a href="horoscope.html" onclick="toggleSidebar()">Rashifal</a>
-        <a href="panchang/index.html" onclick="toggleSidebar()">Panchang</a>
-        <a href="latest-guide/index.html" onclick="toggleSidebar()">Guide</a>
-    </div>
-</div>
+            <form id="consultation-form">
+                <input type="text" placeholder="Full Name" required class="input-field">
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <input type="date" id="dob" required class="input-field">
+                </div>
 
-<section class="services-section">
-    <h1 style="font-family:'Cinzel'; color:var(--gold);">Hamari Sevaein</h1>
-    <p style="color:var(--shiva-blue);">Har Seva ke sath <span style="color:white; font-weight:bold;">Detailed PDF Report FREE</span> 🎁</p>
+                <div id="extra-fields" style="display:none;">
+                    <input type="time" id="birth-time" class="input-field" placeholder="Time">
+                    <input type="text" id="birth-place" class="input-field" placeholder="Birth Place (City)">
+                </div>
 
-    <div class="price-container">
-        <div class="price-card">
-            <i class="fas fa-file-invoice"></i>
-            <h3>Kundli Making</h3>
-            <p>Nayi Janm-Patrika (PDF report ke saath).</p>
-            <h3>₹501</h3>
-            <button class="btn-book" onclick="openModal()">Book Now</button>
+                <div id="palmistry-fields" style="display:none;">
+                    <label>Upload Palm Photos</label>
+                    <input type="file" accept="image/*" capture="camera" class="input-field">
+                </div>
+
+                <button type="submit" class="gold-btn">Submit to WhatsApp</button>
+            </form>
         </div>
-        <div class="price-card">
-            <i class="fas fa-heart"></i>
-            <h3>Kundli Matching</h3>
-            <p>Gun milan aur manglik dosh vishleshan.</p>
-            <h3>₹351</h3>
-            <button class="btn-book" onclick="openModal()">Book Now</button>
-        </div>
-        <div class="price-card">
-            <i class="fas fa-hand-paper"></i>
-            <h3>Palmistry</h3>
-            <p>Hast-rekha se jeevan aur career ka gyan.</p>
-            <h3>₹351</h3>
-            <button class="btn-book" onclick="openModal()">Book Now</button>
-        </div>
-        <div class="price-card">
-            <i class="fas fa-list-ol"></i>
-            <h3>Numerology</h3>
-            <p>Anko ka khel aur bhagyashali numbers.</p>
-            <h3>₹251</h3>
-            <button class="btn-book" onclick="openModal()">Book Now</button>
-        </div>
-        <div class="price-card" style="border: 2px solid var(--gold);">
-            <i class="fas fa-star-and-crescent"></i>
-            <h3 style="color:var(--gold);">Combine Analysis</h3>
-            <p>Palmistry + Kundli ka sabse sateek vishleshan.</p>
-            <h3 style="color:var(--gold);">₹801</h3>
-            <button class="btn-book" style="background:var(--gold); color:black;" onclick="openModal()">Premium Choice</button>
-        </div>
-    </div>
-</section>
-
-<section class="horoscope-teaser">
-    <h3 style="font-family:'Cinzel'; color:var(--gold);">Aaj Ka Bhagya (Rashifal)</h3>
-    <p style="margin-bottom: 20px;">Apni rashi ke anusar jannein apna saptahik aur dainik bhavishyaphal.</p>
-    <a href="horoscope.html" style="display: inline-block; padding: 12px 30px; background: var(--gold); color: black; text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s;">
-        <i class="fas fa-star"></i> Apna Rashifal Dekhein
-    </a>
-</section>
-
-<div id="bookingModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2 style="color:var(--gold);">Kaise judna chahenge?</h2>
-        <a href="https://wa.me/91XXXXXXXXXX" class="option-btn wa-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        <a href="https://t.me/YourUsername" class="option-btn tg-btn"><i class="fab fa-telegram"></i> Telegram</a>
-    </div>
-</div>
-
-<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-<footer style="text-align:center; padding:40px; background:#05000a; border-top:1px solid #222;">
-    <p style="color:white; margin-bottom:15px;">&copy; 2026 Mahadev Astrologer MA</p>
-    <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
-        <a href="about.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">About</a>
-        <a href="privacy.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">Privacy</a>
-        <a href="disclaimer.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">Disclaimer</a>
-        <a href="terms.html" style="color:var(--gold); text-decoration:none; font-size:0.8rem;">Terms</a>
-    </div>
-</footer>
-
-<script>
-    function toggleSidebar() {
-        var sidebar = document.getElementById("mobileSidebar");
-        sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
-    }
-    function openModal() { document.getElementById("bookingModal").style.display = "block"; }
-    function closeModal() { document.getElementById("bookingModal").style.display = "none"; }
-    window.onclick = function(event) {
-        if (event.target == document.getElementById("bookingModal")) { closeModal(); }
-    }
-</script>
+    </section>
+    <script src="script.js"></script>
 </body>
 </html>
