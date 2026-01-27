@@ -78,10 +78,55 @@
         <p style="font-size: 0.8rem; color: #666;">&copy; 2026 Mahadev Astrologer MA. Har Har Mahadev.</p>
     </footer>
 
-    <script>
-        // Simple script to display current date
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('current-date').innerText = new Date().toLocaleDateString('hi-IN', options);
-    </script>
+    <<script>
+    // 🔱 2026 PANCHANG DATABASE (Sample Data)
+    const panchangData = {
+        "2026-01-27": {
+            tithi: "Magha Shukla Navami",
+            yoga: "Shukla Yoga",
+            sunrise: "07:12 AM",
+            sunset: "06:01 PM",
+            muhurat: "12:12 PM - 12:56 PM"
+        },
+        "2026-01-28": {
+            tithi: "Magha Shukla Dashami",
+            yoga: "Brahma Yoga",
+            sunrise: "07:11 AM",
+            sunset: "06:02 PM",
+            muhurat: "12:13 PM - 12:57 PM"
+        }
+        // Isme hum saare 365 din ka data easily add kar sakte hain
+    };
+
+    function updatePanchang() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const todayKey = `${year}-${month}-${day}`;
+
+        // Display Date in Hindi/English
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').innerText = now.toLocaleDateString('hi-IN', dateOptions);
+
+        // Fetch from Database
+        const todayData = panchangData[todayKey];
+
+        if (todayData) {
+            document.getElementById('tithi-data').innerText = "Tithi: " + todayData.tithi;
+            document.getElementById('yoga-data').innerText = "Yoga: " + todayData.yoga;
+            document.getElementById('sunrise').innerText = todayData.sunrise;
+            document.getElementById('sunset').innerText = todayData.sunset;
+            document.getElementById('abhijit-muhurat').innerText = todayData.muhurat;
+        } else {
+            // Fallback agar data missing ho
+            document.getElementById('tithi-data').innerText = "Check Daily Horoscope for Tithi";
+            document.getElementById('abhijit-muhurat').innerText = "11:45 AM - 12:30 PM (Approx)";
+        }
+    }
+
+    // Run on load
+    window.onload = updatePanchang;
+</script>
 </body>
 </html>
