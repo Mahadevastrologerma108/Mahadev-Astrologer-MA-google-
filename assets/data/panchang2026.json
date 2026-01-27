@@ -16,5 +16,32 @@
         "sunset": "06:02 PM",
         "muhurat": "12:13 PM - 12:57 PM",
         "festival": "None"
+    },
+    "2026-01-29": {
+        "tithi": "Magha Shukla Ekadashi",
+        "nakshatra": "Ardra",
+        "yoga": "Indra",
+        "sunrise": "07:11 AM",
+        "sunset": "06:03 PM",
+        "muhurat": "12:14 PM - 12:58 PM",
+        "festival": "Jaya Ekadashi Vrat"
+    },
+    "2026-01-30": {
+        "tithi": "Magha Shukla Dwadashi",
+        "nakshatra": "Punarvasu",
+        "yoga": "Vaidhriti",
+        "sunrise": "07:10 AM",
+        "sunset": "06:04 PM",
+        "muhurat": "12:15 PM - 12:59 PM",
+        "festival": "None"
+    },
+    "2026-01-31": {
+        "tithi": "Magha Shukla Trayodashi",
+        "nakshatra": "Pushya",
+        "yoga": "Vishkumbha",
+        "sunrise": "07:10 AM",
+        "sunset": "06:05 PM",
+        "muhurat": "12:16 PM - 01:00 PM",
+        "festival": "Shani Pradosh Vrat"
     }
 }
