@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Panchang 2026 | Mahadev Astrologer MA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body style="background: #0a0a14; color: white; font-family: 'Poppins';">
+
+    <header class="main-header" style="background: rgba(10, 10, 20, 0.95); border-bottom: 1px solid rgba(245,197,66,0.2); height: 70px;">
+        <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%;">
+            <a href="../index.html" style="text-decoration: none; font-family: 'Cinzel'; color: var(--gold);">MAHADEV ASTROLOGER MA</a>
+            <a href="../index.html" style="color: var(--gold); text-decoration: none; font-size: 0.8rem; border: 1px solid var(--gold); padding: 5px 10px; border-radius: 5px;">HOME</a>
+        </div>
+    </header>
+
+    <section style="padding: 100px 20px 40px; text-align: center; max-width: 800px; margin: 0 auto;">
+        <h1 class="gold-text" style="font-family: 'Cinzel'; font-size: 1.8rem;">Aaj Ka Panchang</h1>
+        <div id="display-date" class="gold-text" style="margin-bottom: 30px; font-weight: 600;"></div>
+
+        <div id="fest-box" style="display:none; background: rgba(245,197,66,0.1); border: 1px dashed var(--gold); padding: 15px; border-radius: 10px; margin-bottom: 30px;">
+            <span style="font-size: 1.2rem;">🚩</span> <strong id="today-fest" style="color: var(--gold);"></strong>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: left;">
+            <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+                <p style="color: var(--gold); font-size: 0.8rem; margin: 0;">Tithi</p>
+                <h4 id="pan-tithi">--</h4>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+                <p style="color: var(--gold); font-size: 0.8rem; margin: 0;">Nakshatra</p>
+                <h4 id="pan-nak">--</h4>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+                <p style="color: var(--gold); font-size: 0.8rem; margin: 0;">Sunrise / Sunset</p>
+                <h4 id="pan-sun">--</h4>
+            </div>
+            <div style="background: rgba(245,197,66,0.1); padding: 20px; border-radius: 10px; border: 1px solid var(--gold);">
+                <p style="color: var(--gold); font-size: 0.8rem; margin: 0;">Abhijit Muhurat</p>
+                <h4 id="pan-muh" style="color: #fff;">--</h4>
+            </div>
+        </div>
+
+        <button class="gold-btn" style="width: 100%; margin-top: 30px;" onclick="location.href='../horoscope.html'">CHECK TODAY'S RASHIFAL</button>
+    </section>
+
+    <script>
+        async function loadPanchang() {
+            const now = new Date();
+            const today = now.toISOString().split('T')[0];
+            
+            // Format date for display
+            const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+            document.getElementById('display-date').innerText = now.toLocaleDateString('hi-IN', options);
+
+            try {
+                const response = await fetch('../assets/data/panchang2026.json');
+                const data = await response.json();
+                const dayData = data[today];
+
+                if (dayData) {
+                    document.getElementById('pan-tithi').innerText = dayData.tithi;
+                    document.getElementById('pan-nak').innerText = dayData.nakshatra;
+                    document.getElementById('pan-sun').innerText = `${dayData.sunrise} / ${dayData.sunset}`;
+                    document.getElementById('pan-muh').innerText = dayData.muhurat;
+                    
+                    if (dayData.festival !== "None") {
+                        document.getElementById('fest-box').style.display = 'block';
+                        document.getElementById('today-fest').innerText = dayData.festival;
+                    }
+                }
+            } catch (error) {
+                console.log("Data fetch error, showing default.");
+            }
+        }
+        window.onload = loadPanchang;
+    </script>
+
+</body>
+</html>
