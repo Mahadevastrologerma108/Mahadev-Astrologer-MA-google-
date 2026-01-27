@@ -64,10 +64,65 @@ function updateForm() {
 }
 
 // ==========================================
-// 3. WHATSAPP SUBMISSION LOGIC
+// 3. MULTI-CHANNEL SUBMISSION LOGIC
 // ==========================================
-document.getElementById('consultation-form')?.addEventListener('submit', function(e) {
+document.getElementById('consultation-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('Mahadev! Aapki details submit ho gayi hain. WhatsApp par connect ho rahe hain...');
-    // Yahan hum aage chalke WhatsApp API link add karenge
+
+    // --- 3.1 Basic Details ---
+    const service = document.getElementById('service-select').value;
+    const name = document.getElementById('user-name').value;
+    const method = document.querySelector('input[name="contact-method"]:checked').value;
+    
+    // --- 3.2 Dynamic Message Building ---
+    let message = `🔱 *MAHADEV ASTROLOGER MA* 🔱\n`;
+    message += `--------------------------\n`;
+    message += `✨ *Service:* ${service.replace('_', ' ').toUpperCase()}\n`;
+    message += `👤 *Client Name:* ${name}\n`;
+
+    // LOGIC: Kundali Making & Numerology
+    if (service === 'kundli_making' || service === 'numerology') {
+        message += `📅 *DOB:* ${document.getElementById('single-dob').value}\n`;
+        if (service === 'kundli_making') {
+            message += `📍 *Place:* ${document.getElementById('single-place').value}\n`;
+            message += `⏰ *Time:* ${document.getElementById('single-time').value}\n`;
+        }
+    }
+
+    // LOGIC: Kundali Matching
+    else if (service === 'kundli_matching') {
+        message += `\n👦 *MALE DETAILS:*\n`;
+        message += `- DOB: ${document.getElementById('male-dob').value}\n`;
+        message += `- Place: ${document.getElementById('male-place').value}\n`;
+        message += `- Time: ${document.getElementById('male-time').value}\n`;
+        
+        message += `\n👧 *FEMALE DETAILS:*\n`;
+        message += `- DOB: ${document.getElementById('female-dob').value}\n`;
+        message += `- Place: ${document.getElementById('female-place').value}\n`;
+        message += `- Time: ${document.getElementById('female-time').value}\n`;
+    }
+
+    // LOGIC: Palmistry
+    else if (service === 'palmistry') {
+        message += `📸 *Palmistry Request:* Photos are attached/ready to send.\n`;
+    }
+
+    message += `--------------------------\n`;
+    message += `🙏 *Har Har Mahadev*`;
+
+    // --- 3.3 Redirection Logic ---
+    const encodedMsg = encodeURIComponent(message);
+
+    if (method === 'whatsapp') {
+        // Apna WhatsApp Number yahan daalein (Country code ke saath)
+        window.open(`https://wa.me/919999999999?text=${encodedMsg}`, '_blank');
+    } 
+    else if (method === 'telegram') {
+        // Apna Telegram Username yahan daalein
+        window.open(`https://t.me/YourUsername?text=${encodedMsg}`, '_blank');
+    } 
+    else if (method === 'email') {
+        // Apna Email yahan daalein
+        window.location.href = `mailto:contact@mahadevastro.com?subject=Astrology Consultation: ${name}&body=${encodedMsg}`;
+    }
 });
