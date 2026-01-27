@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahadev Astrologer MA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <title>Mahadev Astrologer MA | Divine Wisdom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -24,50 +24,57 @@
         </div>
     </header>
 
-    <section id="hero" style="padding-top:120px; text-align:center;">
-        <h1 class="gold-text" style="font-size: 2.5rem;">Divine Wisdom</h1>
-        <p>Expert Astrology Solutions for You</p>
+    <section id="hero" style="padding: 140px 20px 60px; text-align: center;">
+        <h1 class="gold-text" style="font-size: 2.8rem; margin-bottom: 10px;">Divine Wisdom</h1>
+        <p style="color: #ccc; letter-spacing: 1px;">Expert Astrology Solutions for Your Better Future</p>
     </section>
 
-   <section class="form-card">
-        <h2 class="gold-text">Appointment</h2>
-        <select id="service-select" class="input-field" onchange="updateForm()">
+    <section class="form-card" style="max-width: 500px; margin: 0 auto 50px; padding: 30px; background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.1); border-radius: 15px;">
+        <h2 class="gold-text" style="text-align: center; margin-bottom: 25px;">Book Appointment</h2>
+        
+        <label style="color: var(--gold); font-size: 0.8rem; margin-bottom: 5px; display: block;">Select Service</label>
+        <select id="service-select" class="input-field" onchange="updateForm()" style="width: 100%; margin-bottom: 20px;">
             <option value="kundli">Kundali Matching</option>
             <option value="numerology">Numerology</option>
             <option value="palmistry">Palmistry</option>
         </select>
+
         <form id="consultation-form">
-            <input type="text" placeholder="Name" class="input-field" required>
-            
+            <input type="text" placeholder="Your Full Name" class="input-field" required style="width: 100%; margin-bottom: 15px;">
+
             <div id="extra-fields">
-                <input type="date" class="input-field">
-            </div>
-            
-            <div id="palmistry-fields" style="display:none;">
-                <label style="color: #888; font-size: 0.8rem;">Upload Palm Photo</label>
-                <input type="file" class="input-field">
+                <label style="color: #888; font-size: 0.8rem;">Date of Birth</label>
+                <input type="date" class="input-field" style="width: 100%; margin-bottom: 15px;">
             </div>
 
-            <div style="margin: 15px 0; display: flex; align-items: flex-start; gap: 10px; font-size: 0.8rem; color: #ccc; text-align: left;">
-                <input type="checkbox" id="save-data" style="margin-top: 3px; accent-color: var(--gold);">
-                <label for="save-data">
+            <div id="palmistry-fields" style="display:none;">
+                <label style="color: #888; font-size: 0.8rem;">Upload Palm Photo</label>
+                <input type="file" class="input-field" style="width: 100%; margin-bottom: 15px;">
+            </div>
+
+            <div style="margin: 20px 0; display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #ccc; text-align: left;">
+                <input type="checkbox" id="save-data" style="margin-top: 4px; accent-color: var(--gold);">
+                <label for="save-data" style="cursor: pointer;">
                     Save my details for future consultations. 
-                    <span style="display: block; font-size: 0.7rem; color: #777;">(Optional: Hum aapka data bina permission save nahi karte)</span>
+                    <span style="display: block; font-size: 0.75rem; color: #777;">(Optional: Agli baar details nahi bharni padengi)</span>
                 </label>
             </div>
 
-            <button type="submit" class="gold-btn">BOOK NOW</button>
+            <button type="submit" class="gold-btn" style="width: 100%; padding: 15px; font-weight: bold;">SUBMIT TO WHATSAPP</button>
         </form>
     </section>
 
+    <footer style="padding: 40px 20px; text-align: center; border-top: 1px solid #222; margin-top: 50px; background: rgba(0,0,0,0.2);">
+        <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">&copy; 2026 Mahadev Astrologer MA. All Rights Reserved.</p>
+        <div style="font-size: 0.8rem; letter-spacing: 0.5px;">
+            <a href="pages/about.html" style="color: var(--gold); text-decoration: none; margin: 0 10px;">About Us</a> | 
+            <a href="pages/privacy.html" style="color: var(--gold); text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
+            <a href="pages/disclaimer.html" style="color: var(--gold); text-decoration: none; margin: 0 10px;">Disclaimer</a> |
+            <a href="pages/terms.html" style="color: var(--gold); text-decoration: none; margin: 0 10px;">Terms</a>
+        </div>
+    </footer>
+
     <script src="assets/js/script.js"></script>
-<footer style="padding: 20px; text-align: center; border-top: 1px solid #222; margin-top: 50px;">
-    <p style="font-size: 0.8rem; color: #666;">&copy; 2026 Mahadev Astrologer MA. All Rights Reserved.</p>
-    <div style="font-size: 0.75rem;">
-        <a href="pages/privacy.html" style="color: var(--gold); text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
-        <a href="pages/disclaimer.html" style="color: var(--gold); text-decoration: none; margin: 0 10px;">Disclaimer</a> |
-        <a href="pages/terms.html" style="color: var(--gold); text-decoration: none; margin: 0 10px;">Terms</a>
-    </div>
-</footer>
+
 </body>
 </html>
