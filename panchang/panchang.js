@@ -4,33 +4,54 @@ const monthNames = ["January", "February", "March", "April", "May", "June", "Jul
 
 let curYear = 2026;
 let curMonth = new Date().getMonth();
+let cachedEvents = null; // Events ko save karne ke liye
 
 async function initPanchang() {
     try {
-        const [resE, resD] = await Promise.all([fetch(eventPath), fetch(detailPath)]);
-        const allE = await resE.json();
-        const allD = await resD.json();
+        const [resE, resD] = await Promise.all([
+            fetch(eventPath).then(res => res.json()),
+            fetch(detailPath).then(res => res.json())
+        ]);
+        
+        cachedEvents = resE; // Global save
         const todayStr = new Date().toLocaleDateString('en-CA');
 
-        updateDaily(allD[todayStr]);
-        updateEvents(allE);
-        renderCal(curMonth, curYear);
-    } catch (err) { console.error("Error loading JSON:", err); }
+        updateDaily(resD[todayStr]);
+        updateEvents(cachedEvents);
+        renderCal(curMonth, curYear, cachedEvents);
+    } catch (err) { 
+        console.error("Data loading issue:", err); 
+    }
 }
 
-function renderCal(m, y) {
+function renderCal(m, y, allEvents) {
     const grid = document.getElementById('calendar-grid');
+    if (!grid) return;
     grid.innerHTML = "";
+    
+    // Day Headers
     ['र','सो','मं','बु','गु','शु','श'].forEach(d => grid.innerHTML += `<div class="day-header">${d}</div>`);
 
     const start = new Date(y, m, 1).getDay();
     const days = new Date(y, m + 1, 0).getDate();
     const today = new Date();
+    
+    const mName = monthNames[m];
+    const monthlyData = allEvents ? allEvents[mName] : null;
 
+    // Blanks
     for(let i=0; i<start; i++) grid.innerHTML += `<div></div>`;
+    
+    // Days
     for(let d=1; d<=days; d++) {
         const isT = today.getDate()===d && today.getMonth()===m && today.getFullYear()===y;
-        grid.innerHTML += `<div class="calendar-day ${isT ? 'today' : ''}">${d}</div>`;
+        
+        // Date key format: 2026-01-01
+        const dateKey = `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const hasEvent = (monthlyData && monthlyData[dateKey]) ? 'has-event' : '';
+        const eventTitle = (monthlyData && monthlyData[dateKey]) ? monthlyData[dateKey] : '';
+
+        grid.innerHTML += `<div class="calendar-day ${isT ? 'today' : d} ${hasEvent}" title="${eventTitle}">${d}</div>`;
     }
 }
 
@@ -44,27 +65,34 @@ function updateEvents(data) {
         Object.keys(mData).sort().forEach(k => {
             list.innerHTML += `<li><span class="gold-text"><strong>${k.split('-')[2]}:</strong></span> ${mData[k]}</li>`;
         });
+    } else {
+        list.innerHTML = "<li>No festivals this month.</li>";
     }
 }
 
 function updateDaily(d) {
     if(!d) return;
-    document.getElementById('pan-tithi').innerText = d.tithi;
-    document.getElementById('pan-nak').innerText = d.nakshatra;
+    document.getElementById('pan-tithi').innerText = d.tithi || "--";
+    document.getElementById('pan-nak').innerText = d.nakshatra || "--";
     document.getElementById('pan-sun').innerText = `${d.sunrise} / ${d.sunset}`;
-    document.getElementById('pan-muh').innerText = d.muhurat;
+    document.getElementById('pan-muh').innerText = d.muhurat || "--";
     const box = document.getElementById('fest-box');
-    if(d.festival !== "None") {
+    if(d.festival && d.festival !== "None") {
         box.style.display = "block";
         document.getElementById('today-fest').innerText = d.festival;
-    } else box.style.display = "none";
+    } else {
+        box.style.display = "none";
+    }
 }
 
 function changeMonth(s) {
     curMonth += s;
     if(curMonth > 11) { curMonth=0; curYear++; }
     else if(curMonth < 0) { curMonth=11; curYear--; }
-    initPanchang();
+    
+    // Month change pe sirf events aur calendar update honge
+    updateEvents(cachedEvents);
+    renderCal(curMonth, curYear, cachedEvents);
 }
 
 initPanchang();
