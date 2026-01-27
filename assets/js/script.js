@@ -35,17 +35,26 @@ if(overlay) {
 // ==========================================
 function updateForm() {
     const service = document.getElementById('service-select').value;
-    const extraFields = document.getElementById('extra-fields');
+    const commonFields = document.getElementById('common-dob');
+    const kundliFields = document.getElementById('kundli-pair-fields');
     const palmistryFields = document.getElementById('palmistry-fields');
 
-    // Default: Sab chupao
-    extraFields.style.display = 'none';
-    palmistryFields.style.display = 'none';
+    // Reset: Sabse pehle sab kuch chupa do
+    if (commonFields) commonFields.style.display = 'none';
+    if (kundliFields) kundliFields.style.display = 'none';
+    if (palmistryFields) palmistryFields.style.display = 'none';
 
-    // Service ke hisab se dikhao
-    if (service === 'kundli') {
-        extraFields.style.display = 'block';
-    } else if (service === 'palmistry') {
+    // Service ke hisab se sahi fields dikhao
+    if (service === 'kundli_making' || service === 'numerology') {
+        // Kundli Making aur Numerology dono mein single DOB/Time chahiye
+        commonFields.style.display = 'block';
+    } 
+    else if (service === 'kundli_matching') {
+        // Matching mein Male aur Female dono ki details dikhao
+        kundliFields.style.display = 'block';
+    } 
+    else if (service === 'palmistry') {
+        // Palmistry mein sirf photo upload aur instructions dikhao
         palmistryFields.style.display = 'block';
     }
 }
