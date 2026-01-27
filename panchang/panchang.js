@@ -96,3 +96,30 @@ function changeMonth(s) {
 }
 
 initPanchang();
+// --- Yaha se Menu Logic shuru ---
+const mobileMenu = document.getElementById('mobile-menu');
+const navDrawer = document.getElementById('nav-drawer');
+const menuOverlay = document.getElementById('menu-overlay');
+const closeMenu = document.getElementById('close-menu');
+
+if (mobileMenu) {
+    mobileMenu.onclick = () => {
+        navDrawer.style.right = "0";
+        menuOverlay.style.display = "block";
+    };
+}
+
+if (closeMenu) {
+    closeMenu.onclick = () => {
+        navDrawer.style.right = "-100%";
+        menuOverlay.style.display = "none";
+    };
+}
+
+if (menuOverlay) {
+    menuOverlay.onclick = () => {
+        navDrawer.style.right = "-100%";
+        menuOverlay.style.display = "none";
+    };
+}
+// --- Yaha tak Menu Logic khatam ---
