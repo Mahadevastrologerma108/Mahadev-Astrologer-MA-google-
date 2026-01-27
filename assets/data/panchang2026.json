@@ -43,10 +43,8 @@
         "sunset": "06:05 PM",
         "muhurat": "12:16 PM - 01:00 PM",
         "festival": "Shani Pradosh Vrat"
-    }
-},
-
-"2026-02-01": {"tithi": "Magha Shukla Chaturdashi", "nakshatra": "Aslesha", "yoga": "Priti", "sunrise": "07:09 AM", "sunset": "06:06 PM", "muhurat": "12:13 PM - 12:58 PM", "festival": "None"},
+    },
+    "2026-02-01": {"tithi": "Magha Shukla Chaturdashi", "nakshatra": "Aslesha", "yoga": "Priti", "sunrise": "07:09 AM", "sunset": "06:06 PM", "muhurat": "12:13 PM - 12:58 PM", "festival": "None"},
     "2026-02-02": {"tithi": "Magha Purnima", "nakshatra": "Magha", "yoga": "Ayushman", "sunrise": "07:08 AM", "sunset": "06:07 PM", "muhurat": "12:13 PM - 12:58 PM", "festival": "Magha Purnima Snan"},
     "2026-02-03": {"tithi": "Phalguna Krishna Pratipada", "nakshatra": "Purva Phalguni", "yoga": "Saubhagya", "sunrise": "07:08 AM", "sunset": "06:08 PM", "muhurat": "12:13 PM - 12:59 PM", "festival": "None"},
     "2026-02-04": {"tithi": "Phalguna Krishna Dwitiya", "nakshatra": "Uttara Phalguni", "yoga": "Sobhana", "sunrise": "07:07 AM", "sunset": "06:09 PM", "muhurat": "12:13 PM - 12:59 PM", "festival": "None"},
@@ -74,3 +72,4 @@
     "2026-02-26": {"tithi": "Phalguna Shukla Navami", "nakshatra": "Punarvasu", "yoga": "Vaidhriti", "sunrise": "06:48 AM", "sunset": "06:25 PM", "muhurat": "12:11 PM - 12:56 PM", "festival": "None"},
     "2026-02-27": {"tithi": "Phalguna Shukla Dashami", "nakshatra": "Pushya", "yoga": "Vishkumbha", "sunrise": "06:47 AM", "sunset": "06:25 PM", "muhurat": "12:10 PM - 12:55 PM", "festival": "None"},
     "2026-02-28": {"tithi": "Phalguna Shukla Ekadashi", "nakshatra": "Ashlesha", "yoga": "Priti", "sunrise": "06:46 AM", "sunset": "06:26 PM", "muhurat": "12:10 PM - 12:55 PM", "festival": "Amalaki Ekadashi"}
+}
