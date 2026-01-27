@@ -25,13 +25,17 @@
             </div>
 
             <nav class="nav-menu" id="nav-drawer">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="horoscope.html">Horoscope</a></li>
-                    <li><a href="panchang/panchang.html">Panchang 2026</a></li>
-                    <li><a href="latest-guide/index.html">Guides</a></li>
-                </ul>
-            </nav>
+            <div id="close-menu" style="text-align: right; font-size: 2.2rem; color: var(--gold); cursor: pointer; padding: 10px 20px 0 0; line-height: 1;">&times;</div>
+            
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="horoscope.html">Horoscope</a></li>
+                <li><a href="panchang/panchang.html">Panchang 2026</a></li>
+                <li><a href="latest-guide/index.html">Guides</a></li>
+            </ul>
+        </nav>
+
+        <div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1040;"></div>
         </div>
     </header>
 
