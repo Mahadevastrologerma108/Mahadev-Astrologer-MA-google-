@@ -47,3 +47,23 @@
     .panchang-grid { grid-template-columns: 1fr !important; }
     .logo-font { font-size: 1.1rem; }
 }
+
+/* Special Event Highlight */
+.calendar-day.has-event {
+    border: 1px solid var(--gold);
+    background: rgba(255, 215, 0, 0.15);
+    position: relative;
+    cursor: pointer;
+}
+
+/* Chhota sa dot niche dikhane ke liye */
+.calendar-day.has-event::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    width: 5px;
+    height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--gold);
+}
