@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahadev Astrologer MA | Divine Wisdom</title>
+    <title>Mahadev Astrologer MA | Har Har Mahadev</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -42,8 +42,9 @@
         <h2 class="gold-text" style="text-align: center; font-family: 'Cinzel'; margin-bottom: 30px;">Our Services & Fees</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
             <div class="price-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.2); padding: 25px; border-radius: 15px; text-align: center;">
-                <h3 class="gold-text">Service Name</h3>
-                <p>₹ Fee</p>
+                <div style="font-size: 2rem;">📜</div>
+                <h3 class="gold-text">Kundali Making</h3>
+                <p style="color: #fff; font-weight: bold;">₹501</p>
             </div>
             </div>
     </section>
@@ -52,7 +53,7 @@
         <h2 class="gold-text" style="text-align: center; margin-bottom: 25px; font-family: 'Cinzel';">Book Appointment</h2>
 
         <label style="color: var(--gold); font-size: 0.8rem; margin-bottom: 8px; display: block;">Select Service</label>
-        <select id="service-select" class="input-field" onchange="updateForm()" style="width: 100%; margin-bottom: 20px;">
+        <select id="service-select" class="input-field" onchange="updateForm()" style="width: 100%; margin-bottom: 20px; background: #1a1a2e; color: white; border: 1px solid #333; padding: 10px; border-radius: 5px;">
             <option value="kundli_making">1. Kundali Making</option>
             <option value="kundli_matching">2. Kundali Matching</option>
             <option value="palmistry">3. Palmistry</option>
@@ -72,30 +73,37 @@
             </div>
 
             <div id="matching-details" style="display:none;">
-                <div style="border: 1px solid rgba(245,197,66,0.2); padding: 15px; border-radius: 10px; margin-bottom: 10px;">
-                    <p style="color:var(--gold); font-weight: bold;">👦 Male Details</p>
-                    </div>
-                <div style="border: 1px solid rgba(245,197,66,0.2); padding: 15px; border-radius: 10px;">
-                    <p style="color:var(--gold); font-weight: bold;">👧 Female Details</p>
-                    </div>
+                <div style="border: 1px solid rgba(245,197,66,0.2); padding: 10px; border-radius: 8px; margin-bottom: 10px;">
+                    <p style="color:var(--gold); font-size: 0.8rem;">👦 Male Details</p>
+                    <input type="date" id="male-dob" class="input-field">
+                    <input type="text" id="male-place" placeholder="Birth Place" class="input-field">
+                    <input type="time" id="male-time" class="input-field">
+                </div>
+                <div style="border: 1px solid rgba(245,197,66,0.2); padding: 10px; border-radius: 8px;">
+                    <p style="color:var(--gold); font-size: 0.8rem;">👧 Female Details</p>
+                    <input type="date" id="female-dob" class="input-field">
+                    <input type="text" id="female-place" placeholder="Birth Place" class="input-field">
+                    <input type="time" id="female-time" class="input-field">
+                </div>
             </div>
 
             <div id="palmistry-details" style="display:none;">
-                <div style="background: rgba(245, 197, 66, 0.08); border: 1px dashed var(--gold); padding: 15px; border-radius: 10px;">
-                    <p style="color: var(--gold); font-weight: bold;">📸 Upload 4 Photos</p>
+                <div style="background: rgba(245, 197, 66, 0.08); border: 1px dashed var(--gold); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                    <p style="color: var(--gold); font-size: 0.8rem;">📸 Upload 4 Clear Photos (Front & Back)</p>
                 </div>
-                <input type="file" id="palm-pics" class="input-field" multiple style="width: 100%; margin-top: 10px;">
+                <input type="file" id="palm-pics" class="input-field" multiple>
             </div>
 
             <div style="margin-top: 20px; border-top: 1px solid rgba(245,197,66,0.1); padding-top: 15px;">
-                <label style="color: var(--gold); font-size: 0.8rem;">Send details via:</label>
-                <div style="display: flex; gap: 10px; margin-top: 5px;">
-                    </div>
+                <label style="color: var(--gold); font-size: 0.8rem; display: block; margin-bottom: 5px;">Send via:</label>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <label><input type="radio" name="contact-method" value="whatsapp" checked> WhatsApp</label>
+                    <label><input type="radio" name="contact-method" value="telegram"> Telegram</label>
+                    <label><input type="radio" name="contact-method" value="email"> Email</label>
+                </div>
             </div>
 
-            <button type="submit" class="gold-btn" style="width: 100%; padding: 15px; margin-top: 25px; font-weight: bold;">
-                PROCEED TO CONSULTATION
-            </button>
+            <button type="submit" class="gold-btn" style="width: 100%; margin-top: 25px;">PROCEED TO CONSULTATION</button>
         </form>
     </section>
 
