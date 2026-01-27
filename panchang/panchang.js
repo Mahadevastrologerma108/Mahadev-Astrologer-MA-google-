@@ -1,65 +1,115 @@
-// Paths as per your professional structure
+/**
+ * MAHADEV ASTROLOGER MA - Panchang System 2026
+ * Handles Daily Panchang Details & Monthly Events
+ */
+
+// Folder se bahar nikal kar assets tak pahunchne ka path
 const eventPath = '../assets/data/calendar_events.json';
 const detailPath = '../assets/data/panchang_details.json';
 
-// Month names array to match your JSON keys
 const monthNames = ["January", "February", "March", "April", "May", "June", 
                     "July", "August", "September", "October", "November", "December"];
 
-async function loadPanchangSystem() {
+let currentYear = 2026;
+let currentMonth = new Date().getMonth(); // Aaj ka mahina (0-11)
+
+async function initPanchang() {
     try {
+        // Dono data files ko ek saath fetch karein
         const [resEvents, resDetails] = await Promise.all([
             fetch(eventPath),
             fetch(detailPath)
         ]);
 
+        if (!resEvents.ok || !resDetails.ok) throw new Error("Files not found at paths");
+
         const allEvents = await resEvents.json();
         const allDetails = await resDetails.json();
 
-        // 1. Aaj ki date nikalein
-        const now = new Date();
-        const todayStr = now.toISOString().split('T')[0]; // Format: 2026-01-27
-        const currentMonthName = monthNames[now.getMonth()];
+        // 1. AAJ KA DATA (Top Box)
+        // Aaj ki date format: YYYY-MM-DD
+        const today = new Date();
+        const todayStr = today.toLocaleDateString('en-CA'); 
 
-        // 2. Aaj ka main Panchang show karein (Top Box)
-        if (allDetails[todayStr]) {
-            displayDailyPanchang(allDetails[todayStr]);
-        }
+        updateDailyView(allDetails[todayStr]);
 
-        // 3. Calendar mein current month ke events dikhayein
-        const currentMonthEvents = allEvents[currentMonthName];
-        displayMonthEvents(currentMonthEvents);
+        // 2. MONTHLY EVENTS (Sidebar)
+        updateMonthlyEvents(allEvents);
 
-        console.log(`Panchang Loaded for ${currentMonthName}! ✅`);
+        console.log("Mahadev Astrologer Data Loaded Successfully! 🔱");
 
     } catch (error) {
-        console.error("Data load nahi hua, path check karein:", error);
+        console.error("Path Error: Check if assets folder is outside panchang folder.", error);
     }
 }
 
-// Function: Aaj ka data UI par dikhane ke liye
-function displayDailyPanchang(data) {
-    // Ye IDs aapke HTML mein honi chahiye
-    const tithiEl = document.getElementById('tithi-val');
-    const festEl = document.getElementById('fest-val');
+// Function: Aaj ka Panchang Card Update karne ke liye
+function updateDailyView(data) {
+    if (!data) return;
+
+    // IDs match with your HTML
+    document.getElementById('pan-tithi').innerText = data.tithi || "--";
+    document.getElementById('pan-nak').innerText = data.nakshatra || "--";
+    document.getElementById('pan-sun').innerText = `${data.sunrise} / ${data.sunset}`;
+    document.getElementById('pan-muh').innerText = data.muhurat || "--";
+
+    // Festival Alert Logic
+    const festBox = document.getElementById('fest-box');
+    const festText = document.getElementById('today-fest');
     
-    if(tithiEl) tithiEl.innerText = data.tithi;
-    if(festEl) festEl.innerText = data.festival !== "None" ? data.festival : "Koi bada tyohar nahi";
+    if (data.festival && data.festival !== "None") {
+        festBox.style.display = "block";
+        festText.innerText = data.festival;
+    } else {
+        festBox.style.display = "none";
+    }
 }
 
-// Function: Calendar list mein tyohar dikhane ke liye
-function displayMonthEvents(events) {
-    const listContainer = document.getElementById('event-list'); // HTML list ID
-    if(!listContainer) return;
+// Function: Sidebar List Update karne ke liye
+function updateMonthlyEvents(allEvents) {
+    const monthNameStr = monthNames[currentMonth];
+    document.getElementById('month-name').innerText = `${monthNameStr} ${currentYear}`;
 
-    listContainer.innerHTML = ""; // Purana data saaf karein
+    const eventList = document.getElementById('event-list');
+    eventList.innerHTML = ""; // Purana data saaf karein
 
-    Object.keys(events).forEach(date => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `<strong>${date.split('-')[2]}:</strong> ${events[date]}`;
-        listContainer.appendChild(listItem);
-    });
+    const monthlyData = allEvents[monthNameStr];
+
+    if (monthlyData) {
+        Object.keys(monthlyData).sort().forEach(dateKey => {
+            const dayNum = dateKey.split('-')[2]; // Date nikalne ke liye
+            const li = document.createElement('li');
+            li.style.padding = "8px 0";
+            li.style.borderBottom = "1px solid rgba(255,215,0,0.1)";
+            li.style.fontSize = "0.9rem";
+            
+            li.innerHTML = `
+                <span class="gold-text" style="font-weight:bold; margin-right:10px;">${dayNum}</span> 
+                <span style="color: #eee;">${monthlyData[dateKey]}</span>
+            `;
+            eventList.appendChild(li);
+        });
+    } else {
+        eventList.innerHTML = "<li class='gold-text'>Is mahine koi vishesh vrat nahi hai.</li>";
+    }
 }
 
-// System Start!
-loadPanchangSystem();
+// Function: Navigation Buttons (Next/Prev)
+function changeMonth(step) {
+    currentMonth += step;
+    
+    // Year change logic
+    if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    } else if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    }
+    
+    // Sirf event data reload karne ke liye (ya pura reload)
+    initPanchang();
+}
+
+// System ko start karein
+initPanchang();
