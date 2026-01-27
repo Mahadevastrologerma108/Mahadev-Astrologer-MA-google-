@@ -85,3 +85,30 @@ body {
 @media (max-width: 480px) {
     .panchang-grid { grid-template-columns: 1fr; } /* Chote phone par 1 column */
 }
+
+/* Force Reset for Layout */
+.cal-wrapper {
+    display: grid !important;
+    grid-template-columns: 1.5fr 1fr !important;
+    gap: 20px !important;
+    width: 100% !important;
+    max-width: 1100px !important;
+}
+
+#calendar-grid {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    width: 100% !important;
+}
+
+@media (max-width: 768px) {
+    .cal-wrapper {
+        grid-template-columns: 1fr !important; /* Force Sidebar to Bottom */
+    }
+    .panchang-grid {
+        grid-template-columns: 1fr !important;
+    }
+    body {
+        padding: 0 10px !important;
+    }
+}
