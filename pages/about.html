@@ -3,85 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | Mahadev Astrologer MA</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root { --main-bg: #120129; --gold: #f1c40f; --text-light: #f4f4f4; --card-bg: #1e0540; --shiva-blue: #00d2ff; }
-        body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--main-bg); color: var(--text-light); }
-        
-        /* Navigation (Path updated to go back to home) */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: #090116; border-bottom: 2px solid var(--gold); }
-        .logo { font-size: 1.4rem; font-weight: bold; color: var(--gold); text-decoration: none; }
-        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9rem; }
-
-        .content-area { padding: 60px 10%; line-height: 1.8; }
-        .content-card { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid rgba(241, 196, 15, 0.2); }
-        h1 { color: var(--gold); border-bottom: 2px solid var(--gold); display: inline-block; margin-bottom: 30px; }
-        p { margin-bottom: 20px; font-size: 1.1rem; color: #ccc; }
-        
-        .highlight { color: var(--shiva-blue); font-weight: bold; }
-
-        footer { text-align: center; padding: 40px; background: #05000a; border-top: 1px solid #333; margin-top: 50px; }
-        .back-link { display: inline-block; margin-top: 20px; color: var(--gold); text-decoration: none; font-weight: bold; }
-    </style>
+    <title>About Us | Mahadev Astrologer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
-<nav>
-    <a href="../index.html" class="logo">MAHADEV ASTROLOGER MA</a>
-    <div class="nav-links">
-        <a href="../index.html">Home</a>
-    </div>
-</nav>
+    <header class="main-header">
+        <div class="header-container">
+            <img src="../assets/images/logo.png" alt="Logo" class="nav-logo">
+            <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:1.8rem;">☰</div>
+            <nav class="nav-menu" id="nav-drawer">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../horoscope.html">Horoscope</a></li>
+                    <li><a href="../panchang/panchang.html">Panchang 2026</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<div class="content-area">
-    <div class="content-card">
-        <h1>Mahadev Astrologer MA ke Baare Mein</h1>
-        <p>Namaste! Main <span class="highlight">Mahadev Astrologer MA</span>, aapka spiritual margdarshak. Mera maqsad Prachin Vedic Jyotish ke madhyam se aapke jeevan mein sukh, shanti aur samridhi lana hai.</p>
+    <section style="padding: 120px 20px 60px; max-width: 800px; margin: auto;">
+        <h1 class="gold-text">Our Divine Journey</h1>
         
-        <p>Humari services mein Kundli vishleshan, Grah-Dosh nivaran, aur sahi muhurat ki jankari shamil hai. Mahadev ki kripa se humne hazaron logon ko sahi rasta dikhane mein madad ki hai.</p>
-        
-        <p>Aap is website par na sirf apna bhavishya jaan sakte hain, balki humare <span class="highlight">Spiritual Guide</span> section mein vrat aur tyoharon ki sahi vidhi bhi seekh sakte hain.</p>
-        
-        <a href="../index.html" class="back-link">← Wapas Home Par Jayein</a>
-    </div>
-</div>
+        <div style="background: var(--card-bg); padding: 30px; border-radius: 15px; border: 1px solid rgba(245,197,66,0.1); line-height: 1.8; color: #ddd;">
+            <p>Welcome to <strong>Mahadev Astrologer MA</strong>. Humara maqsad prachin Vedic gyan aur modern lifestyle ke beech ek setu (bridge) banana hai.</p>
+            
+            <p>Astrology sirf bhavishyavani nahi, balki sahi samay par sahi faisla lene ki ek kala hai. Mahadev ki kripa se, hum pichle kai varsho se logo ko unki Kundli, Numerology aur Hastrekha (Palmistry) ke madhyam se sahi marg dikha rahe hain.</p>
 
-<footer>
-    &copy; 2026 Mahadev Astrologer MA | Har Har Mahadev
-</footer>
+            <h3 style="color: var(--gold); font-family: 'Cinzel'; margin-top: 25px;">Why Choose Us?</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li>✨ <strong>Authentic Vedic Logic:</strong> Hum koi andhvishwas nahi, balki grahon ki ganana par vishwas rakhte hain.</li>
+                <li>✨ <strong>Privacy Guaranteed:</strong> Aapka data aur baatchit hamare paas hamesha gupt rehti hai.</li>
+                <li>✨ <strong>Simple Remedies:</strong> Hum aise upay batate hain jo aap asani se apni busy life mein kar sakein.</li>
+            </ul>
 
-<script>
-    // 1. Sidebar Toggle (Mobile Menu ke liye)
-    function toggleSidebar() {
-        var sidebar = document.getElementById("mobileSidebar");
-        if (sidebar.style.width === "250px") {
-            sidebar.style.width = "0";
-        } else {
-            sidebar.style.width = "250px";
-        }
-    }
+            <p style="margin-top: 20px; font-style: italic; text-align: center; color: var(--gold);">"Karm hi Pooja hai, aur Jyotish hamara margdarshak."</p>
+        </div>
+    </section>
 
-    // 2. Booking Modal (WhatsApp/Telegram Popup ke liye)
-    function openModal() { 
-        if(document.getElementById("bookingModal")) {
-            document.getElementById("bookingModal").style.display = "block"; 
-        }
-    }
-    function closeModal() { 
-        if(document.getElementById("bookingModal")) {
-            document.getElementById("bookingModal").style.display = "none"; 
-        }
-    }
-
-    // Modal ke bahar click karne par band karne ke liye logic
-    window.onclick = function(event) {
-        var modal = document.getElementById("bookingModal");
-        if (event.target == modal) { 
-            closeModal(); 
-        }
-    }
-</script>
-
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>
