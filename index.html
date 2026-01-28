@@ -107,26 +107,6 @@
                 <input type="time" id="single-time" class="input-field" style="width: 100%; margin-bottom: 15px;">
             </div>
         </div>
-        <div id="matching-details" style="display:none;">
-            <div style="border: 1px solid rgba(245,197,66,0.2); padding: 10px; border-radius: 8px; margin-bottom: 10px;">
-                <p style="color:var(--gold); font-size: 0.8rem;">👦 Male Details</p>
-                <input type="date" id="male-dob" class="input-field" style="width: 100%; margin-bottom: 5px;">
-                <input type="text" id="male-place" placeholder="Birth Place" class="input-field" style="width: 100%; margin-bottom: 5px;">
-                <input type="time" id="male-time" class="input-field" style="width: 100%;">
-            </div>
-            <div style="border: 1px solid rgba(245,197,66,0.2); padding: 10px; border-radius: 8px;">
-                <p style="color:var(--gold); font-size: 0.8rem;">👧 Female Details</p>
-                <input type="date" id="female-dob" class="input-field" style="width: 100%; margin-bottom: 5px;">
-                <input type="text" id="female-place" placeholder="Birth Place" class="input-field" style="width: 100%; margin-bottom: 5px;">
-                <input type="time" id="female-time" class="input-field" style="width: 100%;">
-            </div>
-        </div>
-        <div id="palmistry-details" style="display:none;">
-            <div style="background: rgba(245, 197, 66, 0.08); border: 1px dashed var(--gold); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
-                <p style="color: var(--gold); font-size: 0.8rem;">📸 Upload 4 Clear Photos (Front & Back)</p>
-            </div>
-            <input type="file" id="palm-pics" class="input-field" multiple style="width: 100%;">
-        </div>
         <div style="margin-top: 20px; border-top: 1px solid rgba(245,197,66,0.1); padding-top: 15px;">
             <label style="color: var(--gold); font-size: 0.8rem; display: block; margin-bottom: 10px;">Send via:</label>
             <div style="display: flex; gap: 10px; flex-wrap: wrap; color: #ccc; font-size: 0.85rem;">
@@ -141,8 +121,7 @@
 
 <footer style="padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.3);">
     <p style="font-size: 0.8rem; color: #666; margin-bottom: 15px;">&copy; 2026 Mahadev Astrologer MA. All Rights Reserved.</p>
-    <div id="footer-links-dynamic" style="font-size: 0.75rem;">
-        </div>
+    <div id="footer-links-dynamic" style="font-size: 0.75rem;"></div>
 </footer>
 
 <script src="assets/js/script.js"></script>
@@ -152,56 +131,55 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  // TODO: Aapka Firebase Config yahan aayega (Firebase Console se copy karein)
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "your-project.firebaseapp.com",
-    projectId: "your-project-id",
-    storageBucket: "your-project.appspot.com",
-    messagingSenderId: "your-id",
-    appId: "your-app-id"
+    apiKey: "AIzaSyAgcfrzQm6wezgtU5Q5BP8wxXatmoWqYrw",
+    authDomain: "mahadev-astrologer.firebaseapp.com",
+    projectId: "mahadev-astrologer",
+    storageBucket: "mahadev-astrologer.firebasestorage.app",
+    messagingSenderId: "559664802739",
+    appId: "1:559664802739:web:4285f4dc461f570cc2b9c6"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // Form Submission Logic
   const form = document.getElementById('consultation-form');
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const submitBtn = e.target.querySelector('button');
-    submitBtn.innerText = "Processing...";
-    submitBtn.disabled = true;
+  if(form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    const formData = {
-      clientName: document.getElementById('user-name').value,
-      service: document.getElementById('service-select').value,
-      contactMethod: document.querySelector('input[name="contact-method"]:checked').value,
-      timestamp: serverTimestamp(),
-      status: 'New'
-    };
+      const submitBtn = e.target.querySelector('button');
+      submitBtn.innerText = "🕉 Connecting to Mahadev...";
+      submitBtn.disabled = true;
 
-    // Conditional Data (Jo humne form mein banaya tha)
-    if(formData.service === 'kundli_making' || formData.service === 'numerology') {
-        formData.dob = document.getElementById('single-dob').value;
-        formData.birthPlace = document.getElementById('single-place').value;
-        formData.birthTime = document.getElementById('single-time').value;
-    }
+      const formData = {
+        clientName: document.getElementById('user-name').value,
+        service: document.getElementById('service-select').value,
+        contactMethod: document.querySelector('input[name="contact-method"]:checked').value,
+        timestamp: serverTimestamp(),
+        status: 'New'
+      };
 
-    try {
-      await addDoc(collection(db, "appointments"), formData);
-      alert("🔱 Jai Mahadev! Aapki booking save ho gayi hai. Hum jald aapse sampark karenge.");
-      form.reset();
-    } catch (error) {
-      console.error("Error adding document: ", error);
-      alert("Kuch gadbad hui, fir se koshish karein.");
-    } finally {
-      submitBtn.innerText = "PROCEED TO CONSULTATION";
-      submitBtn.disabled = false;
-    }
-  });
+      // Add extra fields based on service
+      if(formData.service === 'kundli_making' || formData.service === 'numerology') {
+          formData.dob = document.getElementById('single-dob')?.value || "";
+          formData.birthPlace = document.getElementById('single-place')?.value || "";
+          formData.birthTime = document.getElementById('single-time')?.value || "";
+      }
+
+      try {
+        await addDoc(collection(db, "appointments"), formData);
+        alert("🔱 Jai Mahadev! Aapki booking surakshit save ho gayi hai. Hum jald aapse sampark karenge.");
+        form.reset();
+      } catch (error) {
+        console.error("Firebase Error: ", error);
+        alert("Kshama karein, data save nahi ho paya. Kripya Firestore Rules check karein.");
+      } finally {
+        submitBtn.innerText = "PROCEED TO CONSULTATION";
+        submitBtn.disabled = false;
+      }
+    });
+  }
 </script>
 
 </body>
