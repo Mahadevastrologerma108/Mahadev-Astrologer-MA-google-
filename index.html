@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahadev Astrologer MA | Har Har Mahadev</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#f5c542">
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js');
+    });
+  }
+</script>
+
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body style="background: #0a0a14; color: white;">
