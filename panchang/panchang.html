@@ -29,8 +29,36 @@
 <div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1040;"></div>
 
 <main class="container" style="padding-top: 100px;">
-    <h1 class="gold-text" id="display-date" style="text-align:center; font-family:'Cinzel';">Aaj Ka Panchang</h1>
-    </main>
+    <section class="today-view">
+        <h1 class="gold-text title-font" id="display-date">Aaj Ka Panchang</h1>
+        <div id="fest-box" class="festival-alert"><span>🚩</span> <strong id="today-fest" class="gold-text"></strong></div>
+        <div class="panchang-grid">
+            <div class="pan-card"><span class="label">Tithi</span><h4 id="pan-tithi">--</h4></div>
+            <div class="pan-card"><span class="label">Nakshatra</span><h4 id="pan-nak">--</h4></div>
+            <div class="pan-card"><span class="label">Sunrise / Sunset</span><h4 id="pan-sun">--</h4></div>
+            <div class="pan-card highlight"><span class="label">Abhijit Muhurat</span><h4 id="pan-muh">--</h4></div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <section class="calendar-section">
+        <div class="cal-header">
+            <h2 class="gold-text title-font" id="month-name">Month Year</h2>
+            <div class="cal-nav">
+                <button onclick="changeMonth(-1)" class="nav-btn">←</button>
+                <button onclick="changeMonth(1)" class="nav-btn">→</button>
+            </div>
+        </div>
+        <div class="cal-wrapper">
+            <div id="calendar-grid"></div>
+            <div class="event-sidebar">
+                <h3 class="gold-text title-font">Monthly Events</h3>
+                <ul id="event-list"></ul>
+            </div>
+        </div>
+    </section>
+</main>
 
 <footer style="padding: 40px 20px; text-align: center;">
     <div id="footer-links-dynamic"></div>
