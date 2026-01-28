@@ -147,5 +147,62 @@
 
 <script src="assets/js/script.js"></script>
 <script src="assets/js/nav-handler.js"></script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  // TODO: Aapka Firebase Config yahan aayega (Firebase Console se copy karein)
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "your-project.firebaseapp.com",
+    projectId: "your-project-id",
+    storageBucket: "your-project.appspot.com",
+    messagingSenderId: "your-id",
+    appId: "your-app-id"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Form Submission Logic
+  const form = document.getElementById('consultation-form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const submitBtn = e.target.querySelector('button');
+    submitBtn.innerText = "Processing...";
+    submitBtn.disabled = true;
+
+    const formData = {
+      clientName: document.getElementById('user-name').value,
+      service: document.getElementById('service-select').value,
+      contactMethod: document.querySelector('input[name="contact-method"]:checked').value,
+      timestamp: serverTimestamp(),
+      status: 'New'
+    };
+
+    // Conditional Data (Jo humne form mein banaya tha)
+    if(formData.service === 'kundli_making' || formData.service === 'numerology') {
+        formData.dob = document.getElementById('single-dob').value;
+        formData.birthPlace = document.getElementById('single-place').value;
+        formData.birthTime = document.getElementById('single-time').value;
+    }
+
+    try {
+      await addDoc(collection(db, "appointments"), formData);
+      alert("🔱 Jai Mahadev! Aapki booking save ho gayi hai. Hum jald aapse sampark karenge.");
+      form.reset();
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      alert("Kuch gadbad hui, fir se koshish karein.");
+    } finally {
+      submitBtn.innerText = "PROCEED TO CONSULTATION";
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+
 </body>
 </html>
