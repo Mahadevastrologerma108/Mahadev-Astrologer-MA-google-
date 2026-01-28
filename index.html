@@ -107,6 +107,7 @@
                 <input type="time" id="single-time" class="input-field" style="width: 100%; margin-bottom: 15px;">
             </div>
         </div>
+        
         <div style="margin-top: 20px; border-top: 1px solid rgba(245,197,66,0.1); padding-top: 15px;">
             <label style="color: var(--gold); font-size: 0.8rem; display: block; margin-bottom: 10px;">Send via:</label>
             <div style="display: flex; gap: 10px; flex-wrap: wrap; color: #ccc; font-size: 0.85rem;">
@@ -114,6 +115,7 @@
                 <label style="cursor:pointer;"><input type="radio" name="contact-method" value="telegram"> Telegram</label>
                 <label style="cursor:pointer;"><input type="radio" name="contact-method" value="email"> Email</label>
             </div>
+            <input type="text" id="contact-info" placeholder="Enter WhatsApp Number / Email" class="input-field" required style="width: 100%; margin-top: 15px;">
         </div>
         <button type="submit" class="gold-btn" style="width: 100%; margin-top: 25px; font-weight: bold; letter-spacing: 1px;">PROCEED TO CONSULTATION</button>
     </form>
@@ -156,12 +158,12 @@
         clientName: document.getElementById('user-name').value,
         service: document.getElementById('service-select').value,
         contactMethod: document.querySelector('input[name="contact-method"]:checked').value,
+        contactInfo: document.getElementById('contact-info').value, // 🔥 Naya data save ho raha hai
         timestamp: serverTimestamp(),
         status: 'New'
       };
 
-      // Add extra fields based on service
-      if(formData.service === 'kundli_making' || formData.service === 'numerology') {
+      if(formData.service === 'kundli_making' || formData.service === 'numerology' || formData.service === 'combo_analysis') {
           formData.dob = document.getElementById('single-dob')?.value || "";
           formData.birthPlace = document.getElementById('single-place')?.value || "";
           formData.birthTime = document.getElementById('single-time')?.value || "";
