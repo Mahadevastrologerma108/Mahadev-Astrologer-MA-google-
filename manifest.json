@@ -1,0 +1,21 @@
+{
+  "name": "Mahadev Astrologer MA",
+  "short_name": "Mahadev Astro",
+  "description": "Expert Astrology Solutions by Mahadev Astrologer",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0a0a14",
+  "theme_color": "#f5c542",
+  "icons": [
+    {
+      "src": "assets/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
