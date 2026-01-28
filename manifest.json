@@ -2,7 +2,7 @@
   "name": "Mahadev Astrologer MA",
   "short_name": "Mahadev Astrologer MA",
   "description": "Expert Astrology Solutions by Mahadev Astrologer MA",
-  "start_url": "index.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#0a0a14",
   "theme_color": "#f5c542",
