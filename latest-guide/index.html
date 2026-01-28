@@ -6,132 +6,35 @@
     <title>Astrology Guides | Mahadev Astrologer</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <style>
-        body { background: #0a0a14; color: white; margin: 0; }
-        .guide-container { padding: 120px 20px 40px; max-width: 900px; margin: auto; }
-        
-        /* Zodiac Grid Styling */
-        .zodiac-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 12px;
-            margin: 30px 0 60px;
-        }
-        .zodiac-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(245, 197, 66, 0.1);
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .zodiac-card:hover {
-            border-color: var(--gold);
-            background: rgba(245, 197, 66, 0.07);
-            transform: translateY(-5px);
-        }
-        .zodiac-symbol { font-size: 2rem; display: block; margin-bottom: 8px; }
-        .rashi-name { color: var(--gold); font-family: 'Cinzel'; font-weight: bold; display: block; font-size: 0.9rem; }
-        .swami-name { color: #aaa; font-size: 0.75rem; margin-top: 4px; display: block; }
-
-        /* General Guide Card Styling */
-        .guide-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(245, 197, 66, 0.1);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: 0.3s;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-        .guide-card:hover { border-color: var(--gold); background: rgba(245, 197, 66, 0.05); }
-        .guide-icon { font-size: 2.2rem; color: var(--gold); }
-        .guide-info h3 { margin: 0; font-family: 'Cinzel'; color: var(--gold); font-size: 1.1rem; }
-        .guide-info p { margin: 5px 0 0; color: #ccc; font-size: 0.85rem; line-height: 1.4; }
-        .read-more { color: var(--gold); text-decoration: none; font-size: 0.75rem; font-weight: bold; margin-top: 8px; display: inline-block; }
-    </style>
 </head>
-<body>
+<body style="background: #0a0a14; color: white;">
 
-    <header class="main-header" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 20, 0.95); border-bottom: 1px solid rgba(245,197,66,0.2); height: 70px;">
-        <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%;">
-            <div class="brand-logo">
-                <a href="../index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-                    <img src="../assets/images/logo.png" alt="Logo" style="height: 45px; width: auto; object-fit: contain;">
-                    <span style="font-family: 'Cinzel'; color: var(--gold); font-size: 1.1rem; font-weight: bold; letter-spacing: 1px;">
-                        MAHADEV ASTROLOGER MA
-                    </span>
-                </a>
-            </div>
-            <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2rem; padding: 5px;">☰</div>
+<header class="main-header" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 20, 0.95); border-bottom: 1px solid rgba(245,197,66,0.2); height: 70px;">
+    <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%;">
+        <div class="brand-logo">
+            <a href="../index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <img src="../assets/images/logo.png" alt="Logo" style="height: 45px;">
+                <span style="font-family: 'Cinzel'; color: var(--gold); font-size: 1.1rem; font-weight: bold;">MAHADEV ASTROLOGER MA</span>
+            </a>
         </div>
-    </header>
-
-    <nav class="nav-menu" id="nav-drawer" style="position:fixed; right:-100%; top:0; height:100%; width:250px; background:#0f0f1f; transition:0.3s; z-index:1050; padding:20px;">
-        <div id="close-menu" style="text-align: right; font-size: 2.5rem; color: var(--gold); cursor: pointer;">&times;</div>
-        <ul style="list-style:none; margin-top:30px; padding:0;">
-            <li style="margin-bottom:20px;"><a href="../index.html" style="color:white; text-decoration:none;">Home</a></li>
-            <li style="margin-bottom:20px;"><a href="../horoscope.html" style="color:white; text-decoration:none;">Horoscope</a></li>
-            <li style="margin-bottom:20px;"><a href="../panchang/panchang.html" style="color:white; text-decoration:none;">Panchang 2026</a></li>
-            <li style="margin-bottom:20px;"><a href="index.html" style="color:var(--gold); text-decoration:none;">Guides</a></li>
-        </ul>
-    </nav>
-    <div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1040;"></div>
-
-    <div class="guide-container">
-        <h1 class="gold-text" style="text-align: center; font-family: 'Cinzel'; margin-bottom: 10px;">Vedic Wisdom Guides</h1>
-        <p style="text-align: center; color: #888; margin-bottom: 40px;">Deep insights into the cosmos & planets</p>
-
-        <h2 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.2rem; border-left: 3px solid var(--gold); padding-left: 15px; margin-bottom: 20px;">12 Rashiyan aur Unke Swami</h2>
-        
-        <div class="zodiac-grid">
-            <div class="zodiac-card"><span class="zodiac-symbol">♈</span><span class="rashi-name">Mesh</span><span class="swami-name">Mangal</span></div>
-            <div class="zodiac-card"><span class="zodiac-symbol">♉</span><span class="rashi-name">Vrishabh</span><span class="swami-name">Shukra</span></div>
-            <div class="zodiac-card"><span class="zodiac-symbol">♊</span><span class="rashi-name">Mithun (Gemini)</span><span class="swami-name">Swami: Budh</span></div>
-            <div class="zodiac-card"><span class="zodiac-symbol">♋</span><span class="rashi-name">Karka</span><span class="swami-name">Chandra</span></div>
-            <div class="zodiac-card"><span class="zodiac-symbol">♌</span><span class="rashi-name">Simha</span><span class="swami-name">Surya</span></div>
-            <div class="zodiac-card"><span class="zodiac-symbol">♍</span><span class="rashi-name">Kanya</span><span class="swami-name">Budh</span></div>
-            <div class="zodiac-card"><span class="zodiac-symbol">♎</span><span class="rashi-name">Tula</span><span class="swami-name">Shukra</span></div>
-            <div class="zodiac-card"><span class="zodiac-symbol">♏</span><span class="rashi-name">Vrishchik</span><span class="swami-name">Mangal</span></div>
-            <div class="zodiac-card"><span class="zodiac-symbol">♐</span><span class="rashi-name">Dhanu</span><span class="swami-name">Guru</span></div>
-            <div class="zodiac-card"><span class="zodiac-symbol">♑</span><span class="rashi-name">Makar</span><span class="swami-name">Shani</span></div>
-            <div class="zodiac-card"><span class="zodiac-symbol">♒</span><span class="rashi-name">Kumbh</span><span class="swami-name">Shani</span></div>
-            <div class="zodiac-card"><span class="zodiac-symbol">♓</span><span class="rashi-name">Meen</span><span class="swami-name">Guru</span></div>
-        </div>
-
-        <h2 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.2rem; border-left: 3px solid var(--gold); padding-left: 15px; margin-bottom: 20px;">Detailed Articles</h2>
-        <div class="guide-list">
-            <div class="guide-card">
-                <div class="guide-icon">🔱</div>
-                <div class="guide-info">
-                    <h3>Sade Sati Survival Guide</h3>
-                    <p>Shani Dev ki Sade Sati ke prabhav aur bachne ke saral upay.</p>
-                    <a href="#" class="read-more">READ GUIDE →</a>
-                </div>
-            </div>
-            </div>
-
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="../index.html" style="color: var(--gold); text-decoration: none; font-family: 'Cinzel'; border: 1px solid var(--gold); padding: 10px 20px; border-radius: 5px; transition: 0.3s;">← Back to Home</a>
-        </div>
+        <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2rem;">☰</div>
     </div>
+</header>
 
-    <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navDrawer = document.getElementById('nav-drawer');
-        const menuOverlay = document.getElementById('menu-overlay');
-        const closeMenu = document.getElementById('close-menu');
+<nav class="nav-menu" id="nav-drawer" style="position:fixed; right:-100%; top:0; height:100%; width:280px; background:#0f0f1f; transition:0.3s; z-index:1050; padding:20px; border-left: 1px solid var(--gold);">
+    <div id="close-menu" style="text-align: right; font-size: 2.5rem; color: var(--gold); cursor: pointer;">&times;</div>
+    <ul id="main-nav-links" style="list-style:none; margin-top:40px; padding:0;"></ul>
+</nav>
+<div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1040;"></div>
 
-        const toggleMenu = (open) => {
-            navDrawer.style.right = open ? "0" : "-100%";
-            menuOverlay.style.display = open ? "block" : "none";
-        };
+<div class="guide-hero" style="background: url('https://res.cloudinary.com/dya3yxgch/image/upload/q_auto,f_auto/v1769555386/4590144_2411040_xvg7tz.jpg') no-repeat center center/cover; height: 300px; margin-top:70px; display: flex; align-items: center; justify-content: center; border-bottom: 2px solid var(--gold);">
+    <h1 style="color: var(--gold); font-family: 'Cinzel'; text-shadow: 2px 2px 15px #000; font-size: 2.2rem; text-align: center;">Vedic Wisdom Guides</h1>
+</div>
 
-        if(mobileMenu) mobileMenu.onclick = () => toggleMenu(true);
-        if(closeMenu) closeMenu.onclick = () => toggleMenu(false);
-        if(menuOverlay) menuOverlay.onclick = () => toggleMenu(false);
-    </script>
+<footer style="padding: 40px 20px; text-align: center;">
+    <div id="footer-links-dynamic"></div>
+</footer>
+
+<script src="../assets/js/nav-handler.js"></script>
 </body>
 </html>
