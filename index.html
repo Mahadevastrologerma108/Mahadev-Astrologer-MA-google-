@@ -6,16 +6,16 @@
     <title>Mahadev Astrologer MA | Har Har Mahadev</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#f5c542">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#f5c542">
 
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js');
-    });
-  }
-</script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js');
+        });
+      }
+    </script>
 
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -45,6 +45,12 @@
     <h1 class="gold-text" style="font-size: 2.2rem; margin-bottom: 10px; font-family: 'Cinzel';">MAHADEV ASTROLOGER MA</h1>
     <p style="color: #ccc; letter-spacing: 1px; font-size: 0.9rem;">Expert Astrology Solutions for Your Better Future</p>
 </section>
+
+<div id="install-container" style="display:none; text-align:center; margin-bottom: 20px;">
+    <button id="install-btn" class="gold-btn" style="background: linear-gradient(45deg, #f5c542, #ff8c00); color: black; padding: 12px 25px; border-radius: 50px; font-weight: bold; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(245,197,66,0.3);">
+        🔱 INSTALL MAHADEV APP
+    </button>
+</div>
 
 <section id="pricing" style="padding: 20px; max-width: 1100px; margin: 0 auto;">
     <h2 class="gold-text" style="text-align: center; font-family: 'Cinzel'; margin-bottom: 30px;">Our Services & Fees</h2>
@@ -170,7 +176,7 @@
         clientName: document.getElementById('user-name').value,
         service: document.getElementById('service-select').value,
         contactMethod: document.querySelector('input[name="contact-method"]:checked').value,
-        contactInfo: document.getElementById('contact-info').value, // 🔥 Naya data save ho raha hai
+        contactInfo: document.getElementById('contact-info').value,
         timestamp: serverTimestamp(),
         status: 'New'
       };
@@ -194,6 +200,31 @@
       }
     });
   }
+
+  // 🔥 PWA INSTALL LOGIC 🔥
+  let deferredPrompt;
+  const installContainer = document.getElementById('install-container');
+  const installBtn = document.getElementById('install-btn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installContainer.style.display = 'block';
+
+    installBtn.addEventListener('click', () => {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        }
+        installContainer.style.display = 'none';
+      });
+    });
+  });
+
+  window.addEventListener('appinstalled', () => {
+    installContainer.style.display = 'none';
+  });
 </script>
 
 </body>
