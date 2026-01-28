@@ -1,1 +1,43 @@
-s
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>दैनिक राशिफल | Mahadev Astrologer MA</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        body { background-color: #0a0a14; color: #f5c542; font-family: serif; margin: 0; padding: 20px; text-align: center; min-height: 100vh; }
+        .content-box { border: 1px solid #f5c542; border-radius: 20px; padding: 25px; background: rgba(245, 197, 66, 0.03); margin-top: 30px; box-shadow: 0 0 20px rgba(245, 197, 66, 0.1); }
+        .rashi-icon { font-size: 70px; margin-bottom: 15px; display: block; text-shadow: 0 0 15px rgba(245, 197, 66, 0.5); }
+        .horoscope-text { font-size: 18px; line-height: 1.8; color: #ffffff; margin-top: 20px; text-align: justify; }
+        .back-btn { display: inline-block; margin-top: 30px; color: #f5c542; text-decoration: none; border: 1px solid #f5c542; padding: 12px 25px; border-radius: 50px; transition: 0.3s; }
+        .back-btn:hover { background: #f5c542; color: #000; }
+    </style>
+</head>
+<body>
+
+    <a href="../horoscope.html" style="color: #f5c542; text-decoration: none; float: left; font-size: 20px;">←</a>
+    <br><br>
+
+    <div class="content-box">
+        <span class="rashi-icon" id="rashiSymbol">♈</span>
+        <h1 id="rashiName" style="margin: 10px 0; letter-spacing: 2px;">मेष राशिफल</h1>
+        <p style="color: #f5c542; opacity: 0.8;" id="todayDate"></p>
+        
+        <hr style="border: 0.5px solid rgba(245, 197, 66, 0.2); margin: 25px 0;">
+        
+        <div class="horoscope-text">
+            आज का दिन आपके लिए नई ऊर्जा लेकर आएगा। महादेव की कृपा से आपके अटके हुए कार्य पूर्ण होंगे। स्वास्थ्य का ध्यान रखें और ॐ नमः शिवाय का जाप करें।
+        </div>
+    </div>
+
+    <a href="https://wa.me/YOUR_NUMBER" class="back-btn">Personal Consultation (संपर्क करें)</a>
+
+    <script>
+        // Aaj ki date dikhane ke liye
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('todayDate').innerText = new Date().toLocaleDateString('hi-IN', options);
+    </script>
+
+</body>
+</html>
