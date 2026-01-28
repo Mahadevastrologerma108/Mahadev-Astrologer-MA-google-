@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Secret Admin | Mahadev Astrologer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #0a0a14; color: white; padding: 30px; }
+        h1 { color: #f5c542; text-align: center; border-bottom: 2px solid #f5c542; padding-bottom: 10px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 30px; background: rgba(255,255,255,0.05); }
+        th, td { padding: 15px; text-align: left; border: 1px solid rgba(245,197,66,0.2); }
+        th { background: #f5c542; color: black; text-transform: uppercase; letter-spacing: 1px; }
+        tr:hover { background: rgba(245,197,66,0.05); }
+        .contact-box { color: #00ff00; font-weight: bold; }
+        .service-tag { color: #f5c542; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🔱 Admin Dashboard - All Appointments</h1>
+    
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Booking Date</th>
+                <th>Client Name</th>
+                <th>Service Requested</th>
+                <th>Birth Details</th>
+                <th>Contact (WhatsApp/Email)</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            </tbody>
+    </table>
+</div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAgcfrzQm6wezgtU5Q5BP8wxXatmoWqYrw",
+        authDomain: "mahadev-astrologer.firebaseapp.com",
+        projectId: "mahadev-astrologer",
+        storageBucket: "mahadev-astrologer.firebasestorage.app",
+        messagingSenderId: "559664802739",
+        appId: "1:559664802739:web:4285f4dc461f570cc2b9c6"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Naya data sabse upar dikhane ke liye query
+    const q = query(collection(db, "appointments"), orderBy("timestamp", "desc"));
+
+    onSnapshot(q, (snapshot) => {
+        const tbody = document.getElementById('table-body');
+        tbody.innerHTML = ""; // Purana data clear karein
+        
+        snapshot.forEach((doc) => {
+            const data = doc.data();
+            const time = data.timestamp ? data.timestamp.toDate().toLocaleString() : "Just Now";
+            
+            let birthInfo = `DOB: ${data.dob || 'N/A'}<br>Place: ${data.birthPlace || 'N/A'}<br>Time: ${data.birthTime || 'N/A'}`;
+
+            const row = `
+                <tr>
+                    <td>${time}</td>
+                    <td><b>${data.clientName}</b></td>
+                    <td class="service-tag">${data.service.replace('_', ' ').toUpperCase()}</td>
+                    <td>${birthInfo}</td>
+                    <td class="contact-box">${data.contactMethod.toUpperCase()}: <br>${data.contactInfo}</td>
+                </tr>
+            `;
+            tbody.innerHTML += row;
+        });
+    });
+</script>
+
+</body>
+</html>
