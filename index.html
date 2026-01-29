@@ -155,7 +155,6 @@
             <a href="pages/terms.html" style="color: #777; text-decoration: none;">Terms</a>
         </div>
         <p class="copyright-text">&copy; 2026 MAHADEV ASTROLOGER MA</p>
-        <div id="footer-links-dynamic"></div>
     </div>
 </footer>
 
@@ -180,7 +179,6 @@
   if(form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
       const submitBtn = e.target.querySelector('button');
       submitBtn.innerText = "🕉 Connecting...";
       submitBtn.disabled = true;
@@ -202,11 +200,10 @@
 
       try {
         await addDoc(collection(db, "appointments"), formData);
-        alert("🔱 Jai Mahadev! Your request has been received. We will contact you soon.");
+        alert("🔱 Jai Mahadev! Your request has been received.");
         form.reset();
       } catch (error) {
-        console.error("Error: ", error);
-        alert("🔱 Sorry! Something went wrong. Please try again.");
+        alert("🔱 Error saving data. Please try again.");
       } finally {
         submitBtn.innerText = "PROCEED TO CONSULTATION";
         submitBtn.disabled = false;
@@ -215,23 +212,14 @@
   }
 
   let deferredPrompt;
-  const installContainer = document.getElementById('install-container');
-  const installBtn = document.getElementById('install-btn');
-
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
+    const installContainer = document.getElementById('install-container');
     installContainer.style.display = 'block';
-
-    installBtn.addEventListener('click', () => {
+    document.getElementById('install-btn').addEventListener('click', () => {
       deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
-        }
-        deferredPrompt = null;
-        installContainer.style.display = 'none';
-      });
+      installContainer.style.display = 'none';
     });
   });
 </script>
