@@ -7,11 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
+        /* Selection Grid Style */
         .selection-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; max-width: 800px; margin: 100px auto 40px; }
         .zodiac-card { background: rgba(245, 197, 66, 0.05); border: 1px solid var(--gold); border-radius: 15px; padding: 20px 10px; text-align: center; transition: 0.3s; text-decoration: none; color: var(--gold); cursor: pointer; }
         .zodiac-card:hover { background: rgba(245, 197, 66, 0.15); transform: translateY(-5px); box-shadow: 0 0 15px rgba(245, 197, 66, 0.3); }
         .zodiac-card span { font-size: 40px; display: block; margin-bottom: 8px; }
         .zodiac-card p { margin: 0; font-family: 'Cinzel'; font-size: 13px; font-weight: bold; }
+        
+        /* Sidebar Navigation */
+        #nav-drawer { position: fixed; right: -280px; top: 0; height: 100%; width: 280px; background: #0f0f1f; transition: 0.4s; z-index: 1050; padding: 20px; border-left: 1px solid var(--gold); }
+        #menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1040; }
+        
         @media (max-width: 480px) { .selection-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
@@ -19,9 +25,23 @@
 
 <header class="main-header" style="position:fixed; top:0; width:100%; z-index:1000; background:rgba(10,10,20,0.98); border-bottom:1px solid rgba(245,197,66,0.2); height:70px;">
     <div style="display:flex; justify-content:space-between; align-items:center; padding:0 20px; height:100%; max-width:1200px; margin:0 auto;">
-        <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;"><img src="assets/images/logo.png" style="height:45px;"><span class="gold-text title-font">MAHADEV ASTROLOGER MA</span></a>
+        <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+            <img src="assets/images/logo.png" style="height:45px;">
+            <span class="gold-text title-font">MAHADEV ASTROLOGER MA</span>
+        </a>
+        <div id="open-menu" style="cursor:pointer; color:var(--gold); font-size:1.8rem;">☰</div>
     </div>
 </header>
+
+<nav id="nav-drawer">
+    <div id="close-menu" style="text-align:right; font-size:2.2rem; color:var(--gold); cursor:pointer;">&times;</div>
+    <ul style="list-style:none; margin-top:40px; padding:0;">
+        <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="index.html" style="color:white; text-decoration:none; font-family:'Cinzel'; display:block; padding:15px 0;">Home</a></li>
+        <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="horoscope.html" style="color:var(--gold); text-decoration:none; font-family:'Cinzel'; display:block; padding:15px 0;">Horoscope</a></li>
+        <li><a href="panchang/panchang.html" style="color:white; text-decoration:none; font-family:'Cinzel'; display:block; padding:15px 0;">Panchang</a></li>
+    </ul>
+</nav>
+<div id="menu-overlay"></div>
 
 <div class="selection-grid">
     <a href="pages/aries.html" class="zodiac-card"><span>♈</span><p>Mesh (Aries)</p></a>
@@ -42,6 +62,18 @@
     <p style="font-size:1.1rem; letter-spacing:2px; margin-bottom:10px;">Jai Mahakal 🙏</p>
     <p style="font-size:0.75rem; opacity:0.6; font-family:'Poppins';">&copy; 2026 MAHADEV ASTROLOGER MA</p>
 </footer>
+
+<script>
+    const openBtn = document.getElementById('open-menu');
+    const closeBtn = document.getElementById('close-menu');
+    const drawer = document.getElementById('nav-drawer');
+    const overlay = document.getElementById('menu-overlay');
+
+    openBtn.onclick = () => { drawer.style.right = "0"; overlay.style.display = "block"; };
+    const closeAll = () => { drawer.style.right = "-280px"; overlay.style.display = "none"; };
+    closeBtn.onclick = closeAll; 
+    overlay.onclick = closeAll;
+</script>
 
 </body>
 </html>
