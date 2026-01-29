@@ -3,234 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahadev Astrologer MA | Divine Vedic Guidance</title>
+    <title>Mahadev Astrologer MA | Divine Vedic Wisdom</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="assets/css/style.css">
     
     <style>
         :root { 
             --gold: #f5c542; 
+            --gold-glow: rgba(245, 197, 66, 0.5);
             --bg: #0a0a14; 
             --card-bg: rgba(255, 255, 255, 0.03);
-            --border: rgba(245, 197, 66, 0.2);
+            --border: rgba(245, 197, 66, 0.15);
         }
 
-        /* Full Page Styling */
+        /* Full Page Base */
         body { 
             background: var(--bg); 
             color: white; 
             margin: 0; 
             font-family: 'Poppins', sans-serif; 
             overflow-x: hidden;
-            line-height: 1.6;
+            background-image: radial-gradient(circle at 50% -20%, #1a1a2e 0%, var(--bg) 80%);
         }
 
-        .gold-text { color: var(--gold); font-family: 'Cinzel'; }
+        .gold-text { color: var(--gold); font-family: 'Cinzel', serif; text-shadow: 0 0 15px var(--gold-glow); }
 
-        /* Navigation */
+        /* Navigation with Glassmorphism */
         header { 
             position: fixed; top: 0; width: 100%; z-index: 1000; 
-            background: rgba(10, 10, 20, 0.95); backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border); height: 80px; 
+            background: rgba(10, 10, 20, 0.85); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border); height: 85px; 
+            display: flex; align-items: center;
         }
 
-        .nav-container {
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 0 30px; height: 100%; max-width: 1200px; margin: 0 auto;
-        }
-
-        /* Hero Section */
+        /* Hero Section with Animation */
         .hero {
-            padding: 180px 20px 100px; text-align: center;
-            background: radial-gradient(circle at center, rgba(245, 197, 66, 0.05) 0%, transparent 70%);
+            padding: 200px 20px 100px; text-align: center;
+            animation: fadeIn 1.5s ease-out;
         }
 
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 0 0 15px rgba(245, 197, 66, 0.3); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Form & Cards */
-        .input-field { 
-            width: 100%; padding: 15px; margin-bottom: 20px; 
-            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); 
-            border-radius: 12px; color: white; outline: none; box-sizing: border-box; 
-            transition: 0.3s;
+        /* Advanced Card Styling */
+        .service-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; max-width: 1200px; margin: 0 auto; padding: 40px 20px;
         }
-
-        .input-field:focus { border-color: var(--gold); background: rgba(245, 197, 66, 0.05); }
-
-        .gold-btn { 
-            background: var(--gold); color: black; border: none; padding: 18px; 
-            font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.4s; 
-            font-family: 'Cinzel'; width: 100%; text-transform: uppercase; letter-spacing: 2px;
-            box-shadow: 0 5px 15px rgba(245, 197, 66, 0.2);
-        }
-
-        .gold-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(245, 197, 66, 0.4); }
 
         .service-card {
             background: var(--card-bg); border: 1px solid var(--border);
-            padding: 40px 20px; border-radius: 25px; text-align: center; transition: 0.3s;
+            padding: 50px 30px; border-radius: 30px; text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden;
+            backdrop-filter: blur(5px);
         }
 
-        .service-card:hover { border-color: var(--gold); transform: translateY(-10px); }
-
-        /* Footer links */
-        footer a { color: #888; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-        footer a:hover { color: var(--gold); }
-
-        /* Mobile Menu */
-        #nav-drawer {
-            position: fixed; right: -100%; top: 0; height: 100%; width: 280px;
-            background: #0f0f1f; transition: 0.4s; z-index: 1100; padding: 40px 20px;
-            border-left: 2px solid var(--gold);
+        .service-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px var(--gold-glow);
         }
+
+        .combo-card {
+            border: 2px solid var(--gold) !important;
+            background: linear-gradient(145deg, rgba(245,197,66,0.08), transparent);
+            box-shadow: 0 0 30px rgba(245,197,66,0.15);
+        }
+
+        .badge {
+            position: absolute; top: 20px; right: -35px;
+            background: var(--gold); color: black; padding: 8px 45px;
+            transform: rotate(45deg); font-size: 0.75rem; font-weight: bold;
+            box-shadow: 0 0 10px var(--gold);
+        }
+
+        /* Glowing Form Fields */
+        .form-container {
+            max-width: 650px; margin: 80px auto; padding: 60px 40px;
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: 40px; box-shadow: 0 0 50px rgba(0,0,0,0.8);
+        }
+
+        .input-field {
+            width: 100%; padding: 18px; margin-bottom: 20px;
+            background: rgba(0,0,0,0.3); border: 1px solid var(--border);
+            border-radius: 15px; color: white; outline: none; transition: 0.3s;
+        }
+
+        .input-field:focus { border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); }
+
+        .gold-btn {
+            background: var(--gold); color: black; border: none; padding: 20px;
+            font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.4s;
+            font-family: 'Cinzel'; width: 100%; text-transform: uppercase;
+            letter-spacing: 2px; font-size: 1rem; box-shadow: 0 5px 20px var(--gold-glow);
+        }
+
+        .gold-btn:hover { background: #fff; box-shadow: 0 0 30px var(--gold); transform: translateY(-3px); }
+
+        /* Footer Links */
+        .footer-link { color: #666; text-decoration: none; transition: 0.3s; margin: 0 15px; font-size: 0.9rem; }
+        .footer-link:hover { color: var(--gold); text-shadow: 0 0 5px var(--gold); }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="nav-container">
-        <div class="brand-logo">
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 30px;">
+        <div class="logo">
             <a href="index.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
-                <img src="https://res.cloudinary.com/dya3yxgch/image/upload/f_auto,q_auto,w_150/v1769705192/logo_bdmvwv.png" alt="Logo" style="height: 55px;">
-                <span class="gold-text" style="font-size: 1.3rem; line-height: 1.1; letter-spacing: 1px;">
-                    MAHADEV<br><span style="font-size: 0.8rem; letter-spacing: 4px; color: #ffffff; font-family: 'Poppins';">ASTROLOGER MA</span>
+                <img src="https://res.cloudinary.com/dya3yxgch/image/upload/f_auto,q_auto,w_150/v1769705192/logo_bdmvwv.png" alt="Mahadev Logo" style="height: 60px; filter: drop-shadow(0 0 5px var(--gold-glow));">
+                <span class="gold-text" style="font-size: 1.3rem; line-height: 1.1;">
+                    MAHADEV<br><span style="font-size: 0.8rem; color: #fff; letter-spacing: 4px; font-family: 'Poppins'; text-shadow: none;">ASTROLOGER MA</span>
                 </span>
             </a>
         </div>
-        <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2.5rem;">☰</div>
+        <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2.5rem; transition: 0.3s;">☰</div>
     </div>
 </header>
 
-<div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:1050;"></div>
-<nav id="nav-drawer">
-    <div id="close-menu" style="text-align: right; font-size: 3rem; color: var(--gold); cursor: pointer;">&times;</div>
-    <ul id="main-nav-links" style="list-style:none; padding:0; margin-top:40px;">
-        </ul>
-</nav>
-
 <section class="hero">
-    <h1 class="gold-text">Divine Vedic Wisdom</h1>
-    <p style="color: #cccccc; letter-spacing: 4px; text-transform: uppercase;">Unveiling Your Cosmic Path Since Generations</p>
+    <p style="letter-spacing: 8px; color: var(--gold); font-size: 0.8rem; margin-bottom: 20px;">ESTABLISHED VEDIC LINEAGE</p>
+    <h1 class="gold-text" style="font-size: clamp(2.5rem, 8vw, 4rem); margin: 0;">Unveil Your Destiny</h1>
+    <div style="width: 100px; height: 2px; background: var(--gold); margin: 30px auto; box-shadow: 0 0 10px var(--gold);"></div>
+    <p style="max-width: 600px; margin: 0 auto; color: #888; line-height: 1.8;">Authentic predictions and spiritual remedies powered by generations of Vedic knowledge. Your journey to clarity starts here.</p>
 </section>
 
-<section id="services" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
-    <h2 class="gold-text" style="text-align: center; font-size: 2.2rem; margin-bottom: 50px;">Astrological Services</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px;">
-        
-        <div class="service-card">
-            <div style="font-size: 3rem; margin-bottom: 15px;">📜</div>
-            <h3 class="gold-text">Kundali Making</h3>
-            <p style="color: #fff; font-size: 1.5rem; margin: 10px 0;">₹501</p>
-            <p style="font-size: 0.85rem; color: #777;">Detailed analysis of birth charts.</p>
-        </div>
+<section id="services" class="service-grid">
+    <div class="service-card">
+        <div style="font-size: 3rem; margin-bottom: 20px;">📜</div>
+        <h3 class="gold-text">Kundali Making</h3>
+        <p style="color: #fff; font-size: 1.8rem; margin: 15px 0;">₹501</p>
+        <p style="color: #666; font-size: 0.85rem;">Precise calculation of planetary positions at birth.</p>
+    </div>
 
-        <div class="service-card">
-            <div style="font-size: 3rem; margin-bottom: 15px;">💑</div>
-            <h3 class="gold-text">Kundali Matching</h3>
-            <p style="color: #fff; font-size: 1.5rem; margin: 10px 0;">₹701</p>
-            <p style="font-size: 0.85rem; color: #777;">Guna Milan for successful marriage.</p>
-        </div>
+    <div class="service-card combo-card">
+        <div class="badge">BEST VALUE</div>
+        <div style="font-size: 3rem; margin-bottom: 20px;">🔱</div>
+        <h3 class="gold-text">Combo Analysis</h3>
+        <p style="color: #fff; font-size: 1.8rem; margin: 15px 0;">₹1501</p>
+        <p style="color: #eee; font-size: 0.85rem;">Complete Kundali + Palmistry + Personalized Remedies.</p>
+    </div>
 
-        <div class="service-card">
-            <div style="font-size: 3rem; margin-bottom: 15px;">✋</div>
-            <h3 class="gold-text">Palmistry</h3>
-            <p style="color: #fff; font-size: 1.5rem; margin: 10px 0;">₹1101</p>
-            <p style="font-size: 0.85rem; color: #777;">Insightful hand line readings.</p>
-        </div>
-
-        <div class="service-card">
-            <div style="font-size: 3rem; margin-bottom: 15px;">🔢</div>
-            <h3 class="gold-text">Numerology</h3>
-            <p style="color: #fff; font-size: 1.5rem; margin: 10px 0;">₹401</p>
-            <p style="font-size: 0.85rem; color: #777;">Power of numbers in your life.</p>
-        </div>
-
+    <div class="service-card">
+        <div style="font-size: 3rem; margin-bottom: 20px;">✋</div>
+        <h3 class="gold-text">Palmistry</h3>
+        <p style="color: #fff; font-size: 1.8rem; margin: 15px 0;">₹1101</p>
+        <p style="color: #666; font-size: 0.85rem;">Deep reading of mounts and lines for future insights.</p>
     </div>
 </section>
 
-<section style="padding: 80px 20px; max-width: 1100px; margin: 0 auto;">
-    <div style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
-        
-        <a href="horoscope.html" style="text-decoration: none; flex: 1; min-width: 320px;">
-            <div style="background: linear-gradient(145deg, rgba(245,197,66,0.1), rgba(0,0,0,0.8)); border: 1px solid var(--border); padding: 50px 30px; border-radius: 30px; text-align: center;">
-                <h3 class="gold-text" style="font-size: 1.8rem;">Daily Rashifal</h3>
-                <p style="color: #bbb;">Know your stars, know your day.</p>
+<section style="padding: 60px 20px; max-width: 1100px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;">
+        <a href="horoscope.html" style="text-decoration: none;">
+            <div style="background: rgba(245,197,66,0.03); border: 1px solid var(--border); padding: 50px 30px; border-radius: 30px; text-align: center; transition: 0.3s;">
+                <h3 class="gold-text" style="font-size: 1.5rem;">Daily Horoscope</h3>
+                <p style="color: #777;">Plan your day according to the stars.</p>
             </div>
         </a>
-
-        <a href="panchang/panchang.html" style="text-decoration: none; flex: 1; min-width: 320px;">
-            <div style="background: linear-gradient(145deg, rgba(245,197,66,0.1), rgba(0,0,0,0.8)); border: 1px solid var(--border); padding: 50px 30px; border-radius: 30px; text-align: center;">
-                <h3 class="gold-text" style="font-size: 1.8rem;">Vedic Panchang</h3>
-                <p style="color: #bbb;">Tithi, Muhurat & Shubh Kaal.</p>
+        <a href="panchang/panchang.html" style="text-decoration: none;">
+            <div style="background: rgba(245,197,66,0.03); border: 1px solid var(--border); padding: 50px 30px; border-radius: 30px; text-align: center; transition: 0.3s;">
+                <h3 class="gold-text" style="font-size: 1.5rem;">Vedic Panchang</h3>
+                <p style="color: #777;">Tithi, Nakshatra, and Shubh Muhurats.</p>
             </div>
         </a>
-
     </div>
 </section>
 
-<section id="book" style="max-width: 600px; margin: 80px auto; padding: 50px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
-    <h2 class="gold-text" style="text-align: center; margin-bottom: 40px; font-size: 2.2rem;">Book Consultation</h2>
-    
+<section id="book" class="form-container">
+    <h2 class="gold-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Consult Mahadev</h2>
     <form id="consultation-form">
-        <label class="gold-text" style="font-size: 0.9rem; margin-bottom: 10px; display: block;">Select Service</label>
-        <select id="service-select" class="input-field" style="background: #14142b; cursor: pointer;">
-            <option value="kundli_making">📜 Kundali Making</option>
-            <option value="kundli_matching">💑 Kundali Matching</option>
-            <option value="palmistry">✋ Palmistry (Hand Reading)</option>
-            <option value="numerology">🔢 Numerology (DOB Only)</option>
-            <option value="combo_analysis">🔱 Kundali & Palm Combo</option>
+        <label class="gold-text" style="font-size: 0.8rem; display: block; margin-bottom: 10px;">Select Divine Service</label>
+        <select id="service-select" class="input-field" onchange="updateFormDisplay()" style="background: #14142b;">
+            <option value="kundli_making">Kundali Making (₹501)</option>
+            <option value="kundli_matching">Kundali Matching (₹701)</option>
+            <option value="palmistry">Palmistry (₹1101)</option>
+            <option value="numerology">Numerology (₹401)</option>
+            <option value="combo_analysis">🔱 Combo: Kundali + Palm (₹1501)</option>
         </select>
 
         <div id="section-single">
-            <h4 class="gold-text" style="margin-bottom: 15px; font-family: 'Poppins';">Personal Details</h4>
-            <input type="text" id="user-name" placeholder="Full Name" class="input-field" required>
+            <input type="text" id="user-name" placeholder="Your Full Name" class="input-field" required>
             <div id="birth-fields">
                 <input type="date" id="single-dob" class="input-field" required>
-                <input type="time" id="single-time" class="input-field">
-                <input type="text" id="single-place" placeholder="Birth City/State" class="input-field">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <input type="time" id="single-time" class="input-field">
+                    <input type="text" id="single-place" placeholder="Birth City" class="input-field">
+                </div>
             </div>
         </div>
 
         <div id="section-matching" style="display:none;">
-            <div style="background: rgba(245,197,66,0.05); padding: 20px; border-radius: 15px; margin-bottom: 25px;">
+            <div style="background: rgba(255,255,255,0.02); padding: 25px; border-radius: 20px; margin-bottom: 25px; border: 1px solid var(--border);">
                 <h4 class="gold-text" style="margin-top:0;">👦 Male Details</h4>
                 <input type="text" id="m-name" placeholder="Full Name" class="input-field">
                 <input type="date" id="m-dob" class="input-field">
-                <input type="time" id="m-time" class="input-field">
-                <input type="text" id="m-place" placeholder="Birth Place" class="input-field">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <input type="time" id="m-time" class="input-field">
+                    <input type="text" id="m-place" placeholder="City" class="input-field">
+                </div>
             </div>
-            <div style="background: rgba(245,197,66,0.05); padding: 20px; border-radius: 15px;">
+            <div style="background: rgba(255,255,255,0.02); padding: 25px; border-radius: 20px; border: 1px solid var(--border);">
                 <h4 class="gold-text" style="margin-top:0;">👧 Female Details</h4>
                 <input type="text" id="f-name" placeholder="Full Name" class="input-field">
                 <input type="date" id="f-dob" class="input-field">
-                <input type="time" id="f-time" class="input-field">
-                <input type="text" id="f-place" placeholder="Birth Place" class="input-field">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <input type="time" id="f-time" class="input-field">
+                    <input type="text" id="f-place" placeholder="City" class="input-field">
+                </div>
             </div>
         </div>
 
-        <div id="section-palm" style="display:none; text-align: center; padding: 20px; border: 1px dashed var(--gold); border-radius: 15px; margin-bottom: 20px;">
-            <p class="gold-text" style="font-size: 0.9rem; margin: 0;">✋ High-quality palm photos are required via WhatsApp for accurate analysis.</p>
+        <div id="section-palm" style="display:none; text-align: center; border: 1px dashed var(--gold); padding: 20px; border-radius: 20px; margin-bottom: 25px;">
+            <p class="gold-text" style="font-size: 0.85rem; margin: 0;">✋ Hand analysis requires clear photos of both palms via WhatsApp.</p>
         </div>
 
-        <button type="submit" class="gold-btn" id="submit-btn" style="margin-top: 20px;">Invoke Divine Guidance</button>
+        <button type="submit" class="gold-btn" id="submit-btn">Invoke Divine Guidance</button>
     </form>
 </section>
 
-<footer style="background: #05050a; padding: 80px 20px 40px; border-top: 1px solid rgba(245,197,66,0.1); text-align: center;">
-    <div style="max-width: 1100px; margin: 0 auto;">
-        <h2 class="gold-text" style="font-size: 1.8rem; margin-bottom: 15px;">MAHADEV ASTROLOGER MA</h2>
-        <p style="color: #666; font-size: 0.9rem; max-width: 700px; margin: 0 auto 40px;">Providing authentic Vedic solutions for life's complex problems. Consult today for a brighter tomorrow.</p>
+<footer style="background: #05050a; padding: 100px 20px 40px; border-top: 1px solid #111; text-align: center;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 class="gold-text" style="font-size: 2rem;">MAHADEV ASTROLOGER MA</h2>
+        <p style="color: #555; font-size: 0.9rem; max-width: 600px; margin: 25px auto 50px;">Guiding souls through the ancient wisdom of Vedas. Your destiny is written in the stars; let us help you read it.</p>
         
-        <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 40px;">
-            <a href="pages/about.html">About Us</a>
-            <a href="pages/terms.html">Terms</a>
-            <a href="pages/privacy.html">Privacy Policy</a>
-            <a href="pages/disclaimer.html">Disclaimer</a>
+        <div style="margin-bottom: 60px;">
+            <a href="pages/about.html" class="footer-link">Our Story</a>
+            <a href="pages/terms.html" class="footer-link">Terms of Service</a>
+            <a href="pages/privacy.html" class="footer-link">Privacy Policy</a>
+            <a href="pages/disclaimer.html" class="footer-link">Disclaimer</a>
         </div>
         
-        <p style="color: #333; font-size: 0.8rem; border-top: 1px solid #111; padding-top: 30px;">
+        <p style="color: #222; font-size: 0.75rem; border-top: 1px solid #0f0f1f; padding-top: 40px; letter-spacing: 2px;">
             &copy; 2026 MAHADEV ASTROLOGER MA. ALL RIGHTS RESERVED.
         </p>
     </div>
