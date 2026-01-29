@@ -6,16 +6,27 @@
     <title>Mahadev Astrologer MA | Har Har Mahadev</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Smooth scrolling for anchor links */
+        html { scroll-behavior: smooth; }
+        .gold-text { color: #f5c542; }
+        .input-field { width: 100%; padding: 12px; margin-bottom: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(245,197,66,0.2); border-radius: 8px; color: white; outline: none; box-sizing: border-box; }
+        .gold-btn { background: #f5c542; color: black; border: none; padding: 15px 30px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; font-family: 'Cinzel'; }
+        .gold-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(245,197,66,0.3); }
+    </style>
 </head>
-<body style="background: #0a0a14; color: white; margin: 0; font-family: 'Poppins', sans-serif;">
+<body style="background: #0a0a14; color: white; margin: 0; font-family: 'Poppins', sans-serif; overflow-x: hidden;">
 
-<header style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 20, 0.98); border-bottom: 1px solid rgba(245,197,66,0.2); height: 75px;">
+<header style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 20, 0.98); border-bottom: 1px solid rgba(245,197,66,0.2); height: 85px;">
     <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%; max-width: 1200px; margin: 0 auto;">
         <div class="brand-logo">
-            <a href="index.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
-                <img src="assets/images/logo.png" alt="Logo" style="height: 50px;">
-                <span style="font-family: 'Cinzel'; color: #f5c542; font-size: 1.2rem; font-weight: bold; letter-spacing: 1px; line-height: 1.2;">
-                    MAHADEV<br><span style="font-size: 0.8rem; letter-spacing: 3px;">ASTROLOGER MA</span>
+            <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <img src="https://res.cloudinary.com/dya3yxgch/image/upload/f_auto,q_auto,w_150/v1769705192/logo_bdmvwv.png" 
+                     alt="Mahadev Astrologer Logo" 
+                     style="height: 60px; width: auto; filter: drop-shadow(0px 0px 5px rgba(245,197,66,0.4));">
+                
+                <span style="font-family: 'Cinzel'; color: #f5c542; font-size: 1.1rem; font-weight: bold; letter-spacing: 1px; line-height: 1.2;">
+                    MAHADEV<br><span style="font-size: 0.7rem; letter-spacing: 3px; color: #fff;">ASTROLOGER MA</span>
                 </span>
             </a>
         </div>
@@ -23,20 +34,21 @@
     </div>
 </header>
 
-<nav id="nav-drawer" style="position:fixed; right:-100%; top:0; height:100%; width:280px; background:#0f0f1f; transition:0.4s; z-index:1050; padding:25px; border-left: 2px solid #f5c542;">
+<nav id="nav-drawer" style="position:fixed; right:-100%; top:0; height:100%; width:280px; background:#0f0f1f; transition:0.4s; z-index:1050; padding:25px; border-left: 2px solid #f5c542; box-shadow: -10px 0 30px rgba(0,0,0,0.5);">
     <div id="close-menu" style="text-align: right; font-size: 2.5rem; color: #f5c542; cursor: pointer;">&times;</div>
-    <ul id="main-nav-links" style="list-style:none; padding:0; margin-top:20px;"></ul>
+    <ul id="main-nav-links" style="list-style:none; padding:0; margin-top:20px;">
+        </ul>
 </nav>
 <div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1040;"></div>
 
-<section style="padding: 150px 20px 60px; text-align: center; background: radial-gradient(circle at center, rgba(245,197,66,0.05) 0%, transparent 70%);">
-    <h1 class="gold-text" style="font-size: 2.8rem; font-family: 'Cinzel'; color: #f5c542; margin-bottom: 10px;">MAHADEV ASTROLOGER MA</h1>
+<section style="padding: 160px 20px 60px; text-align: center; background: radial-gradient(circle at center, rgba(245,197,66,0.05) 0%, transparent 70%);">
+    <h1 class="gold-text" style="font-size: clamp(2rem, 8vw, 2.8rem); font-family: 'Cinzel'; margin-bottom: 10px;">MAHADEV ASTROLOGER MA</h1>
     <p style="color: #bbb; letter-spacing: 2px; font-size: 0.9rem; text-transform: uppercase;">Ancient Vedic Wisdom & Divine Guidance</p>
 </section>
 
 <section id="services" style="padding: 40px 20px; max-width: 1100px; margin: 0 auto;">
     <h2 class="gold-text" style="text-align: center; font-family: 'Cinzel'; margin-bottom: 40px;">Our Services & Fees</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
         <div class="price-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.15); padding: 30px; border-radius: 20px; text-align: center;">
             <div style="font-size: 2.5rem; margin-bottom: 15px;">📜</div>
             <h3 class="gold-text" style="font-size: 1.1rem;">Kundali Making</h3>
@@ -85,14 +97,14 @@
     <h2 class="gold-text" style="text-align: center; margin-bottom: 30px; font-family: 'Cinzel';">Book Appointment</h2>
     <form id="consultation-form">
         <label style="color: #f5c542; font-size: 0.85rem; display: block; margin-bottom: 10px;">Select Service</label>
-        <select id="service-select" class="input-field" onchange="updateForm()" style="width: 100%; margin-bottom: 25px;">
+        <select id="service-select" class="input-field" onchange="updateForm()" style="width: 100%; margin-bottom: 25px; background: #1a1a2e; height: 50px;">
             <option value="kundli_making">1. Kundali Making</option>
             <option value="kundli_matching">2. Kundali Matching</option>
             <option value="palmistry">3. Palmistry</option>
             <option value="numerology">4. Numerology</option>
             <option value="combo_analysis">5. Kundali & Palm Combo</option>
         </select>
-        
+
         <div id="section-single">
             <h4 class="gold-text" style="font-size: 0.9rem; margin-bottom: 15px;">👤 CLIENT DETAILS</h4>
             <input type="text" id="user-name" placeholder="Full Name" class="input-field">
@@ -105,30 +117,7 @@
         </div>
 
         <div id="section-matching" style="display:none;">
-            <div style="background: rgba(245,197,66,0.02); padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px solid rgba(245,197,66,0.1);">
-                <h4 class="gold-text" style="font-size: 0.8rem;">👦 MALE DETAILS</h4>
-                <input type="text" id="m-name" placeholder="Male Name" class="input-field">
-                <input type="date" id="m-dob" class="input-field">
-                <input type="time" id="m-time" class="input-field">
-                <input type="text" id="m-place" placeholder="Birth Place" class="input-field">
             </div>
-            <div style="background: rgba(245,197,66,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(245,197,66,0.1);">
-                <h4 class="gold-text" style="font-size: 0.8rem;">👧 FEMALE DETAILS</h4>
-                <input type="text" id="f-name" placeholder="Female Name" class="input-field">
-                <input type="date" id="f-dob" class="input-field">
-                <input type="time" id="f-time" class="input-field">
-                <input type="text" id="f-place" placeholder="Birth Place" class="input-field">
-            </div>
-        </div>
-
-        <div id="section-palm" style="display:none; margin-top: 20px;">
-            <div style="border: 1px dashed #f5c542; padding: 20px; border-radius: 15px; text-align: center;">
-                <label style="color: #f5c542; font-size: 0.9rem; cursor: pointer;">
-                    ✋ Click/Upload Palm Photos *
-                    <input type="file" id="palm-pic" accept="image/*" multiple style="display: block; margin: 10px auto;">
-                </label>
-            </div>
-        </div>
 
         <button type="submit" class="gold-btn" style="margin-top: 30px; width: 100%;">🔱 PROCEED TO CONSULTATION</button>
     </form>
@@ -140,13 +129,15 @@
         <p style="color: #666; font-size: 0.85rem; max-width: 700px; margin: 0 auto 30px; line-height: 1.6;">
             Authentic Vedic Solutions, Palmistry, and Numerology guided by the divine light of Mahadev.
         </p>
-        <div id="footer-links-dynamic" style="margin-bottom: 30px;"></div>
+        <div id="footer-links-dynamic" style="margin-bottom: 30px;">
+            </div>
         <div style="border-top: 1px solid #111; padding-top: 20px;">
             <p style="color: #444; font-size: 0.75rem;">&copy; 2026 MAHADEV ASTROLOGER MA. ALL RIGHTS RESERVED.</p>
         </div>
     </div>
 </footer>
 
+<script src="assets/js/nav-handler.js"></script>
 <script src="assets/js/script.js"></script>
 </body>
 </html>
