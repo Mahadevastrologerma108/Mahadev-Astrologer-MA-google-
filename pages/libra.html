@@ -1,51 +1,44 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>दैनिक राशिफल | Mahadev Astrologer MA</title>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horoscope | Mahadev Astrologer MA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
-        body { background-color: #0a0a14; color: #f5c542; font-family: serif; margin: 0; padding: 20px; text-align: center; min-height: 100vh; }
-        .content-box { border: 1px solid #f5c542; border-radius: 20px; padding: 25px; background: rgba(245, 197, 66, 0.03); margin-top: 30px; box-shadow: 0 0 20px rgba(245, 197, 66, 0.1); }
-        .rashi-icon { font-size: 70px; margin-bottom: 15px; display: block; text-shadow: 0 0 15px rgba(245, 197, 66, 0.5); }
-        .horoscope-text { font-size: 18px; line-height: 1.8; color: #ffffff; margin-top: 20px; text-align: justify; }
-        .back-btn { display: inline-block; margin-top: 30px; color: #f5c542; text-decoration: none; border: 1px solid #f5c542; padding: 12px 25px; border-radius: 50px; transition: 0.3s; }
-        .back-btn:hover { background: #f5c542; color: #000; }
+        .horo-main { max-width: 800px; margin: 100px auto 40px; padding: 0 20px; text-align: center; }
+        .horo-card { background: rgba(255, 255, 255, 0.03); padding: 22px; border-radius: 18px; border: 1px solid rgba(245, 197, 66, 0.15); text-align: left; margin-bottom: 20px; }
+        .horo-card h3 { color: var(--gold); font-family: 'Cinzel'; font-size: 1.1rem; border-bottom: 1px solid rgba(245, 197, 66, 0.1); padding-bottom: 8px; }
+        .horo-card p { font-size: 0.95rem; color: #ccc; line-height: 1.7; }
+        .lucky-bar { display: flex; justify-content: space-around; background: rgba(245, 197, 66, 0.08); padding: 15px; border-radius: 50px; margin: 30px 0; border: 1px solid rgba(245, 197, 66, 0.3); }
+        .lucky-item span { display: block; font-size: 0.65rem; color: var(--gold); text-transform: uppercase; font-weight: 600; }
     </style>
 </head>
-<body>
-
-    <a href="../horoscope.html" style="color: #f5c542; text-decoration: none; float: left; font-size: 20px;">←</a>
-    <br><br>
-
-    <div class="content-box">
-        <span class="rashi-icon" id="rashiSymbol">♎</span>
-        <h1 id="rashiName" style="margin: 10px 0; letter-spacing: 2px;">तुला राशिफल</h1>
-        <p style="color: #f5c542; opacity: 0.8;" id="todayDate"></p>
-        
-        <hr style="border: 0.5px solid rgba(245, 197, 66, 0.2); margin: 25px 0;">
-        
-        <div class="horoscope-text">
-            आज का दिन आपके लिए नई ऊर्जा लेकर आएगा। महादेव की कृपा से आपके अटके हुए कार्य पूर्ण होंगे। स्वास्थ्य का ध्यान रखें और ॐ नमः शिवाय का जाप करें।
-        </div>
+<body class="panchang-body">
+<header class="main-header" style="position:fixed; top:0; width:100%; z-index:1000; background:rgba(10,10,20,0.98); border-bottom:1px solid rgba(245,197,66,0.2); height:70px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:0 20px; height:100%; max-width:1200px; margin:0 auto;">
+        <a href="../index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;"><img src="../assets/images/logo.png" style="height:45px;"><span class="gold-text title-font">MAHADEV ASTROLOGER MA</span></a>
+        <a href="../horoscope.html" style="color:var(--gold); text-decoration:none; font-size:1.5rem;">☰</a>
     </div>
-
-    <a href="../index.html#book" class="back-btn" style="background: transparent; font-weight: bold; letter-spacing: 1px;">
-    Consult Now (परामर्श लें)
-</a>
-
-    <script src="../assets/js/horoscope-data.js"></script>
-
-    <script>
-        // 2. Aaj ki date dikhane ke liye (Puraana code)
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('todayDate').innerText = new Date().toLocaleDateString('hi-IN', options);
-
-        // 3. JS File se data khinchne ke liye (Naya Instruction)
-        // Yahan 'aries' ki jagah har file mein us rashi ka naam likhna
-        loadHoroscope('libra'); 
-    </script>
-
+</header>
+<main class="horo-main">
+    <span id="rashi-icon" style="font-size:70px; text-shadow:0 0 20px var(--gold);">♈</span>
+    <h1 id="rashi-title" class="gold-text title-font">Aries - मेष राशिफल</h1>
+    <p id="todayDate" style="color:#666; font-size:0.85rem; margin-bottom:35px;">--</p>
+    <div class="horo-card"><h3>Career & Finance</h3><p id="h-career">Loading...</p></div>
+    <div class="horo-card"><h3>Love & Family</h3><p id="h-love">Loading...</p></div>
+    <div class="horo-card"><h3>Health & Wellness</h3><p id="h-health">Loading...</p></div>
+    <div class="lucky-bar">
+        <div class="lucky-item"><span>Color</span><br><strong id="h-color">--</strong></div>
+        <div class="lucky-item"><span>Number</span><br><strong id="h-number">--</strong></div>
+        <div class="lucky-item"><span>Time</span><br><strong id="h-time">--</strong></div>
+    </div>
+    <a href="../index.html#book" style="display:inline-block; padding:14px 35px; border:1px solid var(--gold); color:var(--gold); text-decoration:none; border-radius:50px; font-family:'Cinzel'; font-weight:bold;">Consult Now 🔱</a>
+</main>
+<script src="../assets/js/horoscope-data.js"></script>
+<script>
+    const rashiKey = 'aries'; // <--- ISSE BADALNA HAI
+    window.onload = () => { if(typeof loadHoroscope === 'function') loadHoroscope(rashiKey); };
+</script>
 </body>
 </html>
