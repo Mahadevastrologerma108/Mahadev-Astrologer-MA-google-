@@ -13,35 +13,78 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// 1. UI Toggle Logic (PRO Version)
+// ==========================================
+// 🔱 PATCH 1: HAMBURGER MENU LOGIC
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu');
+    const navDrawer = document.getElementById('nav-drawer');
+    const overlay = document.getElementById('menu-overlay');
+    const closeBtn = document.getElementById('close-menu');
+
+    if(menuBtn && navDrawer && overlay) {
+        menuBtn.onclick = () => {
+            navDrawer.style.right = '0';
+            overlay.style.display = 'block';
+        };
+
+        const hideMenu = () => {
+            navDrawer.style.right = '-100%';
+            overlay.style.display = 'none';
+        };
+
+        if(closeBtn) closeBtn.onclick = hideMenu;
+        overlay.onclick = hideMenu;
+    }
+});
+
+// ==========================================
+// 🔱 PATCH 2: SMART UI LOGIC (Updated for Palmistry)
+// ==========================================
 window.updateFormDisplay = function() {
     const service = document.getElementById('service-select').value;
     const secSingle = document.getElementById('section-single');
     const secMatch = document.getElementById('section-matching');
-    const secPalm = document.getElementById('section-palm');
     const birthFields = document.getElementById('birth-fields');
-
-    secSingle.style.display = (service === 'kundli_matching') ? 'none' : 'block';
-    secMatch.style.display = (service === 'kundli_matching') ? 'block' : 'none';
-    secPalm.style.display = (service === 'palmistry' || service === 'combo_analysis') ? 'block' : 'none';
     
-    // Numerology Logic: DOB required, Time/Place hidden
-    if(service === 'numerology') {
-        birthFields.style.display = 'block';
-        document.getElementById('single-time').style.display = 'none';
-        document.getElementById('single-place').style.display = 'none';
-    } else {
-        document.getElementById('single-time').style.display = 'block';
-        document.getElementById('single-place').style.display = 'block';
+    // Naye elements jo humne index.html mein group kiye hain
+    const timePlaceGroup = document.getElementById('time-place-group');
+    const palmInst = document.getElementById('palm-instruction');
+
+    // Section Visibility
+    secSingle.style.display = (service === 'kundli_matching') ? 'none' : 'block';
+    if(secMatch) secMatch.style.display = (service === 'kundli_matching') ? 'block' : 'none';
+
+    if (service === 'palmistry') {
+        // ✋ Palmistry: No Birth Details, Only Instructions
+        if(birthFields) birthFields.style.display = 'none';
+        if(palmInst) palmInst.style.display = 'block';
+    } 
+    else if (service === 'numerology') {
+        // 🔢 Numerology: Only DOB
+        if(birthFields) birthFields.style.display = 'block';
+        if(timePlaceGroup) timePlaceGroup.style.display = 'none';
+        if(palmInst) palmInst.style.display = 'none';
+    } 
+    else {
+        // 📜 Kundali/Combo: Everything
+        if(birthFields) birthFields.style.display = 'block';
+        if(timePlaceGroup) timePlaceGroup.style.display = 'grid';
+        if(palmInst) palmInst.style.display = (service === 'combo_analysis') ? 'block' : 'none';
     }
 }
 
-// 2. Submission & Messaging Logic
+// Form initial load par bhi display sahi rakhe
+document.addEventListener('DOMContentLoaded', updateFormDisplay);
+
+// ==========================================
+// 3. Submission & Messaging Logic
+// ==========================================
 document.getElementById('consultation-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
     const service = document.getElementById('service-select').value;
-    btn.innerText = "TRANSMITTING...";
+    btn.innerText = "🔱 CONNECTING...";
     btn.disabled = true;
 
     try {
@@ -49,27 +92,45 @@ document.getElementById('consultation-form').addEventListener('submit', async (e
         let waMessage = `🔱 *MAHADEV ASTROLOGER MA* 🔱\n✨ *Service:* ${service.toUpperCase()}\n`;
 
         if (service === 'kundli_matching') {
-            finalData.male = { name: document.getElementById('m-name').value, dob: document.getElementById('m-dob').value, time: document.getElementById('m-time').value, place: document.getElementById('m-place').value };
-            finalData.female = { name: document.getElementById('f-name').value, dob: document.getElementById('f-dob').value, time: document.getElementById('f-time').value, place: document.getElementById('f-place').value };
-            waMessage += `👦 Male: ${finalData.male.name} | ${finalData.male.dob}\n👧 Female: ${finalData.female.name} | ${finalData.female.dob}`;
+            finalData.male = { 
+                name: document.getElementById('m-name').value, 
+                dob: document.getElementById('m-dob').value, 
+                time: document.getElementById('m-time').value, 
+                place: document.getElementById('m-place').value 
+            };
+            finalData.female = { 
+                name: document.getElementById('f-name').value, 
+                dob: document.getElementById('f-dob').value, 
+                time: document.getElementById('f-time').value, 
+                place: document.getElementById('f-place').value 
+            };
+            waMessage += `👦 Male: ${finalData.male.name}\n👧 Female: ${finalData.female.name}`;
         } else {
-            finalData.client = { name: document.getElementById('user-name').value, dob: document.getElementById('single-dob').value };
-            waMessage += `👤 Name: ${finalData.client.name}\n📅 DOB: ${finalData.client.dob}\n`;
-            if (service !== 'numerology') {
+            finalData.client = { name: document.getElementById('user-name').value };
+            waMessage += `👤 Name: ${finalData.client.name}\n`;
+            
+            if (service !== 'palmistry') {
+                finalData.client.dob = document.getElementById('single-dob').value;
+                waMessage += `📅 DOB: ${finalData.client.dob}\n`;
+            }
+
+            if (service !== 'numerology' && service !== 'palmistry') {
                 finalData.client.time = document.getElementById('single-time').value;
                 finalData.client.place = document.getElementById('single-place').value;
                 waMessage += `⏰ Time: ${finalData.client.time}\n📍 Place: ${finalData.client.place}`;
             }
+
+            if (service === 'palmistry' || service === 'combo_analysis') {
+                waMessage += `\n📸 *Note:* Sending hand photos now...`;
+            }
         }
 
-        // A. Save to Firebase
         await addDoc(collection(db, "appointments"), finalData);
 
-        // B. Redirect to WhatsApp
-        const waNum = "91XXXXXXXXXX"; // Apna number yahan dalo
+        const waNum = "91XXXXXXXXXX"; // 🔥 Apna No. dalo
         window.open(`https://wa.me/${waNum}?text=${encodeURIComponent(waMessage)}`, '_blank');
 
-        alert("🔱 Data Saved & WhatsApp Opened!");
+        alert("🔱 Success!");
         e.target.reset();
         updateFormDisplay();
     } catch (err) {
