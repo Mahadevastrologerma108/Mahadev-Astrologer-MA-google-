@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horoscope | Mahadev Astrologer MA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Zodiac | Mahadev Astrologer MA</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .horo-main { max-width: 800px; margin: 100px auto 40px; padding: 0 20px; text-align: center; }
-        .horo-card { background: rgba(255, 255, 255, 0.03); padding: 22px; border-radius: 18px; border: 1px solid rgba(245, 197, 66, 0.15); text-align: left; margin-bottom: 20px; }
-        .horo-card h3 { color: var(--gold); font-family: 'Cinzel'; font-size: 1.1rem; border-bottom: 1px solid rgba(245, 197, 66, 0.1); padding-bottom: 8px; }
-        .horo-card p { font-size: 0.95rem; color: #ccc; line-height: 1.7; }
-        .lucky-bar { display: flex; justify-content: space-around; background: rgba(245, 197, 66, 0.08); padding: 15px; border-radius: 50px; margin: 30px 0; border: 1px solid rgba(245, 197, 66, 0.3); }
-        .lucky-item span { display: block; font-size: 0.65rem; color: var(--gold); text-transform: uppercase; font-weight: 600; }
+        .selection-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; max-width: 800px; margin: 100px auto 40px; }
+        .zodiac-card { background: rgba(245, 197, 66, 0.05); border: 1px solid var(--gold); border-radius: 15px; padding: 20px 10px; text-align: center; transition: 0.3s; text-decoration: none; color: var(--gold); cursor: pointer; }
+        .zodiac-card:hover { background: rgba(245, 197, 66, 0.15); transform: translateY(-5px); box-shadow: 0 0 15px rgba(245, 197, 66, 0.3); }
+        .zodiac-card span { font-size: 40px; display: block; margin-bottom: 8px; }
+        .zodiac-card p { margin: 0; font-family: 'Cinzel'; font-size: 13px; font-weight: bold; }
+        @media (max-width: 480px) { .selection-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body class="panchang-body">
+
 <header class="main-header" style="position:fixed; top:0; width:100%; z-index:1000; background:rgba(10,10,20,0.98); border-bottom:1px solid rgba(245,197,66,0.2); height:70px;">
     <div style="display:flex; justify-content:space-between; align-items:center; padding:0 20px; height:100%; max-width:1200px; margin:0 auto;">
-        <a href="../index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;"><img src="../assets/images/logo.png" style="height:45px;"><span class="gold-text title-font">MAHADEV ASTROLOGER MA</span></a>
-        <a href="../horoscope.html" style="color:var(--gold); text-decoration:none; font-size:1.5rem;">☰</a>
+        <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;"><img src="assets/images/logo.png" style="height:45px;"><span class="gold-text title-font">MAHADEV ASTROLOGER MA</span></a>
     </div>
 </header>
-<main class="horo-main">
-    <span id="rashi-icon" style="font-size:70px; text-shadow:0 0 20px var(--gold);">♈</span>
-    <h1 id="rashi-title" class="gold-text title-font">Aries - मेष राशिफल</h1>
-    <p id="todayDate" style="color:#666; font-size:0.85rem; margin-bottom:35px;">--</p>
-    <div class="horo-card"><h3>Career & Finance</h3><p id="h-career">Loading...</p></div>
-    <div class="horo-card"><h3>Love & Family</h3><p id="h-love">Loading...</p></div>
-    <div class="horo-card"><h3>Health & Wellness</h3><p id="h-health">Loading...</p></div>
-    <div class="lucky-bar">
-        <div class="lucky-item"><span>Color</span><br><strong id="h-color">--</strong></div>
-        <div class="lucky-item"><span>Number</span><br><strong id="h-number">--</strong></div>
-        <div class="lucky-item"><span>Time</span><br><strong id="h-time">--</strong></div>
-    </div>
-    <a href="../index.html#book" style="display:inline-block; padding:14px 35px; border:1px solid var(--gold); color:var(--gold); text-decoration:none; border-radius:50px; font-family:'Cinzel'; font-weight:bold;">Consult Now 🔱</a>
-</main>
-<script src="../assets/js/horoscope-data.js"></script>
-<script>
-    const rashiKey = 'aries'; // <--- ISSE BADALNA HAI
-    window.onload = () => { if(typeof loadHoroscope === 'function') loadHoroscope(rashiKey); };
-</script>
+
+<div class="selection-grid">
+    <a href="pages/aries.html" class="zodiac-card"><span>♈</span><p>Mesh (Aries)</p></a>
+    <a href="pages/taurus.html" class="zodiac-card"><span>♉</span><p>Vrish (Taurus)</p></a>
+    <a href="pages/gemini.html" class="zodiac-card"><span>♊</span><p>Mithun (Gemini)</p></a>
+    <a href="pages/cancer.html" class="zodiac-card"><span>♋</span><p>Kark (Cancer)</p></a>
+    <a href="pages/leo.html" class="zodiac-card"><span>♌</span><p>Simha (Leo)</p></a>
+    <a href="pages/virgo.html" class="zodiac-card"><span>♍</span><p>Kanya (Virgo)</p></a>
+    <a href="pages/libra.html" class="zodiac-card"><span>♎</span><p>Tula (Libra)</p></a>
+    <a href="pages/scorpio.html" class="zodiac-card"><span>♏</span><p>Vrishchik (Scorp)</p></a>
+    <a href="pages/sagittarius.html" class="zodiac-card"><span>♐</span><p>Dhanu (Sagit)</p></a>
+    <a href="pages/capricorn.html" class="zodiac-card"><span>♑</span><p>Makar (Capri)</p></a>
+    <a href="pages/aquarius.html" class="zodiac-card"><span>♒</span><p>Kumbh (Aqua)</p></a>
+    <a href="pages/pisces.html" class="zodiac-card"><span>♓</span><p>Meen (Pisces)</p></a>
+</div>
+
+<footer class="main-footer" style="text-align:center; padding:50px 20px; border-top:1px solid rgba(245,197,66,0.1); background:rgba(0,0,0,0.2); color:var(--gold); font-family:'Cinzel';">
+    <p style="font-size:1.1rem; letter-spacing:2px; margin-bottom:10px;">Jai Mahakal 🙏</p>
+    <p style="font-size:0.75rem; opacity:0.6; font-family:'Poppins';">&copy; 2026 MAHADEV ASTROLOGER MA</p>
+</footer>
+
 </body>
 </html>
