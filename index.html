@@ -5,15 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahadev Astrologer MA | Har Har Mahadev</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#f5c542">
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('sw.js');
-        });
-      }
-    </script>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body style="background: #0a0a14; color: white; margin: 0; font-family: 'Poppins', sans-serif;">
@@ -22,18 +13,18 @@
     <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%; max-width: 1200px; margin: 0 auto;">
         <div class="brand-logo">
             <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-                <img src="assets/images/logo.png" alt="Logo" style="height: 45px; width: auto; object-fit: contain;">
-                <span style="font-family: 'Cinzel'; color: var(--gold); font-size: 1.1rem; font-weight: bold; letter-spacing: 1px;">MAHADEV ASTROLOGER MA</span>
+                <img src="assets/images/logo.png" alt="Logo" style="height: 45px;">
+                <span style="font-family: 'Cinzel'; color: #f5c542; font-size: 1.1rem; font-weight: bold; letter-spacing: 1px;">MAHADEV ASTROLOGER MA</span>
             </a>
         </div>
-        <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2rem; padding: 5px;">☰</div>
+        <div id="mobile-menu" style="cursor:pointer; color:#f5c542; font-size:2rem; padding: 5px;">☰</div>
     </div>
 </header>
 
-<nav class="nav-menu" id="nav-drawer" style="position:fixed; right:-100%; top:0; height:100%; width:280px; background:#0f0f1f; transition:0.3s; z-index:1050; padding:20px; border-left: 1px solid var(--gold);">
-    <div id="close-menu" style="text-align: right; font-size: 2.2rem; color: var(--gold); cursor: pointer; padding: 10px 20px;">&times;</div>
+<nav class="nav-menu" id="nav-drawer" style="position:fixed; right:-100%; top:0; height:100%; width:280px; background:#0f0f1f; transition:0.3s; z-index:1050; padding:20px; border-left: 1px solid #f5c542;">
+    <div id="close-menu" style="text-align: right; font-size: 2.2rem; color: #f5c542; cursor: pointer; padding: 10px 20px;">&times;</div>
     <ul style="list-style:none; margin-top:30px; padding:0;">
-        <li style="margin-bottom:25px;"><a href="index.html" style="color:var(--gold); text-decoration:none; font-family:'Cinzel';">Home</a></li>
+        <li style="margin-bottom:25px;"><a href="index.html" style="color:#f5c542; text-decoration:none; font-family:'Cinzel';">Home</a></li>
         <li style="margin-bottom:25px;"><a href="horoscope.html" style="color:white; text-decoration:none; font-family:'Cinzel';">Horoscope</a></li>
         <li style="margin-bottom:25px;"><a href="panchang/panchang.html" style="color:white; text-decoration:none; font-family:'Cinzel';">Panchang</a></li>
         <li style="margin-bottom:25px;"><a href="latest-guide/index.html" style="color:white; text-decoration:none; font-family:'Cinzel';">Latest Guide</a></li>
@@ -42,208 +33,93 @@
 <div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1040;"></div>
 
 <section id="hero" style="padding: 120px 20px 40px; text-align: center;">
-    <h1 class="gold-text" style="font-size: 2.2rem; margin-bottom: 10px; font-family: 'Cinzel';">MAHADEV ASTROLOGER MA</h1>
+    <h1 style="font-size: 2.2rem; margin-bottom: 10px; font-family: 'Cinzel'; color: #f5c542;">MAHADEV ASTROLOGER MA</h1>
     <p style="color: #ccc; letter-spacing: 1px; font-size: 0.9rem;">Expert Astrology Solutions for Your Better Future</p>
 </section>
 
-<section id="pricing" style="padding: 20px; max-width: 1100px; margin: 0 auto;">
-    <h2 class="gold-text" style="text-align: center; font-family: 'Cinzel'; margin-bottom: 30px;">Our Divine Services</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-        <div class="price-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.1); padding: 20px; border-radius: 15px; text-align: center;">
-            <div style="font-size: 2rem;">📜</div>
-            <h3 class="gold-text" style="font-size: 0.9rem;">Kundali Making</h3>
-            <p style="color: #fff; font-weight: bold;">₹501</p>
-        </div>
-        <div class="price-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.1); padding: 20px; border-radius: 15px; text-align: center;">
-            <div style="font-size: 2rem;">💑</div>
-            <h3 class="gold-text" style="font-size: 0.9rem;">Kundali Matching</h3>
-            <p style="color: #fff; font-weight: bold;">₹601</p>
-        </div>
-        <div class="price-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.1); padding: 20px; border-radius: 15px; text-align: center;">
-            <div style="font-size: 2rem;">✋</div>
-            <h3 class="gold-text" style="font-size: 0.9rem;">Palmistry</h3>
-            <p style="color: #fff; font-weight: bold;">₹501</p>
-        </div>
-        <div class="price-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.1); padding: 20px; border-radius: 15px; text-align: center;">
-            <div style="font-size: 2rem;">🔢</div>
-            <h3 class="gold-text" style="font-size: 0.9rem;">Numerology</h3>
-            <p style="color: #fff; font-weight: bold;">₹251</p>
-        </div>
-        <div class="price-card" style="background: rgba(245,197,66,0.05); border: 2px solid var(--gold); padding: 20px; border-radius: 15px; text-align: center;">
-            <div style="font-size: 2rem;">🌟</div>
-            <h3 class="gold-text" style="font-size: 0.9rem;">Kundali & Palm Combo</h3>
-            <p style="color: #fff; font-weight: bold;">₹701</p>
-        </div>
-    </div>
-</section>
-
-<section id="book" class="form-card" style="max-width: 500px; margin: 60px auto; padding: 30px; background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.2); border-radius: 20px;">
+<section id="book" style="max-width: 500px; margin: 20px auto 60px; padding: 30px; background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.2); border-radius: 20px;">
     
-    <div style="background: rgba(245,197,66,0.1); border: 1px dashed var(--gold); padding: 10px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
-        <span style="color: var(--gold); font-weight: bold; font-size: 0.85rem;">✨ PDF Report Included in Fees (No Extra Cost)</span>
+    <div style="background: rgba(245,197,66,0.1); border: 1px dashed #f5c542; padding: 12px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
+        <span style="color: #f5c542; font-weight: bold; font-size: 0.9rem;">✨ PDF Report Included in Fees (No Extra Cost)</span>
     </div>
 
-    <h2 class="gold-text" style="text-align: center; margin-bottom: 25px; font-family: 'Cinzel';">Book Appointment</h2>
+    <h2 style="color: #f5c542; text-align: center; margin-bottom: 25px; font-family: 'Cinzel';">Book Your Session</h2>
     
-    <label style="color: var(--gold); font-size: 0.8rem; margin-bottom: 8px; display: block;">Select Service</label>
-    <select id="service-select" onchange="toggleFormFields()" style="width: 100%; margin-bottom: 20px; background: #1a1a2e; color: white; border: 1px solid #333; padding: 12px; border-radius: 8px;">
+    <label style="color: #f5c542; font-size: 0.85rem;">Select Service</label>
+    <select id="service-select" onchange="updateForm()" style="width: 100%; margin: 10px 0 25px; background: #1a1a2e; color: white; border: 1px solid #333; padding: 12px; border-radius: 8px;">
         <option value="kundli_making">1. Kundali Making</option>
         <option value="kundli_matching">2. Kundali Matching</option>
         <option value="palmistry">3. Palmistry</option>
         <option value="numerology">4. Numerology</option>
-        <option value="combo">5. Kundali & Palm Combo (Best Value)</option>
+        <option value="combo_analysis">5. Kundali & Palm Combo (Best Value)</option>
     </select>
 
     <form id="consultation-form">
-        <div id="p1-section">
-            <h4 id="p1-label" style="color: var(--gold); margin-bottom: 12px; font-size: 0.9rem;">Client Details</h4>
+        <div id="single-person-details">
+            <h4 style="color: #f5c542; margin-bottom: 12px; font-size: 0.9rem;">Client Details</h4>
             <input type="text" id="user-name" placeholder="Full Name" class="input-field" required style="width: 100%; margin-bottom: 15px;">
-            <div id="p1-dob-group">
-                <label style="color: #888; font-size: 0.75rem; display: block; margin-bottom: 5px;">Date of Birth</label>
-                <input type="date" id="dob1" class="input-field" style="width: 100%; margin-bottom: 15px;">
-                <div id="p1-birth-details" style="display: flex; gap: 10px;">
-                    <input type="text" id="place1" placeholder="Birth Place" class="input-field" style="flex: 1; margin-bottom: 15px;">
-                    <input type="time" id="time1" class="input-field" style="flex: 1; margin-bottom: 15px;">
+            <label style="color: #888; font-size: 0.75rem;">Date of Birth (Mandatory)</label>
+            <input type="date" id="single-dob" class="input-field" style="width: 100%; margin-bottom: 15px;">
+            <div id="making-extra-fields">
+                <input type="text" id="single-place" placeholder="Birth Place (City, State)" class="input-field" style="width: 100%; margin-bottom: 15px;">
+                <input type="time" id="single-time" class="input-field" style="width: 100%; margin-bottom: 15px;">
+            </div>
+        </div>
+
+        <div id="matching-details" style="display: none;">
+            <h4 style="color: #f5c542; margin-bottom: 15px; font-size: 0.9rem; text-align: center; border-bottom: 1px solid #333; padding-bottom: 10px;">Matching Details</h4>
+            <div style="margin-bottom: 20px;">
+                <p style="color: #f5c542; font-size: 0.8rem; margin-bottom: 8px;">👦 Male Details (Name, DOB, Place, Time):</p>
+                <input type="text" id="male-name" placeholder="Male Full Name" class="input-field" style="width: 100%; margin-bottom: 10px;">
+                <input type="date" id="male-dob" class="input-field" style="width: 100%; margin-bottom: 10px;">
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="male-place" placeholder="Birth Place" class="input-field" style="flex: 1;">
+                    <input type="time" id="male-time" class="input-field" style="flex: 1;">
+                </div>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <p style="color: #f5c542; font-size: 0.8rem; margin-bottom: 8px;">👧 Female Details (Name, DOB, Place, Time):</p>
+                <input type="text" id="female-name" placeholder="Female Full Name" class="input-field" style="width: 100%; margin-bottom: 10px;">
+                <input type="date" id="female-dob" class="input-field" style="width: 100%; margin-bottom: 10px;">
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="female-place" placeholder="Birth Place" class="input-field" style="flex: 1;">
+                    <input type="time" id="female-time" class="input-field" style="flex: 1;">
                 </div>
             </div>
         </div>
 
-        <div id="p2-section" style="display: none; border-top: 1px dashed #444; padding-top: 15px; margin-top: 10px;">
-            <h4 style="color: var(--gold); margin-bottom: 12px; font-size: 0.9rem;">Partner Details</h4>
-            <input type="text" id="name2" placeholder="Partner Full Name" class="input-field" style="width: 100%; margin-bottom: 15px;">
-            <label style="color: #888; font-size: 0.75rem; display: block; margin-bottom: 5px;">Partner Date of Birth</label>
-            <input type="date" id="dob2" class="input-field" style="width: 100%; margin-bottom: 15px;">
-            <div style="display: flex; gap: 10px;">
-                <input type="text" id="place2" placeholder="Partner Birth Place" class="input-field" style="flex: 1; margin-bottom: 15px;">
-                <input type="time" id="time2" class="input-field" style="flex: 1; margin-bottom: 15px;">
-            </div>
-        </div>
-
-        <div id="palm-section" style="display: none; margin-top: 15px;">
-            <h4 style="color: var(--gold); margin-bottom: 8px; font-size: 0.9rem;">Palm Images</h4>
-            <p style="color: #aaa; font-size: 0.7rem; margin-bottom: 10px; line-height: 1.3;">
-                📸 Please upload Front and Back side photos of both Right and Left hands.
-            </p>
-            <input type="file" id="palm-files" accept="image/*" multiple capture="camera" style="font-size: 0.8rem; color: #888;">
+        <div id="palmistry-details" style="display: none; margin-top: 15px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 10px;">
+            <h4 style="color: #f5c542; margin-bottom: 8px; font-size: 0.9rem;">Palm Images</h4>
+            <p style="color: #aaa; font-size: 0.75rem; margin-bottom: 12px;">📸 Upload Front & Back photos of Both Hands.</p>
+            <input type="file" id="palm-files" accept="image/*" multiple capture="camera">
         </div>
 
         <div style="margin-top: 25px; border-top: 1px solid rgba(245,197,66,0.1); padding-top: 20px;">
-            <label style="color: var(--gold); font-size: 0.8rem; display: block; margin-bottom: 10px;">Receive Report Via (Compulsory):</label>
-            <div style="display: flex; gap: 15px; font-size: 0.8rem; color: #ccc; margin-bottom: 15px;">
-                <label style="cursor:pointer;"><input type="radio" name="contact-method" value="WhatsApp" checked> WhatsApp</label>
-                <label style="cursor:pointer;"><input type="radio" name="contact-method" value="Telegram"> Telegram</label>
-                <label style="cursor:pointer;"><input type="radio" name="contact-method" value="Email"> Email</label>
+            <label style="color: #f5c542; font-size: 0.85rem; display: block; margin-bottom: 10px;">Send Report Via:</label>
+            <div style="display: flex; gap: 15px; font-size: 0.85rem; color: #ccc; margin-bottom: 15px;">
+                <label><input type="radio" name="contact-method" value="whatsapp" checked> WhatsApp</label>
+                <label><input type="radio" name="contact-method" value="telegram"> Telegram</label>
+                <label><input type="radio" name="contact-method" value="email"> Email</label>
             </div>
-            <input type="text" id="contact-info" placeholder="Enter Username, Number or Email" class="input-field" required style="width: 100%;">
         </div>
 
-        <button type="submit" class="gold-btn" style="width: 100%; margin-top: 30px; font-weight: bold; letter-spacing: 1px; padding: 15px;">🔱 SUBMIT CONSULTATION</button>
+        <button type="submit" class="gold-btn" style="width: 100%; margin-top: 30px; font-weight: bold; padding: 15px;">🔱 PROCEED TO CONSULTATION</button>
     </form>
 </section>
 
 <footer style="background: #05050a; padding: 60px 20px 30px; border-top: 1px solid rgba(245,197,66,0.1); text-align: center;">
     <div style="max-width: 1100px; margin: 0 auto;">
-        <h2 style="font-family: 'Cinzel'; color: var(--gold); margin-bottom: 10px; letter-spacing: 2px;">MAHADEV ASTROLOGER MA</h2>
-        <p style="color: #666; font-size: 0.85rem; margin-bottom: 30px; font-style: italic;">"Mapping Your Destiny Through Ancient Vedic Wisdom"</p>
-        
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;">
-            <a href="pages/about.html" style="color: #bbb; text-decoration: none; font-size: 0.8rem; letter-spacing: 1px;">ABOUT</a>
-            <span style="color: #333;">|</span>
-            <a href="pages/terms.html" style="color: #bbb; text-decoration: none; font-size: 0.8rem; letter-spacing: 1px;">TERMS</a>
-            <span style="color: #333;">|</span>
-            <a href="pages/disclaimer.html" style="color: #bbb; text-decoration: none; font-size: 0.8rem; letter-spacing: 1px;">DISCLAIMER</a>
-            <span style="color: #333;">|</span>
-            <a href="pages/privacy.html" style="color: #bbb; text-decoration: none; font-size: 0.8rem; letter-spacing: 1px;">PRIVACY</a>
+        <h2 style="font-family: 'Cinzel'; color: #f5c542; margin-bottom: 10px;">MAHADEV ASTROLOGER MA</h2>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 25px 0;">
+            <a href="pages/about.html" style="color: #bbb; text-decoration: none; font-size: 0.8rem;">ABOUT</a>
+            <a href="pages/terms.html" style="color: #bbb; text-decoration: none; font-size: 0.8rem;">TERMS</a>
+            <a href="pages/disclaimer.html" style="color: #bbb; text-decoration: none; font-size: 0.8rem;">DISCLAIMER</a>
+            <a href="pages/privacy.html" style="color: #bbb; text-decoration: none; font-size: 0.8rem;">PRIVACY</a>
         </div>
-
-        <div style="border-top: 1px solid rgba(255,255,255,0.03); padding-top: 25px;">
-            <p style="color: #444; font-size: 0.75rem; margin: 0;">&copy; 2026 MAHADEV ASTROLOGER MA. ALL RIGHTS RESERVED.</p>
-        </div>
+        <p style="color: #444; font-size: 0.75rem;">&copy; 2026 MAHADEV ASTROLOGER MA. ALL RIGHTS RESERVED.</p>
     </div>
 </footer>
 
 <script src="assets/js/script.js"></script>
-<script>
-    // Navigation Logic
-    const openBtn = document.getElementById('mobile-menu');
-    const closeBtn = document.getElementById('close-menu');
-    const drawer = document.getElementById('nav-drawer');
-    const overlay = document.getElementById('menu-overlay');
-
-    openBtn.onclick = () => { drawer.style.right = "0"; overlay.style.display = "block"; };
-    const closeMenu = () => { drawer.style.right = "-100%"; overlay.style.display = "none"; };
-    closeBtn.onclick = closeMenu;
-    overlay.onclick = closeMenu;
-
-    // Form Toggle Logic
-    function toggleFormFields() {
-        const service = document.getElementById('service-select').value;
-        const p1DobGroup = document.getElementById('p1-dob-group');
-        const p1BirthDetails = document.getElementById('p1-birth-details');
-        const p2Section = document.getElementById('p2-section');
-        const palmSection = document.getElementById('palm-section');
-
-        // Reset to default
-        p2Section.style.display = "none";
-        palmSection.style.display = "none";
-        p1DobGroup.style.display = "block";
-        p1BirthDetails.style.display = "flex";
-
-        if (service === 'kundli_matching') {
-            p2Section.style.display = "block";
-        } else if (service === 'palmistry') {
-            p1DobGroup.style.display = "none";
-            palmSection.style.display = "block";
-        } else if (service === 'numerology') {
-            p1BirthDetails.style.display = "none";
-        } else if (service === 'combo') {
-            palmSection.style.display = "block";
-        }
-    }
-</script>
-
-<script type="module">
-  // FIREBASE SUBMISSION LOGIC (Remains exactly as your original)
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyAgcfrzQm6wezgtU5Q5BP8wxXatmoWqYrw",
-    authDomain: "mahadev-astrologer.firebaseapp.com",
-    projectId: "mahadev-astrologer",
-    storageBucket: "mahadev-astrologer.firebasestorage.app",
-    messagingSenderId: "559664802739",
-    appId: "1:559664802739:web:4285f4dc461f570cc2b9c6"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  const form = document.getElementById('consultation-form');
-  if(form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const submitBtn = e.target.querySelector('button');
-      submitBtn.innerText = "🕉 PROCESSING...";
-      submitBtn.disabled = true;
-
-      const formData = {
-        clientName: document.getElementById('user-name').value,
-        service: document.getElementById('service-select').value,
-        contactMethod: document.querySelector('input[name="contact-method"]:checked').value,
-        contactInfo: document.getElementById('contact-info').value,
-        timestamp: serverTimestamp()
-      };
-
-      try {
-        await addDoc(collection(db, "appointments"), formData);
-        alert("🔱 Jai Mahadev! Booking Received.");
-        form.reset();
-      } catch (e) { alert("Error! Try again."); }
-      finally { submitBtn.innerText = "🔱 SUBMIT CONSULTATION"; submitBtn.disabled = false; }
-    });
-  }
-</script>
-
 </body>
 </html>
