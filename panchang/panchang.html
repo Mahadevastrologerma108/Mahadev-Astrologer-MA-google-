@@ -22,17 +22,37 @@
     </div>
 </header>
 
+<nav class="nav-menu" id="nav-drawer" style="position:fixed; right:-100%; top:0; height:100%; width:280px; background:#0f0f1f; transition:0.3s; z-index:1050; padding:20px; border-left: 1px solid var(--gold);">
+    <div id="close-menu" style="text-align: right; font-size: 2.2rem; color: var(--gold); cursor: pointer; padding: 10px 20px;">&times;</div>
+    <ul style="list-style:none; margin-top:30px; padding:0;">
+        <li style="margin-bottom:25px;"><a href="../index.html" style="color:white; text-decoration:none; font-family:'Cinzel';">Home</a></li>
+        <li style="margin-bottom:25px;"><a href="../horoscope.html" style="color:white; text-decoration:none; font-family:'Cinzel';">Horoscope</a></li>
+        <li style="margin-bottom:25px;"><a href="panchang.html" style="color:var(--gold); text-decoration:none; font-family:'Cinzel';">Panchang</a></li>
+    </ul>
+</nav>
+<div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1040;"></div>
+
 <main class="container" style="padding-top: 90px;">
     <section class="today-view">
         <h1 class="gold-text title-font" id="display-date">Aaj Ka Panchang</h1>
         <div id="fest-box" class="festival-alert">
             <span>🚩</span> <strong id="today-fest" class="gold-text"></strong>
         </div>
+
         <div class="panchang-grid">
             <div class="pan-card"><span class="label">Tithi</span><h4 id="pan-tithi">--</h4></div>
             <div class="pan-card"><span class="label">Nakshatra</span><h4 id="pan-nak">--</h4></div>
             <div class="pan-card"><span class="label">Sunrise / Sunset</span><h4 id="pan-sun">--</h4></div>
             <div class="pan-card highlight"><span class="label">Abhijit Muhurat</span><h4 id="pan-muh">--</h4></div>
+            <div class="pan-card rahu-card"><span class="label">Rahu Kaal (Avoid)</span><h4 id="pan-rahu">--</h4></div>
+        </div>
+
+        <div class="chaughadia-section" style="margin-top: 30px;">
+            <h3 class="gold-text title-font" style="text-align:center; margin-bottom:20px;">Shubh Chaughadia</h3>
+            <div class="panchang-grid">
+                <div class="pan-card"><span class="label">Day Chaughadia</span><p id="day-chaughadia">--</p></div>
+                <div class="pan-card"><span class="label">Night Chaughadia</span><p id="night-chaughadia">--</p></div>
+            </div>
         </div>
     </section>
 
@@ -56,9 +76,28 @@
     </section>
 </main>
 
+<footer class="premium-footer">
+    <div class="footer-glow"></div>
+    <div class="footer-container">
+        <div class="footer-logo gold-text">MAHADEV ASTROLOGER MA</div>
+        <p class="footer-motto">Celestial Wisdom & Spiritual Guidance</p>
+        <div class="footer-nav">
+            <a href="../horoscope.html">HOROSCOPE</a> 
+            <a href="../index.html#pricing">SERVICES</a>
+            <a href="../index.html#book" class="consult-link">CONSULT NOW 🔱</a> 
+        </div>
+        <div class="footer-divider"></div>
+        <div style="font-size: 0.75rem; margin-bottom: 15px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            <a href="../pages/about.html" style="color: #777; text-decoration: none;">About</a>
+            <a href="../pages/privacy.html" style="color: #777; text-decoration: none;">Privacy</a>
+            <a href="../pages/terms.html" style="color: #777; text-decoration: none;">Terms</a>
+        </div>
+        <p class="copyright-text">&copy; 2026 MAHADEV ASTROLOGER MA</p>
+    </div>
+</footer>
+
 <script src="../assets/js/panchang-data.js"></script>
 <script src="../assets/js/calendar-events.js"></script>
 <script src="panchang.js"></script>
-<script src="../assets/js/nav-handler.js"></script>
 </body>
 </html>
