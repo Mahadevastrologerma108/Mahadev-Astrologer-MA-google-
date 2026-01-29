@@ -1,81 +1,81 @@
-// ==========================================
-// 1. MOBILE MENU LOGIC
-// ==========================================
-const menuBtn = document.getElementById('mobile-menu');
-const closeBtn = document.getElementById('close-menu');
-const navDrawer = document.getElementById('nav-drawer');
-const overlay = document.getElementById('menu-overlay');
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-if(menuBtn) {
-    menuBtn.onclick = () => {
-        navDrawer.style.right = '0';
-        overlay.style.display = 'block';
-    };
-}
-const hideMenu = () => {
-    if(navDrawer) navDrawer.style.right = '-100%';
-    if(overlay) overlay.style.display = 'none';
+const firebaseConfig = {
+    apiKey: "AIzaSyAgcfrzQm6wezgtU5Q5BP8wxXatmoWqYrw",
+    authDomain: "mahadev-astrologer.firebaseapp.com",
+    projectId: "mahadev-astrologer",
+    storageBucket: "mahadev-astrologer.firebasestorage.app",
+    messagingSenderId: "559664802739",
+    appId: "1:559664802739:web:4285f4dc461f570cc2b9c6"
 };
-if(closeBtn) closeBtn.onclick = hideMenu;
-if(overlay) overlay.onclick = hideMenu;
 
-// ==========================================
-// 2. SMART FORM DISPLAY LOGIC
-// ==========================================
-const serviceSelect = document.getElementById('service-select');
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-if(serviceSelect) {
-    serviceSelect.addEventListener('change', () => {
-        const val = serviceSelect.value;
-        const secSingle = document.getElementById('section-single');
-        const secMatch = document.getElementById('section-matching');
-        const secPalm = document.getElementById('section-palm');
-        
-        // Sections Toggle
-        if(secSingle) secSingle.style.display = (val === 'kundli_matching') ? 'none' : 'block';
-        if(secMatch) secMatch.style.display = (val === 'kundli_matching') ? 'block' : 'none';
-        if(secPalm) secPalm.style.display = (val === 'palmistry' || val === 'combo_analysis') ? 'block' : 'none';
-        
-        // Numerology: Hide Time/Place
-        const isNum = (val === 'numerology');
-        const timeF = document.getElementById('single-time');
-        const placeF = document.getElementById('single-place');
-        if(timeF) timeF.style.display = isNum ? 'none' : 'block';
-        if(placeF) placeF.style.display = isNum ? 'none' : 'block';
-    });
-}
+// 1. UI Toggle Logic (PRO Version)
+window.updateFormDisplay = function() {
+    const service = document.getElementById('service-select').value;
+    const secSingle = document.getElementById('section-single');
+    const secMatch = document.getElementById('section-matching');
+    const secPalm = document.getElementById('section-palm');
+    const birthFields = document.getElementById('birth-fields');
 
-// ==========================================
-// 3. WHATSAPP MESSAGE GENERATOR (Helper Function)
-// ==========================================
-function sendWhatsApp(data) {
-    const whatsappNum = "91XXXXXXXXXX"; // 🔥 APNA NUMBER DALEIN
-    let msg = `🔱 *MAHADEV ASTROLOGER MA* 🔱\n`;
-    msg += `--------------------------\n`;
-    msg += `✨ *Service:* ${data.service.replace('_', ' ').toUpperCase()}\n`;
-
-    if (data.service === 'kundli_matching') {
-        msg += `👦 *Male:* ${data.male.name} | ${data.male.dob}\n`;
-        msg += `👧 *Female:* ${data.female.name} | ${data.female.dob}\n`;
+    secSingle.style.display = (service === 'kundli_matching') ? 'none' : 'block';
+    secMatch.style.display = (service === 'kundli_matching') ? 'block' : 'none';
+    secPalm.style.display = (service === 'palmistry' || service === 'combo_analysis') ? 'block' : 'none';
+    
+    // Numerology Logic: DOB required, Time/Place hidden
+    if(service === 'numerology') {
+        birthFields.style.display = 'block';
+        document.getElementById('single-time').style.display = 'none';
+        document.getElementById('single-place').style.display = 'none';
     } else {
-        msg += `👤 *Name:* ${data.client.name}\n`;
-        msg += `📅 *DOB:* ${data.client.dob}\n`;
-        if (data.service !== 'numerology') {
-            msg += `📍 *Place:* ${data.client.place}\n`;
-            msg += `⏰ *Time:* ${data.client.time}\n`;
-        }
+        document.getElementById('single-time').style.display = 'block';
+        document.getElementById('single-place').style.display = 'block';
     }
-
-    if (data.service === 'palmistry' || data.service === 'combo_analysis') {
-        msg += `📸 *Photos:* Sending palm photos now...\n`;
-    }
-
-    msg += `--------------------------\n`;
-    msg += `🙏 *Har Har Mahadev*`;
-
-    const encodedMsg = encodeURIComponent(msg);
-    window.open(`https://wa.me/${whatsappNum}?text=${encodedMsg}`, '_blank');
 }
 
-// Note: Form Submission Firebase ke index.html wale script se control hoga.
-// Bas usme end me sendWhatsApp(finalData) call kar dena.
+// 2. Submission & Messaging Logic
+document.getElementById('consultation-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const service = document.getElementById('service-select').value;
+    btn.innerText = "TRANSMITTING...";
+    btn.disabled = true;
+
+    try {
+        let finalData = { service: service, timestamp: serverTimestamp() };
+        let waMessage = `🔱 *MAHADEV ASTROLOGER MA* 🔱\n✨ *Service:* ${service.toUpperCase()}\n`;
+
+        if (service === 'kundli_matching') {
+            finalData.male = { name: document.getElementById('m-name').value, dob: document.getElementById('m-dob').value, time: document.getElementById('m-time').value, place: document.getElementById('m-place').value };
+            finalData.female = { name: document.getElementById('f-name').value, dob: document.getElementById('f-dob').value, time: document.getElementById('f-time').value, place: document.getElementById('f-place').value };
+            waMessage += `👦 Male: ${finalData.male.name} | ${finalData.male.dob}\n👧 Female: ${finalData.female.name} | ${finalData.female.dob}`;
+        } else {
+            finalData.client = { name: document.getElementById('user-name').value, dob: document.getElementById('single-dob').value };
+            waMessage += `👤 Name: ${finalData.client.name}\n📅 DOB: ${finalData.client.dob}\n`;
+            if (service !== 'numerology') {
+                finalData.client.time = document.getElementById('single-time').value;
+                finalData.client.place = document.getElementById('single-place').value;
+                waMessage += `⏰ Time: ${finalData.client.time}\n📍 Place: ${finalData.client.place}`;
+            }
+        }
+
+        // A. Save to Firebase
+        await addDoc(collection(db, "appointments"), finalData);
+
+        // B. Redirect to WhatsApp
+        const waNum = "91XXXXXXXXXX"; // Apna number yahan dalo
+        window.open(`https://wa.me/${waNum}?text=${encodeURIComponent(waMessage)}`, '_blank');
+
+        alert("🔱 Data Saved & WhatsApp Opened!");
+        e.target.reset();
+        updateFormDisplay();
+    } catch (err) {
+        alert("Error: " + err.message);
+    } finally {
+        btn.innerText = "Invoke Guidance";
+        btn.disabled = false;
+    }
+});
