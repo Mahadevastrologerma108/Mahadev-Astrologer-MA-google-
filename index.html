@@ -63,29 +63,29 @@
 <section style="padding: 60px 20px; max-width: 1100px; margin: 0 auto;">
     <div style="display: flex; gap: 25px; justify-content: center; flex-wrap: wrap;">
         <a href="horoscope.html" style="text-decoration: none; flex: 1; min-width: 300px;">
-            <div style="background: linear-gradient(135deg, rgba(245,197,66,0.1), rgba(0,0,0,0.8)); border: 1px solid rgba(245,197,66,0.3); padding: 40px; border-radius: 20px; text-align: center; transition: 0.3s;">
+            <div style="background: linear-gradient(135deg, rgba(245,197,66,0.1), rgba(0,0,0,0.8)); border: 1px solid rgba(245,197,66,0.3); padding: 40px; border-radius: 20px; text-align: center;">
                 <div style="font-size: 3rem; margin-bottom: 15px;">♈</div>
                 <h3 class="gold-text" style="font-family: 'Cinzel';">Daily Rashifal</h3>
-                <p style="color: #ccc; font-size: 0.9rem;">Know your destiny today. Daily updates for all zodiac signs.</p>
+                <p style="color: #ccc; font-size: 0.9rem;">Know your destiny today for all zodiac signs.</p>
                 <span style="color:#f5c542; font-weight:bold; display:block; margin-top:15px;">READ MORE →</span>
             </div>
         </a>
         <a href="panchang/panchang.html" style="text-decoration: none; flex: 1; min-width: 300px;">
-            <div style="background: linear-gradient(135deg, rgba(245,197,66,0.1), rgba(0,0,0,0.8)); border: 1px solid rgba(245,197,66,0.3); padding: 40px; border-radius: 20px; text-align: center; transition: 0.3s;">
+            <div style="background: linear-gradient(135deg, rgba(245,197,66,0.1), rgba(0,0,0,0.8)); border: 1px solid rgba(245,197,66,0.3); padding: 40px; border-radius: 20px; text-align: center;">
                 <div style="font-size: 3rem; margin-bottom: 15px;">📅</div>
                 <h3 class="gold-text" style="font-family: 'Cinzel';">Hindu Panchang</h3>
-                <p style="color: #ccc; font-size: 0.9rem;">Tithi, Shubh Muhurat, and Rahu Kaal. Precise Hindu Calendar 2026.</p>
+                <p style="color: #ccc; font-size: 0.9rem;">Tithi, Shubh Muhurat, and Rahu Kaal 2026.</p>
                 <span style="color:#f5c542; font-weight:bold; display:block; margin-top:15px;">CHECK TITHI →</span>
             </div>
         </a>
     </div>
 </section>
 
-<section id="book" style="max-width: 500px; margin: 60px auto; padding: 40px; background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.2); border-radius: 25px;">
+<section id="book" style="max-width: 550px; margin: 60px auto; padding: 40px; background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.2); border-radius: 25px;">
     <h2 class="gold-text" style="text-align: center; margin-bottom: 30px; font-family: 'Cinzel';">Book Appointment</h2>
     <form id="consultation-form">
         <label style="color: #f5c542; font-size: 0.85rem; display: block; margin-bottom: 10px;">Select Service</label>
-        <select id="service-select" class="input-field" onchange="updateForm()" style="width: 100%; margin-bottom: 20px;">
+        <select id="service-select" class="input-field" onchange="updateForm()" style="width: 100%; margin-bottom: 25px;">
             <option value="kundli_making">1. Kundali Making</option>
             <option value="kundli_matching">2. Kundali Matching</option>
             <option value="palmistry">3. Palmistry</option>
@@ -93,10 +93,44 @@
             <option value="combo_analysis">5. Kundali & Palm Combo</option>
         </select>
         
-        <div id="dynamic-fields-container">
+        <div id="section-single">
+            <h4 class="gold-text" style="font-size: 0.9rem; margin-bottom: 15px;">👤 CLIENT DETAILS</h4>
+            <input type="text" id="user-name" placeholder="Full Name" class="input-field">
+            <div id="birth-fields">
+                <label style="color: #888; font-size: 0.75rem;">Date of Birth *</label>
+                <input type="date" id="single-dob" class="input-field">
+                <input type="time" id="single-time" class="input-field">
+                <input type="text" id="single-place" placeholder="Birth Place" class="input-field">
             </div>
+        </div>
 
-        <button type="submit" class="gold-btn" style="margin-top: 20px;">🔱 PROCEED TO CONSULTATION</button>
+        <div id="section-matching" style="display:none;">
+            <div style="background: rgba(245,197,66,0.02); padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px solid rgba(245,197,66,0.1);">
+                <h4 class="gold-text" style="font-size: 0.8rem;">👦 MALE DETAILS</h4>
+                <input type="text" id="m-name" placeholder="Male Name" class="input-field">
+                <input type="date" id="m-dob" class="input-field">
+                <input type="time" id="m-time" class="input-field">
+                <input type="text" id="m-place" placeholder="Birth Place" class="input-field">
+            </div>
+            <div style="background: rgba(245,197,66,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(245,197,66,0.1);">
+                <h4 class="gold-text" style="font-size: 0.8rem;">👧 FEMALE DETAILS</h4>
+                <input type="text" id="f-name" placeholder="Female Name" class="input-field">
+                <input type="date" id="f-dob" class="input-field">
+                <input type="time" id="f-time" class="input-field">
+                <input type="text" id="f-place" placeholder="Birth Place" class="input-field">
+            </div>
+        </div>
+
+        <div id="section-palm" style="display:none; margin-top: 20px;">
+            <div style="border: 1px dashed #f5c542; padding: 20px; border-radius: 15px; text-align: center;">
+                <label style="color: #f5c542; font-size: 0.9rem; cursor: pointer;">
+                    ✋ Click/Upload Palm Photos *
+                    <input type="file" id="palm-pic" accept="image/*" multiple style="display: block; margin: 10px auto;">
+                </label>
+            </div>
+        </div>
+
+        <button type="submit" class="gold-btn" style="margin-top: 30px; width: 100%;">🔱 PROCEED TO CONSULTATION</button>
     </form>
 </section>
 
@@ -104,12 +138,9 @@
     <div style="max-width: 1100px; margin: 0 auto;">
         <h2 style="font-family: 'Cinzel'; color: #f5c542; margin-bottom: 15px;">MAHADEV ASTROLOGER MA</h2>
         <p style="color: #666; font-size: 0.85rem; max-width: 700px; margin: 0 auto 30px; line-height: 1.6;">
-            Guided by the divine light of Mahadev, we provide authentic Vedic solutions, Palmistry, and Numerology to help you navigate your life's journey.
+            Authentic Vedic Solutions, Palmistry, and Numerology guided by the divine light of Mahadev.
         </p>
-        
-        <div id="footer-links-dynamic" style="margin-bottom: 30px;">
-            </div>
-        
+        <div id="footer-links-dynamic" style="margin-bottom: 30px;"></div>
         <div style="border-top: 1px solid #111; padding-top: 20px;">
             <p style="color: #444; font-size: 0.75rem;">&copy; 2026 MAHADEV ASTROLOGER MA. ALL RIGHTS RESERVED.</p>
         </div>
