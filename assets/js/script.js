@@ -1,5 +1,5 @@
 // ==========================================
-// 1. MOBILE MENU LOGIC (Synced)
+// 1. MOBILE MENU LOGIC
 // ==========================================
 const menuBtn = document.getElementById('mobile-menu');
 const closeBtn = document.getElementById('close-menu');
@@ -13,94 +13,69 @@ if(menuBtn) {
     };
 }
 const hideMenu = () => {
-    navDrawer.style.right = '-100%';
-    overlay.style.display = 'none';
+    if(navDrawer) navDrawer.style.right = '-100%';
+    if(overlay) overlay.style.display = 'none';
 };
 if(closeBtn) closeBtn.onclick = hideMenu;
 if(overlay) overlay.onclick = hideMenu;
 
 // ==========================================
-// 2. SMART FORM DISPLAY LOGIC (Matches your Type)
+// 2. SMART FORM DISPLAY LOGIC
 // ==========================================
-function updateForm() {
-    const service = document.getElementById('service-select').value;
-    const secSingle = document.getElementById('section-single');
-    const secMatching = document.getElementById('section-matching');
-    const secPalm = document.getElementById('section-palm');
-    const birthFields = document.getElementById('birth-fields');
+const serviceSelect = document.getElementById('service-select');
 
-    // Default: Sab hide karo aur Required hatao
-    [secSingle, secMatching, secPalm].forEach(s => s.style.display = 'none');
-    document.querySelectorAll('.input-field, #palm-pic').forEach(el => el.required = false);
-
-    if (service === 'kundli_making') {
-        secSingle.style.display = 'block';
-        birthFields.style.display = 'block';
-        ['user-name', 'single-dob', 'single-time', 'single-place'].forEach(id => document.getElementById(id).required = true);
-    } 
-    else if (service === 'kundli_matching') {
-        secMatching.style.display = 'block';
-        ['m-name', 'm-dob', 'm-time', 'm-place', 'f-name', 'f-dob', 'f-time', 'f-place'].forEach(id => document.getElementById(id).required = true);
-    } 
-    else if (service === 'palmistry') {
-        secSingle.style.display = 'block';
-        birthFields.style.display = 'none';
-        secPalm.style.display = 'block';
-        document.getElementById('user-name').required = true;
-        document.getElementById('palm-pic').required = true;
-    } 
-    else if (service === 'numerology') {
-        secSingle.style.display = 'block';
-        birthFields.style.display = 'block';
-        document.getElementById('user-name').required = true;
-        document.getElementById('single-dob').required = true;
-    } 
-    else if (service === 'combo_analysis') {
-        secSingle.style.display = 'block';
-        secPalm.style.display = 'block';
-        ['user-name', 'single-dob', 'single-time', 'single-place', 'palm-pic'].forEach(id => document.getElementById(id).required = true);
-    }
+if(serviceSelect) {
+    serviceSelect.addEventListener('change', () => {
+        const val = serviceSelect.value;
+        const secSingle = document.getElementById('section-single');
+        const secMatch = document.getElementById('section-matching');
+        const secPalm = document.getElementById('section-palm');
+        
+        // Sections Toggle
+        if(secSingle) secSingle.style.display = (val === 'kundli_matching') ? 'none' : 'block';
+        if(secMatch) secMatch.style.display = (val === 'kundli_matching') ? 'block' : 'none';
+        if(secPalm) secPalm.style.display = (val === 'palmistry' || val === 'combo_analysis') ? 'block' : 'none';
+        
+        // Numerology: Hide Time/Place
+        const isNum = (val === 'numerology');
+        const timeF = document.getElementById('single-time');
+        const placeF = document.getElementById('single-place');
+        if(timeF) timeF.style.display = isNum ? 'none' : 'block';
+        if(placeF) placeF.style.display = isNum ? 'none' : 'block';
+    });
 }
 
 // ==========================================
-// 3. SUBMISSION LOGIC (WhatsApp/Telegram)
+// 3. WHATSAPP MESSAGE GENERATOR (Helper Function)
 // ==========================================
-document.getElementById('consultation-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+function sendWhatsApp(data) {
+    const whatsappNum = "91XXXXXXXXXX"; // 🔥 APNA NUMBER DALEIN
+    let msg = `🔱 *MAHADEV ASTROLOGER MA* 🔱\n`;
+    msg += `--------------------------\n`;
+    msg += `✨ *Service:* ${data.service.replace('_', ' ').toUpperCase()}\n`;
 
-    const service = document.getElementById('service-select').value;
-    const name = document.getElementById('user-name').value;
-    // Note: Is logic me hum WhatsApp default maan rahe hain, aap radio button check bhi add kar sakte hain
-    const method = 'whatsapp'; 
-    
-    let message = `🔱 *MAHADEV ASTROLOGER MA* 🔱\n`;
-    message += `--------------------------\n`;
-    message += `✨ *Service:* ${service.replace('_', ' ').toUpperCase()}\n`;
-
-    if (service === 'kundli_matching') {
-        message += `👦 *Male:* ${document.getElementById('m-name').value} | ${document.getElementById('m-dob').value}\n`;
-        message += `👧 *Female:* ${document.getElementById('f-name').value} | ${document.getElementById('f-dob').value}\n`;
+    if (data.service === 'kundli_matching') {
+        msg += `👦 *Male:* ${data.male.name} | ${data.male.dob}\n`;
+        msg += `👧 *Female:* ${data.female.name} | ${data.female.dob}\n`;
     } else {
-        message += `👤 *Name:* ${name}\n`;
-        if (service !== 'palmistry') {
-            message += `📅 *DOB:* ${document.getElementById('single-dob').value}\n`;
-            message += `📍 *Place:* ${document.getElementById('single-place').value}\n`;
-            message += `⏰ *Time:* ${document.getElementById('single-time').value}\n`;
+        msg += `👤 *Name:* ${data.client.name}\n`;
+        msg += `📅 *DOB:* ${data.client.dob}\n`;
+        if (data.service !== 'numerology') {
+            msg += `📍 *Place:* ${data.client.place}\n`;
+            msg += `⏰ *Time:* ${data.client.time}\n`;
         }
     }
 
-    if (service === 'palmistry' || service === 'combo_analysis') {
-        message += `📸 *Photos:* Sending palm photos now...\n`;
+    if (data.service === 'palmistry' || data.service === 'combo_analysis') {
+        msg += `📸 *Photos:* Sending palm photos now...\n`;
     }
 
-    message += `--------------------------\n`;
-    message += `🙏 *Har Har Mahadev*`;
+    msg += `--------------------------\n`;
+    msg += `🙏 *Har Har Mahadev*`;
 
-    const encodedMsg = encodeURIComponent(message);
-    const whatsappNum = "91XXXXXXXXXX"; // Apna number yahan dalein
-
+    const encodedMsg = encodeURIComponent(msg);
     window.open(`https://wa.me/${whatsappNum}?text=${encodedMsg}`, '_blank');
-});
+}
 
-// Initialize on Load
-document.addEventListener('DOMContentLoaded', updateForm);
+// Note: Form Submission Firebase ke index.html wale script se control hoga.
+// Bas usme end me sendWhatsApp(finalData) call kar dena.
