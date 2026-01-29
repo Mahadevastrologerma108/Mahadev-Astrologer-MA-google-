@@ -1,82 +1,110 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>दैनिक राशिफल | Mahadev Astrologer MA</title>
-    <link rel="stylesheet" href="assets/css/style.css"> 
+    <title>Horoscope | Mahadev Astrologer MA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        body {
-            background-color: #0a0a14; /* Locked Background */
-            color: #f5c542; /* Locked Gold Color */
-            font-family: 'Poppins', sans-serif; /* Locked Font Style */
-            margin: 0;
-            padding: 0;
+        .rashi-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 12px; 
+            padding: 15px; 
+            max-width: 900px; 
+            margin: 100px auto 40px; 
         }
-        .rashi-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
+        /* Mobile adjustment for smaller screens */
+        @media (max-width: 400px) {
+            .rashi-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        .rashi-card {
-            background: rgba(245, 197, 66, 0.05);
-            border: 1px solid #f5c542;
-            border-radius: 15px;
-            padding: 20px 10px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            display: block;
+        .rashi-card { 
+            background: rgba(245, 197, 66, 0.05); 
+            border: 1px solid var(--gold); 
+            border-radius: 12px; 
+            padding: 18px 5px; 
+            text-align: center; 
+            transition: 0.3s ease; 
+            text-decoration: none; 
+            color: var(--gold); 
         }
-        .rashi-card:active {
-            transform: scale(0.95);
-            box-shadow: 0 0 15px rgba(245, 197, 66, 0.4);
+        .rashi-card:hover { 
+            transform: translateY(-5px); 
+            background: rgba(245, 197, 66, 0.15); 
+            box-shadow: 0 5px 15px rgba(245, 197, 66, 0.2); 
         }
-        .rashi-card span {
-            font-size: 45px;
-            display: block;
-            margin-bottom: 10px;
-        }
-        .rashi-card p {
-            margin: 0;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .header-title {
-            text-align: center;
-            padding: 40px 20px;
-            text-shadow: 0 0 10px rgba(245, 197, 66, 0.3);
-        }
+        .rashi-card span { font-size: 35px; display: block; margin-bottom: 5px; }
+        .rashi-card p { margin: 0; font-family: 'Cinzel'; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
+        
+        /* Smooth Hamburger Drawer Fix */
+        #nav-drawer { box-shadow: -5px 0 15px rgba(0,0,0,0.5); }
     </style>
 </head>
-<body>
+<body class="panchang-body">
 
-    <div class="header-title">
-        <h1 style="font-size: 28px;">✨ दैनिक राशिफल ✨</h1>
-        <p>अपनी राशि चुनें और अपना भविष्य जानें</p>
+<header class="main-header" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 20, 0.98); border-bottom: 1px solid rgba(245,197,66,0.2); height: 70px;">
+    <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%; max-width: 1200px; margin: 0 auto;">
+        <div class="brand-logo">
+            <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+                <img src="assets/images/logo.png" style="height:45px;" alt="Logo">
+                <span class="gold-text title-font" style="font-size: 1.1rem; letter-spacing: 1px;">MAHADEV ASTROLOGER MA</span>
+            </a>
+        </div>
+        <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:1.8rem;">☰</div>
     </div>
+</header>
 
-    <div class="rashi-grid">
-        <a href="pages/aries.html" class="rashi-card"><span>♈</span><p>मेष</p></a>
-        <a href="pages/taurus.html" class="rashi-card"><span>♉</span><p>वृषभ</p></a>
-        <a href="pages/gemini.html" class="rashi-card"><span>♊</span><p>मिथुन</p></a>
-        <a href="pages/cancer.html" class="rashi-card"><span>♋</span><p>कर्क</p></a>
-        <a href="pages/leo.html" class="rashi-card"><span>♌</span><p>सिंह</p></a>
-        <a href="pages/virgo.html" class="rashi-card"><span>♍</span><p>कन्या</p></a>
-        <a href="pages/libra.html" class="rashi-card"><span>♎</span><p>तुला</p></a>
-        <a href="pages/scorpio.html" class="rashi-card"><span>♏</span><p>वृश्चिक</p></a>
-        <a href="pages/sagittarius.html" class="rashi-card"><span>♐</span><p>धनु</p></a>
-        <a href="pages/capricorn.html" class="rashi-card"><span>♑</span><p>मकर</p></a>
-        <a href="pages/aquarius.html" class="rashi-card"><span>♒</span><p>कुंभ</p></a>
-        <a href="pages/pisces.html" class="rashi-card"><span>♓</span><p>मीन</p></a>
-    </div>
+<nav class="nav-menu" id="nav-drawer" style="position:fixed; right:-100%; top:0; height:100%; width:280px; background:#0f0f1f; transition:0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index:1050; padding:20px; border-left: 1px solid var(--gold);">
+    <div id="close-menu" style="text-align: right; font-size: 2.2rem; color: var(--gold); cursor: pointer;">&times;</div>
+    <ul style="list-style:none; margin-top:40px; padding:0;">
+        <li style="border-bottom: 1px solid rgba(245,197,66,0.1);"><a href="index.html" style="color:white; text-decoration:none; font-family:'Cinzel'; display:block; padding:15px 0;">Home</a></li>
+        <li style="border-bottom: 1px solid rgba(245,197,66,0.1);"><a href="horoscope.html" style="color:var(--gold); text-decoration:none; font-family:'Cinzel'; display:block; padding:15px 0;">Horoscope</a></li>
+        <li><a href="panchang/panchang.html" style="color:white; text-decoration:none; font-family:'Cinzel'; display:block; padding:15px 0;">Panchang</a></li>
+    </ul>
+</nav>
+<div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1040; backdrop-filter: blur(3px);"></div>
 
-    <footer style="text-align: center; padding: 40px; opacity: 0.7;">
-        <p>जय महाकाल 🙏</p>
-    </footer>
+<div class="rashi-grid">
+    <a href="pages/aries.html" class="rashi-card"><span>♈</span><p>मेष</p></a>
+    <a href="pages/taurus.html" class="rashi-card"><span>♉</span><p>वृषभ</p></a>
+    <a href="pages/gemini.html" class="rashi-card"><span>♊</span><p>मिथुन</p></a>
+    <a href="pages/cancer.html" class="rashi-card"><span>♋</span><p>कर्क</p></a>
+    <a href="pages/leo.html" class="rashi-card"><span>♌</span><p>सिंह</p></a>
+    <a href="pages/virgo.html" class="rashi-card"><span>♍</span><p>कन्या</p></a>
+    <a href="pages/libra.html" class="rashi-card"><span>♎</span><p>तुला</p></a>
+    <a href="pages/scorpio.html" class="rashi-card"><span>♏</span><p>वृश्चिक</p></a>
+    <a href="pages/sagittarius.html" class="rashi-card"><span>♐</span><p>धनु</p></a>
+    <a href="pages/capricorn.html" class="rashi-card"><span>♑</span><p>मकर</p></a>
+    <a href="pages/aquarius.html" class="rashi-card"><span>♒</span><p>कुंभ</p></a>
+    <a href="pages/pisces.html" class="rashi-card"><span>♓</span><p>मीन</p></a>
+</div>
 
+<footer style="text-align: center; padding: 50px 20px; color: var(--gold); font-family: 'Cinzel'; border-top: 1px solid rgba(245,197,66,0.1); background: rgba(0,0,0,0.2);">
+    <p style="font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 10px;">जय महाकाल 🙏</p>
+    <p style="font-size: 0.7rem; opacity: 0.5; font-family: 'Poppins';">&copy; 2026 MAHADEV ASTROLOGER MA</p>
+</footer>
+
+<script>
+    const menu = document.getElementById('mobile-menu');
+    const drawer = document.getElementById('nav-drawer');
+    const overlay = document.getElementById('menu-overlay');
+    const close = document.getElementById('close-menu');
+
+    menu.onclick = () => { 
+        drawer.style.right = "0"; 
+        overlay.style.display = "block"; 
+        document.body.style.overflow = "hidden"; // Scroll block karega jab menu khula ho
+    };
+
+    const closeAll = () => { 
+        drawer.style.right = "-100%"; 
+        overlay.style.display = "none"; 
+        document.body.style.overflow = "auto"; 
+    };
+
+    close.onclick = closeAll; 
+    overlay.onclick = closeAll;
+</script>
 </body>
 </html>
