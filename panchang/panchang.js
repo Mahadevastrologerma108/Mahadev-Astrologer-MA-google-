@@ -4,9 +4,10 @@ let curMonth = new Date().getMonth();
 
 function initPanchang() {
     const today = new Date();
-    const todayStr = `2026-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    const todayStr = (today.getFullYear() === 2026) 
+        ? today.toISOString().split('T')[0] 
+        : "2026-01-01";
     
-    // Initial Load
     updateDaily(todayStr);
     updateEvents();
     renderCal(curMonth, curYear);
@@ -16,16 +17,29 @@ function renderCal(m, y) {
     const grid = document.getElementById('calendar-grid');
     if (!grid) return;
     grid.innerHTML = "";
-    ['र','सो','मं','बु','गु','शु','श'].forEach(d => grid.innerHTML += `<div class="day-header">${d}</div>`);
+
+    // 1. Day Headers (Original Style)
+    ['र','सो','मं','बु','गु','शु','श'].forEach(d => {
+        grid.innerHTML += `<div class="day-header">${d}</div>`;
+    });
 
     const start = new Date(y, m, 1).getDay();
     const days = new Date(y, m + 1, 0).getDate();
+    const today = new Date();
+
+    // 2. Empty Slots
     for(let i=0; i<start; i++) grid.innerHTML += `<div></div>`;
 
+    // 3. Date Blocks (Restoring your original logic)
     for(let d=1; d<=days; d++) {
         const dateKey = `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-        const hasEvent = (y === 2026 && typeof annualEvents !== 'undefined' && annualEvents[dateKey]) ? 'has-event' : '';
-        grid.innerHTML += `<div class="calendar-day ${hasEvent}">${d}</div>`;
+        const isT = today.getDate()===d && today.getMonth()===m && today.getFullYear()===y;
+        
+        // Check for events in calendar-events.js
+        const hasEventClass = (y === 2026 && typeof annualEvents !== 'undefined' && annualEvents[dateKey]) ? 'has-event' : '';
+        const eventTitle = (y === 2026 && typeof annualEvents !== 'undefined' && annualEvents[dateKey]) ? annualEvents[dateKey] : '';
+
+        grid.innerHTML += `<div class="calendar-day ${isT ? 'today' : ''} ${hasEventClass}" title="${eventTitle}">${d}</div>`;
     }
 }
 
@@ -34,18 +48,25 @@ function updateEvents() {
     const list = document.getElementById('event-list');
     list.innerHTML = "";
 
+    // --- 2026 FUTURE/PAST LOCK ---
     if (curYear !== 2026) {
-        list.innerHTML = `<div style="text-align:center; padding:15px;"><p class="gold-text">Events for ${curYear} available on request.</p><a href="../index.html#book" class="consult-link" style="display:inline-block; margin-top:10px; background:var(--gold); color:#000; padding:8px 15px; border-radius:5px; text-decoration:none; font-weight:bold;">CONSULT NOW 🔱</a></div>`;
+        list.innerHTML = `
+            <div style="text-align:center; padding:20px; border: 1px solid var(--gold); border-radius:10px; background:rgba(255,215,0,0.05);">
+                <p class="gold-text" style="font-size:0.9rem;">${curYear} पंचांग गणना अभी अपडेट की जा रही है।</p>
+                <p style="font-size:0.8rem; margin:10px 0;">व्यक्तिगत परामर्श के लिए यहाँ क्लिक करें।</p>
+                <a href="../index.html#book" class="consult-link" style="padding:5px 15px; display:inline-block;">CONSULT NOW 🔱</a>
+            </div>`;
         return;
     }
 
+    // Filter events for 2026 month
     let found = false;
     if(typeof annualEvents !== 'undefined') {
-        Object.keys(annualEvents).forEach(key => {
-            const d = new Date(key);
+        Object.keys(annualEvents).forEach(k => {
+            const d = new Date(k);
             if(d.getMonth() === curMonth) {
                 found = true;
-                list.innerHTML += `<li><span class="gold-text"><strong>${key.split('-')[2]}:</strong></span> ${annualEvents[key]}</li>`;
+                list.innerHTML += `<li><span class="gold-text"><strong>${k.split('-')[2]}:</strong></span> ${annualEvents[k]}</li>`;
             }
         });
     }
@@ -53,22 +74,24 @@ function updateEvents() {
 }
 
 function updateDaily(dateKey) {
-    const festBox = document.getElementById('fest-box');
-    document.getElementById('display-date').innerText = "Aaj Ka Panchang (" + dateKey + ")";
-
-    if(typeof annualEvents !== 'undefined' && annualEvents[dateKey]) {
-        festBox.style.display = "block";
-        document.getElementById('today-fest').innerText = annualEvents[dateKey];
-    } else { festBox.style.display = "none"; }
-
+    // Mapping data to your original HTML IDs
     if(typeof panchangData !== 'undefined' && panchangData[dateKey]) {
         const d = panchangData[dateKey];
-        document.getElementById('pan-tithi').innerText = d.tithi;
-        document.getElementById('pan-nak').innerText = d.nakshatra;
+        document.getElementById('pan-tithi').innerText = d.tithi || "--";
+        document.getElementById('pan-nak').innerText = d.nakshatra || "--";
         document.getElementById('pan-sun').innerText = `${d.sunrise} / ${d.sunset}`;
-        document.getElementById('pan-muh').innerText = d.muhurat;
+        document.getElementById('pan-muh').innerText = d.muhurat || "--";
+        
+        const box = document.getElementById('fest-box');
+        if(annualEvents && annualEvents[dateKey]) {
+            box.style.display = "block";
+            document.getElementById('today-fest').innerText = annualEvents[dateKey];
+        } else {
+            box.style.display = "none";
+        }
     } else {
-        ['pan-tithi', 'pan-nak', 'pan-muh'].forEach(id => document.getElementById(id).innerText = "Consult Now");
+        // Range lock or missing data fallback
+        ['pan-tithi', 'pan-nak', 'pan-muh'].forEach(id => document.getElementById(id).innerText = "Consult Guruji");
         document.getElementById('pan-sun').innerText = "-- / --";
     }
 }
