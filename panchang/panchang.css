@@ -1,84 +1,65 @@
-const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-let curYear = 2026;
-let curMonth = new Date().getMonth();
+:root { --gold: #ffd700; --bg: #0a0a14; }
 
-function initPanchang() {
-    const today = new Date();
-    const todayStr = `2026-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-    
-    // Initial Load
-    updateDaily(todayStr);
-    updateEvents();
-    renderCal(curMonth, curYear);
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.panchang-body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 100px 20px 40px; }
+.gold-text { color: var(--gold); }
+.title-font { font-family: 'Cinzel'; }
+
+/* Grid System - Fixed as per original */
+.panchang-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+.pan-card { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,215,0,0.2); text-align: center; }
+.pan-card.highlight { border: 1px solid var(--gold); background: rgba(255, 215, 0, 0.1); }
+.label { color: #aaa; font-size: 0.8rem; text-transform: uppercase; display: block; }
+
+/* Calendar Wrapper & Grids */
+.cal-wrapper { display: grid !important; grid-template-columns: 1.5fr 1fr !important; gap: 30px; }
+#calendar-grid {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 8px;
+    background: rgba(255,255,255,0.02);
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,215,0,0.1);
+}
+.day-header { color: var(--gold); font-weight: bold; text-align: center; font-size: 0.8rem; padding-bottom: 10px; }
+.calendar-day { 
+    aspect-ratio: 1/1; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 0.9rem; 
+    border: 1px solid rgba(255,255,255,0.05); 
+    border-radius: 5px; 
+    position: relative;
+    background: rgba(255,255,255,0.02);
+}
+.calendar-day.today { background: var(--gold) !important; color: black !important; font-weight: bold; }
+.calendar-day.has-event { border: 1px solid var(--gold); background: rgba(255, 215, 0, 0.1); cursor: pointer; }
+.calendar-day.has-event::after {
+    content: ''; position: absolute; bottom: 4px; width: 4px; height: 4px; background: var(--gold); border-radius: 50%;
 }
 
-function renderCal(m, y) {
-    const grid = document.getElementById('calendar-grid');
-    if (!grid) return;
-    grid.innerHTML = "";
-    ['र','सो','मं','बु','गु','शु','श'].forEach(d => grid.innerHTML += `<div class="day-header">${d}</div>`);
-
-    const start = new Date(y, m, 1).getDay();
-    const days = new Date(y, m + 1, 0).getDate();
-    for(let i=0; i<start; i++) grid.innerHTML += `<div></div>`;
-
-    for(let d=1; d<=days; d++) {
-        const dateKey = `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-        const hasEvent = (y === 2026 && typeof annualEvents !== 'undefined' && annualEvents[dateKey]) ? 'has-event' : '';
-        grid.innerHTML += `<div class="calendar-day ${hasEvent}">${d}</div>`;
-    }
+/* Navigation Buttons */
+.cal-nav { display: flex; gap: 10px; }
+.nav-btn {
+    background: transparent; border: 1px solid var(--gold); color: var(--gold);
+    padding: 5px 12px; border-radius: 4px; cursor: pointer; transition: 0.3s;
 }
+.nav-btn:hover { background: var(--gold); color: black; }
 
-function updateEvents() {
-    document.getElementById('month-name').innerText = `${monthNames[curMonth]} ${curYear}`;
-    const list = document.getElementById('event-list');
-    list.innerHTML = "";
+/* Sidebar */
+.event-sidebar { background: rgba(0,0,0,0.3); padding: 25px; border-radius: 15px; border-left: 3px solid var(--gold); }
+#event-list li { padding: 10px 0; border-bottom: 1px solid rgba(255,215,0,0.1); font-size: 0.9rem; list-style: none; }
 
-    if (curYear !== 2026) {
-        list.innerHTML = `<div style="text-align:center; padding:15px;"><p class="gold-text">Events for ${curYear} available on request.</p><a href="../index.html#book" class="consult-link" style="display:inline-block; margin-top:10px; background:var(--gold); color:#000; padding:8px 15px; border-radius:5px; text-decoration:none; font-weight:bold;">CONSULT NOW 🔱</a></div>`;
-        return;
-    }
-
-    let found = false;
-    if(typeof annualEvents !== 'undefined') {
-        Object.keys(annualEvents).forEach(key => {
-            const d = new Date(key);
-            if(d.getMonth() === curMonth) {
-                found = true;
-                list.innerHTML += `<li><span class="gold-text"><strong>${key.split('-')[2]}:</strong></span> ${annualEvents[key]}</li>`;
-            }
-        });
-    }
-    if(!found) list.innerHTML = "<li>No major festivals this month.</li>";
+@media (max-width: 850px) {
+    .cal-wrapper { grid-template-columns: 1fr !important; }
+    .panchang-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
-
-function updateDaily(dateKey) {
-    const festBox = document.getElementById('fest-box');
-    document.getElementById('display-date').innerText = "Aaj Ka Panchang (" + dateKey + ")";
-
-    if(typeof annualEvents !== 'undefined' && annualEvents[dateKey]) {
-        festBox.style.display = "block";
-        document.getElementById('today-fest').innerText = annualEvents[dateKey];
-    } else { festBox.style.display = "none"; }
-
-    if(typeof panchangData !== 'undefined' && panchangData[dateKey]) {
-        const d = panchangData[dateKey];
-        document.getElementById('pan-tithi').innerText = d.tithi;
-        document.getElementById('pan-nak').innerText = d.nakshatra;
-        document.getElementById('pan-sun').innerText = `${d.sunrise} / ${d.sunset}`;
-        document.getElementById('pan-muh').innerText = d.muhurat;
-    } else {
-        ['pan-tithi', 'pan-nak', 'pan-muh'].forEach(id => document.getElementById(id).innerText = "Consult Now");
-        document.getElementById('pan-sun').innerText = "-- / --";
-    }
-}
-
-function changeMonth(s) {
-    curMonth += s;
-    if(curMonth > 11) { curMonth=0; curYear++; }
-    else if(curMonth < 0) { curMonth=11; curYear--; }
-    updateEvents();
-    renderCal(curMonth, curYear);
-}
-
-document.addEventListener('DOMContentLoaded', initPanchang);
