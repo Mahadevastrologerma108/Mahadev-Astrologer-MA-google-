@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahadev Astrologer MA | Har Har Mahadev</title>
+    <title>Mahadev Astrologer MA | Divine Vedic Guidance</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        :root { --gold: #f5c542; }
-        body { background: #0a0a14; color: white; margin: 0; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+        :root { --gold: #f5c542; --bg: #0a0a14; }
+        body { background: var(--bg); color: white; margin: 0; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
         .gold-text { color: var(--gold); }
         .input-field { width: 100%; padding: 12px; margin-bottom: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(245,197,66,0.2); border-radius: 8px; color: white; outline: none; box-sizing: border-box; }
-        .gold-btn { background: var(--gold); color: black; border: none; padding: 15px 30px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; font-family: 'Cinzel'; }
+        .gold-btn { background: var(--gold); color: black; border: none; padding: 15px 30px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; font-family: 'Cinzel'; width: 100%; text-transform: uppercase; letter-spacing: 1px; }
         .gold-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(245,197,66,0.3); }
         header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 20, 0.98); border-bottom: 1px solid rgba(245,197,66,0.2); height: 75px; }
+        .price-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.15); padding: 30px; border-radius: 20px; text-align: center; transition: 0.3s; }
+        .price-card:hover { border-color: var(--gold); background: rgba(245,197,66,0.05); transform: translateY(-5px); }
     </style>
 </head>
 <body>
@@ -23,47 +25,47 @@
         <div class="brand-logo">
             <a href="index.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
                 <img src="https://res.cloudinary.com/dya3yxgch/image/upload/f_auto,q_auto,w_150/v1769705192/logo_bdmvwv.png" alt="Logo" style="height: 50px;">
-                <span style="font-family: 'Cinzel'; color: #f5c542; font-size: 1.2rem; font-weight: bold; letter-spacing: 1px; line-height: 1.2;">
+                <span style="font-family: 'Cinzel'; color: var(--gold); font-size: 1.2rem; font-weight: bold; line-height: 1.2;">
                     MAHADEV<br><span style="font-size: 0.8rem; letter-spacing: 3px; color: #fff;">ASTROLOGER MA</span>
                 </span>
             </a>
         </div>
-        <div id="mobile-menu" style="cursor:pointer; color:#f5c542; font-size:2.2rem;">☰</div>
+        <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2.2rem;">☰</div>
     </div>
 </header>
 
-<nav id="nav-drawer" style="position:fixed; right:-100%; top:0; height:100%; width:280px; background:#0f0f1f; transition:0.4s; z-index:1050; padding:25px; border-left: 2px solid #f5c542;">
-    <div id="close-menu" style="text-align: right; font-size: 2.5rem; color: #f5c542; cursor: pointer;">&times;</div>
+<nav id="nav-drawer" style="position:fixed; right:-100%; top:0; height:100%; width:280px; background:#0f0f1f; transition:0.4s; z-index:1050; padding:25px; border-left: 2px solid var(--gold);">
+    <div id="close-menu" style="text-align: right; font-size: 2.5rem; color: var(--gold); cursor: pointer;">&times;</div>
     <ul id="main-nav-links" style="list-style:none; padding:0; margin-top:20px;"></ul>
 </nav>
 <div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1040;"></div>
 
 <section style="padding: 150px 20px 60px; text-align: center; background: radial-gradient(circle at center, rgba(245,197,66,0.05) 0%, transparent 70%);">
-    <h1 class="gold-text" style="font-size: 2.8rem; font-family: 'Cinzel'; margin-bottom: 10px;">MAHADEV ASTROLOGER MA</h1>
+    <h1 class="gold-text" style="font-size: 3rem; font-family: 'Cinzel'; margin-bottom: 10px;">MAHADEV ASTROLOGER MA</h1>
     <p style="color: #bbb; letter-spacing: 2px; font-size: 0.9rem; text-transform: uppercase;">Ancient Vedic Wisdom & Divine Guidance</p>
 </section>
 
 <section id="services" style="padding: 40px 20px; max-width: 1100px; margin: 0 auto;">
     <h2 class="gold-text" style="text-align: center; font-family: 'Cinzel'; margin-bottom: 40px;">Our Services & Fees</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-        <div class="price-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.15); padding: 30px; border-radius: 20px; text-align: center;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+        <div class="price-card">
             <div style="font-size: 2.5rem; margin-bottom: 15px;">📜</div>
-            <h3 class="gold-text" style="font-size: 1.1rem;">Kundali Making</h3>
+            <h3 class="gold-text">Kundali Making</h3>
             <p style="color: #fff; font-weight: bold; font-size: 1.4rem;">₹501</p>
         </div>
-        <div class="price-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.15); padding: 30px; border-radius: 20px; text-align: center;">
+        <div class="price-card">
             <div style="font-size: 2.5rem; margin-bottom: 15px;">💑</div>
-            <h3 class="gold-text" style="font-size: 1.1rem;">Kundali Matching</h3>
+            <h3 class="gold-text">Kundali Matching</h3>
             <p style="color: #fff; font-weight: bold; font-size: 1.4rem;">₹701</p>
         </div>
-        <div class="price-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.15); padding: 30px; border-radius: 20px; text-align: center;">
+        <div class="price-card">
             <div style="font-size: 2.5rem; margin-bottom: 15px;">✋</div>
-            <h3 class="gold-text" style="font-size: 1.1rem;">Palmistry</h3>
+            <h3 class="gold-text">Palmistry</h3>
             <p style="color: #fff; font-weight: bold; font-size: 1.4rem;">₹1101</p>
         </div>
-        <div class="price-card" style="background: rgba(245,197,66,0.05); border: 1px solid #f5c542; padding: 30px; border-radius: 20px; text-align: center;">
+        <div class="price-card" style="border-color: var(--gold); background: rgba(245,197,66,0.05);">
             <div style="font-size: 2.5rem; margin-bottom: 15px;">🔢</div>
-            <h3 class="gold-text" style="font-size: 1.1rem;">Numerology</h3>
+            <h3 class="gold-text">Numerology</h3>
             <p style="color: #fff; font-weight: bold; font-size: 1.4rem;">₹401</p>
         </div>
     </div>
@@ -76,7 +78,7 @@
                 <div style="font-size: 3rem; margin-bottom: 15px;">♈</div>
                 <h3 class="gold-text" style="font-family: 'Cinzel';">Daily Rashifal</h3>
                 <p style="color: #ccc; font-size: 0.9rem;">Know your destiny today for all zodiac signs.</p>
-                <span style="color:#f5c542; font-weight:bold; display:block; margin-top:15px;">READ MORE →</span>
+                <span style="color:var(--gold); font-weight:bold; display:block; margin-top:15px;">READ MORE →</span>
             </div>
         </a>
         <a href="panchang/panchang.html" style="text-decoration: none; flex: 1; min-width: 300px;">
@@ -84,7 +86,7 @@
                 <div style="font-size: 3rem; margin-bottom: 15px;">📅</div>
                 <h3 class="gold-text" style="font-family: 'Cinzel';">Hindu Panchang</h3>
                 <p style="color: #ccc; font-size: 0.9rem;">Tithi, Shubh Muhurat, and Rahu Kaal 2026.</p>
-                <span style="color:#f5c542; font-weight:bold; display:block; margin-top:15px;">CHECK TITHI →</span>
+                <span style="color:var(--gold); font-weight:bold; display:block; margin-top:15px;">CHECK TITHI →</span>
             </div>
         </a>
     </div>
@@ -93,17 +95,17 @@
 <section id="book" style="max-width: 550px; margin: 60px auto; padding: 40px; background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.2); border-radius: 25px;">
     <h2 class="gold-text" style="text-align: center; margin-bottom: 30px; font-family: 'Cinzel';">Book Appointment</h2>
     <form id="consultation-form">
-        <label style="color: #f5c542; font-size: 0.85rem; display: block; margin-bottom: 10px;">Select Service</label>
-        <select id="service-select" class="input-field" style="width: 100%; margin-bottom: 25px; background: #1a1a2e; color: white;">
+        <label style="color: var(--gold); font-size: 0.85rem; display: block; margin-bottom: 10px;">Select Your Service</label>
+        <select id="service-select" class="input-field" style="background: #1a1a2e; color: white; height: 50px;">
             <option value="kundli_making">1. Kundali Making</option>
-            <option value="kundli_matching">2. Kundali Matching</option>
-            <option value="palmistry">3. Palmistry</option>
-            <option value="numerology">4. Numerology</option>
+            <option value="kundli_matching">2. Kundali Matching (Male & Female)</option>
+            <option value="palmistry">3. Palmistry (Hand Reading)</option>
+            <option value="numerology">4. Numerology (DOB Based)</option>
             <option value="combo_analysis">5. Kundali & Palm Combo</option>
         </select>
 
         <div id="section-single">
-            <h4 class="gold-text" style="font-size: 0.9rem; margin-bottom: 15px;">👤 CLIENT DETAILS</h4>
+            <h4 class="gold-text" style="font-size: 0.9rem; margin-bottom: 15px; border-bottom: 1px solid rgba(245,197,66,0.1); padding-bottom: 5px;">👤 CLIENT DETAILS</h4>
             <input type="text" id="user-name" placeholder="Full Name" class="input-field">
             <div id="birth-fields">
                 <label style="color: #888; font-size: 0.75rem;">Date of Birth *</label>
@@ -131,21 +133,21 @@
         </div>
 
         <div id="section-palm" style="display:none; margin-top: 20px;">
-            <div style="border: 1px dashed #f5c542; padding: 20px; border-radius: 15px; text-align: center;">
-                <label style="color: #f5c542; font-size: 0.9rem;">
-                    ✋ Please send Palm photos on WhatsApp after submitting.
-                </label>
+            <div style="border: 1px dashed var(--gold); padding: 15px; border-radius: 15px; text-align: center; color: var(--gold); font-size: 0.85rem;">
+                ✋ Please ensure you send clear palm photos on WhatsApp after submitting this form.
             </div>
         </div>
 
-        <button type="submit" class="gold-btn" style="margin-top: 30px; width: 100%;">🔱 PROCEED TO CONSULTATION</button>
+        <button type="submit" class="gold-btn" style="margin-top: 30px;">INVOKE DIVINE GUIDANCE</button>
     </form>
 </section>
 
 <footer style="background: #05050a; padding: 60px 20px 30px; border-top: 1px solid rgba(245,197,66,0.1); text-align: center;">
     <div style="max-width: 1100px; margin: 0 auto;">
-        <h2 style="font-family: 'Cinzel'; color: #f5c542;">MAHADEV ASTROLOGER MA</h2>
-        <p style="color: #666; font-size: 0.85rem;">Authentic Vedic Solutions, Palmistry, and Numerology.</p>
+        <h2 style="font-family: 'Cinzel'; color: var(--gold); margin-bottom: 10px;">MAHADEV ASTROLOGER MA</h2>
+        <p style="color: #666; font-size: 0.85rem; max-width: 700px; margin: 0 auto 30px; line-height: 1.6;">
+            Authentic Vedic Solutions, Palmistry, and Numerology guided by the divine light of Mahadev.
+        </p>
         <div id="footer-links-dynamic" style="margin-bottom: 30px;"></div>
         <p style="color: #444; font-size: 0.75rem;">&copy; 2026 MAHADEV ASTROLOGER MA. ALL RIGHTS RESERVED.</p>
     </div>
@@ -167,48 +169,47 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    // Form Section Toggle Logic
     const serviceSelect = document.getElementById('service-select');
     const sectionSingle = document.getElementById('section-single');
     const sectionMatching = document.getElementById('section-matching');
     const sectionPalm = document.getElementById('section-palm');
+    const timeField = document.getElementById('single-time');
+    const placeField = document.getElementById('single-place');
 
     serviceSelect.addEventListener('change', () => {
         const val = serviceSelect.value;
         sectionSingle.style.display = (val === 'kundli_matching') ? 'none' : 'block';
         sectionMatching.style.display = (val === 'kundli_matching') ? 'block' : 'none';
         sectionPalm.style.display = (val === 'palmistry' || val === 'combo_analysis') ? 'block' : 'none';
+        
+        // Numerology Hide Time & Place
+        const isNum = (val === 'numerology');
+        timeField.style.display = isNum ? 'none' : 'block';
+        placeField.style.display = isNum ? 'none' : 'block';
     });
 
-    // Form Submit to Firebase
     document.getElementById('consultation-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = e.target.querySelector('button');
-        btn.innerText = "🔱 SENDING...";
-        btn.disabled = true;
+        btn.innerText = "SENDING..."; btn.disabled = true;
 
         try {
-            const data = {
-                service: serviceSelect.value,
-                timestamp: serverTimestamp()
-            };
-
+            const data = { service: serviceSelect.value, timestamp: serverTimestamp() };
             if(serviceSelect.value === 'kundli_matching') {
-                data.maleDetails = { name: document.getElementById('m-name').value, dob: document.getElementById('m-dob').value, time: document.getElementById('m-time').value, place: document.getElementById('m-place').value };
-                data.femaleDetails = { name: document.getElementById('f-name').value, dob: document.getElementById('f-dob').value, time: document.getElementById('f-time').value, place: document.getElementById('f-place').value };
+                data.male = { name: document.getElementById('m-name').value, dob: document.getElementById('m-dob').value, time: document.getElementById('m-time').value, place: document.getElementById('m-place').value };
+                data.female = { name: document.getElementById('f-name').value, dob: document.getElementById('f-dob').value, time: document.getElementById('f-time').value, place: document.getElementById('f-place').value };
             } else {
-                data.clientDetails = { name: document.getElementById('user-name').value, dob: document.getElementById('single-dob').value, time: document.getElementById('single-time').value, place: document.getElementById('single-place').value };
+                data.client = { name: document.getElementById('user-name').value, dob: document.getElementById('single-dob').value };
+                if(serviceSelect.value !== 'numerology') {
+                    data.client.time = timeField.value;
+                    data.client.place = placeField.value;
+                }
             }
-
             await addDoc(collection(db, "appointments"), data);
-            alert("🔱 Pranaam! Details received successfully.");
+            alert("Blessings! Your request has been received.");
             e.target.reset();
-        } catch (err) {
-            alert("Error sending details. Check connection.");
-        } finally {
-            btn.innerText = "🔱 PROCEED TO CONSULTATION";
-            btn.disabled = false;
-        }
+        } catch (err) { alert("Connection Error. Please check your internet."); }
+        finally { btn.innerText = "INVOKE DIVINE GUIDANCE"; btn.disabled = false; }
     });
 </script>
 
