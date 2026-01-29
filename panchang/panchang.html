@@ -1,4 +1,66 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panchang & Calendar 2026 | Mahadev Astrologer MA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css"> 
+    <link rel="stylesheet" href="panchang.css"> 
+</head>
+<body class="panchang-body">
+
+<header class="main-header" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 20, 0.95); border-bottom: 1px solid rgba(245,197,66,0.2); height: 70px;">
+    <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%;">
+        <div class="brand-logo">
+            <a href="../index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <img src="../assets/images/logo.png" alt="Logo" style="height: 45px; width: auto; object-fit: contain;">
+                <span style="font-family: 'Cinzel'; color: var(--gold); font-size: 1.1rem; font-weight: bold; letter-spacing: 1px;">MAHADEV ASTROLOGER MA</span>
+            </a>
+        </div>
+        <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2rem; padding: 5px;">☰</div>
+    </div>
+</header>
+
+<main class="container" style="padding-top: 90px;">
+    <section class="today-view">
+        <h1 class="gold-text title-font" id="display-date">Aaj Ka Panchang</h1>
+        <div id="fest-box" class="festival-alert" style="display:none; background: rgba(255,215,0,0.1); padding: 15px; border-radius: 10px; margin: 20px 0; border-left: 4px solid var(--gold);">
+            <span>🚩</span> <strong id="today-fest" class="gold-text"></strong>
+        </div>
+        <div class="panchang-grid">
+            <div class="pan-card"><span class="label">Tithi</span><h4 id="pan-tithi">--</h4></div>
+            <div class="pan-card"><span class="label">Nakshatra</span><h4 id="pan-nak">--</h4></div>
+            <div class="pan-card"><span class="label">Sunrise / Sunset</span><h4 id="pan-sun">--</h4></div>
+            <div class="pan-card highlight"><span class="label">Abhijit Muhurat</span><h4 id="pan-muh">--</h4></div>
+        </div>
+    </section>
+
+    <hr class="divider" style="border: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 40px 0;">
+
+    <section class="calendar-section">
+        <div class="cal-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2 class="gold-text title-font" id="month-name">Month Year</h2>
+            <div class="cal-nav">
+                <button onclick="changeMonth(-1)" class="nav-btn">←</button>
+                <button onclick="changeMonth(1)" class="nav-btn">→</button>
+            </div>
+        </div>
+        <div class="cal-wrapper">
+            <div id="calendar-grid"></div>
+            <div class="event-sidebar">
+                <h3 class="gold-text title-font" style="margin-bottom: 15px;">Monthly Events</h3>
+                <ul id="event-list"></ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="../assets/js/panchang-data.js"></script>
+<script src="../assets/js/calendar-events.js"></script>
+<script src="panchang.js"></script>
+</body>
+</html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
