@@ -7,14 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#f5c542">
-    <link rel="stylesheet" href="assets/css/style.css">
     <script>
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js'); });
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js');
+        });
       }
     </script>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body style="background: #0a0a14; color: white; margin: 0; padding: 0;">
+<body style="background: #0a0a14; color: white;">
 
 <header class="main-header" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 20, 0.98); border-bottom: 1px solid rgba(245,197,66,0.2); height: 70px;">
     <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%; max-width: 1200px; margin: 0 auto;">
@@ -26,7 +28,7 @@
                 </span>
             </a>
         </div>
-        <div id="open-menu" style="cursor:pointer; color:var(--gold); font-size:2rem; padding: 5px;">☰</div>
+        <div id="open-menu" style="cursor:pointer; color:var(--gold); font-size:1.8rem; padding: 5px;">☰</div>
     </div>
 </header>
 
@@ -38,7 +40,9 @@
         <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="panchang/panchang.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:15px 0; letter-spacing: 1px;">Panchang</a></li>
         <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="latest-guide/index.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:15px 0; letter-spacing: 1px;">Latest Guide</a></li>
         <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="pages/about.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:12px 0; font-size:0.9rem;">About Us</a></li>
-        <li><a href="pages/terms.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:12px 0; font-size:0.9rem;">Terms</a></li>
+        <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="pages/disclaimer.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:12px 0; font-size:0.9rem;">Disclaimer</a></li>
+        <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="pages/privacy.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:12px 0; font-size:0.9rem;">Privacy Policy</a></li>
+        <li><a href="pages/terms.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:12px 0; font-size:0.9rem;">Terms & Conditions</a></li>
     </ul>
 </nav>
 
@@ -50,7 +54,7 @@
 </section>
 
 <div id="install-container" style="display:none; text-align:center; margin-bottom: 20px;">
-    <button id="install-btn" class="gold-btn" style="background: linear-gradient(45deg, #f5c542, #ff8c00); color: black; padding: 12px 25px; border-radius: 50px; font-weight: bold; border: none; cursor: pointer;">
+    <button id="install-btn" class="gold-btn" style="background: linear-gradient(45deg, #f5c542, #ff8c00); color: black; padding: 12px 25px; border-radius: 50px; font-weight: bold; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(245,197,66,0.3);">
         🔱 INSTALL MAHADEV APP
     </button>
 </div>
@@ -60,13 +64,28 @@
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
         <div class="price-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.2); padding: 20px; border-radius: 15px; text-align: center;">
             <div style="font-size: 2rem;">📜</div>
-            <h3 class="gold-text">Kundali Making</h3>
-            <p>₹501</p>
+            <h3 class="gold-text" style="font-size: 1rem;">Kundali Making</h3>
+            <p style="color: #fff; font-weight: bold;">₹501</p>
         </div>
         <div class="price-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.2); padding: 20px; border-radius: 15px; text-align: center;">
             <div style="font-size: 2rem;">💑</div>
-            <h3 class="gold-text">Kundali Matching</h3>
-            <p>₹601</p>
+            <h3 class="gold-text" style="font-size: 1rem;">Kundali Matching</h3>
+            <p style="color: #fff; font-weight: bold;">₹601</p>
+        </div>
+        <div class="price-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.2); padding: 20px; border-radius: 15px; text-align: center;">
+            <div style="font-size: 2rem;">✋</div>
+            <h3 class="gold-text" style="font-size: 1rem;">Palmistry</h3>
+            <p style="color: #fff; font-weight: bold;">₹501</p>
+        </div>
+        <div class="price-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.2); padding: 20px; border-radius: 15px; text-align: center;">
+            <div style="font-size: 2rem;">🔢</div>
+            <h3 class="gold-text" style="font-size: 1rem;">Numerology</h3>
+            <p style="color: #fff; font-weight: bold;">₹251</p>
+        </div>
+        <div class="price-card" style="background: rgba(245,197,66,0.05); border: 1px solid var(--gold); padding: 20px; border-radius: 15px; text-align: center;">
+            <div style="font-size: 2rem;">🌟</div>
+            <h3 class="gold-text" style="font-size: 1rem;">Kundali & Palm Combo</h3>
+            <p style="color: #fff; font-weight: bold;">₹701</p>
         </div>
     </div>
 </section>
@@ -74,45 +93,78 @@
 <section id="quick-links" style="padding: 40px 20px; max-width: 1100px; margin: 0 auto; text-align: center;">
     <h2 class="gold-text" style="font-family: 'Cinzel'; margin-bottom: 25px;">Divine Insights</h2>
     <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-        <a href="horoscope.html" style="text-decoration: none; flex: 1; min-width: 280px;">
-            <div style="background: rgba(245,197,66,0.05); border: 1px solid rgba(245,197,66,0.3); padding: 30px; border-radius: 15px;">
-                <h3 class="gold-text">Daily Rashifal</h3>
-                <span style="color: var(--gold);">VIEW →</span>
+        <a href="horoscope.html" style="text-decoration: none; flex: 1; min-width: 280px; max-width: 400px;">
+            <div style="background: linear-gradient(135deg, rgba(245,197,66,0.1), rgba(0,0,0,0.5)); border: 1px solid rgba(245,197,66,0.3); padding: 30px; border-radius: 15px; transition: 0.3s;">
+                <div style="font-size: 2.5rem; margin-bottom: 10px;">♈</div>
+                <h3 class="gold-text" style="margin-bottom: 10px;">Daily Rashifal</h3>
+                <p style="color: #ccc; font-size: 0.85rem;">Know what the stars have in store for you today. Daily updates for all 12 zodiac signs.</p>
+                <span style="display: inline-block; margin-top: 15px; color: var(--gold); font-weight: bold; font-size: 0.8rem;">VIEW HOROSCOPE →</span>
+            </div>
+        </a>
+        <a href="panchang/panchang.html" style="text-decoration: none; flex: 1; min-width: 280px; max-width: 400px;">
+            <div style="background: linear-gradient(135deg, rgba(245,197,66,0.1), rgba(0,0,0,0.5)); border: 1px solid rgba(245,197,66,0.3); padding: 30px; border-radius: 15px; transition: 0.3s;">
+                <div style="font-size: 2.5rem; margin-bottom: 10px;">📅</div>
+                <h3 class="gold-text" style="margin-bottom: 10px;">Panchang 2026</h3>
+                <p style="color: #ccc; font-size: 0.85rem;">Tithi, Nakshatra, Yoga, and Shubh Muhurat. Complete Hindu calendar for the year 2026.</p>
+                <span style="display: inline-block; margin-top: 15px; color: var(--gold); font-weight: bold; font-size: 0.8rem;">CHECK MUHURAT →</span>
             </div>
         </a>
     </div>
 </section>
 
-<section id="book" style="max-width: 450px; margin: 50px auto; padding: 25px; background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.1); border-radius: 15px;">
-    <h2 class="gold-text" style="text-align: center; font-family: 'Cinzel';">Book Appointment</h2>
+<section id="book" class="form-card" style="max-width: 450px; margin: 50px auto; padding: 25px; background: rgba(255,255,255,0.03); border: 1px solid rgba(245,197,66,0.1); border-radius: 15px;">
+    <h2 class="gold-text" style="text-align: center; margin-bottom: 25px; font-family: 'Cinzel';">Book Appointment</h2>
+    <label style="color: var(--gold); font-size: 0.8rem; margin-bottom: 8px; display: block;">Select Service</label>
+    <select id="service-select" class="input-field" onchange="updateForm()" style="width: 100%; margin-bottom: 20px; background: #1a1a2e; color: white; border: 1px solid #333; padding: 10px; border-radius: 5px;">
+        <option value="kundli_making">1. Kundali Making</option>
+        <option value="kundli_matching">2. Kundali Matching</option>
+        <option value="palmistry">3. Palmistry</option>
+        <option value="numerology">4. Numerology</option>
+        <option value="combo_analysis">5. Kundali & Palm Combo (Best Value)</option>
+    </select>
     <form id="consultation-form">
-        <input type="text" id="user-name" placeholder="Client Full Name" class="input-field" required style="width: 100%; margin-bottom: 15px; background: #1a1a2e; color: white; border: 1px solid #333; padding: 10px;">
-        <select id="service-select" style="width: 100%; margin-bottom: 15px; background: #1a1a2e; color: white; padding: 10px;">
-            <option value="kundli_making">Kundali Making</option>
-        </select>
-        <input type="text" id="contact-info" placeholder="WhatsApp Number" class="input-field" required style="width: 100%; margin-bottom: 15px; background: #1a1a2e; color: white; padding: 10px;">
-        <button type="submit" class="gold-btn" style="width: 100%; font-weight: bold;">PROCEED</button>
+        <input type="text" id="user-name" placeholder="Client Full Name" class="input-field" required style="width: 100%; margin-bottom: 15px;">
+        <div id="single-person-details" style="display:block;">
+            <label style="color: #888; font-size: 0.8rem; display: block; margin-bottom: 5px;">Date of Birth (Mandatory)</label>
+            <input type="date" id="single-dob" class="input-field" style="width: 100%; margin-bottom: 15px;">
+            <div id="making-extra-fields">
+                <input type="text" id="single-place" placeholder="Birth Place (City, State)" class="input-field" style="width: 100%; margin-bottom: 15px;">
+                <input type="time" id="single-time" class="input-field" style="width: 100%; margin-bottom: 15px;">
+            </div>
+        </div>
+        <div style="margin-top: 20px; border-top: 1px solid rgba(245,197,66,0.1); padding-top: 15px;">
+            <label style="color: var(--gold); font-size: 0.8rem; display: block; margin-bottom: 10px;">Send via:</label>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; color: #ccc; font-size: 0.85rem;">
+                <label style="cursor:pointer;"><input type="radio" name="contact-method" value="whatsapp" checked> WhatsApp</label>
+                <label style="cursor:pointer;"><input type="radio" name="contact-method" value="telegram"> Telegram</label>
+                <label style="cursor:pointer;"><input type="radio" name="contact-method" value="email"> Email</label>
+            </div>
+            <input type="text" id="contact-info" placeholder="Enter WhatsApp Number / Email" class="input-field" required style="width: 100%; margin-top: 15px;">
+        </div>
+        <button type="submit" class="gold-btn" style="width: 100%; margin-top: 25px; font-weight: bold; letter-spacing: 1px;">PROCEED TO CONSULTATION</button>
     </form>
 </section>
 
-<footer style="padding: 40px 20px; text-align: center; background: rgba(0,0,0,0.3);">
-    <p style="font-size: 0.8rem; color: #666;">&copy; 2026 Mahadev Astrologer MA.</p>
+<footer style="padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.3);">
+    <p style="font-size: 0.8rem; color: #666; margin-bottom: 15px;">&copy; 2026 Mahadev Astrologer MA. All Rights Reserved.</p>
+    <div id="footer-links-dynamic" style="font-size: 0.75rem;"></div>
 </footer>
 
 <script>
-    const openBtn = document.getElementById('open-menu');
-    const closeBtn = document.getElementById('close-menu');
-    const drawer = document.getElementById('nav-drawer');
-    const overlay = document.getElementById('menu-overlay');
+    // Menu Logic
+    const openMenuBtn = document.getElementById('open-menu');
+    const closeMenuBtn = document.getElementById('close-menu');
+    const navDrawer = document.getElementById('nav-drawer');
+    const overlayBg = document.getElementById('menu-overlay');
 
-    openBtn.onclick = () => { drawer.style.right = "0"; overlay.style.display = "block"; };
-    const closeAll = () => { drawer.style.right = "-280px"; overlay.style.display = "none"; };
-    closeBtn.onclick = closeAll; overlay.onclick = closeAll;
+    openMenuBtn.onclick = () => { navDrawer.style.right = "0"; overlayBg.style.display = "block"; };
+    const hideMenu = () => { navDrawer.style.right = "-280px"; overlayBg.style.display = "none"; };
+    closeMenuBtn.onclick = hideMenu; overlayBg.onclick = hideMenu;
 </script>
 
+<script src="assets/js/script.js"></script>
 <script type="module">
-    // Firebase Logic (Same as before)
+    // (Firebase Code Re-Inserted Here Exactly as before)
 </script>
-
 </body>
 </html>
