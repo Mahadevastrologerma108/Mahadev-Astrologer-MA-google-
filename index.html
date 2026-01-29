@@ -21,21 +21,37 @@
 </head>
 <body style="background: #0a0a14; color: white;">
 
-<header class="main-header" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 20, 0.95); border-bottom: 1px solid rgba(245,197,66,0.2); height: 70px;">
-    <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%;">
-        <div class="brand-logo">
+<header class="main-header" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 20, 0.98); border-bottom: 1px solid rgba(245,197,66,0.2); height: 70px;">
+    <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%; max-width: 1200px; margin: 0 auto;">
+        <div class="brand-logo" style="flex-shrink: 0;">
             <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
                 <img src="assets/images/logo.png" alt="Logo" style="height: 45px; width: auto; object-fit: contain;">
-                <span style="font-family: 'Cinzel'; color: var(--gold); font-size: 1.1rem; font-weight: bold; letter-spacing: 1px;">
+                <span style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.1rem; font-weight: bold; letter-spacing: 1px; white-space: nowrap;">
                     MAHADEV ASTROLOGER MA
                 </span>
             </a>
         </div>
-        <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2rem; padding: 5px;">☰</div>
+        <div id="open-menu" style="cursor:pointer; color:var(--gold); font-size:1.8rem; padding: 5px;">☰</div>
     </div>
 </header>
 
-<nav class="nav-menu" id="nav-drawer" style="position:fixed; right:-100%; top:0; height:100%; width:280px; background:#0f0f1f; transition:0.3s; z-index:1050; padding:20px; border-left: 1px solid var(--gold);">
+<nav id="nav-drawer" style="position:fixed; right:-280px; top:0; height:100%; width:280px; background:#0f0f1f; transition:0.4s; z-index:1050; padding:20px; border-left:1px solid var(--gold); overflow-y: auto;">
+    <div id="close-menu" style="text-align:right; font-size:2.2rem; color:var(--gold); cursor:pointer; padding-bottom: 20px;">&times;</div>
+    
+    <ul style="list-style:none; margin-top:10px; padding:0;">
+        <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="index.html" style="color:var(--gold); text-decoration:none; font-family:'Cinzel', serif; display:block; padding:15px 0; letter-spacing: 1px;">Home</a></li>
+        <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="horoscope.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:15px 0; letter-spacing: 1px;">Daily Horoscope</a></li>
+        <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="panchang/panchang.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:15px 0; letter-spacing: 1px;">Panchang</a></li>
+        <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="latest-guide/index.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:15px 0; letter-spacing: 1px;">Latest Guide</a></li>
+        
+        <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="pages/about.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:12px 0; font-size:0.9rem;">About Us</a></li>
+        <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="pages/disclaimer.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:12px 0; font-size:0.9rem;">Disclaimer</a></li>
+        <li style="border-bottom:1px solid rgba(245,197,66,0.1);"><a href="pages/privacy.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:12px 0; font-size:0.9rem;">Privacy Policy</a></li>
+        <li><a href="pages/terms.html" style="color:white; text-decoration:none; font-family:'Cinzel', serif; display:block; padding:12px 0; font-size:0.9rem;">Terms & Conditions</a></li>
+    </ul>
+</nav>
+
+<div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1040;"></div>
     <div id="close-menu" style="text-align: right; font-size: 2.2rem; color: var(--gold); cursor: pointer; padding: 10px 20px;">&times;</div>
     <ul id="main-nav-links" style="list-style:none; margin-top:30px; padding:0;"></ul>
 </nav>
