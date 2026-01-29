@@ -1,5 +1,5 @@
 // ==========================================
-// 1. MOBILE MENU LOGIC
+// 1. MOBILE MENU LOGIC (Synced)
 // ==========================================
 const menuBtn = document.getElementById('mobile-menu');
 const closeBtn = document.getElementById('close-menu');
@@ -7,107 +7,100 @@ const navDrawer = document.getElementById('nav-drawer');
 const overlay = document.getElementById('menu-overlay');
 
 if(menuBtn) {
-    menuBtn.addEventListener('click', () => {
-        navDrawer.classList.add('active');
+    menuBtn.onclick = () => {
+        navDrawer.style.right = '0';
         overlay.style.display = 'block';
-    });
+    };
 }
-if(closeBtn) {
-    closeBtn.addEventListener('click', () => {
-        navDrawer.classList.remove('active');
-        overlay.style.display = 'none';
-    });
-}
-if(overlay) {
-    overlay.addEventListener('click', () => {
-        navDrawer.classList.remove('active');
-        overlay.style.display = 'none';
-    });
-}
+const hideMenu = () => {
+    navDrawer.style.right = '-100%';
+    overlay.style.display = 'none';
+};
+if(closeBtn) closeBtn.onclick = hideMenu;
+if(overlay) overlay.onclick = hideMenu;
 
 // ==========================================
-// 2. APPOINTMENT FORM DISPLAY LOGIC
+// 2. SMART FORM DISPLAY LOGIC (Matches your Type)
 // ==========================================
 function updateForm() {
     const service = document.getElementById('service-select').value;
-    const singleSection = document.getElementById('single-person-details');
-    const makingExtra = document.getElementById('making-extra-fields');
-    const matchingSection = document.getElementById('matching-details');
-    const palmistrySection = document.getElementById('palmistry-details');
+    const secSingle = document.getElementById('section-single');
+    const secMatching = document.getElementById('section-matching');
+    const secPalm = document.getElementById('section-palm');
+    const birthFields = document.getElementById('birth-fields');
 
-    singleSection.style.display = 'none';
-    makingExtra.style.display = 'none';
-    matchingSection.style.display = 'none';
-    palmistrySection.style.display = 'none';
+    // Default: Sab hide karo aur Required hatao
+    [secSingle, secMatching, secPalm].forEach(s => s.style.display = 'none');
+    document.querySelectorAll('.input-field, #palm-pic').forEach(el => el.required = false);
 
     if (service === 'kundli_making') {
-        singleSection.style.display = 'block';
-        makingExtra.style.display = 'block';
+        secSingle.style.display = 'block';
+        birthFields.style.display = 'block';
+        ['user-name', 'single-dob', 'single-time', 'single-place'].forEach(id => document.getElementById(id).required = true);
     } 
     else if (service === 'kundli_matching') {
-        matchingSection.style.display = 'block';
+        secMatching.style.display = 'block';
+        ['m-name', 'm-dob', 'm-time', 'm-place', 'f-name', 'f-dob', 'f-time', 'f-place'].forEach(id => document.getElementById(id).required = true);
     } 
     else if (service === 'palmistry') {
-        palmistrySection.style.display = 'block';
+        secSingle.style.display = 'block';
+        birthFields.style.display = 'none';
+        secPalm.style.display = 'block';
+        document.getElementById('user-name').required = true;
+        document.getElementById('palm-pic').required = true;
     } 
     else if (service === 'numerology') {
-        singleSection.style.display = 'block';
-        makingExtra.style.display = 'none';
-    }
+        secSingle.style.display = 'block';
+        birthFields.style.display = 'block';
+        document.getElementById('user-name').required = true;
+        document.getElementById('single-dob').required = true;
+    } 
     else if (service === 'combo_analysis') {
-        singleSection.style.display = 'block';
-        makingExtra.style.display = 'block';
-        palmistrySection.style.display = 'block';
+        secSingle.style.display = 'block';
+        secPalm.style.display = 'block';
+        ['user-name', 'single-dob', 'single-time', 'single-place', 'palm-pic'].forEach(id => document.getElementById(id).required = true);
     }
 }
 
 // ==========================================
-// 3. MULTI-CHANNEL SUBMISSION LOGIC
+// 3. SUBMISSION LOGIC (WhatsApp/Telegram)
 // ==========================================
 document.getElementById('consultation-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
     const service = document.getElementById('service-select').value;
     const name = document.getElementById('user-name').value;
-    const method = document.querySelector('input[name="contact-method"]:checked').value;
+    // Note: Is logic me hum WhatsApp default maan rahe hain, aap radio button check bhi add kar sakte hain
+    const method = 'whatsapp'; 
     
     let message = `🔱 *MAHADEV ASTROLOGER MA* 🔱\n`;
     message += `--------------------------\n`;
     message += `✨ *Service:* ${service.replace('_', ' ').toUpperCase()}\n`;
-    message += `👤 *Client Name:* ${name}\n`;
 
-    // LOGIC: Making, Numerology & COMBO (Birth Details)
-    if (service === 'kundli_making' || service === 'numerology' || service === 'combo_analysis') {
-        message += `📅 *DOB:* ${document.getElementById('single-dob').value}\n`;
-        if (service === 'kundli_making' || service === 'combo_analysis') {
+    if (service === 'kundli_matching') {
+        message += `👦 *Male:* ${document.getElementById('m-name').value} | ${document.getElementById('m-dob').value}\n`;
+        message += `👧 *Female:* ${document.getElementById('f-name').value} | ${document.getElementById('f-dob').value}\n`;
+    } else {
+        message += `👤 *Name:* ${name}\n`;
+        if (service !== 'palmistry') {
+            message += `📅 *DOB:* ${document.getElementById('single-dob').value}\n`;
             message += `📍 *Place:* ${document.getElementById('single-place').value}\n`;
             message += `⏰ *Time:* ${document.getElementById('single-time').value}\n`;
         }
     }
 
-    // LOGIC: Matching
-    if (service === 'kundli_matching') {
-        message += `\n👦 *MALE:* ${document.getElementById('male-dob').value} | ${document.getElementById('male-place').value}\n`;
-        message += `👧 *FEMALE:* ${document.getElementById('female-dob').value} | ${document.getElementById('female-place').value}\n`;
-    }
-
-    // LOGIC: Palmistry & COMBO (Photo Instruction)
     if (service === 'palmistry' || service === 'combo_analysis') {
-        message += `📸 *Photos:* Ready to send via ${method.toUpperCase()}\n`;
+        message += `📸 *Photos:* Sending palm photos now...\n`;
     }
 
     message += `--------------------------\n`;
     message += `🙏 *Har Har Mahadev*`;
 
     const encodedMsg = encodeURIComponent(message);
+    const whatsappNum = "91XXXXXXXXXX"; // Apna number yahan dalein
 
-    if (method === 'whatsapp') {
-        window.open(`https://wa.me/919999999999?text=${encodedMsg}`, '_blank');
-    } 
-    else if (method === 'telegram') {
-        window.open(`https://t.me/YourUsername?text=${encodedMsg}`, '_blank');
-    } 
-    else if (method === 'email') {
-        window.location.href = `mailto:contact@mahadevastro.com?subject=Consultation: ${name}&body=${encodedMsg}`;
-    }
+    window.open(`https://wa.me/${whatsappNum}?text=${encodedMsg}`, '_blank');
 });
+
+// Initialize on Load
+document.addEventListener('DOMContentLoaded', updateForm);
