@@ -35,10 +35,16 @@
     Consult Now (परामर्श लें)
 </a>
 
+    <script src="../assets/js/horoscope-data.js"></script>
+
     <script>
-        // Aaj ki date dikhane ke liye
+        // 2. Aaj ki date dikhane ke liye (Puraana code)
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('todayDate').innerText = new Date().toLocaleDateString('hi-IN', options);
+
+        // 3. JS File se data khinchne ke liye (Naya Instruction)
+        // Yahan 'aries' ki jagah har file mein us rashi ka naam likhna
+        loadHoroscope('aries'); 
     </script>
 
 </body>
