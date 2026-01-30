@@ -33,6 +33,37 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
+// 1.5 PWA INSTALL LOGIC (Yahan add karein)
+// ==========================================
+let deferredPrompt;
+const installContainer = document.getElementById('install-container');
+const btnInstall = document.getElementById('btn-install');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if(installContainer) installContainer.style.display = 'block';
+});
+
+if(btnInstall) {
+    btnInstall.addEventListener('click', () => {
+        installContainer.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User ne App install kar li 🔱');
+            }
+            deferredPrompt = null;
+        });
+    });
+}
+
+
+// ==========================================
+// 2. TRIPLE-PRIVACY DYNAMIC INPUT (Baaki code niche...)
+// ==========================================
+
+// ==========================================
 // 2. TRIPLE-PRIVACY DYNAMIC INPUT
 // ==========================================
 window.handleContactUI = function(type) {
