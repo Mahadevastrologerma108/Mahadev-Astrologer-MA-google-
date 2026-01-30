@@ -1,91 +1,98 @@
 const dailyHoroscope = {
-    "aries": {
-        "career": "Mahadev ki kripa se naye avsar milenge. Business mein labh ke yog hain.",
-        "love": "Parivar ke saath sambandh madhur rahenge. Shaam ko shanti milegi.",
-        "health": "Swasthya achha rahega, thoda vishram zaroori hai. Om Namah Shivay.",
-        "luckyColor": "White", "luckyNumber": "9", "luckyTime": "10:30 AM"
+    aries: {
+        career: "Aaj ka din kaam me tez decision lene ka hai. Mahadev ki kripa se rukey hue kaam chal padenge.",
+        love: "Prem jeevan me positivity rahegi. Partner ke saath man ki baat share karein.",
+        health: "Energy achhi rahegi, par overconfidence se bachein. Jal ka sevan badhayein.",
+        luckyColor: "Red",
+        luckyNumber: "9",
+        luckyTime: "10:45 AM"
     },
-    "taurus": {
-        "career": "Vani ki madhurta se bigde kaam banenge. Office mein samman milega.",
-        "love": "Partner ke saath thoda samay bitayein. Galat-fahami door hogi.",
-        "health": "Ankhon ka dhyan rakhein. Shiv Chalisa ka path shubh hai.",
-        "luckyColor": "Blue", "luckyNumber": "6", "luckyTime": "12:15 PM"
+    taurus: {
+        career: "Dhan sambandhi mamle sudhrenge. Naya kaam ya deal final ho sakti hai.",
+        love: "Relationship me stability aayegi. Shaam ka samay romantic rahega.",
+        health: "Thakan mehsoos ho sakti hai. Aaj thoda rest zaroor lein.",
+        luckyColor: "Sky Blue",
+        luckyNumber: "6",
+        luckyTime: "12:30 PM"
     },
-    "gemini": {
-        "career": "Economic situation will improve. New projects might start today.",
-        "love": "Spend time with family. A surprise from a friend is expected.",
-        "health": "Energy levels are high. Stay hydrated throughout the day.",
-        "luckyColor": "Green", "luckyNumber": "5", "luckyTime": "09:00 AM"
+    gemini: {
+        career: "Communication skills se fayda milega. Interview ya meeting me success milegi.",
+        love: "Purane dost ya pyar se baat ho sakti hai. Mood halka rahega.",
+        health: "Sir dard ya aankhon me strain ho sakta hai. Screen time kam karein.",
+        luckyColor: "Green",
+        luckyNumber: "5",
+        luckyTime: "09:15 AM"
     },
-    "cancer": {
-        "career": "Focus on your pending tasks. Support from seniors is likely.",
-        "love": "Emotional stability will return. Avoid arguments with spouse.",
-        "health": "Meditation will bring peace. Watch your diet today.",
-        "luckyColor": "Silver", "luckyNumber": "2", "luckyTime": "11:45 AM"
+    cancer: {
+        career: "Aaj emotional decision lene se bachein. Seniors ka support milega.",
+        love: "Parivar ke saath samay bitane se man shant rahega.",
+        health: "Meditation aur deep breathing faydemand rahegi.",
+        luckyColor: "White",
+        luckyNumber: "2",
+        luckyTime: "11:50 AM"
     },
-    "leo": {
-        "career": "Leadership qualities will shine. A good day for career growth.",
-        "love": "Your charm will attract positive energy in relationships.",
-        "health": "Back pain might bother you. Avoid heavy lifting.",
-        "luckyColor": "Gold", "luckyNumber": "1", "luckyTime": "01:30 PM"
+    leo: {
+        career: "Leadership aur confidence aaj aapki strength banenge. Promotion ke yog.",
+        love: "Attraction aur romance dono badhenge. Ego se bachein.",
+        health: "Peeth ya kamar me halka dard ho sakta hai. Stretching karein.",
+        luckyColor: "Golden",
+        luckyNumber: "1",
+        luckyTime: "01:40 PM"
     },
-    "virgo": {
-        "career": "Investments made today will yield long-term benefits.",
-        "love": "Communication is key. Express your feelings clearly.",
-        "health": "Minor headaches are possible. Take a short nap.",
-        "luckyColor": "Brown", "luckyNumber": "3", "luckyTime": "04:00 PM"
+    virgo: {
+        career: "Planning aur discipline se aaj fayda hoga. Investment ke liye achha din.",
+        love: "Partner se khulkar baat karein, misunderstandings door hongi.",
+        health: "Acidity ya headache ho sakta hai. Time par khana khayein.",
+        luckyColor: "Brown",
+        luckyNumber: "3",
+        luckyTime: "04:10 PM"
     },
-    "libra": {
-        "career": "A balanced day at work. New partnerships may form.",
-        "love": "Romance is in the air. A peaceful evening with loved ones.",
-        "health": "Skin related issues might occur. Drink more water.",
-        "luckyColor": "Pink", "luckyNumber": "7", "luckyTime": "06:20 PM"
+    libra: {
+        career: "Work-life balance aaj achha rahega. New collaboration ho sakta hai.",
+        love: "Romantic vibes rahengi. Date ya special moment possible.",
+        health: "Skin related care zaroori hai. Hydration pe dhyan dein.",
+        luckyColor: "Pink",
+        luckyNumber: "7",
+        luckyTime: "06:30 PM"
     },
-    "scorpio": {
-        "career": "Hidden enemies might create hurdles. Stay alert and calm.",
-        "love": "Trust your partner. Avoid being overly possessive.",
-        "health": "Avoid outside food. Focus on home-cooked meals.",
-        "luckyColor": "Red", "luckyNumber": "8", "luckyTime": "08:15 PM"
+    scorpio: {
+        career: "Gupt shatru ya office politics se savdhan rahein. Shant rehna behtar.",
+        love: "Possessiveness kam rakhein. Trust se rishta mazboot hoga.",
+        health: "Pet sambandhi pareshaani ho sakti hai. Bahar ka khana avoid karein.",
+        luckyColor: "Maroon",
+        luckyNumber: "8",
+        luckyTime: "08:20 PM"
     },
-    "sagittarius": {
-        "career": "Travel for work is indicated. Success in competitive tasks.",
-        "love": "Great bonding with siblings. Family atmosphere will be joyful.",
-        "health": "Morning walks will boost your immunity and mood.",
-        "luckyColor": "Yellow", "luckyNumber": "4", "luckyTime": "07:30 AM"
+    sagittarius: {
+        career: "Yatra ya nayi opportunity ke yog hain. Competition me jeet mil sakti hai.",
+        love: "Parivar aur siblings ke saath khushi bhara din.",
+        health: "Morning walk ya yoga se din energetic rahega.",
+        luckyColor: "Yellow",
+        luckyNumber: "4",
+        luckyTime: "07:40 AM"
     },
-    "capricorn": {
-        "career": "Hard work will finally pay off. Recognition is coming your way.",
-        "love": "Commitment in relationships will deepen today.",
-        "health": "Leg or knee pain might occur. Do light stretching.",
-        "luckyColor": "Black", "luckyNumber": "10", "luckyNumber": "8", "luckyTime": "03:45 PM"
+    capricorn: {
+        career: "Mehnat ka fal milne ka samay hai. Boss aapke kaam se khush rahenge.",
+        love: "Relationship me seriousness badhegi. Commitment ke yog.",
+        health: "Ghutan ya knee pain ho sakta hai. Halka exercise karein.",
+        luckyColor: "Grey",
+        luckyNumber: "8",
+        luckyTime: "03:50 PM"
     },
-    "aquarius": {
-        "career": "Innovative ideas will be appreciated. Financial stability remains.",
-        "love": "An old friend might reconnect. Nostalgic day ahead.",
-        "health": "Mental stress might be high. Listen to calming music.",
-        "luckyColor": "Cyan", "luckyNumber": "11", "luckyTime": "05:10 PM"
+    aquarius: {
+        career: "Creative aur innovative ideas aaj highlight honge. Paisa stable rahega.",
+        love: "Purane dost se milna ya baat ho sakti hai.",
+        health: "Mental stress ho sakta hai. Music ya meditation madad karega.",
+        luckyColor: "Cyan",
+        luckyNumber: "11",
+        luckyTime: "05:20 PM"
     },
-    "pisces": {
-        "career": "Creative fields will thrive today. Sudden profit is possible.",
-        "love": "A deep spiritual connection with your partner.",
-        "health": "Sleep cycle needs improvement. Avoid caffeine late at night.",
-        "luckyColor": "Purple", "luckyNumber": "12", "luckyTime": "10:00 PM"
+    pisces: {
+        career: "Creative work me aaj chamkenge. Unexpected profit ke yog.",
+        love: "Spiritual aur emotional bonding strong hogi.",
+        health: "Neend poori lein. Late night jagna avoid karein.",
+        luckyColor: "Purple",
+        luckyNumber: "12",
+        luckyTime: "10:10 PM"
     }
 };
-
-// Data Load Karne Wala Function
-function loadHoroscope(rashiKey) {
-    const data = dailyHoroscope[rashiKey];
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const today = new Date().toLocaleDateString('en-US', options);
-    
-    if (data) {
-        document.getElementById('todayDate').innerText = "Daily Horoscope: " + today;
-        document.getElementById('h-career').innerText = data.career;
-        document.getElementById('h-love').innerText = data.love;
-        document.getElementById('h-health').innerText = data.health;
-        document.getElementById('h-color').innerText = data.luckyColor;
-        document.getElementById('h-number').innerText = data.luckyNumber;
-        document.getElementById('h-time').innerText = data.luckyTime;
-    }
-}
