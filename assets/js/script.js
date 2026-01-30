@@ -142,11 +142,11 @@ document.getElementById('consultation-form').addEventListener('submit', async (e
 
         // Smart Redirect
         if (method === 'Telegram') {
-            window.open(`https://t.me/Aapka_TG_Username?text=${encodeURIComponent(msg)}`, '_blank');
+            window.open(`https://t.me/@Mahadev_Astrologer_MA?text=${encodeURIComponent(msg)}`, '_blank');
         } else if (method === 'Email') {
-            window.location.href = `mailto:AapkaEmail@gmail.com?subject=Astro Consultation&body=${encodeURIComponent(msg)}`;
+            window.location.href = `mailto: mahadevastrologerma108@zohomail.in?subject=Astro Consultation&body=${encodeURIComponent(msg)}`;
         } else {
-            window.open(`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(msg)}`, '_blank');
+            window.open(`https://wa.me/918271107068?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
         alert("🔱 Success! Your data is recorded.");
