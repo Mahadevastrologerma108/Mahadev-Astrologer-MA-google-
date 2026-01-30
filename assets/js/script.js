@@ -1,8 +1,23 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// Firebase Config (Keep this secure)
+const firebaseConfig = {
+    apiKey: "AIzaSyAgcfrzQm6wezgtU5Q5BP8wxXatmoWqYrw",
+    authDomain: "mahadev-astrologer.firebaseapp.com",
+    projectId: "mahadev-astrologer",
+    storageBucket: "mahadev-astrologer.firebasestorage.app",
+    messagingSenderId: "559664802739",
+    appId: "1:559664802739:web:4285f4dc461f570cc2b9c6"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 // ==========================================
-// 1. HAMBURGER & UI INITIALIZATION
+// 1. MENU & UI INITIALIZATION
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    // Menu Logic
     const menuBtn = document.getElementById('mobile-menu');
     const navDrawer = document.getElementById('nav-drawer');
     const overlay = document.getElementById('menu-overlay');
@@ -14,16 +29,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if(closeBtn) closeBtn.onclick = hideMenu;
         if(overlay) overlay.onclick = hideMenu;
     }
-    updateFormDisplay();
+    window.updateFormDisplay();
 });
 
 // ==========================================
-// 2. CONTACT METHOD TOGGLE
+// 2. TRIPLE-PRIVACY DYNAMIC INPUT
 // ==========================================
-window.toggleContactInput = function(type) {
-    const input = document.getElementById('contact-info');
-    input.placeholder = (type === 'TG') ? "@Telegram_Username" : "Aapka WhatsApp Number";
-    input.type = (type === 'TG') ? "text" : "tel";
+window.handleContactUI = function(type) {
+    const container = document.getElementById('dynamic-input-container');
+    if(type === 'WA') {
+        container.innerHTML = `<input type="tel" id="contact-detail" placeholder="Aapka WhatsApp Number" class="input-field" required pattern="[0-9]{10,12}">`;
+    } else if(type === 'TG') {
+        container.innerHTML = `<input type="text" id="contact-detail" placeholder="@Telegram_Username" class="input-field" required>`;
+    } else if(type === 'EM') {
+        container.innerHTML = `<input type="email" id="contact-detail" placeholder="Aapka Email Address" class="input-field" required>`;
+    }
 }
 
 // ==========================================
@@ -34,37 +54,30 @@ window.updateFormDisplay = function() {
     const secSingle = document.getElementById('section-single');
     const secMatch = document.getElementById('section-matching');
     const birthFields = document.getElementById('birth-fields');
-    const timePlace = document.getElementById('time-place-group');
     const palmInst = document.getElementById('palm-instruction');
 
-    // Reset visibility
     secSingle.style.display = (service === 'kundli_matching') ? 'none' : 'block';
     secMatch.style.display = (service === 'kundli_matching') ? 'block' : 'none';
 
     if (service === 'palmistry') {
         birthFields.style.display = 'none';
         palmInst.style.display = 'block';
-    } else if (service === 'numerology') {
-        birthFields.style.display = 'block';
-        timePlace.style.display = 'none';
-        palmInst.style.display = 'none';
     } else {
         birthFields.style.display = 'block';
-        timePlace.style.display = 'grid';
         palmInst.style.display = (service === 'combo_analysis') ? 'block' : 'none';
     }
 }
 
 // ==========================================
-// 4. DATA SUBMISSION (FIREBASE + REDIRECT)
+// 4. DATA SUBMISSION (FIREBASE + SMART REDIRECT)
 // ==========================================
 document.getElementById('consultation-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
     const service = document.getElementById('service-select').value;
     const method = document.querySelector('input[name="contact-method"]:checked').value;
-    const contact = document.getElementById('contact-info').value;
-    
+    const contact = document.getElementById('contact-detail').value;
+
     btn.innerText = "🔱 CONNECTING...";
     btn.disabled = true;
 
@@ -73,36 +86,39 @@ document.getElementById('consultation-form').addEventListener('submit', async (e
             service: service, 
             contact_method: method, 
             contact_info: contact,
-            timestamp: new Date() 
+            timestamp: serverTimestamp() 
         };
 
         let msg = `🔱 *MAHADEV ASTROLOGER* 🔱\n✨ *Service:* ${service.toUpperCase()}\n`;
-        msg += `👤 *User:* ${document.getElementById('user-name').value || 'Matching Request'}\n`;
         msg += `📞 *${method}:* ${contact}\n`;
 
         if (service === 'kundli_matching') {
-            finalData.male = { name: document.getElementById('m-name').value, dob: document.getElementById('m-dob').value };
-            finalData.female = { name: document.getElementById('f-name').value, dob: document.getElementById('f-dob').value };
+            finalData.male = { name: document.getElementById('m-name').value, dob: document.getElementById('m-dob').value, place: document.getElementById('m-place').value };
+            finalData.female = { name: document.getElementById('f-name').value, dob: document.getElementById('f-dob').value, place: document.getElementById('f-place').value };
             msg += `👦 Male: ${finalData.male.name}\n👧 Female: ${finalData.female.name}`;
         } else {
+            const userName = document.getElementById('user-name').value;
+            finalData.user_name = userName;
+            msg += `👤 User: ${userName}\n`;
             if (service !== 'palmistry') msg += `📅 DOB: ${document.getElementById('single-dob').value}\n`;
             if (service === 'kundli_making' || service === 'combo_analysis') {
                 msg += `⏰ Time: ${document.getElementById('single-time').value}\n📍 Place: ${document.getElementById('single-place').value}`;
             }
-            if (service === 'palmistry' || service === 'combo_analysis') msg += `\n📸 Sending Palm Photos...`;
         }
 
-        // 1. Save to Firebase (Change to your actual db call if needed)
-        // await addDoc(collection(db, "appointments"), finalData);
+        // Save to Firebase
+        await addDoc(collection(db, "appointments"), finalData);
 
-        // 2. Redirect based on method
+        // Smart Redirect
         if (method === 'Telegram') {
-            window.open(`https://t.me/YOUR_TG_USERNAME?text=${encodeURIComponent(msg)}`, '_blank');
+            window.open(`https://t.me/Aapka_TG_Username?text=${encodeURIComponent(msg)}`, '_blank');
+        } else if (method === 'Email') {
+            window.location.href = `mailto:AapkaEmail@gmail.com?subject=Astro Consultation&body=${encodeURIComponent(msg)}`;
         } else {
             window.open(`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        alert("🔱 Success! Redirecting...");
+        alert("🔱 Success! Your data is recorded.");
     } catch (err) {
         alert("Error: " + err.message);
     } finally {
