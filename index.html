@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahadev Astrologer MA | Divine Vedic Wisdom</title>
+
+<link rel="manifest" href="manifest.json">
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -211,5 +213,14 @@
 
 <script type="module" src="assets/js/script.js"></script>
 
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(() => console.log('App Mode: Active 🔱'))
+            .catch(err => console.error('App Mode: Failed', err));
+        });
+      }
+    </script>
 </body>
 </html>
