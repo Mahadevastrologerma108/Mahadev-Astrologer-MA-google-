@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
+        /* Aapka original style locked hai */
         .guide-container { padding: 120px 20px 40px; max-width: 900px; margin: auto; }
         .zodiac-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin: 30px 0 60px; }
         .zodiac-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(245, 197, 66, 0.1); border-radius: 12px; padding: 15px; text-align: center; transition: 0.3s; }
@@ -19,23 +20,7 @@
 </head>
 <body style="background: #0a0a14; color: white;">
 
-<header class="main-header" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 20, 0.95); border-bottom: 1px solid rgba(245,197,66,0.2); height: 70px;">
-    <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%;">
-        <div class="brand-logo">
-            <a href="../index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-                <img src="../assets/images/logo.png" alt="Logo" style="height: 45px;">
-                <span style="font-family: 'Cinzel'; color: var(--gold); font-size: 1.1rem; font-weight: bold;">MAHADEV ASTROLOGER MA</span>
-            </a>
-        </div>
-        <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2rem;">☰</div>
-    </div>
-</header>
-
-<nav class="nav-menu" id="nav-drawer" style="position:fixed; right:-100%; top:0; height:100%; width:280px; background:#0f0f1f; transition:0.3s; z-index:1050; padding:20px; border-left: 1px solid var(--gold);">
-    <div id="close-menu" style="text-align: right; font-size: 2.5rem; color: var(--gold); cursor: pointer;">&times;</div>
-    <ul id="main-nav-links" style="list-style:none; margin-top:40px; padding:0;"></ul>
-</nav>
-<div id="menu-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1040;"></div>
+<div id="header-placeholder"></div>
 
 <div class="guide-container">
     <h1 class="gold-text" style="text-align: center; font-family: 'Cinzel'; margin-bottom: 10px;">Astrology Articles</h1>
@@ -68,24 +53,9 @@
     </div>
 </div>
 
-<footer style="padding: 60px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.3);">
-    <div class="footer-container">
-        <div class="footer-nav" style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-bottom: 25px; font-family: 'Cinzel';">
-            <a href="../horoscope.html" style="color: var(--gold); text-decoration: none; font-size: 0.85rem;">HOROSCOPE</a> 
-            <a href="../index.html#pricing" style="color: var(--gold); text-decoration: none; font-size: 0.85rem;">SERVICES</a>
-            <a href="../index.html#book" class="consult-link" style="color: #000; background: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: bold; padding: 8px 20px; border-radius: 5px;">CONSULT NOW 🔱</a> 
-        </div>
-        
-        <div style="font-size: 0.75rem; margin-bottom: 15px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-            <a href="../pages/about.html" style="color: #777; text-decoration: none;">About</a>
-            <a href="../pages/privacy.html" style="color: #777; text-decoration: none;">Privacy</a>
-            <a href="../pages/disclaimer.html" style="color: #777; text-decoration: none;">Disclaimer</a>
-            <a href="../pages/terms.html" style="color: #777; text-decoration: none;">Terms</a>
-        </div>
-        <p style="font-size: 0.8rem; color: #555; margin-top: 20px;">&copy; 2026 MAHADEV ASTROLOGER MA</p>
-    </div>
-</footer>
+<div id="footer-placeholder"></div>
 
+<script src="/assets/js/layout.js"></script>
 <script src="../assets/js/nav-handler.js"></script>
 </body>
 </html>
