@@ -1,111 +1,111 @@
 const dailyHoroscope = {
-"aries": {
-"career": "Aaj decision lene ka din hai. Mahadev ki kripa se career me naya turn aa sakta hai.",
-"love": "Dil ki baat kehne ka sahi samay hai. Rishton me clarity aayegi.",
-"health": "Energy achhi rahegi par overthinking se bachein. Dhyan labhdayak rahega.",
-"luckyColor": "White",
-"luckyNumber": "9",
-"luckyTime": "09:45 AM"
-},
+  "aries": {
+    "career": "Aaj ka din career me bold decision lene ke liye shubh hai. Naya role ya responsibility mil sakti hai.",
+    "love": "Open communication se rishton me madhurta aayegi. Single logon ko positive signal mil sakta hai.",
+    "health": "Energy level achha rahega. Meditation ya short walk faydemand rahegi.",
+    "luckyColor": "Red",
+    "luckyNumber": "9",
+    "luckyTime": "09:45 AM"
+  },
 
-"taurus": {
-"career": "Paiso se judi planning safal hogi. Business me dheere-dheere growth hogi.",
-"love": "Partner ka support milega. Purani baat sulajh sakti hai.",
-"health": "Gardan aur aankhon ka khayal rakhein.",
-"luckyColor": "Sky Blue",
-"luckyNumber": "6",
-"luckyTime": "11:30 AM"
-},
+  "taurus": {
+    "career": "Financial planning aur long-term strategy par focus karein. Steady progress dikhegi.",
+    "love": "Partner ke saath trust aur support badhega. Family time sukhdayak rahega.",
+    "health": "Thakaan se bachne ke liye proper rest aur hydration zaroori hai.",
+    "luckyColor": "Green",
+    "luckyNumber": "6",
+    "luckyTime": "11:30 AM"
+  },
 
-"gemini": {
-"career": "Aaj communication strong rahega. Interviews aur meetings ke liye shubh din.",
-"love": "Dost ya partner ke saath achha waqt bitayenge.",
-"health": "Thakaan mehsoos ho sakti hai. Pani zyada piyein.",
-"luckyColor": "Green",
-"luckyNumber": "5",
-"luckyTime": "10:15 AM"
-},
+  "gemini": {
+    "career": "Communication skills aaj strength rahengi. Meetings aur interviews ke liye anukool din.",
+    "love": "Friends ya partner ke saath meaningful baatcheet hogi.",
+    "health": "Overthinking se bachein. Pani zyada piyen.",
+    "luckyColor": "Yellow",
+    "luckyNumber": "5",
+    "luckyTime": "10:15 AM"
+  },
 
-"cancer": {
-"career": "Office me zimmedari badh sakti hai. Seniors bharosa dikhaenge.",
-"love": "Emotional bonding strong hogi. Ghar ka mahaul shant rahega.",
-"health": "Pet se judi dikkat ho sakti hai. Halka bhojan karein.",
-"luckyColor": "White",
-"luckyNumber": "2",
-"luckyTime": "12:40 PM"
-},
+  "cancer": {
+    "career": "Workplace par zimmedari badh sakti hai. Seniors aap par bharosa dikhaenge.",
+    "love": "Family bonding strong hogi. Emotional support milega.",
+    "health": "Digestive issues se bachne ke liye halka bhojan karein.",
+    "luckyColor": "White",
+    "luckyNumber": "2",
+    "luckyTime": "12:40 PM"
+  },
 
-"leo": {
-"career": "Leadership ka mauka milega. Aaj aap notice kiye jaayenge.",
-"love": "Attraction badhega. Romantic surprise possible hai.",
-"health": "Peeth ya kamar ka dhyan rakhein.",
-"luckyColor": "Golden",
-"luckyNumber": "1",
-"luckyTime": "01:20 PM"
-},
+  "leo": {
+    "career": "Leadership aur confidence se kaam banega. Recognition milne ke yog hain.",
+    "love": "Romantic vibes strong rahengi. Surprise ya appreciation possible hai.",
+    "health": "Back aur posture ka dhyan rakhein.",
+    "luckyColor": "Golden",
+    "luckyNumber": "1",
+    "luckyTime": "01:20 PM"
+  },
 
-"virgo": {
-"career": "Planning aur analysis se fayda hoga. Paiso ka flow sudhrega.",
-"love": "Baatein clearly rakhein, misunderstandings door hongi.",
-"health": "Headache ya eyestrain ho sakta hai.",
-"luckyColor": "Brown",
-"luckyNumber": "3",
-"luckyTime": "04:10 PM"
-},
+  "virgo": {
+    "career": "Planning aur detail-oriented approach se financial stability badhegi.",
+    "love": "Clear communication misunderstandings door karegi.",
+    "health": "Screen time kam rakhein, eyestrain se bachein.",
+    "luckyColor": "Brown",
+    "luckyNumber": "3",
+    "luckyTime": "04:10 PM"
+  },
 
-"libra": {
-"career": "Naya collaboration ya deal ho sakta hai.",
-"love": "Pyar aur shanti ka mahaul rahega. Shaam romantic ho sakti hai.",
-"health": "Skin aur hydration par dhyan dein.",
-"luckyColor": "Pink",
-"luckyNumber": "7",
-"luckyTime": "06:00 PM"
-},
+  "libra": {
+    "career": "Naye collaboration ya partnership ke chances hain. Balance bana kar chalna zaroori hai.",
+    "love": "Pyar aur harmony ka mahaul rahega. Shaam romantic ho sakti hai.",
+    "health": "Hydration aur skin care par dhyan dein.",
+    "luckyColor": "Pink",
+    "luckyNumber": "7",
+    "luckyTime": "06:00 PM"
+  },
 
-"scorpio": {
-"career": "Gupt shatru se savdhan rahein. Focus bana ke rakhein.",
-"love": "Possessiveness se bachein. Trust zaroori hai.",
-"health": "Junk food avoid karein.",
-"luckyColor": "Red",
-"luckyNumber": "8",
-"luckyTime": "07:50 PM"
-},
+  "scorpio": {
+    "career": "Strategy aur focus se kaam karein. Hidden competition se savdhan rahein.",
+    "love": "Trust aur patience se rishta majboot hoga.",
+    "health": "Junk food avoid karein, light exercise karein.",
+    "luckyColor": "Maroon",
+    "luckyNumber": "8",
+    "luckyTime": "07:50 PM"
+  },
 
-"sagittarius": {
-"career": "Travel ya online kaam se labh milega.",
-"love": "Family ke saath hasi-khushi ka samay.",
-"health": "Yoga ya walk faydemand rahegi.",
-"luckyColor": "Yellow",
-"luckyNumber": "4",
-"luckyTime": "07:10 AM"
-},
+  "sagittarius": {
+    "career": "Travel, learning ya online projects se fayda mil sakta hai.",
+    "love": "Family ke saath khushiyon bhara samay bitayenge.",
+    "health": "Yoga ya morning walk se freshness milegi.",
+    "luckyColor": "Orange",
+    "luckyNumber": "4",
+    "luckyTime": "07:10 AM"
+  },
 
-"capricorn": {
-"career": "Mehnat ka phal milne ka din hai. Promotion ya appreciation possible.",
-"love": "Serious commitment ki baat ho sakti hai.",
-"health": "Ghutan ya knee pain ka dhyan rakhein.",
-"luckyColor": "Grey",
-"luckyNumber": "8",
-"luckyTime": "03:30 PM"
-},
+  "capricorn": {
+    "career": "Mehnat ka result milega. Promotion ya appreciation ke yog hain.",
+    "love": "Commitment aur stability par baat ho sakti hai.",
+    "health": "Joint ya knee pain ka dhyan rakhein.",
+    "luckyColor": "Grey",
+    "luckyNumber": "8",
+    "luckyTime": "03:30 PM"
+  },
 
-"aquarius": {
-"career": "Creative ideas successful rahenge. Tech ya online kaam me fayda.",
-"love": "Purane dost se baat ho sakti hai.",
-"health": "Mental stress kam karne ke liye music sunein.",
-"luckyColor": "Cyan",
-"luckyNumber": "11",
-"luckyTime": "05:00 PM"
-},
+  "aquarius": {
+    "career": "Innovative ideas aur tech-related kaam me success milegi.",
+    "love": "Purane dost ya special person se reconnect ho sakta hai.",
+    "health": "Mental relaxation ke liye music ya meditation karein.",
+    "luckyColor": "Blue",
+    "luckyNumber": "11",
+    "luckyTime": "05:00 PM"
+  },
 
-"pisces": {
-"career": "Creative aur spiritual kaamon me safalta.",
-"love": "Partner ke saath emotional aur spiritual bonding.",
-"health": "Neend aur routine sudharne ki zarurat.",
-"luckyColor": "Purple",
-"luckyNumber": "12",
-"luckyTime": "09:30 PM"
-}
+  "pisces": {
+    "career": "Creative aur spiritual kaamon me progress dikhegi.",
+    "love": "Emotional aur spiritual bonding strong hogi.",
+    "health": "Sleep cycle aur routine sudharna zaroori hai.",
+    "luckyColor": "Purple",
+    "luckyNumber": "12",
+    "luckyTime": "09:30 PM"
+  }
 };
 
 // Data Load Karne Wala Function
