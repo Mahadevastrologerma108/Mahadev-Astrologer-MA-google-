@@ -36,8 +36,8 @@ ins_panchang_title: "Aaj Ka Panchang",
 ins_panchang_desc: "Check Shubh Muhurat, Tithi and Choghadiya.",
 ins_horo_title: "Daily Horoscope",
 ins_horo_desc: "How will your day be according to your zodiac?",
-btn_view_details: "VIEW DETAILS →",
-btn_read_now: "READ NOW →",
+btn_view: "VIEW DETAILS →",
+btn_read: "READ NOW →",
 
         // ===== PLANETS =====
         planet_sun: "Sun (Surya)",
