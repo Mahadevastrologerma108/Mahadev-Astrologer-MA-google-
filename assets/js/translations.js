@@ -95,7 +95,20 @@ ph_f_name_input: "Female Name",
 
         // ===== VEDAS & UPANISHADS =====
         veda_rig: "Rigveda", veda_yajur: "Yajurveda", veda_sama: "Samaveda", veda_atharva: "Atharvaveda",
-        upanishad_isha: "Isha Upanishad", upanishad_kena: "Kena Upanishad", upanishad_katha: "Katha Upanishad", upanishad_prashna: "Prashna Upanishad", upanishad_mundaka: "Mundaka Upanishad", upanishad_mandukya: "Mandukya Upanishad"
+        upanishad_isha: "Isha Upanishad", upanishad_kena: "Kena Upanishad", upanishad_katha: "Katha Upanishad", upanishad_prashna: "Prashna Upanishad", upanishad_mundaka: "Mundaka Upanishad", upanishad_mandukya: "Mandukya Upanishad",
+
+// ... purani keys ...
+        title_panchang: "Panchang & Calendar 2026",
+        pan_aaj_ka: "Today's Panchang",
+        pan_tithi: "Tithi",
+        pan_nak: "Nakshatra",
+        pan_sun: "Sunrise / Sunset",
+        pan_abhijit: "Abhijit Muhurat",
+        pan_rahu: "Rahu Kaal (Avoid)",
+        pan_shubh_chaug: "Shubh Chaughadia",
+        pan_day_chaug: "Day Chaughadia",
+        pan_night_chaug: "Night Chaughadia",
+        pan_events: "Monthly Events"
     },
     hi: {
         // Nav & Zodiac
@@ -155,7 +168,20 @@ ph_f_name_input: "महिला का नाम",
 
         // ===== वेद व उपनिषद =====
         veda_rig: "ऋग्वेद", veda_yajur: "यजुर्वेद", veda_sama: "सामवेद", veda_atharva: "अथर्ववेद",
-        upanishad_isha: "ईश उपनिषद", upanishad_kena: "केन उपनिषद", upanishad_katha: "कठ उपनिषद", upanishad_prashna: "प्रश्न उपनिषद", upanishad_mundaka: "मुण्डक उपनिषद", upanishad_mandukya: "माण्डूक्य उपनिषद"
+        upanishad_isha: "ईश उपनिषद", upanishad_kena: "केन उपनिषद", upanishad_katha: "कठ उपनिषद", upanishad_prashna: "प्रश्न उपनिषद", upanishad_mundaka: "मुण्डक उपनिषद", upanishad_mandukya: "माण्डूक्य उपनिषद",
+
+// ... purani keys ...
+        title_panchang: "पंचांग और कैलेंडर 2026",
+        pan_aaj_ka: "आज का पंचांग",
+        pan_tithi: "तिथि",
+        pan_nak: "नक्षत्र",
+        pan_sun: "सूर्योदय / सूर्यास्त",
+        pan_abhijit: "अभिजीत मुहूर्त",
+        pan_rahu: "राहु काल (वर्जित)",
+        pan_shubh_chaug: "शुभ चौघड़िया",
+        pan_day_chaug: "दिन का चौघड़िया",
+        pan_night_chaug: "रात का चौघड़िया",
+        pan_events: "इस महीने के व्रत-त्योहार"
     }
 };
 
