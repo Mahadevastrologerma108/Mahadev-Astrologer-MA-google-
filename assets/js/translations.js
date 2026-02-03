@@ -166,7 +166,7 @@ btn_submit: "दैवीय मार्गदर्शन प्राप्�
         badge_best: "सबसे अच्छा",
 
 svc_palmistry: "हस्तरेखा विश्लेषण",
-svc_numery: "अंक ज्योतिष",
+svc_numerology: "अंक ज्योतिष",
 svc_aaj_panchang: "आज का पंचांग",
 svc_panchang_desc: "शुभ मुहूर्त, तिथि और चौघड़िया चेक करें।",
 svc_daily_horo: "आज का राशिफल",
