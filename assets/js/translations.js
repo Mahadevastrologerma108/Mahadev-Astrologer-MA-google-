@@ -534,32 +534,35 @@ const translations = {
     }
 };
 
-// --- Neeche ka Logic Change mat karna ---
+// --- Updated Logic for Header/Footer Connection ---
 let currentLang = localStorage.getItem('site_lang') || 'en';
 
-function updateUI() {
+// Humne 'window.' lagaya hai taaki Header ise dhoond sake
+window.updateUI = function() {
     document.querySelectorAll('[data-key]').forEach(elem => {
         const key = elem.getAttribute('data-key');
         if (translations[currentLang] && translations[currentLang][key]) {
             if (elem.tagName === 'INPUT' || elem.tagName === 'TEXTAREA') {
                 elem.placeholder = translations[currentLang][key];
             } else {
-                elem.innerText = translations[currentLang][key];
+                // innerHTML use kar rahe hain taaki agar koi symbol ho toh dikhe
+                elem.innerHTML = translations[currentLang][key];
             }
         }
     });
-    
+
     const langBtnText = document.getElementById('lang-text');
     if (langBtnText) {
         langBtnText.innerText = currentLang === 'en' ? 'हिंदी' : 'English';
     }
     document.documentElement.lang = currentLang;
-}
+};
 
-function toggleLanguage() {
+window.toggleLanguage = function() {
     currentLang = currentLang === 'en' ? 'hi' : 'en';
     localStorage.setItem('site_lang', currentLang);
-    updateUI();
-}
+    window.updateUI();
+};
 
-document.addEventListener('DOMContentLoaded', updateUI);
+// Initial Load
+document.addEventListener('DOMContentLoaded', window.updateUI);
