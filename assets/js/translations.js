@@ -238,13 +238,14 @@ btn_read_now: "अभी पढ़ें →",
     }
 };
 
-// --- Updated Logic (Window Object Connection) ---
+// --- 🔱 MAHADEV ASTROLOGER: LOCKED TRANSLATION LOGIC 🔱 ---
 let currentLang = localStorage.getItem('site_lang') || 'en';
 
 window.updateUI = function() {
+    // 1. Saare data-key wale elements ko translate karo
     document.querySelectorAll('[data-key]').forEach(elem => {
         const key = elem.getAttribute('data-key');
-        if (translations[currentLang] && translations[currentLang][key]) {
+        if (typeof translations !== 'undefined' && translations[currentLang] && translations[currentLang][key]) {
             if (elem.tagName === 'INPUT' || elem.tagName === 'TEXTAREA') {
                 elem.placeholder = translations[currentLang][key];
             } else {
@@ -253,11 +254,11 @@ window.updateUI = function() {
         }
     });
 
-    const langBtnText = document.getElementById('lang-text');
-    if (langBtnText) {
-        langBtnText.innerText = currentLang === 'en' ? 'हिंदी' : 'English';
-    }
+    // 2. Language tag update karo (SEO ke liye)
     document.documentElement.lang = currentLang;
+
+    // 🚩 NOTE: Button text update karne wali line yahan se HATA di gayi hai.
+    // Isse button hamesha "Eng / हिंदी" hi dikhayega.
 };
 
 window.toggleLanguage = function() {
@@ -266,5 +267,5 @@ window.toggleLanguage = function() {
     window.updateUI();
 };
 
-// Start
+// Site load hote hi translation chalao
 document.addEventListener('DOMContentLoaded', window.updateUI);
