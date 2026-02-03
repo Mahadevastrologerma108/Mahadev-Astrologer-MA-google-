@@ -2,11 +2,11 @@
 <div id="nav-drawer" style="position:fixed; top:0; right:-280px; width:280px; height:100%; background:#0a0a14; z-index:2000; transition:0.4s; padding:40px; border-left:1px solid rgba(245,197,66,0.15);">
     <div id="close-menu" style="color:var(--gold); font-size:2rem; cursor:pointer; text-align:right; margin-bottom:30px;">✕</div>
     <nav style="display: flex; flex-direction: column; gap: 25px;">
-        <a href="/index.html" class="gold-text" style="text-decoration:none; font-family:'Cinzel';">Home</a>
-        <a href="/horoscope.html" class="gold-text" style="text-decoration:none; font-family:'Cinzel';">Horoscope</a>
-        <a href="/panchang/panchang.html" class="gold-text" style="text-decoration:none; font-family:'Cinzel';">Panchang</a>
-        <a href="/latest-guide/index.html" class="gold-text" style="text-decoration:none; font-family:'Cinzel';">Latest Update</a>
-        <a href="/index.html#book" class="gold-text" style="text-decoration:none; font-family:'Cinzel';">Book Now</a>
+        <a href="/index.html" class="gold-text" data-key="nav_home" style="text-decoration:none; font-family:'Cinzel';">Home</a>
+        <a href="/horoscope.html" class="gold-text" data-key="nav_horoscope" style="text-decoration:none; font-family:'Cinzel';">Horoscope</a>
+        <a href="/panchang/panchang.html" class="gold-text" data-key="nav_panchang" style="text-decoration:none; font-family:'Cinzel';">Panchang</a>
+        <a href="/latest-guide/index.html" class="gold-text" data-key="nav_guide" style="text-decoration:none; font-family:'Cinzel';">Latest Update</a>
+        <a href="/index.html#book" class="gold-text" data-key="nav_book" style="text-decoration:none; font-family:'Cinzel';">Book Now</a>
     </nav>
 </div>
 
@@ -18,6 +18,13 @@
                 <span class="gold-text" style="font-size:1.3rem; line-height:1.1;">MAHADEV<br><span style="font-size:0.8rem; color:#fff; letter-spacing:4px; font-family:'Poppins';">ASTROLOGER MA</span></span>
             </a>
         </div>
-        <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2.5rem;">☰</div>
+
+        <div style="display:flex; align-items:center; gap:20px;">
+            <div id="lang-switcher" onclick="toggleLanguage()" style="cursor:pointer; border:1px solid var(--gold); padding:5px 12px; border-radius:4px; font-family:'Poppins'; font-size:0.8rem; color:var(--gold); transition:0.3s;">
+                <span id="lang-text">हिंदी</span>
+            </div>
+            
+            <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2.5rem;">☰</div>
+        </div>
     </div>
 </header>
