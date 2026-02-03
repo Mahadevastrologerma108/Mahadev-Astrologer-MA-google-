@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astrology Guides | Mahadev Astrologer</title>
+    <title data-key="title_guide">Astrology Guides | Mahadev Astrologer</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
@@ -23,32 +23,82 @@
 <div id="header-placeholder"></div>
 
 <div class="guide-container">
-    <h1 class="gold-text" style="text-align: center; font-family: 'Cinzel'; margin-bottom: 10px;">Astrology Articles</h1>
-    <p style="text-align: center; color: #888; margin-bottom: 40px;">Deep insights into the cosmos & planets</p>
+    <h1 class="gold-text" style="text-align: center; font-family: 'Cinzel'; margin-bottom: 10px;" data-key="guide_main_title">Astrology Articles</h1>
+    <p style="text-align: center; color: #888; margin-bottom: 40px;" data-key="guide_sub_title">Deep insights into the cosmos & planets</p>
 
-    <h2 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.2rem; border-left: 3px solid var(--gold); padding-left: 15px; margin-bottom: 20px;">12 Rashiyan aur Unke Swami</h2>
+    <h2 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.2rem; border-left: 3px solid var(--gold); padding-left: 15px; margin-bottom: 20px;" data-key="section_rashi">12 Rashiyan aur Unke Swami</h2>
+    
     <div class="zodiac-grid">
-        <div class="zodiac-card"><span class="zodiac-symbol">♈</span><span class="rashi-name">Mesh</span><span class="swami-name">Mangal</span></div>
-        <div class="zodiac-card"><span class="zodiac-symbol">♉</span><span class="rashi-name">Vrishabh</span><span class="swami-name">Shukra</span></div>
-        <div class="zodiac-card"><span class="zodiac-symbol">♊</span><span class="rashi-name">Mithun</span><span class="swami-name">Budh</span></div>
-        <div class="zodiac-card"><span class="zodiac-symbol">♋</span><span class="rashi-name">Karka</span><span class="swami-name">Chandra</span></div>
-        <div class="zodiac-card"><span class="zodiac-symbol">♌</span><span class="rashi-name">Simha</span><span class="swami-name">Surya</span></div>
-        <div class="zodiac-card"><span class="zodiac-symbol">♍</span><span class="rashi-name">Kanya</span><span class="swami-name">Budh</span></div>
-        <div class="zodiac-card"><span class="zodiac-symbol">♎</span><span class="rashi-name">Tula</span><span class="swami-name">Shukra</span></div>
-        <div class="zodiac-card"><span class="zodiac-symbol">♏</span><span class="rashi-name">Vrishchik</span><span class="swami-name">Mangal</span></div>
-        <div class="zodiac-card"><span class="zodiac-symbol">♐</span><span class="rashi-name">Dhanu</span><span class="swami-name">Guru</span></div>
-        <div class="zodiac-card"><span class="zodiac-symbol">♑</span><span class="rashi-name">Makar</span><span class="swami-name">Shani</span></div>
-        <div class="zodiac-card"><span class="zodiac-symbol">♒</span><span class="rashi-name">Kumbh</span><span class="swami-name">Shani</span></div>
-        <div class="zodiac-card"><span class="zodiac-symbol">♓</span><span class="rashi-name">Meen</span><span class="swami-name">Guru</span></div>
+        <div class="zodiac-card">
+            <span class="zodiac-symbol">♈</span>
+            <span class="rashi-name" data-key="zod_aries_pure">Mesh</span>
+            <span class="swami-name" data-key="lord_mars">Mangal</span>
+        </div>
+        <div class="zodiac-card">
+            <span class="zodiac-symbol">♉</span>
+            <span class="rashi-name" data-key="zod_taurus_pure">Vrishabh</span>
+            <span class="swami-name" data-key="lord_venus">Shukra</span>
+        </div>
+        <div class="zodiac-card">
+            <span class="zodiac-symbol">♊</span>
+            <span class="rashi-name" data-key="zod_gemini_pure">Mithun</span>
+            <span class="swami-name" data-key="lord_mercury">Budh</span>
+        </div>
+        <div class="zodiac-card">
+            <span class="zodiac-symbol">♋</span>
+            <span class="rashi-name" data-key="zod_cancer_pure">Karka</span>
+            <span class="swami-name" data-key="lord_moon">Chandra</span>
+        </div>
+        <div class="zodiac-card">
+            <span class="zodiac-symbol">♌</span>
+            <span class="rashi-name" data-key="zod_leo_pure">Simha</span>
+            <span class="swami-name" data-key="lord_sun">Surya</span>
+        </div>
+        <div class="zodiac-card">
+            <span class="zodiac-symbol">♍</span>
+            <span class="rashi-name" data-key="zod_virgo_pure">Kanya</span>
+            <span class="swami-name" data-key="lord_mercury">Budh</span>
+        </div>
+        <div class="zodiac-card">
+            <span class="zodiac-symbol">♎</span>
+            <span class="rashi-name" data-key="zod_libra_pure">Tula</span>
+            <span class="swami-name" data-key="lord_venus">Shukra</span>
+        </div>
+        <div class="zodiac-card">
+            <span class="zodiac-symbol">♏</span>
+            <span class="rashi-name" data-key="zod_scorpio_pure">Vrishchik</span>
+            <span class="swami-name" data-key="lord_mars">Mangal</span>
+        </div>
+        <div class="zodiac-card">
+            <span class="zodiac-symbol">♐</span>
+            <span class="rashi-name" data-key="zod_sagit_pure">Dhanu</span>
+            <span class="swami-name" data-key="lord_jupiter">Guru</span>
+        </div>
+        <div class="zodiac-card">
+            <span class="zodiac-symbol">♑</span>
+            <span class="rashi-name" data-key="zod_capri_pure">Makar</span>
+            <span class="swami-name" data-key="lord_saturn">Shani</span>
+        </div>
+        <div class="zodiac-card">
+            <span class="zodiac-symbol">♒</span>
+            <span class="rashi-name" data-key="zod_aqua_pure">Kumbh</span>
+            <span class="swami-name" data-key="lord_saturn">Shani</span>
+        </div>
+        <div class="zodiac-card">
+            <span class="zodiac-symbol">♓</span>
+            <span class="rashi-name" data-key="zod_pisces_pure">Meen</span>
+            <span class="swami-name" data-key="lord_jupiter">Guru</span>
+        </div>
     </div>
 
-    <h2 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.2rem; border-left: 3px solid var(--gold); padding-left: 15px; margin-bottom: 20px;">Detailed Articles</h2>
+    <h2 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.2rem; border-left: 3px solid var(--gold); padding-left: 15px; margin-bottom: 20px;" data-key="section_articles">Detailed Articles</h2>
+    
     <div class="guide-card">
         <div class="guide-icon">🔱</div>
         <div class="guide-info">
-            <h3>Sade Sati Survival Guide</h3>
-            <p>Shani Dev ki Sade Sati ke prabhav aur bachne ke saral upay.</p>
-            <a href="#" style="color:var(--gold); font-size:0.8rem; font-weight:bold; text-decoration:none;">READ GUIDE →</a>
+            <h3 data-key="art_sade_title">Sade Sati Survival Guide</h3>
+            <p data-key="art_sade_desc">Shani Dev ki Sade Sati ke prabhav aur bachne ke saral upay.</p>
+            <a href="#" style="color:var(--gold); font-size:0.8rem; font-weight:bold; text-decoration:none;" data-key="btn_read_guide">READ GUIDE →</a>
         </div>
     </div>
 </div>
