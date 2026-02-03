@@ -1,110 +1,110 @@
 const dailyHoroscope = {
   "aries": {
-    "career": "Aaj initiative lene se career me naya mauka mil sakta hai. Leadership dikhane ka din hai.",
-    "love": "Dil ki baat clearly rakhoge to rishta aur gehra hoga.",
-    "health": "Physical energy strong rahegi, bas overexertion se bachein.",
+    "career": "Aaj leadership aur decision-making skills se career me growth hogi. Seniors aap par bharosa dikhayenge.",
+    "love": "Partner ke saath choti nok-jhonk ho sakti hai, shant communication se baat ban jayegi.",
+    "health": "Energy high rahegi, lekin overexertion se thakaan ho sakti hai.",
     "luckyColor": "Crimson",
     "luckyNumber": "9",
-    "luckyTime": "10:10 AM"
+    "luckyTime": "10:30 AM"
   },
 
   "taurus": {
-    "career": "Slow but solid progress hogi. Paiso se jude faisle soch-samajh kar karein.",
-    "love": "Partner ka emotional support milega, bonding strong hogi.",
-    "health": "Neck aur shoulders ko relax dena zaroori hai.",
+    "career": "Mehnat ka result milega, kaam me stability bani rahegi.",
+    "love": "Romantic moments aur emotional bonding strong hogi.",
+    "health": "Body heaviness ya thakaan mehsoos ho sakti hai, rest zaroori hai.",
     "luckyColor": "Olive Green",
     "luckyNumber": "6",
-    "luckyTime": "12:00 PM"
+    "luckyTime": "12:20 PM"
   },
 
   "gemini": {
-    "career": "Aaj ideas logon ko impress karenge. Networking faydemand rahegi.",
-    "love": "Light flirting aur fun conversations mood fresh karengi.",
-    "health": "Mental fatigue ho sakti hai, breaks lete rahein.",
+    "career": "Communication aur networking se fayda hoga. Interview ya meeting ke liye accha din.",
+    "love": "Clear baat-cheet se confusion door hoga.",
+    "health": "Mental stress ho sakta hai, breaks aur deep breathing faydemand rahegi.",
     "luckyColor": "Sky Blue",
     "luckyNumber": "5",
-    "luckyTime": "11:25 AM"
+    "luckyTime": "11:45 AM"
   },
 
   "cancer": {
-    "career": "Office me aapki sensitivity hi aaj strength banegi.",
-    "love": "Family ya partner ke saath emotional comfort milega.",
-    "health": "Cold items avoid karein, immunity ka dhyan rakhein.",
+    "career": "Teamwork se success milegi, emotional intelligence aapki strength banegi.",
+    "love": "Family aur partner se emotional support milega.",
+    "health": "Digestion ya acidity ki problem ho sakti hai.",
     "luckyColor": "Silver",
     "luckyNumber": "2",
-    "luckyTime": "01:05 PM"
+    "luckyTime": "01:15 PM"
   },
 
   "leo": {
-    "career": "Aaj spotlight aap par rahegi. Confidence se baat rakhein.",
-    "love": "Ego side me rakhen, pyar aur respect dono badhenge.",
-    "health": "Hydration ka dhyan rakhein.",
+    "career": "Aaj appreciation ya recognition mil sakta hai.",
+    "love": "Attraction strong rahega, ego side me rakhna zaroori hai.",
+    "health": "Overall health acchi rahegi, hydration ka dhyan rakhein.",
     "luckyColor": "Gold",
     "luckyNumber": "1",
-    "luckyTime": "02:15 PM"
+    "luckyTime": "02:35 PM"
   },
 
   "virgo": {
-    "career": "Pending kaam complete karne ka perfect din hai.",
-    "love": "Over-analysis se bachein, simple approach rakhein.",
-    "health": "Digestive system par focus karein.",
+    "career": "Planning aur discipline se pending kaam complete honge.",
+    "love": "Overthinking se bachein, simple approach rakhein.",
+    "health": "Gut health par focus karna zaroori hai.",
     "luckyColor": "Beige",
     "luckyNumber": "3",
-    "luckyTime": "04:30 PM"
+    "luckyTime": "04:40 PM"
   },
 
   "libra": {
-    "career": "Teamwork se bada fayda hoga. Decision balanced rakhein.",
-    "love": "Romantic gesture rishton me nayi jaan dalega.",
-    "health": "Skin care aur hydration zaroori hai.",
+    "career": "Partnership aur collaboration se fayda hoga.",
+    "love": "Relationship me balance aur harmony rahegi.",
+    "health": "Back pain ya posture issue ho sakta hai.",
     "luckyColor": "Rose Pink",
     "luckyNumber": "7",
-    "luckyTime": "06:20 PM"
+    "luckyTime": "06:30 PM"
   },
 
   "scorpio": {
-    "career": "Secret planning aur strategy kaam aayegi.",
-    "love": "Possessiveness kam rakhein, trust badhaiye.",
-    "health": "Late night se bachein.",
+    "career": "Background planning aur strategy aaj kaam aayegi.",
+    "love": "Trust rakhein, possessiveness kam karein.",
+    "health": "Hormonal imbalance ya low mood ho sakta hai.",
     "luckyColor": "Deep Red",
     "luckyNumber": "8",
-    "luckyTime": "08:10 PM"
+    "luckyTime": "08:25 PM"
   },
 
   "sagittarius": {
-    "career": "Naya idea ya learning future me bada fayda dega.",
-    "love": "Positive vibes se ghar ka mahaul khushnuma rahega.",
-    "health": "Outdoor activity se energy milegi.",
+    "career": "Learning, travel ya new idea future me growth dega.",
+    "love": "Positive vibes se family atmosphere khushnuma rahega.",
+    "health": "Joints ya legs me discomfort ho sakta hai.",
     "luckyColor": "Saffron",
     "luckyNumber": "4",
-    "luckyTime": "07:40 AM"
+    "luckyTime": "07:55 AM"
   },
 
   "capricorn": {
-    "career": "Aaj discipline hi aapka biggest weapon hai.",
-    "love": "Practical approach se rishta stable rahega.",
-    "health": "Back stretch aur posture ka dhyan rakhein.",
+    "career": "Hard work ka reward milega, responsibility badhegi.",
+    "love": "Feelings express karne ka sahi samay hai.",
+    "health": "Neck aur shoulder pain ho sakta hai.",
     "luckyColor": "Charcoal",
     "luckyNumber": "8",
-    "luckyTime": "03:45 PM"
+    "luckyTime": "03:55 PM"
   },
 
   "aquarius": {
-    "career": "Tech aur creative kaam me breakthrough possible hai.",
+    "career": "Innovative ideas se alag pehchaan banegi.",
     "love": "Unexpected message ya call khushi dega.",
-    "health": "Mind ko rest dena zaroori hai.",
+    "health": "Nervous system sensitive rahega, rest zaroori hai.",
     "luckyColor": "Turquoise",
     "luckyNumber": "11",
-    "luckyTime": "05:35 PM"
+    "luckyTime": "05:45 PM"
   },
 
   "pisces": {
     "career": "Intuition follow karoge to sahi direction milegi.",
-    "love": "Emotional closeness badhegi.",
-    "health": "Proper sleep aaj sabse important hai.",
+    "love": "Emotional bonding aur closeness badhegi.",
+    "health": "Energy ups-downs rahenge, proper sleep zaroori hai.",
     "luckyColor": "Lavender",
     "luckyNumber": "12",
-    "luckyTime": "09:15 PM"
+    "luckyTime": "09:30 PM"
   }
 };
 
