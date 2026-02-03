@@ -4,6 +4,13 @@ const translations = {
         nav_home: "Home", nav_horoscope: "Horoscope", nav_panchang: "Panchang", nav_guide: "Update", nav_book: "Book Now",
         zod_aries: "Aries", zod_taurus: "Taurus", zod_gemini: "Gemini", zod_cancer: "Cancer", zod_leo: "Leo", zod_virgo: "Virgo", zod_libra: "Libra", zod_scorpio: "Scorpio", zod_sagittarius: "Sagittarius", zod_capricorn: "Capricorn", zod_aquarius: "Aquarius", zod_pisces: "Pisces",
 
+// Add these inside the 'en' section:
+ph_name_input: "Your Full Name",
+ph_wa_input: "WhatsApp Number",
+ph_city_input: "Birth City/Place",
+ph_m_name_input: "Male Name",
+ph_f_name_input: "Female Name",
+
         // ===== PLANETS =====
         planet_sun: "Sun (Surya)",
         planet_moon: "Moon (Chandra)",
@@ -94,6 +101,13 @@ const translations = {
         // Nav & Zodiac
         nav_home: "होम", nav_horoscope: "राशिफल", nav_panchang: "पंचांग", nav_guide: "अपडेट", nav_book: "बुक करें",
         zod_aries: "मेष", zod_taurus: "वृषभ", zod_gemini: "मिथुन", zod_cancer: "कर्क", zod_leo: "सिंह", zod_virgo: "कन्या", zod_libra: "तुला", zod_scorpio: "वृश्चिक", zod_sagittarius: "धनु", zod_capricorn: "मकर", zod_aquarius: "कुंभ", zod_pisces: "मीन",
+
+// Add these inside the 'hi' section:
+ph_name_input: "आपका पूरा नाम",
+ph_wa_input: "व्हाट्सएप नंबर",
+ph_city_input: "जन्म स्थान / शहर",
+ph_m_name_input: "पुरुष का नाम",
+ph_f_name_input: "महिला का नाम",
 
         // ===== ग्रह =====
         planet_sun: "सूर्य देव", planet_moon: "चंद्र देव", planet_mars: "मंगल देव", planet_mercury: "बुध देव", planet_jupiter: "बृहस्पति (गुरु)", planet_venus: "शुक्र देव", planet_saturn: "शनि देव", planet_rahu: "राहु ग्रह", planet_ketu: "केतु ग्रह",
