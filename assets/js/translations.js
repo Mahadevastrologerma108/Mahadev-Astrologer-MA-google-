@@ -10,6 +10,23 @@ ph_wa_input: "WhatsApp Number",
 ph_city_input: "Birth City/Place",
 ph_m_name_input: "Male Name",
 ph_f_name_input: "Female Name",
+btn_submit: "Invoke Divine Guidance",
+
+// --- Index / Common ---
+        site_title: "Mahadev Astrologer MA | Divine Vedic Wisdom",
+        btn_install: "INSTALL MAHADEV APP",
+        hero_sub: "ESTABLISHED VEDIC LINEAGE",
+        hero_title: "Know the Truth of Your Destiny",
+        hero_desc: "Vedic Astrology and Right Remedies, straight from Mahadev's blessings.",
+        
+        // --- Services Section ---
+        svc_kundli_title: "Kundali Making",
+        svc_kundli_desc: "Detailed birth chart analysis and planetary insights.",
+        svc_matching_title: "Kundali Matching",
+        svc_matching_desc: "Guna Milan & compatibility for a blessed marriage.",
+        svc_combo_title: "Combo Analysis",
+        svc_combo_desc: "Full Kundali + Palmistry + Personalized PDF Report.",
+        badge_best: "BEST VALUE",
 
         // ===== PLANETS =====
         planet_sun: "Sun (Surya)",
@@ -121,8 +138,26 @@ ph_wa_input: "व्हाट्सएप नंबर",
 ph_city_input: "जन्म स्थान / शहर",
 ph_m_name_input: "पुरुष का नाम",
 ph_f_name_input: "महिला का नाम",
+btn_submit: "दैवीय मार्गदर्शन प्राप्त करें",
 
-        // ===== ग्रह =====
+// --- Index / Common ---
+        site_title: "महादेव ज्योतिषी MA | दिव्य वैदिक ज्ञान",
+        btn_install: "महादेव ऐप इंस्टॉल करें",
+        hero_sub: "प्राचीन वैदिक परंपरा",
+        hero_title: "अपनी किस्मत का सच जानें",
+        hero_desc: "वैदिक ज्योतिष और सही उपाय, सीधे महादेव के आशीर्वाद से।",
+
+        // --- Services Section ---
+        svc_kundli_title: "कुण्डली निर्माण",
+        svc_kundli_desc: "विस्तृत जन्म कुंडली विश्लेषण और ग्रहों की जानकारी।",
+        svc_matching_title: "कुण्डली मिलान",
+        svc_matching_desc: "गुण मिलान और सुखी विवाह के लिए अनुकूलता।",
+        svc_combo_title: "कॉम्बो विश्लेषण",
+        svc_combo_desc: "पूरी कुण्डली + हस्तरेखा + व्यक्तिगत PDF रिपोर्ट।",
+        badge_best: "सबसे अच्छा",
+
+  
+      // ===== ग्रह =====
         planet_sun: "सूर्य देव", planet_moon: "चंद्र देव", planet_mars: "मंगल देव", planet_mercury: "बुध देव", planet_jupiter: "बृहस्पति (गुरु)", planet_venus: "शुक्र देव", planet_saturn: "शनि देव", planet_rahu: "राहु ग्रह", planet_ketu: "केतु ग्रह",
 
         // ===== भाव =====
