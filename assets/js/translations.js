@@ -28,6 +28,15 @@ btn_submit: "Invoke Divine Guidance",
         svc_combo_desc: "Full Kundali + Palmistry + Personalized PDF Report.",
         badge_best: "BEST VALUE",
 
+svc_palmistry: "Palmistry",
+svc_numery: "Numerology",
+svc_aaj_panchang: "Aaj Ka Panchang",
+svc_panchang_desc: "Check Shubh Muhurat, Tithi and Choghadiya.",
+svc_daily_horo: "Daily Horoscope",
+svc_horo_desc: "How will your day be according to your zodiac?",
+btn_view_details: "VIEW DETAILS →",
+btn_read_now: "READ NOW →",
+
         // ===== PLANETS =====
         planet_sun: "Sun (Surya)",
         planet_moon: "Moon (Chandra)",
@@ -155,6 +164,15 @@ btn_submit: "दैवीय मार्गदर्शन प्राप्�
         svc_combo_title: "कॉम्बो विश्लेषण",
         svc_combo_desc: "पूरी कुण्डली + हस्तरेखा + व्यक्तिगत PDF रिपोर्ट।",
         badge_best: "सबसे अच्छा",
+
+svc_palmistry: "हस्तरेखा विश्लेषण",
+svc_numery: "अंक ज्योतिष",
+svc_aaj_panchang: "आज का पंचांग",
+svc_panchang_desc: "शुभ मुहूर्त, तिथि और चौघड़िया चेक करें।",
+svc_daily_horo: "आज का राशिफल",
+svc_horo_desc: "आपकी राशि के अनुसार आज का दिन कैसा रहेगा?",
+btn_view_details: "पूरा देखें →",
+btn_read_now: "अभी पढ़ें →",
 
   
       // ===== ग्रह =====
