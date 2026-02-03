@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panchang & Calendar 2026 | Mahadev Astrologer MA</title>
+    <title data-key="title_panchang">Panchang & Calendar 2026 | Mahadev Astrologer MA</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css"> 
     <link rel="stylesheet" href="panchang.css"> 
@@ -14,24 +14,46 @@
 
 <main class="container" style="padding-top: 90px;">
     <section class="today-view">
-        <h1 class="gold-text title-font" id="display-date">Aaj Ka Panchang</h1>
+        <h1 class="gold-text title-font" id="display-date" data-key="pan_aaj_ka">Aaj Ka Panchang</h1>
         <div id="fest-box" class="festival-alert">
             <span>🚩</span> <strong id="today-fest" class="gold-text"></strong>
         </div>
 
         <div class="panchang-grid">
-            <div class="pan-card"><span class="label">Tithi</span><h4 id="pan-tithi">--</h4></div>
-            <div class="pan-card"><span class="label">Nakshatra</span><h4 id="pan-nak">--</h4></div>
-            <div class="pan-card"><span class="label">Sunrise / Sunset</span><h4 id="pan-sun">--</h4></div>
-            <div class="pan-card highlight"><span class="label">Abhijit Muhurat</span><h4 id="pan-muh">--</h4></div>
-            <div class="pan-card rahu-card"><span class="label">Rahu Kaal (Avoid)</span><h4 id="pan-rahu">--</h4></div>
+            <div class="pan-card">
+                <span class="label" data-key="pan_tithi">Tithi</span>
+                <h4 id="pan-tithi">--</h4>
+            </div>
+            <div class="pan-card">
+                <span class="label" data-key="pan_nak">Nakshatra</span>
+                <h4 id="pan-nak">--</h4>
+            </div>
+            <div class="pan-card">
+                <span class="label" data-key="pan_sun">Sunrise / Sunset</span>
+                <h4 id="pan-sun">--</h4>
+            </div>
+            <div class="pan-card highlight">
+                <span class="label" data-key="pan_abhijit">Abhijit Muhurat</span>
+                <h4 id="pan-muh">--</h4>
+            </div>
+            <div class="pan-card rahu-card">
+                <span class="label" data-key="pan_rahu">Rahu Kaal (Avoid)</span>
+                <h4 id="pan-rahu">--</h4>
+            </div>
         </div>
 
         <div class="chaughadia-section" style="margin-top: 30px;">
-            <h3 class="gold-text title-font" style="text-align:center; margin-bottom:20px;">Shubh Chaughadia</h3>
+            <h3 class="gold-text title-font" style="text-align:center; margin-bottom:20px;" data-key="pan_shubh_chaug">Shubh Chaughadia</h3>
             <div class="panchang-grid">
-                <div class="pan-card"><span class="label">Day Chaughadia</span><p id="day-chaughadia">--</p></div>
-                <div class="pan-card"><span class="label">Night Chaughadia</span><p id="night-chaughadia">--</p></div>
+                <div class="pan-card">
+                    <span class="label" data-key="pan_day_chaug">Day Chaughadia</span>
+                    <p id="day-chaughadia">--</p>
+                </div>
+                <div class="pan-card">
+                    <span class="label" data-key="pan_night_chaug">Night Chaughadia</span>
+                    <p id="pan_night_chaug">Night Chaughadia</p>
+                    <p id="night-chaughadia">--</p>
+                </div>
             </div>
         </div>
     </section>
@@ -49,7 +71,7 @@
         <div class="cal-wrapper">
             <div id="calendar-grid"></div>
             <div class="event-sidebar">
-                <h3 class="gold-text title-font">Monthly Events</h3>
+                <h3 class="gold-text title-font" data-key="pan_events">Monthly Events</h3>
                 <ul id="event-list"></ul>
             </div>
         </div>
