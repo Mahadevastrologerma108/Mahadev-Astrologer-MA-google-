@@ -309,3 +309,16 @@ body {
     background: linear-gradient(145deg, rgba(245, 197, 66, 0.1), rgba(10, 10, 20, 0.9)) !important;
     border: 1px solid var(--gold) !important;
 }
+
+/* कसम तोड़ने वाला कोड */
+#daily-insights {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 30px !important;
+    max-width: 1200px !important;
+    margin: 80px auto !important; /* जबरदस्ती गैप देने के लिए */
+    padding: 0 20px !important;
+    position: relative !important;
+    z-index: 5 !important;
+    clear: both; /* ताकि ऊपर वाले का असर खत्म हो जाए */
+}
