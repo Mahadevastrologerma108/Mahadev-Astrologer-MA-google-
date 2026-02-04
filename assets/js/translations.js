@@ -171,12 +171,18 @@ svc_palm_title: "हस्तरेखा विश्लेषण",
 svc_palm_desc: "भविष्य के मार्गदर्शन के लिए रेखाओं का गहरा अध्ययन।",
 svc_num_title: "अंक ज्योतिष",
 svc_num_desc: "संख्याओं और कंपन विश्लेषण के माध्यम से सफलता।",
-svc_aaj_panchang: "आज का पंचांग",
-svc_panchang_desc: "शुभ मुहूर्त, तिथि और चौघड़िया चेक करें।",
-svc_daily_horo: "आज का राशिफल",
-svc_horo_desc: "आपकी राशि के अनुसार आज का दिन कैसा रहेगा?",
-btn_view_details: "पूरा देखें →",
-btn_read_now: "अभी पढ़ें →",
+ins_panchang_title: "आज का पंचांग",
+ins_panchang_desc: "शुभ मुहूर्त, तिथि और चौघड़िया चेक करें।",
+ins_horo_title: "आज का राशिफल",
+ins_horo_desc: "आपकी राशि के अनुसार आज का दिन कैसा रहेगा?",
+btn_view: "पूरा देखें →",
+btn_read: "अभी पढ़ें →",
+
+// --- In 'hi' section of translations.js ---
+form_title: "महादेव से परामर्श करें",
+lbl_svc_select: "सेवा का चयन करें",
+btn_submit: "दैवीय मार्गदर्शन प्राप्त करें", 
+// ... बाकी keys
 
   
       // ===== ग्रह =====
