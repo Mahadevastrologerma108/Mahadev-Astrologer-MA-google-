@@ -15,6 +15,19 @@ btn_submit: "Invoke Divine Guidance",
 title_terms: "Terms & Conditions | Mahadev Astrologer MA",
     terms_title: "Terms & Conditions",
     terms_intro: "By accessing and using the services of Mahadev Astrologer MA, you agree to comply with the following terms and conditions:",
+ 
+
+
+// --- Services Section (HI) ---
+svc_kundli_desc: "सटीक ग्रहों की स्थिति, भविष्यवाणियों और जीवन की बाधाओं को दूर करने के लिए व्यक्तिगत शास्त्रीय उपायों के साथ विस्तृत वैदिक जन्म कुंडली विश्लेषण प्राप्त करें।",
+svc_matching_desc: "वैवाहिक अनुकूलता, मंगल दोष की जांच और दीर्घकालिक वैवाहिक सुख सुनिश्चित करने के लिए विशेषज्ञ गुण मिलान और अष्टकूट विश्लेषण।",
+svc_combo_desc: "सम्पूर्ण 3-इन-1 विश्लेषण: पूरी कुंडली, हस्तरेखा अध्ययन, और अंक ज्योतिष रिपोर्ट, प्रभावी वैदिक समाधानों के साथ आपके व्हाट्सएप पर PDF में।",
+svc_palm_desc: "प्राचीन सामुद्रिक शास्त्र के माध्यम से आपके करियर, स्वास्थ्य और छिपी हुई जीवन क्षमताओं को समझने के लिए हाथ की रेखाओं और पर्वतों का विस्तृत अध्ययन।",
+svc_num_desc: "वाइब्रेशन विश्लेषण के माध्यम से सफलता। अपनी ऊर्जा को ब्रह्मांडीय विकास के साथ जोड़ने के लिए अपना भाग्यशाली अंक, नाम सुधार और शुभ तिथियां जानें।",
+
+// --- Insights Section (HI) ---
+ins_panchang_desc: "सटीक तिथि, नक्षत्र और शुभ मुहूर्त के साथ अपने दिन की योजना बनाएं। सफल दैनिक कार्यों के लिए राहु काल और चौघड़िया की जांच करें।",
+ins_horo_desc: "जानें कि आज सितारे आपके लिए क्या लेकर आए हैं। करियर, प्रेम, स्वास्थ्य और आर्थिक विकास के लिए सटीक राशिफल भविष्यवाणियां प्राप्त करें।",
     
     terms_h1: "1. Use of Services",
     terms_p1_1: "The birth details (Name, DOB, Time, Place) provided by you must be accurate for precise astrological calculations.",
