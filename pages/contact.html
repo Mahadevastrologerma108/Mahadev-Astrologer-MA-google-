@@ -8,13 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         .contact-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(10, 10, 20, 0.95); /* Adjusted to match your locked theme */
             padding: 40px;
             border-radius: 20px;
-            border: 1px solid rgba(245, 197, 66, 0.15);
+            border: 1px solid var(--gold);
             text-align: center;
             max-width: 600px;
             margin: 120px auto 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .contact-item {
             margin: 25px 0;
@@ -22,26 +23,27 @@
             background: rgba(245, 197, 66, 0.05);
             border-radius: 10px;
             transition: 0.3s;
+            border: 1px solid rgba(245, 197, 66, 0.1);
         }
         .contact-item:hover { background: rgba(245, 197, 66, 0.1); }
         .contact-link { color: var(--gold); text-decoration: none; font-weight: 600; font-size: 1.2rem; }
     </style>
 </head>
-<body style="background: #0a0a14; color: white;">
+<body class="vashikaran-bg" style="color: white; min-height: 100vh;">
 
     <div id="header-placeholder"></div>
 
-    <div class="contact-card">
-        <h1 class="gold-text title-font" data-key="contact_title">Contact Us / संपर्क करें</h1>
+    <main class="contact-card">
+        <h1 class="gold-text title-font" data-key="contact_title">Contact Us</h1>
         <p data-key="contact_intro">Humein aapki madad karke khushi hogi. Aap niche diye gaye tariko se humse baat kar sakte hain.</p>
-        
+
         <div class="contact-item">
-            <p style="margin-bottom: 5px; color: #888;">Email Us / ईमेल करें</p>
+            <p style="margin-bottom: 5px; color: #888;" data-key="contact_email_label">Email Us / ईमेल करें</p>
             <a href="mailto:your-email@example.com" class="contact-link">your-email@example.com</a>
         </div>
 
         <div class="contact-item">
-            <p style="margin-bottom: 5px; color: #888;">Chat with Us / चैट करें</p>
+            <p style="margin-bottom: 5px; color: #888;" data-key="contact_chat_label">Chat with Us / चैट करें</p>
             <a href="https://arattai.in/your-link" class="contact-link" target="_blank">Chat on Arattai</a>
         </div>
 
@@ -50,10 +52,12 @@
         </p>
 
         <br>
-        <a href="../index.html" style="color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold);" data-key="back_home">← Back to Home</a>
-    </div>
+        <a href="../index.html" class="gold-text" style="text-decoration: none; font-weight: bold; border-bottom: 1px solid var(--gold);" data-key="back_home">← Back to Home</a>
+    </main>
 
     <div id="footer-placeholder"></div>
-    <script src="/assets/js/layout.js"></script>
+
+    <script src="../assets/js/translations.js"></script>
+    <script src="../assets/js/layout.js"></script>
 </body>
 </html>
