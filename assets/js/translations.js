@@ -236,7 +236,7 @@ ph_m_name_input: "पुरुष का नाम",
 ph_f_name_input: "महिला का नाम",
 btn_submit: "दैवीय मार्गदर्शन प्राप्त करें",
 
-const hiContent = {
+
     title_terms: "नियम और शर्तें | Mahadev Astrologer MA",
     terms_title: "नियम और शर्तें",
     terms_intro: "Mahadev Astrologer MA की सेवाओं का उपयोग करने के लिए नीचे दिए गए नियमों का पालन करना अनिवार्य है:",
