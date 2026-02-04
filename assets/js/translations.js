@@ -12,6 +12,25 @@ ph_m_name_input: "Male Name",
 ph_f_name_input: "Female Name",
 btn_submit: "Invoke Divine Guidance",
 
+title_terms: "Terms & Conditions | Mahadev Astrologer MA",
+    terms_title: "Terms & Conditions",
+    terms_intro: "By accessing and using the services of Mahadev Astrologer MA, you agree to comply with the following terms and conditions:",
+    
+    terms_h1: "1. Use of Services",
+    terms_p1_1: "The birth details (Name, DOB, Time, Place) provided by you must be accurate for precise astrological calculations.",
+    terms_p1_2: "Our consultations and predictions are for guidance purposes only. They should not be treated as legal, medical, or financial advice.",
+    
+    terms_h2: "2. Payment & Refund Policy",
+    terms_p2_1: "Consultation fees must be paid in advance. Once the service/consultation is delivered, the fees are non-refundable.",
+    
+    terms_h3: "3. Conduct & Ethics",
+    terms_p3_1: "We expect respectful and ethical communication. Any form of misconduct may lead to immediate termination of services without a refund.",
+    
+    terms_h4: "4. Privacy & Consent",
+    terms_p4_1: "By using this website, you provide your consent to our Privacy Policy and Disclaimer.",
+    back_home: "← Back to Home",
+
+
 // --- Index / Common ---
         site_title: "Mahadev Astrologer MA | Divine Vedic Wisdom",
         btn_install: "INSTALL MAHADEV APP",
