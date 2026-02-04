@@ -241,38 +241,3 @@ btn_read_now: "अभी पढ़ें →",
         pan_events: "इस महीने के व्रत-त्योहार"
     }
 };
-
-// --- 🔱 MAHADEV ASTROLOGER: LOCKED TRANSLATION LOGIC 🔱 ---
-// 🚩 'site_lang' ko 'preferredLang' kar diya taki script.js se match ho
-let currentLang = localStorage.getItem('preferredLang') || 'en';
-
-window.updateUI = function() {
-    // 1. Saare data-key wale elements ko translate karo
-    document.querySelectorAll('[data-key]').forEach(elem => {
-        const key = elem.getAttribute('data-key');
-        
-        // 🚩 window.translations use karo
-        const t = window.translations; 
-        if (t && t[currentLang] && t[currentLang][key]) {
-            if (elem.tagName === 'INPUT' || elem.tagName === 'TEXTAREA') {
-                elem.placeholder = t[currentLang][key];
-            } else {
-                elem.innerHTML = t[currentLang][key];
-            }
-        }
-    });
-
-    document.documentElement.lang = currentLang;
-};
-
-window.toggleLanguage = function() {
-    currentLang = currentLang === 'en' ? 'hi' : 'en';
-    localStorage.setItem('preferredLang', currentLang); // 🚩 Match with script.js
-    window.updateUI();
-};
-
-// Site load hote hi translation chalao
-document.addEventListener('DOMContentLoaded', () => {
-    // Thoda sa delay taki translations.js pehle load ho jaye
-    setTimeout(window.updateUI, 100);
-});
