@@ -1,4 +1,4 @@
-const translations = {
+window.translations = {
     en: {
         // ===== NAV & ZODIAC (Added for Header) =====
         nav_home: "Home", nav_horoscope: "Horoscope", nav_panchang: "Panchang", nav_guide: "Update", nav_book: "Book Now",
