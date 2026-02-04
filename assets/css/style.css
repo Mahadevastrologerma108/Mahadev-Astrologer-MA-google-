@@ -285,3 +285,27 @@ body {
     position: relative;
     z-index: 10; 
 }
+
+/* =========================================
+   9. DAILY INSIGHTS (Panchang & Horoscope)
+   ========================================= */
+#daily-insights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 60px auto; /* 👈 Ye positive margin overlap khatam kar dega */
+    padding: 0 20px;
+    position: relative;
+    z-index: 5;
+}
+
+#daily-insights a {
+    text-decoration: none; /* Link ki underline hatane ke liye */
+}
+
+/* In cards ko thoda alag dikhane ke liye special touch */
+#daily-insights .service-card {
+    background: linear-gradient(145deg, rgba(245, 197, 66, 0.1), rgba(10, 10, 20, 0.9)) !important;
+    border: 1px solid var(--gold) !important;
+}
