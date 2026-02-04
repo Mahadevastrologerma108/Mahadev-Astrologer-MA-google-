@@ -38,6 +38,7 @@ ins_horo_title: "Daily Horoscope",
 ins_horo_desc: "How will your day be according to your zodiac?",
 btn_view: "VIEW DETAILS →",
 btn_read: "READ NOW →",
+report_badge: "Free PDF Report Included (HI/EN/Hinglish)",
 
         // ===== PLANETS =====
         planet_sun: "Sun (Surya)",
@@ -183,6 +184,7 @@ form_title: "महादेव से परामर्श करें",
 lbl_svc_select: "सेवा का चयन करें",
 btn_submit: "दैवीय मार्गदर्शन प्राप्त करें", 
 // ... बाकी keys
+report_badge: "फ्री PDF रिपोर्ट शामिल है (हिंदी/EN/हिंग्लिश)",
 
   
       // ===== ग्रह =====
