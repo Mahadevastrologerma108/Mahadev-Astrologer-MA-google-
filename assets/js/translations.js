@@ -156,8 +156,73 @@ report_badge: "Free PDF Report Included (HI/EN/Hinglish)",
         pan_shubh_chaug: "Shubh Chaughadia",
         pan_day_chaug: "Day Chaughadia",
         pan_night_chaug: "Night Chaughadia",
-        pan_events: "Monthly Events"
+        pan_events: "Monthly Events",
+        
+    // Shared Layout
+    back_home: "← Back to Home",
+
+    // CONTACT US PAGE
+    title_contact: "Contact Us | Mahadev Astrologer MA",
+    contact_title: "Contact Us",
+    contact_intro: "We would love to hear from you. You can reach out to us through the following channels.",
+    contact_note: "Note: We try to respond within 24-48 hours.",
+
+    // ABOUT US PAGE
+    title_about: "About Us | Mahadev Astrologer MA",
+    about_title: "Our Divine Journey",
+    about_welcome: "Welcome to <strong>Mahadev Astrologer MA</strong>. Our purpose is to build a bridge between ancient Vedic wisdom and modern lifestyle. We believe that every individual's destiny is influenced by planetary movements.",
+    about_philosophy: "Astrology is the art of making the right decisions at the right time. By the grace of Mahadev, we guide people through Kundli, Numerology, and Palmistry.",
+    about_why_us: "Why Choose Us?",
+    about_feat1_title: "Authentic Vedic Logic:",
+    about_feat1_desc: "We believe in planetary calculations and the Shastras, not superstition.",
+    about_feat2_title: "Privacy Guaranteed:",
+    about_feat2_desc: "Your data and consultations remain strictly confidential and secure with us.",
+    about_feat3_title: "Simple Remedies:",
+    about_feat3_desc: "We suggest 'Satvik' remedies that can be easily incorporated into your busy life.",
+    about_mission: "<strong>Our Mission:</strong> Guided 10,000+ souls. We strive to solve every problem using Vedic principles.",
+    about_quote: "'Karma is Worship, and Astrology is our Guide.'",
+
+    // TERMS & CONDITIONS PAGE
+    title_terms: "Terms and Conditions | Mahadev Astrologer MA",
+    terms_title: "Terms & Conditions",
+    terms_intro: "By using our services, you agree to the following professional terms. These ensure a secure and respectful experience for all.",
+    terms_h1: "1. Eligibility & Data Accuracy",
+    terms_p1_1: "You must be 18+ to use our services. Accurate birth details (Name, DOB, Time) are mandatory for precise calculations.",
+    terms_p1_2: "Our predictions are for spiritual guidance only. They are not a substitute for legal, medical, or financial professional advice.",
+    terms_h2: "2. Payment & Refunds",
+    terms_p2_1: "Fees are non-refundable once the service has been delivered due to the personalized nature of our insights.",
+    terms_h3: "3. Intellectual Property",
+    terms_p3_1: "All content, logos, and horoscopes on this site are the property of Mahadev Astrologer MA. Reproduction is prohibited.",
+    terms_h4: "4. Code of Conduct",
+    terms_p4_1: "We expect respectful communication. Misconduct will result in immediate termination of services without a refund.",
+    terms_h5: "5. Privacy & Consent",
+    terms_p5_1: "By using this website, you consent to our Privacy Policy. All disputes are subject to local jurisdiction only.",
+
+    // PRIVACY POLICY PAGE
+    title_privacy: "Privacy Policy | Mahadev Astrologer MA",
+    privacy_title: "Privacy Policy",
+    priv_intro: "At Mahadev Astrologer MA, we prioritize your privacy. Our system is designed with data security as a core principle.",
+    priv_h1: "1. No Data Storage",
+    priv_p1: "We do not store sensitive birth data on permanent servers. Your details reach our experts via secure encrypted channels.",
+    priv_h2: "2. Cookies & Ads",
+    priv_p2: "We use Google AdSense cookies to serve relevant ads. You can choose to disable cookies through your browser settings.",
+    priv_h3: "3. Data Security",
+    priv_p3: "All communications are end-to-end encrypted. We never share your contact details with third-party agencies.",
+    priv_consent: "<strong>Consent:</strong> By using our website, you hereby consent to our Privacy Policy.",
+
+    // DISCLAIMER PAGE
+    title_disclaimer: "Disclaimer | Mahadev Astrologer MA",
+    disclaimer_title: "Disclaimer",
+    disc_intro: "The information provided is for general informational and spiritual purposes only.",
+    disc_h1: "Professional Guidance:",
+    disc_p1: "Astrology is an interpretive science; results may vary. We do not claim 100% certainty or accuracy.",
+    disc_h2: "Personal Responsibility:",
+    disc_p2: "Users are advised to use their own discretion. Any action you take is strictly at your own risk.",
+    disc_h3: "Health, Legal & Finance:",
+    disc_p3: "Our services are NOT a substitute for professional medical, legal, or financial advice.",
+    disc_consent: "By using this website, you hereby consent to our Disclaimer."
     },
+
     hi: {
         // Nav & Zodiac
         nav_home: "होम", nav_horoscope: "राशिफल", nav_panchang: "पंचांग", nav_guide: "अपडेट", nav_book: "बुक करें",
@@ -285,6 +350,70 @@ report_badge: "फ्री PDF रिपोर्ट शामिल है (�
         pan_shubh_chaug: "शुभ चौघड़िया",
         pan_day_chaug: "दिन का चौघड़िया",
         pan_night_chaug: "रात का चौघड़िया",
-        pan_events: "इस महीने के व्रत-त्योहार"
+        pan_events: "इस महीने के व्रत-त्योहार",
+       
+    // Shared Layout
+    back_home: "← मुख्य पृष्ठ पर वापस जाएं",
+
+    // CONTACT US PAGE
+    title_contact: "संपर्क करें | Mahadev Astrologer MA",
+    contact_title: "संपर्क करें",
+    contact_intro: "हमें आपकी मदद करके खुशी होगी। आप नीचे दिए गए माध्यमों से हमसे संपर्क कर सकते हैं।",
+    contact_note: "नोट: हम 24-48 घंटों के भीतर जवाब देने की कोशिश करते हैं।",
+
+    // ABOUT US PAGE
+    title_about: "हमारे बारे में | Mahadev Astrologer MA",
+    about_title: "हमारी दिव्य यात्रा",
+    about_welcome: "<strong>Mahadev Astrologer MA</strong> में आपका स्वागत है। हमारा मकसद प्राचीन वैदिक ज्ञान और आधुनिक जीवनशैली के बीच एक सेतु बनाना है।",
+    about_philosophy: "ज्योतिष सिर्फ भविष्यवाणी नहीं, बल्कि सही समय पर सही फैसला लेने की एक कला है। महादेव की कृपा से हम आपको सही मार्ग दिखाते हैं।",
+    about_why_us: "हमें क्यों चुनें?",
+    about_feat1_title: "सटीक वैदिक तर्क:",
+    about_feat1_desc: "हम अंधविश्वास नहीं, बल्कि ग्रहों की गणना और शास्त्रों पर विश्वास रखते हैं।",
+    about_feat2_title: "गोपनीयता की गारंटी:",
+    about_feat2_desc: "आपका डेटा और बातचीत हमारे पास हमेशा गुप्त और सुरक्षित रहती है।",
+    about_feat3_title: "सरल उपाय:",
+    about_feat3_desc: "हम ऐसे सात्विक उपाय बताते हैं जिन्हें आप अपनी व्यस्त जीवनशैली में अपना सकें।",
+    about_mission: "<strong>हमारा मिशन:</strong> हमने 10,000+ लोगों का मार्गदर्शन किया है। हम वैदिक सिद्धांतों से समस्या सुलझाने का प्रयास करते हैं।",
+    about_quote: "'कर्म ही पूजा है, और ज्योतिष हमारा मार्गदर्शक।'",
+
+    // TERMS & CONDITIONS PAGE
+    title_terms: "नियम और शर्तें | Mahadev Astrologer MA",
+    terms_title: "नियम और शर्तें",
+    terms_intro: "हमारी सेवाओं का उपयोग करने के लिए नीचे दिए गए नियमों का पालन करना अनिवार्य है।",
+    terms_h1: "1. पात्रता और विवरण की सटीकता",
+    terms_p1_1: "हमारी सेवाओं के लिए आपकी आयु 18+ होनी चाहिए। सटीक गणना के लिए सही जन्म विवरण देना अनिवार्य है।",
+    terms_p1_2: "हमारी भविष्यवाणियां केवल आध्यात्मिक मार्गदर्शन के लिए हैं। इन्हें कानूनी या चिकित्सा सलाह न लें।",
+    terms_h2: "2. भुगतान और रिफंड",
+    terms_p2_1: "सेवा प्रदान किए जाने के बाद शुल्क वापस (Refund) नहीं किया जाएगा क्योंकि यह एक व्यक्तिगत सेवा है।",
+    terms_h3: "3. बौद्धिक संपदा",
+    terms_p3_1: "इस वेबसाइट की सभी सामग्री Mahadev Astrologer MA की संपत्ति है। नकल करना वर्जित है।",
+    terms_h4: "4. आचरण और मर्यादा",
+    terms_p4_1: "हम सम्मानजनक बातचीत की अपेक्षा करते हैं। दुर्व्यवहार पर सेवाएं तुरंत समाप्त की जा सकती हैं।",
+    terms_h5: "5. सहमति और क्षेत्राधिकार",
+    terms_p5_1: "साइट का उपयोग करके आप हमारी गोपनीयता नीति से सहमत होते हैं। कानूनी विवाद स्थानीय कोर्ट के अधीन होंगे।",
+
+    // PRIVACY POLICY PAGE
+    title_privacy: "गोपनीयता नीति | Mahadev Astrologer MA",
+    privacy_title: "गोपनीयता नीति",
+    priv_intro: "Mahadev Astrologer MA में आपकी गोपनीयता हमारी प्राथमिकता है। हमारा सिस्टम डेटा सुरक्षा के लिए बना है।",
+    priv_h1: "1. डेटा संग्रहण नीति",
+    priv_p1: "हम जन्म विवरण को स्थायी सर्वर पर स्टोर नहीं करते। आपकी जानकारी सुरक्षित एन्क्रिप्टेड माध्यम से आती है।",
+    priv_h2: "2. विज्ञापन और कुकीज़",
+    priv_p2: "हम विज्ञापन दिखाने के लिए Google AdSense कुकीज़ का उपयोग करते हैं। आप इन्हें ब्राउज़र सेटिंग्स से बंद कर सकते हैं।",
+    priv_h3: "3. डेटा सुरक्षा",
+    priv_p3: "हमारी बातचीत एंड-टू-एंड एन्क्रिप्टेड है। हम आपका विवरण कभी किसी बाहरी एजेंसी को नहीं बेचते।",
+    priv_consent: "<strong>सहमति:</strong> हमारी वेबसाइट का उपयोग करके आप हमारी गोपनीयता नीति से सहमत होते हैं।",
+
+    // DISCLAIMER PAGE
+    title_disclaimer: "डिस्क्लेमर | Mahadev Astrologer MA",
+    disclaimer_title: "डिस्क्लेमर (अस्वीकरण)",
+    disc_intro: "प्रदान की गई जानकारी केवल सामान्य सूचनात्मक और आध्यात्मिक उद्देश्यों के लिए है।",
+    disc_h1: "पेशेवर मार्गदर्शन:",
+    disc_p1: "ज्योतिष एक व्याख्यात्मक विज्ञान है; परिणाम भिन्न हो सकते हैं। हम 100% सटीकता का दावा नहीं करते।",
+    disc_h2: "व्यक्तिगत जिम्मेदारी:",
+    disc_p2: "उपयोगकर्ताओं को अपने विवेक का उपयोग करने की सलाह दी जाती है। कोई भी निर्णय आपके अपने जोखिम पर होगा।",
+    disc_h3: "स्वास्थ्य और कानूनी:",
+    disc_p3: "हमारी सेवाएं चिकित्सा, कानूनी या वित्तीय सलाह का विकल्प नहीं हैं। हमेशा एक्सपर्ट से सलाह लें।",
+    disc_consent: "इस वेबसाइट का उपयोग करके आप हमारे डिस्क्लेमर के प्रति अपनी सहमति देते हैं।"
     }
 };
