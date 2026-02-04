@@ -157,27 +157,3 @@ document.getElementById('consultation-form').addEventListener('submit', async (e
         btn.disabled = false;
     }
 });
-
-// ==========================================
-// 5. LANGUAGE SYNC FOR DAILY INSIGHTS (Adding now)
-// ==========================================
-window.updateUI = function() {
-    const lang = localStorage.getItem('preferredLang') || 'en';
-    
-    // Agar translations global window par hai toh hi kaam karega
-    const t = window.translations;
-    if (!t) return;
-
-    // Daily Insights Section ke cards ko pakadna
-    document.querySelectorAll('#daily-insights [data-key]').forEach(el => {
-        const key = el.getAttribute('data-key');
-        if (t[lang] && t[lang][key]) {
-            el.innerText = t[lang][key];
-        }
-    });
-};
-
-// Page load hote hi chalne do
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(window.updateUI, 200); 
-});
