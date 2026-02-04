@@ -1,49 +1,39 @@
+// 🚩 1. Sabse pehle ye function define karo taaki error na aaye
+window.toggleLanguage = function() {
+    let current = localStorage.getItem('preferredLang') || 'en';
+    localStorage.setItem('preferredLang', current === 'en' ? 'hi' : 'en');
+    location.reload(); // 🚩 Sabse safe tarika: Page reload kar do bhasha ke liye
+};
+
+// 🚩 2. Header aur Footer load karne ka sabse simple function
 async function loadLayout() {
-    try {
-        const [hResp, fResp] = await Promise.all([
-            fetch('/header.html'),
-            fetch('/footer.html')
-        ]);
+    try {
+        console.log("🔱 Layout loading started...");
+        const hResp = await fetch('/header.html');
+        const fResp = await fetch('/footer.html');
 
-        if (!hResp.ok || !fResp.ok) throw new Error("Header or Footer file not found in root!");
+        if (hResp.ok && fResp.ok) {
+            const hText = await hResp.text();
+            const fText = await fResp.text();
+            
+            document.getElementById('header-placeholder').innerHTML = hText;
+            document.getElementById('footer-placeholder').innerHTML = fText;
+            
+            console.log("🔱 Header/Footer injected!");
 
-        document.getElementById('header-placeholder').innerHTML = await hResp.text();
-        document.getElementById('footer-placeholder').innerHTML = await fResp.text();
-
-        // 🔱 ZAROORI: Pehle translation trigger karein
-        if (typeof window.updateUI === "function") {
-            window.updateUI();
-        }
-
-        // 🔱 Mobile Menu Logic (Improved for Reliability)
-        const initMenu = () => {
-            const menuBtn = document.getElementById('mobile-menu');
-            const drawer = document.getElementById('nav-drawer');
-            const overlay = document.getElementById('menu-overlay');
-            const closeBtn = document.getElementById('close-menu');
-
-            if(menuBtn && drawer) {
-                menuBtn.onclick = (e) => { 
-                    e.preventDefault();
-                    drawer.style.right = '0'; 
-                    overlay.style.display = 'block'; 
-                };
-
-                const hide = () => { 
-                    drawer.style.right = '-280px'; 
-                    overlay.style.display = 'none'; 
-                };
-
-                if(closeBtn) closeBtn.onclick = hide;
-                if(overlay) overlay.onclick = hide;
-            }
-        };
-
-        initMenu();
-
-    } catch (e) { 
-        console.error("Layout Load Error:", e); 
-    }
+            // Mobile Menu Logic
+            const menuBtn = document.getElementById('mobile-menu');
+            if(menuBtn) {
+                menuBtn.onclick = () => {
+                    document.getElementById('nav-drawer').style.right = '0';
+                    document.getElementById('menu-overlay').style.display = 'block';
+                };
+            }
+        }
+    } catch (err) {
+        console.error("🔱 Layout Crash:", err);
+    }
 }
 
+// 🚩 3. Execution
 document.addEventListener('DOMContentLoaded', loadLayout);
