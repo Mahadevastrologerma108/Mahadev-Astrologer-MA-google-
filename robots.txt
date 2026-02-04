@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
+Allow: /pages/
+Allow: /panchang/
+Allow: /latest-guide/
+Disallow: /assets/css/
+Disallow: /assets/js/
+Disallow: /assets/images/
 Sitemap: https://www.mahadevastrologerma.in/sitemap.xml
