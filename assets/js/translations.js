@@ -243,33 +243,36 @@ btn_read_now: "अभी पढ़ें →",
 };
 
 // --- 🔱 MAHADEV ASTROLOGER: LOCKED TRANSLATION LOGIC 🔱 ---
-let currentLang = localStorage.getItem('site_lang') || 'en';
+// 🚩 'site_lang' ko 'preferredLang' kar diya taki script.js se match ho
+let currentLang = localStorage.getItem('preferredLang') || 'en';
 
 window.updateUI = function() {
     // 1. Saare data-key wale elements ko translate karo
     document.querySelectorAll('[data-key]').forEach(elem => {
         const key = elem.getAttribute('data-key');
-        if (typeof translations !== 'undefined' && translations[currentLang] && translations[currentLang][key]) {
+        
+        // 🚩 window.translations use karo
+        const t = window.translations; 
+        if (t && t[currentLang] && t[currentLang][key]) {
             if (elem.tagName === 'INPUT' || elem.tagName === 'TEXTAREA') {
-                elem.placeholder = translations[currentLang][key];
+                elem.placeholder = t[currentLang][key];
             } else {
-                elem.innerHTML = translations[currentLang][key];
+                elem.innerHTML = t[currentLang][key];
             }
         }
     });
 
-    // 2. Language tag update karo (SEO ke liye)
     document.documentElement.lang = currentLang;
-
-    // 🚩 NOTE: Button text update karne wali line yahan se HATA di gayi hai.
-    // Isse button hamesha "Eng / हिंदी" hi dikhayega.
 };
 
 window.toggleLanguage = function() {
     currentLang = currentLang === 'en' ? 'hi' : 'en';
-    localStorage.setItem('site_lang', currentLang);
+    localStorage.setItem('preferredLang', currentLang); // 🚩 Match with script.js
     window.updateUI();
 };
 
 // Site load hote hi translation chalao
-document.addEventListener('DOMContentLoaded', window.updateUI);
+document.addEventListener('DOMContentLoaded', () => {
+    // Thoda sa delay taki translations.js pehle load ho jaye
+    setTimeout(window.updateUI, 100);
+});
