@@ -202,22 +202,23 @@ body {
     .calendar-grid { gap: 4px; }
     .calendar-day { font-size: 0.75rem; }
 }
+
 /* ==========================================
-   PRICE CARDS HOVER EFFECT
+   9. PRICE CARDS & SPECIAL EFFECTS
    ========================================== */
 .price-card {
     transition: all 0.3s ease-in-out;
 }
 
 .price-card:hover {
-    border-color: var(--gold) !important; /* Golden border on hover */
-    background: rgba(245, 197, 66, 0.08) !important; /* Halki golden chamak */
-    transform: translateY(-8px); /* Card thoda upar uthega */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Niche shadow aayegi */
+    border-color: var(--gold) !important;
+    background: rgba(245, 197, 66, 0.08) !important;
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 } 
 
 #lang-toggle {
-    min-width: 90px; /* 🚩 Ye line magic hai, ye button ka size fix rakhti hai */
+    min-width: 90px;
     text-align: right;
     display: flex;
     align-items: center;
@@ -225,19 +226,41 @@ body {
     cursor: pointer;
 }
 
+/* ==========================================
+   10. HERO SECTION & STARS ANIMATION
+   ========================================== */
 #hero {
     position: relative;
     overflow: hidden;
-    /* 100vh की जगह 'min-height' और 'padding' का खेल खेलते हैं */
     min-height: 90vh; 
     display: flex;
-    flex-direction: column; /* ऊपर से नीचे की तरफ */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 150px 20px 100px; /* Top padding बढ़ा दी ताकि Header से न टकराए */
+    padding: 150px 20px 100px;
     background: radial-gradient(circle at center, #1a1a2e 0%, #05050a 100%) !important;
     box-sizing: border-box;
+}
+
+#hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        radial-gradient(1.5px 1.5px at 20px 30px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, var(--gold), rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 90px 40px, #fff, rgba(0,0,0,0));
+    background-size: 200px 200px;
+    animation: starsMove 120s linear infinite;
+    opacity: 0.6 !important;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes starsMove {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 1000px; }
 }
 
 .hero-content {
@@ -245,80 +268,50 @@ body {
     z-index: 10;
     width: 100%;
     max-width: 800px;
-    margin: 0 auto; /* सेंटर में रखने के लिए */
+    margin: 0 auto;
 }
 
-/* अगर मोबाइल पर अभी भी कट रहा है तो यह जादू काम आएगा */
-@media (max-width: 768px) {
-    #hero {
-        padding: 120px 15px 60px;
-        min-height: auto; /* मोबाइल पर हाइट को आज़ाद कर दो */
-    }
-}
-
-/* --- Floating Stars Animation (Restore) --- */
-#hero::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; 
-    width: 100%; height: 100%;
-    /* 1.5px और 2px के छोटे-बड़े सितारे */
-    background-image: 
-        radial-gradient(1.5px 1.5px at 20px 30px, #fff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 40px 70px, var(--gold), rgba(0,0,0,0)),
-        radial-gradient(1.5px 1.5px at 90px 40px, #fff, rgba(0,0,0,0));
-    background-size: 200px 200px; /* सितारों का फैलाव */
-    animation: starsMove 120s linear infinite; /* 120 सेकंड में एक चक्कर */
-    opacity: 0.6 !important; /* साफ़ दिखने के लिए ओपेसिटी बढ़ाई */
-    z-index: 1; /* बैकग्राउंड के ऊपर रहेगा */
-    pointer-events: none;
-}
-
-/* एनीमेशन का लॉजिक */
-@keyframes starsMove {
-    from { background-position: 0 0; }
-    to { background-position: 1000px 1000px; }
-}
-
-/* कंटेंट को सितारों के ऊपर रखने के लिए */
-.hero-content {
+/* ==========================================
+   11. DIVINE SERVICE CARDS (Glass Look)
+   ========================================== */
+.service-card {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(245, 197, 66, 0.1) !important;
+    padding: 45px 25px !important;
+    border-radius: 30px !important;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px);
     position: relative;
-    z-index: 10; 
+    overflow: hidden;
 }
 
-/* =========================================
-   9. DAILY INSIGHTS (Panchang & Horoscope)
-   ========================================= */
-#daily-insights {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    max-width: 1200px;
-    margin: 60px auto; /* 👈 Ye positive margin overlap khatam kar dega */
-    padding: 0 20px;
-    position: relative;
-    z-index: 5;
+.service-card:hover {
+    transform: translateY(-15px) scale(1.03) !important;
+    border-color: var(--gold) !important;
+    background: rgba(245, 197, 66, 0.07) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 197, 66, 0.3) !important;
 }
 
-#daily-insights a {
-    text-decoration: none; /* Link ki underline hatane ke liye */
-}
-
-/* In cards ko thoda alag dikhane ke liye special touch */
-#daily-insights .service-card {
-    background: linear-gradient(145deg, rgba(245, 197, 66, 0.1), rgba(10, 10, 20, 0.9)) !important;
-    border: 1px solid var(--gold) !important;
-}
-
-/* कसम तोड़ने वाला कोड */
+/* ==========================================
+   12. DAILY INSIGHTS (Overlap Fixed)
+   ========================================== */
 #daily-insights {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
     gap: 30px !important;
     max-width: 1200px !important;
-    margin: 80px auto !important; /* जबरदस्ती गैप देने के लिए */
+    margin: 80px auto !important; /* Space fixed */
     padding: 0 20px !important;
     position: relative !important;
     z-index: 5 !important;
-    clear: both; /* ताकि ऊपर वाले का असर खत्म हो जाए */
+    clear: both;
+}
+
+#daily-insights a { text-decoration: none; }
+
+#daily-insights .service-card {
+    background: linear-gradient(145deg, rgba(245, 197, 66, 0.1), rgba(10, 10, 20, 0.9)) !important;
+    border: 1px solid var(--gold) !important;
 }
