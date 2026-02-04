@@ -228,13 +228,15 @@ body {
 #hero {
     position: relative;
     overflow: hidden;
-    min-height: 100vh; /* पूरी स्क्रीन की हाइट */
+    /* 100vh की जगह 'min-height' और 'padding' का खेल खेलते हैं */
+    min-height: 90vh; 
     display: flex;
-    align-items: center;    /* Vertical Center (ऊपर-नीचे से बीच में) */
-    justify-content: center; /* Horizontal Center (दाएँ-बाएँ से बीच में) */
+    flex-direction: column; /* ऊपर से नीचे की तरफ */
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 80px 20px; /* Header के लिए थोड़ी जगह */
-    background: radial-gradient(circle at center, #1a1a2e 0%, #05050a 100%);
+    padding: 150px 20px 100px; /* Top padding बढ़ा दी ताकि Header से न टकराए */
+    background: radial-gradient(circle at center, #1a1a2e 0%, #05050a 100%) !important;
     box-sizing: border-box;
 }
 
@@ -242,5 +244,14 @@ body {
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 800px; /* कंटेंट बहुत ज़्यादा न फैले */
+    max-width: 800px;
+    margin: 0 auto; /* सेंटर में रखने के लिए */
+}
+
+/* अगर मोबाइल पर अभी भी कट रहा है तो यह जादू काम आएगा */
+@media (max-width: 768px) {
+    #hero {
+        padding: 120px 15px 60px;
+        min-height: auto; /* मोबाइल पर हाइट को आज़ाद कर दो */
+    }
 }
