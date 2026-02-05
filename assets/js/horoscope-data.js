@@ -110,18 +110,30 @@ const dailyHoroscope = {
 
 // Data Load Karne Wala Function
 function loadHoroscope(rashiKey) {
-const data = dailyHoroscope[rashiKey];
-const options = { year: 'numeric', month: 'long', day: 'numeric' };
-const today = new Date().toLocaleDateString('en-US', options);
+    const data = dailyHoroscope[rashiKey];
+    
+    // 🔱 Dynamic Title: Browser tab aur Google Search ke liye
+    const rashiName = rashiKey.charAt(0).toUpperCase() + rashiKey.slice(1);
+    document.title = rashiName + " Daily Horoscope 2026 | Mahadev Astrologer";
 
-if (data) {
-document.getElementById('todayDate').innerText = "Daily Horoscope: " + today;
-document.getElementById('h-career').innerText = data.career;
-document.getElementById('h-love').innerText = data.love;
-document.getElementById('h-health').innerText = data.health;
-document.getElementById('h-color').innerText = data.luckyColor;
-document.getElementById('h-number').innerText = data.luckyNumber;
-document.getElementById('h-time').innerText = data.luckyTime;
-}
+    // 🔱 Dynamic Meta Description: Search results mein dikhne ke liye
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+        metaDesc.setAttribute("content", "Get your " + rashiName + " daily horoscope for 2026. Vedic predictions for career, love, and health by Mahadev Astrologer.");
+    }
+
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const today = new Date().toLocaleDateString('en-US', options);
+
+    if (data) {
+        // Data ko HTML Elements mein load karna
+        document.getElementById('todayDate').innerText = "Daily Horoscope: " + today;
+        document.getElementById('h-career').innerText = data.career;
+        document.getElementById('h-love').innerText = data.love;
+        document.getElementById('h-health').innerText = data.health;
+        document.getElementById('h-color').innerText = data.luckyColor;
+        document.getElementById('h-number').innerText = data.luckyNumber;
+        document.getElementById('h-time').innerText = data.luckyTime;
+    }
 
 }
