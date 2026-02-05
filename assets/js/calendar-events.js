@@ -3,7 +3,7 @@
  * Contains: Festivals, Vrat, Solar Transitions, and Special Events
  */
 
-const annualEvents = {
+const hindiEventsData = {
     // --- JANUARY 2026 ---
     "2026-01-01": "गुरु-ईसाई नयवर्ष आरम्भ, प्रदोष व्रत",
     "2026-01-02": "शुक-व्रत की पूर्णिमा",
