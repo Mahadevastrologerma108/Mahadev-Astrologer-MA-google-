@@ -1,36 +1,36 @@
-/** 🔱 Mahadev Astrologer MA - Panchang Engine **/
+/** 🔱 Mahadev Astrologer MA - Auto-Sync Engine **/
 
 let curYear = 2026;
 let curMonth = new Date().getMonth();
+let lastLang = localStorage.getItem('selectedLang') || 'hi';
 
 const monthsMap = {
     hi: ["जनवरी","फरवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"],
     en: ["January","February","March","April","May","June","July","August","September","October","November","December"]
 };
 
-// 🔱 Global Switcher: Isse Header call karta hai
+// 🔱 Master Switch Function
 window.updatePanchangLanguage = function(lang) {
-    console.log("Panchang Engine: Switching to", lang);
-    
-    // Current date logic
     const now = new Date();
     const todayStr = `2026-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     
-    // Refresh all dynamic components
-    if(typeof updateDaily === "function") updateDaily(todayStr, lang); 
-    if(typeof updateEvents === "function") updateEvents(lang); 
-    if(typeof renderCal === "function") renderCal(curMonth, curYear, lang); 
-    
-    // Global translation check
-    if(window.translatePage) window.translatePage(lang);
+    updateDaily(todayStr, lang); 
+    updateEvents(lang); 
+    renderCal(curMonth, curYear, lang); 
 };
 
-// Page load hone par sync karein
+// 🔱 WATCHDOG: Ye bhasha par nazar rakhega (Fail-safe)
+setInterval(() => {
+    let currentLang = localStorage.getItem('selectedLang') || 'hi';
+    if (currentLang !== lastLang) {
+        console.log("Language Change Detected by Watchdog:", currentLang);
+        lastLang = currentLang;
+        window.updatePanchangLanguage(currentLang);
+    }
+}, 500);
+
 document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        const lang = localStorage.getItem('selectedLang') || 'hi';
-        window.updatePanchangLanguage(lang);
-    }, 300);
+    window.updatePanchangLanguage(lastLang);
 });
 
 function updateDaily(dateKey, lang) {
@@ -39,19 +39,22 @@ function updateDaily(dateKey, lang) {
     const d = pData[dateKey];
 
     if (d) {
-        document.getElementById('pan-tithi').innerText = d.tithi || "--";
-        document.getElementById('pan-nak').innerText = d.nakshatra || "--";
-        document.getElementById('pan-sun').innerText = `${d.sunrise} / ${d.sunset}`;
-        document.getElementById('pan-muh').innerText = d.muhurat || "--";
-        document.getElementById('pan-rahu').innerText = d.rahuKaal || "--";
-        document.getElementById('day-chaughadia').innerText = d.dayChaughadia || "--";
-        document.getElementById('night-chaughadia').innerText = d.nightChaughadia || "--";
+        const setEl = (id, val) => { if(document.getElementById(id)) document.getElementById(id).innerText = val; };
+        setEl('pan-tithi', d.tithi);
+        setEl('pan-nak', d.nakshatra);
+        setEl('pan-sun', `${d.sunrise} / ${d.sunset}`);
+        setEl('pan-muh', d.muhurat);
+        setEl('pan-rahu', d.rahuKaal);
+        setEl('day-chaughadia', d.dayChaughadia);
+        setEl('night-chaughadia', d['night-chaughadia'] || d.nightChaughadia);
 
         const box = document.getElementById('fest-box');
-        if(box && eSource[dateKey]) {
-            box.style.display = "block";
-            document.getElementById('today-fest').innerText = eSource[dateKey];
-        } else if(box) { box.style.display = "none"; }
+        if(box) {
+            if(eSource[dateKey]) {
+                box.style.display = "block";
+                document.getElementById('today-fest').innerText = eSource[dateKey];
+            } else { box.style.display = "none"; }
+        }
     }
 }
 
@@ -104,6 +107,5 @@ function changeMonth(s) {
     curMonth += s;
     if(curMonth > 11) { curMonth=0; curYear++; }
     else if(curMonth < 0) { curMonth=11; curYear--; }
-    const currentLang = localStorage.getItem('selectedLang') || 'hi';
-    window.updatePanchangLanguage(currentLang);
+    window.updatePanchangLanguage(localStorage.getItem('selectedLang') || 'hi');
 }
