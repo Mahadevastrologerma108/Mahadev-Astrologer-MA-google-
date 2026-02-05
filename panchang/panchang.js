@@ -1,129 +1,126 @@
-/** 🔱 MAHADEV ASTROLOGER MA - FINAL STABLE ENGINE 2026 🔱 **/
+/** 🔱 MAHADEV ASTROLOGER MA - CONTENT RESTORE MODE **/
 
 let curYear = 2026;
 let curMonth = new Date().getMonth();
 
-const monthsMap = {
-    hi: ["जनवरी","फरवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"],
-    en: ["January","February","March","April","May","June","July","August","September","October","November","December"]
-};
-
-// 🚩 1. STARTUP: Wait for Data files to load
-function startAstroEngine() {
-    if (window.panchangData && window.MasterEvents) {
-        initPanchang();
+// 🚩 1. Sabse Simple Data Checker
+function loadPanchangNow() {
+    // Agar data files load ho gayi hain
+    if (window.panchangData) {
+        console.log("Data mil gaya! Content wapas la raha hoon...");
+        renderEverything();
     } else {
-        setTimeout(startAstroEngine, 100); // Retry every 100ms
+        // Agar nahi mili, toh har aadhe second mein check karega
+        console.log("Data dhoond raha hoon...");
+        setTimeout(loadPanchangNow, 500);
     }
 }
 
-// 🚩 2. CORE INITIALIZATION
-window.initPanchang = function() {
+// 🚩 2. Content Bharne Wala Main Function
+function renderEverything() {
     const lang = localStorage.getItem('selectedLang') || 'hi';
-    const events = window.MasterEvents[lang] || {};
-
-    renderDaily(lang, events);
-    renderCalendar(lang, events);
-    
-    // Auto-Translate everything with 'data-key'
-    applyMyTranslations(lang);
-};
-
-// 🚩 3. DAILY PANCHANG & CHAUGHADIA
-function renderDaily(lang, events, forcedDate = null) {
     const now = new Date();
-    const todayStr = forcedDate || `2026-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const todayStr = `2026-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    
+    // Data nikalna
     const d = window.panchangData[todayStr];
+    const events = (window.MasterEvents && window.MasterEvents[lang]) ? window.MasterEvents[lang] : {};
 
-    const fill = (id, val) => { 
+    // --- Daily Panchang Sections ---
+    const fill = (id, val) => {
         const el = document.getElementById(id);
-        if(el) el.innerText = val || "--"; 
+        if (el) el.innerText = val || "--";
     };
 
     if (d) {
         fill('pan-tithi', d.tithi);
         fill('pan-nak', d.nakshatra);
-        fill('pan-sun', `${d.sunrise} / ${d.sunset}`);
+        fill('pan-sun', d.sunrise + " / " + d.sunset);
         fill('pan-muh', d.muhurat);
         fill('pan-rahu', d.rahuKaal);
         fill('day-chaughadia', d.dayChaughadia);
         fill('night-chaughadia', d.nightChaughadia);
     }
 
-    // Festival Alert Box
-    const fBox = document.getElementById('fest-box');
-    const fText = document.getElementById('today-fest');
-    if(fBox && fText) {
-        if(events[todayStr]) {
-            fBox.style.display = "block";
-            fText.innerText = events[todayStr];
+    // --- Festival Alert Box ---
+    const festBox = document.getElementById('fest-box');
+    if (festBox) {
+        if (events[todayStr]) {
+            festBox.style.display = "block";
+            const festText = document.getElementById('today-fest');
+            if (festText) festText.innerText = events[todayStr];
         } else {
-            fBox.style.display = "none";
+            festBox.style.display = "none";
         }
     }
+
+    // --- Calendar Render ---
+    renderCalendarGrid(lang, events);
 }
 
-// 🚩 4. CALENDAR GRID & MONTHLY LIST
-function renderCalendar(lang, events) {
+// 🚩 3. Calendar Grid (Taarikh aur Month)
+function renderCalendarGrid(lang, events) {
     const grid = document.getElementById('calendar-grid');
-    const mLabel = document.getElementById('month-name');
-    const eList = document.getElementById('event-list');
-    if(!grid) return;
+    const monthTitle = document.getElementById('month-name');
+    if (!grid || !monthTitle) return;
 
-    mLabel.innerText = `${monthsMap[lang][curMonth]} ${curYear}`;
-    
+    const mNames = {
+        hi: ["जनवरी","फरवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"],
+        en: ["January","February","March","April","May","June","July","August","September","October","November","December"]
+    };
+
+    monthTitle.innerText = mNames[lang][curMonth] + " " + curYear;
+
     let html = "";
     const daysArr = (lang === 'en') ? ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'] : ['र','सो','मं','बु','गु','शु','श'];
-    daysArr.forEach(d => html += `<div class="day-header">${d}</div>`);
+    daysArr.forEach(day => html += `<div class="day-header" style="color:#ffd700; font-weight:bold; padding:10px;">${day}</div>`);
 
     const firstDay = new Date(curYear, curMonth, 1).getDay();
-    const daysCount = new Date(curYear, curMonth + 1, 0).getDate();
-    const realToday = new Date().toISOString().split('T')[0];
+    const totalDays = new Date(curYear, curMonth + 1, 0).getDate();
+    const todayISO = new Date().toISOString().split('T')[0];
 
-    for(let i=0; i<firstDay; i++) html += `<div class="empty-day"></div>`;
+    for (let i = 0; i < firstDay; i++) html += `<div></div>`;
 
-    for(let d=1; d<=daysCount; d++) {
+    for (let d = 1; d <= totalDays; d++) {
         const dKey = `${curYear}-${String(curMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-        const hasEv = events[dKey] ? 'has-event' : '';
-        const isTd = (realToday === dKey) ? 'today' : '';
-        html += `<div class="calendar-day ${hasEv} ${isTd}" onclick="viewDay('${dKey}')">${d}</div>`;
+        const isToday = (todayISO === dKey) ? 'today' : '';
+        const hasEvent = events[dKey] ? 'has-event' : '';
+        
+        // Custom style for dots/events
+        const eventStyle = hasEvent ? "border-bottom: 2px solid #ffd700;" : "";
+        const todayStyle = isToday ? "background:#ffd700; color:#000; font-weight:bold;" : "";
+
+        html += `<div class="calendar-day" style="padding:15px; cursor:pointer; border-radius:5px; ${eventStyle} ${todayStyle}" onclick="window.viewSpecificDay('${dKey}')">${d}</div>`;
     }
     grid.innerHTML = html;
-
-    // Sidebar Events
-    let eventHtml = "";
-    const prefix = `${curYear}-${String(curMonth + 1).padStart(2, '0')}`;
-    Object.keys(events).sort().forEach(k => {
-        if(k.startsWith(prefix)) {
-            eventHtml += `<li><span class="gold-text">${k.split('-')[2]}:</span> ${events[k]}</li>`;
-        }
-    });
-    if(eList) eList.innerHTML = eventHtml || `<li>No festivals this month</li>`;
 }
 
-// 🚩 5. INTERACTIVE FUNCTIONS
-window.viewDay = (dateKey) => {
+// 🚩 4. Interaction Functions
+window.viewSpecificDay = function(dateKey) {
     const lang = localStorage.getItem('selectedLang') || 'hi';
-    renderDaily(lang, window.MasterEvents[lang] || {}, dateKey);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const events = (window.MasterEvents && window.MasterEvents[lang]) ? window.MasterEvents[lang] : {};
+    
+    // Sirf Panchang wala hissa update karo
+    const d = window.panchangData[dateKey];
+    if (d) {
+        const fill = (id, val) => { if (document.getElementById(id)) document.getElementById(id).innerText = val || "--"; };
+        fill('pan-tithi', d.tithi);
+        fill('pan-nak', d.nakshatra);
+        fill('pan-sun', d.sunrise + " / " + d.sunset);
+        fill('pan-muh', d.muhurat);
+        fill('pan-rahu', d.rahuKaal);
+        fill('day-chaughadia', d.dayChaughadia);
+        fill('night-chaughadia', d.nightChaughadia);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 };
 
-window.changeMonth = (step) => {
+window.changeMonth = function(step) {
     curMonth += step;
-    if(curMonth > 11) { curMonth=0; curYear++; }
-    else if(curMonth < 0) { curMonth=11; curYear--; }
-    initPanchang();
+    if (curMonth > 11) { curMonth = 0; curYear++; }
+    else if (curMonth < 0) { curMonth = 11; curYear--; }
+    renderEverything();
 };
 
-// 🚩 6. TRANSLATION HELPER (Fixes data-key issues)
-function applyMyTranslations(lang) {
-    if(!window.translations || !window.translations[lang]) return;
-    const t = window.translations[lang];
-    document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.getAttribute('data-key');
-        if(t[key]) el.innerText = t[key];
-    });
-}
-
-// Launch!
-startAstroEngine();
+// Engine Start!
+loadPanchangNow();
