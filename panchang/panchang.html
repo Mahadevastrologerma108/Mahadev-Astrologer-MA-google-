@@ -23,7 +23,7 @@
         .container { max-width: 1000px; margin: auto; padding: 20px; }
         .gold-text { color: var(--gold); font-family: 'Cinzel', serif; }
         .title-font { text-align: center; text-transform: uppercase; letter-spacing: 2px; }
-        
+
         /* Panchang Grid */
         .panchang-grid {
             display: grid;
@@ -118,25 +118,25 @@
 
 <main class="container">
     <section class="today-view">
-        <h1 class="gold-text title-font" id="display-date" data-key="pan_aaj_ka">Aaj Ka Panchang</h1>
-        
+        <h1 class="gold-text title-font" id="display-date">Aaj Ka Panchang</h1>
+
         <div id="fest-box" class="festival-alert" style="display:none;">
             <span>🚩</span> <strong id="today-fest" class="gold-text"></strong>
         </div>
 
         <div class="panchang-grid">
-            <div class="pan-card"><span class="label" data-key="pan_tithi">Tithi</span><h4 id="pan-tithi">--</h4></div>
-            <div class="pan-card"><span class="label" data-key="pan_nak">Nakshatra</span><h4 id="pan-nak">--</h4></div>
-            <div class="pan-card"><span class="label" data-key="pan_sun">Sunrise/Sunset</span><h4 id="pan-sun">--</h4></div>
-            <div class="pan-card" style="border-color: var(--gold);"><span class="label" data-key="pan_abhijit">Abhijit Muhurat</span><h4 id="pan-muh">--</h4></div>
-            <div class="pan-card" style="border-color: #ff4d4d;"><span class="label" data-key="pan_rahu">Rahu Kaal</span><h4 id="pan-rahu" style="color: #ff4d4d;">--</h4></div>
+            <div class="pan-card"><span class="label">Tithi</span><h4 id="pan-tithi">--</h4></div>
+            <div class="pan-card"><span class="label">Nakshatra</span><h4 id="pan-nak">--</h4></div>
+            <div class="pan-card"><span class="label">Sunrise/Sunset</span><h4 id="pan-sun">--</h4></div>
+            <div class="pan-card" style="border-color: var(--gold);"><span class="label">Abhijit Muhurat</span><h4 id="pan-muh">--</h4></div>
+            <div class="pan-card" style="border-color: #ff4d4d;"><span class="label">Rahu Kaal</span><h4 id="pan-rahu" style="color: #ff4d4d;">--</h4></div>
         </div>
 
         <div class="chaughadia-section" style="margin-top: 30px;">
-            <h3 class="gold-text title-font" data-key="pan_shubh_chaug">Shubh Chaughadia</h3>
+            <h3 class="gold-text title-font">Shubh Chaughadia</h3>
             <div class="panchang-grid">
-                <div class="pan-card"><span class="label" data-key="pan_day_chaug">Day</span><h4 id="day-chaughadia">--</h4></div>
-                <div class="pan-card"><span class="label" data-key="pan_night_chaug">Night</span><h4 id="night-chaughadia">--</h4></div>
+                <div class="pan-card"><span class="label">Day Chaughadia</span><h4 id="day-chaughadia">--</h4></div>
+                <div class="pan-card"><span class="label">Night Chaughadia</span><h4 id="night-chaughadia">--</h4></div>
             </div>
         </div>
     </section>
@@ -151,11 +151,11 @@
                 <button onclick="changeMonth(1)" class="nav-btn">▶</button>
             </div>
         </div>
-        
+
         <div class="cal-wrapper">
             <div id="calendar-grid"></div>
             <div class="event-sidebar">
-                <h3 class="gold-text title-font" data-key="pan_events" style="font-size: 1.2rem;">Events</h3>
+                <h3 class="gold-text title-font" style="font-size: 1.2rem;">Major Events</h3>
                 <ul id="event-list"></ul>
             </div>
         </div>
