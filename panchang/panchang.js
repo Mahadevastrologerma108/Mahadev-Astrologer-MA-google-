@@ -1,70 +1,29 @@
-/** 🔱 MAHADEV ASTROLOGER MA - ULTIMATE STABLE ENGINE 🔱 **/
-
 let curYear = 2026;
 let curMonth = new Date().getMonth();
 
-// 🚩 1. DATA CHECKER (Wait for files)
-function startEngine() {
-    if (window.panchangData && window.MasterEvents) {
-        initUI();
-    } else {
-        setTimeout(startEngine, 500); 
-    }
-}
-
-// 🚩 2. INITIALIZE UI
-function initUI() {
+function initPanchang() {
     const lang = localStorage.getItem('selectedLang') || 'hi';
-    const events = window.MasterEvents[lang] || {};
-
-    renderDetails(lang, events);
-    renderCalendar(lang, events);
+    const today = new Date().toISOString().split('T')[0];
     
-    // Translation for Labels (data-key)
-    if(window.translations && window.translations[lang]) {
-        const t = window.translations[lang];
-        document.querySelectorAll('[data-key]').forEach(el => {
-            const key = el.getAttribute('data-key');
-            if(t[key]) el.innerText = t[key];
-        });
-    }
-}
-
-// 🚩 3. RENDER PANCHANG & CHAUGHADIA
-function renderDetails(lang, events, forcedDate = null) {
-    const now = new Date();
-    const todayStr = forcedDate || `2026-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-    const d = window.panchangData[todayStr];
-
-    const fill = (id, val) => { if(document.getElementById(id)) document.getElementById(id).innerText = val || "--"; };
-
+    // 1. Fill Today's Data
+    const d = window.panchangData && window.panchangData[today];
     if (d) {
-        fill('pan-tithi', d.tithi);
-        fill('pan-nak', d.nakshatra);
-        fill('pan-sun', d.sunrise + " / " + d.sunset);
-        fill('pan-muh', d.muhurat);
-        fill('pan-rahu', d.rahuKaal);
-        fill('day-chaughadia', d.dayChaughadia);
-        fill('night-chaughadia', d.nightChaughadia);
-        fill('display-date', todayStr); // Optional: sets title to current date
+        document.getElementById('pan-tithi').innerText = d.tithi;
+        document.getElementById('pan-nak').innerText = d.nakshatra;
+        document.getElementById('pan-sun').innerText = d.sunrise + " / " + d.sunset;
+        document.getElementById('pan-muh').innerText = d.muhurat || '--';
+        document.getElementById('pan-rahu').innerText = d.rahuKaal;
+        document.getElementById('day-chaughadia').innerText = d.dayChaughadia;
+        document.getElementById('night-chaughadia').innerText = d.nightChaughadia;
     }
 
-    const fBox = document.getElementById('fest-box');
-    if(fBox) {
-        if(events[todayStr]) {
-            fBox.style.display = "block";
-            document.getElementById('today-fest').innerText = events[todayStr];
-        } else {
-            fBox.style.display = "none";
-        }
-    }
+    // 2. Render Calendar
+    renderCalendar(lang);
 }
 
-// 🚩 4. RENDER CALENDAR GRID
-function renderCalendar(lang, events) {
+function renderCalendar(lang) {
     const grid = document.getElementById('calendar-grid');
     const mLabel = document.getElementById('month-name');
-    const eList = document.getElementById('event-list');
     if(!grid) return;
 
     const months = {
@@ -72,46 +31,46 @@ function renderCalendar(lang, events) {
         en: ["January","February","March","April","May","June","July","August","September","October","November","December"]
     };
 
-    mLabel.innerText = months[lang][curMonth] + " " + curYear;
-    let html = "";
+    mLabel.innerText = `${months[lang][curMonth]} ${curYear}`;
+    grid.innerHTML = ""; 
+
+    // Add Day Headers
     const days = (lang === 'en') ? ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'] : ['र','सो','मं','बु','गु','शु','श'];
-    days.forEach(d => html += `<div class="day-header" style="color:#ffd700; font-weight:bold;">${d}</div>`);
-
-    const first = new Date(curYear, curMonth, 1).getDay();
-    const count = new Date(curYear, curMonth + 1, 0).getDate();
-    const isoToday = new Date().toISOString().split('T')[0];
-
-    for(let i=0; i<first; i++) html += `<div></div>`;
-
-    for(let d=1; d<=count; d++) {
-        const dk = `${curYear}-${String(curMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-        const hasE = events[dk] ? 'has-event' : '';
-        const isT = (isoToday === dk) ? 'today' : '';
-        html += `<div class="calendar-day ${hasE} ${isT}" onclick="window.viewDay('${dk}')">${d}</div>`;
-    }
-    grid.innerHTML = html;
-
-    // Monthly List
-    let eHtml = "";
-    const prefix = `${curYear}-${String(curMonth + 1).padStart(2, '0')}`;
-    Object.keys(events).sort().forEach(k => {
-        if(k.startsWith(prefix)) eHtml += `<li><b style="color:#ffd700;">${k.split('-')[2]}:</b> ${events[k]}</li>`;
+    days.forEach(day => {
+        grid.innerHTML += `<div class="day-header" style="color:#ffd700; font-weight:bold;">${day}</div>`;
     });
-    if(eList) eList.innerHTML = eHtml || "<li>No major events</li>";
+
+    const firstDay = new Date(curYear, curMonth, 1).getDay();
+    const daysInMonth = new Date(curYear, curMonth + 1, 0).getDate();
+
+    // Empty slots
+    for (let i = 0; i < firstDay; i++) grid.innerHTML += `<div></div>`;
+
+    // Month Days
+    for (let d = 1; d <= daysInMonth; d++) {
+        const dateKey = `${curYear}-${String(curMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const isToday = (new Date().toISOString().split('T')[0] === dateKey) ? 'today' : '';
+        grid.innerHTML += `<div class="calendar-day ${isToday}" onclick="window.viewDay('${dateKey}')">${d}</div>`;
+    }
 }
 
-// 🚩 5. HELPERS
+window.changeMonth = (dir) => {
+    curMonth += dir;
+    if (curMonth > 11) { curMonth = 0; curYear++; }
+    else if (curMonth < 0) { curMonth = 11; curYear--; }
+    initPanchang();
+};
+
 window.viewDay = (dateKey) => {
-    const lang = localStorage.getItem('selectedLang') || 'hi';
-    renderDetails(lang, window.MasterEvents[lang] || {}, dateKey);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const d = window.panchangData[dateKey];
+    if(d) {
+        document.getElementById('pan-tithi').innerText = d.tithi;
+        document.getElementById('pan-nak').innerText = d.nakshatra;
+        document.getElementById('pan-sun').innerText = d.sunrise + " / " + d.sunset;
+        document.getElementById('pan-rahu').innerText = d.rahuKaal;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 };
 
-window.changeMonth = (step) => {
-    curMonth += step;
-    if(curMonth > 11) { curMonth=0; curYear++; }
-    else if(curMonth < 0) { curMonth=11; curYear--; }
-    initUI();
-};
-
-startEngine();
+// Start
+window.onload = initPanchang;
