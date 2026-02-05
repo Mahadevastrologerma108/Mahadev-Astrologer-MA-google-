@@ -1,34 +1,31 @@
+/** 🔱 Mahadev Astrologer MA - Panchang Engine **/
+
 let curYear = 2026;
 let curMonth = new Date().getMonth();
-
-// Panchang.js ke andar ye line check karo
-window.updatePanchangLanguage = function(lang) {
-    // Ye function tab chalega jab translation.js signal dega
-    console.log("Panchang switching to:", lang);
-    
-    // Nayi language ke hisaab se calendar aur events refresh
-    renderCal(curMonth, curYear, lang); 
-    updateEvents(lang); 
-};
 
 const monthsMap = {
     hi: ["जनवरी","फरवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"],
     en: ["January","February","March","April","May","June","July","August","September","October","November","December"]
 };
 
-// 🔱 Ye function header ke switch ke saath connect hoga
+// 🔱 Global Switcher: Isse Header call karta hai
 window.updatePanchangLanguage = function(lang) {
-    console.log("Switching Panchang Language to:", lang);
-    const todayStr = `2026-${String(new Date().getMonth() + 1).padStart(2, '0')}-${String(new Date().getDate()).padStart(2, '0')}`;
+    console.log("Panchang Engine: Switching to", lang);
     
-    // Sab kuch refresh karo nayi bhasha mein
-    updateDaily(todayStr, lang);
-    updateEvents(lang);
-    renderCal(curMonth, curYear, lang);
+    // Current date logic
+    const now = new Date();
+    const todayStr = `2026-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     
+    // Refresh all dynamic components
+    if(typeof updateDaily === "function") updateDaily(todayStr, lang); 
+    if(typeof updateEvents === "function") updateEvents(lang); 
+    if(typeof renderCal === "function") renderCal(curMonth, curYear, lang); 
+    
+    // Global translation check
     if(window.translatePage) window.translatePage(lang);
 };
 
+// Page load hone par sync karein
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         const lang = localStorage.getItem('selectedLang') || 'hi';
@@ -38,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function updateDaily(dateKey, lang) {
     const pData = window.panchangData || {};
-    // Language ke basis par event source chuno
     const eSource = (lang === 'en') ? (window.englishEventsData || {}) : (window.hindiEventsData || {});
     const d = pData[dateKey];
 
@@ -63,6 +59,7 @@ function renderCal(m, y, lang) {
     const grid = document.getElementById('calendar-grid');
     if (!grid) return;
     grid.innerHTML = "";
+    
     const days = (lang === 'en') ? ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'] : ['र','सो','मं','बु','गु','शु','श'];
     days.forEach(d => grid.innerHTML += `<div class="day-header">${d}</div>`);
 
@@ -80,11 +77,13 @@ function renderCal(m, y, lang) {
 }
 
 function updateEvents(lang) {
-    // Month name translation fix
-    document.getElementById('month-name').innerText = `${monthsMap[lang][curMonth]} ${curYear}`;
+    const mName = document.getElementById('month-name');
+    if(mName) mName.innerText = `${monthsMap[lang][curMonth]} ${curYear}`;
     
     const list = document.getElementById('event-list');
+    if(!list) return;
     list.innerHTML = "";
+    
     const eSource = (lang === 'en') ? (window.englishEventsData || {}) : (window.hindiEventsData || {});
     let found = false;
 
@@ -105,5 +104,6 @@ function changeMonth(s) {
     curMonth += s;
     if(curMonth > 11) { curMonth=0; curYear++; }
     else if(curMonth < 0) { curMonth=11; curYear--; }
-    window.updatePanchangLanguage(localStorage.getItem('selectedLang') || 'hi');
+    const currentLang = localStorage.getItem('selectedLang') || 'hi';
+    window.updatePanchangLanguage(currentLang);
 }
