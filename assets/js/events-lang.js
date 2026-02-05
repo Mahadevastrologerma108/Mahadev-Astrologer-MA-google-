@@ -1,5 +1,5 @@
 window.englishEventsData = {
-    "en": {
+
         // --- JANUARY 2026 ---
         "2026-01-01": "Thu - Christian New Year Begins, Pradosh Fast",
         "2026-01-02": "Fri - Purnima Fast (Full Moon)",
@@ -250,5 +250,5 @@ window.englishEventsData = {
         "2026-12-27": "Sat - Sankashti Ganesh Chaturthi Fast",
         "2026-12-29": "Tue - Surya enters Purva Ashada",
         "2026-12-31": "Thu - New Year's Eve"
-    }
+   
 };
