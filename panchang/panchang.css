@@ -1,19 +1,113 @@
-:root { --gold: #ffd700; --bg: #0a0a14; --red: #ff4d4d; }
-.panchang-body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; }
-.container { max-width: 1100px; margin: 0 auto; padding: 100px 20px 40px; }
+:root { 
+    --gold: #ffd700; 
+    --bg: #0a0a14; 
+    --red: #ff4d4d; 
+    --card-hover: rgba(255, 215, 0, 0.1);
+}
+
+.panchang-body { 
+    background: var(--bg); 
+    color: white; 
+    font-family: 'Poppins', sans-serif; 
+    margin: 0;
+}
+
+/* 🚩 1. Header Overlap Fix - Top padding badha di */
+.container { 
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 120px 20px 40px; 
+}
+
 .gold-text { color: var(--gold); }
-.title-font { font-family: 'Cinzel', serif; }
-.panchang-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 25px; }
-.pan-card { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.1); text-align: center; }
+.title-font { font-family: 'Cinzel', serif; text-align: center; margin-bottom: 20px; }
+
+/* 🚩 2. Responsive Grid Fix */
+.panchang-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+    gap: 15px; 
+    margin-bottom: 25px; 
+}
+
+.pan-card { 
+    background: rgba(255,255,255,0.05); 
+    padding: 15px; 
+    border-radius: 12px; 
+    border: 1px solid rgba(255,215,0,0.1); 
+    text-align: center; 
+    transition: 0.3s;
+}
+
 .pan-card.highlight { border: 1px solid var(--gold); background: rgba(255, 215, 0, 0.08); }
-.rahu-card { border: 1px solid var(--red) !important; }
-.label { color: #aaa; font-size: 0.75rem; display: block; margin-bottom: 6px; }
-#calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 15px; border: 1px solid rgba(255,215,0,0.1); }
-.day-header { color: var(--gold); font-weight: bold; text-align: center; font-size: 0.8rem; }
-.calendar-day { aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; border-radius: 6px; background: rgba(255,255,255,0.03); }
-.calendar-day.today { background: var(--gold) !important; color: black !important; }
-.calendar-day.has-event { border: 1px solid var(--gold); color: var(--gold); }
-.cal-wrapper { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
-.nav-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 5px 12px; cursor: pointer; border-radius: 4px; }
-.event-sidebar { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px; border-left: 3px solid var(--gold); }
-@media (max-width: 850px) { .cal-wrapper { grid-template-columns: 1fr; } .panchang-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* 🚩 3. Rahu Card & Special Width */
+.rahu-card { 
+    border: 1px solid var(--red) !important; 
+    color: var(--red);
+}
+
+.label { color: #aaa; font-size: 0.75rem; display: block; margin-bottom: 6px; text-transform: uppercase; }
+
+/* 🚩 4. Calendar Improvements */
+#calendar-grid { 
+    display: grid; 
+    grid-template-columns: repeat(7, 1fr); 
+    gap: 8px; 
+    background: rgba(255,255,255,0.02); 
+    padding: 15px; 
+    border-radius: 15px; 
+    border: 1px solid rgba(255,215,0,0.1); 
+}
+
+.day-header { color: var(--gold); font-weight: bold; text-align: center; font-size: 0.8rem; padding-bottom: 10px; }
+
+.calendar-day { 
+    aspect-ratio: 1/1; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 0.9rem; 
+    border-radius: 6px; 
+    background: rgba(255,255,255,0.03); 
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.calendar-day:hover { background: var(--card-hover); color: var(--gold); }
+.calendar-day.today { background: var(--gold) !important; color: black !important; font-weight: bold; }
+.calendar-day.has-event { border: 1px solid var(--gold); color: var(--gold); font-weight: bold; }
+
+.cal-wrapper { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; margin-top: 20px; }
+
+/* 🚩 5. Professional Nav Buttons */
+.nav-btn { 
+    background: transparent; 
+    border: 1px solid var(--gold); 
+    color: var(--gold); 
+    padding: 8px 16px; 
+    cursor: pointer; 
+    border-radius: 30px; 
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-btn:hover { background: var(--gold); color: #000; }
+
+.event-sidebar { 
+    background: rgba(0,0,0,0.3); 
+    padding: 20px; 
+    border-radius: 15px; 
+    border-left: 3px solid var(--gold); 
+}
+
+#event-list { list-style: none; padding: 0; }
+#event-list li { padding: 10px 0; border-bottom: 1px solid rgba(255,215,0,0.1); font-size: 0.9rem; }
+
+/* 🚩 6. Mobile Optimization (1 Line = 2 Cards) */
+@media (max-width: 850px) { 
+    .cal-wrapper { grid-template-columns: 1fr; } 
+    .panchang-grid { grid-template-columns: repeat(2, 1fr); }
+    .container { padding-top: 90px; } /* Mobile header thoda chota hota hai */
+    .title-font { font-size: 1.4rem; }
+}
