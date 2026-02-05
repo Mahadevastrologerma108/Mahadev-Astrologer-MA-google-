@@ -1,7 +1,4 @@
 window.englishEventsData = {
-    "hi": {
-        /* Aapka Hindi Data Yahan Rahega */
-    },
     "en": {
         // --- JANUARY 2026 ---
         "2026-01-01": "Thu - Christian New Year Begins, Pradosh Fast",
