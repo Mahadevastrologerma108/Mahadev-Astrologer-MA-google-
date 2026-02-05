@@ -1,36 +1,31 @@
-const langMap = {
-    hi: {
-        months: ["जनवरी", "फरवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"],
-        days: ['र','सो','मं','बु','गु','शु','श'],
-        noEvent: "कोई त्योहार नहीं।"
-    },
-    en: {
-        months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-        days: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
-        noEvent: "No major festivals."
-    }
-};
-
 let curYear = 2026;
 let curMonth = new Date().getMonth();
 
+const monthsMap = {
+    hi: ["जनवरी","फरवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"],
+    en: ["January","February","March","April","May","June","July","August","September","October","November","December"]
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-    initPanchang();
+    // Thoda delay taaki layout.js header load kar sake
+    setTimeout(initPanchang, 100);
 });
 
 function initPanchang() {
     const lang = localStorage.getItem('selectedLang') || 'hi';
-    const today = new Date();
-    const todayStr = (today.getFullYear() === 2026) ? today.toISOString().split('T')[0] : "2026-01-01";
+    const todayStr = new Date().getFullYear() === 2026 ? new Date().toISOString().split('T')[0] : "2026-01-01";
 
     updateDaily(todayStr, lang);
     updateEvents(lang);
     renderCal(curMonth, curYear, lang);
+    
+    // Translation command
+    if(window.translatePage) window.translatePage(lang);
 }
 
 function updateDaily(dateKey, lang) {
     const pData = window.panchangData || {};
-    const eData = (lang === 'en') ? (window.englishEventsData || {}) : (window.hindiEventsData || {});
+    const eSource = (lang === 'en') ? (window.englishEventsData || {}) : (window.hindiEventsData || {});
 
     if (pData[dateKey]) {
         const d = pData[dateKey];
@@ -43,11 +38,10 @@ function updateDaily(dateKey, lang) {
         document.getElementById('night-chaughadia').innerText = d.nightChaughadia || "--";
 
         const box = document.getElementById('fest-box');
-        const txt = document.getElementById('today-fest');
-        if(box && eData[dateKey]) {
+        if(box && eSource[dateKey]) {
             box.style.display = "block";
-            txt.innerText = eData[dateKey];
-        } else { box.style.display = "none"; }
+            document.getElementById('today-fest').innerText = eSource[dateKey];
+        } else if(box) { box.style.display = "none"; }
     }
 }
 
@@ -55,39 +49,36 @@ function renderCal(m, y, lang) {
     const grid = document.getElementById('calendar-grid');
     if (!grid) return;
     grid.innerHTML = "";
+    const days = (lang === 'en') ? ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'] : ['र','सो','मं','बु','गु','शु','श'];
+    days.forEach(d => grid.innerHTML += `<div class="day-header">${d}</div>`);
 
-    langMap[lang].days.forEach(d => grid.innerHTML += `<div class="day-header">${d}</div>`);
-
-    const eData = (lang === 'en') ? (window.englishEventsData || {}) : (window.hindiEventsData || {});
+    const eSource = (lang === 'en') ? (window.englishEventsData || {}) : (window.hindiEventsData || {});
     const start = new Date(y, m, 1).getDay();
-    const days = new Date(y, m + 1, 0).getDate();
+    const totalDays = new Date(y, m + 1, 0).getDate();
 
     for(let i=0; i<start; i++) grid.innerHTML += `<div></div>`;
-
-    for(let d=1; d<=days; d++) {
+    for(let d=1; d<=totalDays; d++) {
         const dateKey = `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-        const hasEvent = (y === 2026 && eData[dateKey]) ? 'has-event' : '';
+        const hasEvent = (y === 2026 && eSource[dateKey]) ? 'has-event' : '';
         const isToday = (new Date().toISOString().split('T')[0] === dateKey) ? 'today' : '';
         grid.innerHTML += `<div class="calendar-day ${hasEvent} ${isToday}">${d}</div>`;
     }
 }
 
 function updateEvents(lang) {
-    document.getElementById('month-name').innerText = `${langMap[lang].months[curMonth]} ${curYear}`;
+    document.getElementById('month-name').innerText = `${monthsMap[lang][curMonth]} ${curYear}`;
     const list = document.getElementById('event-list');
     list.innerHTML = "";
-
-    const eData = (lang === 'en') ? (window.englishEventsData || {}) : (window.hindiEventsData || {});
+    const eSource = (lang === 'en') ? (window.englishEventsData || {}) : (window.hindiEventsData || {});
     let found = false;
-
-    Object.keys(eData).forEach(k => {
-        const dObj = new Date(k);
-        if(dObj.getMonth() === curMonth && dObj.getFullYear() === curYear) {
+    Object.keys(eSource).forEach(k => {
+        const p = k.split('-');
+        if(parseInt(p[1]) === (curMonth + 1) && parseInt(p[0]) === curYear) {
             found = true;
-            list.innerHTML += `<li><span class="gold-text"><strong>${k.split('-')[2]}:</strong></span> ${eData[k]}</li>`;
+            list.innerHTML += `<li><span class="gold-text"><strong>${p[2]}:</strong></span> ${eSource[k]}</li>`;
         }
     });
-    if(!found) list.innerHTML = `<li>${langMap[lang].noEvent}</li>`;
+    if(!found) list.innerHTML = `<li>${lang === 'en' ? 'No events.' : 'कोई त्योहार नहीं।'}</li>`;
 }
 
 function changeMonth(s) {
@@ -96,8 +87,3 @@ function changeMonth(s) {
     else if(curMonth < 0) { curMonth=11; curYear--; }
     initPanchang();
 }
-
-window.changeLanguage = function(lang) {
-    localStorage.setItem('selectedLang', lang);
-    location.reload(); 
-};
