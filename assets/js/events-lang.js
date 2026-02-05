@@ -1,4 +1,4 @@
-const annualEventsData = {
+const englishEventsData = {
     "hi": {
         /* Aapka Hindi Data Yahan Rahega */
     },
