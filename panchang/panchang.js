@@ -1,6 +1,16 @@
 let curYear = 2026;
 let curMonth = new Date().getMonth();
 
+// Panchang.js ke andar ye line check karo
+window.updatePanchangLanguage = function(lang) {
+    // Ye function tab chalega jab translation.js signal dega
+    console.log("Panchang switching to:", lang);
+    
+    // Nayi language ke hisaab se calendar aur events refresh
+    renderCal(curMonth, curYear, lang); 
+    updateEvents(lang); 
+};
+
 const monthsMap = {
     hi: ["जनवरी","फरवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"],
     en: ["January","February","March","April","May","June","July","August","September","October","November","December"]
