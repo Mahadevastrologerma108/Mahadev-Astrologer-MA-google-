@@ -1,4 +1,4 @@
-const panchangData = {
+window.panchangData = {
     // JANUARY 2026 (From Today Onwards)
     "2026-01-29": { "tithi": "Shukla Ekadashi", "nakshatra": "Mrigashira", "sunrise": "07:11 AM", "sunset": "06:04 PM", "muhurat": "12:15 PM - 12:59 PM", "rahuKaal": "01:57 PM - 03:19 PM", "dayChaughadia": "Shubh, Amrit, Chal", "nightChaughadia": "Amrit, Labh, Shubh" },
     "2026-01-30": { "tithi": "Shukla Dwadashi", "nakshatra": "Ardra", "sunrise": "07:11 AM", "sunset": "06:05 PM", "muhurat": "12:16 PM - 12:59 PM", "rahuKaal": "11:13 AM - 12:35 PM", "dayChaughadia": "Char, Labh, Amrit", "nightChaughadia": "Shubh, Amrit, Chal" },
