@@ -1,4 +1,4 @@
-const englishEventsData = {
+window.englishEventsData = {
     "hi": {
         /* Aapka Hindi Data Yahan Rahega */
     },
