@@ -35,19 +35,30 @@ window.toggleLanguage = function() {
     let newLang = (currentLang === 'hi') ? 'en' : 'hi';
     localStorage.setItem('selectedLang', newLang);
 
+    // 1. Static Text (translations.js)
     if(window.translatePage) window.translatePage(newLang);
+    
+    // 2. Dynamic Panchang Data (panchang.js)
+    // Humne dono functions ko call kiya hai safety ke liye
+    if(window.initPanchang) window.initPanchang(newLang);
     if(window.updatePanchangLanguage) window.updatePanchangLanguage(newLang);
 
+    // 3. UI Button Text Update
     const langBtn = document.getElementById('lang-text');
     if(langBtn) {
         langBtn.innerText = (newLang === 'hi') ? "हिंदी / Eng" : "Eng / हिंदी";
     }
 };
 
-// Button sync on page load
+// Page load par button aur data sync karna
 (function() {
     const saved = localStorage.getItem('selectedLang') || 'hi';
     const btn = document.getElementById('lang-text');
     if(btn) btn.innerText = (saved === 'hi') ? "हिंदी / Eng" : "Eng / हिंदी";
+    
+    // Page load hote hi data ko sahi bhasha mein dikhana
+    setTimeout(() => {
+        if(window.initPanchang) window.initPanchang(saved);
+    }, 100);
 })();
 </script>
