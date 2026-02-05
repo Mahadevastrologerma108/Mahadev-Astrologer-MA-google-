@@ -1,166 +1,129 @@
-/** 🔱 MAHADEV ASTROLOGER MA - ULTIMATE PANCHANG ENGINE 2026 🔱 **/
+/** 🔱 MAHADEV ASTROLOGER MA - FINAL STABLE ENGINE 2026 🔱 **/
 
 let curYear = 2026;
 let curMonth = new Date().getMonth();
-let lastLang = localStorage.getItem('selectedLang') || 'hi';
 
 const monthsMap = {
     hi: ["जनवरी","फरवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"],
     en: ["January","February","March","April","May","June","July","August","September","October","November","December"]
 };
 
-// 🚩 AUTOMATIC LANGUAGE WATCHDOG
-setInterval(() => {
-    let currentLang = localStorage.getItem('selectedLang') || 'hi';
-    if (currentLang !== lastLang) {
-        lastLang = currentLang;
-        if(window.applyTranslations) window.applyTranslations(currentLang); // Translations update
-        window.initPanchang();
+// 🚩 1. STARTUP: Wait for Data files to load
+function startAstroEngine() {
+    if (window.panchangData && window.MasterEvents) {
+        initPanchang();
+    } else {
+        setTimeout(startAstroEngine, 100); // Retry every 100ms
     }
-}, 800);
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(window.initPanchang, 300); // Wait for data files to load
-});
-
-// 🚩 CORE INITIALIZATION
+// 🚩 2. CORE INITIALIZATION
 window.initPanchang = function() {
     const lang = localStorage.getItem('selectedLang') || 'hi';
-    const now = new Date();
+    const events = window.MasterEvents[lang] || {};
 
-    // Formatting date to match your JSON keys (YYYY-MM-DD)
-    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-
-    renderCal(curMonth, curYear, lang);
-    updateEvents(lang);
-    updateDaily(todayStr, lang);
+    renderDaily(lang, events);
+    renderCalendar(lang, events);
+    
+    // Auto-Translate everything with 'data-key'
+    applyMyTranslations(lang);
 };
 
-// 🚩 TODAY'S VIEW (TITHI, NAKSHATRA, ETC.)
-function updateDaily(dateKey, lang) {
-    const pData = window.panchangData || {};
-    const master = window.MasterEvents || { hi: {}, en: {} };
-    const eSource = master[lang] || {};
-    const d = pData[dateKey];
+// 🚩 3. DAILY PANCHANG & CHAUGHADIA
+function renderDaily(lang, events, forcedDate = null) {
+    const now = new Date();
+    const todayStr = forcedDate || `2026-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const d = window.panchangData[todayStr];
 
-    const setEl = (id, val) => { 
+    const fill = (id, val) => { 
         const el = document.getElementById(id);
         if(el) el.innerText = val || "--"; 
     };
 
     if (d) {
-        setEl('pan-tithi', d.tithi);
-        setEl('pan-nak', d.nakshatra);
-        setEl('pan-sun', `${d.sunrise} / ${d.sunset}`);
-        setEl('pan-muh', d.muhurat);
-        setEl('pan-rahu', d.rahuKaal);
-        setEl('day-chaughadia', d.dayChaughadia);
-        setEl('night-chaughadia', d.nightChaughadia);
+        fill('pan-tithi', d.tithi);
+        fill('pan-nak', d.nakshatra);
+        fill('pan-sun', `${d.sunrise} / ${d.sunset}`);
+        fill('pan-muh', d.muhurat);
+        fill('pan-rahu', d.rahuKaal);
+        fill('day-chaughadia', d.dayChaughadia);
+        fill('night-chaughadia', d.nightChaughadia);
     }
 
-    // Today's Festival Alert Box
-    const box = document.getElementById('fest-box');
-    const festText = document.getElementById('today-fest');
-    if(box && festText) {
-        if(eSource[dateKey]) {
-            box.style.display = "block";
-            festText.innerText = eSource[dateKey];
+    // Festival Alert Box
+    const fBox = document.getElementById('fest-box');
+    const fText = document.getElementById('today-fest');
+    if(fBox && fText) {
+        if(events[todayStr]) {
+            fBox.style.display = "block";
+            fText.innerText = events[todayStr];
         } else {
-            box.style.display = "none";
+            fBox.style.display = "none";
         }
     }
 }
 
-// 🚩 CALENDAR GRID GENERATOR
-function renderCal(m, y, lang) {
+// 🚩 4. CALENDAR GRID & MONTHLY LIST
+function renderCalendar(lang, events) {
     const grid = document.getElementById('calendar-grid');
-    if (!grid) return;
+    const mLabel = document.getElementById('month-name');
+    const eList = document.getElementById('event-list');
+    if(!grid) return;
 
-    grid.innerHTML = "";
+    mLabel.innerText = `${monthsMap[lang][curMonth]} ${curYear}`;
+    
+    let html = "";
     const daysArr = (lang === 'en') ? ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'] : ['र','सो','मं','बु','गु','शु','श'];
-    daysArr.forEach(d => grid.innerHTML += `<div class="day-header">${d}</div>`);
+    daysArr.forEach(d => html += `<div class="day-header">${d}</div>`);
 
-    const master = window.MasterEvents || { hi: {}, en: {} };
-    const eSource = master[lang] || {};
+    const firstDay = new Date(curYear, curMonth, 1).getDay();
+    const daysCount = new Date(curYear, curMonth + 1, 0).getDate();
+    const realToday = new Date().toISOString().split('T')[0];
 
-    const firstDay = new Date(y, m, 1).getDay();
-    const daysInMonth = new Date(y, m + 1, 0).getDate();
-    const todayStr = new Date().toISOString().split('T')[0];
+    for(let i=0; i<firstDay; i++) html += `<div class="empty-day"></div>`;
 
-    // Padding for empty days
-    for(let i=0; i<firstDay; i++) grid.innerHTML += `<div></div>`;
-
-    // Day Cells
-    for(let d=1; d<=daysInMonth; d++) {
-        const dateKey = `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-        const hasEvent = eSource[dateKey] ? 'has-event' : '';
-        const isToday = (todayStr === dateKey) ? 'today' : '';
-
-        grid.innerHTML += `<div class="calendar-day ${hasEvent} ${isToday}" onclick="viewDay('${dateKey}')">${d}</div>`;
+    for(let d=1; d<=daysCount; d++) {
+        const dKey = `${curYear}-${String(curMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const hasEv = events[dKey] ? 'has-event' : '';
+        const isTd = (realToday === dKey) ? 'today' : '';
+        html += `<div class="calendar-day ${hasEv} ${isTd}" onclick="viewDay('${dKey}')">${d}</div>`;
     }
-}
+    grid.innerHTML = html;
 
-// 🚩 SIDEBAR EVENTS LIST
-function updateEvents(lang) {
-    const mName = document.getElementById('month-name');
-    if(mName) mName.innerText = `${monthsMap[lang][curMonth]} ${curYear}`;
-
-    const list = document.getElementById('event-list');
-    if(!list) return;
-    list.innerHTML = "";
-
-    const master = window.MasterEvents || { hi: {}, en: {} };
-    const eSource = master[lang] || {};
-
-    let found = false;
-    const targetMonthPrefix = `${curYear}-${String(curMonth + 1).padStart(2, '0')}`;
-
-    // Filter and Sort Events for the current month
-    Object.keys(eSource).sort().forEach(k => {
-        if(k.startsWith(targetMonthPrefix)) {
-            found = true;
-            const dayNum = parseInt(k.split('-')[2]);
-            list.innerHTML += `<li><span class="gold-text"><strong>${dayNum}:</strong></span> ${eSource[k]}</li>`;
+    // Sidebar Events
+    let eventHtml = "";
+    const prefix = `${curYear}-${String(curMonth + 1).padStart(2, '0')}`;
+    Object.keys(events).sort().forEach(k => {
+        if(k.startsWith(prefix)) {
+            eventHtml += `<li><span class="gold-text">${k.split('-')[2]}:</span> ${events[k]}</li>`;
         }
     });
-
-    if(!found) {
-        list.innerHTML = `<li style="opacity:0.6;">${lang === 'en' ? 'No major festivals.' : 'कोई मुख्य त्योहार नहीं।'}</li>`;
-    }
+    if(eList) eList.innerHTML = eventHtml || `<li>No festivals this month</li>`;
 }
 
-// 🚩 INTERACTIVE: CLICK ON CALENDAR DAY
-window.viewDay = function(dateKey) {
+// 🚩 5. INTERACTIVE FUNCTIONS
+window.viewDay = (dateKey) => {
     const lang = localStorage.getItem('selectedLang') || 'hi';
-    updateDaily(dateKey, lang);
-    // Optional: Scroll to top to see daily view
+    renderDaily(lang, window.MasterEvents[lang] || {}, dateKey);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-// 🚩 NAVIGATION
-window.changeMonth = function(s) {
-    curMonth += s;
+window.changeMonth = (step) => {
+    curMonth += step;
     if(curMonth > 11) { curMonth=0; curYear++; }
     else if(curMonth < 0) { curMonth=11; curYear--; }
-    window.initPanchang();
+    initPanchang();
 };
 
-window.applyTranslations = function(lang) {
-    const trans = window.translations[lang];
-    if (!trans) return;
-
-    // Sabhi elements jinme data-i18n attribute hai, unhe update karega
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        if (trans[key]) {
-            if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
-                el.placeholder = trans[key];
-            } else {
-                el.innerHTML = trans[key];
-            }
-        }
+// 🚩 6. TRANSLATION HELPER (Fixes data-key issues)
+function applyMyTranslations(lang) {
+    if(!window.translations || !window.translations[lang]) return;
+    const t = window.translations[lang];
+    document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if(t[key]) el.innerText = t[key];
     });
+}
 
-    // Page Title Update
-    if(trans.title_panchang) document.title = trans.title_panchang;
-};
+// Launch!
+startAstroEngine();
