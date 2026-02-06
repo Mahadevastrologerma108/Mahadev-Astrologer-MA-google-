@@ -9,48 +9,55 @@
 
     <style>
         :root { --gold: #f5c542; --bg: #0a0a14; --card-bg: rgba(255, 255, 255, 0.05); }
-        body { background-color: var(--bg); color: #ffffff; font-family: 'Poppins', sans-serif; margin: 0; overflow-x: hidden; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: #ffffff; 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            padding: 0;
+            overflow-x: hidden; /* Screen se bahar kuch nahi jayega */
+        }
 
-        /* 🔱 HATHIAR: THE NUKE (Mobile Fix) */
-        @media (max-width: 991px) {
-            /* 1. Desktop ki extra menu ko gayab karo agar wo chipki hai */
-            .desktop-nav, .nav-links, .main-menu { 
-                display: none !important; 
-            }
+        /* 🔱 1. THE FIX: Drawer ko "Solid" aur "Fixed" karo */
+        #nav-drawer {
+            position: fixed !important;
+            top: 0 !important;
+            right: -280px !important; /* Forcefully hide */
+            width: 280px !important;
+            height: 100vh !important;
+            background: #11111b !important; /* Solid color (No transparency) */
+            z-index: 99999 !important; /* Sabse upar */
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            box-shadow: -10px 0 20px rgba(0,0,0,0.5);
+            display: block !important;
+            visibility: visible !important;
+        }
 
-            /* 2. Drawer ko screen ke bahar feko */
-            #nav-drawer {
-                position: fixed !important;
-                top: 0 !important;
-                right: -100% !important; /* Poora bahar */
-                width: 280px !important;
-                height: 100vh !important;
-                background: #0d0d1a !important;
-                z-index: 9999 !important;
-                display: block !important;
-                transition: 0.4s ease !important;
-                visibility: visible !important;
-            }
-
-            /* 3. Jab active ho tabhi andar aaye */
-            #nav-drawer.open-active {
-                right: 0 !important;
-            }
+        /* Jab drawer open ho */
+        #nav-drawer.open-active {
+            right: 0 !important;
         }
 
         #menu-overlay { 
             position: fixed !important; 
             top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.8); z-index: 9998; display: none; 
+            background: rgba(0,0,0,0.8); 
+            z-index: 99998 !important; 
+            display: none; 
         }
 
-        .main-content { padding-top: 110px; padding-bottom: 50px; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 15px; }
+        /* 2. Layout Structure (Footer aur Content ko dabne se bachaye) */
+        #header-placeholder { width: 100%; }
+        .main-content { padding-top: 100px; padding-bottom: 50px; width: 100%; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* 3. Panchang Look */
         .pan-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
         .p-card { background: var(--card-bg); border: 1px solid rgba(245, 197, 66, 0.1); padding: 18px 10px; border-radius: 12px; text-align: center; }
-        .p-card .label { display: block; font-size: 0.75rem; color: #888; text-transform: uppercase; margin-bottom: 5px; }
-        .p-card .val { color: var(--gold); margin: 0; font-size: 1rem; font-weight: 600; }
-        .gold-text { color: var(--gold); font-family: 'Cinzel', serif; }
+        .p-card .label { display: block; font-size: 0.7rem; color: #888; text-transform: uppercase; margin-bottom: 5px; }
+        .p-card .val { color: var(--gold); margin: 0; font-size: 0.95rem; font-weight: 600; }
+        .gold-text { color: var(--gold); font-family: 'Cinzel', serif; text-align: center; }
     </style>
 </head>
 <body>
@@ -59,7 +66,7 @@
 
     <main class="main-content">
         <div class="container">
-            <h1 class="gold-text" style="text-align:center; font-size:2.2rem; margin-bottom:40px;" data-key="p_title">Aaj Ka Panchang</h1>
+            <h1 class="gold-text" style="font-size:2rem; margin-bottom:30px;" data-key="p_title">Aaj Ka Panchang</h1>
             <div class="pan-grid">
                 <div class="p-card"><span class="label" data-key="p_tithi">Tithi</span><h4 id="pan-tithi" class="val">--</h4></div>
                 <div class="p-card"><span class="label" data-key="p_nak">Nakshatra</span><h4 id="pan-nak" class="val">--</h4></div>
@@ -81,32 +88,35 @@
     <script src="panchang.js"></script>
 
     <script>
-        const systemCheck = setInterval(() => {
+        // 🔱 JS Hammer: Drawer ko forcefully control karna
+        const systemInit = setInterval(() => {
             const drawer = document.getElementById('nav-drawer');
             const menuBtn = document.getElementById('mobile-menu');
             const overlay = document.getElementById('menu-overlay');
             const closeBtn = document.getElementById('close-menu');
 
             if (drawer && menuBtn) {
-                // Ensure hidden on start
+                // Ensure starting state is hidden
                 drawer.classList.remove('open-active');
-                
-                menuBtn.addEventListener('click', (e) => {
+                drawer.style.right = "-280px";
+
+                menuBtn.onclick = (e) => {
+                    e.preventDefault();
                     e.stopPropagation();
                     drawer.classList.add('open-active');
                     overlay.style.display = 'block';
-                });
+                };
 
-                const closeAll = () => {
+                const closeMenu = () => {
                     drawer.classList.remove('open-active');
                     overlay.style.display = 'none';
                 };
 
-                if(closeBtn) closeBtn.onclick = closeAll;
-                if(overlay) overlay.onclick = closeAll;
+                if(closeBtn) closeBtn.onclick = closeMenu;
+                if(overlay) overlay.onclick = closeMenu;
 
                 if(window.updateUI) window.updateUI();
-                clearInterval(systemCheck);
+                clearInterval(systemInit);
             }
         }, 100);
     </script>
