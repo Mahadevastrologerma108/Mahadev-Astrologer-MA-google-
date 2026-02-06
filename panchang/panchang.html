@@ -109,6 +109,44 @@
             <div class="p-card"><span class="label" data-key="p_muh">Abhijit</span><h4 id="pan-muh" class="val">--</h4></div>
             <div class="p-card rahu-kaal-card"><span class="label" data-key="p_rahu">Rahu Kaal</span><h4 id="pan-rahu" class="val">--</h4></div>
         </div>
+
+        <div class="chaughadia-section container">
+    <h2 class="p-title" data-key="pan_shubh_chaug">Shubh Chaughadia</h2>
+    
+    <div class="chaughadia-tabs">
+        <button class="c-tab active" onclick="showChaug('day')" data-key="pan_day_chaug">Day</button>
+        <button class="c-tab" onclick="showChaug('night')" data-key="pan_night_chaug">Night</button>
+    </div>
+
+    <div id="day-chaug" class="chaug-content">
+        <table class="chaug-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Chaughadia</th>
+                    <th>Nature</th>
+                </tr>
+            </thead>
+            <tbody id="day-chaug-body">
+                </tbody>
+        </table>
+    </div>
+
+    <div id="night-chaug" class="chaug-content" style="display:none;">
+        <table class="chaug-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Chaughadia</th>
+                    <th>Nature</th>
+                </tr>
+            </thead>
+            <tbody id="night-chaug-body">
+                </tbody>
+        </table>
+    </div>
+</div>
+        
     </div>
 
     <div id="footer-placeholder"></div>
