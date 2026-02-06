@@ -1,78 +1,96 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panchang 2026 | Mahadev Astrologer MA</title>
+    <title data-key="p_title">Aaj Ka Panchang | Mahadev Astrologer MA</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="panchang.css">
+
+    <style>
+        :root { --gold: #f5c542; --bg: #0a0a14; }
+        body { 
+            background: var(--bg); color: white; margin: 0; 
+            font-family: 'Poppins', sans-serif;
+            background-image: radial-gradient(circle at 50% -20%, #1a1a2e 0%, var(--bg) 80%);
+        }
+        .panchang-container { padding: 150px 20px 60px; max-width: 1200px; margin: 0 auto; }
+        .gold-text { color: var(--gold); font-family: 'Cinzel', serif; text-align: center; }
+        
+        .pan-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
+            margin-top: 30px;
+        }
+        .p-card { 
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid rgba(245, 197, 66, 0.15); 
+            padding: 20px; 
+            border-radius: 20px; 
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        .p-card span { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .p-card h4 { color: var(--gold); margin: 8px 0 0; font-size: 1.1rem; }
+    </style>
 </head>
 <body>
 
-    <div id="menu-overlay"></div>
-    <div id="nav-drawer">
-        <div id="close-menu">✕</div>
-        <nav>
-            <a href="../index.html">Home</a>
-            <a href="../horoscope.html">Horoscope</a>
-            <a href="panchang.html">Panchang</a>
-            <a href="../latest-guide/index.html">Latest Update</a>
-        </nav>
+<div id="header-placeholder"></div>
+
+<main class="panchang-container">
+    <h1 class="gold-text" id="display-date" data-key="panchang_head">Aaj Ka Panchang</h1>
+    <div style="width: 60px; height: 2px; background: var(--gold); margin: 20px auto;"></div>
+
+    <div class="pan-grid">
+        <div class="p-card"><span data-key="p_tithi">Tithi</span><h4 id="pan-tithi">--</h4></div>
+        <div class="p-card"><span data-key="p_nak">Nakshatra</span><h4 id="pan-nak">--</h4></div>
+        <div class="p-card"><span data-key="p_yoga">Yoga</span><h4 id="pan-yoga">--</h4></div>
+        <div class="p-card"><span data-key="p_karana">Karana</span><h4 id="pan-karana">--</h4></div>
+        <div class="p-card"><span data-key="p_paksha">Paksha</span><h4 id="pan-paksha">--</h4></div>
+        <div class="p-card" style="border-color: var(--gold);"><span data-key="p_sun">Sunrise/Set</span><h4 id="pan-sun">--</h4></div>
+        <div class="p-card" style="border-color: var(--gold);"><span data-key="p_moon">Moonrise</span><h4 id="pan-moon">--</h4></div>
+        <div class="p-card"><span data-key="p_muh">Abhijit</span><h4 id="pan-muh">--</h4></div>
+        <div class="p-card" style="border-color: #ff4d4d;"><span data-key="p_rahu">Rahu Kaal</span><h4 id="pan-rahu">--</h4></div>
     </div>
+</main>
 
-    <div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
 
-    <main class="main-content">
-        <div class="container">
-            <h1 class="gold-text">Aaj Ka Panchang</h1>
+<script src="/assets/js/translations.js"></script>
+<script src="/assets/js/layout.js"></script>
+<script src="panchang.js"></script>
+
+<script>
+    const waitForHeader = setInterval(() => {
+        const menuBtn = document.getElementById('mobile-menu');
+        const drawer = document.getElementById('nav-drawer');
+        const overlay = document.getElementById('menu-overlay');
+        const closeBtn = document.getElementById('close-menu');
+
+        if (menuBtn && drawer) {
+            console.log("Header Loaded: Menu Ready 🔱");
             
-            <div class="pan-grid">
-                <div class="p-card"><span>Tithi</span><h4 id="pan-tithi">--</h4></div>
-                <div class="p-card"><span>Nakshatra</span><h4 id="pan-nak">--</h4></div>
-                <div class="p-card"><span>Yoga</span><h4 id="pan-yoga">--</h4></div>
-                <div class="p-card"><span>Karana</span><h4 id="pan-karana">--</h4></div>
-                <div class="p-card"><span>Paksha</span><h4 id="pan-paksha">--</h4></div>
-                <div class="p-card gold-border"><span>Sunrise/Set</span><h4 id="pan-sun">--</h4></div>
-                <div class="p-card gold-border"><span>Moonrise</span><h4 id="pan-moon">--</h4></div>
-                <div class="p-card"><span>Abhijit</span><h4 id="pan-muh">--</h4></div>
-                <div class="p-card rahu-border"><span>Rahu Kaal</span><h4 id="pan-rahu">--</h4></div>
-            </div>
-        </div>
-    </main>
+            menuBtn.onclick = () => {
+                drawer.style.right = '0';
+                overlay.style.display = 'block';
+            };
 
-    <div id="footer-placeholder"></div>
+            const hide = () => {
+                drawer.style.right = '-280px';
+                overlay.style.display = 'none';
+            };
 
-    <script src="../assets/js/layout.js"></script>
-    
-    <script>
-        function setupMenu() {
-            const menuBtn = document.getElementById('mobile-menu');
-            const closeBtn = document.getElementById('close-menu');
-            const drawer = document.getElementById('nav-drawer');
-            const overlay = document.getElementById('menu-overlay');
+            if (closeBtn) closeBtn.onclick = hide;
+            if (overlay) overlay.onclick = hide;
 
-            if (menuBtn) {
-                menuBtn.onclick = () => {
-                    drawer.classList.add('active');
-                    overlay.classList.add('active');
-                };
-                
-                const closeAction = () => {
-                    drawer.classList.remove('active');
-                    overlay.classList.remove('active');
-                };
-
-                if (closeBtn) closeBtn.onclick = closeAction;
-                if (overlay) overlay.onclick = closeAction;
-                
-                console.log("Menu Connected!");
-            } else {
-                // Agar abhi header nahi aaya, 100ms baad fir check karo
-                setTimeout(setupMenu, 100);
-            }
+            clearInterval(waitForHeader); // Kaam ho gaya, ab loop band karo
         }
-        setupMenu();
-    </script>
+    }, 200); // Har 0.2 second mein check karega
+</script>
+
 </body>
 </html>
