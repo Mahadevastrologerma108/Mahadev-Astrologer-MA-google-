@@ -7,7 +7,6 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="panchang.css">
 </head>
@@ -18,16 +17,8 @@
     <div class="container">
         <h1 class="p-title" data-key="pan_aaj_ka">Aaj Ka Panchang</h1>
 
-        <div class="calendar-container">
-            <div class="calendar-header">
-                <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
-                <h2 id="monthDisplay">Month Year</h2>
-                <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
-            </div>
-            <div class="calendar-weekdays">
-                <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
-            </div>
-            <div class="calendar-days" id="calendarDays"></div>
+        <div class="event-ribbon" id="today-event-ribbon">
+            <i class="fas fa-om"></i> <span id="ribbon-text" data-key="pan_ribbon_loading">Shubh din ki shubhkamnayein...</span>
         </div>
 
         <div class="pan-grid">
@@ -36,32 +27,46 @@
             <div class="p-card"><span class="label" data-key="pan_yoga">Yoga</span><h4 id="pan-yoga" class="val">--</h4></div>
             <div class="p-card"><span class="label" data-key="pan_karana">Karana</span><h4 id="pan-karana" class="val">--</h4></div>
             <div class="p-card"><span class="label" data-key="pan_paksha">Paksha</span><h4 id="pan-paksha" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_sun">Sunrise / Set</span><h4 id="pan-sun" class="val">--</h4></div>
+            <div class="p-card"><span class="label" data-key="pan_sun">Sunrise/Set</span><h4 id="pan-sun" class="val">--</h4></div>
             <div class="p-card"><span class="label" data-key="pan_moon">Moonrise</span><h4 id="pan-moon" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_abhijit">Abhijit</span><h4 id="pan-muh" class="val">--</h4></div>
+            <div class="p-card"><span class="label" data-key="pan_muh">Abhijit</span><h4 id="pan-muh" class="val">--</h4></div>
             <div class="p-card rahu-kaal-card"><span class="label" data-key="pan_rahu">Rahu Kaal</span><h4 id="pan-rahu" class="val">--</h4></div>
         </div>
 
         <div class="chaughadia-section">
             <h2 class="p-title" data-key="pan_shubh_chaug">Shubh Chaughadia</h2>
             <div class="chaughadia-tabs">
-                <button class="c-tab active" id="btn-day" onclick="showChaug('day')" data-key="pan_day_chaug">Day</button>
-                <button class="c-tab" id="btn-night" onclick="showChaug('night')" data-key="pan_night_chaug">Night</button>
+                <button class="c-tab active day-btn" id="btn-day" onclick="showChaug('day')">
+                    <i class="fas fa-sun"></i> <span data-key="pan_day">Day</span>
+                </button>
+                <button class="c-tab night-btn" id="btn-night" onclick="showChaug('night')">
+                    <i class="fas fa-moon"></i> <span data-key="pan_night">Night</span>
+                </button>
             </div>
-
             <div id="day-chaug" class="chaug-content">
-                <table class="chaug-table">
-                    <thead><tr><th>Time</th><th>Chaughadia</th><th>Nature</th></tr></thead>
-                    <tbody id="day-chaug-body"></tbody>
-                </table>
+                <table class="chaug-table"><thead><tr><th>Time</th><th>Chaughadia</th><th>Nature</th></tr></thead><tbody id="day-chaug-body"></tbody></table>
             </div>
-
             <div id="night-chaug" class="chaug-content" style="display:none;">
-                <table class="chaug-table">
-                    <thead><tr><th>Time</th><th>Chaughadia</th><th>Nature</th></tr></thead>
-                    <tbody id="night-chaug-body"></tbody>
-                </table>
+                <table class="chaug-table"><thead><tr><th>Time</th><th>Chaughadia</th><th>Nature</th></tr></thead><tbody id="night-chaug-body"></tbody></table>
             </div>
+        </div>
+
+        <div class="calendar-container">
+            <p class="calendar-hint" data-key="pan_cal_hint">Change date to view Panchang 👇</p>
+            <div class="calendar-header">
+                <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                <h2 id="monthDisplay">--</h2>
+                <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="calendar-weekdays">
+                <div data-key="day_sun">Sun</div><div data-key="day_mon">Mon</div><div data-key="day_tue">Tue</div><div data-key="day_wed">Wed</div><div data-key="day_thu">Thu</div><div data-key="day_fri">Fri</div><div data-key="day_sat">Sat</div>
+            </div>
+            <div class="calendar-days" id="calendarDays"></div>
+        </div>
+
+        <div class="event-section" id="detailed-event-area">
+            <h2 class="p-title" data-key="pan_events_title">Detailed Events</h2>
+            <div id="event-display-area"></div>
         </div>
     </div>
 
