@@ -4,114 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panchang 2026 | Mahadev Astrologer MA</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { --gold: #f5c542; --bg: #0a0a14; --card-bg: rgba(255, 255, 255, 0.05); }
-        body { background-color: var(--bg); color: #ffffff; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
-
-        /* 🔱 THE PERFECT DRAWER: Mobile par side space ke saath */
-        #nav-drawer {
-            display: none !important;
-            position: fixed !important;
-            top: 0 !important;
-            right: 0 !important;
-            width: 280px !important; /* Fix Width (Not full screen) */
-            max-width: 85% !important; /* Chote phones ke liye safeguard */
-            height: 100vh !important;
-            background: #11111b !important;
-            z-index: 100000 !important;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.9);
-            border-left: 1px solid rgba(245, 197, 66, 0.2);
+        /* Sirf Panchang ke Cards ki styling */
+        .pan-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 15px; 
+            padding: 20px; 
+            max-width: 800px; 
+            margin: 0 auto 40px; 
         }
-
-        #nav-drawer.prakat-ho {
-            display: block !important;
-            animation: slideIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        .p-card { 
+            background: rgba(245, 197, 66, 0.05); 
+            border: 1px solid var(--gold); 
+            border-radius: 15px; 
+            padding: 20px 10px; 
+            text-align: center; 
+            color: var(--gold);
+            transition: 0.3s;
         }
-
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+        .p-card:hover { 
+            background: rgba(245, 197, 66, 0.15); 
+            transform: translateY(-5px); 
         }
-
-        /* Overlay jo bachi hui side ki jagah ko cover karega */
-        #menu-overlay { 
-            position: fixed !important; 
-            top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.7); 
-            backdrop-filter: blur(3px); /* Premium Glass Effect */
-            z-index: 99999 !important; 
-            display: none; 
+        .p-card .label { 
+            display: block; 
+            font-size: 11px; 
+            color: #888; 
+            text-transform: uppercase; 
+            margin-bottom: 8px; 
+            font-weight: bold;
         }
+        .p-card .val { 
+            margin: 0; 
+            font-family: 'Cinzel'; 
+            font-size: 14px; 
+            font-weight: bold;
+        }
+        .p-title { 
+            text-align: center; 
+            color: var(--gold); 
+            font-family: 'Cinzel'; 
+            margin: 100px auto 20px; /* Horoscope jaisa margin */
+        }
+        .rahu-kaal-card { border-color: #ff4d4d; }
+        .rahu-kaal-card .val { color: #ff4d4d; }
 
-        /* Layout Fixes */
-        .main-content { padding-top: 100px; padding-bottom: 50px; min-height: 80vh; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 15px; }
-        .pan-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .p-card { background: var(--card-bg); border: 1px solid rgba(245, 197, 66, 0.1); padding: 15px 5px; border-radius: 12px; text-align: center; }
-        .p-card .label { display: block; font-size: 0.65rem; color: #888; text-transform: uppercase; margin-bottom: 4px; }
-        .p-card .val { color: var(--gold); margin: 0; font-size: 0.9rem; font-weight: 600; }
-        .gold-text { color: var(--gold); font-family: 'Cinzel', serif; text-align: center; }
+        /* Mobile Layout */
+        @media (max-width: 768px) { 
+            .pan-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } 
+        }
     </style>
 </head>
-<body>
+<body class="panchang-body">
 
     <div id="header-placeholder"></div>
 
-    <main class="main-content">
-        <div class="container">
-            <h1 class="gold-text" style="font-size:1.8rem; margin-bottom:25px;" data-key="p_title">Aaj Ka Panchang</h1>
-            <div class="pan-grid">
-                <div class="p-card"><span class="label" data-key="p_tithi">Tithi</span><h4 id="pan-tithi" class="val">--</h4></div>
-                <div class="p-card"><span class="label" data-key="p_nak">Nakshatra</span><h4 id="pan-nak" class="val">--</h4></div>
-                <div class="p-card"><span class="label" data-key="p_yoga">Yoga</span><h4 id="pan-yoga" class="val">--</h4></div>
-                <div class="p-card"><span class="label" data-key="p_karana">Karana</span><h4 id="pan-karana" class="val">--</h4></div>
-                <div class="p-card"><span class="label" data-key="p_paksha">Paksha</span><h4 id="pan-paksha" class="val">--</h4></div>
-                <div class="p-card highlight" style="border-color: rgba(245, 197, 66, 0.3);"><span class="label" data-key="p_sun">Sunrise / Set</span><h4 id="pan-sun" class="val">--</h4></div>
-                <div class="p-card highlight" style="border-color: rgba(245, 197, 66, 0.3);"><span class="label" data-key="p_moon">Moonrise</span><h4 id="pan-moon" class="val">--</h4></div>
-                <div class="p-card"><span class="label" data-key="p_muh">Abhijit</span><h4 id="pan-muh" class="val">--</h4></div>
-                <div class="p-card rahu-kaal" style="border-color:#ff4d4d !important;"><span class="label" data-key="p_rahu">Rahu Kaal</span><h4 id="pan-rahu" class="val" style="color:#ff4d4d !important;">--</h4></div>
-            </div>
-        </div>
-    </main>
+    <h1 class="p-title" data-key="p_title">Aaj Ka Panchang</h1>
+
+    <div class="pan-grid">
+        <div class="p-card"><span class="label" data-key="p_tithi">Tithi</span><h4 id="pan-tithi" class="val">--</h4></div>
+        <div class="p-card"><span class="label" data-key="p_nak">Nakshatra</span><h4 id="pan-nak" class="val">--</h4></div>
+        <div class="p-card"><span class="label" data-key="p_yoga">Yoga</span><h4 id="pan-yoga" class="val">--</h4></div>
+        <div class="p-card"><span class="label" data-key="p_karana">Karana</span><h4 id="pan-karana" class="val">--</h4></div>
+        <div class="p-card"><span class="label" data-key="p_paksha">Paksha</span><h4 id="pan-paksha" class="val">--</h4></div>
+        <div class="p-card" style="border-width: 2px;"><span class="label" data-key="p_sun">Sunrise / Set</span><h4 id="pan-sun" class="val">--</h4></div>
+        <div class="p-card" style="border-width: 2px;"><span class="label" data-key="p_moon">Moonrise</span><h4 id="pan-moon" class="val">--</h4></div>
+        <div class="p-card"><span class="label" data-key="p_muh">Abhijit</span><h4 id="pan-muh" class="val">--</h4></div>
+        <div class="p-card rahu-kaal-card"><span class="label" data-key="p_rahu">Rahu Kaal</span><h4 id="pan-rahu" class="val">--</h4></div>
+    </div>
 
     <div id="footer-placeholder"></div>
 
-    <script src="../assets/js/translations.js"></script>
-    <script src="../assets/js/layout.js"></script>
+    <script src="/assets/js/translations.js"></script>
+    <script src="/assets/js/layout.js"></script>
     <script src="panchang.js"></script>
 
-    <script>
-        const finalCheck = setInterval(() => {
-            const drawer = document.getElementById('nav-drawer');
-            const menuBtn = document.getElementById('mobile-menu');
-            const overlay = document.getElementById('menu-overlay');
-            const closeBtn = document.getElementById('close-menu');
-
-            if (drawer && menuBtn) {
-                drawer.style.display = "none"; 
-
-                menuBtn.onclick = (e) => {
-                    e.preventDefault();
-                    drawer.classList.add('prakat-ho');
-                    overlay.style.display = 'block';
-                };
-
-                const closeSafe = () => {
-                    drawer.classList.remove('prakat-ho');
-                    overlay.style.display = 'none';
-                    setTimeout(() => { if(!drawer.classList.contains('prakat-ho')) drawer.style.display = "none"; }, 300);
-                };
-
-                if(closeBtn) closeBtn.onclick = closeSafe;
-                if(overlay) overlay.onclick = closeSafe;
-
-                if(window.updateUI) window.updateUI();
-                clearInterval(finalCheck);
-            }
-        }, 100);
-    </script>
 </body>
 </html>
