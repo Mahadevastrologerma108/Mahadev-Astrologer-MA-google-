@@ -1,37 +1,50 @@
 :root { --gold: #f5c542; }
-body { background: #0a0a14; color: #fff; font-family: 'Poppins', sans-serif; margin: 0; }
-.main-content { padding-top: 110px; min-height: 80vh; }
-.container { max-width: 1100px; margin: 0 auto; padding: 0 15px; }
-.gold-text { color: var(--gold); }
-.main-title { font-family: 'Cinzel'; text-align: center; }
 
-/* 🚩 2 Cards Grid */
-.panchang-grid {
+body { 
+    background-color: #0a0a14; 
+    color: #ffffff; 
+    font-family: 'Poppins', sans-serif; 
+    margin: 0; 
+}
+
+.main-content { 
+    padding-top: 110px; /* Header height 85px + gap */
+    min-height: 80vh; 
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+
+.gold-text { color: var(--gold); }
+
+/* 🚩 2 Cards Grid Structure */
+.pan-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
 }
+
 .p-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(245,197,66,0.15);
-    padding: 15px; text-align: center; border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(245, 197, 66, 0.15);
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
 }
+
 .p-card span { font-size: 0.75rem; color: #aaa; text-transform: uppercase; }
-.p-card h4 { color: var(--gold); margin: 5px 0 0; }
+.p-card h4 { color: var(--gold); margin: 5px 0 0; font-size: 1rem; }
+
 .gold-border { border-color: var(--gold); }
 .rahu-border { border-color: #ff4d4d; }
 
-/* --- 🚩 Hamburger Force Fix --- */
-#nav-drawer {
-    right: -280px !important; /* layout.js ke according default hide */
-    position: fixed;
-    transition: 0.4s ease-in-out;
+.ch-section { margin-top: 35px; }
+.ch-box { 
+    background: rgba(0,0,0,0.3); 
+    padding: 15px; 
+    border-radius: 8px; 
+    border-left: 3px solid var(--gold); 
 }
-
-#menu-overlay {
-    display: none;
-    background: rgba(0,0,0,0.8);
-}
-
-.ch-section { margin-top: 30px; }
-.ch-box { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; border-left: 3px solid var(--gold); }
