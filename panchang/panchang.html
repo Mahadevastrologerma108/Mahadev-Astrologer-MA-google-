@@ -11,43 +11,48 @@
         :root { --gold: #f5c542; --bg: #0a0a14; --card-bg: rgba(255, 255, 255, 0.05); }
         body { background-color: var(--bg); color: #ffffff; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
 
-        /* 🔱 THE GHOST MODE: Default state mein drawer ko khatam kar do */
+        /* 🔱 THE PERFECT DRAWER: Mobile par side space ke saath */
         #nav-drawer {
-            display: none !important; /* Shuruat mein bilkul gayab */
+            display: none !important;
             position: fixed !important;
             top: 0 !important;
             right: 0 !important;
-            width: 280px !important;
+            width: 280px !important; /* Fix Width (Not full screen) */
+            max-width: 85% !important; /* Chote phones ke liye safeguard */
             height: 100vh !important;
             background: #11111b !important;
             z-index: 100000 !important;
-            box-shadow: -10px 0 20px rgba(0,0,0,0.8);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.9);
+            border-left: 1px solid rgba(245, 197, 66, 0.2);
         }
 
-        /* Sirf click hone par hi 'flex' ya 'block' hoga */
         #nav-drawer.prakat-ho {
             display: block !important;
-            animation: slideIn 0.3s ease-out;
+            animation: slideIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         @keyframes slideIn {
-            from { transform: translateX(100%); }
-            to { transform: translateX(0); }
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
+        /* Overlay jo bachi hui side ki jagah ko cover karega */
         #menu-overlay { 
             position: fixed !important; 
             top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.8); z-index: 99999 !important; 
+            background: rgba(0,0,0,0.7); 
+            backdrop-filter: blur(3px); /* Premium Glass Effect */
+            z-index: 99999 !important; 
             display: none; 
         }
 
-        .main-content { padding-top: 100px; padding-bottom: 50px; width: 100%; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .pan-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .p-card { background: var(--card-bg); border: 1px solid rgba(245, 197, 66, 0.1); padding: 18px 10px; border-radius: 12px; text-align: center; }
-        .p-card .label { display: block; font-size: 0.7rem; color: #888; text-transform: uppercase; margin-bottom: 5px; }
-        .p-card .val { color: var(--gold); margin: 0; font-size: 0.95rem; font-weight: 600; }
+        /* Layout Fixes */
+        .main-content { padding-top: 100px; padding-bottom: 50px; min-height: 80vh; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 15px; }
+        .pan-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .p-card { background: var(--card-bg); border: 1px solid rgba(245, 197, 66, 0.1); padding: 15px 5px; border-radius: 12px; text-align: center; }
+        .p-card .label { display: block; font-size: 0.65rem; color: #888; text-transform: uppercase; margin-bottom: 4px; }
+        .p-card .val { color: var(--gold); margin: 0; font-size: 0.9rem; font-weight: 600; }
         .gold-text { color: var(--gold); font-family: 'Cinzel', serif; text-align: center; }
     </style>
 </head>
@@ -57,15 +62,15 @@
 
     <main class="main-content">
         <div class="container">
-            <h1 class="gold-text" style="font-size:2rem; margin-bottom:30px;" data-key="p_title">Aaj Ka Panchang</h1>
+            <h1 class="gold-text" style="font-size:1.8rem; margin-bottom:25px;" data-key="p_title">Aaj Ka Panchang</h1>
             <div class="pan-grid">
                 <div class="p-card"><span class="label" data-key="p_tithi">Tithi</span><h4 id="pan-tithi" class="val">--</h4></div>
                 <div class="p-card"><span class="label" data-key="p_nak">Nakshatra</span><h4 id="pan-nak" class="val">--</h4></div>
                 <div class="p-card"><span class="label" data-key="p_yoga">Yoga</span><h4 id="pan-yoga" class="val">--</h4></div>
                 <div class="p-card"><span class="label" data-key="p_karana">Karana</span><h4 id="pan-karana" class="val">--</h4></div>
                 <div class="p-card"><span class="label" data-key="p_paksha">Paksha</span><h4 id="pan-paksha" class="val">--</h4></div>
-                <div class="p-card highlight"><span class="label" data-key="p_sun">Sunrise / Set</span><h4 id="pan-sun" class="val">--</h4></div>
-                <div class="p-card highlight"><span class="label" data-key="p_moon">Moonrise</span><h4 id="pan-moon" class="val">--</h4></div>
+                <div class="p-card highlight" style="border-color: rgba(245, 197, 66, 0.3);"><span class="label" data-key="p_sun">Sunrise / Set</span><h4 id="pan-sun" class="val">--</h4></div>
+                <div class="p-card highlight" style="border-color: rgba(245, 197, 66, 0.3);"><span class="label" data-key="p_moon">Moonrise</span><h4 id="pan-moon" class="val">--</h4></div>
                 <div class="p-card"><span class="label" data-key="p_muh">Abhijit</span><h4 id="pan-muh" class="val">--</h4></div>
                 <div class="p-card rahu-kaal" style="border-color:#ff4d4d !important;"><span class="label" data-key="p_rahu">Rahu Kaal</span><h4 id="pan-rahu" class="val" style="color:#ff4d4d !important;">--</h4></div>
             </div>
@@ -79,37 +84,32 @@
     <script src="panchang.js"></script>
 
     <script>
-        // 🔱 THE MAGIC SCRIPT
-        const ghostControl = setInterval(() => {
+        const finalCheck = setInterval(() => {
             const drawer = document.getElementById('nav-drawer');
             const menuBtn = document.getElementById('mobile-menu');
             const overlay = document.getElementById('menu-overlay');
             const closeBtn = document.getElementById('close-menu');
 
             if (drawer && menuBtn) {
-                // Force initial hidden state
-                drawer.classList.remove('prakat-ho');
-                drawer.style.display = "none";
+                drawer.style.display = "none"; 
 
                 menuBtn.onclick = (e) => {
                     e.preventDefault();
-                    e.stopPropagation();
                     drawer.classList.add('prakat-ho');
                     overlay.style.display = 'block';
                 };
 
-                const vanish = () => {
+                const closeSafe = () => {
                     drawer.classList.remove('prakat-ho');
                     overlay.style.display = 'none';
-                    // 0.3s wait for animation to finish then hide
                     setTimeout(() => { if(!drawer.classList.contains('prakat-ho')) drawer.style.display = "none"; }, 300);
                 };
 
-                if(closeBtn) closeBtn.onclick = vanish;
-                if(overlay) overlay.onclick = vanish;
+                if(closeBtn) closeBtn.onclick = closeSafe;
+                if(overlay) overlay.onclick = closeSafe;
 
                 if(window.updateUI) window.updateUI();
-                clearInterval(ghostControl);
+                clearInterval(finalCheck);
             }
         }, 100);
     </script>
