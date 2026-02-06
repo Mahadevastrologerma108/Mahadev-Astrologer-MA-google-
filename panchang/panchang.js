@@ -7,13 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentDate = new Date();
     let selectedDate = new Date();
 
-    // 🔱 1. Calendar Generate Karne ka Function
+    // 🔱 1. Calendar Generate Function
     function renderCalendar() {
         calendarDays.innerHTML = '';
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth();
 
-        // Month and Year Display set karein
         const monthNames = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"];
         monthDisplay.innerText = `${monthNames[month]} ${year}`;
@@ -21,45 +20,38 @@ document.addEventListener('DOMContentLoaded', () => {
         const firstDayOfMonth = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-        // Pichle mahine ke khaali din (Padding)
         for (let i = 0; i < firstDayOfMonth; i++) {
-            const emptyDiv = document.createElement('div');
-            calendarDays.appendChild(emptyDiv);
+            calendarDays.appendChild(document.createElement('div'));
         }
 
-        // Mahine ke asli din
         for (let day = 1; day <= daysInMonth; day++) {
             const dayElement = document.createElement('div');
             dayElement.classList.add('calendar-day');
             dayElement.innerText = day;
 
-            // Today highlight
             const today = new Date();
             if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
                 dayElement.classList.add('today');
             }
 
-            // Selected Day highlight
             if (day === selectedDate.getDate() && month === selectedDate.getMonth() && year === selectedDate.getFullYear()) {
                 dayElement.classList.add('active');
             }
 
-            // Click Event: Jab date par click ho
             dayElement.onclick = () => {
                 selectedDate = new Date(year, month, day);
                 updatePanchangData(selectedDate);
-                renderCalendar(); // UI Refresh highlight ke liye
+                renderCalendar(); 
             };
-
             calendarDays.appendChild(dayElement);
         }
     }
 
-    // 🔱 2. Panchang Data Update Function (Dummy Logic abhi ke liye)
-    function updatePanchangData(date) {
+    // 🔱 2. Panchang & Chaughadia Data Update
+    window.updatePanchangData = function(date) {
         console.log("Fetching data for:", date.toDateString());
         
-        // Yahan tum API se data fetch karoge. Abhi main placeholder dikha raha hoon
+        // --- Basic Panchang Update ---
         document.getElementById('pan-tithi').innerText = "Shukla Navami";
         document.getElementById('pan-nak').innerText = "Rohini";
         document.getElementById('pan-yoga').innerText = "Shubha";
@@ -70,20 +62,39 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('pan-muh').innerText = "12:10 PM - 12:55 PM";
         document.getElementById('pan-rahu').innerText = "10:30 AM - 12:00 PM";
 
-        // Translation update trigger agar language switch hui ho
+        // --- Chaughadia Table Update (Sample Data) ---
+        const dayBody = document.getElementById('day-chaug-body');
+        const nightBody = document.getElementById('night-chaug-body');
+
+        // Day Data
+        dayBody.innerHTML = `
+            <tr><td>07:12 - 08:35</td><td>Shubh</td><td class="nature-shubh">Auspicious</td></tr>
+            <tr><td>08:35 - 09:58</td><td>Rog</td><td class="nature-ashubh">Inauspicious</td></tr>
+            <tr><td>09:58 - 11:21</td><td>Udhyog</td><td class="nature-ashubh">Bad</td></tr>
+        `;
+
+        // Night Data
+        nightBody.innerHTML = `
+            <tr><td>06:15 - 07:52</td><td>Amrit</td><td class="nature-shubh">Very Good</td></tr>
+            <tr><td>07:52 - 09:29</td><td>Chal</td><td class="nature-chal">Neutral</td></tr>
+        `;
+
         if(window.updateUI) window.updateUI();
     }
 
-    // 🔱 3. Month Navigation
-    prevMonthBtn.onclick = () => {
-        currentDate.setMonth(currentDate.getMonth() - 1);
-        renderCalendar();
-    };
+    // 🔱 3. Chaughadia Tab Switcher
+    window.showChaug = function(type) {
+        document.querySelectorAll('.chaug-content').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.c-tab').forEach(el => el.classList.remove('active'));
+        
+        document.getElementById(type + '-chaug').style.display = 'block';
+        if(type === 'day') document.getElementById('btn-day').classList.add('active');
+        else document.getElementById('btn-night').classList.add('active');
+    }
 
-    nextMonthBtn.onclick = () => {
-        currentDate.setMonth(currentDate.getMonth() + 1);
-        renderCalendar();
-    };
+    // 🔱 4. Month Navigation
+    prevMonthBtn.onclick = () => { currentDate.setMonth(currentDate.getMonth() - 1); renderCalendar(); };
+    nextMonthBtn.onclick = () => { currentDate.setMonth(currentDate.getMonth() + 1); renderCalendar(); };
 
     // Initial Load
     renderCalendar();
