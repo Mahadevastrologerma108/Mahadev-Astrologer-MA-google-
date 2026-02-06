@@ -11,45 +11,46 @@
         :root { --gold: #f5c542; --bg: #0a0a14; --card-bg: rgba(255, 255, 255, 0.05); }
         body { background-color: var(--bg); color: #ffffff; font-family: 'Poppins', sans-serif; margin: 0; overflow-x: hidden; }
 
-        /* 🔱 HATHIAR 1: CSS SPECIFICITY HAMMER */
-        /* Ye kisi bhi header ke default style ko override karke menu ko screen se bahar dhakelta hai */
-        #nav-drawer { 
-            position: fixed !important; 
-            right: -300px !important; /* Forcefully pushed out */
-            top: 0 !important;
-            width: 280px !important;
-            height: 100% !important;
-            z-index: 9999 !important; /* Sabse upar */
-            background: #0d0d1a !important;
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            display: block !important;
-            visibility: visible !important;
-        }
+        /* 🔱 HATHIAR: THE NUKE (Mobile Fix) */
+        @media (max-width: 991px) {
+            /* 1. Desktop ki extra menu ko gayab karo agar wo chipki hai */
+            .desktop-nav, .nav-links, .main-menu { 
+                display: none !important; 
+            }
 
-        /* Jab drawer active ho */
-        #nav-drawer.open-active {
-            right: 0 !important;
+            /* 2. Drawer ko screen ke bahar feko */
+            #nav-drawer {
+                position: fixed !important;
+                top: 0 !important;
+                right: -100% !important; /* Poora bahar */
+                width: 280px !important;
+                height: 100vh !important;
+                background: #0d0d1a !important;
+                z-index: 9999 !important;
+                display: block !important;
+                transition: 0.4s ease !important;
+                visibility: visible !important;
+            }
+
+            /* 3. Jab active ho tabhi andar aaye */
+            #nav-drawer.open-active {
+                right: 0 !important;
+            }
         }
 
         #menu-overlay { 
             position: fixed !important; 
-            top: 0 !important; 
-            left: 0 !important; 
-            width: 100% !important; 
-            height: 100% !important; 
-            background: rgba(0,0,0,0.8) !important; 
-            z-index: 9998 !important; 
-            display: none; 
+            top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.8); z-index: 9998; display: none; 
         }
 
-        /* 2-Card Grid Layout */
         .main-content { padding-top: 110px; padding-bottom: 50px; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 15px; }
         .pan-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
         .p-card { background: var(--card-bg); border: 1px solid rgba(245, 197, 66, 0.1); padding: 18px 10px; border-radius: 12px; text-align: center; }
         .p-card .label { display: block; font-size: 0.75rem; color: #888; text-transform: uppercase; margin-bottom: 5px; }
         .p-card .val { color: var(--gold); margin: 0; font-size: 1rem; font-weight: 600; }
-        .gold-text { color: var(--gold); font-family: 'Cinzel'; }
+        .gold-text { color: var(--gold); font-family: 'Cinzel', serif; }
     </style>
 </head>
 <body>
@@ -58,8 +59,7 @@
 
     <main class="main-content">
         <div class="container">
-            <h1 class="gold-text" style="text-align:center; font-size:2rem; margin-bottom:30px;" data-key="p_title">Aaj Ka Panchang</h1>
-            
+            <h1 class="gold-text" style="text-align:center; font-size:2.2rem; margin-bottom:40px;" data-key="p_title">Aaj Ka Panchang</h1>
             <div class="pan-grid">
                 <div class="p-card"><span class="label" data-key="p_tithi">Tithi</span><h4 id="pan-tithi" class="val">--</h4></div>
                 <div class="p-card"><span class="label" data-key="p_nak">Nakshatra</span><h4 id="pan-nak" class="val">--</h4></div>
@@ -81,40 +81,32 @@
     <script src="panchang.js"></script>
 
     <script>
-        // 🔱 HATHIAR 2: JAVASCRIPT FORCE OVERRIDE
-        const forceSystem = setInterval(() => {
+        const systemCheck = setInterval(() => {
             const drawer = document.getElementById('nav-drawer');
             const menuBtn = document.getElementById('mobile-menu');
             const overlay = document.getElementById('menu-overlay');
             const closeBtn = document.getElementById('close-menu');
 
             if (drawer && menuBtn) {
-                console.log("System Ready: Applying Force...");
-
-                // Initial Hide: Page load hote hi use bahar phenko
+                // Ensure hidden on start
                 drawer.classList.remove('open-active');
-                drawer.style.right = "-300px";
-
-                // Click to Open
-                menuBtn.onclick = (e) => {
-                    e.preventDefault();
+                
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     drawer.classList.add('open-active');
                     overlay.style.display = 'block';
-                };
+                });
 
-                // Function to Close
-                const forceClose = () => {
+                const closeAll = () => {
                     drawer.classList.remove('open-active');
                     overlay.style.display = 'none';
                 };
 
-                if(closeBtn) closeBtn.onclick = forceClose;
-                if(overlay) overlay.onclick = forceClose;
+                if(closeBtn) closeBtn.onclick = closeAll;
+                if(overlay) overlay.onclick = closeAll;
 
-                // Translation Trigger
                 if(window.updateUI) window.updateUI();
-
-                clearInterval(forceSystem);
+                clearInterval(systemCheck);
             }
         }, 100);
     </script>
