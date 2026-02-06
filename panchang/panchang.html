@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-key="title_panchang">Panchang 2026 | Mahadev Astrologer</title>
-    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="panchang.css">
 </head>
 <body class="panchang-page">
 
@@ -34,15 +35,15 @@
 
         <section class="details-grid">
             <div class="info-card sun-moon-card">
-                <div class="info-item">
-                    <img src="../assets/images/sunrise.png" alt="Sun">
+                <div class="info-item" style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                    <img src="../assets/images/sunrise.png" alt="Sun" width="40">
                     <div>
                         <p data-key="pan_sun">Sunrise / Sunset</p>
                         <strong id="val-sun-time">--:-- / --:--</strong>
                     </div>
                 </div>
-                <div class="info-item">
-                    <img src="../assets/images/moon.png" alt="Moon">
+                <div class="info-item" style="display: flex; align-items: center; gap: 15px;">
+                    <img src="../assets/images/moon.png" alt="Moon" width="40">
                     <div>
                         <p data-key="pan_moon">Moonrise</p>
                         <strong id="val-moon-time">--:--</strong>
@@ -53,38 +54,34 @@
             <div class="info-card main-astro-card">
                 <div class="astro-row">
                     <span data-key="pan_tithi">Tithi</span>
-                    <span class="dot-line"></span>
                     <strong id="val-tithi">---</strong>
                 </div>
                 <div class="astro-row">
                     <span data-key="pan_paksha">Paksha</span>
-                    <span class="dot-line"></span>
                     <strong id="val-paksha">---</strong>
                 </div>
                 <div class="astro-row">
                     <span data-key="pan_nak">Nakshatra</span>
-                    <span class="dot-line"></span>
                     <strong id="val-nakshatra">---</strong>
                 </div>
                 <div class="astro-row yoga-highlight">
                     <span data-key="pan_muh">Abhijit Muhurat</span>
-                    <span class="dot-line"></span>
                     <strong id="val-muhurat">---</strong>
                 </div>
             </div>
         </section>
 
-        <section class="chaughadia-card">
+        <section class="chaughadia-card info-card">
             <h3 class="section-title" data-key="pan_shubh_chaug">Shubh Chaughadia</h3>
-            <div class="chaug-tabs">
-                <button class="tab-btn active" onclick="switchChaug('day')" data-key="pan_day">Day</button>
-                <button class="tab-btn" onclick="switchChaug('night')" data-key="pan_night">Night</button>
+            <div class="chaug-tabs" style="margin-bottom: 15px;">
+                <button id="btn-day" class="tab-btn active" onclick="switchChaug('day')" data-key="pan_day">Day</button>
+                <button id="btn-night" class="tab-btn" onclick="switchChaug('night')" data-key="pan_night">Night</button>
             </div>
             <div id="chaughadia-list" class="chaughadia-list"></div>
         </section>
 
-        <section id="detailed-event-box" class="event-info-box">
-            <h3 id="det-event-title">---</h3>
+        <section id="detailed-event-box" class="event-info-box info-card" style="display: none;">
+            <h3 id="det-event-title" style="color: var(--gold-main);">---</h3>
             <p id="det-event-desc">---</p>
         </section>
     </main>
@@ -92,6 +89,6 @@
     <script src="../assets/translations.js"></script>
     <script src="../assets/events-2026.js"></script>
     <script src="db-2026-02.js"></script>
-    <script src="../assets/panchang.js"></script>
+    <script src="panchang.js"></script>
 </body>
 </html>
