@@ -1,113 +1,38 @@
-:root { 
-    --gold: #ffd700; 
-    --bg: #0a0a14; 
-    --red: #ff4d4d; 
-    --card-hover: rgba(255, 215, 0, 0.1);
-}
+:root { --gold: #ffd700; --bg: #0a0a14; --red: #ff4d4d; --card-bg: rgba(255, 255, 255, 0.05); }
+.panchang-body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; margin: 0; }
 
-.panchang-body { 
-    background: var(--bg); 
-    color: white; 
-    font-family: 'Poppins', sans-serif; 
-    margin: 0;
-}
+/* Header Fix */
+#header-placeholder { min-height: 80px; position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--bg); }
+.container { max-width: 1150px; margin: 0 auto; padding: 120px 20px 50px; }
 
-/* 🚩 1. Header Overlap Fix - Top padding badha di */
-.container { 
-    max-width: 1100px; 
-    margin: 0 auto; 
-    padding: 120px 20px 40px; 
-}
+/* Hamburger Menu Fix */
+.hamburger { display: block !important; cursor: pointer; z-index: 1001; }
+.hamburger i { color: var(--gold); font-size: 1.5rem; }
 
 .gold-text { color: var(--gold); }
-.title-font { font-family: 'Cinzel', serif; text-align: center; margin-bottom: 20px; }
+.title-font { font-family: 'Cinzel', serif; text-align: center; }
 
-/* 🚩 2. Responsive Grid Fix */
-.panchang-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
-    gap: 15px; 
-    margin-bottom: 25px; 
-}
+/* Grid Layout */
+.panchang-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
+@media (min-width: 768px) { .panchang-grid { grid-template-columns: repeat(5, 1fr); } }
 
-.pan-card { 
-    background: rgba(255,255,255,0.05); 
-    padding: 15px; 
-    border-radius: 12px; 
-    border: 1px solid rgba(255,215,0,0.1); 
-    text-align: center; 
-    transition: 0.3s;
-}
+.pan-card { background: var(--card-bg); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.1); text-align: center; }
+.pan-card.highlight { border-color: var(--gold); background: rgba(255, 215, 0, 0.05); }
+.rahu-card { border: 1px solid var(--red) !important; color: var(--red); }
+.label { color: #aaa; font-size: 0.7rem; display: block; margin-bottom: 5px; text-transform: uppercase; }
 
-.pan-card.highlight { border: 1px solid var(--gold); background: rgba(255, 215, 0, 0.08); }
+/* Calendar & Events */
+#calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.1); }
+.day-header { color: var(--gold); font-weight: bold; text-align: center; font-size: 0.8rem; padding: 5px 0; }
+.calendar-day { aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; border-radius: 5px; background: rgba(255,255,255,0.03); cursor: pointer; }
+.calendar-day.today { background: var(--gold) !important; color: #000 !important; font-weight: bold; }
+.calendar-day.has-event { border: 1px solid var(--gold); color: var(--gold); }
 
-/* 🚩 3. Rahu Card & Special Width */
-.rahu-card { 
-    border: 1px solid var(--red) !important; 
-    color: var(--red);
-}
+.cal-header { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; margin-bottom: 20px; }
+.cal-wrapper { display: grid; grid-template-columns: 1.6fr 1fr; gap: 25px; }
+@media (max-width: 850px) { .cal-wrapper { grid-template-columns: 1fr; } }
 
-.label { color: #aaa; font-size: 0.75rem; display: block; margin-bottom: 6px; text-transform: uppercase; }
-
-/* 🚩 4. Calendar Improvements */
-#calendar-grid { 
-    display: grid; 
-    grid-template-columns: repeat(7, 1fr); 
-    gap: 8px; 
-    background: rgba(255,255,255,0.02); 
-    padding: 15px; 
-    border-radius: 15px; 
-    border: 1px solid rgba(255,215,0,0.1); 
-}
-
-.day-header { color: var(--gold); font-weight: bold; text-align: center; font-size: 0.8rem; padding-bottom: 10px; }
-
-.calendar-day { 
-    aspect-ratio: 1/1; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    font-size: 0.9rem; 
-    border-radius: 6px; 
-    background: rgba(255,255,255,0.03); 
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.calendar-day:hover { background: var(--card-hover); color: var(--gold); }
-.calendar-day.today { background: var(--gold) !important; color: black !important; font-weight: bold; }
-.calendar-day.has-event { border: 1px solid var(--gold); color: var(--gold); font-weight: bold; }
-
-.cal-wrapper { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; margin-top: 20px; }
-
-/* 🚩 5. Professional Nav Buttons */
-.nav-btn { 
-    background: transparent; 
-    border: 1px solid var(--gold); 
-    color: var(--gold); 
-    padding: 8px 16px; 
-    cursor: pointer; 
-    border-radius: 30px; 
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.nav-btn:hover { background: var(--gold); color: #000; }
-
-.event-sidebar { 
-    background: rgba(0,0,0,0.3); 
-    padding: 20px; 
-    border-radius: 15px; 
-    border-left: 3px solid var(--gold); 
-}
-
+.nav-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 6px 15px; cursor: pointer; border-radius: 20px; font-weight: bold; }
+.event-sidebar { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; border-left: 3px solid var(--gold); }
 #event-list { list-style: none; padding: 0; }
-#event-list li { padding: 10px 0; border-bottom: 1px solid rgba(255,215,0,0.1); font-size: 0.9rem; }
-
-/* 🚩 6. Mobile Optimization (1 Line = 2 Cards) */
-@media (max-width: 850px) { 
-    .cal-wrapper { grid-template-columns: 1fr; } 
-    .panchang-grid { grid-template-columns: repeat(2, 1fr); }
-    .container { padding-top: 90px; } /* Mobile header thoda chota hota hai */
-    .title-font { font-size: 1.4rem; }
-}
+#event-list li { padding: 8px 0; border-bottom: 1px solid rgba(255,215,0,0.1); font-size: 0.9rem; }
