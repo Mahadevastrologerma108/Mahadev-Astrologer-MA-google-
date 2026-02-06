@@ -1,64 +1,38 @@
-:root { --gold: #f5c542; --bg: #0a0a14; --card-bg: rgba(255, 255, 255, 0.05); }
+.p-title { text-align: center; color: var(--gold); font-family: 'Cinzel'; margin: 100px auto 20px; }
+.container { max-width: 800px; margin: 0 auto; padding: 0 15px; }
 
-body { 
-    background-color: var(--bg); 
-    color: #ffffff; 
-    font-family: 'Poppins', sans-serif; 
-    margin: 0; 
-    overflow-x: hidden;
+/* Calendar Style */
+.calendar-container {
+    background: rgba(245, 197, 66, 0.05);
+    border: 1px solid var(--gold);
+    border-radius: 15px; padding: 20px; margin-bottom: 30px;
 }
+.calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; color: var(--gold); font-family: 'Cinzel'; }
+.calendar-header button { background: none; border: 1px solid var(--gold); color: var(--gold); padding: 5px 12px; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+.calendar-header button:hover { background: var(--gold); color: #000; }
+.calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; color: #888; font-size: 11px; margin-bottom: 10px; text-transform: uppercase; }
+.calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.calendar-day { aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(245, 197, 66, 0.1); border-radius: 8px; cursor: pointer; transition: 0.3s; }
+.calendar-day:hover { background: rgba(245, 197, 66, 0.15); }
+.calendar-day.active { background: var(--gold); color: #000; font-weight: bold; }
+.calendar-day.today { border: 2px solid var(--gold); color: var(--gold); font-weight: bold; }
 
-.main-content { padding-top: 100px; padding-bottom: 50px; }
-.container { max-width: 1100px; margin: 0 auto; padding: 0 15px; }
+/* Panchang Cards */
+.pan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px; }
+.p-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(245, 197, 66, 0.2); border-radius: 12px; padding: 15px 5px; text-align: center; color: var(--gold); }
+.p-card .label { display: block; font-size: 10px; color: #888; text-transform: uppercase; margin-bottom: 5px; }
+.p-card .val { margin: 0; font-family: 'Cinzel'; font-size: 13px; font-weight: bold; }
+.rahu-kaal-card { border-color: #ff4d4d; color: #ff4d4d; }
 
-.gold-text { color: var(--gold); }
-.main-title { font-family: 'Cinzel', serif; text-align: center; font-size: 2.2rem; margin-bottom: 40px; }
+/* Chaughadia Table */
+.chaughadia-tabs { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+.c-tab { background: none; border: 1px solid var(--gold); color: var(--gold); padding: 8px 25px; border-radius: 20px; cursor: pointer; font-family: 'Cinzel'; }
+.c-tab.active { background: var(--gold); color: #000; }
+.chaug-table { width: 100%; border-collapse: collapse; margin-bottom: 50px; background: rgba(245, 197, 66, 0.02); border: 1px solid rgba(245, 197, 66, 0.2); }
+.chaug-table th { background: rgba(245, 197, 66, 0.1); color: var(--gold); padding: 12px; font-size: 12px; text-align: left; }
+.chaug-table td { padding: 12px; border-bottom: 1px solid rgba(245, 197, 66, 0.05); color: #ccc; font-size: 13px; }
+.nature-shubh { color: #00ff88; font-weight: bold; }
+.nature-ashubh { color: #ff4d4d; }
+.nature-chal { color: var(--gold); }
 
-/* 🚩 2-Column Grid for All Screens */
-.pan-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
-
-.p-card {
-    background: var(--card-bg);
-    border: 1px solid rgba(245, 197, 66, 0.1);
-    padding: 18px 10px;
-    border-radius: 12px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.p-card:hover { border-color: var(--gold); background: rgba(245, 197, 66, 0.03); }
-
-.p-card .label {
-    display: block;
-    font-size: 0.7rem;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-}
-
-.p-card .val { color: var(--gold); margin: 0; font-size: 1rem; font-weight: 600; }
-
-/* Special Border Styles */
-.p-card.highlight { border-color: rgba(245, 197, 66, 0.4); }
-.p-card.rahu-kaal { border-color: #ff4d4d; }
-.p-card.rahu-kaal .val { color: #ff4d4d; }
-
-/* Chaughadia Section */
-.ch-section { margin-top: 40px; }
-.ch-section h3 { font-family: 'Cinzel'; margin-bottom: 20px; }
-.ch-box { 
-    background: rgba(0,0,0,0.3); 
-    padding: 20px; 
-    border-radius: 12px; 
-    border-left: 4px solid var(--gold); 
-}
-
-/* Framework UI Fixes */
-#nav-drawer { position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: #0d0d1a; z-index: 2000; transition: 0.4s; padding: 30px; }
-#menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1500; display: none; }
-#close-menu { color: var(--gold); font-size: 1.8rem; cursor: pointer; text-align: right; margin-bottom: 20px; }
+@media (max-width: 600px) { .pan-grid { grid-template-columns: repeat(2, 1fr); } }
