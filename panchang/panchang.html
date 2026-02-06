@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detailed Panchang 2026 | Mahadev Astrologer MA</title>
+    <title>Premium Panchang 2026 | Mahadev Astrologer MA</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="panchang.css">
@@ -13,47 +13,60 @@
 <div id="header-placeholder"></div>
 
 <main class="container">
-    <section class="today-view">
+    <header class="panchang-main-header">
         <h1 class="gold-text title-font" id="display-date">Aaj Ka Panchang</h1>
-        
         <div id="fest-box" class="festival-alert" style="display:none;">
             <span>🚩</span> <strong id="today-fest" class="gold-text"></strong>
         </div>
+    </header>
 
+    <section class="panchang-section">
         <div class="panchang-grid">
-            <div class="pan-card"><span class="label">तिथि (Tithi)</span><h4 id="pan-tithi">--</h4></div>
-            <div class="pan-card"><span class="label">नक्षत्र (Nakshatra)</span><h4 id="pan-nak">--</h4></div>
-            <div class="pan-card"><span class="label">योग (Yoga)</span><h4 id="pan-yoga">--</h4></div>
-            <div class="pan-card"><span class="label">करण (Karana)</span><h4 id="pan-karana">--</h4></div>
-            <div class="pan-card"><span class="label">पक्ष (Paksha)</span><h4 id="pan-paksha">--</h4></div>
-        </div>
-
-        <div class="panchang-grid" style="margin-top: 20px;">
-            <div class="pan-card highlight"><span class="label">सूर्योदय / सूर्यास्त</span><h4 id="pan-sun">--</h4></div>
-            <div class="pan-card highlight"><span class="label">चन्द्रोदय</span><h4 id="pan-moon">--</h4></div>
-            <div class="pan-card"><span class="label">अभिजीत मुहूर्त</span><h4 id="pan-muh">--</h4></div>
-            <div class="pan-card rahu-card"><span class="label">राहु काल</span><h4 id="pan-rahu">--</h4></div>
-        </div>
-
-        <h3 class="gold-text title-font" style="margin-top:40px;">शुभ चौघड़िया</h3>
-        <div class="panchang-grid">
-            <div class="pan-card"><span class="label">दिन का</span><h4 id="day-chaughadia">--</h4></div>
-            <div class="pan-card"><span class="label">रात का</span><h4 id="night-chaughadia">--</h4></div>
+            <div class="pan-card"><span class="label">Tithi</span><h4 id="pan-tithi">--</h4></div>
+            <div class="pan-card"><span class="label">Nakshatra</span><h4 id="pan-nak">--</h4></div>
+            <div class="pan-card"><span class="label">Yoga</span><h4 id="pan-yoga">--</h4></div>
+            <div class="pan-card"><span class="label">Karana</span><h4 id="pan-karana">--</h4></div>
+            <div class="pan-card"><span class="label">Paksha</span><h4 id="pan-paksha">--</h4></div>
         </div>
     </section>
 
-    <div class="cal-header">
+    <section class="panchang-section">
+        <div class="panchang-grid">
+            <div class="pan-card highlight"><span class="label">Sunrise / Set</span><h4 id="pan-sun">--</h4></div>
+            <div class="pan-card highlight"><span class="label">Moonrise</span><h4 id="pan-moon">--</h4></div>
+            <div class="pan-card"><span class="label">Abhijit</span><h4 id="pan-muh">--</h4></div>
+            <div class="pan-card rahu-card"><span class="label">Rahu Kaal</span><h4 id="pan-rahu">--</h4></div>
+        </div>
+    </section>
+
+    <section class="panchang-section chaughadia-box">
+        <h2 class="gold-text title-font">Shubh Chaughadia</h2>
+        <div class="chaughadia-container">
+            <div class="ch-column">
+                <div class="ch-header">Day Chaughadia</div>
+                <div id="day-chaughadia" class="ch-data">--</div>
+            </div>
+            <div class="ch-column">
+                <div class="ch-header">Night Chaughadia</div>
+                <div id="night-chaughadia" class="ch-data">--</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cal-nav-wrapper">
         <h2 class="gold-text title-font" id="month-name">--</h2>
-        <div class="cal-nav">
-            <button onclick="changeMonth(-1)" class="nav-btn">❮</button>
-            <button onclick="changeMonth(1)" class="nav-btn">❯</button>
+        <div class="cal-controls">
+            <button onclick="changeMonth(-1)" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+            <button onclick="changeMonth(1)" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
         </div>
     </div>
 
-    <div class="cal-wrapper">
-        <div id="calendar-grid"></div>
+    <div class="cal-layout-wrapper">
+        <div class="calendar-main">
+            <div id="calendar-grid"></div>
+        </div>
         <aside class="event-sidebar">
-            <h3 class="gold-text title-font" style="font-size: 1.2rem;">Vrat & Festivals</h3>
+            <h3 class="gold-text title-font">Vrat & Festivals</h3>
             <ul id="event-list"></ul>
         </aside>
     </div>
