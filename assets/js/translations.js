@@ -170,6 +170,43 @@ report_badge: "Free PDF Report Included (HI/EN/Hinglish)",
         pan_day_chaug: "Day Chaughadia",
         pan_night_chaug: "Night Chaughadia",
         pan_events: "Monthly Events",
+
+        pan_cal_hint: "Change date to view Panchang 👇",
+pan_ribbon_loading: "Wishing you a blessed day...",
+pan_events_title: "Detailed Festivals & Events",
+pan_paksha: "Paksha",
+pan_moon: "Moonrise",
+pan_muh: "Abhijit Muhurat",
+pan_day: "Day",
+pan_night: "Night",
+pan_nature: "Nature",
+pan_status: "Status",
+// Months
+mon_jan: "January", mon_feb: "February", mon_mar: "March", mon_apr: "April", mon_may: "May", mon_jun: "June",
+mon_jul: "July", mon_aug: "August", mon_sep: "September", mon_oct: "October", mon_nov: "November", mon_dec: "December",
+// Days
+day_sun: "Sun", day_mon: "Mon", day_tue: "Tue", day_wed: "Wed", day_thu: "Thu", day_fri: "Fri", day_sat: "Sat",
+
+        // Paksha Keys
+pak_shukla: "Shukla Paksha",
+pak_krishna: "Krishna Paksha",
+
+// Chaughadia Names
+ch_shubh: "Shubh",
+ch_amrit: "Amrit",
+ch_labh: "Labh",
+ch_char: "Chara",
+ch_rog: "Rog",
+ch_kaal: "Kaal",
+ch_udveg: "Udveg",
+
+// Status (Nature)
+st_best: "Excellent",
+st_good: "Good",
+st_bad: "Avoid",
+st_neutral: "Neutral",
+
+        
         
     // Shared Layout
     back_home: "← Back to Home",
@@ -364,6 +401,41 @@ report_badge: "फ्री PDF रिपोर्ट शामिल है (�
         pan_day_chaug: "दिन का चौघड़िया",
         pan_night_chaug: "रात का चौघड़िया",
         pan_events: "इस महीने के व्रत-त्योहार",
+
+        pan_cal_hint: "किसी और दिन का पंचांग देखने के लिए तारीख चुनें 👇",
+pan_ribbon_loading: "आपका दिन शुभ और मंगलमय हो...",
+pan_events_title: "विस्तृत व्रत और त्यौहार",
+pan_paksha: "पक्ष",
+pan_moon: "चंद्रोदय",
+pan_muh: "अभिजीत मुहूर्त",
+pan_day: "दिन",
+pan_night: "रात",
+pan_nature: "प्रकृति",
+pan_status: "स्थिति",
+// Months
+mon_jan: "जनवरी", mon_feb: "फरवरी", mon_mar: "मार्च", mon_apr: "अप्रैल", mon_may: "मई", mon_jun: "जून",
+mon_jul: "जुलाई", mon_aug: "अगस्त", mon_sep: "सितंबर", mon_oct: "अक्टूबर", mon_nov: "नवंबर", mon_dec: "दिसंबर",
+// Days
+day_sun: "रवि", day_mon: "सोम", day_tue: "मंगल", day_wed: "बुध", day_thu: "गुरु", day_fri: "शुक्र", day_sat: "शनि",
+
+        // Paksha Keys
+pak_shukla: "शुक्ल पक्ष",
+pak_krishna: "कृष्ण पक्ष",
+
+// Chaughadia Names
+ch_shubh: "शुभ",
+ch_amrit: "अमृत",
+ch_labh: "लाभ",
+ch_char: "चर",
+ch_rog: "रोग",
+ch_kaal: "काल",
+ch_udveg: "उद्वेग",
+
+// Status (Nature)
+st_best: "सर्वश्रेष्ठ",
+st_good: "शुभ",
+st_bad: "वर्जित",
+st_neutral: "सामान्य",
        
     // Shared Layout
     back_home: "← मुख्य पृष्ठ पर वापस जाएं",
