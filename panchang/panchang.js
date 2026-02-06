@@ -1,58 +1,94 @@
-function loadPanchangData(dateObj) {
-    const dStr = `${dateObj.getFullYear()}-${String(dateObj.getMonth() + 1).padStart(2, '0')}-${String(dateObj.getDate()).padStart(2, '0')}`;
-    
-    // Safety check for DB
-    const db = window.PANCHANG_DATA_2026_02 || {};
-    const events = window.YEARLY_EVENTS_2026 || {};
-    const t = window.translations ? window.translations[lang] : {};
+document.addEventListener('DOMContentLoaded', () => {
 
-    const data = db[dStr];
-    const event = events[dStr];
+  let currentDate = new Date();
+  let selectedDate = new Date();
 
-    // 1. Ribbon & Descriptions (Safe Update)
-    const ribbon = document.getElementById('ribbon-text');
-    const eventDesc = document.getElementById('event-display-area');
-    
-    if (event) {
-        ribbon.innerText = event[lang] || event.hi || "Festival Today";
-        if(eventDesc) {
-            eventDesc.innerHTML = `<div class="p-card" style="width:100%; text-align:left; border-left:3px solid var(--gold); padding:15px;">
-                <h3 style="color:var(--gold); font-family:'Cinzel';">${event[lang] || event.hi}</h3>
-                <p style="font-size:14px; margin-top:10px; color:#ddd;">${event['desc_'+lang] || ''}</p>
-            </div>`;
-        }
-    } else {
-        ribbon.innerText = t['pan_ribbon_loading'] || "Shubh Din";
-        if(eventDesc) eventDesc.innerHTML = `<p style="color:#666; text-align:center; padding:10px;">No specific festival today.</p>`;
+  const format = d => d.toISOString().split('T')[0];
+
+  function updatePanchang(date) {
+    const key = format(date);
+    const pan = PANCHANG_DB[key];
+    const ev = EVENTS_2026[key];
+
+    document.getElementById('ribbon-text').innerText =
+      ev ? ev.map(e => e.title).join(', ') : 'Aaj koi vishesh tyohaar nahi';
+
+    if (!pan) return;
+
+    panMap('tithi', pan.tithi);
+    panMap('nak', pan.nakshatra);
+    panMap('yoga', pan.yoga);
+    panMap('karana', pan.karana);
+    panMap('paksha', pan.paksha);
+    panMap('sun', pan.sunrise + ' / ' + pan.sunset);
+    panMap('moon', pan.moonrise);
+    panMap('muh', pan.abhijit);
+    panMap('rahu', pan.rahu);
+
+    fillChaug('day', pan.chaughadia.day);
+    fillChaug('night', pan.chaughadia.night);
+  }
+
+  const panMap = (id, val) =>
+    document.getElementById('pan-' + id).innerText = val;
+
+  function fillChaug(type, data) {
+    const body = document.getElementById(type + '-chaug-body');
+    body.innerHTML = '';
+    data.forEach(c => {
+      body.innerHTML += `<tr><td>${c.time}</td><td>${c.name}</td><td>${c.nature}</td></tr>`;
+    });
+  }
+
+  window.showChaug = type => {
+    document.getElementById('day-chaug').classList.add('hidden');
+    document.getElementById('night-chaug').classList.add('hidden');
+    document.getElementById(type + '-chaug').classList.remove('hidden');
+    document.getElementById('btn-day').classList.remove('active');
+    document.getElementById('btn-night').classList.remove('active');
+    document.getElementById('btn-' + type).classList.add('active');
+  };
+
+  function renderCalendar() {
+    const box = document.getElementById('calendarDays');
+    const month = document.getElementById('monthDisplay');
+    box.innerHTML = '';
+
+    const y = currentDate.getFullYear();
+    const m = currentDate.getMonth();
+    month.innerText = currentDate.toLocaleString('default',{month:'long',year:'numeric'});
+
+    const days = new Date(y, m + 1, 0).getDate();
+
+    for (let i = 1; i <= days; i++) {
+      const d = new Date(y, m, i);
+      const el = document.createElement('div');
+      el.innerText = i;
+
+      const key = format(d);
+      if (key === format(new Date())) el.classList.add('today');
+      if (EVENTS_2026[key]) el.classList.add('event');
+
+      el.onclick = () => {
+        selectedDate = d;
+        updatePanchang(d);
+        renderCalendar();
+      };
+
+      box.appendChild(el);
     }
+  }
 
-    // 2. Main Grid (The "Undefined" Killer Logic)
-    if (data) {
-        const getSafe = (val) => {
-            if (!val) return "---";
-            return t[val] || val; 
-        };
+  document.getElementById('prevMonth').onclick = () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar();
+  };
 
-        // Hum check kar rahe hain ki aapke DB mein key ka naam kya hai
-        document.getElementById('pan-tithi').innerText = getSafe(data.tithi);
-        document.getElementById('pan-nak').innerText = getSafe(data.nakshatra || data.nak);
-        document.getElementById('pan-paksha').innerText = getSafe(data.paksha);
-        
-        // YOGA & KARANA FIX: Check both spellings
-        document.getElementById('pan-yoga').innerText = getSafe(data.yoga || data.Yoga);
-        document.getElementById('pan-karana').innerText = getSafe(data.karana || data.karan || data.Karana);
-        
-        document.getElementById('pan-sun').innerText = `${data.sunrise || '--'} / ${data.sunset || '--'}`;
-        document.getElementById('pan-moon').innerText = data.moonrise || "--:--";
-        document.getElementById('pan-muh').innerText = data.muhurat || data.abhijit || "--:--";
-        document.getElementById('pan-rahu').innerText = data.rahu_kaal || data.rahu || "--:--";
+  document.getElementById('nextMonth').onclick = () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar();
+  };
 
-        // 3. Chaughadia (Table Fix)
-        if (data.chaughadia) {
-            fillChaug(data.chaughadia.day, 'day-chaug-body');
-            fillChaug(data.chaughadia.night, 'night-chaug-body');
-        }
-    } else {
-        console.warn("No data found for date:", dStr);
-    }
-}
+  renderCalendar();
+  updatePanchang(selectedDate);
+});
