@@ -4,23 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panchang 2026 | Mahadev Astrologer MA</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <link rel="stylesheet" href="panchang.css">
 </head>
-<body class="panchang-body">
+<body>
 
-    <div id="menu-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1500; display:none;"></div>
-
-    <div id="nav-drawer" style="position:fixed; top:0; right:-280px; width:280px; height:100%; background:#0a0a14; z-index:2000; transition:0.4s; padding:40px; border-left:1px solid rgba(245,197,66,0.15);">
-        <div id="close-menu" style="color:#f5c542; font-size:2rem; cursor:pointer; text-align:right; margin-bottom:30px;">✕</div>
-        <nav style="display: flex; flex-direction: column; gap: 25px;">
-            <a href="../index.html" class="gold-text" data-key="nav_home" style="text-decoration:none; font-family:'Cinzel';">Home</a>
-            <a href="../horoscope.html" class="gold-text" data-key="nav_horoscope" style="text-decoration:none; font-family:'Cinzel';">Horoscope</a>
-            <a href="panchang.html" class="gold-text" data-key="nav_panchang" style="text-decoration:none; font-family:'Cinzel';">Panchang</a>
-            <a href="../latest-guide/index.html" class="gold-text" data-key="nav_guide" style="text-decoration:none; font-family:'Cinzel';">Latest Update</a>
+    <div id="menu-overlay"></div>
+    <div id="nav-drawer">
+        <div id="close-menu">✕</div>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../horoscope.html">Horoscope</a>
+            <a href="panchang.html">Panchang</a>
+            <a href="../latest-guide/index.html">Latest Update</a>
         </nav>
     </div>
 
@@ -28,34 +25,54 @@
 
     <main class="main-content">
         <div class="container">
-            <h1 class="gold-text" id="display-date" style="font-family:'Cinzel'; text-align:center; margin-bottom:30px;">Aaj Ka Panchang</h1>
-
+            <h1 class="gold-text">Aaj Ka Panchang</h1>
+            
             <div class="pan-grid">
-                <div class="p-card"><span data-key="p_tithi">Tithi</span><h4 id="pan-tithi">--</h4></div>
-                <div class="p-card"><span data-key="p_nak">Nakshatra</span><h4 id="pan-nak">--</h4></div>
-                <div class="p-card"><span data-key="p_yoga">Yoga</span><h4 id="pan-yoga">--</h4></div>
-                <div class="p-card"><span data-key="p_karana">Karana</span><h4 id="pan-karana">--</h4></div>
-                <div class="p-card"><span data-key="p_paksha">Paksha</span><h4 id="pan-paksha">--</h4></div>
+                <div class="p-card"><span>Tithi</span><h4 id="pan-tithi">--</h4></div>
+                <div class="p-card"><span>Nakshatra</span><h4 id="pan-nak">--</h4></div>
+                <div class="p-card"><span>Yoga</span><h4 id="pan-yoga">--</h4></div>
+                <div class="p-card"><span>Karana</span><h4 id="pan-karana">--</h4></div>
+                <div class="p-card"><span>Paksha</span><h4 id="pan-paksha">--</h4></div>
                 <div class="p-card gold-border"><span>Sunrise/Set</span><h4 id="pan-sun">--</h4></div>
                 <div class="p-card gold-border"><span>Moonrise</span><h4 id="pan-moon">--</h4></div>
                 <div class="p-card"><span>Abhijit</span><h4 id="pan-muh">--</h4></div>
                 <div class="p-card rahu-border"><span>Rahu Kaal</span><h4 id="pan-rahu">--</h4></div>
-            </div>
-
-            <div class="ch-section">
-                <h3 class="gold-text" style="font-family:'Cinzel';">Shubh Chaughadia</h3>
-                <div class="ch-box">
-                    <p><strong>Din:</strong> <span id="day-chaughadia">--</span></p>
-                    <p><strong>Raat:</strong> <span id="night-chaughadia">--</span></p>
-                </div>
             </div>
         </div>
     </main>
 
     <div id="footer-placeholder"></div>
 
-    <script src="../assets/js/translations.js"></script>
     <script src="../assets/js/layout.js"></script>
-    <script src="panchang.js"></script>
+    
+    <script>
+        function setupMenu() {
+            const menuBtn = document.getElementById('mobile-menu');
+            const closeBtn = document.getElementById('close-menu');
+            const drawer = document.getElementById('nav-drawer');
+            const overlay = document.getElementById('menu-overlay');
+
+            if (menuBtn) {
+                menuBtn.onclick = () => {
+                    drawer.classList.add('active');
+                    overlay.classList.add('active');
+                };
+                
+                const closeAction = () => {
+                    drawer.classList.remove('active');
+                    overlay.classList.remove('active');
+                };
+
+                if (closeBtn) closeBtn.onclick = closeAction;
+                if (overlay) overlay.onclick = closeAction;
+                
+                console.log("Menu Connected!");
+            } else {
+                // Agar abhi header nahi aaya, 100ms baad fir check karo
+                setTimeout(setupMenu, 100);
+            }
+        }
+        setupMenu();
+    </script>
 </body>
 </html>
