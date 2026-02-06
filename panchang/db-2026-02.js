@@ -1,34 +1,30 @@
-// db-2026-02.js
-window.DB_2026_02 = {
-    "2026-02-07": {
-        "tithi": "nak_ashwini", // Translation key use kar rahe hain
-        "paksha": "pak_krishna",
-        "sunrise": "07:08 AM", "sunset": "06:12 PM",
-        "event": "Special Shanti Puja", 
-        "has_event": true,
-        "event_desc": "Aaj ka din Mahadev ki upasna ke liye shubh hai.",
-        "chaughadia": {
-            "day": [
-                { "time": "07:08 - 08:30", "name": "ch_shubh", "nature": "nature-shubh", "status": "st_good" },
-                { "time": "08:30 - 09:50", "name": "ch_rog", "nature": "nature-bad", "status": "st_bad" }
-            ],
-            "night": [
-                { "time": "06:12 - 07:40", "name": "ch_amrit", "nature": "nature-shubh", "status": "st_best" }
-            ]
-        }
-    },
-    "2026-02-08": {
-        "tithi": "nak_bharani",
-        "paksha": "pak_krishna",
-        "sunrise": "07:07 AM", "sunset": "06:13 PM",
-        "event": "Yashoda Jayanti 🚩",
-        "has_event": true,
-        "event_desc": "Bhagwan Krishna ki mata Yashoda ka janam utsav.",
-        "chaughadia": {
-            "day": [
-                { "time": "07:07 - 08:30", "name": "ch_char", "nature": "nature-chal", "status": "st_neutral" }
-            ],
-            "night": []
-        }
-    }
+window.PANCHANG_DATA_2026_02 = {
+    "2026-02-01": { tithi: "tithi_shukla_chaturdashi", nakshatra: "nakshatra_pushya", sunrise: "07:10 AM", sunset: "06:05 PM" },
+    "2026-02-02": { tithi: "tithi_shukla_purnima", nakshatra: "nakshatra_ashlesha", sunrise: "07:09 AM", sunset: "06:06 PM" },
+    "2026-02-03": { tithi: "tithi_krishna_pratipada", nakshatra: "nakshatra_magha", sunrise: "07:09 AM", sunset: "06:07 PM" },
+    "2026-02-04": { tithi: "tithi_krishna_dwitiya", nakshatra: "nakshatra_purva_phalguni", sunrise: "07:08 AM", sunset: "06:08 PM" },
+    "2026-02-05": { tithi: "tithi_krishna_tritiya", nakshatra: "nakshatra_uttara_phalguni", sunrise: "07:07 AM", sunset: "06:09 PM" },
+    "2026-02-06": { tithi: "tithi_krishna_chaturthi", nakshatra: "nakshatra_hasta", sunrise: "07:07 AM", sunset: "06:10 PM" },
+    "2026-02-07": { tithi: "tithi_krishna_panchami", nakshatra: "nakshatra_chitra", sunrise: "07:06 AM", sunset: "06:11 PM" },
+    "2026-02-08": { tithi: "tithi_krishna_shashti", nakshatra: "nakshatra_svati", sunrise: "07:05 AM", sunset: "06:11 PM" },
+    "2026-02-09": { tithi: "tithi_krishna_saptami", nakshatra: "nakshatra_vishakha", sunrise: "07:05 AM", sunset: "06:12 PM" },
+    "2026-02-10": { tithi: "tithi_krishna_ashtami", nakshatra: "nakshatra_anuradha", sunrise: "07:04 AM", sunset: "06:13 PM" },
+    "2026-02-11": { tithi: "tithi_krishna_navami", nakshatra: "nakshatra_jyeshtha", sunrise: "07:03 AM", sunset: "06:14 PM" },
+    "2026-02-12": { tithi: "tithi_krishna_dashami", nakshatra: "nakshatra_mula", sunrise: "07:02 AM", sunset: "06:15 PM" },
+    "2026-02-13": { tithi: "tithi_krishna_ekadashi", nakshatra: "nakshatra_purva_ashadha", sunrise: "07:01 AM", sunset: "06:16 PM" },
+    "2026-02-14": { tithi: "tithi_krishna_dwadashi", nakshatra: "nakshatra_uttara_ashadha", sunrise: "07:00 AM", sunset: "06:17 PM" },
+    "2026-02-15": { tithi: "tithi_krishna_trayodashi", nakshatra: "nakshatra_shravana", sunrise: "07:00 AM", sunset: "06:17 PM" }, // Shivratri
+    "2026-02-16": { tithi: "tithi_krishna_chaturdashi", nakshatra: "nakshatra_dhanishta", sunrise: "06:59 AM", sunset: "06:18 PM" },
+    "2026-02-17": { tithi: "tithi_amavasya", nakshatra: "nakshatra_shatabhisha", sunrise: "06:58 AM", sunset: "06:19 PM" },
+    "2026-02-18": { tithi: "tithi_shukla_pratipada", nakshatra: "nakshatra_purva_bhadrapada", sunrise: "06:57 AM", sunset: "06:20 PM" },
+    "2026-02-19": { tithi: "tithi_shukla_dwitiya", nakshatra: "nakshatra_uttara_bhadrapada", sunrise: "06:56 AM", sunset: "06:21 PM" },
+    "2026-02-20": { tithi: "tithi_shukla_tritiya", nakshatra: "nakshatra_revati", sunrise: "06:55 AM", sunset: "06:22 PM" },
+    "2026-02-21": { tithi: "tithi_shukla_chaturthi", nakshatra: "nakshatra_ashwini", sunrise: "06:54 AM", sunset: "06:23 PM" },
+    "2026-02-22": { tithi: "tithi_shukla_panchami", nakshatra: "nakshatra_bharani", sunrise: "06:53 AM", sunset: "06:23 PM" },
+    "2026-02-23": { tithi: "tithi_shukla_shashti", nakshatra: "nakshatra_krittika", sunrise: "06:52 AM", sunset: "06:24 PM" },
+    "2026-02-24": { tithi: "tithi_shukla_saptami", nakshatra: "nakshatra_rohini", sunrise: "06:51 AM", sunset: "06:25 PM" },
+    "2026-02-25": { tithi: "tithi_shukla_ashtami", nakshatra: "nakshatra_mrigashira", sunrise: "06:50 AM", sunset: "06:26 PM" },
+    "2026-02-26": { tithi: "tithi_shukla_navami", nakshatra: "nakshatra_ardra", sunrise: "06:49 AM", sunset: "06:27 PM" },
+    "2026-02-27": { tithi: "tithi_shukla_dashami", nakshatra: "nakshatra_punarvasu", sunrise: "06:48 AM", sunset: "06:28 PM" },
+    "2026-02-28": { tithi: "tithi_shukla_ekadashi", nakshatra: "nakshatra_pushya", sunrise: "06:47 AM", sunset: "06:28 PM" }
 };
