@@ -3,12 +3,12 @@
 
 /* 🕉️ Event Ribbon */
 .event-ribbon {
-    background: linear-gradient(90deg, transparent, rgba(245, 197, 66, 0.15), transparent);
-    border-top: 1px solid rgba(245, 197, 66, 0.2);
-    border-bottom: 1px solid rgba(245, 197, 66, 0.2);
-    padding: 12px; text-align: center; color: var(--gold);
-    font-size: 15px; margin-bottom: 30px; font-weight: 600;
-    animation: pulseGlow 2s infinite alternate;
+    background: linear-gradient(90deg, transparent, rgba(245, 197, 66, 0.15), transparent);
+    border-top: 1px solid rgba(245, 197, 66, 0.2);
+    border-bottom: 1px solid rgba(245, 197, 66, 0.2);
+    padding: 12px; text-align: center; color: var(--gold);
+    font-size: 15px; margin-bottom: 30px; font-weight: 600;
+    animation: pulseGlow 2s infinite alternate;
 }
 @keyframes pulseGlow { from { opacity: 0.8; } to { opacity: 1; text-shadow: 0 0 10px var(--gold); } }
 
