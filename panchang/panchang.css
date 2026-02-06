@@ -1,38 +1,250 @@
-:root { --gold: #ffd700; --bg: #0a0a14; --red: #ff4d4d; --card-bg: rgba(255, 255, 255, 0.05); }
-.panchang-body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; margin: 0; }
+/* --- MAHADEV ASTROLOGER MA: FINAL PREMIUM PANCHANG CSS --- */
 
-/* Header Fix */
-#header-placeholder { min-height: 80px; position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--bg); }
-.container { max-width: 1150px; margin: 0 auto; padding: 120px 20px 50px; }
+:root { 
+    --gold: #ffd700; 
+    --bg: #0a0a14; 
+    --red: #ff4d4d; 
+    --card-bg: rgba(255, 255, 255, 0.05); 
+    --border: rgba(255, 215, 0, 0.15);
+    --gold-glow: rgba(255, 215, 0, 0.3);
+}
 
-/* Hamburger Menu Fix */
-.hamburger { display: block !important; cursor: pointer; z-index: 1001; }
-.hamburger i { color: var(--gold); font-size: 1.5rem; }
+/* 1. Base Setup */
+.panchang-body { 
+    background: var(--bg); 
+    color: white; 
+    font-family: 'Poppins', sans-serif; 
+    margin: 0; 
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-.gold-text { color: var(--gold); }
-.title-font { font-family: 'Cinzel', serif; text-align: center; }
+/* 2. Container & Header Fix */
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 130px 20px 60px; /* Space for Fixed Header */
+}
 
-/* Grid Layout */
-.panchang-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
-@media (min-width: 768px) { .panchang-grid { grid-template-columns: repeat(5, 1fr); } }
+@media (max-width: 768px) {
+    .container { padding-top: 100px; }
+}
 
-.pan-card { background: var(--card-bg); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.1); text-align: center; }
-.pan-card.highlight { border-color: var(--gold); background: rgba(255, 215, 0, 0.05); }
-.rahu-card { border: 1px solid var(--red) !important; color: var(--red); }
-.label { color: #aaa; font-size: 0.7rem; display: block; margin-bottom: 5px; text-transform: uppercase; }
+/* 3. Typography */
+.gold-text { color: var(--gold); text-shadow: 0 0 5px rgba(255, 215, 0, 0.2); }
+.title-font { 
+    font-family: 'Cinzel', serif; 
+    text-align: center; 
+    text-transform: uppercase; 
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
 
-/* Calendar & Events */
-#calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.1); }
-.day-header { color: var(--gold); font-weight: bold; text-align: center; font-size: 0.8rem; padding: 5px 0; }
-.calendar-day { aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; border-radius: 5px; background: rgba(255,255,255,0.03); cursor: pointer; }
-.calendar-day.today { background: var(--gold) !important; color: #000 !important; font-weight: bold; }
-.calendar-day.has-event { border: 1px solid var(--gold); color: var(--gold); }
+/* 4. Panchang Grid & Cards */
+.panchang-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px; 
+    margin-bottom: 30px; 
+}
 
-.cal-header { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; margin-bottom: 20px; }
-.cal-wrapper { display: grid; grid-template-columns: 1.6fr 1fr; gap: 25px; }
-@media (max-width: 850px) { .cal-wrapper { grid-template-columns: 1fr; } }
+@media (min-width: 768px) { 
+    .panchang-grid { grid-template-columns: repeat(5, 1fr); } 
+}
 
-.nav-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 6px 15px; cursor: pointer; border-radius: 20px; font-weight: bold; }
-.event-sidebar { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; border-left: 3px solid var(--gold); }
+.pan-card { 
+    background: var(--card-bg); 
+    padding: 20px; 
+    border-radius: 15px; 
+    border: 1px solid var(--border); 
+    text-align: center; 
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.pan-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.pan-card.highlight { 
+    border-color: var(--gold); 
+    background: rgba(255, 215, 0, 0.08); 
+    box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.1);
+}
+
+.rahu-card { 
+    border: 1px solid var(--red) !important; 
+    color: var(--red); 
+}
+
+.label { 
+    color: #aaa; 
+    font-size: 0.7rem; 
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: 600; 
+    letter-spacing: 1px;
+}
+
+/* 5. Chaughadia Special Styling */
+.chaughadia-container { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+    margin-top: 25px; 
+}
+
+@media (min-width: 768px) { 
+    .chaughadia-container { grid-template-columns: 1fr 1fr; } 
+}
+
+.ch-column { 
+    background: rgba(255,255,255,0.02); 
+    border: 1px solid var(--border); 
+    border-radius: 15px; 
+    overflow: hidden; 
+}
+
+.ch-header { 
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    padding: 12px; 
+    text-align: center; 
+    color: var(--gold); 
+    font-weight: bold; 
+    border-bottom: 1px solid var(--border);
+    font-family: 'Cinzel', serif;
+}
+
+.ch-data { 
+    padding: 25px; 
+    text-align: center; 
+    font-size: 1.1rem; 
+    color: #eee; 
+    line-height: 1.8;
+}
+
+/* 6. Calendar Engine Styling */
+.cal-nav-wrapper { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin: 50px 0 25px; 
+}
+
+.cal-layout-wrapper { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 30px; 
+}
+
+@media (min-width: 992px) { 
+    .cal-layout-wrapper { grid-template-columns: 1.8fr 1fr; } 
+}
+
+#calendar-grid { 
+    display: grid; 
+    grid-template-columns: repeat(7, 1fr); 
+    gap: 8px; 
+    background: rgba(255,255,255,0.02); 
+    padding: 20px; 
+    border-radius: 18px; 
+    border: 1px solid var(--border); 
+}
+
+.day-header { 
+    color: var(--gold); 
+    font-weight: bold; 
+    text-align: center; 
+    font-size: 0.8rem; 
+    padding-bottom: 15px; 
+}
+
+.calendar-day { 
+    aspect-ratio: 1/1; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    background: rgba(255,255,255,0.03); 
+    border-radius: 10px; 
+    cursor: pointer; 
+    transition: 0.2s;
+    font-size: 1rem;
+}
+
+.calendar-day:hover { 
+    background: rgba(255, 215, 0, 0.2); 
+    color: var(--gold); 
+}
+
+.calendar-day.today { 
+    background: var(--gold) !important; 
+    color: #000 !important; 
+    font-weight: bold; 
+    box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.calendar-day.has-event { 
+    border: 1px solid var(--gold); 
+    color: var(--gold); 
+    position: relative;
+}
+
+.calendar-day.has-event::after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+}
+
+/* 7. Sidebar Events */
+.event-sidebar { 
+    background: rgba(0,0,0,0.3); 
+    padding: 30px; 
+    border-radius: 18px; 
+    border-left: 4px solid var(--gold); 
+    box-shadow: inset 10px 0 20px rgba(0,0,0,0.2);
+}
+
 #event-list { list-style: none; padding: 0; }
-#event-list li { padding: 8px 0; border-bottom: 1px solid rgba(255,215,0,0.1); font-size: 0.9rem; }
+#event-list li { 
+    padding: 15px 0; 
+    border-bottom: 1px dotted var(--border); 
+    font-size: 0.95rem; 
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 8. Controls & Misc */
+.nav-btn { 
+    background: var(--card-bg); 
+    border: 1px solid var(--gold); 
+    color: var(--gold); 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    transition: 0.3s;
+}
+
+.nav-btn:hover { 
+    background: var(--gold); 
+    color: #000; 
+    box-shadow: 0 0 10px var(--gold);
+}
+
+.festival-alert {
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    padding: 15px;
+    text-align: center;
+    margin: 20px 0 30px;
+}
+
+.hamburger i { color: var(--gold) !important; font-size: 1.8rem; }
