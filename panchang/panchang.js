@@ -1,84 +1,91 @@
-let curYear = 2026;
-let curMonth = new Date().getMonth();
+document.addEventListener('DOMContentLoaded', () => {
+    const calendarDays = document.getElementById('calendarDays');
+    const monthDisplay = document.getElementById('monthDisplay');
+    const prevMonthBtn = document.getElementById('prevMonth');
+    const nextMonthBtn = document.getElementById('nextMonth');
 
-// 🚩 Requirement 4: Language Switch Support
-window.addEventListener('storage', (e) => {
-    if (e.key === 'selectedLang') initPanchang();
-});
+    let currentDate = new Date();
+    let selectedDate = new Date();
 
-function initPanchang() {
-    const lang = localStorage.getItem('selectedLang') || 'hi';
-    const now = new Date();
-    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-    updateView(todayStr, lang);
-    renderCalendar(lang);
-}
+    // 🔱 1. Calendar Generate Karne ka Function
+    function renderCalendar() {
+        calendarDays.innerHTML = '';
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
 
-function updateView(dateKey, lang) {
-    const d = window.panchangData ? window.panchangData[dateKey] : null;
-    const events = (window.MasterEvents && window.MasterEvents[lang]) ? window.MasterEvents[lang] : {};
+        // Month and Year Display set karein
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
+        monthDisplay.innerText = `${monthNames[month]} ${year}`;
 
-    if (d) {
-        document.getElementById('pan-tithi').innerText = d.tithi || "--";
-        document.getElementById('pan-nak').innerText = d.nakshatra || "--";
-        document.getElementById('pan-yoga').innerText = d.yoga || "--";
-        document.getElementById('pan-karana').innerText = d.karana || "--";
-        document.getElementById('pan-paksha').innerText = d.paksha || "--";
-        document.getElementById('pan-sun').innerText = (d.sunrise && d.sunset) ? `${d.sunrise} / ${d.sunset}` : "--";
-        document.getElementById('pan-moon').innerText = d.moonrise || "--";
-        document.getElementById('pan-muh').innerText = d.muhurat || "--";
-        document.getElementById('pan-rahu').innerText = d.rahuKaal || "--";
-        document.getElementById('day-chaughadia').innerText = d.dayChaughadia || "--";
-        document.getElementById('night-chaughadia').innerText = d.nightChaughadia || "--";
-        document.getElementById('display-date').innerText = (lang === 'hi' ? "पंचांग: " : "Panchang: ") + dateKey;
+        const firstDayOfMonth = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-        const fBox = document.getElementById('fest-box');
-        if (fBox) {
-            fBox.style.display = events[dateKey] ? "block" : "none";
-            document.getElementById('today-fest').innerText = events[dateKey] || "";
+        // Pichle mahine ke khaali din (Padding)
+        for (let i = 0; i < firstDayOfMonth; i++) {
+            const emptyDiv = document.createElement('div');
+            calendarDays.appendChild(emptyDiv);
+        }
+
+        // Mahine ke asli din
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayElement = document.createElement('div');
+            dayElement.classList.add('calendar-day');
+            dayElement.innerText = day;
+
+            // Today highlight
+            const today = new Date();
+            if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                dayElement.classList.add('today');
+            }
+
+            // Selected Day highlight
+            if (day === selectedDate.getDate() && month === selectedDate.getMonth() && year === selectedDate.getFullYear()) {
+                dayElement.classList.add('active');
+            }
+
+            // Click Event: Jab date par click ho
+            dayElement.onclick = () => {
+                selectedDate = new Date(year, month, day);
+                updatePanchangData(selectedDate);
+                renderCalendar(); // UI Refresh highlight ke liye
+            };
+
+            calendarDays.appendChild(dayElement);
         }
     }
-}
 
-function renderCalendar(lang) {
-    const grid = document.getElementById('calendar-grid');
-    const mLabel = document.getElementById('month-name');
-    const eList = document.getElementById('event-list');
-    const events = (window.MasterEvents && window.MasterEvents[lang]) ? window.MasterEvents[lang] : {};
-    
-    const months = {
-        hi: ["जनवरी","फरवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"],
-        en: ["January","February","March","April","May","June","July","August","September","October","November","December"]
+    // 🔱 2. Panchang Data Update Function (Dummy Logic abhi ke liye)
+    function updatePanchangData(date) {
+        console.log("Fetching data for:", date.toDateString());
+        
+        // Yahan tum API se data fetch karoge. Abhi main placeholder dikha raha hoon
+        document.getElementById('pan-tithi').innerText = "Shukla Navami";
+        document.getElementById('pan-nak').innerText = "Rohini";
+        document.getElementById('pan-yoga').innerText = "Shubha";
+        document.getElementById('pan-karana').innerText = "Balava";
+        document.getElementById('pan-paksha').innerText = "Shukla";
+        document.getElementById('pan-sun').innerText = "07:12 AM / 06:15 PM";
+        document.getElementById('pan-moon').innerText = "01:45 PM";
+        document.getElementById('pan-muh').innerText = "12:10 PM - 12:55 PM";
+        document.getElementById('pan-rahu').innerText = "10:30 AM - 12:00 PM";
+
+        // Translation update trigger agar language switch hui ho
+        if(window.updateUI) window.updateUI();
+    }
+
+    // 🔱 3. Month Navigation
+    prevMonthBtn.onclick = () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
     };
 
-    mLabel.innerText = `${months[lang][curMonth]} ${curYear}`;
-    grid.innerHTML = ""; 
-    const days = (lang === 'en') ? ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'] : ['र','सो','मं','बु','गु','शु','श'];
-    days.forEach(day => grid.innerHTML += `<div style="color:var(--gold); font-weight:600; font-size:0.8rem;">${day}</div>`);
+    nextMonthBtn.onclick = () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+    };
 
-    const firstDay = new Date(curYear, curMonth, 1).getDay();
-    const daysInMonth = new Date(curYear, curMonth + 1, 0).getDate();
-    for (let i = 0; i < firstDay; i++) grid.innerHTML += `<div></div>`;
-
-    let eventHtml = "";
-    const prefix = `${curYear}-${String(curMonth + 1).padStart(2, '0')}`;
-
-    for (let d = 1; d <= daysInMonth; d++) {
-        const dStr = `${prefix}-${String(d).padStart(2, '0')}`;
-        const hasEv = events[dStr] ? 'has-event' : '';
-        const isToday = (new Date().toISOString().split('T')[0] === dStr) ? 'today' : '';
-        
-        grid.innerHTML += `<div class="calendar-day ${hasEv} ${isToday}" onclick="updateView('${dStr}', '${lang}')">${d}</div>`;
-        if (events[dStr]) eventHtml += `<li><b class="gold-text">${d}:</b> ${events[dStr]}</li>`;
-    }
-    if (eList) eList.innerHTML = eventHtml || "<li>No major events</li>";
-}
-
-window.changeMonth = (dir) => {
-    curMonth += dir;
-    if (curMonth > 11) { curMonth = 0; curYear++; }
-    else if (curMonth < 0) { curMonth = 11; curYear--; }
-    renderCalendar(localStorage.getItem('selectedLang') || 'hi');
-};
-
-window.onload = initPanchang;
+    // Initial Load
+    renderCalendar();
+    updatePanchangData(selectedDate);
+});
