@@ -16,8 +16,6 @@ title_terms: "Terms & Conditions | Mahadev Astrologer MA",
     terms_title: "Terms & Conditions",
     terms_intro: "By accessing and using the services of Mahadev Astrologer MA, you agree to comply with the following terms and conditions:",
  
-
-
 // --- Services Section (HI) ---
 svc_kundli_desc: "सटीक ग्रहों की स्थिति, भविष्यवाणियों और जीवन की बाधाओं को दूर करने के लिए व्यक्तिगत शास्त्रीय उपायों के साथ विस्तृत वैदिक जन्म कुंडली विश्लेषण प्राप्त करें।",
 svc_matching_desc: "वैवाहिक अनुकूलता, मंगल दोष की जांच और दीर्घकालिक वैवाहिक सुख सुनिश्चित करने के लिए विशेषज्ञ गुण मिलान और अष्टकूट विश्लेषण।",
@@ -42,7 +40,6 @@ ins_horo_desc: "जानें कि आज सितारे आपके �
     terms_h4: "4. Privacy & Consent",
     terms_p4_1: "By using this website, you provide your consent to our Privacy Policy and Disclaimer.",
     back_home: "← Back to Home",
-
 
 // --- Index / Common ---
         site_title: "Mahadev Astrologer MA | Divine Vedic Wisdom",
@@ -206,8 +203,38 @@ st_good: "Good",
 st_bad: "Avoid",
 st_neutral: "Neutral",
 
-        
-        
+  // --- Inside 'en' section ---
+tithi_shukla_pratipada: "Shukla Pratipada",
+tithi_shukla_dwitiya: "Shukla Dwitiya",
+tithi_shukla_tritiya: "Shukla Tritiya",
+tithi_shukla_chaturthi: "Shukla Chaturthi",
+tithi_shukla_panchami: "Shukla Panchami",
+tithi_shukla_shashti: "Shukla Shashti",
+tithi_shukla_saptami: "Shukla Saptami",
+tithi_shukla_ashtami: "Shukla Ashtami",
+tithi_shukla_navami: "Shukla Navami",
+tithi_shukla_dashami: "Shukla Dashami",
+tithi_shukla_ekadashi: "Shukla Ekadashi",
+tithi_shukla_dwadashi: "Shukla Dwadashi",
+tithi_shukla_trayodashi: "Shukla Trayodashi",
+tithi_shukla_chaturdashi: "Shukla Chaturdashi",
+tithi_shukla_purnima: "Shukla Purnima",
+tithi_krishna_pratipada: "Krishna Pratipada",
+tithi_krishna_dwitiya: "Krishna Dwitiya",
+tithi_krishna_tritiya: "Krishna Tritiya",
+tithi_krishna_chaturthi: "Krishna Chaturthi",
+tithi_krishna_panchami: "Krishna Panchami",
+tithi_krishna_shashti: "Krishna Shashti",
+tithi_krishna_saptami: "Krishna Saptami",
+tithi_krishna_ashtami: "Krishna Ashtami",
+tithi_krishna_navami: "Krishna Navami",
+tithi_krishna_dashami: "Krishna Dashami",
+tithi_krishna_ekadashi: "Krishna Ekadashi",
+tithi_krishna_dwadashi: "Krishna Dwadashi",
+tithi_krishna_trayodashi: "Krishna Trayodashi",
+tithi_krishna_chaturdashi: "Krishna Chaturdashi",
+tithi_amavasya: "Amavasya",      
+      
     // Shared Layout
     back_home: "← Back to Home",
 
@@ -436,7 +463,39 @@ st_best: "सर्वश्रेष्ठ",
 st_good: "शुभ",
 st_bad: "वर्जित",
 st_neutral: "सामान्य",
-       
+
+// --- Inside 'hi' section ---
+tithi_shukla_pratipada: "शुक्ल प्रतिपदा",
+tithi_shukla_dwitiya: "शुक्ल द्वितीया",
+tithi_shukla_tritiya: "शुक्ल तृतीया",
+tithi_shukla_chaturthi: "शुक्ल चतुर्थी",
+tithi_shukla_panchami: "शुक्ल पंचमी",
+tithi_shukla_shashti: "शुक्ल षष्ठी",
+tithi_shukla_saptami: "शुक्ल सप्तमी",
+tithi_shukla_ashtami: "शुक्ल अष्टमी",
+tithi_shukla_navami: "शुक्ल नवमी",
+tithi_shukla_dashami: "शुक्ल दशमी",
+tithi_shukla_ekadashi: "शुक्ल एकादशी",
+tithi_shukla_dwadashi: "शुक्ल द्वादशी",
+tithi_shukla_trayodashi: "शुक्ल त्रयोदशी",
+tithi_shukla_chaturdashi: "शुक्ल चतुर्दशी",
+tithi_shukla_purnima: "शुक्ल पूर्णिमा",
+tithi_krishna_pratipada: "कृष्ण प्रतिपदा",
+tithi_krishna_dwitiya: "कृष्ण द्वितीया",
+tithi_krishna_tritiya: "कृष्ण तृतीया",
+tithi_krishna_chaturthi: "कृष्ण चतुर्थी",
+tithi_krishna_panchami: "कृष्ण पंचमी",
+tithi_krishna_shashti: "कृष्ण षष्ठी",
+tithi_krishna_saptami: "कृष्ण सप्तमी",
+tithi_krishna_ashtami: "कृष्ण अष्टमी",
+tithi_krishna_navami: "कृष्ण नवमी",
+tithi_krishna_dashami: "कृष्ण दशमी",
+tithi_krishna_ekadashi: "कृष्ण एकादशी",
+tithi_krishna_dwadashi: "कृष्ण द्वादशी",
+tithi_krishna_trayodashi: "कृष्ण त्रयोदशी",
+tithi_krishna_chaturdashi: "कृष्ण चतुर्दशी",
+tithi_amavasya: "अमावस्या",
+        
     // Shared Layout
     back_home: "← मुख्य पृष्ठ पर वापस जाएं",
 
