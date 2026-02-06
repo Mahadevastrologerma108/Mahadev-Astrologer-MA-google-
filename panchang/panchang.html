@@ -9,50 +9,41 @@
 
     <style>
         :root { --gold: #f5c542; --bg: #0a0a14; --card-bg: rgba(255, 255, 255, 0.05); }
-        
-        body { 
-            background-color: var(--bg); 
-            color: #ffffff; 
-            font-family: 'Poppins', sans-serif; 
-            margin: 0; 
-            padding: 0;
-            overflow-x: hidden; /* Screen se bahar kuch nahi jayega */
-        }
+        body { background-color: var(--bg); color: #ffffff; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
 
-        /* 🔱 1. THE FIX: Drawer ko "Solid" aur "Fixed" karo */
+        /* 🔱 THE GHOST MODE: Default state mein drawer ko khatam kar do */
         #nav-drawer {
+            display: none !important; /* Shuruat mein bilkul gayab */
             position: fixed !important;
             top: 0 !important;
-            right: -280px !important; /* Forcefully hide */
+            right: 0 !important;
             width: 280px !important;
             height: 100vh !important;
-            background: #11111b !important; /* Solid color (No transparency) */
-            z-index: 99999 !important; /* Sabse upar */
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            box-shadow: -10px 0 20px rgba(0,0,0,0.5);
-            display: block !important;
-            visibility: visible !important;
+            background: #11111b !important;
+            z-index: 100000 !important;
+            box-shadow: -10px 0 20px rgba(0,0,0,0.8);
         }
 
-        /* Jab drawer open ho */
-        #nav-drawer.open-active {
-            right: 0 !important;
+        /* Sirf click hone par hi 'flex' ya 'block' hoga */
+        #nav-drawer.prakat-ho {
+            display: block !important;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
         }
 
         #menu-overlay { 
             position: fixed !important; 
             top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.8); 
-            z-index: 99998 !important; 
+            background: rgba(0,0,0,0.8); z-index: 99999 !important; 
             display: none; 
         }
 
-        /* 2. Layout Structure (Footer aur Content ko dabne se bachaye) */
-        #header-placeholder { width: 100%; }
         .main-content { padding-top: 100px; padding-bottom: 50px; width: 100%; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-        /* 3. Panchang Look */
         .pan-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
         .p-card { background: var(--card-bg); border: 1px solid rgba(245, 197, 66, 0.1); padding: 18px 10px; border-radius: 12px; text-align: center; }
         .p-card .label { display: block; font-size: 0.7rem; color: #888; text-transform: uppercase; margin-bottom: 5px; }
@@ -88,35 +79,37 @@
     <script src="panchang.js"></script>
 
     <script>
-        // 🔱 JS Hammer: Drawer ko forcefully control karna
-        const systemInit = setInterval(() => {
+        // 🔱 THE MAGIC SCRIPT
+        const ghostControl = setInterval(() => {
             const drawer = document.getElementById('nav-drawer');
             const menuBtn = document.getElementById('mobile-menu');
             const overlay = document.getElementById('menu-overlay');
             const closeBtn = document.getElementById('close-menu');
 
             if (drawer && menuBtn) {
-                // Ensure starting state is hidden
-                drawer.classList.remove('open-active');
-                drawer.style.right = "-280px";
+                // Force initial hidden state
+                drawer.classList.remove('prakat-ho');
+                drawer.style.display = "none";
 
                 menuBtn.onclick = (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    drawer.classList.add('open-active');
+                    drawer.classList.add('prakat-ho');
                     overlay.style.display = 'block';
                 };
 
-                const closeMenu = () => {
-                    drawer.classList.remove('open-active');
+                const vanish = () => {
+                    drawer.classList.remove('prakat-ho');
                     overlay.style.display = 'none';
+                    // 0.3s wait for animation to finish then hide
+                    setTimeout(() => { if(!drawer.classList.contains('prakat-ho')) drawer.style.display = "none"; }, 300);
                 };
 
-                if(closeBtn) closeBtn.onclick = closeMenu;
-                if(overlay) overlay.onclick = closeMenu;
+                if(closeBtn) closeBtn.onclick = vanish;
+                if(overlay) overlay.onclick = vanish;
 
                 if(window.updateUI) window.updateUI();
-                clearInterval(systemInit);
+                clearInterval(ghostControl);
             }
         }, 100);
     </script>
