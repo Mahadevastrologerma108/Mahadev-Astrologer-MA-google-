@@ -1,99 +1,92 @@
-let currentLang = localStorage.getItem('preferredLang') || 'en';
-let viewDate = new Date(); // For calendar navigation
+let currentLang = localStorage.getItem('preferredLang') || 'hi';
+let viewDate = new Date(2026, 1, 1); 
 let selectedDate = new Date().toISOString().split('T')[0];
+let currentChaugMode = 'day';
 
-document.addEventListener('DOMContentLoaded', () => {
-    initPanchang();
-});
+document.addEventListener('DOMContentLoaded', () => { initPanchang(); });
 
-// Initialize Page
 function initPanchang() {
     renderCalendar();
-    loadMonthlyData();
     updateUI();
 }
 
-// Render Calendar
 function renderCalendar() {
     const grid = document.getElementById('calendar-grid');
-    const monthYearTitle = document.getElementById('calendar-month-year');
-    grid.innerHTML = "";
+    const title = document.getElementById('calendar-month-year');
+    if (!grid || !title) return;
 
+    grid.innerHTML = "";
     const year = viewDate.getFullYear();
     const month = viewDate.getMonth();
 
-    // Set Month Title
-    const monthKey = `mon_${new Intl.DateTimeFormat('en-US', {month: 'short'}).toLowerCase()}`;
-    monthYearTitle.innerText = `${window.translations[currentLang][monthKey]} ${year}`;
+    const monthNames = ["mon_jan", "mon_feb", "mon_mar", "mon_apr", "mon_may", "mon_jun", "mon_jul", "mon_aug", "mon_sep", "mon_oct", "mon_nov", "mon_dec"];
+    title.innerText = `${window.translations[currentLang][monthNames[month]]} ${year}`;
 
     const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const days = new Date(year, month + 1, 0).getDate();
 
-    for (let i = 0; i < firstDay; i++) grid.innerHTML += `<div></div>`;
+    for (let i = 0; i < firstDay; i++) grid.innerHTML += `<div class="calendar-day empty" style="visibility:hidden"></div>`;
 
-    for (let d = 1; d <= daysInMonth; d++) {
+    for (let d = 1; d <= days; d++) {
         const dStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-        const isEvent = window.YEARLY_EVENTS_2026?.[dStr] ? 'has-event' : '';
+        const isEvent = window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026[dStr] ? 'has-event' : '';
         const isActive = dStr === selectedDate ? 'active' : '';
 
-        grid.innerHTML += `<div class="calendar-day ${isEvent} ${isActive}" onclick="handleDateClick('${dStr}')">${d}</div>`;
+        const day = document.createElement('div');
+        day.className = `calendar-day ${isEvent} ${isActive}`;
+        day.innerText = d;
+        day.onclick = () => { selectedDate = dStr; renderCalendar(); updateUI(); };
+        grid.appendChild(day);
     }
 }
 
-// Handle Date Selection
-function handleDateClick(dateStr) {
-    selectedDate = dateStr;
-    renderCalendar();
-    updateUI();
-}
-
-// Update UI Elements
 function updateUI() {
-    const event = window.YEARLY_EVENTS_2026?.[selectedDate];
+    const lang = currentLang;
+    const data = window.PANCHANG_DATA_2026_02 ? window.PANCHANG_DATA_2026_02[selectedDate] : null;
+    const event = window.YEARLY_EVENTS_2026 ? window.YEARLY_EVENTS_2026[selectedDate] : null;
+
+    // 1. Ribbon & Event Box
     const ribbon = document.getElementById('event-ribbon');
-    
-    // 1. Update Ribbon & Event Box
     if (event) {
-        document.getElementById('ribbon-event-name').innerText = currentLang === 'hi' ? event.hi : event.en;
-        document.getElementById('det-event-title').innerText = currentLang === 'hi' ? event.hi : event.en;
-        document.getElementById('det-event-desc').innerText = currentLang === 'hi' ? event.desc_hi : event.desc_en;
+        document.getElementById('ribbon-event-name').innerText = event[lang] || event.hi;
+        document.getElementById('det-event-title').innerText = event[lang] || event.hi;
+        document.getElementById('det-event-desc').innerText = event[`desc_${lang}`] || "";
+        document.getElementById('detailed-event-box').style.display = "block";
         ribbon.classList.add('glow');
     } else {
-        document.getElementById('ribbon-event-name').innerText = window.translations[currentLang]['pan_ribbon_loading'];
-        document.getElementById('det-event-title').innerText = "";
-        document.getElementById('det-event-desc').innerText = "";
+        document.getElementById('ribbon-event-name').innerText = window.translations[lang]['pan_ribbon_loading'];
+        document.getElementById('detailed-event-box').style.display = "none";
         ribbon.classList.remove('glow');
     }
 
-    // 2. Update Panchang Data from Monthly DB
-    const monthKey = `DB_${selectedDate.substring(0,4)}_${selectedDate.substring(5,7)}`;
-    const data = window[monthKey]?.[selectedDate];
-
+    // 2. Astro Details
     if (data) {
-        document.getElementById('val-tithi').innerText = window.translations[currentLang][data.tithi] || data.tithi;
-        document.getElementById('val-paksha').innerText = window.translations[currentLang][data.paksha] || data.paksha;
-        document.getElementById('val-nakshatra').innerText = window.translations[currentLang][data.nakshatra] || data.nakshatra;
+        document.getElementById('val-tithi').innerText = window.translations[lang][data.tithi] || data.tithi;
+        document.getElementById('val-paksha').innerText = window.translations[lang][data.paksha] || data.paksha;
+        document.getElementById('val-nakshatra').innerText = window.translations[lang][data.nakshatra] || data.nakshatra;
         document.getElementById('val-sun-time').innerText = `${data.sunrise} / ${data.sunset}`;
-        document.getElementById('val-moon-time').innerText = data.moonrise;
+        document.getElementById('val-moon-time').innerText = data.moonrise || "--:--";
         document.getElementById('val-muhurat').innerText = data.muhurat || "---";
-        renderChaughadia(data.chaughadia?.day); // Default to day
+        renderChaughadia(data.chaughadia[currentChaugMode]);
     }
 }
 
-// Chaughadia Rendering logic
 function renderChaughadia(list) {
     const container = document.getElementById('chaughadia-list');
-    container.innerHTML = list ? list.map(item => `
-        <div class="chaug-item ${item.nature}">
+    if(!container || !list) return;
+    container.innerHTML = list.map(item => `
+        <div class="chaug-item nature-${item.nature}" style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid rgba(255,255,255,0.05);">
             <span>${item.time}</span>
-            <strong>${window.translations[currentLang][item.name]}</strong>
-            <small>${window.translations[currentLang][item.status]}</small>
+            <strong style="color:var(--gold-main)">${window.translations[currentLang][item.name]}</strong>
         </div>
-    `).join('') : "No Data";
+    `).join('');
 }
 
-// Month Navigation
-function changeMonth(step) {
-    viewDate.setMonth(viewDate.getMonth() + step);
-    renderCalendar();
-}
+window.switchChaug = (mode) => {
+    currentChaugMode = mode;
+    document.getElementById('btn-day').classList.toggle('active', mode === 'day');
+    document.getElementById('btn-night').classList.toggle('active', mode === 'night');
+    updateUI();
+};
+
+window.changeMonth = (dir) => { viewDate.setMonth(viewDate.getMonth() + dir); renderCalendar(); };
