@@ -133,3 +133,32 @@ window.showChaug = function(type) {
 // Navigation
 document.getElementById('prevMonth').onclick = () => { currentMonthView.setMonth(currentMonthView.getMonth() - 1); renderCalendar(); };
 document.getElementById('nextMonth').onclick = () => { currentMonthView.setMonth(currentMonthView.getMonth() + 1); renderCalendar(); };
+
+// 🕉️ 4. Monthly Events List Generator
+function renderMonthlyEvents(dStr) {
+    const listContainer = document.getElementById('events-list'); // Ensure this ID exists in HTML
+    if (!listContainer) return;
+
+    listContainer.innerHTML = '';
+    const currentYearMonth = dStr.substring(0, 7); // "2026-02" nikal lega
+    const events = window.YEARLY_EVENTS_2026 || {};
+    
+    // Dates ko sort karke loop chalate hain
+    Object.keys(events).sort().forEach(date => {
+        if (date.startsWith(currentYearMonth)) {
+            const ev = events[date];
+            const dayNum = date.split('-')[2]; // Sirf tarikh (15, 16 etc)
+            
+            const row = document.createElement('div');
+            row.className = 'event-item-row'; 
+            row.innerHTML = `
+                <div class="ev-date" style="font-weight:bold; color:var(--gold); min-width:40px;">${dayNum}</div>
+                <div class="ev-info" style="flex:1; padding-left:10px; border-left:1px solid #444;">
+                    <div style="font-weight:bold;">${ev[lang] || ev.hi}</div>
+                    <div style="font-size:12px; color:#aaa;">${ev['desc_' + lang] || ''}</div>
+                </div>
+            `;
+            listContainer.appendChild(row);
+        }
+    });
+}
