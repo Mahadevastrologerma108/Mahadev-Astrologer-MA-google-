@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         { name: "Home", url: "index.html" },
         { name: "Daily Horoscope", url: "horoscope.html" },
         { name: "Panchang 2026", url: "panchang/panchang.html" },
-        { name: "Astrology Guides", url: "latest-guide/index.html" }
+        { name: "Astrology Guides", url: "latest-guide/guides.html" }
     ];
 
     // 2. Footer Links Configuration
