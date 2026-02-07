@@ -1,44 +1,55 @@
-// Blogger Details
-const BLOG_URL = "https://yourblogname.blogspot.com"; // 👈 Apna blog URL yahan dalo
+/**
+ * Mahadev Astrologer - Blogger Fetcher Engine
+ * Mission: Premium, Ad-free Article Delivery
+ */
 
-async function fetchRoyalArticles() {
-    const container = document.getElementById('blogger-posts');
+const BLOGGER_URL = "https://yourblogname.blogspot.com"; // 👈 Yahan apna link dalo
+
+async function loadRoyalArticles() {
+    const grid = document.getElementById('blogger-posts');
     
     try {
-        const response = await fetch(`${BLOG_URL}/feeds/posts/default?alt=json`);
+        // Fetching the JSON feed
+        const response = await fetch(`${BLOGGER_URL}/feeds/posts/default?alt=json&max-results=12`);
         const data = await response.json();
-        const posts = data.feed.entry;
+        const entries = data.feed.entry;
 
-        if (!posts) {
-            container.innerHTML = "<p class='gold-text'>Mahadev ki kripa se jald hi naye lekh aayenge.</p>";
+        if (!entries) {
+            grid.innerHTML = `<p class="gold-text" style="grid-column: 1/-1; text-align: center;">Jald hi naye lekh prakashit honge. Pratiksha karein... 🔱</p>`;
             return;
         }
 
-        let htmlContent = '';
-        posts.forEach(post => {
+        let html = '';
+        entries.forEach(post => {
             const title = post.title.$t;
             const link = post.link.find(l => l.rel === 'alternate').href;
-            // Summary logic: 120 characters tak
-            const summary = post.summary ? post.summary.$t.substring(0, 120) : post.content.$t.replace(/<[^>]*>?/gm, '').substring(0, 120);
+            
+            // Thumbnail extraction logic
+            let imgUrl = post.media$thumbnail ? post.media$thumbnail.url.replace('s72-c', 's1600') : '';
+            
+            // Clean summary logic
+            let summary = post.summary ? post.summary.$t : post.content.$t.replace(/<[^>]*>?/gm, '');
+            summary = summary.substring(0, 100) + "...";
 
-            htmlContent += `
+            html += `
                 <article class="article-card">
+                    ${imgUrl ? `<img src="${imgUrl}" alt="${title}" style="width:100%; border-radius:4px; margin-bottom:15px; opacity:0.8; border:1px solid rgba(197, 160, 89, 0.2);">` : ''}
                     <div>
                         <h3>${title}</h3>
-                        <p>${summary}...</p>
+                        <p>${summary}</p>
                     </div>
-                    <a href="${link}" target="_blank" class="read-btn">READ GUIDE 🔱</a>
+                    <a href="${link}" target="_blank" class="read-btn">READ SACRED GUIDE 🔱</a>
                 </article>
             `;
         });
 
-        container.innerHTML = htmlContent;
+        grid.innerHTML = html;
 
     } catch (error) {
-        console.error("Fetch Error:", error);
-        container.innerHTML = "<p class='gold-text'>Data connect karne mein samasya aa rahi hai.</p>";
+        console.error("Connection Error:", error);
+        grid.innerHTML = `<p class="gold-text" style="grid-column: 1/-1; text-align: center;">Brahmand se sampark judne mein samay lag raha hai. Kripya refresh karein.</p>`;
     }
 }
 
-// Start fetching
-document.addEventListener('DOMContentLoaded', fetchRoyalArticles);
+// Execute when page is ready
+document.addEventListener('DOMContentLoaded', loadRoyalArticles);
