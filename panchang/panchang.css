@@ -99,49 +99,46 @@
 .monthly-list-grid::-webkit-scrollbar { width: 4px; }
 .monthly-list-grid::-webkit-scrollbar-track { background: transparent; }
 .monthly-list-grid::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
-/* 1. Calendar ke Din (Numbers) aur Main Text */
-.calendar-day {
+/* Purana wala hata kar ye dalo - Ekdum safe aur specific */
+
+/* 1. Calendar ke saare numbers aur borders */
+#calendarDays .calendar-day {
     color: var(--gold) !important;
-    border: 1px solid rgba(212, 175, 55, 0.2); /* Halka gold border */
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(245, 197, 66, 0.2) !important;
 }
 
-/* 2. Month Display (Jan, Feb...) aur Year Text */
+/* 2. Month Display aur Year */
 #monthDisplay {
     color: var(--gold) !important;
-    font-weight: bold;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4) !important;
 }
 
 /* 3. Navigation Buttons (Prev/Next) */
-.nav-btn, #prevMonth, #nextMonth {
+.calendar-header button, 
+#prevMonth, 
+#nextMonth, 
+.nav-btn {
     color: var(--gold) !important;
     border: 1px solid var(--gold) !important;
-    background: transparent;
-    transition: 0.3s;
+    background: transparent !important;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-/* 4. Button Hover Effect (Jab mouse le jayein) */
-.nav-btn:hover, #prevMonth:hover, #nextMonth:hover {
-    background: var(--gold);
-    color: #000 !important; /* Text black ho jayega gold background par */
-    box-shadow: 0 0 15px var(--gold);
-}
-
-/* 5. Chaughadia Buttons (Day/Night) */
-.chaug-toggle-btn {
-    border: 1px solid var(--gold) !important;
-    color: var(--gold) !important;
-}
-
-.chaug-toggle-btn.active {
+/* 4. Active Date (Gold background, Black Text) */
+#calendarDays .calendar-day.active {
     background: var(--gold) !important;
     color: #000 !important;
+    font-weight: bold !important;
+    box-shadow: 0 0 15px var(--gold) !important;
 }
-/* Active date par number black dikhna chahiye taaki wo visible ho */
-.calendar-day.active {
-    background: var(--gold) !important;
-    color: #000 !important; /* Gold background par black text */
-    font-weight: bold;
+
+/* 5. Chaughadia Buttons */
+.chaughadia-tabs .c-tab, .chaug-toggle-btn {
+    border: 1px solid var(--gold) !important;
+    color: var(--gold) !important;
 }
 
 @media (max-width: 600px) { .pan-grid { grid-template-columns: repeat(2, 1fr); } }
