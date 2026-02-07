@@ -14,12 +14,10 @@
 
     <div id="header-placeholder"></div>
 
-    <div class="container">
-        <h1 class="p-title" data-key="pan_aaj_ka">Aaj Ka Panchang</h1>
-
-        <div class="event-ribbon" id="today-event-ribbon">
-            <i class="fas fa-om"></i> <span id="ribbon-text" data-key="pan_ribbon_loading">Loading...</span>
-        </div>
+    <h2 id="static-title" style="text-align:center; color:var(--gold);">Today's Panchang</h2>
+<div class="ribbon-container">
+   <span id="ribbon-text">Shubh Din</span>
+</div>
 
         <div class="pan-grid">
             <div class="p-card"><span class="label" data-key="pan_tithi">Tithi</span><h4 id="pan-tithi" class="val">--</h4></div>
@@ -34,22 +32,42 @@
         </div>
 
         <div class="chaughadia-section">
-            <h2 class="p-title" data-key="pan_shubh_chaug">Shubh Chaughadia</h2>
-            <div class="chaughadia-tabs">
-                <button class="c-tab active day-btn" id="btn-day" onclick="showChaug('day')">
-                    <i class="fas fa-sun"></i> <span data-key="pan_day">Day</span>
-                </button>
-                <button class="c-tab night-btn" id="btn-night" onclick="showChaug('night')">
-                    <i class="fas fa-moon"></i> <span data-key="pan_night">Night</span>
-                </button>
-            </div>
-            <div id="day-chaug" class="chaug-content">
-                <table class="chaug-table"><thead><tr><th>Time</th><th>Chaughadia</th><th>Nature</th></tr></thead><tbody id="day-chaug-body"></tbody></table>
-            </div>
-            <div id="night-chaug" class="chaug-content" style="display:none;">
-                <table class="chaug-table"><thead><tr><th>Time</th><th>Chaughadia</th><th>Nature</th></tr></thead><tbody id="night-chaug-body"></tbody></table>
-            </div>
-        </div>
+    <h2 class="p-title" data-key="pan_shubh_chaug">Shubh Chaughadia</h2>
+    <div class="chaughadia-tabs">
+        <button class="c-tab active day-btn" id="btn-day" onclick="showChaug('day')">
+            <i class="fas fa-sun"></i> <span data-key="pan_day">Day</span>
+        </button>
+        <button class="c-tab night-btn" id="btn-night" onclick="showChaug('night')">
+            <i class="fas fa-moon"></i> <span data-key="pan_night">Night</span>
+        </button>
+    </div>
+
+    <div id="day-chaug" class="chaug-content">
+        <table class="chaug-table">
+            <thead>
+                <tr>
+                    <th data-key="pan_time">Time</th>
+                    <th data-key="pan_chaug">Chaughadia</th>
+                    <th data-key="pan_nature">Nature</th>
+                </tr>
+            </thead>
+            <tbody id="day-chaug-body"></tbody>
+        </table>
+    </div>
+
+    <div id="night-chaug" class="chaug-content" style="display:none;">
+        <table class="chaug-table">
+            <thead>
+                <tr>
+                    <th data-key="pan_time">Time</th>
+                    <th data-key="pan_chaug">Chaughadia</th>
+                    <th data-key="pan_nature">Nature</th>
+                </tr>
+            </thead>
+            <tbody id="night-chaug-body"></tbody>
+        </table>
+    </div>
+</div>
 
         <div class="calendar-container">
             <p class="calendar-hint" data-key="pan_cal_hint">Select a date 👇</p>
