@@ -157,7 +157,7 @@ report_badge: "Free PDF Report Included (HI/EN/Hinglish)",
 
 // ... purani keys ...
         title_panchang: "Panchang & Calendar 2026",
-        pan_aaj_ka: "Today's Panchang",
+        static-title: "Today's Panchang",
         pan_tithi: "Tithi",
         pan_nak: "Nakshatra",
         pan_sun: "Sunrise / Sunset",
@@ -436,7 +436,7 @@ report_badge: "फ्री PDF रिपोर्ट शामिल है (�
 
 // ... purani keys ...
         title_panchang: "पंचांग और कैलेंडर 2026",
-        pan_aaj_ka: "आज का पंचांग",
+        static-title: "आज का पंचांग",
         pan_tithi: "तिथि",
         pan_nak: "नक्षत्र",
         pan_sun: "सूर्योदय / सूर्यास्त",
