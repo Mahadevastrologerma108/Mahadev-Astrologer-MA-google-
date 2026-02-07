@@ -4,6 +4,11 @@ window.translations = {
         nav_home: "Home", nav_horoscope: "Horoscope", nav_panchang: "Panchang", nav_guide: "Update", nav_book: "Book Now",
         zod_aries: "Aries", zod_taurus: "Taurus", zod_gemini: "Gemini", zod_cancer: "Cancer", zod_leo: "Leo", zod_virgo: "Virgo", zod_libra: "Libra", zod_scorpio: "Scorpio", zod_sagittarius: "Sagittarius", zod_capricorn: "Capricorn", zod_aquarius: "Aquarius", zod_pisces: "Pisces",
 
+// translations.js ke 'en' section mein:
+horo_career: "Career & Finance",
+horo_love: "Love & Family",
+horo_health: "Health & Wellness",
+
 // Add these inside the 'en' section:
 ph_name_input: "Your Full Name",
 ph_wa_input: "WhatsApp Number",
@@ -322,6 +327,11 @@ nakshatra_purva_phalguni: "Purva Phalguni", nakshatra_uttara_phalguni: "Uttara P
         // Nav & Zodiac
         nav_home: "होम", nav_horoscope: "राशिफल", nav_panchang: "पंचांग", nav_guide: "अपडेट", nav_book: "बुक करें",
         zod_aries: "मेष", zod_taurus: "वृषभ", zod_gemini: "मिथुन", zod_cancer: "कर्क", zod_leo: "सिंह", zod_virgo: "कन्या", zod_libra: "तुला", zod_scorpio: "वृश्चिक", zod_sagittarius: "धनु", zod_capricorn: "मकर", zod_aquarius: "कुंभ", zod_pisces: "मीन",
+
+// translations.js ke 'hi' section mein:
+horo_career: "करियर और वित्त",
+horo_love: "प्रेम और परिवार",
+horo_health: "स्वास्थ्य और कल्याण",
 
 // Add these inside the 'hi' section:
 ph_name_input: "आपका पूरा नाम",
