@@ -41,4 +41,63 @@
 .calendar-day.has-event::after { content: ''; position: absolute; bottom: 4px; width: 4px; height: 4px; background: #ff4d4d; border-radius: 50%; box-shadow: 0 0 5px #ff4d4d; }
 .calendar-day.active { background: var(--gold); color: #000; }
 
+/* 🚩 Monthly Events List Styling (Final Addition) */
+.event-item-row {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(245, 197, 66, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--gold); /* Aapke theme se matching side-border */
+}
+
+.event-item-row:hover {
+    background: rgba(245, 197, 66, 0.08);
+    transform: translateX(8px); /* Hover par thoda side move hoga */
+    border-color: var(--gold);
+}
+
+.ev-date {
+    font-family: 'Cinzel';
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--gold);
+    min-width: 50px;
+    text-align: center;
+    line-height: 1;
+}
+
+.ev-info {
+    flex: 1;
+    padding-left: 15px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ev-info div:first-child {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 3px;
+    color: #fff;
+}
+
+.ev-info div:last-child {
+    font-size: 12px;
+    color: #aaa;
+    line-height: 1.4;
+}
+/* Scrollable Monthly List (Optional: Agar list bahut lambi ho jaye) */
+.monthly-list-grid {
+    margin-top: 20px;
+    max-height: 500px; /* List zyada badi ho toh scrollbar aa jayega */
+    overflow-y: auto;
+    padding-right: 5px;
+}
+/* Custom Scrollbar for Monthly List */
+.monthly-list-grid::-webkit-scrollbar { width: 4px; }
+.monthly-list-grid::-webkit-scrollbar-track { background: transparent; }
+.monthly-list-grid::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
 @media (max-width: 600px) { .pan-grid { grid-template-columns: repeat(2, 1fr); } }
