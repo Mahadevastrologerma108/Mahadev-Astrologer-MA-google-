@@ -185,23 +185,23 @@ mon_jul: "July", mon_aug: "August", mon_sep: "September", mon_oct: "October", mo
 day_sun: "Sun", day_mon: "Mon", day_tue: "Tue", day_wed: "Wed", day_thu: "Thu", day_fri: "Fri", day_sat: "Sat",
 
         // Paksha Keys
-pak_shukla: "Shukla Paksha",
-pak_krishna: "Krishna Paksha",
+paksha_shukla: "Shukla Paksha",
+paksha_krishna: "Krishna Paksha",
 
 // Chaughadia Names
-ch_shubh: "Shubh",
-ch_amrit: "Amrit",
-ch_labh: "Labh",
-ch_char: "Chara",
-ch_rog: "Rog",
-ch_kaal: "Kaal",
-ch_udveg: "Udveg",
+chaug_shubh: "Shubh",
+chaug_amrit: "Amrit",
+chaug_labh: "Labh",
+chaug_char: "Chara",
+chaug_rog: "Rog",
+chaug_kaal: "Kaal",
+chaug_udveg: "Udveg",
 
 // Status (Nature)
-st_best: "Excellent",
-st_good: "Good",
-st_bad: "Avoid",
-st_neutral: "Neutral",
+chaug_best: "Excellent",
+chaug_good: "Good",
+chaug_bad: "Avoid",
+chaug_neutral: "Neutral",
 
   // --- Inside 'en' section ---
 tithi_shukla_pratipada: "Shukla Pratipada",
@@ -233,7 +233,25 @@ tithi_krishna_ekadashi: "Krishna Ekadashi",
 tithi_krishna_dwadashi: "Krishna Dwadashi",
 tithi_krishna_trayodashi: "Krishna Trayodashi",
 tithi_krishna_chaturdashi: "Krishna Chaturdashi",
-tithi_amavasya: "Amavasya",      
+tithi_amavasya: "Amavasya",  
+
+        // Yoga Names (English)
+yoga_vishkumbha: "Vishkumbha", yoga_priti: "Priti", yoga_ayushman: "Ayushman", yoga_saubhagya: "Saubhagya", 
+yoga_shobhana: "Shobhana", yoga_atiganda: "Atiganda", yoga_sukarma: "Sukarma", yoga_dhriti: "Dhriti", 
+yoga_shula: "Shula", yoga_ganda: "Ganda", yoga_vriddhi: "Vriddhi", yoga_dhruva: "Dhruva", 
+yoga_vyaghata: "Vyaghata", yoga_harshana: "Harshana", yoga_vajra: "Vajra", yoga_siddhi: "Siddhi", 
+yoga_vyatipata: "Vyatipata", yoga_variyana: "Variyana", yoga_parigha: "Parigha", yoga_shiva: "Shiva", 
+yoga_siddha: "Siddha", yoga_sadhya: "Sadhya", yoga_shubha: "Shubha", yoga_shukla: "Shukla", 
+yoga_brahma: "Brahma", yoga_indra: "Indra", yoga_vaidhriti: "Vaidhriti",
+
+// Karana Names (English)
+karana_bava: "Bava", karana_balava: "Balava", karana_kaulava: "Kaulava", karana_taitila: "Taitila", 
+karana_garaja: "Garaja", karana_vanija: "Vanija", karana_visti: "Visti (Bhadra)", karana_shakuni: "Shakuni", 
+karana_chatushpada: "Chatushpada", karana_naga: "Naga", karana_kintughna: "Kintughna",pan_karana: "Karana",
+
+// Nakshatra Extra (Agar missing ho)
+nakshatra_pushya: "Pushya", nakshatra_ashlesha: "Ashlesha", nakshatra_magha: "Magha", 
+nakshatra_purva_phalguni: "Purva Phalguni", nakshatra_uttara_phalguni: "Uttara Phalguni", nakshatra_hasta: "Hasta",
       
     // Shared Layout
     back_home: "← Back to Home",
@@ -446,23 +464,23 @@ mon_jul: "जुलाई", mon_aug: "अगस्त", mon_sep: "सितं�
 day_sun: "रवि", day_mon: "सोम", day_tue: "मंगल", day_wed: "बुध", day_thu: "गुरु", day_fri: "शुक्र", day_sat: "शनि",
 
         // Paksha Keys
-pak_shukla: "शुक्ल पक्ष",
-pak_krishna: "कृष्ण पक्ष",
+paksha_shukla: "शुक्ल पक्ष",
+paksha_krishna: "कृष्ण पक्ष",
 
 // Chaughadia Names
-ch_shubh: "शुभ",
-ch_amrit: "अमृत",
-ch_labh: "लाभ",
-ch_char: "चर",
-ch_rog: "रोग",
-ch_kaal: "काल",
-ch_udveg: "उद्वेग",
+chaug_shubh: "शुभ",
+chaug_amrit: "अमृत",
+chaug_labh: "लाभ",
+chaug_char: "चर",
+chaug_rog: "रोग",
+chaug_kaal: "काल",
+chaug_udveg: "उद्वेग",
 
 // Status (Nature)
-st_best: "सर्वश्रेष्ठ",
-st_good: "शुभ",
-st_bad: "वर्जित",
-st_neutral: "सामान्य",
+chaug_best: "सर्वश्रेष्ठ",
+chaug_good: "शुभ",
+chaug_bad: "वर्जित",
+chaug_neutral: "सामान्य",
 
 // --- Inside 'hi' section ---
 tithi_shukla_pratipada: "शुक्ल प्रतिपदा",
@@ -495,6 +513,24 @@ tithi_krishna_dwadashi: "कृष्ण द्वादशी",
 tithi_krishna_trayodashi: "कृष्ण त्रयोदशी",
 tithi_krishna_chaturdashi: "कृष्ण चतुर्दशी",
 tithi_amavasya: "अमावस्या",
+
+        // Yoga Names (Hindi)
+yoga_vishkumbha: "विष्कुम्भ", yoga_priti: "प्रीति", yoga_ayushman: "आयुष्मान", yoga_saubhagya: "सौभाग्य", 
+yoga_shobhana: "शोभन", yoga_atiganda: "अतिगण्ड", yoga_sukarma: "सुकर्मा", yoga_dhriti: "धृति", 
+yoga_shula: "शूल", yoga_ganda: "गण्ड", yoga_vriddhi: "वृद्धि", yoga_dhruva: "ध्रुव", 
+yoga_vyaghata: "व्याघात", yoga_harshana: "हर्षण", yoga_vajra: "वज्र", yoga_siddhi: "सिद्धि", 
+yoga_vyatipata: "व्यतीपात", yoga_variyana: "वरीयान", yoga_parigha: "परिघ", yoga_shiva: "शिव", 
+yoga_siddha: "सिद्ध", yoga_sadhya: "साध्य", yoga_shubha: "शुभ", yoga_shukla: "शुक्ल", 
+yoga_brahma: "ब्रह्म", yoga_indra: "इन्द्र", yoga_vaidhriti: "वैधृति",
+
+// Karana Names (Hindi)
+karana_bava: "बव", karana_balava: "बालव", karana_kaulava: "कौलव", karana_taitila: "तैतिल", 
+karana_garaja: "गरज", karana_vanija: "वणिज", karana_visti: "विष्टि (भद्रा)", karana_shakuni: "शकुनि", 
+karana_chatushpada: "चतुष्पद", karana_naga: "नाग", karana_kintughna: "किस्तुघ्न",pan_karana: "करण",
+
+// Nakshatra Extra (Hindi)
+nakshatra_pushya: "पुष्य", nakshatra_ashlesha: "आश्लेषा", nakshatra_magha: "मघा", 
+nakshatra_purva_phalguni: "पूर्वा फाल्गुनी", nakshatra_uttara_phalguni: "उत्तरा फाल्गुनी", nakshatra_hasta: "हस्त",
         
     // Shared Layout
     back_home: "← मुख्य पृष्ठ पर वापस जाएं",
