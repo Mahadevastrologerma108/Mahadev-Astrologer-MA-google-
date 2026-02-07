@@ -99,5 +99,49 @@
 .monthly-list-grid::-webkit-scrollbar { width: 4px; }
 .monthly-list-grid::-webkit-scrollbar-track { background: transparent; }
 .monthly-list-grid::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+/* 1. Calendar ke Din (Numbers) aur Main Text */
+.calendar-day {
+    color: var(--gold) !important;
+    border: 1px solid rgba(212, 175, 55, 0.2); /* Halka gold border */
+}
+
+/* 2. Month Display (Jan, Feb...) aur Year Text */
+#monthDisplay {
+    color: var(--gold) !important;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* 3. Navigation Buttons (Prev/Next) */
+.nav-btn, #prevMonth, #nextMonth {
+    color: var(--gold) !important;
+    border: 1px solid var(--gold) !important;
+    background: transparent;
+    transition: 0.3s;
+}
+
+/* 4. Button Hover Effect (Jab mouse le jayein) */
+.nav-btn:hover, #prevMonth:hover, #nextMonth:hover {
+    background: var(--gold);
+    color: #000 !important; /* Text black ho jayega gold background par */
+    box-shadow: 0 0 15px var(--gold);
+}
+
+/* 5. Chaughadia Buttons (Day/Night) */
+.chaug-toggle-btn {
+    border: 1px solid var(--gold) !important;
+    color: var(--gold) !important;
+}
+
+.chaug-toggle-btn.active {
+    background: var(--gold) !important;
+    color: #000 !important;
+}
+/* Active date par number black dikhna chahiye taaki wo visible ho */
+.calendar-day.active {
+    background: var(--gold) !important;
+    color: #000 !important; /* Gold background par black text */
+    font-weight: bold;
+}
 
 @media (max-width: 600px) { .pan-grid { grid-template-columns: repeat(2, 1fr); } }
