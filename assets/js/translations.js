@@ -380,8 +380,7 @@ btn_read: "अभी पढ़ें →",
 
 // --- In 'hi' section of translations.js ---
 form_title: "महादेव से परामर्श करें",
-lbl_svc_select: "सेवा का चयन करें",
-btn_submit: "दैवीय मार्गदर्शन प्राप्त करें", 
+lbl_svc_select: "सेवा का चयन करें", 
 // ... बाकी keys
 report_badge: "फ्री PDF रिपोर्ट शामिल है (हिंदी/EN/हिंग्लिश)",
 
