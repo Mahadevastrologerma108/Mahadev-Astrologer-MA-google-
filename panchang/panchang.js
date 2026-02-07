@@ -1,13 +1,12 @@
 // 🕉️ Global Variables
-// Aaj ki real date nikaalne ke liye logic
 let today = new Date();
-let currentMonthView = new Date(2026, 1, 1); // February 2026 setup
-let activeDate = new Date(2026, 1, today.getDate()); // Automatically picks current date
+let currentMonthView = new Date(2026, 1, 1); 
+let activeDate = new Date(2026, 1, today.getDate()); 
 let lang = localStorage.getItem('preferredLang') || 'hi';
 
 // 🕉️ Entry Point
 window.onload = function() {
-    console.log("Mahadev: Panchang Loaded for Today: " + activeDate.toDateString());
+    console.log("Mahadev: Panchang Loaded");
     renderCalendar();
     fetchAndDisplayData(activeDate);
 };
@@ -37,11 +36,8 @@ function renderCalendar() {
         dayEl.className = 'calendar-day';
         dayEl.innerText = d;
 
-        // Current real date highlight
         const realToday = new Date();
         if (d === realToday.getDate() && month === realToday.getMonth() && year === realToday.getFullYear()) dayEl.classList.add('today');
-        
-        // Selected date highlight
         if (d === activeDate.getDate() && month === activeDate.getMonth() && year === activeDate.getFullYear()) dayEl.classList.add('active');
 
         if (window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026[dStr]) dayEl.classList.add('has-event');
@@ -62,16 +58,20 @@ function fetchAndDisplayData(dateObj) {
     const day = String(dateObj.getDate()).padStart(2, '0');
     const dStr = `${year}-${month}-${day}`;
     
-    // Dynamic DB detection (Jo file load hogi usi se data uthayega)
     const db = window.PANCHANG_DATA_2026_02 || {}; 
     const data = db[dStr];
     const event = window.YEARLY_EVENTS_2026 ? window.YEARLY_EVENTS_2026[dStr] : null;
     const t = window.translations ? window.translations[lang] : {};
 
+    const staticTitle = document.getElementById('static-title');
     const ribbon = document.getElementById('ribbon-text');
     const detailBox = document.getElementById('event-display-area');
 
-    // Display Events
+    // --- DOUBLE TITLE LOGIC START ---
+    if(staticTitle) {
+        staticTitle.innerText = t['today_panchang'] || "Today's Panchang";
+    }
+
     if (event) {
         ribbon.innerText = event[lang] || event.hi;
         if(detailBox) {
@@ -82,11 +82,11 @@ function fetchAndDisplayData(dateObj) {
                 </div>`;
         }
     } else {
-        ribbon.innerText = t['pan_ribbon_loading'] || "Shubh Din";
-        if(detailBox) detailBox.innerHTML = `<p style="text-align:center; color:#666;">No specific event today.</p>`;
+        ribbon.innerText = t['pan_no_event'] || "Shubh Din";
+        if(detailBox) detailBox.innerHTML = `<p style="text-align:center; color:#666; padding:10px;">No specific event today.</p>`;
     }
+    // --- DOUBLE TITLE LOGIC END ---
 
-    // Display Panchang Data
     if (data) {
         const set = (id, val) => { const el = document.getElementById(id); if(el) el.innerText = (t[val] || val || "--"); };
         set('pan-tithi', data.tithi);
@@ -103,11 +103,9 @@ function fetchAndDisplayData(dateObj) {
         renderChaugTable(data.chaughadia.day, 'day-chaug-body');
         renderChaugTable(data.chaughadia.night, 'night-chaug-body');
     } else {
-        // Clear if no data
         const fields = ['pan-tithi', 'pan-nak', 'pan-yoga', 'pan-karana', 'pan-paksha'];
         fields.forEach(id => { if(document.getElementById(id)) document.getElementById(id).innerText = "--"; });
     }
-
     renderMonthlyEvents(dStr);
 }
 
@@ -124,7 +122,6 @@ function renderChaugTable(list, id) {
     `).join('');
 }
 
-// 🕉️ 3. Tab Switcher
 window.showChaug = function(type) {
     if(!document.getElementById('day-chaug')) return;
     document.getElementById('day-chaug').style.display = type === 'day' ? 'block' : 'none';
@@ -133,7 +130,6 @@ window.showChaug = function(type) {
     document.getElementById('btn-night').classList.toggle('active', type === 'night');
 };
 
-// 🕉️ Navigation
 document.getElementById('prevMonth').onclick = () => { 
     currentMonthView.setMonth(currentMonthView.getMonth() - 1); 
     renderCalendar(); 
@@ -144,20 +140,16 @@ document.getElementById('nextMonth').onclick = () => {
     renderCalendar(); 
 };
 
-// 🕉️ 4. Monthly Events List Generator
 function renderMonthlyEvents(dStr) {
     const listContainer = document.getElementById('events-list'); 
     if (!listContainer) return;
-
     listContainer.innerHTML = '';
     const currentYearMonth = dStr.substring(0, 7); 
     const events = window.YEARLY_EVENTS_2026 || {};
-    
     Object.keys(events).sort().forEach(date => {
         if (date.startsWith(currentYearMonth)) {
             const ev = events[date];
             const dayNum = date.split('-')[2]; 
-            
             const row = document.createElement('div');
             row.className = 'event-item-row'; 
             row.innerHTML = `
