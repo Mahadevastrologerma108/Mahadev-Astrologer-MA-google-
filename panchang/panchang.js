@@ -3,7 +3,7 @@ let currentMonthView = new Date(2026, 1, 6); // Starts at Feb 2026
 let activeDate = new Date(2026, 1, 6);
 let lang = localStorage.getItem('preferredLang') || 'hi';
 
-// 🕉️ Entry Point: Wait for all files to load
+// 🕉️ Entry Point
 window.onload = function() {
     console.log("Mahadev: Panchang Loaded Successfully");
     renderCalendar();
@@ -35,15 +35,12 @@ function renderCalendar() {
         dayEl.className = 'calendar-day';
         dayEl.innerText = d;
 
-        // Today & Active
         const today = new Date();
         if (d === today.getDate() && month === today.getMonth() && year === today.getFullYear()) dayEl.classList.add('today');
-        if (d === activeDate.getDate() && month === activeDate.getMonth()) dayEl.classList.add('active');
+        if (d === activeDate.getDate() && month === activeDate.getMonth() && year === activeDate.getFullYear()) dayEl.classList.add('active');
 
-        // Events Indicator
         if (window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026[dStr]) dayEl.classList.add('has-event');
 
-        // Click Handler
         dayEl.onclick = function() {
             activeDate = new Date(year, month, d);
             renderCalendar();
@@ -53,20 +50,18 @@ function renderCalendar() {
     }
 }
 
-// 🕉️ 2. Data Fetcher (No More Undefined)
+// 🕉️ 2. Data Fetcher & Monthly List Caller
 function fetchAndDisplayData(dateObj) {
     const year = dateObj.getFullYear();
     const month = String(dateObj.getMonth() + 1).padStart(2, '0');
     const day = String(dateObj.getDate()).padStart(2, '0');
     const dStr = `${year}-${month}-${day}`;
     
-    // Database connection
     const db = window.PANCHANG_DATA_2026_02 || {}; 
     const data = db[dStr];
     const event = window.YEARLY_EVENTS_2026 ? window.YEARLY_EVENTS_2026[dStr] : null;
     const t = window.translations ? window.translations[lang] : {};
 
-    // A. Ribbon & Event Box
     const ribbon = document.getElementById('ribbon-text');
     const detailBox = document.getElementById('event-display-area');
 
@@ -84,10 +79,8 @@ function fetchAndDisplayData(dateObj) {
         if(detailBox) detailBox.innerHTML = `<p style="text-align:center; color:#666;">No specific event today.</p>`;
     }
 
-    // B. Main Cards (Safe Mapping)
     if (data) {
         const set = (id, val) => { const el = document.getElementById(id); if(el) el.innerText = (t[val] || val || "--"); };
-        
         set('pan-tithi', data.tithi);
         set('pan-nak', data.nakshatra);
         set('pan-yoga', data.yoga);
@@ -96,23 +89,21 @@ function fetchAndDisplayData(dateObj) {
         
         document.getElementById('pan-sun').innerText = `${data.sunrise} / ${data.sunset}`;
         document.getElementById('pan-moon').innerText = data.moonrise || "--:--";
-        document.getElementById('pan-muh').innerText = data.muhurat || data.abhijit || "--:--";
+        document.getElementById('pan-muh').innerText = data.muhurat || "--:--";
         document.getElementById('pan-rahu').innerText = data.rahu_kaal || "--:--";
 
-        // C. Chaughadia Tables
         renderChaugTable(data.chaughadia.day, 'day-chaug-body');
         renderChaugTable(data.chaughadia.night, 'night-chaug-body');
-    } else {
-        // Data nahi mila toh blank
-        console.warn("Data missing for:", dStr);
     }
+
+    // 🔥 Har click par niche ki list update hogi
+    renderMonthlyEvents(dStr);
 }
 
 function renderChaugTable(list, id) {
     const el = document.getElementById(id);
     if(!el || !list) return;
     const t = window.translations ? window.translations[lang] : {};
-    
     el.innerHTML = list.map(item => `
         <tr>
             <td>${item.time}</td>
@@ -130,24 +121,34 @@ window.showChaug = function(type) {
     document.getElementById('btn-night').classList.toggle('active', type === 'night');
 };
 
-// Navigation
-document.getElementById('prevMonth').onclick = () => { currentMonthView.setMonth(currentMonthView.getMonth() - 1); renderCalendar(); };
-document.getElementById('nextMonth').onclick = () => { currentMonthView.setMonth(currentMonthView.getMonth() + 1); renderCalendar(); };
+// 🕉️ Navigation Fix: Month badalte hi list update hogi
+document.getElementById('prevMonth').onclick = () => { 
+    currentMonthView.setMonth(currentMonthView.getMonth() - 1); 
+    renderCalendar(); 
+    const firstOfMonth = `${currentMonthView.getFullYear()}-${String(currentMonthView.getMonth() + 1).padStart(2, '0')}-01`;
+    renderMonthlyEvents(firstOfMonth);
+};
+
+document.getElementById('nextMonth').onclick = () => { 
+    currentMonthView.setMonth(currentMonthView.getMonth() + 1); 
+    renderCalendar(); 
+    const firstOfMonth = `${currentMonthView.getFullYear()}-${String(currentMonthView.getMonth() + 1).padStart(2, '0')}-01`;
+    renderMonthlyEvents(firstOfMonth);
+};
 
 // 🕉️ 4. Monthly Events List Generator
 function renderMonthlyEvents(dStr) {
-    const listContainer = document.getElementById('events-list'); // Ensure this ID exists in HTML
+    const listContainer = document.getElementById('events-list'); 
     if (!listContainer) return;
 
     listContainer.innerHTML = '';
-    const currentYearMonth = dStr.substring(0, 7); // "2026-02" nikal lega
+    const currentYearMonth = dStr.substring(0, 7); 
     const events = window.YEARLY_EVENTS_2026 || {};
     
-    // Dates ko sort karke loop chalate hain
     Object.keys(events).sort().forEach(date => {
         if (date.startsWith(currentYearMonth)) {
             const ev = events[date];
-            const dayNum = date.split('-')[2]; // Sirf tarikh (15, 16 etc)
+            const dayNum = date.split('-')[2]; 
             
             const row = document.createElement('div');
             row.className = 'event-item-row'; 
