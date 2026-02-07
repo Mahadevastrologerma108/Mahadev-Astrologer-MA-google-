@@ -82,7 +82,7 @@ function fetchAndDisplayData(dateObj) {
                 </div>`;
         }
     } else {
-        ribbon.innerText = t['pan_no_event'] || "Shubh Din";
+        ribbon.innerText = t['pan_no_event'] || "Jai Mahadev";
         if(detailBox) detailBox.innerHTML = `<p style="text-align:center; color:#666; padding:10px;">No specific event today.</p>`;
     }
     // --- DOUBLE TITLE LOGIC END ---
