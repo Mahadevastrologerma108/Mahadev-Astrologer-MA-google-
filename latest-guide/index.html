@@ -3,35 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting to Guides</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <title>Upgrading Your Experience | Mahadev Astrologer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        body { background: #0a0a14; color: white; font-family: 'Poppins', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .redirect-box { text-align: center; padding: 40px; border: 1px solid #c5a059; border-radius: 15px; background: rgba(197, 160, 89, 0.05); }
-        h2 { font-family: 'Cinzel'; color: #c5a059; margin-bottom: 20px; }
-        .btn-gold { 
-            display: inline-block; padding: 12px 30px; background: #c5a059; color: #0a0a14; 
-            text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s;
-            font-family: 'Cinzel';
+        :root {
+            --gold: #c5a059;
+            --deep-bg: #0a0a14;
+            --glass: rgba(255, 255, 255, 0.03);
         }
-        .btn-gold:hover { background: #e0bc75; box-shadow: 0 0 20px rgba(197, 160, 89, 0.4); }
+
+        body {
+            background-color: var(--deep-bg);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .premium-container {
+            text-align: center;
+            max-width: 450px;
+            padding: 50px 30px;
+            background: radial-gradient(circle at top, #1a1a2e, #0a0a14);
+            border: 1px solid rgba(197, 160, 89, 0.15);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        /* Trishul Glow Animation */
+        .divine-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 0 10px var(--gold));
+            animation: pulse-icon 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin: 0 0 15px 0;
+            letter-spacing: 2px;
+        }
+
+        .upgrade-msg {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #b0b0b0;
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        .upgrade-msg strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Animated Premium Button */
+        .premium-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 45px;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 2px;
+            overflow: hidden;
+            transition: 0.5s;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .premium-btn:hover {
+            background: var(--gold);
+            color: #0a0a14;
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.4);
+        }
+
+        /* Shimmer Effect Inside Button */
+        .btn-shimmer {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: sweep 2s infinite ease-in-out;
+        }
+
+        @keyframes sweep {
+            100% { left: 100%; }
+        }
+
+        /* Live Pulse Dot */
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            margin-right: 12px;
+            box-shadow: 0 0 10px var(--gold);
+            animation: heart-beat 1.5s infinite;
+        }
+
+        @keyframes heart-beat {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Loader Track */
+        .loader-track {
+            width: 100%;
+            height: 1px;
+            background: rgba(197, 160, 89, 0.1);
+            margin-top: 40px;
+            position: relative;
+        }
+
+        #status-text {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="redirect-box">
-        <h2>Mahadev Astrologer</h2>
-        <p>Hamare naye Astrology Guides ab nayi jagah par hain.</p>
-        <br>
-        <a href="guides.html" class="btn-gold">Go to New Guides 🔱</a>
+    <div class="premium-container">
+        <span class="divine-icon">🔱</span>
+        <h2>Experience Upgraded</h2>
+        
+        <p class="upgrade-msg">
+            Aapke anubhav ko behtar banane ke liye humne <strong>Ad-Free Premium Environment</strong> taiyar kiya hai. Ancient wisdom ab ek naye interface mein live hai.
+        </p>
+
+        <a href="guides.html" class="premium-btn">
+            <div class="btn-shimmer"></div>
+            <div class="pulse-dot"></div>
+            Enter Knowledge Hub
+        </a>
+
+        <div class="loader-track"></div>
+        <div id="status-text">Sycing with Vedic Servers...</div>
     </div>
 
     <script>
-        // Automatic bhi bhej dete hain 3 second baad
+        // Automatic redirection after 5 seconds to let them feel the upgrade
         setTimeout(() => {
+            document.getElementById('status-text').innerText = "Redirecting to New Hub...";
             window.location.href = "guides.html";
-        }, 3000);
+        }, 5000);
     </script>
-
 </body>
 </html>
