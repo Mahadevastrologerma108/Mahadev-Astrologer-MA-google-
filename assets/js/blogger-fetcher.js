@@ -1,5 +1,6 @@
 /**
- * Mahadev Astrologer - Blogger Engine (CORS Bypass Version)
+ * Mahadev Astrologer - Blogger Engine (Internal Link Version)
+ * Purpose: Redirects users to article.html instead of external Blogger URL
  */
 
 const BLOG_ID = "mahadevastrologerma"; // Aapka blogspot name
@@ -8,13 +9,13 @@ function loadRoyalArticles() {
     const grid = document.getElementById('blogger-posts');
     if (!grid) return;
 
-    // JSONP Call: Ye Browser ki security bypass kar deta hai
+    // JSONP Call to bypass CORS
     const script = document.createElement('script');
     script.src = `https://${BLOG_ID}.blogspot.com/feeds/posts/default?alt=json-in-script&callback=renderBloggerPosts&max-results=12`;
     document.body.appendChild(script);
 }
 
-// Ye function tab chalega jab Google data bhej dega
+// Function to handle the data from Blogger
 window.renderBloggerPosts = function(data) {
     const grid = document.getElementById('blogger-posts');
     const entries = data.feed.entry;
@@ -27,7 +28,14 @@ window.renderBloggerPosts = function(data) {
     let htmlContent = '';
     entries.forEach(post => {
         const title = post.title.$t;
-        const link = post.link.find(l => l.rel === 'alternate').href;
+        
+        /* --- THE MAGIC PATCH START --- */
+        // Yahan hum Blogger ka link nahi, balki Post ID nikal rahe hain
+        const rawId = post.id.$t;
+        const postId = rawId.split('post-')[1]; 
+        // Ab link humari site ka article.html ban jayega
+        const internalLink = `article.html?id=${postId}`;
+        /* --- THE MAGIC PATCH END --- */
         
         // Image extraction
         let imgUrl = post.media$thumbnail ? post.media$thumbnail.url.replace('s72-c', 's1600') : '';
@@ -43,12 +51,12 @@ window.renderBloggerPosts = function(data) {
                     <h3>${title}</h3>
                     <p>${summary}...</p>
                 </div>
-                <a href="${link}" target="_blank" class="read-btn">Pura Padhein 🔱</a>
+                <a href="${internalLink}" class="read-btn">Pura Padhein 🔱</a>
             </article>`;
     });
 
     grid.innerHTML = htmlContent;
 };
 
-// Execute
+// Start the engine
 document.addEventListener('DOMContentLoaded', loadRoyalArticles);
