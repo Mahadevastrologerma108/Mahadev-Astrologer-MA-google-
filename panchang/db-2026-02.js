@@ -2,7 +2,7 @@ window.PANCHANG_DATA_2026_02 = {
     // SATURDAY - FEB 07
     "2026-02-07": {
         tithi: "tithi_krishna_panchami",
-        nakshatra: "nakshatra_hasta",
+        nakshatra: "nak_hasta",
         yoga: "yoga_dhriti",
         karana: "karana_kaulava",
         paksha: "paksha_krishna",
@@ -66,7 +66,7 @@ window.PANCHANG_DATA_2026_02 = {
     // MONDAY - FEB 09
     "2026-02-09": {
         tithi: "tithi_krishna_saptami",
-        nakshatra: "nakshatra_svati",
+        nakshatra: "nak_svati",
         yoga: "yoga_ganda",
         karana: "karana_visti",
         paksha: "paksha_krishna",
@@ -98,7 +98,7 @@ window.PANCHANG_DATA_2026_02 = {
     // TUESDAY - FEB 10
     "2026-02-10": {
         tithi: "tithi_krishna_ashtami",
-        nakshatra: "nakshatra_vishakha",
+        nakshatra: "nak_vishakha",
         yoga: "yoga_vriddhi",
         karana: "karana_balava",
         paksha: "paksha_krishna",
@@ -130,7 +130,7 @@ window.PANCHANG_DATA_2026_02 = {
     // WEDNESDAY - FEB 11
     "2026-02-11": {
         tithi: "tithi_krishna_navami",
-        nakshatra: "nakshatra_anuradha",
+        nakshatra: "nak_anuradha",
         yoga: "yoga_dhruva",
         karana: "karana_taitila",
         paksha: "paksha_krishna",
@@ -162,7 +162,7 @@ window.PANCHANG_DATA_2026_02 = {
     // THURSDAY - FEB 12
     "2026-02-12": {
         tithi: "tithi_krishna_dashami",
-        nakshatra: "nakshatra_jyeshtha",
+        nakshatra: "nak_jyeshtha",
         yoga: "yoga_vyaghata",
         karana: "karana_vanija",
         paksha: "paksha_krishna",
@@ -194,7 +194,7 @@ window.PANCHANG_DATA_2026_02 = {
     // FRIDAY - FEB 13
     "2026-02-13": {
         tithi: "tithi_krishna_ekadashi", // Shatila Ekadashi
-        nakshatra: "nakshatra_mula",
+        nakshatra: "nak_mula",
         yoga: "yoga_harshana",
         karana: "karana_bava",
         paksha: "paksha_krishna",
@@ -226,7 +226,7 @@ window.PANCHANG_DATA_2026_02 = {
     // SATURDAY - FEB 14
     "2026-02-14": {
         tithi: "tithi_krishna_dvadashi",
-        nakshatra: "nakshatra_purva_ashadha",
+        nakshatra: "nak_purva_ashadha",
         yoga: "yoga_vajra",
         karana: "karana_taitila",
         paksha: "paksha_krishna",
@@ -258,7 +258,7 @@ window.PANCHANG_DATA_2026_02 = {
     // SUNDAY - FEB 15
     "2026-02-15": {
         tithi: "tithi_krishna_trayodashi",
-        nakshatra: "nakshatra_uttara_ashadha",
+        nakshatra: "nak_uttara_ashadha",
         yoga: "yoga_siddhi",
         karana: "karana_vanija",
         paksha: "paksha_krishna",
@@ -290,7 +290,7 @@ window.PANCHANG_DATA_2026_02 = {
     // MONDAY - FEB 16 (🕉️ MAHA SHIVRATRI)
     "2026-02-16": {
         tithi: "tithi_krishna_chaturdashi",
-        nakshatra: "nakshatra_shravana",
+        nakshatra: "nak_shravana",
         yoga: "yoga_vyatipata",
         karana: "karana_shakuni",
         paksha: "paksha_krishna",
@@ -322,7 +322,7 @@ window.PANCHANG_DATA_2026_02 = {
     // TUESDAY - FEB 17 (🌑 AMAVASYA)
     "2026-02-17": {
         tithi: "tithi_krishna_amavasya",
-        nakshatra: "nakshatra_dhanishtha",
+        nakshatra: "nak_dhanishtha",
         yoga: "yoga_variyan",
         karana: "karana_naga",
         paksha: "paksha_krishna",
@@ -354,7 +354,7 @@ window.PANCHANG_DATA_2026_02 = {
     // WEDNESDAY - FEB 18
     "2026-02-18": {
         tithi: "tithi_shukla_pratipada",
-        nakshatra: "nakshatra_shatabhisha",
+        nakshatra: "nak_shatabhisha",
         yoga: "yoga_parigha",
         karana: "karana_kinstughna",
         paksha: "paksha_shukla",
@@ -386,7 +386,7 @@ window.PANCHANG_DATA_2026_02 = {
     // THURSDAY - FEB 19
     "2026-02-19": {
         tithi: "tithi_shukla_dvitiya",
-        nakshatra: "nakshatra_purva_bhadrapada",
+        nakshatra: "nak_purva_bhadrapada",
         yoga: "yoga_shiva",
         karana: "karana_balava",
         paksha: "paksha_shukla",
