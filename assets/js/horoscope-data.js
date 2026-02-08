@@ -26,7 +26,7 @@ const dailyHoroscope = {
     "leo": {
         "career": { "hi": "आज प्रशंसा या पहचान मिल सकती है, आत्मविश्वास बना रहेगा।", "en": "You may receive appreciation or recognition today." },
         "love": { "hi": "आकर्षण मजबूत रहेगा, लेकिन अहंकार से बचें।", "en": "Attraction will be strong; avoid ego." },
-        "health": { "hi": "स्वास्थ्य अच्छा रहेगा, पानी अधिक पिएं।", "en": "Overall health will be good; stay hydrated." },
+        "health": { "hi": "स्वास्थ्य अच्छा रहेगा, पानी अधिक पieं।", "en": "Overall health will be good; stay hydrated." },
         "luckyColor": "Gold", "luckyNumber": "1", "luckyTime": "02:35 PM"
     },
     "virgo": {
@@ -72,7 +72,6 @@ const dailyHoroscope = {
         "luckyColor": "Lavender", "luckyNumber": "12", "luckyTime": "09:30 PM"
     }
 };
-
 // 🔱 Master Function to Load Data
 function loadHoroscope(rashiKey) {
     const lang = localStorage.getItem('preferredLang') || 'hi';
