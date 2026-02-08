@@ -52,12 +52,11 @@ function renderCalendar() {
             dayEl.classList.add('has-event');
         }
 
-        // 🔱 Special Tithi Glow (Ekadashi, Purnima, Amavasya)
+      // 🔱 Special Tithi Glow (Ekadashi, Purnima, Amavasya)
         if (pData) {
             const tithi = pData.tithi.toLowerCase();
             if (tithi.includes('ekadashi') || tithi.includes('purnima') || tithi.includes('amavasya')) {
-                dayEl.style.boxShadow = "inset 0 0 10px rgba(245, 197, 66, 0.4)";
-                dayEl.style.border = "1px solid var(--gold)";
+                dayEl.classList.add('special-tithi');
             }
         }
 
