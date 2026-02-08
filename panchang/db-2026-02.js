@@ -66,7 +66,7 @@ window.PANCHANG_DATA_2026_02 = {
     // MONDAY - FEB 09
     "2026-02-09": {
         tithi: "tithi_krishna_saptami",
-        nakshatra: "nak_svati",
+        nakshatra: "nak_swati",
         yoga: "yoga_ganda",
         karana: "karana_visti",
         paksha: "paksha_krishna",
