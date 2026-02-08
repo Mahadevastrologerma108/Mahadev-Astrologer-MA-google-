@@ -254,5 +254,165 @@ window.PANCHANG_DATA_2026_02 = {
                 { time: "05:29-07:05", name: "chaug_amrit", nature: "shubh", status: "chaug_best" }
             ]
         }
+    },
+    // SUNDAY - FEB 15
+    "2026-02-15": {
+        tithi: "tithi_krishna_trayodashi",
+        nakshatra: "nakshatra_uttara_ashadha",
+        yoga: "yoga_siddhi",
+        karana: "karana_vanija",
+        paksha: "paksha_krishna",
+        sunrise: "07:00 AM", sunset: "06:17 PM", moonrise: "06:09 AM",
+        muhurat: "12:13 PM - 12:59 PM", rahu_kaal: "04:53 PM - 06:17 PM",
+        chaughadia: {
+            day: [
+                { time: "07:00-08:24", name: "chaug_udveg", nature: "ashubh", status: "chaug_bad" },
+                { time: "08:24-09:49", name: "chaug_char", nature: "shubh", status: "chaug_good" },
+                { time: "09:49-11:13", name: "chaug_labh", nature: "shubh", status: "chaug_best" },
+                { time: "11:13-12:38", name: "chaug_amrit", nature: "shubh", status: "chaug_best" },
+                { time: "12:38-14:02", name: "chaug_kaal", nature: "ashubh", status: "chaug_bad" },
+                { time: "14:02-15:27", name: "chaug_shubh", nature: "shubh", status: "chaug_good" },
+                { time: "15:27-16:52", name: "chaug_rog", nature: "ashubh", status: "chaug_bad" },
+                { time: "16:52-18:17", name: "chaug_udveg", nature: "ashubh", status: "chaug_bad" }
+            ],
+            night: [
+                { time: "18:17-19:52", name: "chaug_shubh", nature: "shubh", status: "chaug_good" },
+                { time: "19:52-21:28", name: "chaug_amrit", nature: "shubh", status: "chaug_best" },
+                { time: "21:28-23:03", name: "chaug_char", nature: "shubh", status: "chaug_good" },
+                { time: "23:03-00:39", name: "chaug_rog", nature: "ashubh", status: "chaug_bad" },
+                { time: "00:39-02:14", name: "chaug_kaal", nature: "ashubh", status: "chaug_bad" },
+                { time: "02:14-03:50", name: "chaug_labh", nature: "shubh", status: "chaug_best" },
+                { time: "03:50-05:25", name: "chaug_udveg", nature: "ashubh", status: "chaug_bad" },
+                { time: "05:25-07:00", name: "chaug_shubh", nature: "shubh", status: "chaug_good" }
+            ]
+        }
+    },
+    // MONDAY - FEB 16 (🕉️ MAHA SHIVRATRI)
+    "2026-02-16": {
+        tithi: "tithi_krishna_chaturdashi",
+        nakshatra: "nakshatra_shravana",
+        yoga: "yoga_vyatipata",
+        karana: "karana_shakuni",
+        paksha: "paksha_krishna",
+        sunrise: "06:59 AM", sunset: "06:17 PM", moonrise: "06:55 AM",
+        muhurat: "12:13 PM - 12:59 PM", rahu_kaal: "08:23 AM - 09:48 AM",
+        chaughadia: {
+            day: [
+                { time: "06:59-08:23", name: "chaug_amrit", nature: "shubh", status: "chaug_best" },
+                { time: "08:23-09:48", name: "chaug_kaal", nature: "ashubh", status: "chaug_bad" },
+                { time: "09:48-11:13", name: "chaug_shubh", nature: "shubh", status: "chaug_good" },
+                { time: "11:13-12:38", name: "chaug_rog", nature: "ashubh", status: "chaug_bad" },
+                { time: "12:38-14:03", name: "chaug_udveg", nature: "ashubh", status: "chaug_bad" },
+                { time: "14:03-15:28", name: "chaug_char", nature: "shubh", status: "chaug_good" },
+                { time: "15:28-16:53", name: "chaug_labh", nature: "shubh", status: "chaug_best" },
+                { time: "16:53-18:18", name: "chaug_amrit", nature: "shubh", status: "chaug_best" }
+            ],
+            night: [
+                { time: "18:18-19:53", name: "chaug_char", nature: "shubh", status: "chaug_good" },
+                { time: "19:53-21:28", name: "chaug_rog", nature: "ashubh", status: "chaug_bad" },
+                { time: "21:28-23:03", name: "chaug_kaal", nature: "ashubh", status: "chaug_bad" },
+                { time: "23:03-00:39", name: "chaug_labh", nature: "shubh", status: "chaug_best" },
+                { time: "00:39-02:14", name: "chaug_udveg", nature: "ashubh", status: "chaug_bad" },
+                { time: "02:14-03:49", name: "chaug_shubh", nature: "shubh", status: "chaug_good" },
+                { time: "03:49-05:24", name: "chaug_amrit", nature: "shubh", status: "chaug_best" },
+                { time: "05:24-06:59", name: "chaug_char", nature: "shubh", status: "chaug_good" }
+            ]
+        }
+    },
+    // TUESDAY - FEB 17 (🌑 AMAVASYA)
+    "2026-02-17": {
+        tithi: "tithi_krishna_amavasya",
+        nakshatra: "nakshatra_dhanishtha",
+        yoga: "yoga_variyan",
+        karana: "karana_naga",
+        paksha: "paksha_krishna",
+        sunrise: "06:58 AM", sunset: "06:18 PM", moonrise: "07:34 AM",
+        muhurat: "12:13 PM - 12:59 PM", rahu_kaal: "03:29 PM - 04:54 PM",
+        chaughadia: {
+            day: [
+                { time: "06:58-08:23", name: "chaug_rog", nature: "ashubh", status: "chaug_bad" },
+                { time: "08:23-09:48", name: "chaug_udveg", nature: "ashubh", status: "chaug_bad" },
+                { time: "09:48-11:13", name: "chaug_char", nature: "shubh", status: "chaug_good" },
+                { time: "11:13-12:38", name: "chaug_labh", nature: "shubh", status: "chaug_best" },
+                { time: "12:38-14:03", name: "chaug_amrit", nature: "shubh", status: "chaug_best" },
+                { time: "14:03-15:29", name: "chaug_kaal", nature: "ashubh", status: "chaug_bad" },
+                { time: "15:29-16:54", name: "chaug_shubh", nature: "shubh", status: "chaug_good" },
+                { time: "16:54-18:19", name: "chaug_rog", nature: "ashubh", status: "chaug_bad" }
+            ],
+            night: [
+                { time: "18:19-19:54", name: "chaug_kaal", nature: "ashubh", status: "chaug_bad" },
+                { time: "19:54-21:29", name: "chaug_labh", nature: "shubh", status: "chaug_best" },
+                { time: "21:29-23:04", name: "chaug_udveg", nature: "ashubh", status: "chaug_bad" },
+                { time: "23:04-00:39", name: "chaug_shubh", nature: "shubh", status: "chaug_good" },
+                { time: "00:39-02:14", name: "chaug_amrit", nature: "shubh", status: "chaug_best" },
+                { time: "02:14-03:49", name: "chaug_char", nature: "shubh", status: "chaug_good" },
+                { time: "03:49-05:23", name: "chaug_rog", nature: "ashubh", status: "chaug_bad" },
+                { time: "05:23-06:58", name: "chaug_kaal", nature: "ashubh", status: "chaug_bad" }
+            ]
+        }
+    },
+    // WEDNESDAY - FEB 18
+    "2026-02-18": {
+        tithi: "tithi_shukla_pratipada",
+        nakshatra: "nakshatra_shatabhisha",
+        yoga: "yoga_parigha",
+        karana: "karana_kinstughna",
+        paksha: "paksha_shukla",
+        sunrise: "06:57 AM", sunset: "06:19 PM", moonrise: "08:08 AM",
+        muhurat: "12:13 PM - 12:59 PM", rahu_kaal: "12:38 PM - 02:03 PM",
+        chaughadia: {
+            day: [
+                { time: "06:57-08:22", name: "chaug_labh", nature: "shubh", status: "chaug_best" },
+                { time: "08:22-09:47", name: "chaug_amrit", nature: "shubh", status: "chaug_best" },
+                { time: "09:47-11:12", name: "chaug_kaal", nature: "ashubh", status: "chaug_bad" },
+                { time: "11:12-12:38", name: "chaug_shubh", nature: "shubh", status: "chaug_good" },
+                { time: "12:38-14:03", name: "chaug_rog", nature: "ashubh", status: "chaug_bad" },
+                { time: "14:03-15:29", name: "chaug_udveg", nature: "ashubh", status: "chaug_bad" },
+                { time: "15:29-16:54", name: "chaug_char", nature: "shubh", status: "chaug_good" },
+                { time: "16:54-18:20", name: "chaug_labh", nature: "shubh", status: "chaug_best" }
+            ],
+            night: [
+                { time: "18:20-19:54", name: "chaug_udveg", nature: "ashubh", status: "chaug_bad" },
+                { time: "19:54-21:29", name: "chaug_shubh", nature: "shubh", status: "chaug_good" },
+                { time: "21:29-23:04", name: "chaug_amrit", nature: "shubh", status: "chaug_best" },
+                { time: "23:04-00:39", name: "chaug_char", nature: "shubh", status: "chaug_good" },
+                { time: "00:39-02:14", name: "chaug_rog", nature: "ashubh", status: "chaug_bad" },
+                { time: "02:14-03:48", name: "chaug_kaal", nature: "ashubh", status: "chaug_bad" },
+                { time: "03:48-05:23", name: "chaug_labh", nature: "shubh", status: "chaug_best" },
+                { time: "05:23-06:57", name: "chaug_udveg", nature: "ashubh", status: "chaug_bad" }
+            ]
+        }
+    },
+    // THURSDAY - FEB 19
+    "2026-02-19": {
+        tithi: "tithi_shukla_dvitiya",
+        nakshatra: "nakshatra_purva_bhadrapada",
+        yoga: "yoga_shiva",
+        karana: "karana_balava",
+        paksha: "paksha_shukla",
+        sunrise: "06:56 AM", sunset: "06:19 PM", moonrise: "08:41 AM",
+        muhurat: "12:13 PM - 12:59 PM", rahu_kaal: "02:04 PM - 03:29 PM",
+        chaughadia: {
+            day: [
+                { time: "06:56-08:21", name: "chaug_shubh", nature: "shubh", status: "chaug_good" },
+                { time: "08:21-09:47", name: "chaug_rog", nature: "ashubh", status: "chaug_bad" },
+                { time: "09:47-11:12", name: "chaug_udveg", nature: "ashubh", status: "chaug_bad" },
+                { time: "11:12-12:37", name: "chaug_char", nature: "shubh", status: "chaug_good" },
+                { time: "12:37-14:03", name: "chaug_labh", nature: "shubh", status: "chaug_best" },
+                { time: "14:03-15:29", name: "chaug_amrit", nature: "shubh", status: "chaug_best" },
+                { time: "15:29-16:55", name: "chaug_kaal", nature: "ashubh", status: "chaug_bad" },
+                { time: "16:55-18:21", name: "chaug_shubh", nature: "shubh", status: "chaug_good" }
+            ],
+            night: [
+                { time: "18:21-19:55", name: "chaug_amrit", nature: "shubh", status: "chaug_best" },
+                { time: "19:55-21:30", name: "chaug_char", nature: "shubh", status: "chaug_good" },
+                { time: "21:30-23:05", name: "chaug_rog", nature: "ashubh", status: "chaug_bad" },
+                { time: "23:05-00:40", name: "chaug_kaal", nature: "ashubh", status: "chaug_bad" },
+                { time: "00:40-02:14", name: "chaug_labh", nature: "shubh", status: "chaug_best" },
+                { time: "02:14-03:48", name: "chaug_udveg", nature: "ashubh", status: "chaug_bad" },
+                { time: "03:48-05:22", name: "chaug_shubh", nature: "shubh", status: "chaug_good" },
+                { time: "05:22-06:56", name: "chaug_amrit", nature: "shubh", status: "chaug_best" }
+            ]
+        }
     }
 };
