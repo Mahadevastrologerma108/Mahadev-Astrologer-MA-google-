@@ -7,50 +7,69 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
-        .guide-main-container { padding: 120px 20px 60px; max-width: 1100px; margin: auto; }
+        .guide-main-container { padding: 120px 20px 60px; max-width: 1100px; margin: auto; min-height: 80vh; }
         .hero-title { text-align: center; margin-bottom: 50px; }
-        .hero-title h1 { font-family: 'Cinzel'; color: var(--gold); font-size: 2.5rem; letter-spacing: 2px; }
+        .hero-title h1 { font-family: 'Cinzel'; color: var(--gold); font-size: 2.5rem; letter-spacing: 2px; text-shadow: 0 0 15px rgba(197,160,89,0.3); }
         
-        /* Royal Grid */
         #blogger-posts { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 25px; 
         }
 
-        /* Royal Card Style */
         .article-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            padding: 25px;
-            border-radius: 8px;
-            transition: 0.4s;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(197, 160, 89, 0.15);
+            padding: 20px;
+            border-radius: 4px;
+            transition: 0.4s ease-in-out;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            position: relative;
         }
 
         .article-card:hover {
             border-color: var(--gold);
-            transform: translateY(-5px);
-            background: rgba(197, 160, 89, 0.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: translateY(-8px);
+            background: rgba(197, 160, 89, 0.04);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
 
-        .article-card h3 { font-family: 'Cinzel'; color: var(--gold); margin-bottom: 15px; font-size: 1.2rem; }
-        .article-card p { color: #ccc; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; }
+        /* Image styling for cards */
+        .article-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 2px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        .article-card h3 { font-family: 'Cinzel'; color: var(--gold); margin-bottom: 12px; font-size: 1.15rem; line-height: 1.4; }
+        .article-card p { color: #aaa; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; font-weight: 300; }
         
         .read-btn { 
             color: var(--gold); 
             text-decoration: none; 
-            font-weight: bold; 
+            font-weight: 600; 
             font-size: 0.8rem; 
-            letter-spacing: 1px;
-            border-bottom: 1px solid transparent;
+            letter-spacing: 1.5px;
+            font-family: 'Cinzel';
             transition: 0.3s;
+            display: inline-block;
         }
-        .read-btn:hover { border-bottom: 1px solid var(--gold); }
+        .read-btn:hover { text-shadow: 0 0 10px var(--gold); letter-spacing: 2px; }
+
+        .loading-wisdom {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 50px;
+            color: var(--gold);
+            font-family: 'Cinzel';
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
     </style>
 </head>
 <body style="background: #0a0a14; color: white;">
@@ -60,21 +79,12 @@
     <div class="guide-main-container">
         <div class="hero-title">
             <h1 data-key="guide_main_title">Vedic Wisdom Guides</h1>
-            <p style="color: #888;">Ancient Knowledge for Modern Life</p>
+            <div style="width: 80px; height: 1px; background: var(--gold); margin: 15px auto;"></div>
+            <p style="color: #888; font-style: italic;">Ancient Knowledge for Modern Life</p>
         </div>
 
         <div id="blogger-posts">
-            <div class="article-card">
-                <h3>Sade Sati: A Complete Guide</h3>
-                <p>Shani Dev ki Sade Sati se darne ki nahi, use samajhne ki zaroorat hai. Padhein bachne ke asar-daar upay...</p>
-                <a href="#" class="read-btn">READ GUIDE 🔱</a>
-            </div>
-
-            <div class="article-card">
-                <h3>Mangal Dosha Myths</h3>
-                <p>Kya Manglik hona bura hai? Janie sach aur iske prabhav ke bare mein vedic astrologer ki nazar se...</p>
-                <a href="#" class="read-btn">READ GUIDE 🔱</a>
-            </div>
+            <div class="loading-wisdom">🔱 Shubh Labh... Loading Ancient Wisdom...</div>
         </div>
     </div>
 
