@@ -1,14 +1,12 @@
 /* ==========================================================
-   🕉️ PANCHANG SYSTEM - CORE ENGINE (Ver 2.0)
+   🕉️ PANCHANG SYSTEM - CORE ENGINE (Ver 2.1)
    ========================================================== */
 
-// 🕉️ Global Variables
 let today = new Date();
-let currentMonthView = new Date(2026, 1, 1); // Feb 2026 default
+let currentMonthView = new Date(2026, 1, 1); 
 let activeDate = new Date(2026, 1, today.getDate()); 
 let lang = localStorage.getItem('preferredLang') || 'hi';
 
-// 🕉️ Entry Point
 window.onload = function() {
     console.log("Mahadev: Panchang System Activated");
     renderCalendar();
@@ -16,7 +14,7 @@ window.onload = function() {
 };
 
 /* ----------------------------------------------------------
-   1. MAIN CALENDAR ENGINE (With Glow & Indicators)
+   1. MAIN CALENDAR ENGINE (With Auto-Update Logic)
    ---------------------------------------------------------- */
 function renderCalendar() {
     const grid = document.getElementById('calendarDays');
@@ -34,7 +32,6 @@ function renderCalendar() {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    // Khali div pehle din ke liye
     for (let i = 0; i < firstDay; i++) grid.appendChild(document.createElement('div'));
 
     for (let d = 1; d <= daysInMonth; d++) {
@@ -43,35 +40,41 @@ function renderCalendar() {
         dayEl.className = 'calendar-day';
         dayEl.innerText = d;
 
-        // Aaj ki tarikh aur Selected tarikh
         const realToday = new Date();
         if (d === realToday.getDate() && month === realToday.getMonth() && year === realToday.getFullYear()) dayEl.classList.add('today');
-        if (d === activeDate.getDate() && month === activeDate.getMonth() && year === activeDate.getFullYear()) dayEl.classList.add('active');
+        
+        // Active Class check
+        if (d === activeDate.getDate() && month === activeDate.getMonth() && year === activeDate.getFullYear()) {
+            dayEl.classList.add('active');
+        }
 
-        // Logic: Event & Tithi Check
         const hasEvent = window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026[dStr];
         const dbName = `PANCHANG_DATA_${year}_${String(month + 1).padStart(2, '0')}`;
         const monthDB = window[dbName] || {};
         const pData = monthDB[dStr];
 
-        // 🚩 Festival Indicator (Red Dot)
         if (hasEvent) dayEl.classList.add('has-event');
 
-        // 🔱 Special Tithi Glow (Ekadashi, Purnima, Amavasya)
         if (pData) {
             const tithi = pData.tithi.toLowerCase();
             if (tithi.includes('ekadashi') || tithi.includes('purnima') || tithi.includes('amavasya')) {
-                dayEl.classList.add('special-tithi'); // CSS se Gold Glow aayega
+                dayEl.classList.add('special-tithi');
             }
         }
 
         dayEl.onclick = function() {
             activeDate = new Date(year, month, d);
-            renderCalendar(); // Re-render to show active selection
+            renderCalendar();
             fetchAndDisplayData(activeDate);
         };
         grid.appendChild(dayEl);
     }
+
+    // 🏹 SHATRU-VADH LOGIC: 
+    // Jab bhi calendar render ho (prev/next se), 1st date ko auto-select karein 
+    // taaki Events aur Panchang data turant update ho jaye.
+    activeDate = new Date(year, month, activeDate.getDate() > daysInMonth ? 1 : activeDate.getDate());
+    fetchAndDisplayData(activeDate);
 }
 
 /* ----------------------------------------------------------
@@ -92,7 +95,6 @@ function fetchAndDisplayData(dateObj) {
     const ribbon = document.getElementById('ribbon-text');
     const detailBox = document.getElementById('event-display-area');
 
-    // Ribbon Display
     if (event) {
         ribbon.innerText = event[lang] || event.hi;
         if(detailBox) {
@@ -109,7 +111,6 @@ function fetchAndDisplayData(dateObj) {
         if(detailBox) detailBox.innerHTML = "";
     }
 
-    // Fill Panchang Cards
     if (data) {
         const set = (id, val) => { 
             const el = document.getElementById(id); 
@@ -128,6 +129,12 @@ function fetchAndDisplayData(dateObj) {
 
         renderChaugTable(data.chaughadia.day, 'day-chaug-body');
         renderChaugTable(data.chaughadia.night, 'night-chaug-body');
+    } else {
+        // Agar data na mile toh cards saaf karein
+        const ids = ['pan-tithi', 'pan-nak', 'pan-yoga', 'pan-karana', 'pan-paksha', 'pan-sun', 'pan-moon', 'pan-muh', 'pan-rahu'];
+        ids.forEach(id => { if(document.getElementById(id)) document.getElementById(id).innerText = "--"; });
+        document.getElementById('day-chaug-body').innerHTML = "";
+        document.getElementById('night-chaug-body').innerHTML = "";
     }
     renderMonthlyEvents(dStr);
 }
@@ -172,7 +179,6 @@ function renderMonthlyEvents(dStr) {
     });
 }
 
-// 🕉️ Helpers (Prev/Next/Tabs)
 window.showChaug = function(type) {
     const dayBox = document.getElementById('day-chaug');
     const nightBox = document.getElementById('night-chaug');
@@ -186,9 +192,11 @@ window.showChaug = function(type) {
 
 document.getElementById('prevMonth').onclick = () => { 
     currentMonthView.setMonth(currentMonthView.getMonth() - 1); 
+    activeDate.setDate(1); // Reset to first of month
     renderCalendar(); 
 };
 document.getElementById('nextMonth').onclick = () => { 
     currentMonthView.setMonth(currentMonthView.getMonth() + 1); 
+    activeDate.setDate(1); // Reset to first of month
     renderCalendar(); 
 };
