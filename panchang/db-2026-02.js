@@ -33,7 +33,7 @@ window.PANCHANG_DATA_2026_02 = {
     },
     // SUNDAY - FEB 08
     "2026-02-08": {
-        tithi: "tithi_krishna_shashthi",
+        tithi: "tithi_krishna_shashti",
         nakshatra: "nakshatra_chitra",
         yoga: "yoga_shula",
         karana: "karana_garaja",
