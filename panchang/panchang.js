@@ -1,6 +1,10 @@
+/* ==========================================================
+   🕉️ PANCHANG SYSTEM - CORE ENGINE (Ver 2.0)
+   ========================================================== */
+
 // 🕉️ Global Variables
 let today = new Date();
-let currentMonthView = new Date(2026, 1, 1); // Feb 2026 se shuru
+let currentMonthView = new Date(2026, 1, 1); // Feb 2026 default
 let activeDate = new Date(2026, 1, today.getDate()); 
 let lang = localStorage.getItem('preferredLang') || 'hi';
 
@@ -11,7 +15,9 @@ window.onload = function() {
     fetchAndDisplayData(activeDate);
 };
 
-// 🕉️ 1. Main Calendar Engine (With Glow & Indicators)
+/* ----------------------------------------------------------
+   1. MAIN CALENDAR ENGINE (With Glow & Indicators)
+   ---------------------------------------------------------- */
 function renderCalendar() {
     const grid = document.getElementById('calendarDays');
     const display = document.getElementById('monthDisplay');
@@ -28,6 +34,7 @@ function renderCalendar() {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
+    // Khali div pehle din ke liye
     for (let i = 0; i < firstDay; i++) grid.appendChild(document.createElement('div'));
 
     for (let d = 1; d <= daysInMonth; d++) {
@@ -36,7 +43,7 @@ function renderCalendar() {
         dayEl.className = 'calendar-day';
         dayEl.innerText = d;
 
-        // Current & Active Classes
+        // Aaj ki tarikh aur Selected tarikh
         const realToday = new Date();
         if (d === realToday.getDate() && month === realToday.getMonth() && year === realToday.getFullYear()) dayEl.classList.add('today');
         if (d === activeDate.getDate() && month === activeDate.getMonth() && year === activeDate.getFullYear()) dayEl.classList.add('active');
@@ -47,29 +54,29 @@ function renderCalendar() {
         const monthDB = window[dbName] || {};
         const pData = monthDB[dStr];
 
-        // 🚩 Festival Indicator
-        if (hasEvent) {
-            dayEl.classList.add('has-event');
-        }
+        // 🚩 Festival Indicator (Red Dot)
+        if (hasEvent) dayEl.classList.add('has-event');
 
-      // 🔱 Special Tithi Glow (Ekadashi, Purnima, Amavasya)
+        // 🔱 Special Tithi Glow (Ekadashi, Purnima, Amavasya)
         if (pData) {
             const tithi = pData.tithi.toLowerCase();
             if (tithi.includes('ekadashi') || tithi.includes('purnima') || tithi.includes('amavasya')) {
-                dayEl.classList.add('special-tithi');
+                dayEl.classList.add('special-tithi'); // CSS se Gold Glow aayega
             }
         }
 
         dayEl.onclick = function() {
             activeDate = new Date(year, month, d);
-            renderCalendar();
+            renderCalendar(); // Re-render to show active selection
             fetchAndDisplayData(activeDate);
         };
         grid.appendChild(dayEl);
     }
 }
 
-// 🕉️ 2. Data Fetcher (Top Cards & Ribbon)
+/* ----------------------------------------------------------
+   2. DATA FETCHER (Top Cards & Ribbon)
+   ---------------------------------------------------------- */
 function fetchAndDisplayData(dateObj) {
     const year = dateObj.getFullYear();
     const month = String(dateObj.getMonth() + 1).padStart(2, '0');
@@ -85,15 +92,15 @@ function fetchAndDisplayData(dateObj) {
     const ribbon = document.getElementById('ribbon-text');
     const detailBox = document.getElementById('event-display-area');
 
-    // Ribbon & Event Display
+    // Ribbon Display
     if (event) {
         ribbon.innerText = event[lang] || event.hi;
         if(detailBox) {
             detailBox.innerHTML = `
-                <div class="event-item-row" style="border-left:5px solid #ff4d4d;">
+                <div class="event-item-row" style="border-left:5px solid #ff4d4d; background: rgba(255, 77, 77, 0.05);">
                     <div class="ev-info">
-                        <div style="color:var(--gold); font-size:18px;">${event[lang] || event.hi}</div>
-                        <div style="margin-top:5px;">${event['desc_' + lang] || ''}</div>
+                        <div style="color:var(--gold); font-size:18px; font-family:'Cinzel';">${event[lang] || event.hi}</div>
+                        <div style="margin-top:5px; color:#ddd;">${event['desc_' + lang] || ''}</div>
                     </div>
                 </div>`;
         }
@@ -125,7 +132,9 @@ function fetchAndDisplayData(dateObj) {
     renderMonthlyEvents(dStr);
 }
 
-// 🕉️ 3. Chaughadia Table Renderer
+/* ----------------------------------------------------------
+   3. TABLE & LIST RENDERERS
+   ---------------------------------------------------------- */
 function renderChaugTable(list, id) {
     const el = document.getElementById(id);
     if(!el || !list) return;
@@ -139,7 +148,6 @@ function renderChaugTable(list, id) {
     `).join('');
 }
 
-// 🕉️ 4. Monthly List Logic
 function renderMonthlyEvents(dStr) {
     const listContainer = document.getElementById('events-list'); 
     if (!listContainer) return;
@@ -156,8 +164,8 @@ function renderMonthlyEvents(dStr) {
             row.innerHTML = `
                 <div class="ev-date">${dayNum}</div>
                 <div class="ev-info">
-                    <div>${ev[lang] || ev.hi}</div>
-                    <div>${ev['desc_' + lang] || ''}</div>
+                    <div style="color:#fff; font-weight:600;">${ev[lang] || ev.hi}</div>
+                    <div style="font-size:12px; color:#aaa;">${ev['desc_' + lang] || 'Panchang Vishesh'}</div>
                 </div>`;
             listContainer.appendChild(row);
         }
@@ -166,11 +174,21 @@ function renderMonthlyEvents(dStr) {
 
 // 🕉️ Helpers (Prev/Next/Tabs)
 window.showChaug = function(type) {
-    document.getElementById('day-chaug').style.display = type === 'day' ? 'block' : 'none';
-    document.getElementById('night-chaug').style.display = type === 'night' ? 'block' : 'none';
-    document.getElementById('btn-day').classList.toggle('active', type === 'day');
-    document.getElementById('btn-night').classList.toggle('active', type === 'night');
+    const dayBox = document.getElementById('day-chaug');
+    const nightBox = document.getElementById('night-chaug');
+    if(dayBox && nightBox) {
+        dayBox.style.display = type === 'day' ? 'block' : 'none';
+        nightBox.style.display = type === 'night' ? 'block' : 'none';
+        document.getElementById('btn-day').classList.toggle('active', type === 'day');
+        document.getElementById('btn-night').classList.toggle('active', type === 'night');
+    }
 };
 
-document.getElementById('prevMonth').onclick = () => { currentMonthView.setMonth(currentMonthView.getMonth() - 1); renderCalendar(); };
-document.getElementById('nextMonth').onclick = () => { currentMonthView.setMonth(currentMonthView.getMonth() + 1); renderCalendar(); };
+document.getElementById('prevMonth').onclick = () => { 
+    currentMonthView.setMonth(currentMonthView.getMonth() - 1); 
+    renderCalendar(); 
+};
+document.getElementById('nextMonth').onclick = () => { 
+    currentMonthView.setMonth(currentMonthView.getMonth() + 1); 
+    renderCalendar(); 
+};
