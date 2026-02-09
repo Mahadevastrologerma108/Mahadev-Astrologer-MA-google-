@@ -148,70 +148,63 @@
 </section>
 
 <section id="book" class="form-container">
-    <h2 class="gold-text" style="text-align: center; font-size: 2.2rem; margin-bottom: 30px;" data-key="form_title">Consult Mahadev</h2>
+    <h2 class="gold-text" style="text-align: center; font-size: 2.2rem; margin-bottom: 30px;">Consult Mahadev</h2>
     <form id="consultation-form">
-        <label class="gold-text" style="font-size: 0.8rem; letter-spacing: 1px;" data-key="lbl_svc_select">SERVICE SELECT KAREIN</label>
-        <select id="service-select" class="input-field" onchange="updateFormDisplay()" style="background: #14142b;">
-            <option value="kundli_making" data-key="opt_kundli">Kundali Making (₹501)</option>
-            <option value="kundli_matching" data-key="opt_matching">Kundali Matching (₹601)</option>
-            <option value="palmistry" data-key="opt_palm">Palmistry (₹501)</option>
-            <option value="numerology" data-key="opt_num">Numerology (₹251)</option>
-            <option value="combo_analysis" data-key="opt_combo">♻️ Combo: Kundali + Palm (₹701)</option>
+        <label class="gold-text" style="font-size: 0.8rem; letter-spacing: 1px;">SERVICE SELECT KAREIN</label>
+        <select id="service-select" class="input-field" onchange="applyFormLogic()" style="background: #14142b;">
+            <option value="kundli_making">Kundali Making (₹501)</option>
+            <option value="kundli_matching">Kundali Matching (₹601)</option>
+            <option value="palmistry">Palmistry (₹501)</option>
+            <option value="numerology">Numerology (₹251)</option>
+            <option value="combo_analysis">♻️ Combo: Kundali + Palm (₹701)</option>
         </select>
 
-        <div id="section-single">
-            <input type="text" id="user-name" placeholder="Aapka Poora Naam" class="input-field" data-placeholder="ph_name" required>
+        <input type="text" id="user-name" placeholder="Aapka Poora Naam" class="input-field" required>
 
-            <div style="margin: 15px 0; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid rgba(245,197,66,0.1);">
-                <label class="gold-text" style="font-size: 0.75rem; display: block; margin-bottom: 12px;" data-key="lbl_privacy">PREFERED PRIVACY & CONTACT:</label>
-                <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
-                    <label style="cursor:pointer; font-size: 0.85rem;"><input type="radio" name="contact-method" value="WhatsApp" checked onclick="handleContactUI('WA')"> WhatsApp</label>
-                    <label style="cursor:pointer; font-size: 0.85rem;"><input type="radio" name="contact-method" value="Telegram" onclick="handleContactUI('TG')"> Telegram</label>
-                    <label style="cursor:pointer; font-size: 0.85rem;"><input type="radio" name="contact-method" value="Email" onclick="handleContactUI('EM')"> Email</label>
-                </div>
-                <div id="dynamic-input-container">
-                    <input type="tel" id="contact-detail" placeholder="WhatsApp Number" class="input-field" data-placeholder="ph_whatsapp" required>
-                </div>
+        <div style="margin: 15px 0; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid rgba(245,197,66,0.1);">
+            <label class="gold-text" style="font-size: 0.75rem; display: block; margin-bottom: 12px;">PREFERED PRIVACY & CONTACT:</label>
+            <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
+                <label style="cursor:pointer; font-size: 0.85rem;"><input type="radio" name="contact-method" value="WhatsApp" checked onclick="syncContactMethod('WA')"> WhatsApp</label>
+                <label style="cursor:pointer; font-size: 0.85rem;"><input type="radio" name="contact-method" value="Telegram" onclick="syncContactMethod('TG')"> Telegram</label>
+                <label style="cursor:pointer; font-size: 0.85rem;"><input type="radio" name="contact-method" value="Email" onclick="syncContactMethod('EM')"> Email</label>
             </div>
+            <input type="text" id="contact-detail" placeholder="WhatsApp Number" class="input-field" required>
+        </div>
 
-            <div id="birth-fields">
-                <input type="date" id="single-dob" class="input-field">
-                <div id="time-place-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                    <input type="time" id="single-time" class="input-field">
-                    <input type="text" id="single-place" placeholder="Birth City" class="input-field" data-placeholder="ph_city">
-                </div>
-            </div>
-
-            <div id="palm-instruction" style="display:none; border: 1px dashed var(--gold); padding: 15px; border-radius: 15px; margin-top: 15px; background: rgba(245,197,66,0.05); text-align: center;">
-                <p class="gold-text" style="font-size: 0.8rem; margin: 0;" data-key="palm_note">✋ <b>Note:</b> Dono haathon ki Front & Back photos taiyaar rakhein.</p>
+        <div id="section-single-birth">
+            <input type="date" id="single-dob" class="input-field">
+            <div id="time-place-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <input type="time" id="single-time" class="input-field">
+                <input type="text" id="single-place" placeholder="Birth City" class="input-field">
             </div>
         </div>
 
         <div id="section-matching" style="display:none;">
-            <div style="margin-bottom:20px; padding:20px; border:1px solid var(--border); border-radius:20px; background:rgba(255,255,255,0.01);">
-                <h4 class="gold-text" style="margin-top:0;" data-key="lbl_male">👦 Male Details</h4>
-                <input type="text" id="m-name" placeholder="Male Name" class="input-field" data-placeholder="ph_m_name">
+            <div style="margin-bottom:15px; padding:15px; border:1px solid rgba(255,255,255,0.1); border-radius:15px;">
+                <h4 class="gold-text" style="margin:0 0 10px 0;">👦 Male Details</h4>
+                <input type="text" id="m-name" placeholder="Name" class="input-field">
                 <input type="date" id="m-dob" class="input-field">
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-                    <input type="time" id="m-time" class="input-field"><input type="text" id="m-place" placeholder="City" class="input-field" data-placeholder="ph_city">
+                    <input type="time" id="m-time" class="input-field"><input type="text" id="m-place" placeholder="City" class="input-field">
                 </div>
             </div>
-            <div style="padding:20px; border:1px solid var(--border); border-radius:20px; background:rgba(255,255,255,0.01);">
-                <h4 class="gold-text" style="margin-top:0;" data-key="lbl_female">👧 Female Details</h4>
-                <input type="text" id="f-name" placeholder="Female Name" class="input-field" data-placeholder="ph_f_name">
+            <div style="padding:15px; border:1px solid rgba(255,255,255,0.1); border-radius:15px;">
+                <h4 class="gold-text" style="margin:0 0 10px 0;">👧 Female Details</h4>
+                <input type="text" id="f-name" placeholder="Name" class="input-field">
                 <input type="date" id="f-dob" class="input-field">
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-                    <input type="time" id="f-time" class="input-field"><input type="text" id="f-place" placeholder="City" class="input-field" data-placeholder="ph_city">
+                    <input type="time" id="f-time" class="input-field"><input type="text" id="f-place" placeholder="City" class="input-field">
                 </div>
             </div>
         </div>
 
-        <div style="margin: 25px 0; text-align: center;">
-            <p style="font-size: 0.85rem; color: var(--gold); margin-bottom: 5px;" data-key="pdf_include">📑 <b>Free PDF Report Included</b> (HI/EN/Hinglish)</p>
-            <p style="font-size: 0.75rem; color: #666;" data-key="call_support">📞 Call Support: Only Hindi</p>
+        <div id="palm-instruction" style="display:none; border: 1px dashed var(--gold); padding: 15px; border-radius: 15px; margin-top: 15px; background: rgba(245,197,66,0.05);">
+            <p class="gold-text" style="font-size: 0.8rem; margin: 0; text-align: center;">
+                ✋ <b>Note:</b> Dono haathon ki Front & Back (4 photos) taiyaar rakhein. WhatsApp par share karni hogi.
+            </p>
         </div>
 
-        <button type="submit" class="gold-btn" id="submit-btn" data-key="btn_submit">Invoke Divine Guidance</button>
+        <button type="submit" class="gold-btn" id="submit-btn" style="margin-top:20px;">Invoke Divine Guidance</button>
     </form>
 </section>
 
