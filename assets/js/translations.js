@@ -79,6 +79,8 @@ btn_explore: "Explore Now",
 guide_title: "Latest Divine Guide",
 guide_subtitle: "Ancient Wisdom for Modern Life",
 btn_read_more : "Read Full Article",
+read_btn : "READ ARTICLE",
+premium_load_btn: "VIEW MORE GUIDES",
 
         // ===== PLANETS =====
         planet_sun: "Sun (Surya)",
@@ -399,6 +401,8 @@ btn_explore: "अभी जानें",
 guide_title: "नवीनतम दिव्य मार्गदर्शिका",
 guide_subtitle: "आधुनिक जीवन के लिए प्राचीन ज्ञान",
 btn_read_more: "पूरा लेख पढ़ें",
+read_btn : "लेख पढ़ें",
+premium_load_btn: "और लेख देखें",
 
 // --- In 'hi' section of translations.js ---
 form_title: "महादेव से परामर्श करें",
