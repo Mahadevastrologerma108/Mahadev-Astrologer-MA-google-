@@ -76,6 +76,9 @@ report_badge: "Free PDF Report Included (HI/EN/Hinglish)",
 nav_articles: "Divine Articles",
 articles_desc: "A collection of Vedic stories, Vrat rituals, and spiritual knowledge.",
 btn_explore: "Explore Now",
+guide_title: "Latest Divine Guide",
+guide_subtitle: "Ancient Wisdom for Modern Life",
+btn_read_more : "Read Full Article",
 
         // ===== PLANETS =====
         planet_sun: "Sun (Surya)",
@@ -393,6 +396,9 @@ btn_read: "अभी पढ़ें →",
 nav_articles: "दिव्य लेख",
 articles_desc: "पौराणिक कथाएं, व्रत विधि और आध्यात्मिक ज्ञान का संग्रह।",
 btn_explore: "अभी जाने",
+guide_title: "नवीनतम दिव्य मार्गदर्शिका",
+guide_subtitle: "आधुनिक जीवन के लिए प्राचीन ज्ञान",
+btn_read_more: "पूरा लेख पढ़ें",
 
 // --- In 'hi' section of translations.js ---
 form_title: "महादेव से परामर्श करें",
