@@ -78,7 +78,7 @@ articles_desc: "A collection of Vedic stories, Vrat rituals, and spiritual knowl
 btn_explore: "Explore Now",
 guide_title: "Latest Divine Guide",
 guide_subtitle: "Ancient Wisdom for Modern Life",
-btn_read_more: "READ ARTICLE 🔱",
+btn_read_more: "READ ARTICLE",
 btn_view_more: "VIEW MORE GUIDES 🔱",
 
         // ===== PLANETS =====
