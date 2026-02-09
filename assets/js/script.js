@@ -115,7 +115,16 @@ window.handleDivineSubmit = function(e) {
     // (Yahan aapka pura Message formatting wala code rahega)
     alert("Pranaam! Aapka message WhatsApp par bheja ja raha hai.");
 };
+const playBtn = document.getElementById('master-play-btn');
 
+playBtn.addEventListener('click', () => {
+    // Abhi song nahi hai, isliye message dikhayenge
+    alert("Prabhu ki kripa se, Divine Music jald hi prakat hoga! Stay tuned. 🔱🚩");
+    
+    // Thoda sa vibration effect button par
+    playBtn.style.transform = "translateX(5px)";
+    setTimeout(() => playBtn.style.transform = "translateX(0)", 100);
+});
 // --- 4. STARTUP ---
 document.addEventListener('DOMContentLoaded', () => {
     loadLayout();
