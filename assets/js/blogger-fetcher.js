@@ -45,7 +45,8 @@ window.renderBloggerPosts = function(data) {
                     <h3>${title}</h3>
                     <p>${summary}...</p>
                 </div>
-                <a href="${internalLink}" class="read-btn">READ ARTICLE 🔱</a>
+                // Is line ko dhundiye aur aise badaliye:
+<a href="${internalLink}" class="read-btn" data-key="btn_read_more">READ ARTICLE 🔱</a>
             </article>`;
     });
 
@@ -65,7 +66,8 @@ function updateLoadMoreButton(lastResultCount) {
     }
 
     if(lastResultCount < maxResults) {
-        btnContainer.innerHTML = `<p style="color:var(--gold); font-family:'Cinzel'; opacity:0.6;">— All Wisdom Revealed —</p>`;
+       // updateLoadMoreButton function ke andar:
+btnContainer.innerHTML = `<button id="load-more-btn" onclick="fetchNextBatch()" class="premium-load-btn" data-key="btn_view_more">VIEW MORE GUIDES 🔱</button>`;
     } else {
         btnContainer.innerHTML = `<button id="load-more-btn" onclick="fetchNextBatch()" class="premium-load-btn">VIEW MORE GUIDES 🔱</button>`;
     }
