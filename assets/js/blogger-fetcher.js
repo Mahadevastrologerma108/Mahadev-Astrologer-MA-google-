@@ -1,18 +1,10 @@
-/**
- * Mahadev Astrologer - Premium Blogger Fetcher
- * Features: Internal Linking, Pagination (Load More), & Fade Animation
- */
-
 const BLOG_ID = "mahadevastrologerma";
 let startIndex = 1; 
-const maxResults = 8; // Per batch articles
+const maxResults = 8; 
 
 function loadRoyalArticles() {
     const grid = document.getElementById('blogger-posts');
     if (!grid) return;
-
-    const btn = document.getElementById('load-more-btn');
-    if(btn) btn.innerHTML = "Seeking Wisdom... 🔱";
 
     const script = document.createElement('script');
     script.src = `https://${BLOG_ID}.blogspot.com/feeds/posts/default?alt=json-in-script&callback=renderBloggerPosts&max-results=${maxResults}&start-index=${startIndex}`;
@@ -21,15 +13,14 @@ function loadRoyalArticles() {
 
 window.renderBloggerPosts = function(data) {
     const grid = document.getElementById('blogger-posts');
-    const entries = data.feed.entry;
-
-    if (!entries || entries.length === 0) {
-        const btnContainer = document.getElementById('btn-container');
-        if(btnContainer) btnContainer.innerHTML = `<p style="color:var(--gold); font-family:'Cinzel'; opacity:0.6;">— All Wisdom Revealed —</p>`;
+    if (!data.feed.entry) {
+        updateLoadMoreButton(0);
         return;
     }
 
+    const entries = data.feed.entry;
     let htmlContent = '';
+
     entries.forEach((post, index) => {
         const title = post.title.$t;
         const postId = post.id.$t.split('post-')[1]; 
@@ -40,13 +31,12 @@ window.renderBloggerPosts = function(data) {
 
         htmlContent += `
             <article class="article-card" style="animation: fadeInUp 0.6s ease forwards; animation-delay: ${index * 0.1}s; opacity:0;">
-                ${imgUrl ? `<img src="${imgUrl}" alt="${title}" style="width:100%; height:200px; object-fit:cover; border-radius:4px; margin-bottom:15px;">` : ''}
+                ${imgUrl ? `<img src="${imgUrl}" alt="${title}">` : ''}
                 <div>
                     <h3>${title}</h3>
                     <p>${summary}...</p>
                 </div>
-    
-<a href="${internalLink}" class="read-btn" data-key="btn_read_more">READ ARTICLE 🔱</a>
+                <a href="${internalLink}" class="read-btn" data-key="btn_read_more">READ ARTICLE 🔱</a>
             </article>`;
     });
 
@@ -54,6 +44,10 @@ window.renderBloggerPosts = function(data) {
     else grid.insertAdjacentHTML('beforeend', htmlContent);
 
     updateLoadMoreButton(entries.length);
+
+    if (window.updateContent) {
+        window.updateContent(localStorage.getItem('selectedLanguage') || 'hi');
+    }
 };
 
 function updateLoadMoreButton(lastResultCount) {
@@ -66,9 +60,9 @@ function updateLoadMoreButton(lastResultCount) {
     }
 
     if(lastResultCount < maxResults) {
-btnContainer.innerHTML = `<button id="load-more-btn" onclick="fetchNextBatch()" class="premium-load-btn" data-key="btn_view_more">VIEW MORE GUIDES 🔱</button>`;
+        btnContainer.innerHTML = `<p style="color:var(--gold); font-family:'Cinzel'; opacity:0.6;">— All Wisdom Revealed —</p>`;
     } else {
-        btnContainer.innerHTML = `<button id="load-more-btn" onclick="fetchNextBatch()" class="premium-load-btn">VIEW MORE GUIDES 🔱</button>`;
+        btnContainer.innerHTML = `<button id="load-more-btn" onclick="fetchNextBatch()" class="premium-load-btn" data-key="btn_view_more">VIEW MORE GUIDES 🔱</button>`;
     }
 }
 
@@ -78,11 +72,3 @@ function fetchNextBatch() {
 }
 
 document.addEventListener('DOMContentLoaded', loadRoyalArticles);
-
-    updateLoadMoreButton(entries.length);
-
-    
-    if(window.updateContent) {
-        window.updateContent(localStorage.getItem('selectedLanguage') || 'hi');
-    }
-};
