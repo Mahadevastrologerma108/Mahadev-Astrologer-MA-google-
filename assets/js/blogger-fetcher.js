@@ -79,3 +79,11 @@ function fetchNextBatch() {
 }
 
 document.addEventListener('DOMContentLoaded', loadRoyalArticles);
+// ... baki code ...
+    updateLoadMoreButton(entries.length);
+
+    // Ye line jarur jodein, warna translation nahi chalega!
+    if(window.updateContent) {
+        window.updateContent(localStorage.getItem('selectedLanguage') || 'hi');
+    }
+};
