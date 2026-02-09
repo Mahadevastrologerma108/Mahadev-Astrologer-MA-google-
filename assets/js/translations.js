@@ -73,6 +73,9 @@ ins_horo_desc: "How will your day be according to your zodiac?",
 btn_view: "VIEW DETAILS →",
 btn_read: "READ NOW →",
 report_badge: "Free PDF Report Included (HI/EN/Hinglish)",
+nav_articles: "Divine Articles",
+articles_desc: "A collection of Vedic stories, Vrat rituals, and spiritual knowledge.",
+btn_explore: "Explore Now",
 
         // ===== PLANETS =====
         planet_sun: "Sun (Surya)",
@@ -387,6 +390,9 @@ ins_horo_title: "आज का राशिफल",
 ins_horo_desc: "आपकी राशि के अनुसार आज का दिन कैसा रहेगा?",
 btn_view: "पूरा देखें →",
 btn_read: "अभी पढ़ें →",
+nav_articles: "दिव्य लेख",
+articles_desc: "पौराणिक कथाएं, व्रत विधि और आध्यात्मिक ज्ञान का संग्रह।",
+btn_explore: "अभी जाने",
 
 // --- In 'hi' section of translations.js ---
 form_title: "महादेव से परामर्श करें",
