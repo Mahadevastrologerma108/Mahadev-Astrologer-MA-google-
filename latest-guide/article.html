@@ -3,15 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sacred Guide | Mahadev Astrologer</title>
+    
+    <title id="dynamic-title">Sacred Guide | Mahadev Astrologer</title>
+    <meta name="description" id="dynamic-desc" content="Read divine astrological wisdom and guides on Mahadev Astrologer.">
+    <link id="canonical-link" rel="canonical" href="https://www.mahadevastrologerma.in/latest-guide/article.html">
+
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <script>
+        // Canonical Logic - Google ko batayega ki har ID ek alag article hai
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const articleId = urlParams.get('id');
+            if (articleId) {
+                const finalUrl = "https://www.mahadevastrologerma.in/latest-guide/article.html?id=" + articleId;
+                document.getElementById('canonical-link').setAttribute('href', finalUrl);
+            }
+        })();
+    </script>
+
     <style>
         .article-view-container { padding: 120px 20px; max-width: 800px; margin: auto; min-height: 80vh; }
         #article-full-content { line-height: 1.8; color: #ccc; font-size: 1.1rem; }
-        #article-full-content h1, #article-full-content h2 { font-family: 'Cinzel'; color: var(--gold); margin-top: 30px; }
+        #article-full-content h1, #article-full-content h2 { font-family: 'Cinzel'; color: var(--gold-main); margin-top: 30px; }
         #article-full-content img { max-width: 100%; border-radius: 10px; margin: 20px 0; border: 1px solid rgba(197, 160, 89, 0.3); }
-        .back-link { color: var(--gold); text-decoration: none; font-family: 'Cinzel'; display: inline-block; margin-bottom: 20px; }
+        .back-link { color: var(--gold-main); text-decoration: none; font-family: 'Cinzel'; display: inline-block; margin-bottom: 20px; }
     </style>
 </head>
 <body style="background: #0a0a14; color: white;">
