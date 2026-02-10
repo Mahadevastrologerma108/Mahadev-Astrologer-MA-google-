@@ -1,47 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://www.mahadevastrologerma.in/index.html</loc>
-    <priority>1.00</priority>
-  </url>
-  <url>
-    <loc>https://www.mahadevastrologerma.in/horoscope.html</loc>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://www.mahadevastrologerma.in/panchang/panchang.html</loc>
-    <priority>0.85</priority>
-  </url>
+  <url><loc>https://www.mahadevastrologerma.in/index.html</loc><priority>1.00</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/horoscope.html</loc><priority>0.90</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/panchang/panchang.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/latest-guide/index.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/latest-guide/guides.html</loc><priority>0.85</priority></url>
 
   <url>
-    <loc>https://www.mahadevastrologerma.in/pages/about.html</loc>
-    <priority>0.70</priority>
+    <loc>https://www.mahadevastrologerma.in/latest-guide/article.html?id=2118859752251433874</loc>
+    <priority>1.00</priority>
   </url>
-  <url>
-    <loc>https://www.mahadevastrologerma.in/pages/contact.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://www.mahadevastrologerma.in/pages/disclaimer.html</loc>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://www.mahadevastrologerma.in/pages/privacy.html</loc>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://www.mahadevastrologerma.in/pages/terms.html</loc>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://www.mahadevastrologerma.in/latest-guide/index.html</loc>
-    <priority>0.85</priority>
-  </url>
-   <url>
-    <loc>https://www.mahadevastrologerma.in/latest-guide/guides.html</loc>
-    <priority>0.85</priority>
-  </url>
+
+  <url><loc>https://www.mahadevastrologerma.in/pages/about.html</loc><priority>0.70</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/pages/contact.html</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/pages/disclaimer.html</loc><priority>0.50</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/pages/privacy.html</loc><priority>0.50</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/pages/terms.html</loc><priority>0.50</priority></url>
 
   <url><loc>https://www.mahadevastrologerma.in/pages/aries.html</loc><priority>0.80</priority></url>
   <url><loc>https://www.mahadevastrologerma.in/pages/taurus.html</loc><priority>0.80</priority></url>
