@@ -1,24 +1,18 @@
-// Mahadev Studio - Firebase Central Configuration
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDDRhZ9mqvpENVWH045UN7kp8Da-H264jU",
-    authDomain: "mahadev-astrologer-ma-studio.firebaseapp.com",
-    projectId: "mahadev-astrologer-ma-studio",
-    storageBucket: "mahadev-astrologer-ma-studio.firebasestorage.app",
-    messagingSenderId: "592702267049",
-    appId: "1:592702267049:web:c18a13ddffab14d6f113b8",
-    measurementId: "G-B4L9H04RYQ"
+  apiKey: "AIzaSyDt-W8Fjg6kAz43XDoyDlGZRnw0nZLgh0I",
+  authDomain: "mahadev-astrologer-studi-1dd6a.firebaseapp.com",
+  projectId: "mahadev-astrologer-studi-1dd6a",
+  storageBucket: "mahadev-astrologer-studi-1dd6a.firebasestorage.app",
+  messagingSenderId: "5515803520",
+  appId: "1:5515803520:web:20a1cf63c84e73006cdf65",
+  measurementId: "G-715D7KHCXZ"
 };
 
-// Initialize Services
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const db = getFirestore(app);
-const storage = getStorage(app);
 
-// Exporting for use in other files
-export { db, storage, analytics };
+export { db };
