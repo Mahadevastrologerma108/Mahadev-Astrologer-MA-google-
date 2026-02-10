@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+// Aapka naya Mumbai Project Config
 const firebaseConfig = {
   apiKey: "AIzaSyDt-W8Fjg6kAz43XDoyDlGZRnw0nZLgh0I",
   authDomain: "mahadev-astrologer-studi-1dd6a.firebaseapp.com",
@@ -15,4 +16,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// Ise export kar rahe hain taaki handler ise use kar sake
 export { db };
