@@ -299,6 +299,68 @@ body {
     font-weight: bold;
 }
 
+.shivratri-sticker-link {
+    display: block;
+    text-decoration: none;
+    margin: 25px auto;
+    max-width: 95%; /* Site ki width ke hisaab se */
+    transition: transform 0.2s ease;
+}
+
+.sticker-wrap {
+    background: #111; /* Deep Black */
+    border: 2px solid var(--gold-main); /* Gold Border */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5), inset 0 0 15px rgba(212, 175, 55, 0.1);
+    cursor: pointer;
+}
+
+.sticker-wrap:hover {
+    transform: translateY(-3px); /* Hover par thoda upar uthega */
+    background: #1a1a1a;
+}
+
+.live-tag {
+    background: var(--gold-main);
+    color: #000;
+    padding: 4px 12px;
+    font-weight: 900;
+    font-size: 11px;
+    border-radius: 4px;
+    margin-right: 20px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.sticker-center p {
+    color: #fff;
+    margin: 0;
+    font-family: 'Cinzel', serif; /* Agar ye font link hai toh, nahi toh sans-serif */
+    font-size: 1.1rem;
+}
+
+.highlight {
+    color: var(--gold-main);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.sticker-right {
+    margin-left: auto;
+    color: var(--gold-main);
+    font-size: 1.2rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .sticker-wrap { padding: 12px 15px; flex-direction: column; gap: 10px; text-align: center; }
+    .live-tag { margin-right: 0; }
+    .sticker-right { display: none; }
+}
+
 @media (max-width: 768px) {
     .footer-brand { font-size: 1.5rem !important; }
     .sanskrit-shlok { font-size: 1.2rem; }
