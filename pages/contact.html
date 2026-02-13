@@ -3,116 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="title_contact">Contact Us | Mahadev Astrologer MA</title>
+    <title data-key="title_contact">Divine Connect | Mahadev Astrologer MA</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        .contact-card {
-            background: rgba(10, 10, 20, 0.95);
-            padding: 40px;
-            border-radius: 30px;
-            border: 1px solid var(--gold);
-            text-align: center;
-            max-width: 800px; /* Increased for grid */
-            margin: 120px auto 60px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        :root {
+            --royal-gold: linear-gradient(135deg, #f5c542 0%, #a67c00 50%, #f5c542 100%);
+            --gold-glow: 0 0 20px rgba(245, 197, 66, 0.3);
         }
+
+        .royal-container {
+            max-width: 900px;
+            margin: 150px auto 80px;
+            padding: 20px;
+        }
+
+        /* Premium Glass Card */
+        .premium-card {
+            background: rgba(10, 10, 20, 0.8);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(245, 197, 66, 0.2);
+            border-radius: 40px;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+        }
+
+        /* Golden Border Animation */
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 3px;
+            background: var(--royal-gold);
+        }
+
+        .gold-title {
+            font-family: 'Cinzel', serif;
+            background: var(--royal-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
         }
-        .contact-item {
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            transition: 0.4s;
+
+        .royal-item {
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(245, 197, 66, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            padding: 30px 20px;
+            border-radius: 25px;
+            transition: 0.5s all cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
         }
-        .contact-item:hover { 
-            background: rgba(245, 197, 66, 0.08); 
-            transform: translateY(-5px);
-            border-color: var(--gold);
+
+        .royal-item:hover {
+            background: rgba(245, 197, 66, 0.05);
+            border-color: #f5c542;
+            transform: translateY(-10px);
+            box-shadow: var(--gold-glow);
         }
-        .contact-link { 
-            color: var(--gold); 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 1.1rem;
-            margin-top: 10px;
+
+        .icon-gold {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            display: block;
+            filter: drop-shadow(0 0 10px rgba(245,197,66,0.5));
         }
-        .icon-circle {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        .arattai-btn {
-            background: var(--gold);
-            color: black;
-            padding: 10px 20px;
+
+        /* Arattai Premium Button */
+        .btn-arattai {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 30px;
+            background: var(--royal-gold);
+            color: #000;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
             border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transition: 0.3s;
+        }
+
+        .btn-arattai:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(245,197,66,0.6);
+            background: #fff;
+        }
+
+        .sub-text {
+            color: #888;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .email-box {
+            margin-top: 60px;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-nav-link {
+            color: #f5c542;
             text-decoration: none;
             font-weight: bold;
             font-family: 'Cinzel';
-            margin-top: 15px;
-            font-size: 0.8rem;
+            border-bottom: 1px solid transparent;
             transition: 0.3s;
         }
-        .arattai-btn:hover { background: #fff; }
+
+        .footer-nav-link:hover {
+            border-bottom: 1px solid #f5c542;
+        }
     </style>
 </head>
 <body class="mahadev-bg" style="color: white; min-height: 100vh;">
 
     <div id="header-placeholder"></div>
 
-    <main class="contact-card">
-        <h1 class="gold-text title-font" data-key="contact_title" style="font-size: 2.5rem;">Divine Connect</h1>
-        <p data-key="contact_intro" style="color: #bbb;">Mahadev Astrologer MA se judne ke pavitra maarg.</p>
+    <div class="royal-container">
+        <main class="premium-card">
+            <p class="sub-text" data-key="contact_sub">Connect with the Divine</p>
+            <h1 class="gold-title" data-key="contact_title">Divine Connect</h1>
+            <div style="width: 60px; height: 2px; background: var(--royal-gold); margin: 20px auto;"></div>
 
-        <div class="contact-grid">
-            <div class="contact-item" style="border: 1.5px solid var(--gold); background: rgba(245,197,66,0.05);">
-                <div class="icon-circle">💬</div>
-                <h3 class="gold-text" style="margin:0;">Arattai Chat</h3>
-                <p style="font-size: 0.75rem; color: #888;">Most Secure & Private</p>
-                
-                <a href="https://www.arattai.in/YOUR_USERNAME_OR_LINK" target="_blank" class="arattai-btn">START CHAT</a>
+            <div class="contact-grid">
+                <div class="royal-item" style="border: 2px solid #f5c542;">
+                    <span class="icon-gold">🛡️</span>
+                    <h3 class="gold-text" style="margin:0; font-size: 1.2rem;">Arattai Secure</h3>
+                    <p style="font-size: 0.75rem; color: #aaa; margin: 5px 0 15px;">Private Vedic Channel</p>
+                    
+                    <a href="https://www.arattai.in/YOUR_LINK" target="_blank" class="btn-arattai">START CHAT</a>
+                    </div>
+
+                <div class="royal-item">
+                    <span class="icon-gold">🔱</span>
+                    <h3 class="gold-text" style="margin:0; font-size: 1.2rem;">WhatsApp</h3>
+                    <a href="https://wa.me/YOUR_NUMBER" class="btn-arattai" style="background: rgba(255,255,255,0.1); color: #f5c542; border: 1px solid #f5c542;">MESSAGE</a>
+                </div>
+
+                <div class="royal-item">
+                    <span class="icon-gold">✈️</span>
+                    <h3 class="gold-text" style="margin:0; font-size: 1.2rem;">Telegram</h3>
+                    <a href="https://t.me/YOUR_ID" class="btn-arattai" style="background: rgba(255,255,255,0.1); color: #f5c542; border: 1px solid #f5c542;">JOIN CHANNEL</a>
+                </div>
             </div>
 
-            <div class="contact-item">
-                <div class="icon-circle">🔱</div>
-                <h3 class="gold-text" style="margin:0;">WhatsApp</h3>
-                <a href="https://wa.me/YOUR_NUMBER" class="contact-link">Quick Message</a>
+            <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
+                <div class="royal-item" style="flex: 1; padding: 20px;">
+                    <span class="icon-gold" style="font-size: 2rem;">🌿</span>
+                    <h4 class="gold-text" style="margin:0; font-size: 0.9rem;">Ayurvedic Wisdom</h4>
+                    <a href="../pages/ayurveda.html" style="color: #888; font-size: 0.75rem; text-decoration: none;">Explore Remedies →</a>
+                </div>
+                <div class="royal-item" style="flex: 1; padding: 20px;">
+                    <span class="icon-gold" style="font-size: 2rem;">🎵</span>
+                    <h4 class="gold-text" style="margin:0; font-size: 0.9rem;">Healing Music</h4>
+                    <a href="../pages/healing.html" style="color: #888; font-size: 0.75rem; text-decoration: none;">Listen Now →</a>
+                </div>
             </div>
 
-            <div class="contact-item">
-                <div class="icon-circle">✈️</div>
-                <h3 class="gold-text" style="margin:0;">Telegram</h3>
-                <a href="https://t.me/YOUR_ID" class="contact-link">Connect Now</a>
+            <div class="email-box">
+                <p style="color: #666; font-size: 0.8rem; margin-bottom: 5px;">OFFICIAL SUPPORT</p>
+                <a href="mailto:support@mahadevastrologerma.in" class="gold-text" style="text-decoration: none; font-size: 1.1rem; letter-spacing: 1px;">support@mahadevastrologerma.in</a>
             </div>
 
-            <div class="contact-item">
-                <div class="icon-circle">🌿</div>
-                <h3 class="gold-text" style="margin:0;">Ayurveda</h3>
-                <a href="../pages/ayurveda.html" class="contact-link" style="font-size: 0.9rem;">View Remedies</a>
+            <p style="font-size: 0.75rem; color: #444; margin-top: 40px;">
+                🔱 Responses are delivered within 24-48 hours through divine alignment.
+            </p>
+
+            <div style="margin-top: 40px;">
+                <a href="../index.html" class="footer-nav-link">← Return to Sanctuary</a>
             </div>
-        </div>
-
-        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
-            <p style="margin-bottom: 5px; color: #888;" data-key="contact_email_label">Official Support Email</p>
-            <a href="mailto:support@mahadevastrologerma.in" class="contact-link" style="font-size: 1rem;">support@mahadevastrologerma.in</a>
-        </div>
-
-        <p style="font-size: 0.8rem; color: #666; margin-top: 30px;" data-key="contact_note">
-            Note: Hum 24-48 ghanto ke andar jawab dene ki koshish karte hain.
-        </p>
-
-        <br>
-        <a href="../index.html" class="gold-text" style="text-decoration: none; font-weight: bold; border-bottom: 1px solid var(--gold); font-size: 0.9rem;" data-key="back_home">← Back to Home</a>
-    </main>
+        </main>
+    </div>
 
     <div id="footer-placeholder"></div>
 
