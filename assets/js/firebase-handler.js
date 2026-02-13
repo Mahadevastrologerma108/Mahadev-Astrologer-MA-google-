@@ -2,6 +2,51 @@
 import { db, dbStudio } from './firebase-config.js';
 import { collection, addDoc, serverTimestamp, query, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+// ... (Imports wahi rahenge)
+
+async function notifyTelegram(data) {
+    console.log("Checking Telegram notification..."); // Checkpoint 1
+    
+    const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
+    const CHAT_ID = '2032242977'; 
+
+    let message = `🔱 *New Divine Request!* \n👤 Name: ${data.name}`;
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: CHAT_ID, text: message })
+        });
+        const result = await response.json();
+        console.log("Telegram Response:", result); // Checkpoint 2
+    } catch (err) {
+        console.error("Telegram Catch Error:", err);
+    }
+}
+
+// Form Submit ke andar ye line check karo:
+if (appointmentForm) {
+    appointmentForm.addEventListener('submit', async (e) => {
+        console.log("Form Submit Clicked!"); // Checkpoint 3
+        e.preventDefault();
+        
+        // ... baki sara code ...
+
+        try {
+            console.log("Sending to Firebase..."); // Checkpoint 4
+            await addDoc(collection(db, "appointments"), submissionData);
+            console.log("Firebase Success! Now calling Telegram..."); // Checkpoint 5
+            
+            await notifyTelegram(submissionData);
+            alert("Sent Successfully!");
+        } catch (error) {
+            console.log("Final Error:", error);
+        }
+    });
+}
+
 // ==========================================
 // 🔱 TELEGRAM CONFIGURATION
 // ==========================================
