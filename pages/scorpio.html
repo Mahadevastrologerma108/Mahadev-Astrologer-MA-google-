@@ -25,15 +25,37 @@
     <span id="rashi-icon" style="font-size:70px; text-shadow:0 0 20px var(--gold);">♏</span>
     <h1 id="rashi-title" class="gold-text title-font">Scorpio - वृश्चिक</h1>
     <p id="todayDate" style="color:#666; font-size:0.85rem; margin-bottom:35px;">--</p>
-    <div class="horo-card"><h3>Career & Finance</h3><p id="h-career">Loading...</p></div>
-    <div class="horo-card"><h3>Love & Family</h3><p id="h-love">Loading...</p></div>
-    <div class="horo-card"><h3>Health & Wellness</h3><p id="h-health">Loading...</p></div>
-    <div class="lucky-bar">
-        <div class="lucky-item"><span>Color</span><br><strong id="h-color">--</strong></div>
-        <div class="lucky-item"><span>Number</span><br><strong id="h-number">--</strong></div>
-        <div class="lucky-item"><span>Time</span><br><strong id="h-time">--</strong></div>
+   <div class="horo-card">
+    <h3 data-key="horo_career">Career & Finance</h3>
+    <p id="h-career">Loading...</p>
+</div>
+<div class="horo-card">
+    <h3 data-key="horo_love">Love & Family</h3>
+    <p id="h-love">Loading...</p>
+</div>
+<div class="horo-card">
+    <h3 data-key="horo_health">Health & Wellness</h3>
+    <p id="h-health">Loading...</p>
+</div>
+
+<div class="lucky-bar">
+    <div class="lucky-item">
+        <span data-key="lucky_color">Color</span><br>
+        <strong id="h-color">--</strong>
     </div>
-    <a href="../index.html#book" style="display:inline-block; padding:14px 35px; border:1px solid var(--gold); color:var(--gold); text-decoration:none; border-radius:50px; font-family:'Cinzel'; font-weight:bold;">Consult Now 🔱</a>
+    <div class="lucky-item">
+        <span data-key="lucky_number">Number</span><br>
+        <strong id="h-number">--</strong>
+    </div>
+    <div class="lucky-item">
+        <span data-key="lucky_time">Time</span><br>
+        <strong id="h-time">--</strong>
+    </div>
+</div>
+
+<a href="../index.html#book" data-key="btn_invoke" style="display:inline-block; padding:14px 35px; border:1px solid var(--gold); color:var(--gold); text-decoration:none; border-radius:50px; font-family:'Cinzel'; font-weight:bold;">
+    Consult Now 🔱
+</a>
 </main>
 <script src="../assets/js/horoscope-data.js"></script>
 <script>
