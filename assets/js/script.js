@@ -6,12 +6,8 @@ async function loadLayout() {
         if (hResp.ok && fResp.ok) {
             document.getElementById('header-placeholder').innerHTML = await hResp.text();
             document.getElementById('footer-placeholder').innerHTML = await fResp.text();
-
-            // 🔱 Menu Activation (Hamburger Logic)
             initMenu();
-            
-            // 🔱 UI Translation
-            window.updateUI();
+            window.updateUI(); // Layout load hone ke baad content fill karein
         }
     } catch (e) { console.log("Layout error:", e); }
 }
@@ -27,56 +23,56 @@ function initMenu() {
             drawer.style.right = '0';
             if(overlay) overlay.style.display = 'block';
         };
-
         const hideMenu = () => {
             drawer.style.right = '-280px';
             if(overlay) overlay.style.display = 'none';
         };
-
         if (closeBtn) closeBtn.onclick = hideMenu;
         if (overlay) overlay.onclick = hideMenu;
     }
 }
 
-// --- 2. TRANSLATION LOGIC ---
+// --- 2. TRANSLATION LOGIC (FIXED) ---
 window.updateUI = function() {
-    const lang = localStorage.getItem('preferredLang') || 'en';
+    const lang = localStorage.getItem('preferredLang') || 'hi';
     const t = window.translations;
     if (!t || !t[lang]) return;
 
+    // Static text update
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
         if (t[lang][key]) el.innerHTML = t[lang][key];
     });
 
-    document.querySelectorAll('[data-placeholder]').forEach(el => {
-        const key = el.getAttribute('data-placeholder');
+    // Placeholder update (Matching your HTML data-placeholder-key)
+    document.querySelectorAll('[data-placeholder-key]').forEach(el => {
+        const key = el.getAttribute('data-placeholder-key');
         if (t[lang][key]) el.placeholder = t[lang][key];
     });
 
     const btnText = document.getElementById('lang-text');
-    if (btnText) btnText.innerText = (lang === 'en') ? 'हिंदी / Eng' : 'Eng / हिंदी';
+    if (btnText) btnText.innerText = (lang === 'hi') ? 'हिंदी / Eng' : 'Eng / हिंदी';
     
-    // Form logic ko bhi update karo
     if(typeof applyFormLogic === 'function') applyFormLogic();
 };
 
 window.toggleLanguage = function() {
-    let current = localStorage.getItem('preferredLang') || 'en';
-    localStorage.setItem('preferredLang', current === 'en' ? 'hi' : 'en');
+    let current = localStorage.getItem('preferredLang') || 'hi';
+    localStorage.setItem('preferredLang', current === 'hi' ? 'en' : 'hi');
     location.reload(); 
 };
 
-// --- 3. DYNAMIC FORM & SUBMIT LOGIC (Updated by Gemini) ---
-
-// 🔱 1. Contact Method & Placeholder Sync
+// --- 3. FORM LOGIC (REFINED) ---
 window.syncContactMethod = function(type) {
     const input = document.getElementById('contact-detail');
     const warning = document.getElementById('email-warning');
+    const lang = localStorage.getItem('preferredLang') || 'hi';
+    const t = window.translations[lang];
+
     if (!input) return;
 
     if (type === 'WA') {
-        input.placeholder = "WhatsApp Number";
+        input.placeholder = t.ph_contact || "WhatsApp Number";
         if(warning) warning.style.display = "none";
     } else if (type === 'TG') {
         input.placeholder = "Telegram Username / Link";
@@ -87,19 +83,14 @@ window.syncContactMethod = function(type) {
     }
 };
 
-// 🔱 2. Service-wise Field Visibility
 window.applyFormLogic = function() {
     const svc = document.getElementById('service-select')?.value;
-    if(!svc) return;
-
     const singleSec = document.getElementById('section-single');
     const matchingSec = document.getElementById('section-matching');
     const palmInst = document.getElementById('palm-instruction');
     const timePlaceGroup = document.getElementById('time-place-group');
 
-    const sDob = document.getElementById('single-dob');
-    const sTime = document.getElementById('single-time');
-    const sPlace = document.getElementById('single-place');
+    if (!svc) return;
 
     // Default Reset
     if(singleSec) singleSec.style.display = 'block';
@@ -107,48 +98,24 @@ window.applyFormLogic = function() {
     if(palmInst) palmInst.style.display = 'none';
     if(timePlaceGroup) timePlaceGroup.style.display = 'grid';
 
-    // Required Field Reset
-    [sDob, sTime, sPlace].forEach(el => { if(el) el.required = false; });
-
-    // Conditional Logic for each service
-    if (svc === 'kundli_making') {
-        [sDob, sTime, sPlace].forEach(el => { if(el) el.required = true; });
-    } else if (svc === 'kundli_matching') {
+    if (svc === 'kundli_matching') {
         if(singleSec) singleSec.style.display = 'none';
         if(matchingSec) matchingSec.style.display = 'block';
     } else if (svc === 'palmistry') {
         if(palmInst) palmInst.style.display = 'block';
-        // Note: Palmistry fills current details in singleSec
     } else if (svc === 'numerology') {
-        if(timePlaceGroup) timePlaceGroup.style.display = 'none'; // Hide Time & Place
-        if(sDob) sDob.required = true;
+        if(timePlaceGroup) timePlaceGroup.style.display = 'none';
     } else if (svc === 'combo_analysis') {
         if(palmInst) palmInst.style.display = 'block';
-        [sDob, sTime, sPlace].forEach(el => { if(el) el.required = true; });
     }
 };
 
-// 🔱 3. Submit Handler
-window.handleDivineSubmit = function(e) {
-    e.preventDefault();
-    // (Future Firebase logic will be added here)
-    alert("Pranaam! Aapka sandesh surakshit bhej diya gaya hai. 🔱🚩");
-};
-
-// --- 4. AUDIO & INTERACTIVE LOGIC ---
-const playBtn = document.getElementById('master-play-btn');
-if (playBtn) {
-    playBtn.addEventListener('click', () => {
-        alert("Prabhu ki kripa se, Divine Music jald hi prakat hoga! Stay tuned. 🔱🚩");
-        playBtn.style.transform = "translateX(5px)";
-        setTimeout(() => playBtn.style.transform = "translateX(0)", 100);
-    });
-}
-
-// --- 5. STARTUP ---
+// --- 4. STARTUP ---
 document.addEventListener('DOMContentLoaded', () => {
     loadLayout();
-    document.getElementById('consultation-form')?.addEventListener('submit', window.handleDivineSubmit);
-    // Initialize form once
-    applyFormLogic();
+    window.updateUI(); // Immediate call for local content
+    document.getElementById('consultation-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert("🔱 Pranaam! Mahadev Astrologer MA will contact you soon.");
+    });
 });
