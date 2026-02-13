@@ -36,55 +36,77 @@ svc_num_desc: "वाइब्रेशन विश्लेषण के म�
 ins_panchang_desc: "सटीक तिथि, नक्षत्र और शुभ मुहूर्त के साथ अपने दिन की योजना बनाएं। सफल दैनिक कार्यों के लिए राहु काल और चौघड़िया की जांच करें।",
 ins_horo_desc: "जानें कि आज सितारे आपके लिए क्या लेकर आए हैं। करियर, प्रेम, स्वास्थ्य और आर्थिक विकास के लिए सटीक राशिफल भविष्यवाणियां प्राप्त करें।",
     
-    terms_h1: "1. Use of Services",
-    terms_p1_1: "The birth details (Name, DOB, Time, Place) provided by you must be accurate for precise astrological calculations.",
-    terms_p1_2: "Our consultations and predictions are for guidance purposes only. They should not be treated as legal, medical, or financial advice.",
-    
-    terms_h2: "2. Payment & Refund Policy",
-    terms_p2_1: "Consultation fees must be paid in advance. Once the service/consultation is delivered, the fees are non-refundable.",
-    
-    terms_h3: "3. Conduct & Ethics",
-    terms_p3_1: "We expect respectful and ethical communication. Any form of misconduct may lead to immediate termination of services without a refund.",
-    
-    terms_h4: "4. Privacy & Consent",
-    terms_p4_1: "By using this website, you provide your consent to our Privacy Policy and Disclaimer.",
-    back_home: "← Back to Home",
 
-// --- Index / Common ---
-        site_title: "Mahadev Astrologer MA | Divine Vedic Wisdom",
-        btn_install: "INSTALL MAHADEV APP",
-        hero_sub: "ESTABLISHED VEDIC LINEAGE",
-        hero_title: "Know the Truth of Your Destiny",
-        hero_desc: "Vedic Astrology and Right Remedies, straight from Mahadev's blessings.",
-        
-        // --- Services Section ---
-        svc_kundli_title: "Kundali Making",
-        svc_kundli_desc: "Detailed birth chart analysis and planetary insights.",
-        svc_matching_title: "Kundali Matching",
-        svc_matching_desc: "Guna Milan & compatibility for a blessed marriage.",
-        svc_combo_title: "Combo Analysis",
-        svc_combo_desc: "Full Kundali + Palmistry + Personalized PDF Report.",
-        badge_best: "BEST VALUE",
+// --- Index / Common (Unique Identity: Mahadev Astrologer MA) ---
+site_title: "Mahadev Astrologer MA | Divine Vedic Wisdom",
+btn_install: "INSTALL MAHADEV ASTROLOGER MA APP",
+hero_sub: "ESTABLISHED VEDIC LINEAGE",
+hero_title: "Discover the Truth of Your Destiny",
+hero_desc: "Authentic Vedic Astrology and precise remedial solutions, exclusively through Mahadev Astrologer MA.",
 
-svc_palm_title: "Palmistry",
-svc_palm_desc: "Deep reading of lines and mounts for future guidance.",
+// --- Sticker ---
+sticker_tag: "MAHASHIVRATRI 2026",
+sticker_text: "🔱 Significance, Rituals & Auspicious Timings — Click Here to Read",
+
+// --- Services Section ---
+svc_kundli_title: "Kundali Making",
+svc_kundli_desc: "Detailed birth chart analysis and comprehensive planetary insights.",
+svc_matching_title: "Kundali Matching",
+svc_matching_desc: "Guna Milan and compatibility analysis for a blessed marital life.",
+svc_combo_title: "Combo Analysis",
+svc_combo_desc: "Complete Kundali + Palmistry + Numerology report delivered on WhatsApp.",
+badge_best: "BEST VALUE",
+
+svc_palm_title: "Palmistry Analysis",
+svc_palm_desc: "In-depth study of palm lines for accurate future guidance.",
 svc_num_title: "Numerology",
-svc_num_desc: "Success through numbers and vibration analysis.",
-ins_panchang_title: "Aaj Ka Panchang",
-ins_panchang_desc: "Check Shubh Muhurat, Tithi and Choghadiya.",
+svc_num_desc: "Path to success through numbers and vibrational energy analysis.",
+
+// --- Insights & Daily Section ---
+ins_panchang_title: "Today's Panchang",
+ins_panchang_desc: "Check auspicious timings (Muhurat), Tithi, and Choghadiya.",
 ins_horo_title: "Daily Horoscope",
-ins_horo_desc: "How will your day be according to your zodiac?",
+ins_horo_desc: "Discover what the stars have in store for you today.",
+nav_articles: "Divine Articles",
+articles_desc: "A collection of Vedic stories, Vrat rituals, and spiritual wisdom.",
+
+// --- Buttons & Labels ---
 btn_view: "VIEW DETAILS →",
 btn_read: "READ NOW →",
-report_badge: "Free PDF Report Included (HI/EN/Hinglish)",
-nav_articles: "Divine Articles",
-articles_desc: "A collection of Vedic stories, Vrat rituals, and spiritual knowledge.",
-btn_explore: "Explore Now",
+btn_explore: "EXPLORE",
+btn_invoke: "Start Consultation",
+report_badge: "Free PDF Report Included (Hindi & English)",
+
+// --- Form Section (As per new data-keys) ---
+form_title: "Consult with Mahadev Astrologer MA",
+lbl_select_service: "SELECT YOUR SERVICE",
+opt_kundli: "Kundali Making (₹501)",
+opt_match: "Kundali Matching (₹601)",
+opt_palm: "Palmistry Analysis (₹501)",
+opt_num: "Numerology Report (₹251)",
+opt_combo: "♻️ Combo: Kundali + Palm (₹701)",
+
+lbl_privacy: "PRIVACY & CONTACT PREFERENCE:",
+lbl_uid: "Client UID (To keep your details secure)",
+lbl_male_details: "👦 Male Details",
+lbl_female_details: "👧 Female Details",
+
+// --- Placeholders (Matching data-placeholder-key) ---
+ph_name: "Enter Your Full Name",
+ph_contact: "WhatsApp Number",
+ph_city: "Birth City/Place",
+ph_feedback: "Share your experience here...",
+
+// --- Trust/Feedback ---
+testi_title: "🔱 Client Testimonials",
+feedback_heading: "Your Feedback is Valuable",
+btn_send: "Submit",
+
+// --- Guide Section ---
 guide_title: "Latest Divine Guide",
-guide_subtitle: "Ancient Wisdom for Modern Life",
+guide_subtitle: "Ancient Vedic Solutions for Modern Living",
 btn_read_more: "READ ARTICLE",
 btn_view_more: "VIEW MORE GUIDES 🔱",
-
         // ===== PLANETS =====
         planet_sun: "Sun (Surya)",
         planet_moon: "Moon (Chandra)",
@@ -271,67 +293,6 @@ nakshatra_purva_phalguni: "Purva Phalguni", nakshatra_uttara_phalguni: "Uttara P
       
     // Shared Layout
     back_home: "← Back to Home",
-
-    // CONTACT US PAGE
-    title_contact: "Contact Us | Mahadev Astrologer MA",
-    contact_title: "Contact Us",
-    contact_intro: "We would love to hear from you. You can reach out to us through the following channels.",
-    contact_note: "Note: We try to respond within 24-48 hours.",
-
-    // ABOUT US PAGE
-    title_about: "About Us | Mahadev Astrologer MA",
-    about_title: "Our Divine Journey",
-    about_welcome: "Welcome to <strong>Mahadev Astrologer MA</strong>. Our purpose is to build a bridge between ancient Vedic wisdom and modern lifestyle. We believe that every individual's destiny is influenced by planetary movements.",
-    about_philosophy: "Astrology is the art of making the right decisions at the right time. By the grace of Mahadev, we guide people through Kundli, Numerology, and Palmistry.",
-    about_why_us: "Why Choose Us?",
-    about_feat1_title: "Authentic Vedic Logic:",
-    about_feat1_desc: "We believe in planetary calculations and the Shastras, not superstition.",
-    about_feat2_title: "Privacy Guaranteed:",
-    about_feat2_desc: "Your data and consultations remain strictly confidential and secure with us.",
-    about_feat3_title: "Simple Remedies:",
-    about_feat3_desc: "We suggest 'Satvik' remedies that can be easily incorporated into your busy life.",
-    about_mission: "<strong>Our Mission:</strong> Guided 10,000+ souls. We strive to solve every problem using Vedic principles.",
-    about_quote: "'Karma is Worship, and Astrology is our Guide.'",
-
-    // TERMS & CONDITIONS PAGE
-    title_terms: "Terms and Conditions | Mahadev Astrologer MA",
-    terms_title: "Terms & Conditions",
-    terms_intro: "By using our services, you agree to the following professional terms. These ensure a secure and respectful experience for all.",
-    terms_h1: "1. Eligibility & Data Accuracy",
-    terms_p1_1: "You must be 18+ to use our services. Accurate birth details (Name, DOB, Time) are mandatory for precise calculations.",
-    terms_p1_2: "Our predictions are for spiritual guidance only. They are not a substitute for legal, medical, or financial professional advice.",
-    terms_h2: "2. Payment & Refunds",
-    terms_p2_1: "Fees are non-refundable once the service has been delivered due to the personalized nature of our insights.",
-    terms_h3: "3. Intellectual Property",
-    terms_p3_1: "All content, logos, and horoscopes on this site are the property of Mahadev Astrologer MA. Reproduction is prohibited.",
-    terms_h4: "4. Code of Conduct",
-    terms_p4_1: "We expect respectful communication. Misconduct will result in immediate termination of services without a refund.",
-    terms_h5: "5. Privacy & Consent",
-    terms_p5_1: "By using this website, you consent to our Privacy Policy. All disputes are subject to local jurisdiction only.",
-
-    // PRIVACY POLICY PAGE
-    title_privacy: "Privacy Policy | Mahadev Astrologer MA",
-    privacy_title: "Privacy Policy",
-    priv_intro: "At Mahadev Astrologer MA, we prioritize your privacy. Our system is designed with data security as a core principle.",
-    priv_h1: "1. No Data Storage",
-    priv_p1: "We do not store sensitive birth data on permanent servers. Your details reach our experts via secure encrypted channels.",
-    priv_h2: "2. Cookies & Ads",
-    priv_p2: "We use Google AdSense cookies to serve relevant ads. You can choose to disable cookies through your browser settings.",
-    priv_h3: "3. Data Security",
-    priv_p3: "All communications are end-to-end encrypted. We never share your contact details with third-party agencies.",
-    priv_consent: "<strong>Consent:</strong> By using our website, you hereby consent to our Privacy Policy.",
-
-    // DISCLAIMER PAGE
-    title_disclaimer: "Disclaimer | Mahadev Astrologer MA",
-    disclaimer_title: "Disclaimer",
-    disc_intro: "The information provided is for general informational and spiritual purposes only.",
-    disc_h1: "Professional Guidance:",
-    disc_p1: "Astrology is an interpretive science; results may vary. We do not claim 100% certainty or accuracy.",
-    disc_h2: "Personal Responsibility:",
-    disc_p2: "Users are advised to use their own discretion. Any action you take is strictly at your own risk.",
-    disc_h3: "Health, Legal & Finance:",
-    disc_p3: "Our services are NOT a substitute for professional medical, legal, or financial advice.",
-    disc_consent: "By using this website, you hereby consent to our Disclaimer."
     },
 
     hi: {
@@ -354,68 +315,78 @@ ph_wa_input: "व्हाट्सएप नंबर",
 ph_city_input: "जन्म स्थान / शहर",
 ph_m_name_input: "पुरुष का नाम",
 ph_f_name_input: "महिला का नाम",
-btn_submit: "दैवीय मार्गदर्शन प्राप्त करें",
+btn_submit: "दैवीय मार्गदर्शन प्राप्त करें",        
 
+// --- Index / Common (Unique Identity: Mahadev Astrologer MA) ---
+site_title: "Mahadev Astrologer MA | दिव्य वैदिक ज्ञान",
+btn_install: "Mahadev Astrologer MA ऐप इंस्टॉल करें",
+hero_sub: "प्राचीन वैदिक परंपरा",
+hero_title: "अपने भाग्य का दिव्य सत्य जानें",
+hero_desc: "वैदिक ज्योतिष एवं शास्त्रोक्त सटीक उपाय, सीधे Mahadev Astrologer MA के माध्यम से।",
 
-    title_terms: "नियम और शर्तें | Mahadev Astrologer MA",
-    terms_title: "नियम और शर्तें",
-    terms_intro: "Mahadev Astrologer MA की सेवाओं का उपयोग करने के लिए नीचे दिए गए नियमों का पालन करना अनिवार्य है:",
-    
-    terms_h1: "1. सेवाओं का उपयोग",
-    terms_p1_1: "सटीक ज्योतिषीय गणना के लिए आपके द्वारा प्रदान किया गया विवरण (नाम, जन्म तिथि, समय, स्थान) सही होना चाहिए।",
-    terms_p1_2: "हमारा परामर्श और भविष्यवाणियां केवल मार्गदर्शन के उद्देश्य से हैं। इन्हें कानूनी, चिकित्सा या वित्तीय सलाह के रूप में नहीं लिया जाना चाहिए।",
-    
-    terms_h2: "2. भुगतान और रिफंड नीति",
-    terms_p2_1: "परामर्श शुल्क का भुगतान अग्रिम रूप से किया जाना चाहिए। सेवा प्रदान किए जाने के बाद, शुल्क वापस नहीं किया जाएगा।",
-    
-    terms_h3: "3. आचरण और नैतिकता",
-    terms_p3_1: "हम सम्मानजनक और नैतिक बातचीत की अपेक्षा करते हैं। किसी भी प्रकार के दुर्व्यवहार के कारण बिना रिफंड के सेवाएं तुरंत समाप्त की जा सकती हैं।",
-    
-    terms_h4: "4. गोपनीयता और सहमति",
-    terms_p4_1: "इस वेबसाइट का उपयोग करके, आप हमारी गोपनीयता नीति और डिस्क्लेमर के प्रति अपनी सहमति प्रदान करते हैं।",
-    back_home: "← मुख्य पृष्ठ पर वापस जाएं", 
+// --- Sticker ---
+sticker_tag: "महाशिवरात्रि २०२६",
+sticker_text: "🔱 महात्म्य, पूजन विधि एवं शुभ मुहूर्त — यहाँ क्लिक करके पढ़ें",
 
-
-// --- Index / Common ---
-        site_title: "महादेव ज्योतिषी MA | दिव्य वैदिक ज्ञान",
-        btn_install: "महादेव ऐप इंस्टॉल करें",
-        hero_sub: "प्राचीन वैदिक परंपरा",
-        hero_title: "अपनी किस्मत का सच जानें",
-        hero_desc: "वैदिक ज्योतिष और सही उपाय, सीधे महादेव के आशीर्वाद से।",
-
-        // --- Services Section ---
-        svc_kundli_title: "कुण्डली निर्माण",
-        svc_kundli_desc: "विस्तृत जन्म कुंडली विश्लेषण और ग्रहों की जानकारी।",
-        svc_matching_title: "कुण्डली मिलान",
-        svc_matching_desc: "गुण मिलान और सुखी विवाह के लिए अनुकूलता।",
-        svc_combo_title: "कॉम्बो विश्लेषण",
-        svc_combo_desc: "पूरी कुण्डली + हस्तरेखा + व्यक्तिगत PDF रिपोर्ट।",
-        badge_best: "सबसे अच्छा",
+// --- Services Section ---
+svc_kundli_title: "कुण्डली निर्माण",
+svc_kundli_desc: "विस्तृत जन्म कुण्डली विश्लेषण एवं ग्रहों की स्थिति का पूर्ण ज्ञान।",
+svc_matching_title: "कुण्डली मिलान",
+svc_matching_desc: "गुण मिलान एवं सुखी वैवाहिक जीवन के लिए सटीक अनुकूलता विश्लेषण।",
+svc_combo_title: "कॉम्बो विश्लेषण",
+svc_combo_desc: "सम्पूर्ण कुण्डली + हस्तरेखा + अंक ज्योतिष रिपोर्ट आपके व्हाट्सएप पर।",
+badge_best: "सर्वश्रेष्ठ",
 
 svc_palm_title: "हस्तरेखा विश्लेषण",
-svc_palm_desc: "भविष्य के मार्गदर्शन के लिए रेखाओं का गहरा अध्ययन।",
+svc_palm_desc: "भविष्य के सटीक मार्गदर्शन हेतु हाथ की रेखाओं का गहन अध्ययन।",
 svc_num_title: "अंक ज्योतिष",
-svc_num_desc: "संख्याओं और कंपन विश्लेषण के माध्यम से सफलता।",
+svc_num_desc: "अंकों एवं स्पंदन विश्लेषण के माध्यम से सफलता का मार्ग जानें।",
+
+// --- Insights & Daily Section ---
 ins_panchang_title: "आज का पंचांग",
-ins_panchang_desc: "शुभ मुहूर्त, तिथि और चौघड़िया चेक करें।",
+ins_panchang_desc: "शुभ मुहूर्त, सटीक तिथि एवं चौघड़िया की जानकारी प्राप्त करें।",
 ins_horo_title: "आज का राशिफल",
-ins_horo_desc: "आपकी राशि के अनुसार आज का दिन कैसा रहेगा?",
-btn_view: "पूरा देखें →",
-btn_read: "अभी पढ़ें →",
-nav_articles: "दिव्य लेख",
-articles_desc: "पौराणिक कथाएं, व्रत विधि और आध्यात्मिक ज्ञान का संग्रह।",
-btn_explore: "अभी जानें",
+ins_horo_desc: "अपनी राशि के अनुसार जानें कैसा रहेगा आपका आज का दिन।",
+nav_articles: "दिव्य लेख संग्रह",
+articles_desc: "पौराणिक कथाएं, व्रत-अनुष्ठान विधि एवं आध्यात्मिक ज्ञान का भंडार।",
+
+// --- Buttons & Labels ---
+btn_view: "विवरण देखें →",
+btn_read: "अभी पढ़ें →",
+btn_explore: "खोजें",
+btn_invoke: "परामर्श आरंभ करें",
+report_badge: "निःशुल्क PDF रिपोर्ट शामिल है (हिंदी एवं English)",
+
+// --- Form Section (As per new data-keys) ---
+form_title: "Mahadev Astrologer MA से परामर्श करें",
+lbl_select_service: "सेवा का चयन करें",
+opt_kundli: "कुंडली निर्माण (₹५०१)",
+opt_match: "कुंडली मिलान (₹६०१)",
+opt_palm: "हस्तरेखा विश्लेषण (₹५०१)",
+opt_num: "अंक ज्योतिष (₹२५१)",
+opt_combo: "♻️ कॉम्बो: कुंडली + हस्तरेखा (₹७०१)",
+
+lbl_privacy: "गोपनीयता एवं संपर्क प्राथमिकता:",
+lbl_uid: "क्लाइंट UID (विवरण सुरक्षित रखने के लिए)",
+lbl_male_details: "👦 पुरुष का विवरण",
+lbl_female_details: "👧 महिला का विवरण",
+
+// --- Placeholders (Matching data-placeholder-key) ---
+ph_name: "आपका पूर्ण नाम लिखें",
+ph_contact: "व्हाट्सएप नंबर",
+ph_city: "जन्म स्थान (शहर)",
+ph_feedback: "अपना अनुभव साझा करें...",
+
+// --- Trust/Feedback ---
+testi_title: "🔱 भक्त जनों के अनुभव",
+feedback_heading: "आपका फीडबैक हमारे लिए महत्वपूर्ण है",
+btn_send: "भेजें",
+
+// --- Guide Section ---
 guide_title: "नवीनतम दिव्य मार्गदर्शिका",
-guide_subtitle: "आधुनिक जीवन के लिए प्राचीन ज्ञान",
-btn_read_more: "पूरा लेख पढ़ें",
-btn_view_more: "और अधिक लेख देखें 🔱",
-
-// --- In 'hi' section of translations.js ---
-form_title: "महादेव से परामर्श करें",
-lbl_svc_select: "सेवा का चयन करें", 
-// ... बाकी keys
-report_badge: "फ्री PDF रिपोर्ट शामिल है (हिंदी/EN/हिंग्लिश)",
-
+guide_subtitle: "आधुनिक जीवन के लिए प्राचीन वैदिक समाधान",
+btn_read_more: "लेख पढ़ें",
+btn_view_more: "अधिक मार्गदर्शिका देखें 🔱",
   
       // ===== ग्रह =====
         planet_sun: "सूर्य देव", planet_moon: "चंद्र देव", planet_mars: "मंगल देव", planet_mercury: "बुध देव", planet_jupiter: "बृहस्पति (गुरु)", planet_venus: "शुक्र देव", planet_saturn: "शनि देव", planet_rahu: "राहु ग्रह", planet_ketu: "केतु ग्रह",
@@ -565,66 +536,4 @@ nakshatra_purva_phalguni: "पूर्वा फाल्गुनी", nakshat
         
     // Shared Layout
     back_home: "← मुख्य पृष्ठ पर वापस जाएं",
-
-    // CONTACT US PAGE
-    title_contact: "संपर्क करें | Mahadev Astrologer MA",
-    contact_title: "संपर्क करें",
-    contact_intro: "हमें आपकी मदद करके खुशी होगी। आप नीचे दिए गए माध्यमों से हमसे संपर्क कर सकते हैं।",
-    contact_note: "नोट: हम 24-48 घंटों के भीतर जवाब देने की कोशिश करते हैं।",
-
-    // ABOUT US PAGE
-    title_about: "हमारे बारे में | Mahadev Astrologer MA",
-    about_title: "हमारी दिव्य यात्रा",
-    about_welcome: "<strong>Mahadev Astrologer MA</strong> में आपका स्वागत है। हमारा मकसद प्राचीन वैदिक ज्ञान और आधुनिक जीवनशैली के बीच एक सेतु बनाना है।",
-    about_philosophy: "ज्योतिष सिर्फ भविष्यवाणी नहीं, बल्कि सही समय पर सही फैसला लेने की एक कला है। महादेव की कृपा से हम आपको सही मार्ग दिखाते हैं।",
-    about_why_us: "हमें क्यों चुनें?",
-    about_feat1_title: "सटीक वैदिक तर्क:",
-    about_feat1_desc: "हम अंधविश्वास नहीं, बल्कि ग्रहों की गणना और शास्त्रों पर विश्वास रखते हैं।",
-    about_feat2_title: "गोपनीयता की गारंटी:",
-    about_feat2_desc: "आपका डेटा और बातचीत हमारे पास हमेशा गुप्त और सुरक्षित रहती है।",
-    about_feat3_title: "सरल उपाय:",
-    about_feat3_desc: "हम ऐसे सात्विक उपाय बताते हैं जिन्हें आप अपनी व्यस्त जीवनशैली में अपना सकें।",
-    about_mission: "<strong>हमारा मिशन:</strong> हमने 10,000+ लोगों का मार्गदर्शन किया है। हम वैदिक सिद्धांतों से समस्या सुलझाने का प्रयास करते हैं।",
-    about_quote: "'कर्म ही पूजा है, और ज्योतिष हमारा मार्गदर्शक।'",
-
-    // TERMS & CONDITIONS PAGE
-    title_terms: "नियम और शर्तें | Mahadev Astrologer MA",
-    terms_title: "नियम और शर्तें",
-    terms_intro: "हमारी सेवाओं का उपयोग करने के लिए नीचे दिए गए नियमों का पालन करना अनिवार्य है।",
-    terms_h1: "1. पात्रता और विवरण की सटीकता",
-    terms_p1_1: "हमारी सेवाओं के लिए आपकी आयु 18+ होनी चाहिए। सटीक गणना के लिए सही जन्म विवरण देना अनिवार्य है।",
-    terms_p1_2: "हमारी भविष्यवाणियां केवल आध्यात्मिक मार्गदर्शन के लिए हैं। इन्हें कानूनी या चिकित्सा सलाह न लें।",
-    terms_h2: "2. भुगतान और रिफंड",
-    terms_p2_1: "सेवा प्रदान किए जाने के बाद शुल्क वापस (Refund) नहीं किया जाएगा क्योंकि यह एक व्यक्तिगत सेवा है।",
-    terms_h3: "3. बौद्धिक संपदा",
-    terms_p3_1: "इस वेबसाइट की सभी सामग्री Mahadev Astrologer MA की संपत्ति है। नकल करना वर्जित है।",
-    terms_h4: "4. आचरण और मर्यादा",
-    terms_p4_1: "हम सम्मानजनक बातचीत की अपेक्षा करते हैं। दुर्व्यवहार पर सेवाएं तुरंत समाप्त की जा सकती हैं।",
-    terms_h5: "5. सहमति और क्षेत्राधिकार",
-    terms_p5_1: "साइट का उपयोग करके आप हमारी गोपनीयता नीति से सहमत होते हैं। कानूनी विवाद स्थानीय कोर्ट के अधीन होंगे।",
-
-    // PRIVACY POLICY PAGE
-    title_privacy: "गोपनीयता नीति | Mahadev Astrologer MA",
-    privacy_title: "गोपनीयता नीति",
-    priv_intro: "Mahadev Astrologer MA में आपकी गोपनीयता हमारी प्राथमिकता है। हमारा सिस्टम डेटा सुरक्षा के लिए बना है।",
-    priv_h1: "1. डेटा संग्रहण नीति",
-    priv_p1: "हम जन्म विवरण को स्थायी सर्वर पर स्टोर नहीं करते। आपकी जानकारी सुरक्षित एन्क्रिप्टेड माध्यम से आती है।",
-    priv_h2: "2. विज्ञापन और कुकीज़",
-    priv_p2: "हम विज्ञापन दिखाने के लिए Google AdSense कुकीज़ का उपयोग करते हैं। आप इन्हें ब्राउज़र सेटिंग्स से बंद कर सकते हैं।",
-    priv_h3: "3. डेटा सुरक्षा",
-    priv_p3: "हमारी बातचीत एंड-टू-एंड एन्क्रिप्टेड है। हम आपका विवरण कभी किसी बाहरी एजेंसी को नहीं बेचते।",
-    priv_consent: "<strong>सहमति:</strong> हमारी वेबसाइट का उपयोग करके आप हमारी गोपनीयता नीति से सहमत होते हैं।",
-
-    // DISCLAIMER PAGE
-    title_disclaimer: "डिस्क्लेमर | Mahadev Astrologer MA",
-    disclaimer_title: "डिस्क्लेमर (अस्वीकरण)",
-    disc_intro: "प्रदान की गई जानकारी केवल सामान्य सूचनात्मक और आध्यात्मिक उद्देश्यों के लिए है।",
-    disc_h1: "पेशेवर मार्गदर्शन:",
-    disc_p1: "ज्योतिष एक व्याख्यात्मक विज्ञान है; परिणाम भिन्न हो सकते हैं। हम 100% सटीकता का दावा नहीं करते।",
-    disc_h2: "व्यक्तिगत जिम्मेदारी:",
-    disc_p2: "उपयोगकर्ताओं को अपने विवेक का उपयोग करने की सलाह दी जाती है। कोई भी निर्णय आपके अपने जोखिम पर होगा।",
-    disc_h3: "स्वास्थ्य और कानूनी:",
-    disc_p3: "हमारी सेवाएं चिकित्सा, कानूनी या वित्तीय सलाह का विकल्प नहीं हैं। हमेशा एक्सपर्ट से सलाह लें।",
-    disc_consent: "इस वेबसाइट का उपयोग करके आप हमारे डिस्क्लेमर के प्रति अपनी सहमति देते हैं।"
-    }
 };
