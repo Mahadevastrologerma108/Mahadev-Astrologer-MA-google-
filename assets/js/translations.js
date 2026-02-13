@@ -38,75 +38,62 @@ ins_horo_desc: "जानें कि आज सितारे आपके �
     
 
 // --- Index / Common (Unique Identity: Mahadev Astrologer MA) ---
-site_title: "Mahadev Astrologer MA | Divine Vedic Wisdom",
-btn_install: "INSTALL MAHADEV ASTROLOGER MA APP",
-hero_sub: "ESTABLISHED VEDIC LINEAGE",
-hero_title: "Discover the Truth of Your Destiny",
-hero_desc: "Authentic Vedic Astrology and precise remedial solutions, exclusively through Mahadev Astrologer MA.",
+    site_title: "Mahadev Astrologer MA | Divine Vedic Wisdom",
+    btn_install: "INSTALL MAHADEV ASTROLOGER MA APP",
+    hero_sub: "ESTABLISHED VEDIC LINEAGE",
+    hero_title: "Discover the Truth of Your Destiny",
+    hero_desc: "Authentic Vedic Astrology and precise remedial solutions by Mahadev Astrologer MA.",
 
-// --- Sticker ---
-sticker_tag: "MAHASHIVRATRI 2026",
-sticker_text: "🔱 Significance, Rituals & Auspicious Timings — Click Here to Read",
+    sticker_tag: "MAHASHIVRATRI 2026",
+    sticker_text: "🔱 Significance, Rituals & Auspicious Timings — Click Here",
 
-// --- Services Section ---
-svc_kundli_title: "Kundali Making",
-svc_kundli_desc: "Detailed birth chart analysis and comprehensive planetary insights.",
-svc_matching_title: "Kundali Matching",
-svc_matching_desc: "Guna Milan and compatibility analysis for a blessed marital life.",
-svc_combo_title: "Combo Analysis",
-svc_combo_desc: "Complete Kundali + Palmistry + Numerology report delivered on WhatsApp.",
-badge_best: "BEST VALUE",
+    svc_kundli_title: "Kundali Making",
+    svc_kundli_desc: "Detailed birth chart analysis and planetary insights.",
+    svc_matching_title: "Kundali Matching",
+    svc_matching_desc: "Guna Milan and compatibility for a blessed marriage.",
+    svc_combo_title: "Combo Analysis",
+    svc_combo_desc: "Complete Kundali + Palmistry report on your WhatsApp.",
+    badge_best: "BEST VALUE",
+    svc_palm_title: "Palmistry Analysis",
+    svc_palm_desc: "In-depth study of palm lines for future guidance.",
+    svc_num_title: "Numerology",
+    svc_num_desc: "Success through numbers and vibrational analysis.",
 
-svc_palm_title: "Palmistry Analysis",
-svc_palm_desc: "In-depth study of palm lines for accurate future guidance.",
-svc_num_title: "Numerology",
-svc_num_desc: "Path to success through numbers and vibrational energy analysis.",
+    ins_panchang_title: "Today's Panchang",
+    ins_panchang_desc: "Check Shubh Muhurat, Tithi and Choghadiya.",
+    ins_horo_title: "Daily Horoscope",
+    ins_horo_desc: "Discover what the stars have in store for you today.",
+    nav_articles: "Divine Articles",
+    articles_desc: "A collection of Vedic stories and spiritual wisdom.",
 
-// --- Insights & Daily Section ---
-ins_panchang_title: "Today's Panchang",
-ins_panchang_desc: "Check auspicious timings (Muhurat), Tithi, and Choghadiya.",
-ins_horo_title: "Daily Horoscope",
-ins_horo_desc: "Discover what the stars have in store for you today.",
-nav_articles: "Divine Articles",
-articles_desc: "A collection of Vedic stories, Vrat rituals, and spiritual wisdom.",
+    btn_view: "VIEW DETAILS →",
+    btn_read: "READ NOW →",
+    btn_explore: "EXPLORE",
+    btn_invoke: "Start Consultation",
+    btn_send: "Submit",
 
-// --- Buttons & Labels ---
-btn_view: "VIEW DETAILS →",
-btn_read: "READ NOW →",
-btn_explore: "EXPLORE",
-btn_invoke: "Start Consultation",
-report_badge: "Free PDF Report Included (Hindi & English)",
+    form_title: "Consult with Mahadev Astrologer MA",
+    lbl_select_service: "SELECT YOUR SERVICE",
+    opt_kundli: "Kundali Making (₹501)",
+    opt_match: "Kundali Matching (₹601)",
+    opt_palm: "Palmistry Analysis (₹501)",
+    opt_num: "Numerology Report (₹251)",
+    opt_combo: "♻️ Combo: Kundali + Palm (₹701)",
 
-// --- Form Section (As per new data-keys) ---
-form_title: "Consult with Mahadev Astrologer MA",
-lbl_select_service: "SELECT YOUR SERVICE",
-opt_kundli: "Kundali Making (₹501)",
-opt_match: "Kundali Matching (₹601)",
-opt_palm: "Palmistry Analysis (₹501)",
-opt_num: "Numerology Report (₹251)",
-opt_combo: "♻️ Combo: Kundali + Palm (₹701)",
+    lbl_privacy: "PRIVACY & CONTACT PREFERENCE:",
+    lbl_uid: "Client UID (To keep your details secure)",
+    lbl_male_details: "👦 Male Details",
+    lbl_female_details: "👧 Female Details",
+    palm_note: "✋ Note: Keep clear photos of both sides of your palms ready.",
+    email_note: "⚠️ Note: Email response might be slower.",
 
-lbl_privacy: "PRIVACY & CONTACT PREFERENCE:",
-lbl_uid: "Client UID (To keep your details secure)",
-lbl_male_details: "👦 Male Details",
-lbl_female_details: "👧 Female Details",
+    ph_name: "Enter Your Full Name",
+    ph_contact: "WhatsApp / Telegram Number",
+    ph_city: "Birth City/Place",
+    ph_feedback: "Share your experience here...",
 
-// --- Placeholders (Matching data-placeholder-key) ---
-ph_name: "Enter Your Full Name",
-ph_contact: "WhatsApp Number",
-ph_city: "Birth City/Place",
-ph_feedback: "Share your experience here...",
-
-// --- Trust/Feedback ---
-testi_title: "🔱 Client Testimonials",
-feedback_heading: "Your Feedback is Valuable",
-btn_send: "Submit",
-
-// --- Guide Section ---
-guide_title: "Latest Divine Guide",
-guide_subtitle: "Ancient Vedic Solutions for Modern Living",
-btn_read_more: "READ ARTICLE",
-btn_view_more: "VIEW MORE GUIDES 🔱",
+    testi_title: "🔱 Client Testimonials",
+    feedback_heading: "Your Feedback is Valuable",
         // ===== PLANETS =====
         planet_sun: "Sun (Surya)",
         planet_moon: "Moon (Chandra)",
@@ -317,76 +304,69 @@ ph_m_name_input: "पुरुष का नाम",
 ph_f_name_input: "महिला का नाम",
 btn_submit: "दैवीय मार्गदर्शन प्राप्त करें",        
 
-// --- Index / Common (Unique Identity: Mahadev Astrologer MA) ---
-site_title: "Mahadev Astrologer MA | दिव्य वैदिक ज्ञान",
-btn_install: "Mahadev Astrologer MA ऐप इंस्टॉल करें",
-hero_sub: "प्राचीन वैदिक परंपरा",
-hero_title: "अपने भाग्य का दिव्य सत्य जानें",
-hero_desc: "वैदिक ज्योतिष एवं शास्त्रोक्त सटीक उपाय, सीधे Mahadev Astrologer MA के माध्यम से।",
+    site_title: "Mahadev Astrologer MA | दिव्य वैदिक ज्ञान",
+    btn_install: "Mahadev Astrologer MA ऐप इंस्टॉल करें",
+    hero_sub: "प्राचीन वैदिक परंपरा",
+    hero_title: "अपने भाग्य का दिव्य सत्य जानें",
+    hero_desc: "वैदिक ज्योतिष एवं शास्त्रोक्त सटीक उपाय, सीधे Mahadev Astrologer MA के माध्यम से।",
 
-// --- Sticker ---
-sticker_tag: "महाशिवरात्रि २०२६",
-sticker_text: "🔱 महात्म्य, पूजन विधि एवं शुभ मुहूर्त — यहाँ क्लिक करके पढ़ें",
+    // Sticker
+    sticker_tag: "महाशिवरात्रि २०२६",
+    sticker_text: "🔱 महात्म्य, पूजन विधि एवं शुभ मुहूर्त — यहाँ क्लिक करके पढ़ें",
 
-// --- Services Section ---
-svc_kundli_title: "कुण्डली निर्माण",
-svc_kundli_desc: "विस्तृत जन्म कुण्डली विश्लेषण एवं ग्रहों की स्थिति का पूर्ण ज्ञान।",
-svc_matching_title: "कुण्डली मिलान",
-svc_matching_desc: "गुण मिलान एवं सुखी वैवाहिक जीवन के लिए सटीक अनुकूलता विश्लेषण।",
-svc_combo_title: "कॉम्बो विश्लेषण",
-svc_combo_desc: "सम्पूर्ण कुण्डली + हस्तरेखा + अंक ज्योतिष रिपोर्ट आपके व्हाट्सएप पर।",
-badge_best: "सर्वश्रेष्ठ",
+    // Services
+    svc_kundli_title: "कुण्डली निर्माण",
+    svc_kundli_desc: "विस्तृत जन्म कुण्डली विश्लेषण एवं ग्रहों की स्थिति का पूर्ण ज्ञान।",
+    svc_matching_title: "कुण्डली मिलान",
+    svc_matching_desc: "गुण मिलान एवं सुखी वैवाहिक जीवन के लिए सटीक अनुकूलता विश्लेषण।",
+    svc_combo_title: "कॉम्बो विश्लेषण",
+    svc_combo_desc: "सम्पूर्ण कुण्डली + हस्तरेखा + अंक ज्योतिष रिपोर्ट आपके व्हाट्सएप पर।",
+    badge_best: "सर्वश्रेष्ठ",
+    svc_palm_title: "हस्तरेखा विश्लेषण",
+    svc_palm_desc: "भविष्य के सटीक मार्गदर्शन हेतु हाथ की रेखाओं का गहन अध्ययन।",
+    svc_num_title: "अंक ज्योतिष",
+    svc_num_desc: "अंकों एवं स्पंदन विश्लेषण के माध्यम से सफलता का मार्ग जानें।",
 
-svc_palm_title: "हस्तरेखा विश्लेषण",
-svc_palm_desc: "भविष्य के सटीक मार्गदर्शन हेतु हाथ की रेखाओं का गहन अध्ययन।",
-svc_num_title: "अंक ज्योतिष",
-svc_num_desc: "अंकों एवं स्पंदन विश्लेषण के माध्यम से सफलता का मार्ग जानें।",
+    // Insights
+    ins_panchang_title: "आज का पंचांग",
+    ins_panchang_desc: "शुभ मुहूर्त, सटीक तिथि एवं चौघड़िया की जानकारी प्राप्त करें।",
+    ins_horo_title: "आज का राशिफल",
+    ins_horo_desc: "अपनी राशि के अनुसार जानें कैसा रहेगा आपका आज का दिन।",
+    nav_articles: "दिव्य लेख संग्रह",
+    articles_desc: "पौराणिक कथाएं, व्रत-अनुष्ठान विधि एवं आध्यात्मिक ज्ञान का भंडार।",
 
-// --- Insights & Daily Section ---
-ins_panchang_title: "आज का पंचांग",
-ins_panchang_desc: "शुभ मुहूर्त, सटीक तिथि एवं चौघड़िया की जानकारी प्राप्त करें।",
-ins_horo_title: "आज का राशिफल",
-ins_horo_desc: "अपनी राशि के अनुसार जानें कैसा रहेगा आपका आज का दिन।",
-nav_articles: "दिव्य लेख संग्रह",
-articles_desc: "पौराणिक कथाएं, व्रत-अनुष्ठान विधि एवं आध्यात्मिक ज्ञान का भंडार।",
+    // Buttons
+    btn_view: "विवरण देखें →",
+    btn_read: "अभी पढ़ें →",
+    btn_explore: "खोजें",
+    btn_invoke: "परामर्श आरंभ करें",
+    btn_send: "भेजें",
 
-// --- Buttons & Labels ---
-btn_view: "विवरण देखें →",
-btn_read: "अभी पढ़ें →",
-btn_explore: "खोजें",
-btn_invoke: "परामर्श आरंभ करें",
-report_badge: "निःशुल्क PDF रिपोर्ट शामिल है (हिंदी एवं English)",
+    // Form Details
+    form_title: "Mahadev Astrologer MA से परामर्श करें",
+    lbl_select_service: "सेवा का चयन करें",
+    opt_kundli: "कुंडली निर्माण (₹५०१)",
+    opt_match: "कुंडली मिलान (₹६०१)",
+    opt_palm: "हस्तरेखा विश्लेषण (₹५०१)",
+    opt_num: "अंक ज्योतिष (₹२५१)",
+    opt_combo: "♻️ कॉम्बो: कुंडली + हस्तरेखा (₹७०१)",
+    
+    lbl_privacy: "गोपनीयता एवं संपर्क प्राथमिकता:",
+    lbl_uid: "क्लाइंट UID (विवरण सुरक्षित रखने के लिए)",
+    lbl_male_details: "👦 पुरुष का विवरण",
+    lbl_female_details: "👧 महिला का विवरण",
+    palm_note: "✋ ध्यान दें: हाथ के दोनों तरफ के स्पष्ट चित्र तैयार रखें।",
+    email_note: "⚠️ उत्तर देने में समय लग सकता है। व्हाट्सएप का उपयोग करें।",
 
-// --- Form Section (As per new data-keys) ---
-form_title: "Mahadev Astrologer MA से परामर्श करें",
-lbl_select_service: "सेवा का चयन करें",
-opt_kundli: "कुंडली निर्माण (₹५०१)",
-opt_match: "कुंडली मिलान (₹६०१)",
-opt_palm: "हस्तरेखा विश्लेषण (₹५०१)",
-opt_num: "अंक ज्योतिष (₹२५१)",
-opt_combo: "♻️ कॉम्बो: कुंडली + हस्तरेखा (₹७०१)",
+    // Placeholders
+    ph_name: "आपका पूर्ण नाम लिखें",
+    ph_contact: "व्हाट्सएप / टेलीग्राम नंबर",
+    ph_city: "जन्म स्थान (शहर)",
+    ph_feedback: "अपना अनुभव साझा करें...",
 
-lbl_privacy: "गोपनीयता एवं संपर्क प्राथमिकता:",
-lbl_uid: "क्लाइंट UID (विवरण सुरक्षित रखने के लिए)",
-lbl_male_details: "👦 पुरुष का विवरण",
-lbl_female_details: "👧 महिला का विवरण",
-
-// --- Placeholders (Matching data-placeholder-key) ---
-ph_name: "आपका पूर्ण नाम लिखें",
-ph_contact: "व्हाट्सएप नंबर",
-ph_city: "जन्म स्थान (शहर)",
-ph_feedback: "अपना अनुभव साझा करें...",
-
-// --- Trust/Feedback ---
-testi_title: "🔱 भक्त जनों के अनुभव",
-feedback_heading: "आपका फीडबैक हमारे लिए महत्वपूर्ण है",
-btn_send: "भेजें",
-
-// --- Guide Section ---
-guide_title: "नवीनतम दिव्य मार्गदर्शिका",
-guide_subtitle: "आधुनिक जीवन के लिए प्राचीन वैदिक समाधान",
-btn_read_more: "लेख पढ़ें",
-btn_view_more: "अधिक मार्गदर्शिका देखें 🔱",
+    // Trust
+    testi_title: "🔱 भक्त जनों के अनुभव",
+    feedback_heading: "आपका फीडback हमारे लिए महत्वपूर्ण है",
   
       // ===== ग्रह =====
         planet_sun: "सूर्य देव", planet_moon: "चंद्र देव", planet_mars: "मंगल देव", planet_mercury: "बुध देव", planet_jupiter: "बृहस्पति (गुरु)", planet_venus: "शुक्र देव", planet_saturn: "शनि देव", planet_rahu: "राहु ग्रह", planet_ketu: "केतु ग्रह",
