@@ -205,26 +205,38 @@ const dailyHoroscope = {
     "luckyTime": "01:45 PM"
   }
 };
-// 🔱 Master Function to Load Data
 function loadHoroscope(rashiKey) {
-    const lang = localStorage.getItem('preferredLang') || 'hi';
+    // 1. Language Check (Aapke context ke hisaab se 'preferredLang' ya 'lang')
+    const lang = localStorage.getItem('lang') || 'hi'; 
     const data = dailyHoroscope[rashiKey];
 
     if (data) {
-        // Date Setup
+        // --- Pehle Headings & UI Buttons Translate karo ---
+        if (window.translations && window.translations[lang]) {
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (window.translations[lang][key]) {
+                    el.innerText = window.translations[lang][key];
+                }
+            });
+        }
+
+        // --- Date Setup ---
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const today = new Date().toLocaleDateString(lang === 'hi' ? 'hi-IN' : 'en-US', options);
         
-        // Display Text
+        // --- Display Horoscope Data ---
         document.getElementById('todayDate').innerText = (lang === 'hi' ? "आज का राशिफल: " : "Daily Horoscope: ") + today;
         document.getElementById('h-career').innerText = data.career[lang];
         document.getElementById('h-love').innerText = data.love[lang];
         document.getElementById('h-health').innerText = data.health[lang];
+        
+        // Lucky Bar (Values usually stay as they are, but labels are already translated by data-key)
         document.getElementById('h-color').innerText = data.luckyColor;
         document.getElementById('h-number').innerText = data.luckyNumber;
         document.getElementById('h-time').innerText = data.luckyTime;
 
-        // Dynamic Title & Heading for Multilingual
+        // --- Title & Rashi Names Setup ---
         const rashiNames = {
             "aries": { hi: "मेष", en: "Aries" },
             "taurus": { hi: "वृषभ", en: "Taurus" },
