@@ -1,10 +1,10 @@
-import { db } from './firebase-config.js';
-import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+// 🔱 Step 1: Dono DB import karein
+import { db, dbStudio } from './firebase-config.js';
+import { collection, addDoc, serverTimestamp, query, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // ==========================================
 // 🔱 TELEGRAM CONFIGURATION
 // ==========================================
-// Bhai yahan apna Token aur Chat ID daal dena
 const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
 const CHAT_ID = '2032242977'; 
 
@@ -44,7 +44,7 @@ async function notifyTelegram(data) {
 }
 
 // ==========================================
-// 🔱 LOGIC 1: APPOINTMENT FORM (Smart & Integrated)
+// 🔱 LOGIC 1: APPOINTMENT FORM (Normal Project - db)
 // ==========================================
 const appointmentForm = document.getElementById('consultation-form');
 
@@ -90,20 +90,17 @@ if (appointmentForm) {
         }
 
         try {
-            // 1. Firebase mein save
+            // ✅ Normal Project (db) mein save ho raha hai
             await addDoc(collection(db, "appointments"), submissionData);
-            
-            // 2. Telegram par notify (Naya Logic 🔥)
             await notifyTelegram(submissionData);
             
-            alert("🔱 Pranaam! Aapka sandesh Mahadev tak pahunch gaya hai. Hum jald hi sampark karenge.");
+            alert("🔱 Pranaam! Aapka sandesh Mahadev tak pahunch gaya hai.");
             e.target.reset();
-            
             if(window.applyFormLogic) window.applyFormLogic();
 
         } catch (error) {
             console.error("Firebase Error: ", error);
-            alert("Kshama karein, data save nahi ho paya. Humai direct WhatsApp karein.");
+            alert("Kshama karein, data save nahi ho paya.");
         } finally {
             btn.innerText = originalText;
             btn.disabled = false;
@@ -112,13 +109,13 @@ if (appointmentForm) {
 }
 
 // ==========================================
-// 🔱 LOGIC 2: HEALING MUSIC (New Logic)
+// 🔱 LOGIC 2: HEALING MUSIC (Studio Project - dbStudio)
 // ==========================================
-// 1. Music List Fetch karne ka function
 export async function fetchHealingMusic() {
     try {
-        const musicCol = collection(db, 'healing_music');
-        const q = query(musicCol, orderBy('order', 'asc')); // Order ke hisab se setup
+        // ✅ Studio Project (dbStudio) se data la raha hai
+        const musicCol = collection(dbStudio, 'healing_music');
+        const q = query(musicCol, orderBy('order', 'asc'));
         const snapshot = await getDocs(q);
         
         return snapshot.docs.map(doc => ({
@@ -131,7 +128,6 @@ export async function fetchHealingMusic() {
     }
 }
 
-// 2. Lyrics Sync karne ka logic
 export function getCurrentLyric(currentTime, lyricsArray) {
     if (!lyricsArray || !Array.isArray(lyricsArray)) return "";
     const current = lyricsArray.find(l => currentTime >= l.start && currentTime <= l.end);
