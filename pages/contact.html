@@ -8,25 +8,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         .contact-card {
-            background: rgba(10, 10, 20, 0.95); /* Adjusted to match your locked theme */
+            background: rgba(10, 10, 20, 0.95);
             padding: 40px;
-            border-radius: 20px;
+            border-radius: 30px;
             border: 1px solid var(--gold);
             text-align: center;
-            max-width: 600px;
+            max-width: 800px; /* Increased for grid */
             margin: 120px auto 60px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .contact-item {
-            margin: 25px 0;
-            padding: 15px;
-            background: rgba(245, 197, 66, 0.05);
-            border-radius: 10px;
-            transition: 0.3s;
-            border: 1px solid rgba(245, 197, 66, 0.1);
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
-        .contact-item:hover { background: rgba(245, 197, 66, 0.1); }
-        .contact-link { color: var(--gold); text-decoration: none; font-weight: 600; font-size: 1.2rem; }
+        .contact-item {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            transition: 0.4s;
+            border: 1px solid rgba(245, 197, 66, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-item:hover { 
+            background: rgba(245, 197, 66, 0.08); 
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+        .contact-link { 
+            color: var(--gold); 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        .icon-circle {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .arattai-btn {
+            background: var(--gold);
+            color: black;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Cinzel';
+            margin-top: 15px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .arattai-btn:hover { background: #fff; }
     </style>
 </head>
 <body class="mahadev-bg" style="color: white; min-height: 100vh;">
@@ -34,28 +70,52 @@
     <div id="header-placeholder"></div>
 
     <main class="contact-card">
-        <h1 class="gold-text title-font" data-key="contact_title">Contact Us</h1>
-        <p data-key="contact_intro">Humein aapki madad karke khushi hogi. Aap niche diye gaye tariko se humse baat kar sakte hain.</p>
+        <h1 class="gold-text title-font" data-key="contact_title" style="font-size: 2.5rem;">Divine Connect</h1>
+        <p data-key="contact_intro" style="color: #bbb;">Mahadev Astrologer MA se judne ke pavitra maarg.</p>
 
-       <div class="contact-item">
-    <p style="margin-bottom: 5px; color: #888;" data-key="contact_email_label">Email Us / ईमेल करें</p>
-    <a href="mailto:support@mahadevastrologerma.in" class="contact-link">support@mahadevastrologerma.in</a>
-</div>
+        <div class="contact-grid">
+            <div class="contact-item" style="border: 1.5px solid var(--gold); background: rgba(245,197,66,0.05);">
+                <div class="icon-circle">💬</div>
+                <h3 class="gold-text" style="margin:0;">Arattai Chat</h3>
+                <p style="font-size: 0.75rem; color: #888;">Most Secure & Private</p>
+                
+                <a href="https://www.arattai.in/YOUR_USERNAME_OR_LINK" target="_blank" class="arattai-btn">START CHAT</a>
+            </div>
 
-<p data-key="contact_intro">
-    We are here to help you. You can reach out to us through the following contact methods for any queries or guidance.
-</p>
-        <p style="font-size: 0.9rem; color: #bbb; margin-top: 20px;" data-key="contact_note">
+            <div class="contact-item">
+                <div class="icon-circle">🔱</div>
+                <h3 class="gold-text" style="margin:0;">WhatsApp</h3>
+                <a href="https://wa.me/YOUR_NUMBER" class="contact-link">Quick Message</a>
+            </div>
+
+            <div class="contact-item">
+                <div class="icon-circle">✈️</div>
+                <h3 class="gold-text" style="margin:0;">Telegram</h3>
+                <a href="https://t.me/YOUR_ID" class="contact-link">Connect Now</a>
+            </div>
+
+            <div class="contact-item">
+                <div class="icon-circle">🌿</div>
+                <h3 class="gold-text" style="margin:0;">Ayurveda</h3>
+                <a href="../pages/ayurveda.html" class="contact-link" style="font-size: 0.9rem;">View Remedies</a>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
+            <p style="margin-bottom: 5px; color: #888;" data-key="contact_email_label">Official Support Email</p>
+            <a href="mailto:support@mahadevastrologerma.in" class="contact-link" style="font-size: 1rem;">support@mahadevastrologerma.in</a>
+        </div>
+
+        <p style="font-size: 0.8rem; color: #666; margin-top: 30px;" data-key="contact_note">
             Note: Hum 24-48 ghanto ke andar jawab dene ki koshish karte hain.
         </p>
 
         <br>
-        <a href="../index.html" class="gold-text" style="text-decoration: none; font-weight: bold; border-bottom: 1px solid var(--gold);" data-key="back_home">← Back to Home</a>
+        <a href="../index.html" class="gold-text" style="text-decoration: none; font-weight: bold; border-bottom: 1px solid var(--gold); font-size: 0.9rem;" data-key="back_home">← Back to Home</a>
     </main>
 
     <div id="footer-placeholder"></div>
 
-    
     <script src="../assets/js/layout.js"></script>
 </body>
 </html>
