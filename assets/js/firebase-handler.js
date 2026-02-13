@@ -1,59 +1,17 @@
-// 🔱 Step 1: Dono DB import karein
+// 🔱 Step 1: Imports
 import { db, dbStudio } from './firebase-config.js';
 import { collection, addDoc, serverTimestamp, query, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// ... (Imports wahi rahenge)
+console.log("🔱 Handler Loaded Successfully!");
 
-async function notifyTelegram(data) {
-    console.log("Checking Telegram notification..."); // Checkpoint 1
-    
-    const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
-    const CHAT_ID = '2032242977'; 
-
-    let message = `🔱 *New Divine Request!* \n👤 Name: ${data.name}`;
-    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-    
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: CHAT_ID, text: message })
-        });
-        const result = await response.json();
-        console.log("Telegram Response:", result); // Checkpoint 2
-    } catch (err) {
-        console.error("Telegram Catch Error:", err);
-    }
-}
-
-// Form Submit ke andar ye line check karo:
-if (appointmentForm) {
-    appointmentForm.addEventListener('submit', async (e) => {
-        console.log("Form Submit Clicked!"); // Checkpoint 3
-        e.preventDefault();
-        
-        // ... baki sara code ...
-
-        try {
-            console.log("Sending to Firebase..."); // Checkpoint 4
-            await addDoc(collection(db, "appointments"), submissionData);
-            console.log("Firebase Success! Now calling Telegram..."); // Checkpoint 5
-            
-            await notifyTelegram(submissionData);
-            alert("Sent Successfully!");
-        } catch (error) {
-            console.log("Final Error:", error);
-        }
-    });
-}
-
-// ==========================================
-// 🔱 TELEGRAM CONFIGURATION
-// ==========================================
+// 🔱 Step 2: Telegram Configuration
 const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
 const CHAT_ID = '2032242977'; 
 
+// 🔱 Step 3: Telegram Notification Function
 async function notifyTelegram(data) {
+    console.log("1. Preparing Telegram Message..."); 
+    
     let message = `🔱 *New Divine Request!* 🔱\n\n`;
     message += `👤 *Name:* ${data.name}\n`;
     message += `✨ *Service:* ${data.service.replace('_', ' ').toUpperCase()}\n`;
@@ -74,7 +32,7 @@ async function notifyTelegram(data) {
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
     
     try {
-        await fetch(url, {
+        const response = await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -83,19 +41,20 @@ async function notifyTelegram(data) {
                 parse_mode: 'Markdown'
             })
         });
+        const result = await response.json();
+        console.log("2. Telegram Response:", result);
     } catch (err) {
-        console.error("Telegram Notification Error:", err);
+        console.error("3. Telegram Notification Error:", err);
     }
 }
 
-// ==========================================
-// 🔱 LOGIC 1: APPOINTMENT FORM (Normal Project - db)
-// ==========================================
+// 🔱 Step 4: Appointment Form Logic
 const appointmentForm = document.getElementById('consultation-form');
 
 if (appointmentForm) {
     appointmentForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        console.log("4. Form Submit Clicked!");
         
         const btn = e.target.querySelector('button');
         const originalText = btn.innerText;
@@ -135,16 +94,17 @@ if (appointmentForm) {
         }
 
         try {
-            // ✅ Normal Project (db) mein save ho raha hai
+            console.log("5. Sending to Firebase...");
             await addDoc(collection(db, "appointments"), submissionData);
+            console.log("6. Firebase Success! Now calling Telegram...");
+            
             await notifyTelegram(submissionData);
             
             alert("🔱 Pranaam! Aapka sandesh Mahadev tak pahunch gaya hai.");
             e.target.reset();
-            if(window.applyFormLogic) window.applyFormLogic();
 
         } catch (error) {
-            console.error("Firebase Error: ", error);
+            console.error("7. Final Error: ", error);
             alert("Kshama karein, data save nahi ho paya.");
         } finally {
             btn.innerText = originalText;
@@ -153,28 +113,52 @@ if (appointmentForm) {
     });
 }
 
-// ==========================================
-// 🔱 LOGIC 2: HEALING MUSIC (Studio Project - dbStudio)
-// ==========================================
+// 🔱 Step 5: Helper Functions (Window scope fix)
+window.applyFormLogic = function() {
+    const service = document.getElementById('service-select').value;
+    const matchingSection = document.getElementById('section-matching');
+    const singleSection = document.getElementById('section-single');
+    const palmInstruction = document.getElementById('palm-instruction');
+
+    if (service === 'kundli_matching') {
+        matchingSection.style.display = 'block';
+        singleSection.style.display = 'none';
+        palmInstruction.style.display = 'none';
+    } else if (service === 'palmistry') {
+        matchingSection.style.display = 'none';
+        singleSection.style.display = 'block';
+        palmInstruction.style.display = 'block';
+    } else {
+        matchingSection.style.display = 'none';
+        singleSection.style.display = 'block';
+        palmInstruction.style.display = 'none';
+    }
+};
+
+window.syncContactMethod = function(method) {
+    const contactInput = document.getElementById('contact-detail');
+    const warning = document.getElementById('email-warning');
+    if (method === 'WA') {
+        contactInput.placeholder = "WhatsApp Number";
+        warning.style.display = 'none';
+    } else if (method === 'TG') {
+        contactInput.placeholder = "Telegram Username/@id";
+        warning.style.display = 'none';
+    } else {
+        contactInput.placeholder = "Email Address";
+        warning.style.display = 'block';
+    }
+};
+
+// 🔱 Step 6: Healing Music Logic
 export async function fetchHealingMusic() {
     try {
-        // ✅ Studio Project (dbStudio) se data la raha hai
         const musicCol = collection(dbStudio, 'healing_music');
         const q = query(musicCol, orderBy('order', 'asc'));
         const snapshot = await getDocs(q);
-        
-        return snapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-        }));
+        return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     } catch (error) {
         console.error("Music fetch error:", error);
         return [];
     }
-}
-
-export function getCurrentLyric(currentTime, lyricsArray) {
-    if (!lyricsArray || !Array.isArray(lyricsArray)) return "";
-    const current = lyricsArray.find(l => currentTime >= l.start && currentTime <= l.end);
-    return current ? current.text : "";
 }
