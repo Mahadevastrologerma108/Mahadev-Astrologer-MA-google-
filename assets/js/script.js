@@ -67,7 +67,27 @@ window.toggleLanguage = function() {
     location.reload(); 
 };
 
-// --- 3. DYNAMIC FORM & SUBMIT LOGIC ---
+// --- 3. DYNAMIC FORM & SUBMIT LOGIC (Updated by Gemini) ---
+
+// 🔱 1. Contact Method & Placeholder Sync
+window.syncContactMethod = function(type) {
+    const input = document.getElementById('contact-detail');
+    const warning = document.getElementById('email-warning');
+    if (!input) return;
+
+    if (type === 'WA') {
+        input.placeholder = "WhatsApp Number";
+        if(warning) warning.style.display = "none";
+    } else if (type === 'TG') {
+        input.placeholder = "Telegram Username / Link";
+        if(warning) warning.style.display = "none";
+    } else if (type === 'EM') {
+        input.placeholder = "Your Email Address";
+        if(warning) warning.style.display = "block";
+    }
+};
+
+// 🔱 2. Service-wise Field Visibility
 window.applyFormLogic = function() {
     const svc = document.getElementById('service-select')?.value;
     if(!svc) return;
@@ -75,7 +95,6 @@ window.applyFormLogic = function() {
     const singleSec = document.getElementById('section-single');
     const matchingSec = document.getElementById('section-matching');
     const palmInst = document.getElementById('palm-instruction');
-    const birthFields = document.getElementById('birth-fields');
     const timePlaceGroup = document.getElementById('time-place-group');
 
     const sDob = document.getElementById('single-dob');
@@ -86,23 +105,22 @@ window.applyFormLogic = function() {
     if(singleSec) singleSec.style.display = 'block';
     if(matchingSec) matchingSec.style.display = 'none';
     if(palmInst) palmInst.style.display = 'none';
-    if(birthFields) birthFields.style.display = 'block';
     if(timePlaceGroup) timePlaceGroup.style.display = 'grid';
 
     // Required Field Reset
     [sDob, sTime, sPlace].forEach(el => { if(el) el.required = false; });
 
-    // Conditional Logic
+    // Conditional Logic for each service
     if (svc === 'kundli_making') {
         [sDob, sTime, sPlace].forEach(el => { if(el) el.required = true; });
     } else if (svc === 'kundli_matching') {
         if(singleSec) singleSec.style.display = 'none';
         if(matchingSec) matchingSec.style.display = 'block';
     } else if (svc === 'palmistry') {
-        if(birthFields) birthFields.style.display = 'none';
         if(palmInst) palmInst.style.display = 'block';
+        // Note: Palmistry fills current details in singleSec
     } else if (svc === 'numerology') {
-        if(timePlaceGroup) timePlaceGroup.style.display = 'none';
+        if(timePlaceGroup) timePlaceGroup.style.display = 'none'; // Hide Time & Place
         if(sDob) sDob.required = true;
     } else if (svc === 'combo_analysis') {
         if(palmInst) palmInst.style.display = 'block';
@@ -110,23 +128,27 @@ window.applyFormLogic = function() {
     }
 };
 
+// 🔱 3. Submit Handler
 window.handleDivineSubmit = function(e) {
     e.preventDefault();
-    // (Yahan aapka pura Message formatting wala code rahega)
-    alert("Pranaam! Aapka message WhatsApp par bheja ja raha hai.");
+    // (Future Firebase logic will be added here)
+    alert("Pranaam! Aapka sandesh surakshit bhej diya gaya hai. 🔱🚩");
 };
-const playBtn = document.getElementById('master-play-btn');
 
-playBtn.addEventListener('click', () => {
-    // Abhi song nahi hai, isliye message dikhayenge
-    alert("Prabhu ki kripa se, Divine Music jald hi prakat hoga! Stay tuned. 🔱🚩");
-    
-    // Thoda sa vibration effect button par
-    playBtn.style.transform = "translateX(5px)";
-    setTimeout(() => playBtn.style.transform = "translateX(0)", 100);
-});
-// --- 4. STARTUP ---
+// --- 4. AUDIO & INTERACTIVE LOGIC ---
+const playBtn = document.getElementById('master-play-btn');
+if (playBtn) {
+    playBtn.addEventListener('click', () => {
+        alert("Prabhu ki kripa se, Divine Music jald hi prakat hoga! Stay tuned. 🔱🚩");
+        playBtn.style.transform = "translateX(5px)";
+        setTimeout(() => playBtn.style.transform = "translateX(0)", 100);
+    });
+}
+
+// --- 5. STARTUP ---
 document.addEventListener('DOMContentLoaded', () => {
     loadLayout();
     document.getElementById('consultation-form')?.addEventListener('submit', window.handleDivineSubmit);
+    // Initialize form once
+    applyFormLogic();
 });
