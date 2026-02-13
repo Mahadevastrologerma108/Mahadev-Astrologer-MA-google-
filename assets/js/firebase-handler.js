@@ -5,8 +5,8 @@ import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/fir
 // 🔱 TELEGRAM CONFIGURATION
 // ==========================================
 // Bhai yahan apna Token aur Chat ID daal dena
-const BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE'; 
-const CHAT_ID = 'YOUR_PERSONAL_CHAT_ID_HERE'; 
+const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
+const CHAT_ID = '2032242977'; 
 
 async function notifyTelegram(data) {
     let message = `🔱 *New Divine Request!* 🔱\n\n`;
