@@ -2,7 +2,49 @@ import { db } from './firebase-config.js';
 import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // ==========================================
-// 🔱 LOGIC 1: APPOINTMENT FORM (Smart & Complete)
+// 🔱 TELEGRAM CONFIGURATION
+// ==========================================
+// Bhai yahan apna Token aur Chat ID daal dena
+const BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE'; 
+const CHAT_ID = 'YOUR_PERSONAL_CHAT_ID_HERE'; 
+
+async function notifyTelegram(data) {
+    let message = `🔱 *New Divine Request!* 🔱\n\n`;
+    message += `👤 *Name:* ${data.name}\n`;
+    message += `✨ *Service:* ${data.service.replace('_', ' ').toUpperCase()}\n`;
+    message += `📱 *Method:* ${data.contact_method}\n`;
+    message += `📍 *Detail:* \`${data.contact_detail}\` \n\n`;
+
+    if (data.service === 'kundli_matching') {
+        message += `♂️ *Male:* ${data.male_details.name} | ${data.male_details.dob}\n`;
+        message += `♀️ *Female:* ${data.female_details.name} | ${data.female_details.dob}\n`;
+    } else {
+        message += `📅 *DOB:* ${data.dob}\n`;
+        message += `⏰ *Time:* ${data.time}\n`;
+        message += `🌍 *Place:* ${data.place}\n`;
+    }
+    
+    message += `\n🆔 *UID Requested:* ${data.wants_uid ? '✅ Yes' : '❌ No'}`;
+
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    
+    try {
+        await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: message,
+                parse_mode: 'Markdown'
+            })
+        });
+    } catch (err) {
+        console.error("Telegram Notification Error:", err);
+    }
+}
+
+// ==========================================
+// 🔱 LOGIC 1: APPOINTMENT FORM (Smart & Integrated)
 // ==========================================
 const appointmentForm = document.getElementById('consultation-form');
 
@@ -15,12 +57,10 @@ if (appointmentForm) {
         btn.innerText = "🔱 SENDING...";
         btn.disabled = true;
 
-        // 1. Basic Info
         const service = document.getElementById('service-select').value;
         const contactMethod = document.querySelector('input[name="contact-method"]:checked').value;
         const generateUID = document.getElementById('generate-uid').checked;
 
-        // 2. Dynamic Data Collection (Jo service select hogi wahi data jayega)
         let submissionData = {
             service: service,
             name: document.getElementById('user-name').value,
@@ -30,7 +70,6 @@ if (appointmentForm) {
             timestamp: serverTimestamp()
         };
 
-        // 3. Conditional Data (Kundli Matching vs Single Birth vs Palmistry)
         if (service === 'kundli_matching') {
             submissionData.male_details = {
                 name: document.getElementById('m-name').value,
@@ -45,32 +84,32 @@ if (appointmentForm) {
                 place: document.getElementById('f-place').value
             };
         } else {
-            // Baaki sab services ke liye single DOB data
             submissionData.dob = document.getElementById('single-dob').value;
             submissionData.time = document.getElementById('single-time').value || "N/A";
             submissionData.place = document.getElementById('single-place').value || "N/A";
         }
 
         try {
-            // Firestore ke 'appointments' collection mein save
+            // 1. Firebase mein save
             await addDoc(collection(db, "appointments"), submissionData);
+            
+            // 2. Telegram par notify (Naya Logic 🔥)
+            await notifyTelegram(submissionData);
             
             alert("🔱 Pranaam! Aapka sandesh Mahadev tak pahunch gaya hai. Hum jald hi sampark karenge.");
             e.target.reset();
             
-            // Form reset ke baad logic refresh karein (IDs wapas set karne ke liye)
             if(window.applyFormLogic) window.applyFormLogic();
 
         } catch (error) {
             console.error("Firebase Error: ", error);
-            alert("Kshama karein, data save nahi ho paya. Kripya check karein internet ya humein direct WhatsApp karein.");
+            alert("Kshama karein, data save nahi ho paya. Humai direct WhatsApp karein.");
         } finally {
             btn.innerText = originalText;
             btn.disabled = false;
         }
     });
 }
-
 
 // ==========================================
 // 🔱 LOGIC 2: HEALING MUSIC (New Logic)
