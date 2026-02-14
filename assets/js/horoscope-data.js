@@ -1,208 +1,208 @@
 const dailyHoroscope = {
- 
   "aries": {
     "career": {
-      "hi": "आज मन विचलित रह सकता है, कृपया अनुभवों की सलाह से कार्य करें।",
-      "en": "The mind may feel restless today; please work based on the advice of experienced people."
+      "hi": "आज कार्यक्षेत्र में नई ऊर्जा महसूस करेंगे, पुराने निवेश से लाभ संभव है।",
+      "en": "You will feel new energy at work today; profit from old investments is possible."
     },
     "love": {
-      "hi": "महादेव पर भरोसा रखें, परिवार और जीवनसाथी का सहयोग प्राप्त होगा।",
-      "en": "Have faith in Mahadev; you will receive support from your family and spouse."
+      "hi": "जीवनसाथी के साथ सामंजस्य बढ़ेगा, महादेव की कृपा से घर में शांति रहेगी।",
+      "en": "Harmony with your spouse will increase; peace will prevail at home by Mahadev's grace."
     },
     "health": {
-      "hi": "प्रभु दया से स्वास्थ्य बिल्कुल सही रहेगा।",
-      "en": "By the Lord's grace, your health will remain perfectly fine."
+      "hi": "सिर दर्द की समस्या हो सकती है, पर्याप्त नींद लें और योग करें।",
+      "en": "Headache issues may arise; get enough sleep and practice yoga."
     },
-    "luckyColor": "white",
-    "luckyNumber": "2",
-    "luckyTime": "09:30 AM"
+    "luckyColor": "saffron",
+    "luckyNumber": "1",
+    "luckyTime": "10:30 AM"
   },
   "taurus": {
     "career": {
-      "hi": "लापरवाही से बचें, पेमेंट या रुके हुए पैसे मिलने की संभावना है।",
-      "en": "Avoid negligence; there is a possibility of receiving pending payments or stuck money."
+      "hi": "नौकरी में पदोन्नति के योग हैं, उच्च अधिकारियों का सहयोग प्राप्त होगा।",
+      "en": "Chances of promotion at work; support from higher authorities will be received."
     },
     "love": {
-      "hi": "संबंधों में सुधार आएगा, पुराने दोस्तों से मिलना हो सकता है।",
-      "en": "Relationships will improve; you may meet some old friends."
+      "hi": "किसी पुराने मित्र से मुलाकात मन को प्रसन्न करेगी, वाणी पर मधुरता रखें।",
+      "en": "Meeting an old friend will please the mind; keep your speech sweet."
     },
     "health": {
-      "hi": "सेहत पर विशेष ध्यान दें, अनावश्यक और अनर्गल चीजें ना खाएं।",
-      "en": "Pay special attention to health; avoid eating unnecessary or junk food."
+      "hi": "पेट संबंधी विकार हो सकते हैं, सात्विक भोजन ग्रहण करें।",
+      "en": "Stomach-related issues may occur; consume simple, satvik food."
     },
-    "luckyColor": "cream",
-    "luckyNumber": "9",
-    "luckyTime": "11:15 AM"
+    "luckyColor": "sky blue",
+    "luckyNumber": "7",
+    "luckyTime": "12:15 PM"
   },
   "gemini": {
     "career": {
-      "hi": "आज आपका दिन शुभ और फलदाई होने की संभावना है।",
-      "en": "Today is likely to be a auspicious and fruitful day for you."
+      "hi": "व्यापार में नई पार्टनरशिप से लाभ होगा, यात्रा के योग बन रहे हैं।",
+      "en": "Profit from a new partnership in business; travel plans are forming."
     },
     "love": {
-      "hi": "परिजनों से सुख-दुख की बातें करें और उनके साथ समय बिताएं।",
-      "en": "Share your joys and sorrows with family members and spend time with them."
+      "hi": "आज का दिन रोमांस से भरा रहेगा, पार्टनर को सरप्राइज दे सकते हैं।",
+      "en": "Today will be full of romance; you might give a surprise to your partner."
     },
     "health": {
-      "hi": "पुरानी बीमारियां परेशान कर सकती हैं, ध्यान दें और समय पर इलाज लें।",
-      "en": "Old ailments might cause trouble; stay alert and seek timely treatment."
+      "hi": "मानसिक तनाव कम होगा, शिव चालीसा का पाठ करना शुभ रहेगा।",
+      "en": "Mental stress will decrease; reciting Shiv Chalisa will be auspicious."
     },
-    "luckyColor": "green",
-    "luckyNumber": "5",
-    "luckyTime": "02:00 PM"
+    "luckyColor": "yellow",
+    "luckyNumber": "3",
+    "luckyTime": "03:45 PM"
   },
   "cancer": {
     "career": {
-      "hi": "कोई फैसला हड़बड़ी और लापरवाही में ना लें, खर्चे पर नियंत्रण की आवश्यकता है।",
-      "en": "Do not take any decisions in haste or negligence; there is a need to control expenses."
+      "hi": "रुके हुए धन की प्राप्ति होगी, प्रॉपर्टी से जुड़े काम आज सफल होंगे।",
+      "en": "Stuck money will be recovered; property-related tasks will be successful today."
     },
     "love": {
-      "hi": "महादेव की कृपा बरसेगी, नए लोगों से मिलना हो सकता है, कुछ खुशखबरी भी आ सकती है।",
-      "en": "Mahadev's grace will shower upon you; you may meet new people and receive good news."
+      "hi": "परिवार में मांगलिक कार्य की योजना बन सकती है, बुजुर्गों का आशीर्वाद लें।",
+      "en": "Plans for an auspicious event in the family may be made; seek elders' blessings."
     },
     "health": {
-      "hi": "चिंता कम करें, जल को नियंत्रित रखें, समय से जल पिएं।",
-      "en": "Worry less; keep yourself hydrated and drink water at regular intervals."
+      "hi": "आंखों में जलन की समस्या हो सकती है, ठंडे पानी से आंखें धोएं।",
+      "en": "Eye irritation issues may occur; wash your eyes with cold water."
     },
-    "luckyColor": "pink",
-    "luckyNumber": "6",
-    "luckyTime": "08:45 AM"
+    "luckyColor": "silver",
+    "luckyNumber": "4",
+    "luckyTime": "09:00 AM"
   },
   "leo": {
     "career": {
-      "hi": "मेहनत भरा दिन रहेगा, अंत भला तो सब भला, बड़े निर्णय पर ध्यान से सोचें।",
-      "en": "It will be a hardworking day; all's well that ends well. Think carefully before big decisions."
+      "hi": "लीडरशिप क्वालिटी की सराहना होगी, नया प्रोजेक्ट मिल सकता है।",
+      "en": "Your leadership quality will be appreciated; a new project may come your way."
     },
     "love": {
-      "hi": "घबराएं नहीं, मन को स्थिर रखें और अपने संबंधों को मधुर बनाने के लिए प्रयासरत रहें।",
-      "en": "Do not panic; keep your mind steady and strive to make your relationships sweet."
+      "hi": "प्रेम संबंधों में प्रगाढ़ता आएगी, मन की बात कहने का सही समय है।",
+      "en": "Love relationships will strengthen; it's the right time to speak your heart out."
     },
     "health": {
-      "hi": "दिनचर्या में जलपान अवश्य शामिल करें, मौसम के अनुकूल सेहत का ध्यान रखें, महादेव पर भरोसा रखें।",
-      "en": "Include proper hydration in your routine; take care of health according to the weather and trust Mahadev."
+      "hi": "ऊर्जा का स्तर ऊंचा रहेगा, महादेव पर भरोसा रखें और व्यायाम जारी रखें।",
+      "en": "Energy levels will remain high; trust Mahadev and continue exercising."
     },
-    "luckyColor": "deep red",
-    "luckyNumber": "3",
-    "luckyTime": "10:00 AM"
+    "luckyColor": "golden",
+    "luckyNumber": "5",
+    "luckyTime": "11:20 AM"
   },
   "virgo": {
     "career": {
-      "hi": "अटका हुआ काम बन सकता है, नए मौके मिल सकते हैं।",
-      "en": "Pending tasks may be completed; new opportunities might come your way."
+      "hi": "खर्चों में बढ़ोतरी हो सकती है, बजट बनाकर चलना आज लाभकारी होगा।",
+      "en": "Expenses may increase; making a budget will be beneficial today."
     },
     "love": {
-      "hi": "संबंध अच्छे होने के आसार हैं, विवेक से काम लें।",
-      "en": "Relationships are likely to improve; act with wisdom."
+      "hi": "रिश्तों में गलतफहमियां दूर होंगी, धैर्य से काम लें।",
+      "en": "Misunderstandings in relationships will be cleared; act with patience."
     },
     "health": {
-      "hi": "तनाव से बचें, नई बीमारियों को आमंत्रण देने से बचें, व्यवस्थापन ठीक रखें।",
-      "en": "Avoid stress and stay away from inviting new ailments; keep your lifestyle organized."
+      "hi": "पीठ दर्द की समस्या रह सकती है, भारी सामान उठाने से बचें।",
+      "en": "Back pain issues may persist; avoid lifting heavy objects."
     },
-    "luckyColor": "white",
-    "luckyNumber": "8",
-    "luckyTime": "04:20 PM"
+    "luckyColor": "emerald green",
+    "luckyNumber": "2",
+    "luckyTime": "02:30 PM"
   },
   "libra": {
     "career": {
-      "hi": "अटका हुआ काम बन सकता है, नए मौके मिल सकते हैं।",
-      "en": "Stuck work may get resolved; new openings are possible."
+      "hi": "आज रचनात्मक कार्यों में रुचि बढ़ेगी, कला क्षेत्र से जुड़े लोगों को लाभ होगा।",
+      "en": "Interest in creative work will increase; people in the arts will benefit."
     },
     "love": {
-      "hi": "जल्द ही परिवार में चिंता बढ़ने की संभावना है, सावधानी से काम करें।",
-      "en": "There is a possibility of rising concern in the family; act with caution."
+      "hi": "जीवनसाथी से कोई उपहार मिल सकता है, रिश्तों में नयापन महसूस होगा।",
+      "en": "You may receive a gift from your spouse; you'll feel freshness in relationships."
     },
     "health": {
-      "hi": "तनाव से बचें, नई बीमारियों को आमंत्रण देने से बचें, व्यवस्थापन ठीक रखें।",
-      "en": "Avoid stress and stay away from new health issues; maintain a proper routine."
+      "hi": "त्वचा संबंधी समस्या हो सकती है, पर्याप्त पानी पिएं।",
+      "en": "Skin-related issues may occur; drink plenty of water."
     },
-    "luckyColor": "dark pink",
-    "luckyNumber": "2",
-    "luckyTime": "12:30 PM"
+    "luckyColor": "purple",
+    "luckyNumber": "6",
+    "luckyTime": "04:10 PM"
   },
   "scorpio": {
     "career": {
-      "hi": "पुराने उलझन सुलझ सकते हैं, सूरज को नमन करें, बुजुर्गों की सलाह लें।",
-      "en": "Old complications may be resolved; offer prayers to the Sun and take advice from elders."
+      "hi": "विरोधी सक्रिय रहेंगे लेकिन आपकी सूझबूझ से हारेंगे, कार्य पर ध्यान दें।",
+      "en": "Opponents will be active but will lose to your wisdom; focus on your work."
     },
     "love": {
-      "hi": "क्रोध पर नियंत्रण आवश्यक है, परिवार में चिंता बन सकती है।",
-      "en": "Control over anger is essential; some worries may arise in the family."
+      "hi": "विवाह के प्रस्ताव मिल सकते हैं, घर का माहौल खुशनुमा रहेगा।",
+      "en": "Marriage proposals might come; the home atmosphere will be pleasant."
     },
     "health": {
-      "hi": "सेहत में कोताही ना बरतें, गर्म पानी पिएं, लौंग की कली लेकर चलें।",
-      "en": "Do not be careless with health; drink warm water and keep a clove with you."
+      "hi": "पुरानी चोट दर्द दे सकती है, गरम सिकाई से लाभ होगा।",
+      "en": "An old injury might cause pain; warm compression will be beneficial."
     },
-    "luckyColor": "light yellow",
-    "luckyNumber": "5",
-    "luckyTime": "07:15 PM"
+    "luckyColor": "maroon",
+    "luckyNumber": "9",
+    "luckyNumber": "9",
+    "luckyTime": "08:15 PM"
   },
   "sagittarius": {
     "career": {
-      "hi": "धन लाभ और खर्च दोनों की संभावनाएं बन रही हैं, समय की कद्र करें।",
-      "en": "Possibilities for both profit and expense are forming; value your time."
+      "hi": "भाग्य का साथ मिलेगा, धार्मिक कार्यों में रुचि बढ़ेगी, धन लाभ के योग हैं।",
+      "en": "Luck will favor you; interest in religious activities will increase; chances of profit."
     },
     "love": {
-      "hi": "सामाजिक मेल-भाव का समय है, प्रसन्नचित्त रहें, ईर्ष्या निकाल दें।",
-      "en": "It's a time for social bonding; stay cheerful and let go of jealousy."
+      "hi": "मित्रों के साथ यात्रा का प्लान बन सकता है, प्रसन्नचित्त रहें।",
+      "en": "A travel plan with friends might be made; stay cheerful."
     },
     "health": {
-      "hi": "सेहत में उतार-चढ़ाव बना रहेगा, गर्म पानी में शहद या गुड़ पिएं।",
-      "en": "Health may fluctuate; drink warm water with honey or jaggery."
+      "hi": "पैरों में सूजन आ सकती है, आराम को प्राथमिकता दें।",
+      "en": "Swelling in feet may occur; prioritize taking rest."
     },
-    "luckyColor": "mix white",
-    "luckyNumber": "4",
-    "luckyTime": "06:00 AM"
+    "luckyColor": "orange",
+    "luckyNumber": "3",
+    "luckyTime": "07:30 AM"
   },
   "capricorn": {
     "career": {
-      "hi": "मेहनत का मीठा फल मिलेगा, महादेव की कृपा से करियर में स्थिरता आएगी।",
-      "en": "You will get the sweet fruit of hard work; career stability is coming by Mahadev's grace."
+      "hi": "कड़ी मेहनत का फल मिलने का समय आ गया है, महादेव आपके साथ हैं।",
+      "en": "The time to get the fruits of hard work has arrived; Mahadev is with you."
     },
     "love": {
-      "hi": "जीवनसाथी का सहयोग संबल देगा, घर में शांति बनाए रखें।",
-      "en": "Spouse's support will provide strength; maintain peace at home."
+      "hi": "रिश्तों में ईमानदारी बरतें, पार्टनर की भावनाओं का सम्मान करें।",
+      "en": "Be honest in relationships; respect your partner's feelings."
     },
     "health": {
-      "hi": "जोड़ों के दर्द से बचें, नियमित व्यायाम और योग को अपनाएं।",
-      "en": "Avoid joint pain; adopt regular exercise and yoga."
+      "hi": "दांतों में तकलीफ हो सकती है, स्वच्छता का ध्यान रखें।",
+      "en": "Dental issues might occur; maintain proper hygiene."
     },
-    "luckyColor": "black",
+    "luckyColor": "dark grey",
     "luckyNumber": "8",
-    "luckyTime": "03:50 PM"
+    "luckyTime": "01:20 PM"
   },
   "aquarius": {
     "career": {
-      "hi": "नई योजनाओं पर काम शुरू करने का समय है, आत्मविश्वास बनाए रखें।",
-      "en": "It's time to start working on new plans; keep your confidence high."
+      "hi": "आज ऑफिस में काम का बोझ बढ़ सकता है, समय का प्रबंधन जरूरी है।",
+      "en": "Workload may increase at the office today; time management is essential."
     },
     "love": {
-      "hi": "मित्रों के साथ अनबन से बचें, वाणी में मधुरता रखें।",
-      "en": "Avoid disputes with friends; keep your speech sweet and polite."
+      "hi": "अकेले लोगों के लिए नए रिश्ते की शुरुआत हो सकती है, सकारात्मक रहें।",
+      "en": "Single people might start a new relationship; stay positive."
     },
     "health": {
-      "hi": "मानसिक शांति के लिए ॐ का जाप करें, दिन बेहतर बीतेगा।",
-      "en": "Chant 'Om' for mental peace; the day will pass smoothly."
+      "hi": "कंधों में अकड़न महसूस हो सकती है, स्ट्रेचिंग करें।",
+      "en": "Stiffness in shoulders might be felt; do some stretching."
     },
-    "luckyColor": "cyan",
+    "luckyColor": "navy blue",
     "luckyNumber": "11",
-    "luckyTime": "05:10 PM"
+    "luckyTime": "06:45 PM"
   },
   "pisces": {
     "career": {
-      "hi": "धन के लेनदेन में सावधानी बरतें, बड़ों का आशीर्वाद लेकर काम शुरू करें।",
-      "en": "Be cautious in money transactions; start your work with the blessings of elders."
+      "hi": "सामाजिक प्रतिष्ठा बढ़ेगी, दान-पुण्य करने से मानसिक शांति मिलेगी।",
+      "en": "Social prestige will increase; donating will bring mental peace."
     },
     "love": {
-      "hi": "पुरानी बातों को भूलकर नई शुरुआत करें, रिश्तों में प्रेम बढ़ेगा।",
-      "en": "Forget old issues and make a fresh start; love will grow in relationships."
+      "hi": "पुराने विवाद सुलझ जाएंगे, प्रेमी के साथ अच्छा समय बीतेगा।",
+      "en": "Old disputes will be resolved; you will spend good time with your lover."
     },
     "health": {
-      "hi": "पैरों में थकान रह सकती है, पर्याप्त विश्राम करें।",
-      "en": "You may feel fatigue in your legs; take adequate rest."
+      "hi": "थकान महसूस हो सकती है, ध्यान (Meditation) का सहारा लें।",
+      "en": "Fatigue may be felt; take help of meditation."
     },
-    "luckyColor": "sea green",
-    "luckyNumber": "9",
-    "luckyTime": "01:45 PM"
+    "luckyColor": "light pink",
+    "luckyNumber": "7",
+    "luckyTime": "10:00 AM"
   }
 };
 function loadHoroscope(rashiKey) {
