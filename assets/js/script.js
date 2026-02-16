@@ -1,4 +1,4 @@
-// --- YOUR ORIGINAL FORM LOGIC (Safely Protected) ---
+// --- YOUR ORIGINAL FORM LOGIC (Safely Protected & Fixed) ---
 
 // 1. Placeholder Sync (WhatsApp/Email toggle)
 window.syncContactMethod = function(type) {
@@ -7,16 +7,17 @@ window.syncContactMethod = function(type) {
     const lang = localStorage.getItem('preferredLang') || 'hi';
     const t = window.translations[lang];
 
-    if (!input) return;
+    if (!input || !t) return;
 
     if (type === 'WA') {
-        input.placeholder = t.ph_contact || "WhatsApp Number";
+        // Translations.js से सही भाषा का शब्द उठाएगा
+        input.placeholder = t.ph_contact || (lang === 'hi' ? "व्हाट्सएप नंबर" : "WhatsApp Number");
         if(warning) warning.style.display = "none";
     } else if (type === 'TG') {
         input.placeholder = "Telegram Username / Link";
         if(warning) warning.style.display = "none";
     } else if (type === 'EM') {
-        input.placeholder = "Your Email Address";
+        input.placeholder = lang === 'hi' ? "आपका ईमेल पता" : "Your Email Address";
         if(warning) warning.style.display = "block";
     }
 };
@@ -53,9 +54,16 @@ window.applyFormLogic = function() {
 // 3. Master Sync (Called by layout.js when language changes)
 window.syncWithTranslation = function() {
     window.applyFormLogic();
-    // Re-check contact method for placeholder translation
-    const contactType = document.querySelector('input[name="contact_type"]:checked')?.value || 'WA';
-    window.syncContactMethod(contactType);
+    
+    // FIXED: HTML के नाम (contact-method) से मैच किया गया है
+    const contactMethod = document.querySelector('input[name="contact-method"]:checked')?.value;
+    
+    // टाइप कन्वर्जन (WhatsApp -> WA, Email -> EM)
+    let type = 'WA';
+    if(contactMethod === 'Telegram') type = 'TG';
+    if(contactMethod === 'Email') type = 'EM';
+    
+    window.syncContactMethod(type);
 };
 
 // 4. Form Submission
