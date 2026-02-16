@@ -18,14 +18,11 @@ window.translations = {
         btn_install: "INSTALL MAHADEV ASTROLOGER MA APP",
         hero_sub: "ESTABLISHED VEDIC LINEAGE",
         hero_title: "Discover the Truth of Your Destiny",
-        hero_desc: "Authentic Vedic Astrology and precise remedial solutions by Mahadev Astrologer MA.",
-
-       
+        hero_desc: "Authentic Vedic Astrology and precise remedial solutions by Mahadev Astrologer MA.", 
 
     event_tag: "Holi 2026",
     event_text: "🔱 Holi Muhurat & Rituals",
     event_url: "https://www.mahadevastrologerma.in/latest-guide/article.html?id=6408606802958228263",
-
 
         svc_kundli_title: "Kundali Making", svc_kundli_desc: "Detailed birth chart analysis and planetary insights.",
         svc_matching_title: "Kundali Matching", svc_matching_desc: "Guna Milan and compatibility for a blessed marriage.",
