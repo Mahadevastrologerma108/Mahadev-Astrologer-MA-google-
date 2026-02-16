@@ -299,17 +299,18 @@ body {
     font-weight: bold;
 }
 
-.shivratri-sticker-link {
+/* Purana Premium Look - Ab naye naam ke saath */
+.event-sticker-link {
     display: block;
     text-decoration: none;
     margin: 25px auto;
-    max-width: 95%; /* Site ki width ke hisaab se */
+    max-width: 95%; 
     transition: transform 0.2s ease;
 }
 
 .sticker-wrap {
-    background: #111; /* Deep Black */
-    border: 2px solid var(--gold-main); /* Gold Border */
+    background: #111; 
+    border: 2px solid var(--gold-main); 
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -319,7 +320,7 @@ body {
 }
 
 .sticker-wrap:hover {
-    transform: translateY(-3px); /* Hover par thoda upar uthega */
+    transform: translateY(-3px);
     background: #1a1a1a;
 }
 
@@ -338,14 +339,8 @@ body {
 .sticker-center p {
     color: #fff;
     margin: 0;
-    font-family: 'Cinzel', serif; /* Agar ye font link hai toh, nahi toh sans-serif */
+    font-family: 'Cinzel', serif; 
     font-size: 1.1rem;
-}
-
-.highlight {
-    color: var(--gold-main);
-    text-decoration: underline;
-    font-weight: bold;
 }
 
 .sticker-right {
@@ -353,7 +348,6 @@ body {
     color: var(--gold-main);
     font-size: 1.2rem;
 }
-
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .sticker-wrap { padding: 12px 15px; flex-direction: column; gap: 10px; text-align: center; }
