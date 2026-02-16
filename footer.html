@@ -1,46 +1,69 @@
 <footer class="main-footer">
-    <h2 class="gold-text footer-brand">MAHADEV ASTROLOGER MA</h2>
-<div id="mahadev-player" class="divine-player coming-soon-mode">
-    <div class="player-content">
-        <div class="visualizer" id="visualizer">
-            <span></span><span></span><span></span><span></span>
-        </div>
-        
-        <div class="track-details">
-            <h4 id="player-title" data-key="player_title">Divine Anthem 🔱</h4>
-            <p id="player-subtitle" data-key="player_subtitle">Coming Soon: Healing Sounds by Parth</p>
-        </div>
+    <h2 class="gold-text footer-brand" style="text-align:center; font-family:'Cinzel'; letter-spacing:3px; margin-bottom:20px;">MAHADEV ASTROLOGER MA</h2>
 
-        <div class="controls">
-            <button id="master-play-btn" class="play-trigger">
-                <span id="play-icon">⏳</span>
-            </button>
+    <div id="mahadev-player" class="divine-player coming-soon-mode" style="max-width:400px; margin:0 auto 40px; background:rgba(245,197,66,0.05); border:1px solid rgba(245,197,66,0.1); padding:15px; border-radius:15px;">
+        <div class="player-content" style="display:flex; align-items:center; justify-content:space-between; gap:15px;">
+            <div class="visualizer" id="footer-visualizer" style="display:flex; gap:3px; align-items:flex-end; height:20px;">
+                <span style="width:3px; height:10px; background:var(--gold); border-radius:2px;"></span>
+                <span style="width:3px; height:18px; background:var(--gold); border-radius:2px;"></span>
+                <span style="width:3px; height:12px; background:var(--gold); border-radius:2px;"></span>
+                <span style="width:3px; height:15px; background:var(--gold); border-radius:2px;"></span>
+            </div>
+            
+            <div class="track-details" style="flex-grow:1;">
+                <h4 id="player-title" data-key="player_title" style="font-size:0.9rem; color:var(--gold); margin:0;">Divine Anthem 🔱</h4>
+                <p id="player-subtitle" data-key="player_subtitle" style="font-size:0.7rem; color:#aaa; margin:0;">Coming Soon: Healing Sounds by Parth</p>
+            </div>
+
+            <div class="controls">
+                <button id="master-play-btn" class="play-trigger" style="background:none; border:1px solid var(--gold); color:var(--gold); border-radius:50%; width:35px; height:35px; cursor:pointer;">
+                    <span id="play-icon">⏳</span>
+                </button>
+            </div>
         </div>
     </div>
-</div>
     
-    <div class="footer-container">
-        <div class="footer-section shlok-box">
-            <p class="sanskrit-shlok">"न नादेन विना गीतं न नादेन विना स्वरः""</p>
-            <p class="shlok-mean">Through Sound we heal, Through Stars we guide.</p>
+    <div class="footer-container" style="max-width:1200px; margin:0 auto; padding:0 20px; text-align:center;">
+        <div class="footer-section shlok-box" style="margin-bottom:30px;">
+            <p class="sanskrit-shlok" style="font-style:italic; color:var(--gold); font-size:1.1rem; margin-bottom:5px;">"न नादेन विना गीतं न नादेन विना स्वरः"</p>
+            <p class="shlok-mean" style="font-size:0.8rem; color:#888;">Through Sound we heal, Through Stars we guide.</p>
         </div>
 
-        <div class="footer-section connect-box">
-            <a href="https://aratt.ai/user/@mahadevastrologerma" class="arattai-link" target="_blank">
+        <div class="footer-section connect-box" style="margin-bottom:30px;">
+            <a href="https://aratt.ai/user/@mahadevastrologerma" class="arattai-link" target="_blank" style="text-decoration:none; color:var(--gold); border:1px solid rgba(245,197,66,0.3); padding:10px 20px; border-radius:30px; display:inline-block; font-size:0.9rem;">
                 <span class="gold-icon">🔱</span> Connect on Arattai
             </a>
         </div>
 
-        <nav class="footer-nav">
-            <a href="/pages/about.html" class="footer-link">Our Story</a>
-            <a href="/pages/terms.html" class="footer-link">Terms</a>
-            <a href="/pages/disclaimer.html" class="footer-link">Disclaimer</a>
-            <a href="/pages/contact.html" class="footer-link">Contact Us</a>
-            <a href="/pages/privacy.html" class="footer-link">Privacy Policy</a>
+        <nav class="footer-nav" style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px 25px; margin-bottom:30px;">
+            <a href="pages/about.html" class="footer-link" style="color:#ccc; text-decoration:none; font-size:0.85rem;">Our Story</a>
+            <a href="pages/terms.html" class="footer-link" style="color:#ccc; text-decoration:none; font-size:0.85rem;">Terms</a>
+            <a href="pages/disclaimer.html" class="footer-link" style="color:#ccc; text-decoration:none; font-size:0.85rem;">Disclaimer</a>
+            <a href="pages/contact.html" class="footer-link" style="color:#ccc; text-decoration:none; font-size:0.85rem;">Contact Us</a>
+            <a href="pages/privacy.html" class="footer-link" style="color:#ccc; text-decoration:none; font-size:0.85rem;">Privacy Policy</a>
         </nav>
     </div>
 
-    <div class="footer-bottom">
-        <p>&copy; 2026 MAHADEV ASTROLOGER MA. ALL RIGHTS RESERVED.</p>
+    <div class="footer-bottom" style="border-top:1px solid rgba(255,255,255,0.05); padding:20px 0; text-align:center;">
+        <p style="font-size:0.75rem; color:#666; letter-spacing:1px;">&copy; 2026 MAHADEV ASTROLOGER MA. ALL RIGHTS RESERVED.</p>
     </div>
+
+    <script>
+        // Visualizer Animation Logic
+        const bars = document.querySelectorAll('#footer-visualizer span');
+        setInterval(() => {
+            bars.forEach(bar => {
+                const height = Math.floor(Math.random() * 15) + 5;
+                bar.style.height = height + 'px';
+                bar.style.transition = '0.3s ease';
+            });
+        }, 300);
+
+        // Play Button Alert
+        document.getElementById('master-play-btn').onclick = function() {
+            const lang = localStorage.getItem('selectedLang') || 'hi';
+            const msg = (lang === 'hi') ? "दिव्य संगीत जल्द ही आ रहा है! 🔱" : "Divine music coming soon! 🔱";
+            alert(msg);
+        };
+    </script>
 </footer>
