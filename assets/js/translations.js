@@ -20,19 +20,12 @@ window.translations = {
         hero_title: "Discover the Truth of Your Destiny",
         hero_desc: "Authentic Vedic Astrology and precise remedial solutions by Mahadev Astrologer MA.",
 
-        // translations.js के अंदर उदाहरण:
-hi: {
-    event_tag: "होली 2026",
-    event_text: "🔱 होली मुहूर्त और विधि",
-    event_url: "https://www.mahadevastrologerma.in/latest-guide/article.html?id=7591463486673008592", // Link key ka naam yahi rakhen
-    // ... बाकी चाबियाँ
-},
-en: {
+       
+
     event_tag: "Holi 2026",
     event_text: "🔱 Holi Muhurat & Rituals",
     event_url: "https://www.mahadevastrologerma.in/latest-guide/article.html?id=6408606802958228263",
-    // ... बाकी चाबियाँ
-},
+
 
         svc_kundli_title: "Kundali Making", svc_kundli_desc: "Detailed birth chart analysis and planetary insights.",
         svc_matching_title: "Kundali Matching", svc_matching_desc: "Guna Milan and compatibility for a blessed marriage.",
@@ -122,8 +115,9 @@ en: {
         hero_title: "अपने भाग्य का दिव्य सत्य जानें",
         hero_desc: "वैदिक ज्योतिष एवं शास्त्रोक्त सटीक उपाय, सीधे Mahadev Astrologer MA के माध्यम से।",
 
-        sticker_tag: "महाशिवरात्रि २०२६",
-        sticker_text: "🔱 महात्म्य, पूजन विधि एवं शुभ मुहूर्त — यहाँ क्लिक करके पढ़ें",
+         event_tag: "होली 2026",
+    event_text: "🔱 होली मुहूर्त और विधि",
+    event_url: "https://www.mahadevastrologerma.in/latest-guide/article.html?id=7591463486673008592", // Link key ka naam yahi rakhen
 
         svc_kundli_title: "कुण्डली निर्माण", svc_kundli_desc: "सटीक ग्रहों की स्थिति, भविष्यवाणियों और जीवन की बाधाओं को दूर करने के लिए व्यक्तिगत शास्त्रीय उपायों के साथ विस्तृत वैदिक जन्म कुंडली विश्लेषण प्राप्त करें।",
         svc_matching_title: "कुण्डली मिलान", svc_matching_desc: "वैवाहिक अनुकूलता, मंगल दोष की जांच और दीर्घकालिक वैवाहिक सुख सुनिश्चित करने के लिए विशेषज्ञ गुण मिलान और अष्टकूट विश्लेषण।",
