@@ -1,6 +1,7 @@
-// 1. Translation Function (Ab ye Har Waqt Ready Hai)
+// 1. Translation Function (Ab ye Links bhi handle karega)
 window.updateUI = function() {
-    const lang = localStorage.getItem('preferredLang') || 'en';
+    // [cite: 2026-02-06, 2026-02-10] context se pata hai ki aap preferredLang use kar rahe hain
+    const lang = localStorage.getItem('preferredLang') || 'hi'; 
     const t = window.translations;
     
     if (!t || !t[lang]) return;
@@ -8,7 +9,13 @@ window.updateUI = function() {
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
         if (t[lang][key]) {
-            el.innerHTML = t[lang][key];
+            // AGAR KEY LINK HAI (event_url), TO HREF BADLO
+            if (key === 'event_url') {
+                el.href = t[lang][key];
+            } else {
+                // BAKI SAB KE LIYE TEXT BADLO
+                el.innerHTML = t[lang][key];
+            }
         }
     });
 
@@ -19,7 +26,7 @@ window.updateUI = function() {
     }
 };
 
-// 2. Main Layout Loader
+// 2. Main Layout Loader (Isme koi badlav nahi, ye perfect hai)
 async function loadLayout() {
     try {
         const hResp = await fetch('/header.html');
@@ -29,10 +36,8 @@ async function loadLayout() {
             document.getElementById('header-placeholder').innerHTML = await hResp.text();
             document.getElementById('footer-placeholder').innerHTML = await fResp.text();
 
-            // 🚩 SBSE ZAROORI: Header aate hi translation chala do!
             window.updateUI();
 
-            // --- Mobile Menu Logic ---
             const menuBtn = document.getElementById('mobile-menu');
             const drawer = document.getElementById('nav-drawer');
             const overlay = document.getElementById('menu-overlay');
@@ -56,12 +61,11 @@ async function loadLayout() {
     }
 }
 
-// 3. Language Switch (Ab Refresh ke saath Change bhi hoga)
+// 3. Language Switch
 window.toggleLanguage = function() {
-    let current = localStorage.getItem('preferredLang') || 'en';
+    let current = localStorage.getItem('preferredLang') || 'hi';
     localStorage.setItem('preferredLang', current === 'en' ? 'hi' : 'en');
     location.reload(); 
 };
 
-// Start the show
 document.addEventListener('DOMContentLoaded', loadLayout);
