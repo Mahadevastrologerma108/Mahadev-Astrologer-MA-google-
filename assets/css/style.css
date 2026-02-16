@@ -299,12 +299,14 @@ body {
     font-weight: bold;
 }
 
-/* Purana Premium Look - Ab naye naam ke saath */
+/* Purana Premium Look - Fixed for Redirect and Mobile */
 .event-sticker-link {
     display: block;
     text-decoration: none;
     margin: 25px auto;
     max-width: 95%; 
+    position: relative; /* Click fix के लिए */
+    z-index: 100;      /* Click fix के लिए */
     transition: transform 0.2s ease;
 }
 
@@ -348,14 +350,25 @@ body {
     color: var(--gold-main);
     font-size: 1.2rem;
 }
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .sticker-wrap { padding: 12px 15px; flex-direction: column; gap: 10px; text-align: center; }
-    .live-tag { margin-right: 0; }
-    .sticker-right { display: none; }
-}
 
+/* ✅ MOBILE RESPONSIVE FIX (Bypass mode) */
 @media (max-width: 768px) {
-    .footer-brand { font-size: 1.5rem !important; }
-    .sanskrit-shlok { font-size: 1.2rem; }
+    .sticker-wrap { 
+        padding: 12px 15px; 
+        flex-direction: row !important; /* Column को row किया ताकि पतला बैनर दिखे */
+        gap: 10px; 
+        text-align: left; 
+    }
+    .live-tag { 
+        margin-right: 10px; 
+        font-size: 9px; 
+        padding: 3px 8px; 
+    }
+    .sticker-center p { 
+        font-size: 0.85rem; /* Mobile पर टेक्स्ट थोड़ा छोटा */
+    }
+    .sticker-right { 
+        display: block; /* Arrow को मोबाइल पर भी दिखने दो */
+        font-size: 1rem;
+    }
 }
