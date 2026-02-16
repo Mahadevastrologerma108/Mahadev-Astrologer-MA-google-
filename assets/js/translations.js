@@ -20,8 +20,19 @@ window.translations = {
         hero_title: "Discover the Truth of Your Destiny",
         hero_desc: "Authentic Vedic Astrology and precise remedial solutions by Mahadev Astrologer MA.",
 
-        sticker_tag: "MAHASHIVRATRI 2026",
-        sticker_text: "🔱 Significance, Rituals & Auspicious Timings — Click Here",
+        // translations.js के अंदर उदाहरण:
+hi: {
+    event_tag: "होली 2026",
+    event_text: "🔱 होली मुहूर्त और विधि",
+    event_url: "https://.../article.html?id=HINDI_ID", // Link key ka naam yahi rakhen
+    // ... बाकी चाबियाँ
+},
+en: {
+    event_tag: "Holi 2026",
+    event_text: "🔱 Holi Muhurat & Rituals",
+    event_url: "https://.../article.html?id=ENGLISH_ID",
+    // ... बाकी चाबियाँ
+},
 
         svc_kundli_title: "Kundali Making", svc_kundli_desc: "Detailed birth chart analysis and planetary insights.",
         svc_matching_title: "Kundali Matching", svc_matching_desc: "Guna Milan and compatibility for a blessed marriage.",
