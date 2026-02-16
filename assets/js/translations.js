@@ -24,13 +24,13 @@ window.translations = {
 hi: {
     event_tag: "होली 2026",
     event_text: "🔱 होली मुहूर्त और विधि",
-    event_url: "https://.../article.html?id=HINDI_ID", // Link key ka naam yahi rakhen
+    event_url: "https://www.mahadevastrologerma.in/latest-guide/article.html?id=7591463486673008592", // Link key ka naam yahi rakhen
     // ... बाकी चाबियाँ
 },
 en: {
     event_tag: "Holi 2026",
     event_text: "🔱 Holi Muhurat & Rituals",
-    event_url: "https://.../article.html?id=ENGLISH_ID",
+    event_url: "https://www.mahadevastrologerma.in/latest-guide/article.html?id=6408606802958228263",
     // ... बाकी चाबियाँ
 },
 
