@@ -299,76 +299,53 @@ body {
     font-weight: bold;
 }
 
-/* Purana Premium Look - Fixed for Redirect and Mobile */
+/* Master Fix: Premium Banner Look & Click */
 .event-sticker-link {
-    display: block;
-    text-decoration: none;
-    margin: 25px auto;
-    max-width: 95%; 
-    position: relative; /* Click fix के लिए */
-    z-index: 100;      /* Click fix के लिए */
-    transition: transform 0.2s ease;
+    display: block !important;
+    text-decoration: none !important;
+    margin: 20px auto !important;
+    max-width: 95% !important;
+    position: relative !important;
+    z-index: 999 !important; /* Click Fix */
 }
 
 .sticker-wrap {
-    background: #111; 
-    border: 2px solid var(--gold-main); 
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    padding: 15px 25px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5), inset 0 0 15px rgba(212, 175, 55, 0.1);
-    cursor: pointer;
-}
-
-.sticker-wrap:hover {
-    transform: translateY(-3px);
-    background: #1a1a1a;
+    background: #0a0a0a !important; /* Deep Black */
+    border: 2px solid #d4af37 !important; /* Direct Gold Color */
+    border-radius: 10px !important;
+    display: flex !important;
+    flex-direction: row !important; /* Always horizontal */
+    align-items: center !important;
+    padding: 12px 20px !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.8) !important;
+    cursor: pointer !important;
 }
 
 .live-tag {
-    background: var(--gold-main);
-    color: #000;
-    padding: 4px 12px;
-    font-weight: 900;
-    font-size: 11px;
-    border-radius: 4px;
-    margin-right: 20px;
-    letter-spacing: 1px;
-    white-space: nowrap;
+    background: #d4af37 !important;
+    color: #000 !important;
+    padding: 4px 10px !important;
+    font-weight: 900 !important;
+    font-size: 11px !important;
+    border-radius: 4px !important;
+    margin-right: 15px !important;
+    white-space: nowrap !important;
 }
 
 .sticker-center p {
-    color: #fff;
-    margin: 0;
-    font-family: 'Cinzel', serif; 
-    font-size: 1.1rem;
+    color: #fff !important;
+    margin: 0 !important;
+    font-family: 'Cinzel', serif !important;
+    font-size: 1rem !important;
 }
 
 .sticker-right {
-    margin-left: auto;
-    color: var(--gold-main);
-    font-size: 1.2rem;
+    margin-left: auto !important;
+    color: #d4af37 !important;
 }
 
-/* ✅ MOBILE RESPONSIVE FIX (Bypass mode) */
+/* Mobile responsive fix */
 @media (max-width: 768px) {
-    .sticker-wrap { 
-        padding: 12px 15px; 
-        flex-direction: row !important; /* Column को row किया ताकि पतला बैनर दिखे */
-        gap: 10px; 
-        text-align: left; 
-    }
-    .live-tag { 
-        margin-right: 10px; 
-        font-size: 9px; 
-        padding: 3px 8px; 
-    }
-    .sticker-center p { 
-        font-size: 0.85rem; /* Mobile पर टेक्स्ट थोड़ा छोटा */
-    }
-    .sticker-right { 
-        display: block; /* Arrow को मोबाइल पर भी दिखने दो */
-        font-size: 1rem;
-    }
+    .sticker-center p { font-size: 0.85rem !important; }
+    .sticker-wrap { padding: 10px 15px !important; }
 }
