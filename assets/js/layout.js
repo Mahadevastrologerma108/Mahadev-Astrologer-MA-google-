@@ -1,20 +1,21 @@
-// 1. Translation Function (Ab ye Links bhi handle karega)
+// 1. Translation Function (Handles Texts & Links)
 window.updateUI = function() {
-    // [cite: 2026-02-06, 2026-02-10] context se pata hai ki aap preferredLang use kar rahe hain
-    const lang = localStorage.getItem('preferredLang') || 'hi'; 
+    const lang = localStorage.getItem('preferredLang') || 'hi';
     const t = window.translations;
     
     if (!t || !t[lang]) return;
 
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
-        if (t[lang][key]) {
-            // AGAR KEY LINK HAI (event_url), TO HREF BADLO
+        const val = t[lang][key];
+
+        if (val) {
+            // Agar key 'event_url' hai, toh href (link) badlo
             if (key === 'event_url') {
-                el.href = t[lang][key];
+                el.href = val;
             } else {
-                // BAKI SAB KE LIYE TEXT BADLO
-                el.innerHTML = t[lang][key];
+                // Baki sab ke liye text badlo
+                el.innerHTML = val;
             }
         }
     });
@@ -26,7 +27,7 @@ window.updateUI = function() {
     }
 };
 
-// 2. Main Layout Loader (Isme koi badlav nahi, ye perfect hai)
+// 2. Main Layout Loader (Header, Footer & Menu)
 async function loadLayout() {
     try {
         const hResp = await fetch('/header.html');
@@ -36,8 +37,10 @@ async function loadLayout() {
             document.getElementById('header-placeholder').innerHTML = await hResp.text();
             document.getElementById('footer-placeholder').innerHTML = await fResp.text();
 
-            window.updateUI();
+            // UI Update: Sabse pehle translations apply karein
+            setTimeout(() => { window.updateUI(); }, 100);
 
+            // Mobile Menu Elements
             const menuBtn = document.getElementById('mobile-menu');
             const drawer = document.getElementById('nav-drawer');
             const overlay = document.getElementById('menu-overlay');
@@ -46,26 +49,29 @@ async function loadLayout() {
             if (menuBtn && drawer) {
                 menuBtn.onclick = () => {
                     drawer.style.right = '0';
-                    overlay.style.display = 'block';
+                    if (overlay) overlay.style.display = 'block';
                 };
+                
                 const hideMenu = () => {
                     drawer.style.right = '-280px';
-                    overlay.style.display = 'none';
+                    if (overlay) overlay.style.display = 'none';
                 };
+
                 if (closeBtn) closeBtn.onclick = hideMenu;
                 if (overlay) overlay.onclick = hideMenu;
             }
         }
     } catch (e) {
-        console.log("Layout error:", e);
+        console.log("Layout loading error:", e);
     }
 }
 
-// 3. Language Switch
+// 3. Language Switch Function
 window.toggleLanguage = function() {
     let current = localStorage.getItem('preferredLang') || 'hi';
     localStorage.setItem('preferredLang', current === 'en' ? 'hi' : 'en');
     location.reload(); 
 };
 
+// Initial Load
 document.addEventListener('DOMContentLoaded', loadLayout);
