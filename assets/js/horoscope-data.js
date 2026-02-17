@@ -11,7 +11,10 @@ const dailyHoroscope = {
     health: {
       hi: "थकान या सिर भारी लग सकता है। ऐसे समय कुछ लोग मन ही मन ‘ॐ नमः शिवाय’ बोलते हैं, जिससे मन हल्का लग सकता है।",
       en: "You may feel tired or low on energy. Softly chanting 'Om Namah Shivaya' may bring some calm."
-    }
+    },
+    luckyColor: "Red",
+    luckyNumber: "1",
+    luckyTime: "10:00 AM"
   },
 
   taurus: {
@@ -26,7 +29,10 @@ const dailyHoroscope = {
     health: {
       hi: "खानपान को लेकर थोड़ा ध्यान देने की ज़रूरत महसूस हो सकती है। कुछ लोग ऐसे समय ‘ॐ सोमाय नमः’ बोलना पसंद करते हैं।",
       en: "Diet may need some attention today. Some find calm in chanting 'Om Somaya Namah'."
-    }
+    },
+    luckyColor: "White",
+    luckyNumber: "6",
+    luckyTime: "12:30 PM"
   },
 
   gemini: {
@@ -41,7 +47,10 @@ const dailyHoroscope = {
     health: {
       hi: "स्वास्थ्य थोड़ा सुस्त महसूस हो सकता है। ऐसे समय ‘ॐ नमः शिवाय’ मन ही मन बोलना सुकून दे सकता है।",
       en: "Health may feel low today. Chanting 'Om Namah Shivaya' softly may bring relief."
-    }
+    },
+    luckyColor: "Yellow",
+    luckyNumber: "5",
+    luckyTime: "3:45 PM"
   },
 
   cancer: {
@@ -56,7 +65,10 @@ const dailyHoroscope = {
     health: {
       hi: "मौसम के कारण शरीर थोड़ा कमजोर लग सकता है। कुछ लोग ऐसे समय गायत्री मंत्र मन में दोहराते हैं।",
       en: "Seasonal discomfort may occur. Some feel peaceful chanting the Gayatri Mantra."
-    }
+    },
+    luckyColor: "Silver",
+    luckyNumber: "2",
+    luckyTime: "9:15 AM"
   },
 
   leo: {
@@ -71,7 +83,10 @@ const dailyHoroscope = {
     health: {
       hi: "पानी कम पीने से थकान लग सकती है। शरीर की सुनना आज ज़रूरी लग सकता है।",
       en: "Dehydration may cause tiredness. Listening to your body is important today."
-    }
+    },
+    luckyColor: "Gold",
+    luckyNumber: "1",
+    luckyTime: "11:20 AM"
   },
 
   virgo: {
@@ -86,7 +101,10 @@ const dailyHoroscope = {
     health: {
       hi: "पेट या गले से जुड़ी हल्की परेशानी लग सकती है। कुछ लोग ऐसे में शिव मंत्र मन में दोहराते हैं।",
       en: "Minor digestive or throat issues may occur. Chanting a Shiva mantra may feel soothing."
-    }
+    },
+    luckyColor: "Green",
+    luckyNumber: "5",
+    luckyTime: "2:40 PM"
   },
 
   libra: {
@@ -101,7 +119,10 @@ const dailyHoroscope = {
     health: {
       hi: "पुरानी परेशानी में राहत का एहसास हो सकता है। शरीर थोड़ा हल्का लग सकता है।",
       en: "Relief from old issues is possible. You may feel better physically."
-    }
+    },
+    luckyColor: "Pink",
+    luckyNumber: "6",
+    luckyTime: "4:10 PM"
   },
 
   scorpio: {
@@ -116,7 +137,10 @@ const dailyHoroscope = {
     health: {
       hi: "स्वास्थ्य सामान्य रह सकता है। कुछ लोग ‘ॐ वैष्णवी नमः’ बोलकर मन को शांत रखते हैं।",
       en: "Health may stay normal. Some feel calm chanting 'Om Vaishnavi Namah'."
-    }
+    },
+    luckyColor: "Maroon",
+    luckyNumber: "9",
+    luckyTime: "8:15 PM"
   },
 
   sagittarius: {
@@ -131,7 +155,10 @@ const dailyHoroscope = {
     health: {
       hi: "धूल या प्रदूषण से दूरी बनाना ठीक लग सकता है। कुछ लोग ‘ॐ’ का उच्चारण सुकूनदायक मानते हैं।",
       en: "Avoiding dust and pollution may help. Chanting 'Om' can feel calming."
-    }
+    },
+    luckyColor: "Orange",
+    luckyNumber: "3",
+    luckyTime: "7:30 AM"
   },
 
   capricorn: {
@@ -146,7 +173,10 @@ const dailyHoroscope = {
     health: {
       hi: "पुरानी परेशानी उभरती सी लग सकती है। कुछ लोग ‘श्री शिवाय नमस्तुभ्यं’ बोलकर मन संभालते हैं।",
       en: "Old issues may resurface. Chanting 'Shree Shivaya Namastubhyam' may help."
-    }
+    },
+    luckyColor: "Grey",
+    luckyNumber: "8",
+    luckyTime: "1:20 PM"
   },
 
   aquarius: {
@@ -159,9 +189,12 @@ const dailyHoroscope = {
       en: "Warmth may return in relationships. Open talks can help."
     },
     health: {
-      hi: "ब्लड प्रेशर या तनाव पर ध्यान देने की ज़रूरत लग सकती है। ‘ॐ नमः शिवाय’ मन को शांत कर सकता है।",
+      hi: "तनाव या ब्लड प्रेशर पर ध्यान देने की ज़रूरत लग सकती है। ‘ॐ नमः शिवाय’ मन को शांत कर सकता है।",
       en: "Stress or BP may need attention. Chanting 'Om Namah Shivaya' may calm the mind."
-    }
+    },
+    luckyColor: "Blue",
+    luckyNumber: "11",
+    luckyTime: "6:45 PM"
   },
 
   pisces: {
@@ -176,7 +209,10 @@ const dailyHoroscope = {
     health: {
       hi: "स्वास्थ्य सामान्य रह सकता है। वाहन चलाते समय थोड़ा सतर्क रहना सही लगेगा।",
       en: "Health may remain fine. Extra care while driving may help."
-    }
+    },
+    luckyColor: "Light Pink",
+    luckyNumber: "7",
+    luckyTime: "10:00 AM"
   }
 };
 function loadHoroscope(rashiKey) {
