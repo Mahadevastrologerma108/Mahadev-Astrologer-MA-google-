@@ -1,207 +1,182 @@
 const dailyHoroscope = {
-  "aries": {
-    "career": {
-      "hi": "कार्यक्षेत्र में नए आयाम आ सकते हैं। मत विचारों से कार्य पर लग रहें।",
-      "en": "New dimensions may open up in the workplace. Stay focused on your goals despite differing opinions."
+  aries: {
+    career: {
+      hi: "आज काम में थोड़ा दबाव या उलझन महसूस हो सकती है। अगर मन भटका हुआ लगे, तो कुछ देर शांत बैठने से या काम को धीरे-धीरे करने से स्थिति बेहतर लग सकती है।",
+      en: "Work may feel a bit stressful today. Slowing down and staying calm may help you handle things better."
     },
-    "love": {
-      "hi": "संबंधों में मधुरता आएगी, संयम बनाए रखें।",
-      "en": "Sweetness will prevail in relationships; maintain self-control."
+    love: {
+      hi: "रिश्तों में छोटी बात पर गलतफहमी बन सकती है। अगर ऐसा लगे, तो प्यार से बात करने पर माहौल संभल सकता है।",
+      en: "Small misunderstandings may happen in relationships. Calm and loving talks can help."
     },
-    "health": {
-      "hi": "स्वास्थ्य संबंधित कुछ परेशानियां आ सकती हैं। 'ओम भैरवाय नमः' का जाप करें।",
-      "en": "Some health-related issues may arise. Chant 'Om Bhairavaye Namah'."
-    },
-    "luckyColor": "Saffron",
-    "luckyNumber": "1",
-    "luckyTime": "10:30 AM"
+    health: {
+      hi: "थकान या सिर भारी लग सकता है। ऐसे समय कुछ लोग मन ही मन ‘ॐ नमः शिवाय’ बोलते हैं, जिससे मन हल्का लग सकता है।",
+      en: "You may feel tired or low on energy. Softly chanting 'Om Namah Shivaya' may bring some calm."
+    }
   },
-  "taurus": {
-    "career": {
-      "hi": "किसी भी बड़े निर्णय पर ध्यान से सोच विचार कर कदम उठाए।",
-      "en": "Think carefully before taking steps on any major decision."
+
+  taurus: {
+    career: {
+      hi: "काम से जुड़े फैसलों में आज थोड़ा समय लेना ठीक लग सकता है। जल्दबाज़ी से बचने पर चीज़ें अपने आप साफ होती दिख सकती हैं।",
+      en: "Work decisions may need a little more time. Avoiding haste can bring clarity."
     },
-    "love": {
-      "hi": "इस समय परिवार के साथ कुछ सुखद समय बिताने का है।",
-      "en": "This is the time to spend some pleasant moments with your family."
+    love: {
+      hi: "परिवार के साथ समय बिताने का मन बन सकता है। अगर रिश्तों में दूरी महसूस हो, तो एक साधारण बातचीत काफी हो सकती है।",
+      en: "You may feel like spending time with family. Simple conversations can reduce distance."
     },
-    "health": {
-      "hi": "तेल से बनी चीजों को कम खाएं, पानी पिएं। 'ॐ सोमाय नमः' का जाप करें।",
-      "en": "Reduce oily food intake and stay hydrated. Chant 'Om Somaye Namah'."
-    },
-    "luckyColor": "Sky Blue",
-    "luckyNumber": "7",
-    "luckyTime": "12:15 PM"
+    health: {
+      hi: "खानपान को लेकर थोड़ा ध्यान देने की ज़रूरत महसूस हो सकती है। कुछ लोग ऐसे समय ‘ॐ सोमाय नमः’ बोलना पसंद करते हैं।",
+      en: "Diet may need some attention today. Some find calm in chanting 'Om Somaya Namah'."
+    }
   },
-  "gemini": {
-    "career": {
-      "hi": "अनुभव और विवेक का परिचय दें, ज्यादा बोलने से बचें।",
-      "en": "Showcase your experience and wisdom; avoid speaking excessively."
+
+  gemini: {
+    career: {
+      hi: "आज काम में बातचीत ज़्यादा हो सकती है। अगर लगे कि बात ज्यादा फैल रही है, तो कम बोलना फायदेमंद हो सकता है।",
+      en: "Communication may increase at work. Speaking less and listening more may help."
     },
-    "love": {
-      "hi": "संतान की चिंता बन सकती है, मन को शांत रखें।",
-      "en": "Concerns regarding children may arise; keep your mind calm."
+    love: {
+      hi: "घर या रिश्तों को लेकर थोड़ी चिंता महसूस हो सकती है। मन शांत रखोगे तो चीज़ें आसान लगेंगी।",
+      en: "Some emotional concern may arise in relationships. Staying calm can make things easier."
     },
-    "health": {
-      "hi": "स्वास्थ्य कार्य में अवरोध पैदा कर सकता है, डॉक्टर से परामर्श लें। 'ओम नमः शिवाय' जपें।",
-      "en": "Health might cause hurdles in work; consult a doctor. Chant 'Om Namah Shivaya'."
-    },
-    "luckyColor": "Yellow",
-    "luckyNumber": "3",
-    "luckyTime": "03:45 PM"
+    health: {
+      hi: "स्वास्थ्य थोड़ा सुस्त महसूस हो सकता है। ऐसे समय ‘ॐ नमः शिवाय’ मन ही मन बोलना सुकून दे सकता है।",
+      en: "Health may feel low today. Chanting 'Om Namah Shivaya' softly may bring relief."
+    }
   },
-  "cancer": {
-    "career": {
-      "hi": "लाभ और हानि साथ में है, कृपया सोच समझ कर खर्च करें।",
-      "en": "Profit and loss go hand in hand; please spend wisely."
+
+  cancer: {
+    career: {
+      hi: "आज खर्च और कमाई दोनों पर ध्यान जा सकता है। अगर खर्च बढ़ता लगे, तो थोड़ा संभलकर चलना ठीक रहेगा।",
+      en: "Income and expenses may both need attention today. Spending wisely may help."
     },
-    "love": {
-      "hi": "परिवार जनों और जीवनसाथी से अनावश्यक बहस से बचें।",
-      "en": "Avoid unnecessary arguments with family members and spouse."
+    love: {
+      hi: "परिवार या जीवनसाथी से भावनात्मक बातचीत हो सकती है। बात को शांत तरीके से रखने पर माहौल अच्छा रह सकता है।",
+      en: "Emotional talks may happen with family or partner. Staying calm can help."
     },
-    "health": {
-      "hi": "मौसमी बीमारी लग सकती है, बच कर रहें। 'गायत्री मंत्र' का जाप करें।",
-      "en": "Seasonal illnesses may occur; stay cautious. Chant the 'Gayatri Mantra'."
-    },
-    "luckyColor": "Silver",
-    "luckyNumber": "4",
-    "luckyTime": "09:00 AM"
+    health: {
+      hi: "मौसम के कारण शरीर थोड़ा कमजोर लग सकता है। कुछ लोग ऐसे समय गायत्री मंत्र मन में दोहराते हैं।",
+      en: "Seasonal discomfort may occur. Some feel peaceful chanting the Gayatri Mantra."
+    }
   },
-  "leo": {
-    "career": {
-      "hi": "कार्य क्षेत्र में ध्यान लगाने के लिए 'ओम नमो भगवते वासुदेवाय' का जाप करें।",
-      "en": "Chant 'Om Namo Bhagavate Vasudevaya' to focus better at the workplace."
+
+  leo: {
+    career: {
+      hi: "काम में फोकस बनाने की ज़रूरत महसूस हो सकती है। अगर मन इधर-उधर जाए, तो लोग ‘ॐ नमो भगवते वासुदेवाय’ बोलकर मन को स्थिर करते हैं।",
+      en: "You may need better focus at work. Chanting 'Om Namo Bhagavate Vasudevaya' may help some people."
     },
-    "love": {
-      "hi": "संबंधों की परीक्षा का समय है, धैर्य बनाए रखें।",
-      "en": "It is a testing time for relationships; maintain patience."
+    love: {
+      hi: "रिश्तों की थोड़ी परीक्षा हो सकती है। धैर्य रखोगे तो बात बिगड़ने से बच सकती है।",
+      en: "Relationships may be tested today. Patience can prevent issues."
     },
-    "health": {
-      "hi": "प्रचुर मात्रा में जल पिएं और मौसमी फलों का सेवन करें।",
-      "en": "Drink plenty of water and consume seasonal fruits."
-    },
-    "luckyColor": "Golden",
-    "luckyNumber": "5",
-    "luckyTime": "11:20 AM"
+    health: {
+      hi: "पानी कम पीने से थकान लग सकती है। शरीर की सुनना आज ज़रूरी लग सकता है।",
+      en: "Dehydration may cause tiredness. Listening to your body is important today."
+    }
   },
-  "virgo": {
-    "career": {
-      "hi": "व्यापारियों के लिए शुभ समय है, व्यापार को वृद्धि की ओर ले जाएं।",
-      "en": "Auspicious time for traders to lead their business towards growth."
+
+  virgo: {
+    career: {
+      hi: "व्यापार या काम में आगे बढ़ने के संकेत मिल सकते हैं। अगर योजना साफ हो, तो आत्मविश्वास बढ़ सकता है।",
+      en: "Business or work growth may be seen. Clear planning can boost confidence."
     },
-    "love": {
-      "hi": "जीवनसाथी और बिजनेस पार्टनर से तालमेल बनाए रखें।",
-      "en": "Maintain coordination with your spouse and business partner."
+    love: {
+      hi: "जीवनसाथी या करीबी लोगों से तालमेल अच्छा बन सकता है। थोड़ा समय साथ बिताना फायदेमंद लग सकता है।",
+      en: "Coordination with loved ones may improve. Spending time together can help."
     },
-    "health": {
-      "hi": "गर्म पानी, गुड़ या शहद के साथ लें। 'शिव पंचाक्षर मंत्र' का जाप करें।",
-      "en": "Drink warm water with jaggery or honey. Chant 'Shiva Panchakshara Mantra'."
-    },
-    "luckyColor": "Emerald Green",
-    "luckyNumber": "2",
-    "luckyTime": "02:30 PM"
+    health: {
+      hi: "पेट या गले से जुड़ी हल्की परेशानी लग सकती है। कुछ लोग ऐसे में शिव मंत्र मन में दोहराते हैं।",
+      en: "Minor digestive or throat issues may occur. Chanting a Shiva mantra may feel soothing."
+    }
   },
-  "libra": {
-    "career": {
-      "hi": "खर्च बढ़ने की संभावना है, लक्ष्मी गणेश का ध्यान धरें।",
-      "en": "Expenses are likely to increase; meditate on Lakshmi-Ganesha."
+
+  libra: {
+    career: {
+      hi: "खर्च बढ़ने का एहसास हो सकता है। अगर मन अस्थिर लगे, तो लोग लक्ष्मी-गणेश का ध्यान करते हैं।",
+      en: "Expenses may increase. Some people meditate on Lakshmi-Ganesha for balance."
     },
-    "love": {
-      "hi": "आपकी बातों से कोई आहत न हो, सोच विचार कर शब्दों का प्रयोग करें।",
-      "en": "Ensure your words don't hurt anyone; use your words thoughtfully."
+    love: {
+      hi: "बातचीत में शब्दों का असर ज्यादा हो सकता है। सोच-समझकर बोलने से रिश्ते बेहतर रह सकते हैं।",
+      en: "Words may impact relationships more today. Thoughtful speech can help."
     },
-    "health": {
-      "hi": "पुराने रोगों से राहत मिल सकती है, स्वास्थ्य में सुधार होगा।",
-      "en": "Relief from old ailments is possible; health will improve."
-    },
-    "luckyColor": "Purple",
-    "luckyNumber": "6",
-    "luckyTime": "04:10 PM"
+    health: {
+      hi: "पुरानी परेशानी में राहत का एहसास हो सकता है। शरीर थोड़ा हल्का लग सकता है।",
+      en: "Relief from old issues is possible. You may feel better physically."
+    }
   },
-  "scorpio": {
-    "career": {
-      "hi": "जॉब में पदोन्नति या कुछ बड़ा अवसर मिलने की संभावना है।",
-      "en": "Possibility of promotion or a big opportunity in your job."
+
+  scorpio: {
+    career: {
+      hi: "काम में कोई अच्छा मौका या सराहना मिल सकती है। अगर ऐसा लगे, तो आत्मविश्वास बढ़ता महसूस होगा।",
+      en: "A good opportunity or appreciation may come at work. Confidence may rise."
     },
-    "love": {
-      "hi": "परिवार और जीवन साथी का सहयोग मिलेगा, सबको साथ लेकर चलें।",
-      "en": "Support from family and spouse will be there; move forward with everyone."
+    love: {
+      hi: "परिवार और जीवनसाथी का साथ महसूस हो सकता है। मिलकर आगे बढ़ने की भावना बनेगी।",
+      en: "Support from family and partner may be felt. Togetherness will grow."
     },
-    "health": {
-      "hi": "स्वास्थ्य ठीक रहेगा, केवल मौसमी रोगों पर ध्यान दें। 'ओम वैष्णवी नमः' जपें।",
-      "en": "Health will be fine; just watch out for seasonal diseases. Chant 'Om Vaishnavi Namah'."
-    },
-    "luckyColor": "Maroon",
-    "luckyNumber": "9",
-    "luckyTime": "08:15 PM"
+    health: {
+      hi: "स्वास्थ्य सामान्य रह सकता है। कुछ लोग ‘ॐ वैष्णवी नमः’ बोलकर मन को शांत रखते हैं।",
+      en: "Health may stay normal. Some feel calm chanting 'Om Vaishnavi Namah'."
+    }
   },
-  "sagittarius": {
-    "career": {
-      "hi": "जीवनसाथी और बुजुर्गों की सलाह से कार्य करें, लाभ मिलेगा।",
-      "en": "Work based on advice from your spouse and elders for better profits."
+
+  sagittarius: {
+    career: {
+      hi: "बुजुर्गों या जीवनसाथी की सलाह काम आ सकती है। सुनने से नए विचार मिल सकते हैं।",
+      en: "Advice from elders or spouse may help. Listening can bring new ideas."
     },
-    "love": {
-      "hi": "बातों को शांति से रखें, अधिक उतावलापन रिश्ते बिगाड़ सकता है।",
-      "en": "Express yourself calmly; excessive impulsiveness can spoil relationships."
+    love: {
+      hi: "जल्दबाज़ी से बात बिगड़ सकती है। अगर मन शांत रखा जाए, तो रिश्ता बेहतर लग सकता है।",
+      en: "Impulsiveness may affect relationships. Calmness can help."
     },
-    "health": {
-      "hi": "धूल और दुर्गंध वाली जगह पर जाने से बचें। 'ओमकार' का उच्चारण करें।",
-      "en": "Avoid dusty and smelly places. Chant 'Omkar'."
-    },
-    "luckyColor": "Orange",
-    "luckyNumber": "3",
-    "luckyTime": "07:30 AM"
+    health: {
+      hi: "धूल या प्रदूषण से दूरी बनाना ठीक लग सकता है। कुछ लोग ‘ॐ’ का उच्चारण सुकूनदायक मानते हैं।",
+      en: "Avoiding dust and pollution may help. Chanting 'Om' can feel calming."
+    }
   },
-  "capricorn": {
-    "career": {
-      "hi": "अपने खर्चों पर नियंत्रण करें, धन संचय करना आवश्यक है।",
-      "en": "Control your expenses; it is essential to save money."
+
+  capricorn: {
+    career: {
+      hi: "आज खर्चों पर ध्यान जाने की संभावना है। अगर संतुलन बना रहे, तो मन हल्का रह सकता है।",
+      en: "Expenses may need attention today. Maintaining balance can ease stress."
     },
-    "love": {
-      "hi": "क्रोध करने से बचें वरना रिश्तों की मधुरता कम हो सकती है।",
-      "en": "Avoid getting angry or the sweetness of relationships may decrease."
+    love: {
+      hi: "गुस्सा रिश्तों को प्रभावित कर सकता है। अगर बात को शांत रखा जाए, तो मधुरता बनी रह सकती है।",
+      en: "Anger may affect relationships. Calm talks can maintain harmony."
     },
-    "health": {
-      "hi": "पुराने रोग वापस आ सकते हैं, सावधान रहें। 'श्री शिवाय नमस्तुभ्यं' का जाप करें।",
-      "en": "Old ailments may return; be careful. Chant 'Shree Shivay Namastubhyam'."
-    },
-    "luckyColor": "Dark Grey",
-    "luckyNumber": "8",
-    "luckyTime": "01:20 PM"
+    health: {
+      hi: "पुरानी परेशानी उभरती सी लग सकती है। कुछ लोग ‘श्री शिवाय नमस्तुभ्यं’ बोलकर मन संभालते हैं।",
+      en: "Old issues may resurface. Chanting 'Shree Shivaya Namastubhyam' may help."
+    }
   },
-  "aquarius": {
-    "career": {
-      "hi": "कार्य क्षेत्र में थोड़ा उतार-चढ़ाव आ सकता है, धैर्य रखें।",
-      "en": "Ups and downs may occur at the workplace; keep patience."
+
+  aquarius: {
+    career: {
+      hi: "काम में उतार-चढ़ाव महसूस हो सकता है। धैर्य रखने से चीज़ें धीरे-धीरे साफ होती दिख सकती हैं।",
+      en: "Ups and downs may occur at work. Patience can bring clarity."
     },
-    "love": {
-      "hi": "रिश्तों की मधुरता वापस आएगी, बिगड़ते संबंध ठीक होंगे।",
-      "en": "Sweetness will return to relationships; failing bonds will heal."
+    love: {
+      hi: "रिश्तों में फिर से अपनापन लौट सकता है। बात खुलकर करने से अच्छा लगेगा।",
+      en: "Warmth may return in relationships. Open talks can help."
     },
-    "health": {
-      "hi": "रक्तचाप की जांच करते रहें और 'ओम नमः शिवाय' का जाप करें।",
-      "en": "Keep checking your blood pressure and chant 'Om Namah Shivaya'."
-    },
-    "luckyColor": "Navy Blue",
-    "luckyNumber": "11",
-    "luckyTime": "06:45 PM"
+    health: {
+      hi: "ब्लड प्रेशर या तनाव पर ध्यान देने की ज़रूरत लग सकती है। ‘ॐ नमः शिवाय’ मन को शांत कर सकता है।",
+      en: "Stress or BP may need attention. Chanting 'Om Namah Shivaya' may calm the mind."
+    }
   },
-  "pisces": {
-    "career": {
-      "hi": "अति आत्मविश्वास घातक हो सकता है, हड़बड़ी में फैसला न लें।",
-      "en": "Overconfidence can be fatal; do not take decisions in a hurry."
+
+  pisces: {
+    career: {
+      hi: "अति आत्मविश्वास से बचना ठीक रहेगा। सोच-समझकर कदम रखने से स्थिति बेहतर लग सकती है।",
+      en: "Avoid overconfidence today. Thoughtful steps may work better."
     },
-    "love": {
-      "hi": "परिवार में कुछ शुभ समाचार आ सकता है, मन प्रसन्न रहेगा।",
-      "en": "Some good news may arrive in the family; the mind will be happy."
+    love: {
+      hi: "परिवार में कोई अच्छी खबर सुनने को मिल सकती है। मन प्रसन्न महसूस करेगा।",
+      en: "Good news in the family is possible. You may feel happy."
     },
-    "health": {
-      "hi": "स्वास्थ्य सही रहेगा, केवल वाहन चलाते समय विशेष सावधानी बरतें।",
-      "en": "Health will be good; just take special care while driving."
-    },
-    "luckyColor": "Light Pink",
-    "luckyNumber": "7",
-    "luckyTime": "10:00 AM"
+    health: {
+      hi: "स्वास्थ्य सामान्य रह सकता है। वाहन चलाते समय थोड़ा सतर्क रहना सही लगेगा।",
+      en: "Health may remain fine. Extra care while driving may help."
+    }
   }
 };
 function loadHoroscope(rashiKey) {
