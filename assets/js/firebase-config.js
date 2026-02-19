@@ -1,10 +1,13 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+// 🆕 Realtime Database ke liye ye import zaroori hai
+import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 // 🔱 1. NORMAL PROJECT (Appointments & Telegram Notifications)
 const normalConfig = {
   apiKey: "AIzaSyAgcfrzQm6wezgtU5Q5BP8wxXatmoWqYrw",
   authDomain: "mahadev-astrologer.firebaseapp.com",
+  databaseURL: "https://mahadev-astrologer-default-rtdb.firebaseio.com", // 🆕 Aapka Realtime DB URL
   projectId: "mahadev-astrologer",
   storageBucket: "mahadev-astrologer.firebasestorage.app",
   messagingSenderId: "559664802739",
@@ -23,10 +26,13 @@ const studioConfig = {
 
 // Dono Projects ko Initialize karein
 const normalApp = initializeApp(normalConfig);
-const studioApp = initializeApp(studioConfig, "studioApp"); // Unique Name for 2nd app
+const studioApp = initializeApp(studioConfig, "studioApp");
 
-// Dono Database instances ko export karein
-const db = getFirestore(normalApp);        // Default/Normal DB
-const dbStudio = getFirestore(studioApp);  // Studio DB
+// --- Exports ---
+const db = getFirestore(normalApp);        // Appointments ke liye
+const dbStudio = getFirestore(studioApp);  // Studio ke liye
 
-export { db, dbStudio };
+// 🆕 Panchang ke liye Realtime Database instance
+const rtdb = getDatabase(normalApp); 
+
+export { db, dbStudio, rtdb }; // rtdb ko bhi export kar rahe hain
