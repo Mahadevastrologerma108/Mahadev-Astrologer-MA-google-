@@ -2,32 +2,97 @@ import { db, dbStudio, rtdb } from './firebase-config.js';
 import { collection, addDoc, serverTimestamp, query, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-console.log("🔱 Mahadev! Full System Restore Loading...");
+console.log("🔱 Mahadev System: Deep Integration with Calendar Grid Fix.");
 
+// --- 1. Configuration ---
 const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
 const CHAT_ID = '2032242977'; 
 
-// 1. Telegram Notification
-async function notifyTelegram(data) {
-    let message = `🔱 *New Divine Request!* 🔱\n\n👤 *Name:* ${data.name}\n✨ *Service:* ${data.service.toUpperCase()}\n📱 *Method:* ${data.contact_method}\n📍 *Detail:* ${data.contact_detail}\n`;
-    try {
-        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
-        });
-    } catch (e) { console.error("Telegram Error", e); }
-}
+// --- 2. 🔱 Full Course Logic: Data -> UI -> Calendar -> Translation ---
 
-// 2. Appointment Form
+window.getPanchangFromFirebase = async function(year) {
+    console.log(`[Phase 1] Fetching ${year} Data...`);
+    try {
+        const panRef = ref(rtdb, `panchang/${year}`);
+        const snapshot = await get(panRef); 
+        
+        if (snapshot.exists()) {
+            const allYearData = snapshot.val();
+            window["Data" + year] = allYearData; // Global storage for Calendar Logic
+            
+            console.log("[Phase 2] Data Received. Filling UI...");
+            await window.updatePanchangDisplay(allYearData);
+            
+            // 🚩 THE CALENDAR GRID FIX:
+            // Data load hone ke BAAD hi calendar ko order do grid banane ka
+            console.log("[Phase 3] Building Calendar Grid...");
+            if (typeof window.renderCalendar === 'function') {
+                window.renderCalendar(); 
+            } else {
+                console.error("❌ Error: panchang-logic.js ka renderCalendar function nahi mila!");
+            }
+
+            // 🔱 Final Touch: Translation release
+            console.log("[Phase 4] Releasing Translation...");
+            if (window.applyTranslations) {
+                window.applyTranslations(); 
+            }
+        }
+    } catch (error) {
+        console.error("❌ Critical System Error:", error);
+    }
+};
+
+window.updatePanchangDisplay = async function(yearlyData, customDate = null) {
+    const today = new Date();
+    // Aaj 20 Feb hai, toh automatic 02-20 uthayega
+    const dateKey = customDate || `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    
+    const dayData = yearlyData[dateKey];
+    if (!dayData) return;
+
+    // Mapping Database to HTML IDs
+    const uiMap = {
+        'pan-tithi': dayData.tithi.hi,
+        'pan-nak': dayData.nakshatra?.hi || "--",
+        'pan-yoga': dayData.yoga?.hi || "--",
+        'pan-karana': dayData.karan?.hi || "--",
+        'pan-paksha': dayData.paksha?.hi || "--",
+        'pan-sun': `${dayData.sun.rise} / ${dayData.sun.set}`,
+        'pan-moon': dayData.moon?.rise || "--",
+        'pan-muh': dayData.muhurat?.abhijit || "--",
+        'pan-rahu': dayData.muhurat?.rahukaal || "--"
+    };
+
+    for (const [id, value] of Object.entries(uiMap)) {
+        const el = document.getElementById(id);
+        if (el) el.innerText = value;
+    }
+
+    // Choghadiya Table Update
+    const dayBody = document.getElementById('day-chaug-body');
+    if (dayBody && dayData.choghadiya?.day) {
+        dayBody.innerHTML = ""; 
+        Object.entries(dayData.choghadiya.day).forEach(([time, name]) => {
+            dayBody.innerHTML += `<tr><td>${time}</td><td>${name}</td><td>Shubh</td></tr>`;
+        });
+    }
+    return true; 
+};
+
+// --- 3. Initialization ---
+document.addEventListener('DOMContentLoaded', () => {
+    window.getPanchangFromFirebase(2026);
+});
+
+// --- 4. Appointment Form Logic ---
 const appointmentForm = document.getElementById('consultation-form');
 if (appointmentForm) {
     appointmentForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = e.target.querySelector('button');
         btn.innerText = "🔱 SENDING...";
-        btn.disabled = true;
-        let submissionData = {
+        const subData = {
             service: document.getElementById('service-select').value,
             name: document.getElementById('user-name').value,
             contact_method: document.querySelector('input[name="contact-method"]:checked').value,
@@ -35,101 +100,10 @@ if (appointmentForm) {
             timestamp: serverTimestamp()
         };
         try {
-            await addDoc(collection(db, "appointments"), submissionData);
-            await notifyTelegram(submissionData);
-            alert("🔱 Pranaam! Message Sent.");
+            await addDoc(collection(db, "appointments"), subData);
+            alert("🔱 Sandesh Pahunch Gaya!");
             e.target.reset();
-        } catch (err) { alert("Error saving data."); }
-        finally { btn.innerText = "SEND REQUEST"; btn.disabled = false; }
+        } catch (err) { console.error(err); }
+        finally { btn.innerText = "SEND REQUEST"; }
     });
 }
-
-// 3. 🔱 Panchang Fetch & Display (Updated for 20-28 Feb)
-window.getPanchangFromFirebase = async function(year) {
-    console.log(`[Firebase] Fetching Panchang for ${year}...`);
-    try {
-        const panchangRef = ref(rtdb, `panchang/${year}`);
-        const snapshot = await get(panchangRef);
-        
-        let data = {};
-        if (snapshot.exists()) {
-            data = snapshot.val();
-            window["Data" + year] = data; 
-            console.log("✅ Data Loaded Successfully:", data);
-            window.updatePanchangDisplay(data); 
-        } else {
-            console.warn("⚠️ No data found in Firebase for year:", year);
-        }
-
-        // 🔥 CRITICAL: Data mile ya na mile, calendar render hona chahiye
-        if (typeof window.renderCalendar === 'function') {
-            window.renderCalendar();
-        } else {
-            console.error("❌ renderCalendar function not found in panchang-logic.js");
-        }
-        return data;
-    } catch (error) {
-        console.error("Firebase Error:", error);
-        if (typeof window.renderCalendar === 'function') window.renderCalendar();
-        return {};
-    }
-};
-
-window.updatePanchangDisplay = function(yearlyData, customDate = null) {
-    const today = new Date();
-    // Agar date select nahi ki, toh aaj ki dikhao. Agar aaj ka data nahi hai toh list mein se koi bhi date dikhao
-    let dateKey = customDate || `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-    
-    let dayData = yearlyData[dateKey];
-
-    // Testing ke liye: Agar aaj ka data nahi hai (20 se pehle), toh 02-20 ka data default dikhao
-    if (!dayData && yearlyData["02-20"]) {
-        dayData = yearlyData["02-20"];
-        console.log("Showing default data for 02-20 as test.");
-    }
-
-    if (!dayData) return;
-
-    const mapping = {
-        'pan-tithi': dayData.tithi.hi,
-        'pan-nak': dayData.nakshatra ? dayData.nakshatra.hi : "--",
-        'pan-yoga': dayData.yoga ? dayData.yoga.hi : "--",
-        'pan-karana': dayData.karan ? dayData.karan.hi : "--",
-        'pan-paksha': dayData.paksha ? dayData.paksha.hi : "--",
-        'pan-sun': dayData.sun ? `${dayData.sun.rise} / ${dayData.sun.set}` : "--",
-        'pan-muh': dayData.muhurat ? dayData.muhurat.abhijit : "--"
-    };
-
-    for (const [id, value] of Object.entries(mapping)) {
-        const el = document.getElementById(id);
-        if (el) el.innerText = value;
-    }
-
-    // Choghadiya
-    const dayBody = document.getElementById('day-chaug-body');
-    if(dayBody && dayData.choghadiya && dayData.choghadiya.day) {
-        dayBody.innerHTML = "";
-        Object.entries(dayData.choghadiya.day).forEach(([time, name]) => {
-            dayBody.innerHTML += `<tr><td>${time}</td><td>${name}</td><td>-</td></tr>`;
-        });
-    }
-};
-
-// Start Load
-document.addEventListener('DOMContentLoaded', () => {
-    window.getPanchangFromFirebase(2026);
-});
-
-// Extras
-export async function fetchHealingMusic() {
-    try {
-        const snapshot = await getDocs(query(collection(dbStudio, 'healing_music'), orderBy('order', 'asc')));
-        return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    } catch (e) { return []; }
-}
-
-window.applyFormLogic = function() {
-    const service = document.getElementById('service-select').value;
-    document.getElementById('section-matching').style.display = service === 'kundli_matching' ? 'block' : 'none';
-    document.getElementById('section-single').style.display = service === 'kundli_matching' ? 'none' : 'block';
-};
