@@ -1,18 +1,17 @@
-// 🔱 Step 1: Imports (Updated to include rtdb)
+// 🔱 Step 1: All Imports
 import { db, dbStudio, rtdb } from './firebase-config.js'; 
 import { collection, addDoc, serverTimestamp, query, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-// 🆕 Panchang ke liye Realtime Database imports
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-console.log("🔱 Handler Loaded Successfully with Panchang Support!");
+console.log("🔱 Mahadev! Full Detailed Handler Loaded.");
 
-// 🔱 Step 2: Telegram Configuration (Same as before)
+// 🔱 Step 2: Telegram Configuration
 const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
 const CHAT_ID = '2032242977'; 
 
-// 🔱 Step 3: Telegram Notification Function (Same as before)
+// 🔱 Step 3: Telegram Notification Function (Full Logic)
 async function notifyTelegram(data) {
-    console.log("1. Preparing Telegram Message..."); 
+    console.log("Preparing Telegram notification...");
     let message = `🔱 *New Divine Request!* 🔱\n\n`;
     message += `👤 *Name:* ${data.name}\n`;
     message += `✨ *Service:* ${data.service.replace('_', ' ').toUpperCase()}\n`;
@@ -36,14 +35,13 @@ async function notifyTelegram(data) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
         });
-        const result = await response.json();
-        console.log("2. Telegram Response:", result);
+        console.log("Telegram Response Status:", response.status);
     } catch (err) {
-        console.error("3. Telegram Notification Error:", err);
+        console.error("Telegram Error:", err);
     }
 }
 
-// 🔱 Step 4: Appointment Form Logic (Same as before)
+// 🔱 Step 4: Appointment Form Logic (Safe & Tested)
 const appointmentForm = document.getElementById('consultation-form');
 if (appointmentForm) {
     appointmentForm.addEventListener('submit', async (e) => {
@@ -91,7 +89,7 @@ if (appointmentForm) {
             alert("🔱 Pranaam! Aapka sandesh Mahadev tak pahunch gaya hai.");
             e.target.reset();
         } catch (error) {
-            console.error("Final Error: ", error);
+            console.error("Firestore Error:", error);
             alert("Kshama karein, data save nahi ho paya.");
         } finally {
             btn.innerText = originalText;
@@ -100,62 +98,66 @@ if (appointmentForm) {
     });
 }
 
-// 🔱 Step 5: Panchang Database Logic (FULL DISPLAY SUPPORT)
+// 🔱 Step 5: Panchang Database Logic (FULL RECOVERY)
 window.getPanchangFromFirebase = async function(year) {
-    console.log(`[Firebase] Fetching Panchang for: ${year}...`);
+    console.log(`[Firebase] Fetching data for ${year}...`);
     try {
         const panchangRef = ref(rtdb, `panchang/${year}`);
         const snapshot = await get(panchangRef);
         if (snapshot.exists()) {
             const data = snapshot.val();
-            // Naya function jo screen update karega
+            window["Data" + year] = data; 
             window.updatePanchangDisplay(data); 
+            
+            // Re-render calendar to show indicators/glow
+            if (window.renderCalendar) {
+                console.log("Refreshing Calendar Indicators...");
+                window.renderCalendar();
+            }
             return data;
-        } else {
-            console.warn("No data for this year.");
-            return {};
         }
     } catch (error) {
-        console.error("Firebase Panchang Error:", error);
-        return {};
+        console.error("Firebase RTDB Error:", error);
     }
+    return {};
 };
 
-// 🆕 Naya Function: Saari fields ko bharne ke liye
 window.updatePanchangDisplay = function(yearlyData) {
-    // Aaj ki date format: 02-20
     const today = new Date();
     const dateKey = `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-    
     const dayData = yearlyData[dateKey];
-    if (!dayData) return;
+    
+    if (!dayData) {
+        console.warn("No data found for date:", dateKey);
+        return;
+    }
 
-    // 1. Basic Fields
+    // Fill UI Elements
     if(document.getElementById('tithi')) document.getElementById('tithi').innerText = dayData.tithi.hi;
     if(document.getElementById('nakshatra')) document.getElementById('nakshatra').innerText = dayData.nakshatra.hi;
     if(document.getElementById('yoga')) document.getElementById('yoga').innerText = dayData.yoga.hi;
     if(document.getElementById('karan')) document.getElementById('karan').innerText = dayData.karan.hi;
     if(document.getElementById('paksha')) document.getElementById('paksha').innerText = dayData.paksha.hi;
-    
-    // 2. Sun Times
     if(document.getElementById('sunrise')) document.getElementById('sunrise').innerText = dayData.sun.rise;
     if(document.getElementById('sunset')) document.getElementById('sunset').innerText = dayData.sun.set;
-    
-    // 3. Abhijit Muhurat
-    if(document.getElementById('abhijit-muhurat')) {
-        document.getElementById('abhijit-muhurat').innerText = dayData.muhurat.abhijit;
-    }
+    if(document.getElementById('abhijit-muhurat')) document.getElementById('abhijit-muhurat').innerText = dayData.muhurat.abhijit;
 
-    // 4. Choghadiya (Dynamic Table)
+    // Choghadiya Logic
     const chogContainer = document.getElementById('choghadiya-list');
     if(chogContainer && dayData.choghadiya) {
-        chogContainer.innerHTML = ""; // Purana saaf karo
+        chogContainer.innerHTML = "";
         Object.entries(dayData.choghadiya.day).forEach(([time, name]) => {
             const row = `<tr><td>${time}</td><td>${name}</td></tr>`;
             chogContainer.innerHTML += row;
         });
     }
 };
+
+// Auto-Load on Refresh
+document.addEventListener('DOMContentLoaded', () => {
+    window.getPanchangFromFirebase(2026);
+});
+
 // 🔱 Step 6: Healing Music Logic
 export async function fetchHealingMusic() {
     try {
@@ -164,12 +166,11 @@ export async function fetchHealingMusic() {
         const snapshot = await getDocs(q);
         return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     } catch (error) {
-        console.error("Music fetch error:", error);
         return [];
     }
 }
 
-// 🔱 Step 7: Helper Functions
+// 🔱 Step 7: Global Helper Functions
 window.applyFormLogic = function() {
     const service = document.getElementById('service-select').value;
     const matchingSection = document.getElementById('section-matching');
@@ -196,12 +197,12 @@ window.syncContactMethod = function(method) {
     const warning = document.getElementById('email-warning');
     if (method === 'WA') {
         contactInput.placeholder = "WhatsApp Number";
-        warning.style.display = 'none';
+        if(warning) warning.style.display = 'none';
     } else if (method === 'TG') {
         contactInput.placeholder = "Telegram Username/@id";
-        warning.style.display = 'none';
+        if(warning) warning.style.display = 'none';
     } else {
         contactInput.placeholder = "Email Address";
-        warning.style.display = 'block';
+        if(warning) warning.style.display = 'block';
     }
 };
