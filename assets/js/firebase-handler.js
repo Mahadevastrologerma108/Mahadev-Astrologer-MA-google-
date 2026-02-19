@@ -1,20 +1,19 @@
-// 🔱 Step 1: All Imports
+// 🔱 Step 1: All Imports (Directly from CDN)
 import { db, dbStudio, rtdb } from './firebase-config.js'; 
 import { collection, addDoc, serverTimestamp, query, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-console.log("🔱 Mahadev! Full Detailed Handler Loaded.");
+console.log("🔱 Mahadev! Fresh Handler Loaded with Full Integration.");
 
-// 🔱 Step 2: Telegram Configuration
+// 🔱 Step 2: Configuration
 const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
 const CHAT_ID = '2032242977'; 
 
-// 🔱 Step 3: Telegram Notification Function (Full Logic)
+// 🔱 Step 3: Telegram & Form Logic (Stable)
 async function notifyTelegram(data) {
-    console.log("Preparing Telegram notification...");
     let message = `🔱 *New Divine Request!* 🔱\n\n`;
     message += `👤 *Name:* ${data.name}\n`;
-    message += `✨ *Service:* ${data.service.replace('_', ' ').toUpperCase()}\n`;
+    message += `✨ *Service:* ${data.service.toUpperCase()}\n`;
     message += `📱 *Method:* ${data.contact_method}\n`;
     message += `📍 *Detail:* \`${data.contact_detail}\` \n\n`;
 
@@ -23,60 +22,42 @@ async function notifyTelegram(data) {
         message += `♀️ *Female:* ${data.female_details.name} | ${data.female_details.dob}\n`;
     } else {
         message += `📅 *DOB:* ${data.dob}\n`;
-        message += `⏰ *Time:* ${data.time}\n`;
         message += `🌍 *Place:* ${data.place}\n`;
     }
-    message += `\n🆔 *UID Requested:* ${data.wants_uid ? '✅ Yes' : '❌ No'}`;
-
+    
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
     try {
-        const response = await fetch(url, {
+        await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
         });
-        console.log("Telegram Response Status:", response.status);
-    } catch (err) {
-        console.error("Telegram Error:", err);
-    }
+    } catch (err) { console.error("Telegram Error:", err); }
 }
 
-// 🔱 Step 4: Appointment Form Logic (Safe & Tested)
 const appointmentForm = document.getElementById('consultation-form');
 if (appointmentForm) {
     appointmentForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = e.target.querySelector('button');
-        const originalText = btn.innerText;
         btn.innerText = "🔱 SENDING...";
         btn.disabled = true;
 
         const service = document.getElementById('service-select').value;
         const contactMethod = document.querySelector('input[name="contact-method"]:checked').value;
-        const generateUID = document.getElementById('generate-uid').checked;
 
         let submissionData = {
             service: service,
             name: document.getElementById('user-name').value,
             contact_method: contactMethod,
             contact_detail: document.getElementById('contact-detail').value,
-            wants_uid: generateUID,
+            wants_uid: document.getElementById('generate-uid').checked,
             timestamp: serverTimestamp()
         };
 
         if (service === 'kundli_matching') {
-            submissionData.male_details = {
-                name: document.getElementById('m-name').value,
-                dob: document.getElementById('m-dob').value,
-                time: document.getElementById('m-time').value,
-                place: document.getElementById('m-place').value
-            };
-            submissionData.female_details = {
-                name: document.getElementById('f-name').value,
-                dob: document.getElementById('f-dob').value,
-                time: document.getElementById('f-time').value,
-                place: document.getElementById('f-place').value
-            };
+            submissionData.male_details = { name: document.getElementById('m-name').value, dob: document.getElementById('m-dob').value, time: document.getElementById('m-time').value, place: document.getElementById('m-place').value };
+            submissionData.female_details = { name: document.getElementById('f-name').value, dob: document.getElementById('f-dob').value, time: document.getElementById('f-time').value, place: document.getElementById('f-place').value };
         } else {
             submissionData.dob = document.getElementById('single-dob').value;
             submissionData.time = document.getElementById('single-time').value || "N/A";
@@ -88,121 +69,93 @@ if (appointmentForm) {
             await notifyTelegram(submissionData);
             alert("🔱 Pranaam! Aapka sandesh Mahadev tak pahunch gaya hai.");
             e.target.reset();
-        } catch (error) {
-            console.error("Firestore Error:", error);
-            alert("Kshama karein, data save nahi ho paya.");
-        } finally {
-            btn.innerText = originalText;
-            btn.disabled = false;
-        }
+        } catch (error) { alert("Kshama karein, data save nahi ho paya."); }
+        finally { btn.innerText = "SEND REQUEST"; btn.disabled = false; }
     });
 }
 
-// 🔱 Step 5: Panchang Database Logic (FULL RECOVERY)
+// 🔱 Step 4: Panchang Logic (Synchronized with your HTML IDs)
 window.getPanchangFromFirebase = async function(year) {
-    console.log(`[Firebase] Fetching data for ${year}...`);
+    console.log(`[Firebase] Loading Panchang for ${year}...`);
     try {
         const panchangRef = ref(rtdb, `panchang/${year}`);
         const snapshot = await get(panchangRef);
         if (snapshot.exists()) {
             const data = snapshot.val();
-            window["Data" + year] = data; 
+            window["Data" + year] = data; // Safe for Calendar use
             window.updatePanchangDisplay(data); 
             
-            // Re-render calendar to show indicators/glow
-            if (window.renderCalendar) {
-                console.log("Refreshing Calendar Indicators...");
+            // Re-render Calendar to show Indicators
+            if (typeof window.renderCalendar === 'function') {
                 window.renderCalendar();
             }
             return data;
         }
-    } catch (error) {
-        console.error("Firebase RTDB Error:", error);
-    }
+    } catch (error) { console.error("Firebase RTDB Error:", error); }
     return {};
 };
 
-window.updatePanchangDisplay = function(yearlyData) {
-    const today = new Date();
-    const dateKey = `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-    const dayData = yearlyData[dateKey];
-    
-    if (!dayData) {
-        console.warn("No data found for date:", dateKey);
-        return;
+window.updatePanchangDisplay = function(yearlyData, customDate = null) {
+    let dateKey;
+    if (customDate) {
+        dateKey = customDate; // Use if a user clicks a calendar date
+    } else {
+        const today = new Date();
+        dateKey = `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
     }
 
-    // Fill UI Elements
-    if(document.getElementById('tithi')) document.getElementById('tithi').innerText = dayData.tithi.hi;
-    if(document.getElementById('nakshatra')) document.getElementById('nakshatra').innerText = dayData.nakshatra.hi;
-    if(document.getElementById('yoga')) document.getElementById('yoga').innerText = dayData.yoga.hi;
-    if(document.getElementById('karan')) document.getElementById('karan').innerText = dayData.karan.hi;
-    if(document.getElementById('paksha')) document.getElementById('paksha').innerText = dayData.paksha.hi;
-    if(document.getElementById('sunrise')) document.getElementById('sunrise').innerText = dayData.sun.rise;
-    if(document.getElementById('sunset')) document.getElementById('sunset').innerText = dayData.sun.set;
-    if(document.getElementById('abhijit-muhurat')) document.getElementById('abhijit-muhurat').innerText = dayData.muhurat.abhijit;
+    const dayData = yearlyData[dateKey];
+    if (!dayData) return;
 
-    // Choghadiya Logic
-    const chogContainer = document.getElementById('choghadiya-list');
-    if(chogContainer && dayData.choghadiya) {
-        chogContainer.innerHTML = "";
+    // Mapping Database to your HTML IDs (pan-tithi, pan-nak, etc.)
+    const mapping = {
+        'pan-tithi': dayData.tithi.hi,
+        'pan-nak': dayData.nakshatra ? dayData.nakshatra.hi : "--",
+        'pan-yoga': dayData.yoga ? dayData.yoga.hi : "--",
+        'pan-karana': dayData.karan ? dayData.karan.hi : "--",
+        'pan-paksha': dayData.paksha ? dayData.paksha.hi : "--",
+        'pan-sun': `${dayData.sun.rise} / ${dayData.sun.set}`,
+        'pan-muh': dayData.muhurat ? dayData.muhurat.abhijit : "--"
+    };
+
+    for (const [id, value] of Object.entries(mapping)) {
+        const el = document.getElementById(id);
+        if (el) el.innerText = value;
+    }
+
+    // Choghadiya Table (Day Only for now)
+    const dayBody = document.getElementById('day-chaug-body');
+    if(dayBody && dayData.choghadiya) {
+        dayBody.innerHTML = "";
         Object.entries(dayData.choghadiya.day).forEach(([time, name]) => {
-            const row = `<tr><td>${time}</td><td>${name}</td></tr>`;
-            chogContainer.innerHTML += row;
+            dayBody.innerHTML += `<tr><td>${time}</td><td>${name}</td><td>-</td></tr>`;
         });
     }
 };
 
-// Auto-Load on Refresh
+// 🔱 Step 5: Start Everything
 document.addEventListener('DOMContentLoaded', () => {
+    const currentYear = new Date().getFullYear();
     window.getPanchangFromFirebase(2026);
 });
 
-// 🔱 Step 6: Healing Music Logic
+// 🔱 Step 6: Extras (Music & Form Logic)
 export async function fetchHealingMusic() {
     try {
         const musicCol = collection(dbStudio, 'healing_music');
         const q = query(musicCol, orderBy('order', 'asc'));
         const snapshot = await getDocs(q);
         return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    } catch (error) {
-        return [];
-    }
+    } catch (error) { return []; }
 }
 
-// 🔱 Step 7: Global Helper Functions
 window.applyFormLogic = function() {
     const service = document.getElementById('service-select').value;
-    const matchingSection = document.getElementById('section-matching');
-    const singleSection = document.getElementById('section-single');
-    const palmInstruction = document.getElementById('palm-instruction');
-
-    if (service === 'kundli_matching') {
-        matchingSection.style.display = 'block';
-        singleSection.style.display = 'none';
-        palmInstruction.style.display = 'none';
-    } else if (service === 'palmistry') {
-        matchingSection.style.display = 'none';
-        singleSection.style.display = 'block';
-        palmInstruction.style.display = 'block';
-    } else {
-        matchingSection.style.display = 'none';
-        singleSection.style.display = 'block';
-        palmInstruction.style.display = 'none';
-    }
+    document.getElementById('section-matching').style.display = service === 'kundli_matching' ? 'block' : 'none';
+    document.getElementById('section-single').style.display = service === 'kundli_matching' ? 'none' : 'block';
 };
 
 window.syncContactMethod = function(method) {
-    const contactInput = document.getElementById('contact-detail');
-    const warning = document.getElementById('email-warning');
-    if (method === 'WA') {
-        contactInput.placeholder = "WhatsApp Number";
-        if(warning) warning.style.display = 'none';
-    } else if (method === 'TG') {
-        contactInput.placeholder = "Telegram Username/@id";
-        if(warning) warning.style.display = 'none';
-    } else {
-        contactInput.placeholder = "Email Address";
-        if(warning) warning.style.display = 'block';
-    }
+    const input = document.getElementById('contact-detail');
+    input.placeholder = method === 'WA' ? "WhatsApp Number" : (method === 'TG' ? "Telegram Username" : "Email Address");
 };
