@@ -1,17 +1,18 @@
-// 🔱 Step 1: Imports
-import { db, dbStudio } from './firebase-config.js';
+// 🔱 Step 1: Imports (Updated to include rtdb)
+import { db, dbStudio, rtdb } from './firebase-config.js'; 
 import { collection, addDoc, serverTimestamp, query, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+// 🆕 Panchang ke liye Realtime Database imports
+import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-console.log("🔱 Handler Loaded Successfully!");
+console.log("🔱 Handler Loaded Successfully with Panchang Support!");
 
-// 🔱 Step 2: Telegram Configuration
+// 🔱 Step 2: Telegram Configuration (Same as before)
 const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
 const CHAT_ID = '2032242977'; 
 
-// 🔱 Step 3: Telegram Notification Function
+// 🔱 Step 3: Telegram Notification Function (Same as before)
 async function notifyTelegram(data) {
     console.log("1. Preparing Telegram Message..."); 
-    
     let message = `🔱 *New Divine Request!* 🔱\n\n`;
     message += `👤 *Name:* ${data.name}\n`;
     message += `✨ *Service:* ${data.service.replace('_', ' ').toUpperCase()}\n`;
@@ -26,20 +27,14 @@ async function notifyTelegram(data) {
         message += `⏰ *Time:* ${data.time}\n`;
         message += `🌍 *Place:* ${data.place}\n`;
     }
-    
     message += `\n🆔 *UID Requested:* ${data.wants_uid ? '✅ Yes' : '❌ No'}`;
 
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-    
     try {
         const response = await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: CHAT_ID,
-                text: message,
-                parse_mode: 'Markdown'
-            })
+            body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
         });
         const result = await response.json();
         console.log("2. Telegram Response:", result);
@@ -48,14 +43,11 @@ async function notifyTelegram(data) {
     }
 }
 
-// 🔱 Step 4: Appointment Form Logic
+// 🔱 Step 4: Appointment Form Logic (Same as before)
 const appointmentForm = document.getElementById('consultation-form');
-
 if (appointmentForm) {
     appointmentForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        console.log("4. Form Submit Clicked!");
-        
         const btn = e.target.querySelector('button');
         const originalText = btn.innerText;
         btn.innerText = "🔱 SENDING...";
@@ -94,17 +86,12 @@ if (appointmentForm) {
         }
 
         try {
-            console.log("5. Sending to Firebase...");
             await addDoc(collection(db, "appointments"), submissionData);
-            console.log("6. Firebase Success! Now calling Telegram...");
-            
             await notifyTelegram(submissionData);
-            
             alert("🔱 Pranaam! Aapka sandesh Mahadev tak pahunch gaya hai.");
             e.target.reset();
-
         } catch (error) {
-            console.error("7. Final Error: ", error);
+            console.error("Final Error: ", error);
             alert("Kshama karein, data save nahi ho paya.");
         } finally {
             btn.innerText = originalText;
@@ -113,7 +100,47 @@ if (appointmentForm) {
     });
 }
 
-// 🔱 Step 5: Helper Functions (Window scope fix)
+// 🔱 Step 5: Panchang Database Logic (NEW MERGED CODE)
+window.getPanchangFromFirebase = async function(year) {
+    console.log(`[Firebase] Fetching Panchang for: ${year}...`);
+    try {
+        const panchangRef = ref(rtdb, `panchang/${year}`);
+        const snapshot = await get(panchangRef);
+        if (snapshot.exists()) {
+            return snapshot.val();
+        } else {
+            console.warn("No data for this year.");
+            return {};
+        }
+    } catch (error) {
+        console.error("Firebase Panchang Error:", error);
+        return {};
+    }
+};
+
+window.loadYearlyData = async function(year) {
+    if (window["Data" + year] && Object.keys(window["Data" + year]).length > 0) {
+        return window["Data" + year];
+    }
+    const data = await window.getPanchangFromFirebase(year);
+    window["Data" + year] = data;
+    return data;
+};
+
+// 🔱 Step 6: Healing Music Logic
+export async function fetchHealingMusic() {
+    try {
+        const musicCol = collection(dbStudio, 'healing_music');
+        const q = query(musicCol, orderBy('order', 'asc'));
+        const snapshot = await getDocs(q);
+        return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    } catch (error) {
+        console.error("Music fetch error:", error);
+        return [];
+    }
+}
+
+// 🔱 Step 7: Helper Functions
 window.applyFormLogic = function() {
     const service = document.getElementById('service-select').value;
     const matchingSection = document.getElementById('section-matching');
@@ -149,16 +176,3 @@ window.syncContactMethod = function(method) {
         warning.style.display = 'block';
     }
 };
-
-// 🔱 Step 6: Healing Music Logic
-export async function fetchHealingMusic() {
-    try {
-        const musicCol = collection(dbStudio, 'healing_music');
-        const q = query(musicCol, orderBy('order', 'asc'));
-        const snapshot = await getDocs(q);
-        return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    } catch (error) {
-        console.error("Music fetch error:", error);
-        return [];
-    }
-}
