@@ -100,14 +100,17 @@ if (appointmentForm) {
     });
 }
 
-// 🔱 Step 5: Panchang Database Logic (NEW MERGED CODE)
+// 🔱 Step 5: Panchang Database Logic (FULL DISPLAY SUPPORT)
 window.getPanchangFromFirebase = async function(year) {
     console.log(`[Firebase] Fetching Panchang for: ${year}...`);
     try {
         const panchangRef = ref(rtdb, `panchang/${year}`);
         const snapshot = await get(panchangRef);
         if (snapshot.exists()) {
-            return snapshot.val();
+            const data = snapshot.val();
+            // Naya function jo screen update karega
+            window.updatePanchangDisplay(data); 
+            return data;
         } else {
             console.warn("No data for this year.");
             return {};
@@ -118,15 +121,41 @@ window.getPanchangFromFirebase = async function(year) {
     }
 };
 
-window.loadYearlyData = async function(year) {
-    if (window["Data" + year] && Object.keys(window["Data" + year]).length > 0) {
-        return window["Data" + year];
-    }
-    const data = await window.getPanchangFromFirebase(year);
-    window["Data" + year] = data;
-    return data;
-};
+// 🆕 Naya Function: Saari fields ko bharne ke liye
+window.updatePanchangDisplay = function(yearlyData) {
+    // Aaj ki date format: 02-20
+    const today = new Date();
+    const dateKey = `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    
+    const dayData = yearlyData[dateKey];
+    if (!dayData) return;
 
+    // 1. Basic Fields
+    if(document.getElementById('tithi')) document.getElementById('tithi').innerText = dayData.tithi.hi;
+    if(document.getElementById('nakshatra')) document.getElementById('nakshatra').innerText = dayData.nakshatra.hi;
+    if(document.getElementById('yoga')) document.getElementById('yoga').innerText = dayData.yoga.hi;
+    if(document.getElementById('karan')) document.getElementById('karan').innerText = dayData.karan.hi;
+    if(document.getElementById('paksha')) document.getElementById('paksha').innerText = dayData.paksha.hi;
+    
+    // 2. Sun Times
+    if(document.getElementById('sunrise')) document.getElementById('sunrise').innerText = dayData.sun.rise;
+    if(document.getElementById('sunset')) document.getElementById('sunset').innerText = dayData.sun.set;
+    
+    // 3. Abhijit Muhurat
+    if(document.getElementById('abhijit-muhurat')) {
+        document.getElementById('abhijit-muhurat').innerText = dayData.muhurat.abhijit;
+    }
+
+    // 4. Choghadiya (Dynamic Table)
+    const chogContainer = document.getElementById('choghadiya-list');
+    if(chogContainer && dayData.choghadiya) {
+        chogContainer.innerHTML = ""; // Purana saaf karo
+        Object.entries(dayData.choghadiya.day).forEach(([time, name]) => {
+            const row = `<tr><td>${time}</td><td>${name}</td></tr>`;
+            chogContainer.innerHTML += row;
+        });
+    }
+};
 // 🔱 Step 6: Healing Music Logic
 export async function fetchHealingMusic() {
     try {
