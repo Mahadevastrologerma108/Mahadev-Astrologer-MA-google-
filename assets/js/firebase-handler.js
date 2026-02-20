@@ -1,109 +1,179 @@
-import { db, dbStudio, rtdb } from './firebase-config.js'; 
-import { collection, addDoc, serverTimestamp, query, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { db, rtdb } from './firebase-config.js'; 
+import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-console.log("🔱 Mahadev System: Deep Integration with Calendar Grid Fix.");
+console.log("🔱 Mahadev Handler: Full Sandwich + Form Logic Active.");
 
-// --- 1. Configuration ---
+// --- 1. CONFIGURATION ---
 const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
 const CHAT_ID = '2032242977'; 
 
-// --- 2. 🔱 Full Course Logic: Data -> UI -> Calendar -> Translation ---
-
+// --- 2. THE SANDWICH ENGINE (Panchang -> Calendar -> Events) ---
 window.getPanchangFromFirebase = async function(year) {
-    console.log(`[Phase 1] Fetching ${year} Data...`);
     try {
         const panRef = ref(rtdb, `panchang/${year}`);
         const snapshot = await get(panRef); 
         
         if (snapshot.exists()) {
-            const allYearData = snapshot.val();
-            window["Data" + year] = allYearData; // Global storage for Calendar Logic
+            const data = snapshot.val();
+            window["Data" + year] = data; 
+
+            // LAYER 1: Panchang Cards & Choghadiya (TOP)
+            await window.updatePanchangDisplay(data);
             
-            console.log("[Phase 2] Data Received. Filling UI...");
-            await window.updatePanchangDisplay(allYearData);
-            
-            // 🚩 THE CALENDAR GRID FIX:
-            // Data load hone ke BAAD hi calendar ko order do grid banane ka
-            console.log("[Phase 3] Building Calendar Grid...");
+            // LAYER 2 & 3: Calendar Grid & Events List
+            // Note: renderCalendar khud updateMonthlyEvents ko trigger karega
             if (typeof window.renderCalendar === 'function') {
-                window.renderCalendar(); 
+                window.renderCalendar();
             } else {
-                console.error("❌ Error: panchang-logic.js ka renderCalendar function nahi mila!");
+                // Fallback agar calendar logic load na ho
+                window.updateMonthlyEvents(data);
             }
 
-            // 🔱 Final Touch: Translation release
-            console.log("[Phase 4] Releasing Translation...");
-            if (window.applyTranslations) {
-                window.applyTranslations(); 
-            }
+            // Final: Language Translation Release
+            if (window.applyTranslations) window.applyTranslations();
         }
-    } catch (error) {
-        console.error("❌ Critical System Error:", error);
-    }
+    } catch (e) { console.error("Sandwich Error:", e); }
 };
 
+// --- 3. LAYER 1: TOP SECTION (Cards & Tables) ---
 window.updatePanchangDisplay = async function(yearlyData, customDate = null) {
     const today = new Date();
-    // Aaj 20 Feb hai, toh automatic 02-20 uthayega
     const dateKey = customDate || `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-    
-    const dayData = yearlyData[dateKey];
-    if (!dayData) return;
+    const d = yearlyData[dateKey];
 
-    // Mapping Database to HTML IDs
-    const uiMap = {
-        'pan-tithi': dayData.tithi.hi,
-        'pan-nak': dayData.nakshatra?.hi || "--",
-        'pan-yoga': dayData.yoga?.hi || "--",
-        'pan-karana': dayData.karan?.hi || "--",
-        'pan-paksha': dayData.paksha?.hi || "--",
-        'pan-sun': `${dayData.sun.rise} / ${dayData.sun.set}`,
-        'pan-moon': dayData.moon?.rise || "--",
-        'pan-muh': dayData.muhurat?.abhijit || "--",
-        'pan-rahu': dayData.muhurat?.rahukaal || "--"
+    if (!d) return;
+
+    // ID Mapping (Panchang Cards)
+    const map = {
+        'pan-tithi': d.tithi.hi,
+        'pan-nak': d.nakshatra?.hi || "--",
+        'pan-yoga': d.yoga?.hi || "--",
+        'pan-karana': d.karan?.hi || "--",
+        'pan-paksha': d.paksha?.hi || "--",
+        'pan-sun': `${d.sun.rise} / ${d.sun.set}`,
+        'pan-moon': d.moon?.rise || "--",
+        'pan-muh': d.muhurat?.abhijit || "--",
+        'pan-rahu': d.muhurat?.rahukaal || "--"
     };
 
-    for (const [id, value] of Object.entries(uiMap)) {
+    Object.entries(map).forEach(([id, val]) => {
         const el = document.getElementById(id);
-        if (el) el.innerText = value;
-    }
+        if (el) el.innerText = val;
+    });
 
-    // Choghadiya Table Update
-    const dayBody = document.getElementById('day-chaug-body');
-    if (dayBody && dayData.choghadiya?.day) {
-        dayBody.innerHTML = ""; 
-        Object.entries(dayData.choghadiya.day).forEach(([time, name]) => {
-            dayBody.innerHTML += `<tr><td>${time}</td><td>${name}</td><td>Shubh</td></tr>`;
-        });
+    // Choghadiya Tables (Day & Night)
+    const fillTable = (id, cData) => {
+        const body = document.getElementById(id);
+        if (body && cData) {
+            body.innerHTML = Object.entries(cData)
+                .map(([time, name]) => `<tr><td>${time}</td><td>${name}</td><td class="nature-shubh">Shubh</td></tr>`)
+                .join('');
+        }
+    };
+
+    if (d.choghadiya) {
+        fillTable('day-chaug-body', d.choghadiya.day);
+        fillTable('night-chaug-body', d.choghadiya.night);
     }
-    return true; 
+    return true;
 };
 
-// --- 3. Initialization ---
-document.addEventListener('DOMContentLoaded', () => {
-    window.getPanchangFromFirebase(2026);
-});
+// --- 4. LAYER 3: BOTTOM SECTION (Monthly Events) ---
+window.updateMonthlyEvents = function(yearlyData) {
+    const container = document.getElementById('events-list');
+    if (!container) return;
 
-// --- 4. Appointment Form Logic ---
+    // Calendar ke current month se sync
+    const currentM = String((window.currentMonth || new Date().getMonth()) + 1).padStart(2, '0');
+    let html = "";
+
+    Object.keys(yearlyData).sort().forEach(key => {
+        if (key.startsWith(currentM) && yearlyData[key].festivals) {
+            const dayNum = key.split('-')[1];
+            yearlyData[key].festivals.forEach(fest => {
+                html += `
+                <div class="event-item-row">
+                    <div class="ev-date">${dayNum}</div>
+                    <div class="ev-info">
+                        <h4 style="color:var(--gold); margin:0; font-family:'Cinzel';">${fest}</h4>
+                    </div>
+                </div>`;
+            });
+        }
+    });
+
+    container.innerHTML = html || `<p style="text-align:center; color:#888; padding:20px;">No festivals this month.</p>`;
+};
+
+// --- 5. 🔱 FORM LOGIC (Surakshit & Full) ---
 const appointmentForm = document.getElementById('consultation-form');
 if (appointmentForm) {
     appointmentForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = e.target.querySelector('button');
         btn.innerText = "🔱 SENDING...";
+        btn.disabled = true;
+
+        const service = document.getElementById('service-select').value;
         const subData = {
-            service: document.getElementById('service-select').value,
+            service: service,
             name: document.getElementById('user-name').value,
             contact_method: document.querySelector('input[name="contact-method"]:checked').value,
             contact_detail: document.getElementById('contact-detail').value,
             timestamp: serverTimestamp()
         };
+
+        // Matching vs Single details
+        if (service === 'kundli_matching') {
+            subData.male_details = { name: document.getElementById('m-name').value, dob: document.getElementById('m-dob').value };
+            subData.female_details = { name: document.getElementById('f-name').value, dob: document.getElementById('f-dob').value };
+        } else {
+            subData.dob = document.getElementById('single-dob').value;
+            subData.place = document.getElementById('single-place').value;
+        }
+
         try {
             await addDoc(collection(db, "appointments"), subData);
-            alert("🔱 Sandesh Pahunch Gaya!");
+            // Telegram Notify
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    chat_id: CHAT_ID, 
+                    text: `🔱 *New Appointment!*\n👤 Name: ${subData.name}\n✨ Service: ${subData.service}`, 
+                    parse_mode: 'Markdown' 
+                })
+            });
+            alert("🔱 Pranaam! Aapki request Mahadev tak pahunch gayi hai.");
             e.target.reset();
-        } catch (err) { console.error(err); }
-        finally { btn.innerText = "SEND REQUEST"; }
+        } catch (err) { 
+            console.error(err);
+            alert("Kshama karein, error aaya."); 
+        } finally { 
+            btn.innerText = "SEND REQUEST"; 
+            btn.disabled = false; 
+        }
     });
 }
+
+// Form Field Toggles
+window.applyFormLogic = function() {
+    const s = document.getElementById('service-select').value;
+    const mSec = document.getElementById('section-matching');
+    const sSec = document.getElementById('section-single');
+    if (mSec && sSec) {
+        mSec.style.display = s === 'kundli_matching' ? 'block' : 'none';
+        sSec.style.display = s === 'kundli_matching' ? 'none' : 'block';
+    }
+};
+
+window.syncContactMethod = function(method) {
+    const input = document.getElementById('contact-detail');
+    if (input) input.placeholder = method === 'WA' ? "WhatsApp Number" : "Username/Email";
+};
+
+// --- 6. INITIALIZE ---
+document.addEventListener('DOMContentLoaded', () => {
+    window.getPanchangFromFirebase(2026);
+});
