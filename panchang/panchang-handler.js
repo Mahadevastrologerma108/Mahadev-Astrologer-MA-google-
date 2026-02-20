@@ -42,35 +42,47 @@ window.updatePanchangDisplay = function() {
     const data = window.yearlyPanchangData;
     if (!data) return;
 
-    const mKey = String(window.currentMonth + 1).padStart(2, '0');
-    const dKey = "d" + String(window.selectedDay).padStart(2, '0');
+    // 1. Tumhare JSON ke hisaab se Keys taiyaar karna
+    const mKey = String(window.currentMonth + 1).padStart(2, '0'); // "01", "02" etc.
+    const dKey = "d" + String(window.selectedDay).padStart(2, '0'); // "d20", "d21" etc.
+    
+    // 2. Data nikalna (Flexible Check)
     const d = (data[mKey] && data[mKey][dKey]) ? data[mKey][dKey] : null;
 
     if (!d) {
+        console.warn(`Data missing for: ${mKey} -> ${dKey}`);
         const resetIds = ['pan-tithi', 'pan-nak', 'pan-yoga', 'pan-karana', 'pan-paksha'];
         resetIds.forEach(id => { if(document.getElementById(id)) document.getElementById(id).innerText = "--"; });
         return;
     }
 
-    // Mapping data to IDs with translation
+    // 3. Translation & Display Logic
     const update = (id, val, type) => {
         const el = document.getElementById(id);
-        if (el) el.innerText = MiddleMan.getTranslation(val, type);
+        if (el) {
+            // Agar MiddleMan hai toh translation use karega
+            el.innerText = (typeof MiddleMan !== 'undefined') ? MiddleMan.getTranslation(val, type) : val;
+        }
     };
 
+    // Mapping - Tumhare JSON keys ke saath sync kiya gaya hai
     update('pan-tithi', d.tithi, 'tithi');
     update('pan-nak', d.nakshatra, 'nak');
     update('pan-yoga', d.yoga, 'yoga');
-    update('pan-karana', d.karan || d.karana, 'karana');
+    update('pan-karana', d.karan || d.karana, 'karana'); // Dono cases handle kiye
     update('pan-paksha', d.paksha, 'paksha');
 
-    // Sun & Moon (No translation needed for numbers)
-    if(document.getElementById('pan-sun')) document.getElementById('pan-sun').innerText = d.sun ? `${d.sun.rise} / ${d.sun.set}` : "--";
-    if(document.getElementById('pan-moon')) document.getElementById('pan-moon').innerText = d.moon?.rise || d.moon || "--";
-    if(document.getElementById('pan-muh')) document.getElementById('pan-muh').innerText = d.muhurat?.abhijit || "--";
-    if(document.getElementById('pan-rahu')) document.getElementById('pan-rahu').innerText = d.muhurat?.rahukaal || "--";
+    // Sun & Moon (Numbers/Strings)
+    if(document.getElementById('pan-sun')) 
+        document.getElementById('pan-sun').innerText = d.sun ? `${d.sun.rise} / ${d.sun.set}` : "--";
+    
+    if(document.getElementById('pan-muh')) 
+        document.getElementById('pan-muh').innerText = d.muhurat?.abhijit || "--";
+    
+    if(document.getElementById('pan-rahu')) 
+        document.getElementById('pan-rahu').innerText = d.muhurat?.rahukaal || "--";
 
-    // Choghadiya
+    // 4. Choghadiya (Tumhare "t0656" keys ke liye fixed)
     const fillChaug = (id, list) => {
         const body = document.getElementById(id);
         if (!body) return;
@@ -78,8 +90,9 @@ window.updatePanchangDisplay = function() {
 
         let html = '';
         Object.entries(list).forEach(([tKey, name]) => {
+            // "t0656" -> "06:56"
             const time = tKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
-            const transName = MiddleMan.getTranslation(name, 'chaug');
+            const transName = (typeof MiddleMan !== 'undefined') ? MiddleMan.getTranslation(name, 'chaug') : name;
             html += `<tr>
                 <td style="color:var(--gold); font-weight:bold; padding:10px;">${time}</td>
                 <td>${transName}</td>
