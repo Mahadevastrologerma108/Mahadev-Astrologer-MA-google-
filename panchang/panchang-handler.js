@@ -192,21 +192,38 @@ window.updateMonthlyEvents = function() {
     list.innerHTML = html || '<p style="text-align:center; padding:20px; color:#888;">No Festivals</p>';
 };
 
-// 6. INITIALIZE
+// 6. INITIALIZE (Optimized for 2026)
 document.addEventListener('DOMContentLoaded', () => {
+    // Aaj ki date set karein taaki data aate hi aaj ka panchang dikhe
+    const today = new Date();
+    window.currentYear = 2026; // Default Year
+    window.currentMonth = today.getMonth(); // Aaj ka mahina (0-11)
+    window.selectedDay = today.getDate(); // Aaj ki tarikh
+
+    // Firebase se data mangwayein
     window.getPanchangFromFirebase(2026);
 
+    // Prev Month Button
     document.getElementById('prevMonth')?.addEventListener('click', () => {
         window.currentMonth--;
-        if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; }
+        if (window.currentMonth < 0) { 
+            window.currentMonth = 11; 
+            window.currentYear--; 
+            window.getPanchangFromFirebase(window.currentYear); // Naye saal ka data load karein
+        }
         window.selectedDay = 1;
         window.renderCalendar();
         window.updatePanchangDisplay();
     });
 
+    // Next Month Button
     document.getElementById('nextMonth')?.addEventListener('click', () => {
         window.currentMonth++;
-        if (window.currentMonth > 11) { window.currentMonth = 0; window.currentYear++; }
+        if (window.currentMonth > 11) { 
+            window.currentMonth = 0; 
+            window.currentYear++; 
+            window.getPanchangFromFirebase(window.currentYear); // Naye saal ka data load karein
+        }
         window.selectedDay = 1;
         window.renderCalendar();
         window.updatePanchangDisplay();
