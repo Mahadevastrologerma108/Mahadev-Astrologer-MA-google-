@@ -2,10 +2,15 @@ import { db, rtdb } from './firebase-config.js';
 import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-console.log("🔱 Mahadev Handler: Panchang, Calendar & Form Active.");
+console.log("🔱 Mahadev Handler: 100% Fixed & Active. Life breathed into the body!");
 
 const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
 const CHAT_ID = '2032242977'; 
+
+// Global State
+window.currentYear = 2026;
+window.currentMonth = new Date().getMonth();
+window.selectedDay = new Date().getDate();
 
 // ==========================================
 // 1. FIREBASE DATA FETCH
@@ -21,7 +26,7 @@ window.getPanchangFromFirebase = async function(year) {
     } catch (e) { 
         console.error("🔱 Panchang Fetch Error:", e); 
     } finally {
-        // Data mile ya na mile, Calendar hamesha render hona chahiye
+        // Data aane ke baad UI me jaan dalna
         if (typeof window.renderCalendar === 'function') window.renderCalendar();
         if (window) window.updatePanchangDisplay(window);
     }
@@ -33,69 +38,78 @@ window.getPanchangFromFirebase = async function(year) {
 window.updatePanchangDisplay = async function(yearlyData) {
     if (!yearlyData) return;
 
-    // Get current Month and Day dynamically
-    const m = String((window.currentMonth !== undefined ? window.currentMonth : new Date().getMonth()) + 1).padStart(2, '0');
-    const d_day = String(window.selectedDay || new Date().getDate()).padStart(2, '0');
+    const mStr = String(window.currentMonth + 1).padStart(2, '0');
+    const dStr = String(window.selectedDay).padStart(2, '0');
     
-    // Check Date format in JSON (e.g., "01-15" or "01" -> "d15")
-    const dateKey = `${m}-${d_day}`;
-    let d = yearlyData || (yearlyData ? yearlyData : null);
+    // JSON me date kaise save hai usko fetch karna (MM-DD)
+    const dateKey = `${mStr}-${dStr}`;
+    let d = yearlyData || yearlyData; 
+    if(!d && yearlyData) d = yearlyData || yearlyData;
+
+    const ids =;
     
+    // Agar data na mile to '--' dikhao
     if (!d) {
-        // Agar us din ka data nahi hai, to "--" dikhao
-        const ids =;
         ids.forEach(id => { const el = document.getElementById(id); if(el) el.innerText = "--"; });
         return;
     }
 
-    const safeVal = (obj) => typeof obj === 'object' ? (obj?.hi || obj?.en || "--") : (obj || "--");
+    const safeVal = (obj) => {
+        if (typeof obj === 'object' && obj !== null) return obj.hi || obj.en || "--";
+        return obj || "--";
+    };
 
     const map = {
         'pan-tithi': safeVal(d.tithi), 'pan-nak': safeVal(d.nakshatra),
         'pan-yoga': safeVal(d.yoga), 'pan-karana': safeVal(d.karan),
-        'pan-paksha': safeVal(d.paksha), 'pan-sun': d.sun ? `${d.sun.rise} / ${d.sun.set}` : "--",
+        'pan-paksha': safeVal(d.paksha), 'pan-sun': d.sun ? `${d.sun.rise || '--'} / ${d.sun.set || '--'}` : "--",
         'pan-moon': d.moon?.rise || d.moon || "--", 'pan-muh': d.muhurat?.abhijit || "--",
         'pan-rahu': d.muhurat?.rahukaal || "--"
     };
 
-    // Cards me data daalo (FIXED LOOP)
+    // Cards Fill
     Object.entries(map).forEach(() => {
         const el = document.getElementById(id);
         if (el) el.innerText = val;
     });
 
-    // Choghadiya table me data daalo (FIXED LOOP)
+    // Choghadiya Fill
     const fillTable = (id, cData) => {
         const body = document.getElementById(id);
         if (body && cData) {
-            body.innerHTML = Object.entries(cData).map(() => 
-                `<tr>
-                    <td style="color:var(--gold); font-weight:bold; padding:8px;">${time.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2')}</td>
+            body.innerHTML = Object.entries(cData).map(() => {
+                let formattedTime = time.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
+                return `<tr>
+                    <td style="color:var(--gold); font-weight:bold; padding:8px;">${formattedTime}</td>
                     <td style="padding:8px;">${name}</td>
                     <td class="nature-shubh" style="font-size:0.8em; padding:8px; color:#00ff88;">Shubh</td>
-                </tr>`
-            ).join('');
+                </tr>`;
+            }).join('');
         }
     };
 
     if (d.choghadiya) {
         fillTable('day-chaug-body', d.choghadiya.day);
         fillTable('night-chaug-body', d.choghadiya.night);
+    } else {
+        const dBody = document.getElementById('day-chaug-body');
+        const nBody = document.getElementById('night-chaug-body');
+        if(dBody) dBody.innerHTML = `<tr><td colspan="3" style="text-align:center;">No Data</td></tr>`;
+        if(nBody) nBody.innerHTML = `<tr><td colspan="3" style="text-align:center;">No Data</td></tr>`;
     }
 };
 
 // ==========================================
-// 3. CALENDAR RENDER ENGINE (RE-ADDED)
+// 3. CALENDAR RENDER ENGINE
 // ==========================================
 window.renderCalendar = function() {
     const container = document.getElementById('calendarDays');
     const monthDisplay = document.getElementById('monthDisplay');
     if (!container) return;
 
-    const year = window.currentYear || 2026;
-    const month = window.currentMonth !== undefined ? window.currentMonth : new Date().getMonth();
+    const year = window.currentYear;
+    const month = window.currentMonth;
     
-    // Set Month Header
     const monthNames =;
     if (monthDisplay) monthDisplay.innerText = `${monthNames} ${year}`;
 
@@ -103,9 +117,12 @@ window.renderCalendar = function() {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    // Khali (Empty) slots shuruat ke dino ke liye
     for (let i = 0; i < firstDay; i++) {
-        container.innerHTML += `<div class="calendar-day empty" style="border:none; background:transparent;"></div>`;
+        const emptyDiv = document.createElement('div');
+        emptyDiv.className = 'calendar-day empty';
+        emptyDiv.style.border = 'none';
+        emptyDiv.style.background = 'transparent';
+        container.appendChild(emptyDiv);
     }
 
     const today = new Date();
@@ -114,7 +131,6 @@ window.renderCalendar = function() {
         daySquare.className = 'calendar-day';
         daySquare.innerText = day;
 
-        // Current aur Selected Date ko highlight karo
         if (window.selectedDay === day) daySquare.classList.add('active');
         if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
             daySquare.classList.add('today');
@@ -124,12 +140,10 @@ window.renderCalendar = function() {
         const dStr = String(day).padStart(2, '0');
         const fullDateKey = `${year}-${mStr}-${dStr}`;
 
-        // Red Event Dot Agar Tyohar ho
         if (window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026) {
             daySquare.classList.add('has-event');
         }
 
-        // Calendar Click Logic
         daySquare.onclick = () => {
             window.selectedDay = day;
             window.renderCalendar();
@@ -138,27 +152,26 @@ window.renderCalendar = function() {
 
         container.appendChild(daySquare);
     }
-    window.updateMonthlyEvents(); // Update the event list below calendar
+    window.updateMonthlyEvents(); 
 };
 
 // ==========================================
-// 4. MONTHLY FESTIVAL LIST (FIXED)
+// 4. MONTHLY FESTIVAL LIST
 // ==========================================
 window.updateMonthlyEvents = function() {
     const container = document.getElementById('events-list');
     const eventsData = window.YEARLY_EVENTS_2026;
     if (!container || !eventsData) return;
 
-    const currentM = String((window.currentMonth !== undefined ? window.currentMonth : new Date().getMonth()) + 1).padStart(2, '0');
-    const currentY = window.currentYear || 2026;
+    const currentM = String(window.currentMonth + 1).padStart(2, '0');
+    const currentY = window.currentYear;
     let html = "";
 
-    // Fixed Loop with Parameters
     Object.entries(eventsData).sort().forEach(() => {
         if (dateKey.startsWith(`${currentY}-${currentM}`)) {
             const dayNum = dateKey.split('-');
             html += `
-                <div class="event-item-card" onclick="window.selectedDay=${parseInt(dayNum)}; window.renderCalendar(); window.updatePanchangDisplay(window);">
+                <div class="event-item-card" onclick="window.selectedDay=${parseInt(dayNum, 10)}; window.renderCalendar(); if(window) window.updatePanchangDisplay(window);">
                     <div class="event-date-badge">${dayNum}</div>
                     <div class="event-details">
                         <h4 style="color:var(--gold); margin:0; font-size:16px; font-family:'Cinzel';">${event.hi || event.en}</h4>
@@ -175,15 +188,9 @@ window.updateMonthlyEvents = function() {
 // 5. APPOINTMENT FORM & BUTTONS INIT
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    // Global Variables
-    window.currentYear = 2026;
-    window.currentMonth = new Date().getMonth();
-    window.selectedDay = new Date().getDate();
-
-    // Fetch Data on Load
+    // Initializing
     window.getPanchangFromFirebase(2026);
     
-    // Calendar Arrows Logic
     document.getElementById('prevMonth')?.addEventListener('click', () => {
         window.currentMonth--;
         if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; }
@@ -200,7 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window) window.updatePanchangDisplay(window);
     });
 
-    // Form submission logic
     const appointmentForm = document.getElementById('consultation-form');
     if (appointmentForm) {
         appointmentForm.addEventListener('submit', async (e) => {
