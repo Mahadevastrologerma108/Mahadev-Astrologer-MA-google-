@@ -7,21 +7,26 @@ window.currentMonth = new Date().getMonth();
 window.selectedDay = new Date().getDate();
 window.yearlyPanchangData = null;
 
-// 2. TRANSLATION MIDDLEMAN (Missing in earlier version)
+// 2. TRANSLATION MIDDLEMAN (Updated for Direct Keys)
 const MiddleMan = {
     getTranslation: function(val, type) {
         if (!val) return "--";
+        
         const lang = localStorage.getItem('selectedLanguage') || 'hi';
-        if (lang === 'en') return (typeof val === 'object' ? val.en : val);
-
-        const dict = window.translations?.['hi'];
+        
+        // 1. Dictionary uthao (en ya hi)
+        const dict = window.translations?.[lang];
+        
         if (!dict) return val;
 
-        // Clean key generation: "Shukla Pratipada" -> "tithi_shukla_pratipada"
-        let cleanVal = val.toString().toLowerCase().trim().replace(/\s+/g, '_');
-        let key = type + "_" + cleanVal;
+        // 2. Direct Match (Kyunki ab keys "Tritiya", "Shukla Paksha" aisi hain)
+        if (dict[val]) {
+            return dict[val];
+        }
 
-        return dict[key] || dict[cleanVal] || (typeof val === 'object' ? val.hi : val);
+        // 3. Fallback: Agar exact match na mile (Minor cleaning)
+        let trimmedVal = val.toString().trim();
+        return dict[trimmedVal] || val;
     }
 };
 
