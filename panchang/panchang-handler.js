@@ -1,31 +1,28 @@
+// 1. Firebase Imports
 import { rtdb } from './panchang-config.js'; 
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-// 1. Initial State
+// 2. Global State (Current Settings)
 window.currentYear = 2026;
 window.currentMonth = new Date().getMonth();
 window.selectedDay = new Date().getDate();
 
+// 3. MiddleMan: Translation Engine (Data ko Hindi/English mein badalne ke liye)
 const MiddleMan = {
     getTranslation: function(val, lang, type = "") {
         if (!val) return "--";
-        if (lang === 'en') return val;
+        if (lang === 'en') return val; // English mein seedha dikhao
 
         const dict = window.translations?.['hi'];
         if (!dict) return val;
 
-        // Clean value: "Shukla Pratipada" -> "shukla_pratipada"
+        // "Shukla Pratipada" -> "shukla_pratipada"
         let cleanVal = val.toLowerCase().trim().replace(/\s+/g, '_');
 
-        // Direct mapping check (Sabse pehle direct check karo)
+        // Check specific keys first (tithi_shukla_pratipada, etc.)
         if (dict[type + "_" + cleanVal]) return dict[type + "_" + cleanVal];
         if (dict[cleanVal]) return dict[cleanVal];
         
-        // Agar Tithi hai aur "shukla_pratipada" format mein hai
-        if (type === "tithi") {
-            if (dict["tithi_" + cleanVal]) return dict["tithi_" + cleanVal];
-        }
-
         return val;
     },
 
@@ -56,36 +53,38 @@ const MiddleMan = {
     }
 };
 
+// 4. Update UI: Cards mein data bharne ke liye
 window.masterTranslatePanchang = function() {
-    const currentLang = localStorage.getItem('selectedLang') || 'hi'; // Sync with your switcher
+    const currentLang = localStorage.getItem('selectedLanguage') || 'hi';
     const year = window.currentYear;
-    
     const monthKey = String(window.currentMonth + 1).padStart(2, '0');
     const dayKey = `d${String(window.selectedDay).padStart(2, '0')}`;
     
     const yearData = window["Data" + year];
-    if (!yearData) return;
+    if (!yearData || !yearData[monthKey]) return;
 
-    const d = yearData[monthKey]?.[dayKey];
+    const d = yearData[monthKey][dayKey];
 
     if (d) {
-        // UI Update logic
         const updateText = (id, val, type) => {
             const el = document.getElementById(id);
             if (el) el.innerText = MiddleMan.getTranslation(val, currentLang, type);
         };
 
+        // Main Panchang Cards
         updateText('pan-tithi', d.tithi, 'tithi');
         updateText('pan-nak', d.nakshatra, 'nak');
         updateText('pan-yoga', d.yoga, 'yoga');
         updateText('pan-karana', d.karan, 'karana');
         updateText('pan-paksha', d.paksha, 'paksha');
 
+        // Other Details
         if (document.getElementById('pan-moon')) document.getElementById('pan-moon').innerText = d.moon?.rise || d.moon || "--";
         if (document.getElementById('pan-sun')) document.getElementById('pan-sun').innerText = d.sun ? d.sun.rise + " / " + d.sun.set : "--";
         if (document.getElementById('pan-muh')) document.getElementById('pan-muh').innerText = d.muhurat?.abhijit || "--";
         if (document.getElementById('pan-rahu')) document.getElementById('pan-rahu').innerText = d.muhurat?.rahukaal || "--";
 
+        // Choghadiya
         const dBox = document.getElementById('day-chaug-body');
         const nBox = document.getElementById('night-chaug-body');
         if (dBox) dBox.innerHTML = MiddleMan.processChoghadiya(d.choghadiya?.day, currentLang);
@@ -95,6 +94,51 @@ window.masterTranslatePanchang = function() {
     }
 };
 
+// 5. Monthly Events List: Tyohar dikhane ke liye
+window.updateMonthlyEvents = function() {
+    const listContainer = document.getElementById('events-list');
+    if (!listContainer) return;
+
+    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    const month = String(window.currentMonth + 1).padStart(2, '0');
+    const year = window.currentYear;
+
+    listContainer.innerHTML = ''; 
+
+    const monthlyEvents = Object.keys(window.YEARLY_EVENTS_2026 || {})
+        .filter(date => date.startsWith(`${year}-${month}`))
+        .sort(); 
+
+    if (monthlyEvents.length === 0) {
+        listContainer.innerHTML = `<p style="text-align:center; color:gray; padding:20px;">No major festivals this month.</p>`;
+        return;
+    }
+
+    monthlyEvents.forEach(dateKey => {
+        const event = window.YEARLY_EVENTS_2026[dateKey];
+        const day = dateKey.split('-')[2];
+        const title = lang === 'hi' ? event.hi : event.en;
+        const desc = lang === 'hi' ? event.desc_hi : event.desc_en;
+
+        const eventCard = document.createElement('div');
+        eventCard.className = 'event-item-card'; 
+        eventCard.innerHTML = `
+            <div class="event-date-badge">${day}</div>
+            <div class="event-details">
+                <h4>${title}</h4>
+                <p>${desc}</p>
+            </div>
+        `;
+        eventCard.onclick = () => {
+            window.selectedDay = parseInt(day);
+            window.renderCalendar();
+            window.masterTranslatePanchang();
+        };
+        listContainer.appendChild(eventCard);
+    });
+};
+
+// 6. Calendar Rendering
 window.renderCalendar = function() {
     const container = document.getElementById('calendarDays');
     if (!container) return;
@@ -108,7 +152,17 @@ window.renderCalendar = function() {
     for (let day = 1; day <= daysInMonth; day++) {
         const daySquare = document.createElement('div');
         daySquare.className = 'calendar-day';
+        
+        // Highlight logic
         if (window.selectedDay === day) daySquare.classList.add('active');
+        const today = new Date();
+        if (day === today.getDate() && window.currentMonth === today.getMonth()) daySquare.classList.add('today');
+
+        // Event Dot logic
+        const dateKey = `${window.currentYear}-${String(window.currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        if (window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026[dateKey]) {
+            daySquare.classList.add('has-event');
+        }
         
         daySquare.innerText = day;
         daySquare.onclick = () => { 
@@ -118,8 +172,10 @@ window.renderCalendar = function() {
         };
         container.appendChild(daySquare);
     }
+    window.updateMonthlyEvents(); // Calendar ke saath list update karein
 };
 
+// 7. Firebase Data Fetching
 window.getPanchangFromFirebase = async function(year) {
     try {
         const snapshot = await get(ref(rtdb, `panchang/${year}`));
@@ -136,74 +192,31 @@ function updateMonthDisplay(lang) {
     const mDisplay = document.getElementById('monthDisplay');
     if (mDisplay) {
         const key = months[window.currentMonth];
-        mDisplay.innerText = (window.translations[lang] && window.translations[lang][key]) ? window.translations[lang][key] : key;
+        mDisplay.innerText = window.translations[lang]?.[key] || key;
     }
 }
 
-// 🚩 Sabse Zaruri: Initialize
+// 8. Initialization (Start Everything)
 document.addEventListener('DOMContentLoaded', () => {
     window.getPanchangFromFirebase(2026);
     
-    // Month Buttons Fix
+    // Month Switching Buttons
     document.getElementById('prevMonth')?.addEventListener('click', () => {
         window.currentMonth--;
-        if (window.currentMonth < 0) { window.currentMonth = 11; }
+        if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; }
         window.renderCalendar();
         window.masterTranslatePanchang();
     });
 
     document.getElementById('nextMonth')?.addEventListener('click', () => {
         window.currentMonth++;
-        if (window.currentMonth > 11) { window.currentMonth = 0; }
+        if (window.currentMonth > 11) { window.currentMonth = 0; window.currentYear++; }
         window.renderCalendar();
         window.masterTranslatePanchang();
     });
 });
-window.updateMonthlyEvents = function() {
-    const listContainer = document.getElementById('events-list'); // HTML mein ye ID honi chahiye
-    if (!listContainer) return;
 
-    const lang = localStorage.getItem('selectedLang') || 'hi';
-    const month = String(window.currentMonth + 1).padStart(2, '0');
-    const year = window.currentYear || 2026;
-
-    listContainer.innerHTML = ''; // Pehle purani list saaf karo
-
-    // Events filter karo: Sirf current mahine ke liye
-    const monthlyEvents = Object.keys(window.YEARLY_EVENTS_2026 || {})
-        .filter(date => date.startsWith(`${year}-${month}`))
-        .sort(); 
-
-    if (monthlyEvents.length === 0) {
-        listContainer.innerHTML = `<p style="text-align:center; color:gray; padding:20px;">इस महीने कोई प्रमुख व्रत या त्योहार नहीं हैं।</p>`;
-        return;
-    }
-
-    monthlyEvents.forEach(dateKey => {
-        const event = window.YEARLY_EVENTS_2026[dateKey];
-        const day = dateKey.split('-')[2]; // Date nikalne ke liye (Jaise 2026-01-15 se '15')
-        
-        const title = lang === 'hi' ? event.hi : event.en;
-        const desc = lang === 'hi' ? event.desc_hi : event.desc_en;
-
-        const eventCard = document.createElement('div');
-        eventCard.className = 'event-item-card'; 
-        eventCard.innerHTML = `
-            <div class="event-date-badge">${day}</div>
-            <div class="event-details">
-                <h4>${title}</h4>
-                <p>${desc}</p>
-            </div>
-        `;
-        
-        // Card click par calendar update karne ke liye
-        eventCard.onclick = () => {
-            window.selectedDay = parseInt(day);
-            window.renderCalendar();
-            window.masterTranslatePanchang();
-            window.scrollTo({ top: 100, behavior: 'smooth' });
-        };
-
-        listContainer.appendChild(eventCard);
-    });
-};
+window.addEventListener('languageChanged', () => { 
+    window.masterTranslatePanchang(); 
+    window.renderCalendar(); 
+});
