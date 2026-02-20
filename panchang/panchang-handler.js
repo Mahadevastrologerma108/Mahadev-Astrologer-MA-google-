@@ -93,7 +93,7 @@ window.updatePanchangDisplay = function() {
     fillChaug('night-chaug-body', d.choghadiya?.night);
 };
 
-// 5. CALENDAR & EVENTS
+// 5. CALENDAR & EVENTS (MERGED & OPTIMIZED)
 window.renderCalendar = function() {
     const container = document.getElementById('calendarDays');
     if (!container) return;
@@ -101,7 +101,6 @@ window.renderCalendar = function() {
     const lang = localStorage.getItem('selectedLanguage') || 'hi';
     const months = ["mon_jan", "mon_feb", "mon_mar", "mon_apr", "mon_may", "mon_jun", "mon_jul", "mon_aug", "mon_sep", "mon_oct", "mon_nov", "mon_dec"];
     
-    // Update Month Title
     const mDisplay = document.getElementById('monthDisplay');
     if (mDisplay) {
         const mName = window.translations?.[lang]?.[months[window.currentMonth]] || months[window.currentMonth];
@@ -111,18 +110,45 @@ window.renderCalendar = function() {
     container.innerHTML = '';
     const firstDay = new Date(window.currentYear, window.currentMonth, 1).getDay();
     const daysInMonth = new Date(window.currentYear, window.currentMonth + 1, 0).getDate();
+    const today = new Date();
 
     for (let i = 0; i < firstDay; i++) container.innerHTML += '<div class="calendar-day empty"></div>';
 
     for (let d = 1; d <= daysInMonth; d++) {
         const daySquare = document.createElement('div');
-        daySquare.className = 'calendar-day' + (window.selectedDay === d ? ' active' : '');
+        daySquare.className = 'calendar-day';
         
-        const dateKey = `${window.currentYear}-${String(window.currentMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-        if (window.YEARLY_EVENTS_2026?.[dateKey]) daySquare.classList.add('has-event');
+        if (window.selectedDay === d) daySquare.classList.add('active');
+
+        // 🕉️ Today's Marker (Tera CSS class)
+        if (d === today.getDate() && window.currentMonth === today.getMonth() && window.currentYear === today.getFullYear()) {
+            daySquare.classList.add('today');
+        }
+
+        // ✨ Special Glow Logic (Purnima/Amavasya/Ekadashi)
+        const mKey = String(window.currentMonth + 1).padStart(2, '0');
+        const dKey = "d" + String(d).padStart(2, '0');
+        const dayData = (window.yearlyPanchangData && window.yearlyPanchangData[mKey]) ? window.yearlyPanchangData[mKey][dKey] : null;
+        
+        if (dayData && dayData.tithi) {
+            const t = dayData.tithi.toLowerCase();
+            if (t.includes('purnima') || t.includes('amavasya') || t.includes('ekadashi')) {
+                daySquare.classList.add('special-tithi');
+            }
+        }
+
+        // 🚩 Event Dot
+        const dateKey = `${window.currentYear}-${mKey}-${String(d).padStart(2, '0')}`;
+        if (window.YEARLY_EVENTS_2026?.[dateKey]) {
+            daySquare.classList.add('has-event');
+        }
 
         daySquare.innerText = d;
-        daySquare.onclick = () => { window.selectedDay = d; window.renderCalendar(); window.updatePanchangDisplay(); };
+        daySquare.onclick = () => { 
+            window.selectedDay = d; 
+            window.renderCalendar(); 
+            window.updatePanchangDisplay(); 
+        };
         container.appendChild(daySquare);
     }
     window.updateMonthlyEvents();
