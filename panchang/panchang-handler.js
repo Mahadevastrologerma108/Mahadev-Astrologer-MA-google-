@@ -22,7 +22,7 @@ window.updatePanchangDisplay = async function(yearlyData, customDate = null) {
     const d = yearlyData[dateKey];
     if (!d) return;
 
-    // Basic Info Update
+    // Elements Update
     const elements = {
         'pan-tithi': d.tithi?.hi || "--",
         'pan-nak': d.nakshatra?.hi || "--",
@@ -40,44 +40,56 @@ window.updatePanchangDisplay = async function(yearlyData, customDate = null) {
         if (el) el.innerText = val;
     });
 
-    // Choghadiya Update (With Safe Check)
-    const fill = (id, cData) => {
-        const body = document.getElementById(id);
-        if (body && cData && typeof cData === 'object') {
-            body.innerHTML = Object.entries(cData)
-                .map(([t, n]) => `<tr><td>${t}</td><td>${n}</td><td class="nature-shubh">Shubh</td></tr>`).join('');
-        }
-    };
-
+    // Choghadiya
     if (d.choghadiya) {
-        if (d.choghadiya.day) fill('day-chaug-body', d.choghadiya.day);
-        if (d.choghadiya.night) fill('night-chaug-body', d.choghadiya.night);
+        const fill = (id, cData) => {
+            const body = document.getElementById(id);
+            if (body && cData) {
+                body.innerHTML = Object.entries(cData)
+                    .map(([t, n]) => `<tr><td>${t}</td><td>${n}</td><td class="nature-shubh">Shubh</td></tr>`).join('');
+            }
+        };
+        fill('day-chaug-body', d.choghadiya.day);
+        fill('night-chaug-body', d.choghadiya.night);
     }
     
-    // Auto-trigger Events List
+    // 🔱 Update Events & Force Translation
     window.updateMonthlyEvents();
+    
+    // Ye line adha page translate hone ki problem fix karegi
+    setTimeout(() => {
+        if (typeof window.applyTranslations === 'function') {
+            window.applyTranslations();
+        }
+    }, 300);
 };
 
 window.updateMonthlyEvents = function() {
     const container = document.getElementById('events-list');
-    if (!container) return;
+    if (!container || !window.YEARLY_EVENTS_2026) return;
 
-    if (!window.YEARLY_EVENTS_2026) {
-        console.log("🔱 Data not loaded yet, retrying...");
-        setTimeout(window.updateMonthlyEvents, 1000);
-        return;
-    }
-
+    const currentLang = localStorage.getItem('selectedLanguage') || 'hi';
     const currentM = String((window.currentMonth !== undefined ? window.currentMonth : new Date().getMonth()) + 1).padStart(2, '0');
     let html = "";
+
     Object.keys(window.YEARLY_EVENTS_2026).sort().forEach(dateKey => {
         if (dateKey.startsWith(`2026-${currentM}`)) {
             const dayNum = dateKey.split('-')[2];
             const event = window.YEARLY_EVENTS_2026[dateKey];
-            html += `<div class="event-item-row"><div class="ev-date">${dayNum}</div><div class="ev-info"><h4>${event.hi}</h4><p>${event.en}</p></div></div>`;
+            
+            // 🔱 Sirf ek language dikhane ka logic
+            const eventTitle = (currentLang === 'hi') ? event.hi : event.en;
+            
+            html += `
+                <div class="event-item-row">
+                    <div class="ev-date">${dayNum}</div>
+                    <div class="ev-info">
+                        <h4>${eventTitle}</h4>
+                    </div>
+                </div>`;
         }
     });
-    container.innerHTML = html || `<p style="text-align:center; color:#888;">No festivals this month.</p>`;
+    container.innerHTML = html || `<p style="text-align:center; color:#888;">No festivals.</p>`;
 };
 
 document.addEventListener('DOMContentLoaded', () => window.getPanchangFromFirebase(2026));
