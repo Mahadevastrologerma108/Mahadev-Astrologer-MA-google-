@@ -1,177 +1,102 @@
-import { rtdb, ref, get } from "../assets/js/firebase-config.js";
-
-// 1. GLOBAL STATE
-window.currentMonth = new Date().getMonth();
-window.currentYear = 2026;
-window.selectedDay = new Date().getDate();
-window.yearlyPanchangData = null;
-
-// 2. FIREBASE FETCH
-window.getPanchangFromFirebase = async function(year) {
-    try {
-        console.log(`🚀 Fetching data for ${year}...`);
-        const snapshot = await get(ref(rtdb, `panchang/${year}`));
-        if (snapshot.exists()) {
-            window.yearlyPanchangData = snapshot.val();
-            console.log("✅ Data loaded successfully");
-            window.renderCalendar();
-            window.updatePanchangDisplay();
-        } else {
-            console.error("⚠️ Firebase path not found: panchang/" + year);
-        }
-    } catch (e) {
-        console.error("❌ Firebase Error:", e);
-    }
-};
-
-// 3. RENDER CALENDAR (With 🕉️ and Glow)
-window.renderCalendar = function() {
-    const container = document.getElementById('calendarDays');
-    if (!container) return;
-
-    const lang = localStorage.getItem('selectedLanguage') || 'hi';
-    const months = ["mon_jan", "mon_feb", "mon_mar", "mon_apr", "mon_may", "mon_jun", "mon_jul", "mon_aug", "mon_sep", "mon_oct", "mon_nov", "mon_dec"];
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="title_panchang">Panchang 2026 | Mahadev Astrologer MA</title>
     
-    // Month Display
-    const mDisplay = document.getElementById('monthDisplay');
-    if (mDisplay) {
-        const mName = window.translations?.[lang]?.[months[window.currentMonth]] || months[window.currentMonth];
-        mDisplay.innerText = `${mName} ${window.currentYear}`;
-    }
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="panchang.css">
+</head>
+<body class="panchang-body">
 
-    container.innerHTML = '';
-    const firstDay = new Date(window.currentYear, window.currentMonth, 1).getDay();
-    const daysInMonth = new Date(window.currentYear, window.currentMonth + 1, 0).getDate();
-    const today = new Date();
+    <div id="header-placeholder"></div>
 
-    for (let i = 0; i < firstDay; i++) container.innerHTML += '<div class="calendar-day empty"></div>';
+    <main style="margin-top: 100px;">
+        <div class="panchang-main-header" style="text-align: center;">
+            <h2 id="static-title" data-key="static_title" style="color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 15px;">Today's Panchang</h2>
+            <div class="ribbon-container" style="margin-bottom: 30px;">
+                <div class="event-ribbon"><span id="ribbon-text">Jai Mahadev</span></div>
+            </div>
+        </div>
 
-    for (let d = 1; d <= daysInMonth; d++) {
-        const daySquare = document.createElement('div');
-        daySquare.className = 'calendar-day';
-        if (window.selectedDay === d) daySquare.classList.add('active');
+        <div class="pan-grid container">
+            <div class="p-card"><span class="label" data-key="pan_tithi">Tithi</span><h4 id="pan-tithi" class="val">--</h4></div>
+            <div class="p-card"><span class="label" data-key="pan_nak">Nakshatra</span><h4 id="pan-nak" class="val">--</h4></div>
+            <div class="p-card"><span class="label" data-key="pan_yoga">Yoga</span><h4 id="pan-yoga" class="val">--</h4></div>
+            <div class="p-card"><span class="label" data-key="pan_karana">Karana</span><h4 id="pan-karana" class="val">--</h4></div>
+            <div class="p-card"><span class="label" data-key="pan_paksha">Paksha</span><h4 id="pan-paksha" class="val">--</h4></div>
+            <div class="p-card"><span class="label" data-key="pan_sun">Sunrise/Set</span><h4 id="pan-sun" class="val">--</h4></div>
+            <div class="p-card"><span class="label" data-key="pan_muh">Abhijit</span><h4 id="pan-muh" class="val">--</h4></div>
+            <div class="p-card rahu-kaal-card"><span class="label" data-key="pan_rahu">Rahu Kaal</span><h4 id="pan-rahu" class="val">--</h4></div>
+        </div>
 
-        // 🕉️ Today
-        if (d === today.getDate() && window.currentMonth === today.getMonth() && window.currentYear === today.getFullYear()) {
-            daySquare.classList.add('today');
+        <div class="chaughadia-section container">
+            <h2 class="p-title" data-key="pan_shubh_chaug">Shubh Chaughadia</h2>
+            <div class="chaughadia-tabs">
+                <button class="c-tab active day-btn" id="btn-day" onclick="showChaug('day')"><i class="fas fa-sun"></i> <span data-key="pan_day">Day</span></button>
+                <button class="c-tab night-btn" id="btn-night" onclick="showChaug('night')"><i class="fas fa-moon"></i> <span data-key="pan_night">Night</span></button>
+            </div>
+            
+            <div id="day-chaug" class="chaug-content active">
+                <table class="chaug-table">
+                    <thead><tr><th data-key="pan_time">Time</th><th data-key="pan_chaug">Chaughadia</th><th data-key="pan_nature">Nature</th></tr></thead>
+                    <tbody id="day-chaug-body"></tbody>
+                </table>
+            </div>
+            <div id="night-chaug" class="chaug-content" style="display:none;">
+                <table class="chaug-table">
+                    <thead><tr><th data-key="pan_time">Time</th><th data-key="pan_chaug">Chaughadia</th><th data-key="pan_nature">Nature</th></tr></thead>
+                    <tbody id="night-chaug-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="calendar-container container">
+            <p class="calendar-hint" data-key="pan_cal_hint">Select a date 👇</p>
+            <div class="calendar-header">
+                <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                <h2 id="monthDisplay">--</h2>
+                <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="calendar-weekdays">
+                <div data-key="day_sun">Sun</div><div data-key="day_mon">Mon</div><div data-key="day_tue">Tue</div>
+                <div data-key="day_wed">Wed</div><div data-key="day_thu">Thu</div><div data-key="day_fri">Fri</div>
+                <div data-key="day_sat">Sat</div>
+            </div>
+            <div class="calendar-days" id="calendarDays"></div>
+        </div>
+
+        <div class="event-section container">
+            <h2 class="p-title" data-key="pan_events_title">Monthly Festivals</h2>
+            <div id="events-list" class="monthly-list-grid"></div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../assets/js/translations.js"></script>
+    <script src="../assets/js/layout.js"></script> 
+    <script src="yearly-events-2026.js"></script>
+    <script type="module" src="panchang-handler.js"></script>
+
+    <script>
+        // Tab Switching Logic
+        function showChaug(type) {
+            document.getElementById('day-chaug').style.display = type === 'day' ? 'block' : 'none';
+            document.getElementById('night-chaug').style.display = type === 'night' ? 'block' : 'none';
+            document.getElementById('btn-day').classList.toggle('active', type === 'day');
+            document.getElementById('btn-night').classList.toggle('active', type === 'night');
         }
 
-        // ✨ Special Tithi Glow (Purnima/Amavasya)
-        const mKey = String(window.currentMonth + 1).padStart(2, '0');
-        const dKey = "d" + String(d).padStart(2, '0');
-        const dayData = window.yearlyPanchangData?.[mKey]?.[dKey];
-        
-        if (dayData?.tithi) {
-            const t = dayData.tithi.toLowerCase();
-            if (t.includes('purnima') || t.includes('amavasya') || t.includes('ekadashi')) {
-                daySquare.classList.add('special-tithi');
-            }
-        }
-
-        // 🚩 Event Dot
-        const dateKey = `${window.currentYear}-${mKey}-${String(d).padStart(2, '0')}`;
-        if (window.YEARLY_EVENTS_2026?.[dateKey]) daySquare.classList.add('has-event');
-
-        daySquare.innerText = d;
-        daySquare.onclick = () => { 
-            window.selectedDay = d; 
-            window.renderCalendar(); 
-            window.updatePanchangDisplay(); 
-        };
-        container.appendChild(daySquare);
-    }
-    window.updateMonthlyEvents();
-};
-
-// 4. UPDATE PANCHANG DISPLAY (Matches your JSON d20/d21)
-window.updatePanchangDisplay = function() {
-    const data = window.yearlyPanchangData;
-    if (!data) return;
-
-    const mKey = String(window.currentMonth + 1).padStart(2, '0');
-    const dKey = "d" + String(window.selectedDay).padStart(2, '0');
-    const d = data[mKey]?.[dKey];
-
-    if (!d) {
-        const resetIds = ['pan-tithi', 'pan-nak', 'pan-yoga', 'pan-karana', 'pan-paksha'];
-        resetIds.forEach(id => { if(document.getElementById(id)) document.getElementById(id).innerText = "--"; });
-        return;
-    }
-
-    const update = (id, val, type) => {
-        const el = document.getElementById(id);
-        if (el) el.innerText = (typeof MiddleMan !== 'undefined') ? MiddleMan.getTranslation(val, type) : val;
-    };
-
-    update('pan-tithi', d.tithi, 'tithi');
-    update('pan-nak', d.nakshatra, 'nak');
-    update('pan-yoga', d.yoga, 'yoga');
-    update('pan-karana', d.karan || d.karana, 'karana');
-    update('pan-paksha', d.paksha, 'paksha');
-
-    if(document.getElementById('pan-sun')) document.getElementById('pan-sun').innerText = d.sun ? `${d.sun.rise} / ${d.sun.set}` : "--";
-    if(document.getElementById('pan-muh')) document.getElementById('pan-muh').innerText = d.muhurat?.abhijit || "--";
-    if(document.getElementById('pan-rahu')) document.getElementById('pan-rahu').innerText = d.muhurat?.rahukaal || "--";
-
-    // Choghadiya
-    const fillChaug = (id, list) => {
-        const body = document.getElementById(id);
-        if (!body) return;
-        if (!list) { body.innerHTML = '<tr><td colspan="3">No Data</td></tr>'; return; }
-
-        let html = '';
-        Object.entries(list).forEach(([tKey, name]) => {
-            const time = tKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
-            const transName = (typeof MiddleMan !== 'undefined') ? MiddleMan.getTranslation(name, 'chaug') : name;
-            html += `<tr><td style="color:var(--gold); font-weight:bold; padding:10px;">${time}</td><td>${transName}</td><td style="color:#00ff88; font-size:0.8em;">Good</td></tr>`;
+        // Handle Language Change UI
+        window.addEventListener('languageChanged', () => {
+            if (typeof window.renderCalendar === 'function') window.renderCalendar();
+            if (typeof window.updatePanchangDisplay === 'function') window.updatePanchangDisplay();
         });
-        body.innerHTML = html;
-    };
-    fillChaug('day-chaug-body', d.choghadiya?.day);
-    fillChaug('night-chaug-body', d.choghadiya?.night);
-};
-
-// 5. MONTHLY EVENTS LIST
-window.updateMonthlyEvents = function() {
-    const list = document.getElementById('events-list');
-    if (!list || !window.YEARLY_EVENTS_2026) return;
-
-    const lang = localStorage.getItem('selectedLanguage') || 'hi';
-    const mKey = `${window.currentYear}-${String(window.currentMonth + 1).padStart(2, '0')}`;
-    
-    let html = '';
-    Object.keys(window.YEARLY_EVENTS_2026).sort().forEach(date => {
-        if (date.startsWith(mKey)) {
-            const ev = window.YEARLY_EVENTS_2026[date];
-            const dNum = parseInt(date.split('-')[2]);
-            html += `
-                <div class="event-item-card" onclick="window.selectedDay=${dNum}; window.renderCalendar(); window.updatePanchangDisplay();">
-                    <div class="event-date-badge">${dNum}</div>
-                    <div class="event-details">
-                        <h4>${lang === 'hi' ? ev.hi : ev.en}</h4>
-                        <p>${lang === 'hi' ? ev.desc_hi : ev.desc_en}</p>
-                    </div>
-                </div>`;
-        }
-    });
-    list.innerHTML = html || '<p style="text-align:center; padding:20px; color:#888;">No Festivals</p>';
-};
-
-// 6. INITIALIZE
-document.addEventListener('DOMContentLoaded', () => {
-    window.getPanchangFromFirebase(2026);
-
-    document.getElementById('prevMonth')?.addEventListener('click', () => {
-        window.currentMonth--;
-        if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; window.getPanchangFromFirebase(window.currentYear); }
-        window.selectedDay = 1;
-        window.renderCalendar();
-    });
-
-    document.getElementById('nextMonth')?.addEventListener('click', () => {
-        window.currentMonth++;
-        if (window.currentMonth > 11) { window.currentMonth = 0; window.currentYear++; window.getPanchangFromFirebase(window.currentYear); }
-        window.selectedDay = 1;
-        window.renderCalendar();
-    });
-});
+    </script>
+</body>
+</html>
