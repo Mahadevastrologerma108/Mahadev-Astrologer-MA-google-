@@ -1,83 +1,122 @@
 import { rtdb } from './panchang-config.js'; 
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-// 1. Central Report & Execute Function 🔱
+// 1. VEDIC DICTIONARY (Jo kahi aur nahi milega)
+const VEDIC_DICT = {
+    hi: {
+        'Amrit': 'अमृत', 'Shubh': 'शुभ', 'Labh': 'लाभ', 'Char': 'चर', 'Rog': 'रोग', 'Kaal': 'काल', 'Udveg': 'उद्वेग',
+        'Shukla Paksha': 'शुक्ल पक्ष', 'Krishna Paksha': 'कृष्ण पक्ष',
+        'Pratipada': 'प्रतिपदा', 'Dwitiya': 'द्वितीया', 'Tritiya': 'तृतीया', 'Chaturthi': 'चतुर्थी', 'Panchami': 'पंचमी', 
+        'Shashthi': 'षष्ठी', 'Saptami': 'सप्तमी', 'Ashtami': 'अष्टमी', 'Navami': 'नवमी', 'Dashami': 'दशमी', 
+        'Ekadashi': 'एकादशी', 'Dwadashi': 'द्वादशी', 'Trayodashi': 'त्रयोदशी', 'Chaturdashi': 'चतुर्दशी', 
+        'Purnima': 'पूर्णिमा', 'Amavasya': 'अमावस्या',
+        'Ashwini': 'अश्विनी', 'Bharani': 'भरणी', 'Krittika': 'कृत्तिका', 'Rohini': 'रोहिणी', 'Mrigashira': 'मृगशिरा', 
+        'Ardra': 'आद्रा', 'Punarvasu': 'पुनर्वसु', 'Pushya': 'पुष्य', 'Ashlesha': 'आश्लेषा', 'Magha': 'मघा', 
+        'Purva Phalguni': 'पूर्वा फाल्गुनी', 'Uttara Phalguni': 'उत्तरा फाल्गुनी', 'Hasta': 'हस्त', 'Chitra': 'चित्रा', 
+        'Swati': 'स्वाति', 'Vishakha': 'विशाखा', 'Anuradha': 'अनुराधा', 'Jyeshtha': 'ज्येष्ठा', 'Mula': 'मूल', 
+        'Purva Ashadha': 'पूर्वाषाढ़ा', 'Uttara Ashadha': 'उत्तराषाढ़ा', 'Shravana': 'श्रवण', 'Dhanishta': 'धनिष्ठा', 
+        'Shatabhisha': 'शतभिषा', 'Purva Bhadrapada': 'पूर्वा भाद्रपद', 'Uttara Bhadrapada': 'उत्तरा भाद्रपद', 'Revati': 'रेवती'
+    }
+};
+
+// 2. MIDDLE-MAN ENGINE (The Dispatcher)
+const MiddleMan = {
+    // Firebase Data + Translation.js + Vedic Dict ka mishran
+    getTranslation(key, lang) {
+        if (!key) return "--";
+        // Pehle translation.js check karo (Static labels ke liye)
+        if (window.translations?.[lang]?.[key]) return window.translations[lang][key];
+        // Phir Vedic Dictionary check karo (Tithi/Nak/Chaug ke liye)
+        if (lang === 'hi' && VEDIC_DICT.hi[key]) return VEDIC_DICT.hi[key];
+        // Nahi toh original return karo
+        return key;
+    },
+
+    processChoghadiya(list, lang) {
+        if (!list) return `<div class="no-data">Data coming soon...</div>`;
+        return Object.entries(list).map(([time, name]) => `
+            <div class="chog-item">
+                <span class="chog-time">${time}</span>
+                <span class="chog-name">${this.getTranslation(name, lang)}</span>
+            </div>
+        `).join('');
+    }
+};
+
+// 3. MASTER RENDER FUNCTION
 window.masterTranslatePanchang = async function() {
-    console.log("🔱 Master Translation Watcher: STARTING...");
-    
-    // User ki bhasha uthao
     const currentLang = localStorage.getItem('selectedLanguage') || 'hi';
     
-    // A. DATA FETCH (Firebase se data confirm karo)
     if (!window["Data2026"]) {
-        console.warn("🔱 Waiting for Firebase Data...");
         await window.getPanchangFromFirebase(2026);
+        return;
     }
-    
-    const yearlyData = window["Data2026"];
+
     const today = new Date();
-    // Custom date logic agar user ne calendar se select kiya hai
     const activeDate = window.selectedPanchangDate || `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-    const d = yearlyData[activeDate];
+    const d = window["Data2026"][activeDate];
 
     if (d) {
-        // B. TRANSLATE TOP CARDS (Firebase Data)
+        // UI Pe Data Chipkao (Middle-man ke raste)
         const elements = {
-            'pan-tithi': currentLang === 'hi' ? d.tithi?.hi : d.tithi?.en,
-            'pan-nak': currentLang === 'hi' ? d.nakshatra?.hi : d.nakshatra?.en,
-            'pan-yoga': currentLang === 'hi' ? d.yoga?.hi : d.yoga?.en,
-            'pan-karana': currentLang === 'hi' ? d.karan?.hi : d.karan?.en,
-            'pan-paksha': currentLang === 'hi' ? d.paksha?.hi : d.paksha?.en,
+            'pan-tithi': MiddleMan.getTranslation(d.tithi, currentLang),
+            'pan-nak': MiddleMan.getTranslation(d.nakshatra, currentLang),
+            'pan-yoga': MiddleMan.getTranslation(d.yoga, currentLang),
+            'pan-karana': MiddleMan.getTranslation(d.karan, currentLang),
+            'pan-paksha': MiddleMan.getTranslation(d.paksha, currentLang),
             'pan-sun': d.sun ? `${d.sun.rise} / ${d.sun.set}` : "--",
-            'pan-moon': d.moon?.rise || "--",
+            'pan-moon': MiddleMan.getTranslation(d.moon?.rise || d.moon, currentLang),
             'pan-muh': d.muhurat?.abhijit || "--",
             'pan-rahu': d.muhurat?.rahukaal || "--"
         };
 
         Object.entries(elements).forEach(([id, val]) => {
             const el = document.getElementById(id);
-            if (el) el.innerText = val || "--";
+            if (el) el.innerText = val;
         });
 
-        // C. TRANSLATE CALENDAR MONTH (The "February" Fix)
-        const monthNames = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
-        const mDisplay = document.getElementById('monthDisplay');
-        if(mDisplay) {
-            const currentMIndex = window.currentMonth !== undefined ? window.currentMonth : today.getMonth();
-            const mKey = `mon_${monthNames[currentMIndex]}`;
-            mDisplay.innerText = window.translations[currentLang][mKey] || mDisplay.innerText;
-        }
+        // Chaughadiya Update
+        const dBox = document.getElementById('day-chaug-body');
+        const nBox = document.getElementById('night-chaug-body');
+        if (dBox) dBox.innerHTML = MiddleMan.processChoghadiya(d.choghadiya?.day, currentLang);
+        if (nBox) nBox.innerHTML = MiddleMan.processChoghadiya(d.choghadiya?.night, currentLang);
 
-        // D. TRANSLATE EVENTS (The "English/Hindi" Fix)
-        window.updateMonthlyEvents();
-
-        // E. TRANSLATE STATIC LABELS (The "Push" Fix)
+        // Events & Static Labels
+        updateMonthDisplay(currentLang);
+        window.updateMonthlyEvents(); // Yearly-events.js se data uthayega
         if (typeof window.applyTranslations === 'function') window.applyTranslations();
-
-        console.log("🔱 Master Translation Watcher: COMPLETE ✅");
     }
 };
 
-// 2. Modified Event Functions
+// 4. DATA FETCH & SYNC
 window.getPanchangFromFirebase = async function(year) {
     try {
         const panRef = ref(rtdb, `panchang/${year}`);
         const snapshot = await get(panRef); 
         if (snapshot.exists()) {
             window["Data" + year] = snapshot.val();
-            // Calendar grid ko pehle banne do
             if (typeof window.renderCalendar === 'function') window.renderCalendar();
-            // Phir translation chalao
             window.masterTranslatePanchang();
         }
-    } catch (e) { console.error("🔱 Handler Error:", e); }
+    } catch (err) { console.error("🔱 Connection Error:", err); }
 };
 
+// Helper: Month Header
+function updateMonthDisplay(lang) {
+    const monthKeys = ["mon_jan", "mon_feb", "mon_mar", "mon_apr", "mon_may", "mon_jun", "mon_jul", "mon_aug", "mon_sep", "mon_oct", "mon_nov", "mon_dec"];
+    const mDisplay = document.getElementById('monthDisplay');
+    if(mDisplay) {
+        const mIdx = window.currentMonth !== undefined ? window.currentMonth : new Date().getMonth();
+        mDisplay.innerText = window.translations?.[lang]?.[monthKeys[mIdx]] || "---";
+    }
+}
+
+// Monthly Events (Directly from yearly-events-2026.js)
 window.updateMonthlyEvents = function() {
     const container = document.getElementById('events-list');
     if (!container || !window.YEARLY_EVENTS_2026) return;
 
-    const currentLang = localStorage.getItem('selectedLanguage') || 'hi';
+    const lang = localStorage.getItem('selectedLanguage') || 'hi';
     const currentM = String((window.currentMonth !== undefined ? window.currentMonth : new Date().getMonth()) + 1).padStart(2, '0');
     let html = "";
 
@@ -85,16 +124,14 @@ window.updateMonthlyEvents = function() {
         if (dateKey.startsWith(`2026-${currentM}`)) {
             const dayNum = dateKey.split('-')[2];
             const event = window.YEARLY_EVENTS_2026[dateKey];
-            // Yahan check karo agar English maangi hai aur event.en hai, toh wahi dikhao
-            const eventTitle = (currentLang === 'en' && event.en) ? event.en : event.hi;
-            
-            html += `<div class="event-item-row"><div class="ev-date">${dayNum}</div><div class="ev-info"><h4>${eventTitle}</h4></div></div>`;
+            const title = (lang === 'en' && event.en) ? event.en : event.hi;
+            html += `<div class="event-item-row"><div class="ev-date">${dayNum}</div><div class="ev-info"><h4>${title}</h4></div></div>`;
         }
     });
-    container.innerHTML = html || `<p style="text-align:center; color:#888;">No festivals.</p>`;
+    container.innerHTML = html || `<p style="padding:20px; color:#888;">No festivals.</p>`;
 };
 
-// 3. LISTENERS (Har signal par Master ko bulao)
+// Listeners
 window.addEventListener('languageChanged', () => window.masterTranslatePanchang());
-window.addEventListener('monthChanged', () => window.masterTranslatePanchang()); // Calendar badalne par
+window.addEventListener('monthChanged', () => window.masterTranslatePanchang());
 document.addEventListener('DOMContentLoaded', () => window.getPanchangFromFirebase(2026));
