@@ -1,261 +1,180 @@
 import { db, rtdb } from './firebase-config.js'; 
-import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-console.log("🔱 Mahadev Handler: Sindoor lag raha hai...");
-
-// ==========================================
-// 1. GLOBAL VARIABLES
-// ==========================================
+// 1. GLOBAL STATE
 window.currentYear = 2026;
 window.currentMonth = new Date().getMonth();
 window.selectedDay = new Date().getDate();
+window.yearlyPanchangData = null;
 
-// ==========================================
-// 2. FIREBASE DATA FETCH
-// ==========================================
-window.getPanchangFromFirebase = async function(year) {
-    try {
-        const snapshot = await get(ref(rtdb, 'panchang/' + year)); 
-        if (snapshot.exists()) {
-            window = snapshot.val(); 
-        } else {
-            console.log("No data found for year: " + year);
-        }
-    } catch (e) { 
-        console.error("🔱 Panchang Fetch Error:", e); 
-    } finally {
-        // Data fetch hone ke baad UI update call karein
-        if (typeof window.renderCalendar === 'function') {
-            window.renderCalendar();
-        }
-        if (window) {
-            window.updatePanchangDisplay(window);
-        }
+// 2. TRANSLATION MIDDLEMAN (Missing in earlier version)
+const MiddleMan = {
+    getTranslation: function(val, type) {
+        if (!val) return "--";
+        const lang = localStorage.getItem('selectedLanguage') || 'hi';
+        if (lang === 'en') return (typeof val === 'object' ? val.en : val);
+
+        const dict = window.translations?.['hi'];
+        if (!dict) return val;
+
+        // Clean key generation: "Shukla Pratipada" -> "tithi_shukla_pratipada"
+        let cleanVal = val.toString().toLowerCase().trim().replace(/\s+/g, '_');
+        let key = type + "_" + cleanVal;
+
+        return dict[key] || dict[cleanVal] || (typeof val === 'object' ? val.hi : val);
     }
 };
 
-// ==========================================
-// 3. UPDATE TOP CARDS & CHOGHADIYA
-// ==========================================
-window.updatePanchangDisplay = async function(yearlyData) {
-    if (!yearlyData) return;
-
-    let mStr = String(window.currentMonth + 1).padStart(2, '0');
-    let dStr = String(window.selectedDay).padStart(2, '0');
-    
-    // Date formats check (MM-DD or MM/dDD)
-    let dateKey = mStr + '-' + dStr;
-    let d = null;
-    if (yearlyData) {
-        d = yearlyData;
-    } else if (yearlyData && yearlyData) {
-        d = yearlyData;
-    }
-
-    const ids =;
-    
-    // Agar us date ka data nahi hai, to sabme "--" bhar do
-    if (!d) {
-        for(let i=0; i<ids.length; i++) {
-            let el = document.getElementById(ids); 
-            if(el) el.innerText = "--"; 
+// 3. FIREBASE FETCH
+window.getPanchangFromFirebase = async function(year) {
+    try {
+        const snapshot = await get(ref(rtdb, `panchang/${year}`));
+        if (snapshot.exists()) {
+            window.yearlyPanchangData = snapshot.val();
+            window.renderCalendar();
+            window.updatePanchangDisplay();
         }
-        let dBody = document.getElementById('day-chaug-body');
-        let nBody = document.getElementById('night-chaug-body');
-        if(dBody) dBody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:15px; color:#888;">No Data Available</td></tr>';
-        if(nBody) nBody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:15px; color:#888;">No Data Available</td></tr>';
+    } catch (e) { console.error("🔱 Fetch Error:", e); }
+};
+
+// 4. UI DISPLAY (Updated logic for Month/Day keys)
+window.updatePanchangDisplay = function() {
+    const data = window.yearlyPanchangData;
+    if (!data) return;
+
+    const mKey = String(window.currentMonth + 1).padStart(2, '0');
+    const dKey = "d" + String(window.selectedDay).padStart(2, '0');
+    const d = (data[mKey] && data[mKey][dKey]) ? data[mKey][dKey] : null;
+
+    if (!d) {
+        const resetIds = ['pan-tithi', 'pan-nak', 'pan-yoga', 'pan-karana', 'pan-paksha'];
+        resetIds.forEach(id => { if(document.getElementById(id)) document.getElementById(id).innerText = "--"; });
         return;
     }
 
-    // Data ko nikalne ka safe function
-    const safeVal = function(obj) {
-        if (typeof obj === 'object' && obj !== null) return obj.hi || obj.en || "--";
-        return obj || "--";
+    // Mapping data to IDs with translation
+    const update = (id, val, type) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = MiddleMan.getTranslation(val, type);
     };
 
-    const map = {
-        'pan-tithi': safeVal(d.tithi), 
-        'pan-nak': safeVal(d.nakshatra),
-        'pan-yoga': safeVal(d.yoga), 
-        'pan-karana': safeVal(d.karan),
-        'pan-paksha': safeVal(d.paksha), 
-        'pan-sun': d.sun ? (d.sun.rise + ' / ' + d.sun.set) : "--",
-        'pan-moon': (d.moon && d.moon.rise) ? d.moon.rise : (d.moon || "--"), 
-        'pan-muh': (d.muhurat && d.muhurat.abhijit) ? d.muhurat.abhijit : "--",
-        'pan-rahu': (d.muhurat && d.muhurat.rahukaal) ? d.muhurat.rahukaal : "--"
+    update('pan-tithi', d.tithi, 'tithi');
+    update('pan-nak', d.nakshatra, 'nak');
+    update('pan-yoga', d.yoga, 'yoga');
+    update('pan-karana', d.karan || d.karana, 'karana');
+    update('pan-paksha', d.paksha, 'paksha');
+
+    // Sun & Moon (No translation needed for numbers)
+    if(document.getElementById('pan-sun')) document.getElementById('pan-sun').innerText = d.sun ? `${d.sun.rise} / ${d.sun.set}` : "--";
+    if(document.getElementById('pan-moon')) document.getElementById('pan-moon').innerText = d.moon?.rise || d.moon || "--";
+    if(document.getElementById('pan-muh')) document.getElementById('pan-muh').innerText = d.muhurat?.abhijit || "--";
+    if(document.getElementById('pan-rahu')) document.getElementById('pan-rahu').innerText = d.muhurat?.rahukaal || "--";
+
+    // Choghadiya
+    const fillChaug = (id, list) => {
+        const body = document.getElementById(id);
+        if (!body) return;
+        if (!list) { body.innerHTML = '<tr><td colspan="3">No Data</td></tr>'; return; }
+
+        let html = '';
+        Object.entries(list).forEach(([tKey, name]) => {
+            const time = tKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
+            const transName = MiddleMan.getTranslation(name, 'chaug');
+            html += `<tr>
+                <td style="color:var(--gold); font-weight:bold; padding:10px;">${time}</td>
+                <td>${transName}</td>
+                <td style="color:#00ff88; font-size:0.8em;">Good</td>
+            </tr>`;
+        });
+        body.innerHTML = html;
     };
 
-    // Card Update (Standard Loop)
-    for (let key in map) {
-        let el = document.getElementById(key);
-        if (el) el.innerText = map;
-    }
-
-    // Choghadiya Update
-    const fillTable = function(id, cData) {
-        let body = document.getElementById(id);
-        if (body && cData) {
-            let html = '';
-            for (let timeKey in cData) {
-                let name = cData;
-                let formattedTime = timeKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
-                html += '<tr>' +
-                        '<td style="color:var(--gold); font-weight:bold; padding:12px;">' + formattedTime + '</td>' +
-                        '<td style="padding:12px;">' + name + '</td>' +
-                        '<td class="nature-shubh" style="font-size:0.85em; padding:12px; color:#00ff88;">Shubh</td>' +
-                    '</tr>';
-            }
-            body.innerHTML = html;
-        }
-    };
-
-    if (d.choghadiya) {
-        fillTable('day-chaug-body', d.choghadiya.day);
-        fillTable('night-chaug-body', d.choghadiya.night);
-    }
+    fillChaug('day-chaug-body', d.choghadiya?.day);
+    fillChaug('night-chaug-body', d.choghadiya?.night);
 };
 
-// ==========================================
-// 4. CALENDAR RENDER ENGINE
-// ==========================================
+// 5. CALENDAR & EVENTS
 window.renderCalendar = function() {
-    let container = document.getElementById('calendarDays');
-    let monthDisplay = document.getElementById('monthDisplay');
+    const container = document.getElementById('calendarDays');
     if (!container) return;
 
-    let year = window.currentYear;
-    let month = window.currentMonth;
+    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    const months = ["mon_jan", "mon_feb", "mon_mar", "mon_apr", "mon_may", "mon_jun", "mon_jul", "mon_aug", "mon_sep", "mon_oct", "mon_nov", "mon_dec"];
     
-    // Month Names Array (Bulletproof)
-    const monthNames =;
-    if (monthDisplay) {
-        monthDisplay.innerText = monthNames + ' ' + year;
+    // Update Month Title
+    const mDisplay = document.getElementById('monthDisplay');
+    if (mDisplay) {
+        const mName = window.translations?.[lang]?.[months[window.currentMonth]] || months[window.currentMonth];
+        mDisplay.innerText = `${mName} ${window.currentYear}`;
     }
 
     container.innerHTML = '';
-    let firstDay = new Date(year, month, 1).getDay();
-    let daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDay = new Date(window.currentYear, window.currentMonth, 1).getDay();
+    const daysInMonth = new Date(window.currentYear, window.currentMonth + 1, 0).getDate();
 
-    // Khali (Empty) slots shuruat ke dino ke liye
-    for (let i = 0; i < firstDay; i++) {
-        let emptyDiv = document.createElement('div');
-        emptyDiv.className = 'calendar-day empty';
-        emptyDiv.style.border = 'none';
-        emptyDiv.style.background = 'transparent';
-        container.appendChild(emptyDiv);
-    }
+    for (let i = 0; i < firstDay; i++) container.innerHTML += '<div class="calendar-day empty"></div>';
 
-    let today = new Date();
-    for (let day = 1; day <= daysInMonth; day++) {
-        let daySquare = document.createElement('div');
-        daySquare.className = 'calendar-day';
-        daySquare.innerText = day;
+    for (let d = 1; d <= daysInMonth; d++) {
+        const daySquare = document.createElement('div');
+        daySquare.className = 'calendar-day' + (window.selectedDay === d ? ' active' : '');
+        
+        const dateKey = `${window.currentYear}-${String(window.currentMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        if (window.YEARLY_EVENTS_2026?.[dateKey]) daySquare.classList.add('has-event');
 
-        // Current aur Selected Date ko highlight karo
-        if (window.selectedDay === day) {
-            daySquare.classList.add('active');
-        }
-        if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
-            daySquare.classList.add('today');
-        }
-
-        let mStr = String(month + 1).padStart(2, '0');
-        let dStr = String(day).padStart(2, '0');
-        let fullDateKey = year + '-' + mStr + '-' + dStr;
-
-        // Red Event Dot Agar Tyohar ho
-        if (window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026) {
-            daySquare.classList.add('has-event');
-        }
-
-        // Click on Calendar Day
-        daySquare.onclick = function() {
-            window.selectedDay = day;
-            window.renderCalendar();
-            if (window) {
-                window.updatePanchangDisplay(window);
-            }
-        };
-
+        daySquare.innerText = d;
+        daySquare.onclick = () => { window.selectedDay = d; window.renderCalendar(); window.updatePanchangDisplay(); };
         container.appendChild(daySquare);
     }
-    
-    // Calendar ke update hone ke baad niche list update karo
-    window.updateMonthlyEvents(); 
+    window.updateMonthlyEvents();
 };
 
-// ==========================================
-// 5. MONTHLY FESTIVAL LIST
-// ==========================================
 window.updateMonthlyEvents = function() {
-    let container = document.getElementById('events-list');
-    let eventsData = window.YEARLY_EVENTS_2026;
-    if (!container || !eventsData) return;
+    const list = document.getElementById('events-list');
+    if (!list || !window.YEARLY_EVENTS_2026) return;
 
-    let currentM = String(window.currentMonth + 1).padStart(2, '0');
-    let currentY = window.currentYear;
-    let html = "";
-
-    // Array Keys & Standard Loop (Bulletproof)
-    let eventKeys = Object.keys(eventsData).sort();
+    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    const mKey = `${window.currentYear}-${String(window.currentMonth + 1).padStart(2, '0')}`;
     
-    for (let i = 0; i < eventKeys.length; i++) {
-        let dateKey = eventKeys;
-        if (dateKey.startsWith(currentY + '-' + currentM)) {
-            let event = eventsData;
-            let dayNum = dateKey.split('-');
-            let title = event.hi || event.en;
-            let desc = event.desc_hi || event.desc_en || event.en;
-            
-            // Onclick me inline function banaya hai taki refresh ho jaye
-            let clickFunc = "window.selectedDay=" + parseInt(dayNum, 10) + "; window.renderCalendar(); if(window) window.updatePanchangDisplay(window);";
-            
-            html += '<div class="event-item-card" onclick="' + clickFunc + '">' +
-                    '<div class="event-date-badge">' + parseInt(dayNum, 10) + '</div>' +
-                    '<div class="event-details">' +
-                        '<h4 style="color:var(--gold); margin:0; font-size:16px; font-family:\'Cinzel\';">' + title + '</h4>' +
-                        '<p style="color:#aaa; margin:2px 0 0; font-size:12px;">' + desc + '</p>' +
-                    '</div>' +
-                '</div>';
+    let html = '';
+    Object.keys(window.YEARLY_EVENTS_2026).sort().forEach(date => {
+        if (date.startsWith(mKey)) {
+            const ev = window.YEARLY_EVENTS_2026[date];
+            const dNum = parseInt(date.split('-')[2]);
+            html += `
+                <div class="event-item-card" onclick="window.selectedDay=${dNum}; window.renderCalendar(); window.updatePanchangDisplay();">
+                    <div class="event-date-badge">${dNum}</div>
+                    <div class="event-details">
+                        <h4>${lang === 'hi' ? ev.hi : ev.en}</h4>
+                        <p>${lang === 'hi' ? ev.desc_hi : ev.desc_en}</p>
+                    </div>
+                </div>`;
         }
-    }
-
-    if (html === "") {
-        container.innerHTML = '<p style="text-align:center; color:#888; padding:20px;">No major festivals this month.</p>';
-    } else {
-        container.innerHTML = html;
-    }
+    });
+    list.innerHTML = html || '<p style="text-align:center; padding:20px; color:#888;">No Festivals</p>';
 };
 
-// ==========================================
-// 6. INITIALIZATION & ARROWS
-// ==========================================
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // 1. App start hote hi Firebase se data lao
+// 6. INITIALIZE
+document.addEventListener('DOMContentLoaded', () => {
     window.getPanchangFromFirebase(2026);
-    
-    // 2. Calendar ke Buttons
-    let prevBtn = document.getElementById('prevMonth');
-    if (prevBtn) {
-        prevBtn.addEventListener('click', function() {
-            window.currentMonth--;
-            if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; }
-            window.selectedDay = 1;
-            window.renderCalendar();
-            if (window) window.updatePanchangDisplay(window);
-        });
-    }
 
-    let nextBtn = document.getElementById('nextMonth');
-    if (nextBtn) {
-        nextBtn.addEventListener('click', function() {
-            window.currentMonth++;
-            if (window.currentMonth > 11) { window.currentMonth = 0; window.currentYear++; }
-            window.selectedDay = 1;
-            window.renderCalendar();
-            if (window) window.updatePanchangDisplay(window);
-        });
-    }
+    document.getElementById('prevMonth')?.addEventListener('click', () => {
+        window.currentMonth--;
+        if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; }
+        window.selectedDay = 1;
+        window.renderCalendar();
+        window.updatePanchangDisplay();
+    });
+
+    document.getElementById('nextMonth')?.addEventListener('click', () => {
+        window.currentMonth++;
+        if (window.currentMonth > 11) { window.currentMonth = 0; window.currentYear++; }
+        window.selectedDay = 1;
+        window.renderCalendar();
+        window.updatePanchangDisplay();
+    });
+});
+
+window.addEventListener('languageChanged', () => {
+    window.renderCalendar();
+    window.updatePanchangDisplay();
 });
