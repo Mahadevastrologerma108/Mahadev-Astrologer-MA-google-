@@ -159,3 +159,51 @@ document.addEventListener('DOMContentLoaded', () => {
         window.masterTranslatePanchang();
     });
 });
+window.updateMonthlyEvents = function() {
+    const listContainer = document.getElementById('events-list'); // HTML mein ye ID honi chahiye
+    if (!listContainer) return;
+
+    const lang = localStorage.getItem('selectedLang') || 'hi';
+    const month = String(window.currentMonth + 1).padStart(2, '0');
+    const year = window.currentYear || 2026;
+
+    listContainer.innerHTML = ''; // Pehle purani list saaf karo
+
+    // Events filter karo: Sirf current mahine ke liye
+    const monthlyEvents = Object.keys(window.YEARLY_EVENTS_2026 || {})
+        .filter(date => date.startsWith(`${year}-${month}`))
+        .sort(); 
+
+    if (monthlyEvents.length === 0) {
+        listContainer.innerHTML = `<p style="text-align:center; color:gray; padding:20px;">इस महीने कोई प्रमुख व्रत या त्योहार नहीं हैं।</p>`;
+        return;
+    }
+
+    monthlyEvents.forEach(dateKey => {
+        const event = window.YEARLY_EVENTS_2026[dateKey];
+        const day = dateKey.split('-')[2]; // Date nikalne ke liye (Jaise 2026-01-15 se '15')
+        
+        const title = lang === 'hi' ? event.hi : event.en;
+        const desc = lang === 'hi' ? event.desc_hi : event.desc_en;
+
+        const eventCard = document.createElement('div');
+        eventCard.className = 'event-item-card'; 
+        eventCard.innerHTML = `
+            <div class="event-date-badge">${day}</div>
+            <div class="event-details">
+                <h4>${title}</h4>
+                <p>${desc}</p>
+            </div>
+        `;
+        
+        // Card click par calendar update karne ke liye
+        eventCard.onclick = () => {
+            window.selectedDay = parseInt(day);
+            window.renderCalendar();
+            window.masterTranslatePanchang();
+            window.scrollTo({ top: 100, behavior: 'smooth' });
+        };
+
+        listContainer.appendChild(eventCard);
+    });
+};
