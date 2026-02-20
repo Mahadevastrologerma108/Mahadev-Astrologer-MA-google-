@@ -1,26 +1,36 @@
 import { rtdb } from './panchang-config.js'; 
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-// 🔱 MIDDLE-MAN: Direct connection to translation.js (Dictionary Master)
+// 🔱 MIDDLE-MAN: Direct connection to translation.js
 const MiddleMan = {
-    getTranslation(key, lang) {
+    getTranslation(key, lang, type = "") {
         if (!key) return "--";
         const dict = window.translations?.[lang];
         if (!dict) return key;
 
-        // 1. Direct check (e.g., 'Amrit')
+        // 1. Clean the key for matching (e.g., "Shukla Paksha" -> "shukla")
+        const cleanKey = key.toLowerCase().trim().replace(/\s+/g, '_');
+
+        // 2. Direct Match
         if (dict[key]) return dict[key];
 
-        // 2. Choghadiya mapping (Firebase 'Amrit' -> 'chaug_amrit')
-        const chaugKey = "chaug_" + key.toLowerCase();
-        if (dict[chaugKey]) return dict[chaugKey];
+        // 3. Karana Special (Firebase 'Bava' -> dict 'karana_bava')
+        if (type === "karana") {
+            const kKey = "karana_" + cleanKey;
+            if (dict[kKey]) return dict[kKey];
+        }
 
-        // 3. Tithi/Yoga/Nakshatra mapping (Prefix matching)
-        const lowerKey = key.toLowerCase().replace(/\s+/g, '_');
-        if (dict["tithi_shukla_" + lowerKey]) return dict["tithi_shukla_" + lowerKey];
-        if (dict["tithi_krishna_" + lowerKey]) return dict["tithi_krishna_" + lowerKey];
-        if (dict["yoga_" + lowerKey]) return dict["yoga_" + lowerKey];
-        if (dict["nak_" + lowerKey]) return dict["nak_" + lowerKey];
+        // 4. Paksha Special (Firebase 'Shukla Paksha' -> dict 'paksha_shukla')
+        if (type === "paksha") {
+            const pKey = "paksha_" + cleanKey.replace('_paksha', '');
+            if (dict[pKey]) return dict[pKey];
+        }
+
+        // 5. Choghadiya/Tithi/Yoga Prefixes
+        const prefixes = ["chaug_", "tithi_shukla_", "tithi_krishna_", "yoga_", "nak_"];
+        for (let pre of prefixes) {
+            if (dict[pre + cleanKey]) return dict[pre + cleanKey];
+        }
 
         return key;
     },
@@ -28,45 +38,29 @@ const MiddleMan = {
     processChoghadiya(list, lang) {
         if (!list) return `<tr><td colspan="3" style="text-align:center; padding:20px;">Data coming soon...</td></tr>`;
         
-        // Nature Mapping (As per your translation.js keys)
         const natureMap = {
-            'Amrit': 'chaug_best',
-            'Labh': 'chaug_best',
-            'Shubh': 'chaug_good',
-            'Char': 'chaug_neutral',
-            'Rog': 'chaug_bad',
-            'Kaal': 'chaug_bad',
-            'Udveg': 'chaug_bad'
+            'Amrit': 'chaug_best', 'Labh': 'chaug_best', 'Shubh': 'chaug_good',
+            'Char': 'chaug_neutral', 'Rog': 'chaug_bad', 'Kaal': 'chaug_bad', 'Udveg': 'chaug_bad'
         };
 
         return Object.entries(list).map(([timeKey, name]) => {
             const displayTime = timeKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
-            
-            // Choghadiya Name (Amrit -> अमृत)
             const translatedName = this.getTranslation(name, lang);
-            
-            // Nature (chaug_best -> सर्वश्रेष्ठ)
             const nKey = natureMap[name] || 'chaug_neutral';
             const translatedNature = window.translations?.[lang]?.[nKey] || "--";
             
             return `
                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                    <td style="padding: 12px; color: #ffc107; font-weight: bold; width: 30%; font-family: 'Poppins', sans-serif;">
-                        <i class="bi bi-clock-history me-2"></i>${displayTime}
-                    </td>
-                    <td style="padding: 12px; color: #ffffff; width: 40%; text-align: center; font-weight: 500;">
-                        ${translatedName}
-                    </td>
-                    <td style="padding: 12px; color: #888; width: 30%; text-align: right; font-size: 0.85rem;">
-                        ${translatedNature}
-                    </td>
+                    <td style="padding: 12px; color: #ffc107; font-weight: bold; width: 30%;">${displayTime}</td>
+                    <td style="padding: 12px; color: #ffffff; width: 40%; text-align: center;">${translatedName}</td>
+                    <td style="padding: 12px; color: #888; width: 30%; text-align: right; font-size: 0.85rem;">${translatedNature}</td>
                 </tr>
             `;
         }).join('');
     }
 };
 
-// 🔱 MASTER RENDER (Firebase Data + Translation)
+// 🔱 MASTER RENDER
 window.masterTranslatePanchang = async function() {
     const currentLang = localStorage.getItem('selectedLanguage') || 'hi';
     const year = 2026;
@@ -79,22 +73,22 @@ window.masterTranslatePanchang = async function() {
     const today = new Date();
     const currentM = String((window.currentMonth !== undefined ? window.currentMonth + 1 : today.getMonth() + 1)).padStart(2, '0');
     const currentD = `d${String(window.selectedDay || today.getDate()).padStart(2, '0')}`;
-
     const d = window["Data" + year][currentM]?.[currentD];
 
     if (d) {
-        const mapping = {
-            'pan-tithi': d.tithi,
-            'pan-nak': d.nakshatra,
-            'pan-yoga': d.yoga,
-            'pan-karana': d.karan,
-            'pan-paksha': d.paksha,
-            'pan-moon': d.moon?.rise || d.moon
-        };
+        // Updated mapping with "Types" for better translation
+        const elements = [
+            { id: 'pan-tithi', val: d.tithi, type: 'tithi' },
+            { id: 'pan-nak', val: d.nakshatra, type: 'nak' },
+            { id: 'pan-yoga', val: d.yoga, type: 'yoga' },
+            { id: 'pan-karana', val: d.karan, type: 'karana' },
+            { id: 'pan-paksha', val: d.paksha, type: 'paksha' },
+            { id: 'pan-moon', val: d.moon?.rise || d.moon, type: '' }
+        ];
 
-        Object.entries(mapping).forEach(([id, val]) => {
-            const el = document.getElementById(id);
-            if (el) el.innerText = MiddleMan.getTranslation(val, currentLang);
+        elements.forEach(item => {
+            const el = document.getElementById(item.id);
+            if (el) el.innerText = MiddleMan.getTranslation(item.val, currentLang, item.type);
         });
 
         if (document.getElementById('pan-sun')) document.getElementById('pan-sun').innerText = d.sun ? `${d.sun.rise} / ${d.sun.set}` : "--";
@@ -150,7 +144,6 @@ window.changeMonth = function(offset) {
     window.masterTranslatePanchang();
 };
 
-// 🔱 DATA SYNC
 window.getPanchangFromFirebase = async function(year) {
     try {
         const panRef = ref(rtdb, `panchang/${year}`);
@@ -171,7 +164,6 @@ function updateMonthDisplay(lang) {
     }
 }
 
-// 🔱 LISTENERS
 window.addEventListener('languageChanged', () => {
     window.masterTranslatePanchang();
     window.renderCalendar();
