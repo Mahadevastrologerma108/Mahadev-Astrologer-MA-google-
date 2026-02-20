@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-key="title_panchang">Panchang 2026 | Mahadev Astrologer MA</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -19,9 +17,7 @@
 
     <main style="margin-top: 100px;">
         <div class="panchang-main-header" style="text-align: center;">
-            <h2 id="static-title" data-key="static_title" style="color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 15px;">
-                Today's Panchang
-            </h2>
+            <h2 id="static-title" data-key="static_title" style="color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 15px;">Today's Panchang</h2>
             <div class="ribbon-container" style="margin-bottom: 30px;">
                 <div class="ribbon"><span id="ribbon-text">Jai Mahadev</span></div>
             </div>
@@ -42,12 +38,8 @@
         <div class="chaughadia-section">
             <h2 class="p-title" data-key="pan_shubh_chaug">Shubh Chaughadia</h2>
             <div class="chaughadia-tabs">
-                <button class="c-tab active day-btn" id="btn-day" onclick="showChaug('day')">
-                    <i class="fas fa-sun"></i> <span data-key="pan_day">Day</span>
-                </button>
-                <button class="c-tab night-btn" id="btn-night" onclick="showChaug('night')">
-                    <i class="fas fa-moon"></i> <span data-key="pan_night">Night</span>
-                </button>
+                <button class="c-tab active day-btn" id="btn-day" onclick="showChaug('day')"><i class="fas fa-sun"></i> <span data-key="pan_day">Day</span></button>
+                <button class="c-tab night-btn" id="btn-night" onclick="showChaug('night')"><i class="fas fa-moon"></i> <span data-key="pan_night">Night</span></button>
             </div>
             <div id="day-chaug" class="chaug-content">
                 <table class="chaug-table">
@@ -79,7 +71,6 @@
         </div>
 
         <div class="event-section">
-            <div id="event-display-area"></div>
             <h2 class="p-title" data-key="pan_events_title">Monthly Festivals</h2>
             <div id="events-list" class="monthly-list-grid"></div>
         </div>
@@ -87,13 +78,11 @@
 
     <div id="footer-placeholder"></div>
 
-    <script src="../assets/js/yearly-events-2026.js"></script>
+    <script src="yearly-events-2026.js"></script>
     <script src="../assets/js/translations.js"></script>
     <script src="../assets/js/layout.js"></script>
-    
-    <script src="../assets/js/panchang-logic.js"></script>
-
-<script type="module" src="../assets/js/firebase-handler.js"></script>
+    <script src="panchang-logic.js"></script>
+    <script type="module" src="panchang-handler.js"></script>
 
     <script>
         function showChaug(type) {
@@ -103,12 +92,5 @@
             document.getElementById('btn-night').classList.toggle('active', type === 'night');
         }
     </script>
-    <script>
-    setTimeout(() => {
-        console.log("Checking Data Load...");
-        console.log("Events Data:", window.YEARLY_EVENTS_2026);
-    }, 1000);
-</script>
-    
 </body>
 </html>
