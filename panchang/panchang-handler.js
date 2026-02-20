@@ -1,83 +1,76 @@
 import { rtdb } from './panchang-config.js'; 
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-console.log("🔱 Dedicated Panchang Handler Active");
+// 1. Central Report & Execute Function 🔱
+window.masterTranslatePanchang = async function() {
+    console.log("🔱 Master Translation Watcher: STARTING...");
+    
+    // User ki bhasha uthao
+    const currentLang = localStorage.getItem('selectedLanguage') || 'hi';
+    
+    // A. DATA FETCH (Firebase se data confirm karo)
+    if (!window["Data2026"]) {
+        console.warn("🔱 Waiting for Firebase Data...");
+        await window.getPanchangFromFirebase(2026);
+    }
+    
+    const yearlyData = window["Data2026"];
+    const today = new Date();
+    // Custom date logic agar user ne calendar se select kiya hai
+    const activeDate = window.selectedPanchangDate || `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    const d = yearlyData[activeDate];
 
+    if (d) {
+        // B. TRANSLATE TOP CARDS (Firebase Data)
+        const elements = {
+            'pan-tithi': currentLang === 'hi' ? d.tithi?.hi : d.tithi?.en,
+            'pan-nak': currentLang === 'hi' ? d.nakshatra?.hi : d.nakshatra?.en,
+            'pan-yoga': currentLang === 'hi' ? d.yoga?.hi : d.yoga?.en,
+            'pan-karana': currentLang === 'hi' ? d.karan?.hi : d.karan?.en,
+            'pan-paksha': currentLang === 'hi' ? d.paksha?.hi : d.paksha?.en,
+            'pan-sun': d.sun ? `${d.sun.rise} / ${d.sun.set}` : "--",
+            'pan-moon': d.moon?.rise || "--",
+            'pan-muh': d.muhurat?.abhijit || "--",
+            'pan-rahu': d.muhurat?.rahukaal || "--"
+        };
+
+        Object.entries(elements).forEach(([id, val]) => {
+            const el = document.getElementById(id);
+            if (el) el.innerText = val || "--";
+        });
+
+        // C. TRANSLATE CALENDAR MONTH (The "February" Fix)
+        const monthNames = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+        const mDisplay = document.getElementById('monthDisplay');
+        if(mDisplay) {
+            const currentMIndex = window.currentMonth !== undefined ? window.currentMonth : today.getMonth();
+            const mKey = `mon_${monthNames[currentMIndex]}`;
+            mDisplay.innerText = window.translations[currentLang][mKey] || mDisplay.innerText;
+        }
+
+        // D. TRANSLATE EVENTS (The "English/Hindi" Fix)
+        window.updateMonthlyEvents();
+
+        // E. TRANSLATE STATIC LABELS (The "Push" Fix)
+        if (typeof window.applyTranslations === 'function') window.applyTranslations();
+
+        console.log("🔱 Master Translation Watcher: COMPLETE ✅");
+    }
+};
+
+// 2. Modified Event Functions
 window.getPanchangFromFirebase = async function(year) {
     try {
         const panRef = ref(rtdb, `panchang/${year}`);
         const snapshot = await get(panRef); 
         if (snapshot.exists()) {
-            const data = snapshot.val();
-            window["Data" + year] = data; 
-            await window.updatePanchangDisplay(data);
+            window["Data" + year] = snapshot.val();
+            // Calendar grid ko pehle banne do
             if (typeof window.renderCalendar === 'function') window.renderCalendar();
+            // Phir translation chalao
+            window.masterTranslatePanchang();
         }
     } catch (e) { console.error("🔱 Handler Error:", e); }
-};
-
-window.updatePanchangDisplay = async function(yearlyData, customDate = null) {
-    const today = new Date();
-    const dateKey = customDate || `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-    const d = yearlyData[dateKey];
-    if (!d) return;
-
-    const currentLang = localStorage.getItem('selectedLanguage') || 'hi';
-
-    // 1. TOP CARDS DATA
-    const elements = {
-        'pan-tithi': currentLang === 'hi' ? d.tithi?.hi : d.tithi?.en,
-        'pan-nak': currentLang === 'hi' ? d.nakshatra?.hi : d.nakshatra?.en,
-        'pan-yoga': currentLang === 'hi' ? d.yoga?.hi : d.yoga?.en,
-        'pan-karana': currentLang === 'hi' ? d.karan?.hi : d.karan?.en,
-        'pan-paksha': currentLang === 'hi' ? d.paksha?.hi : d.paksha?.en,
-        'pan-sun': d.sun ? `${d.sun.rise} / ${d.sun.set}` : "--",
-        'pan-moon': d.moon?.rise || "--",
-        'pan-muh': d.muhurat?.abhijit || "--",
-        'pan-rahu': d.muhurat?.rahukaal || "--"
-    };
-
-    Object.entries(elements).forEach(([id, val]) => {
-        const el = document.getElementById(id);
-        if (el) el.innerText = val || "--";
-    });
-
-    // 2. CHAUGHADIA TRANSLATION (Fixed Logic)
-    if (d.choghadiya) {
-        const fill = (id, cData) => {
-            const body = document.getElementById(id);
-            if (body && cData) {
-                body.innerHTML = Object.entries(cData)
-                    .map(([time, name]) => {
-                        // Firebase se "Amrit" aayega, hum use translations.js ki key banayenge
-                        const lowName = name.toLowerCase();
-                        const nameKey = `chaug_${lowName}`;
-                        const transName = (window.translations[currentLang] && window.translations[currentLang][nameKey]) ? window.translations[currentLang][nameKey] : name;
-                        
-                        // Nature logic: Shubh/Amrit/Labh = Good, etc.
-                        let natureKey = "chaug_neutral";
-                        if (['shubh', 'amrit', 'labh'].includes(lowName)) natureKey = "chaug_best";
-                        if (['char'].includes(lowName)) natureKey = "chaug_good";
-                        if (['rog', 'kaal', 'udveg'].includes(lowName)) natureKey = "chaug_bad";
-                        
-                        const transNature = (window.translations[currentLang] && window.translations[currentLang][natureKey]) ? window.translations[currentLang][natureKey] : "Nature";
-
-                        return `<tr>
-                            <td>${time}</td>
-                            <td class="chaug-name">${transName}</td>
-                            <td class="nature-${natureKey.split('_')[1]}">${transNature}</td>
-                        </tr>`;
-                    }).join('');
-            }
-        };
-        fill('day-chaug-body', d.choghadiya.day);
-        fill('night-chaug-body', d.choghadiya.night);
-    }
-    
-    window.updateMonthlyEvents();
-    
-    // Static labels ko translate karne ka aakhri dhakka
-    if (typeof window.applyTranslations === 'function') window.applyTranslations();
 };
 
 window.updateMonthlyEvents = function() {
@@ -92,26 +85,16 @@ window.updateMonthlyEvents = function() {
         if (dateKey.startsWith(`2026-${currentM}`)) {
             const dayNum = dateKey.split('-')[2];
             const event = window.YEARLY_EVENTS_2026[dateKey];
+            // Yahan check karo agar English maangi hai aur event.en hai, toh wahi dikhao
             const eventTitle = (currentLang === 'en' && event.en) ? event.en : event.hi;
             
-            html += `
-                <div class="event-item-row">
-                    <div class="ev-date">${dayNum}</div>
-                    <div class="ev-info"><h4>${eventTitle}</h4></div>
-                </div>`;
+            html += `<div class="event-item-row"><div class="ev-date">${dayNum}</div><div class="ev-info"><h4>${eventTitle}</h4></div></div>`;
         }
     });
-    container.innerHTML = html || `<p style="text-align:center; color:#888;" data-key="no_events">No festivals this month.</p>`;
+    container.innerHTML = html || `<p style="text-align:center; color:#888;">No festivals.</p>`;
 };
 
-// 🔱 Listeners
-window.addEventListener('languageChanged', () => {
-    if (window["Data2026"]) window.updatePanchangDisplay(window["Data2026"]);
-});
-
-// Jab calendar ka mahina badle, tab events refresh honge
-window.addEventListener('monthChanged', () => {
-    window.updateMonthlyEvents();
-});
-
+// 3. LISTENERS (Har signal par Master ko bulao)
+window.addEventListener('languageChanged', () => window.masterTranslatePanchang());
+window.addEventListener('monthChanged', () => window.masterTranslatePanchang()); // Calendar badalne par
 document.addEventListener('DOMContentLoaded', () => window.getPanchangFromFirebase(2026));
