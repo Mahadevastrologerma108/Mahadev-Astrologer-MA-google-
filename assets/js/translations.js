@@ -79,14 +79,35 @@ window.translations = {
         veda_rig: "Rigveda", veda_yajur: "Yajurveda", veda_sama: "Samaveda", veda_atharva: "Atharvaveda",
         upanishad_isha: "Isha Upanishad", upanishad_kena: "Kena Upanishad", upanishad_katha: "Katha Upanishad", upanishad_prashna: "Prashna Upanishad", upanishad_mundaka: "Mundaka Upanishad", upanishad_mandukya: "Mandukya Upanishad",
 
-        // ===== PANCHANG 2026 (EN) =====
-        title_panchang: "Panchang & Calendar 2026", static_title: "Today's Panchang", pan_tithi: "Tithi", pan_nak: "Nakshatra", pan_sun: "Sunrise / Sunset", pan_abhijit: "Abhijit Muhurat", pan_rahu: "Rahu Kaal (Avoid)", pan_shubh_chaug: "Shubh Chaughadia", pan_day_chaug: "Day Chaughadia", pan_night_chaug: "Night Chaughadia", pan_events: "Monthly Events", pan_cal_hint: "Change date 👇", pan_paksha: "Paksha", pan_moon: "Moonrise", pan_muh: "Abhijit Muhurat", pan_nature: "Nature", pan_status: "Status", pan_karana: "Karana", pan_yoga: "Yoga",
-        mon_jan: "January", mon_feb: "February", mon_mar: "March", mon_apr: "April", mon_may: "May", mon_jun: "June", mon_jul: "July", mon_aug: "August", mon_sep: "September", mon_oct: "October", mon_nov: "November", mon_dec: "December",
-        day_sun: "Sun", day_mon: "Mon", day_tue: "Tue", day_wed: "Wed", day_thu: "Thu", day_fri: "Fri", day_sat: "Sat", paksha_shukla: "Shukla Paksha", paksha_krishna: "Krishna Paksha",
-        chaug_shubh: "Shubh", chaug_amrit: "Amrit", chaug_labh: "Labh", chaug_char: "Chara", chaug_rog: "Rog", chaug_kaal: "Kaal", chaug_udveg: "Udveg", chaug_best: "Excellent", chaug_good: "Good", chaug_bad: "Avoid", chaug_neutral: "Neutral",
-        karana_bava: "Bava", karana_balava: "Balava", karana_kaulava: "Kaulava", karana_taitila: "Taitila", karana_garaja: "Garaja", karana_vanija: "Vanija", karana_visti: "Visti (Bhadra)", karana_shakuni: "Shakuni", karana_chatushpada: "Chatushpada", karana_naga: "Naga", karana_kintughna: "Kintughna",
+       // ===== PANCHANG DIRECT KEYS (EN) =====
+        "Shukla Paksha": "Shukla Paksha",
+        "Krishna Paksha": "Krishna Paksha",
         
-        tithi_shukla_pratipada: "Shukla Pratipada", tithi_shukla_dwitiya: "Shukla Dwitiya", tithi_shukla_tritiya: "Shukla Tritiya", tithi_shukla_chaturthi: "Shukla Chaturthi", tithi_shukla_panchami: "Shukla Panchami", tithi_shukla_shashti: "Shukla Shashti", tithi_shukla_saptami: "Shukla Saptami", tithi_shukla_ashtami: "Shukla Ashtami", tithi_shukla_navami: "Shukla Navami", tithi_shukla_dashami: "Shukla Dashami", tithi_shukla_ekadashi: "Shukla Ekadashi", tithi_shukla_dwadashi: "Shukla Dwadashi", tithi_shukla_trayodashi: "Shukla Trayodashi", tithi_shukla_chaturdashi: "Shukla Chaturdashi", tithi_shukla_purnima: "Shukla Purnima", tithi_krishna_pratipada: "Krishna Pratipada", tithi_krishna_dwitiya: "Krishna Dwitiya", tithi_krishna_tritiya: "Krishna Tritiya", tithi_krishna_chaturthi: "Krishna Chaturthi", tithi_krishna_panchami: "Krishna Panchami", tithi_krishna_shashti: "Krishna Shashti", tithi_krishna_saptami: "Krishna Saptami", tithi_krishna_ashtami: "Krishna Ashtami", tithi_krishna_navami: "Krishna Navami", tithi_krishna_dashami: "Krishna Dashami", tithi_krishna_ekadashi: "Krishna Ekadashi", tithi_krishna_dwadashi: "Krishna Dwadashi", tithi_krishna_trayodashi: "Krishna Trayodashi", tithi_krishna_chaturdashi: "Krishna Chaturdashi", tithi_amavasya: "Amavasya",
+        // Tithis
+        "Prathama": "Prathama", "Dwitiya": "Dwitiya", "Tritiya": "Tritiya", "Chaturthi": "Chaturthi", 
+        "Panchami": "Panchami", "Shashthi": "Shashthi", "Saptami": "Saptami", "Ashtami": "Ashtami", 
+        "Navami": "Navami", "Dashami": "Dashami", "Ekadashi": "Ekadashi", "Dwadashi": "Dwadashi", 
+        "Trayodashi": "Trayodashi", "Chaturdashi": "Chaturdashi", "Purnima": "Purnima", "Amavasya": "Amavasya",
+
+        // Choghadiya
+        "Char": "Chara", "Amrit": "Amrit", "Labh": "Labh", "Shubh": "Shubh", 
+        "Rog": "Rog", "Kaal": "Kaal", "Udveg": "Udveg",
+
+        // Nakshatras
+        "Uttara Bhadrapada": "Uttara Bhadrapada", "Revati": "Revati", "Ashwini": "Ashwini", 
+        "Bharani": "Bharani", "Krittika": "Krittika", "Rohini": "Rohini", "Mrigashira": "Mrigashira", 
+        "Ardra": "Ardra", "Punarvasu": "Punarvasu", "Pushya": "Pushya", "Ashlesha": "Ashlesha", 
+        "Magha": "Magha", "Purva Phalguni": "Purva Phalguni", "Uttara Phalguni": "Uttara Phalguni", 
+        "Hasta": "Hasta", "Chitra": "Chitra", "Swati": "Swati", "Vishakha": "Vishakha", 
+        "Anuradha": "Anuradha", "Jyeshtha": "Jyeshtha", "Mula": "Mula", "Purva Ashadha": "Purva Ashadha", 
+        "Uttara Ashadha": "Uttara Ashadha", "Shravana": "Shravana", "Dhanishta": "Dhanishta", 
+        "Shatabhisha": "Shatabhisha", "Purva Bhadrapada": "Purva Bhadrapada",
+        
+        // Yoga & Karana
+        "Sadhya": "Sadhya", "Shubha": "Shubha", "Shukla": "Shukla", "Brahma": "Brahma", 
+        "Indra": "Indra", "Vaidhriti": "Vaidhriti", "Vishkumbha": "Vishkumbha", "Priti": "Priti", 
+        "Ayushman": "Ayushman", "Taitila": "Taitila", "Vanija": "Vanija", "Bava": "Bava", 
+        "Kaulava": "Kaulava", "Gara": "Gara", "Vishti": "Vishti",
         
         back_home: "← Back to Home",
     },
@@ -165,14 +186,35 @@ window.translations = {
         veda_rig: "ऋग्वेद", veda_yajur: "यजुर्वेद", veda_sama: "सामवेद", veda_atharva: "अथर्ववेद",
         upanishad_isha: "ईश उपनिषद", upanishad_kena: "केन उपनिषद", upanishad_katha: "कठ उपनिषद", upanishad_prashna: "प्रश्न उपनिषद", upanishad_mundaka: "मुण्डक उपनिषद", upanishad_mandukya: "माण्डूक्य उपनिषद",
 
-        // ===== PANCHANG 2026 (HI) =====
-        title_panchang: "पंचांग और कैलेंडर 2026", static_title: "आज का पंचांग", pan_tithi: "तिथि", pan_nak: "नक्षत्र", pan_sun: "सूर्योदय / सूर्यास्त", pan_abhijit: "अभिजीत मुहूर्त", pan_rahu: "राहु काल (वर्जित)", pan_shubh_chaug: "शुभ चौघड़िया", pan_day_chaug: "दिन का चौघड़िया", pan_night_chaug: "रात का चौघड़िया", pan_paksha: "पक्ष", pan_moon: "चंद्रोदय", pan_muh: "अभिजीत मुहूर्त", pan_nature: "प्रकृति", pan_karana: "करण", pan_yoga: "योग",
-        mon_jan: "जनवरी", mon_feb: "फरवरी", mon_mar: "मार्च", mon_apr: "अप्रैल", mon_may: "मई", mon_jun: "जून", mon_jul: "जुलाई", mon_aug: "अगस्त", mon_sep: "सितंबर", mon_oct: "अक्टूबर", mon_nov: "नवंबर", mon_dec: "दिसंबर",
-        day_sun: "रवि", day_mon: "सोम", day_tue: "मंगल", day_wed: "बुध", day_thu: "गुरु", day_fri: "शुक्र", day_sat: "शनि", paksha_shukla: "शुक्ल पक्ष", paksha_krishna: "कृष्ण पक्ष",
-        chaug_shubh: "शुभ", chaug_amrit: "अमृत", chaug_labh: "लाभ", chaug_char: "चर", chaug_rog: "रोग", chaug_kaal: "काल", chaug_udveg: "उद्वेग", chaug_best: "सर्वश्रेष्ठ", chaug_good: "शुभ", chaug_bad: "वर्जित", chaug_neutral: "सामान्य",
-        karana_bava: "बव", karana_balava: "बालव", karana_kaulava: "कौलव", karana_taitila: "तैतिल", karana_garaja: "गरज", karana_vanija: "वणिज", karana_visti: "विष्टि (भद्रा)", karana_shakuni: "शकुनि", karana_chatushpada: "चतुष्पद", karana_naga: "नाग", karana_kintughna: "किस्तुघ्न",
+        // ===== PANCHANG DIRECT KEYS (HI) =====
+        "Shukla Paksha": "शुक्ल पक्ष",
+        "Krishna Paksha": "कृष्ण पक्ष",
+        
+        // Tithis
+        "Prathama": "प्रतिपदा", "Dwitiya": "द्वितीया", "Tritiya": "तृतीया", "Chaturthi": "चतुर्थी", 
+        "Panchami": "पंचमी", "Shashthi": "षष्ठी", "Saptami": "सप्तमी", "Ashtami": "अष्टमी", 
+        "Navami": "नवमी", "Dashami": "दशमी", "Ekadashi": "एकादशी", "Dwadashi": "द्वादशी", 
+        "Trayodashi": "त्रयोदशी", "Chaturdashi": "चतुर्दशी", "Purnima": "पूर्णिमा", "Amavasya": "अमावस्या",
 
-        tithi_shukla_pratipada: "शुक्ल प्रतिपदा", tithi_shukla_dwitiya: "शुक्ल द्वितीया", tithi_shukla_tritiya: "शुक्ल तृतीया", tithi_shukla_chaturthi: "शुक्ल चतुर्थी", tithi_shukla_panchami: "शुक्ल पंचमी", tithi_shukla_shashti: "शुक्ल षष्ठी", tithi_shukla_saptami: "शुक्ल सप्तमी", tithi_shukla_ashtami: "शुक्ल अष्टमी", tithi_shukla_navami: "शुक्ल नवमी", tithi_shukla_dashami: "शुक्ल दशमी", tithi_shukla_ekadashi: "शुक्ल एकादशी", tithi_shukla_dwadashi: "शुक्ल द्वादशी", tithi_shukla_trayodashi: "शुक्ल त्रयोदशी", tithi_shukla_chaturdashi: "शुक्ल चतुर्दशी", tithi_shukla_purnima: "शुक्ल पूर्णिमा", tithi_krishna_pratipada: "कृष्ण प्रतिपदा", tithi_krishna_dwitiya: "कृष्ण द्वितीया", tithi_krishna_tritiya: "कृष्ण तृतीया", tithi_krishna_chaturthi: "कृष्ण चतुर्थी", tithi_krishna_panchami: "कृष्ण पंचमी", tithi_krishna_shashti: "कृष्ण षष्ठी", tithi_krishna_saptami: "कृष्ण सप्तमी", tithi_krishna_ashtami: "कृष्ण अष्टमी", tithi_krishna_navami: "कृष्ण नवमी", tithi_krishna_dashami: "कृष्ण दशमी", tithi_krishna_ekadashi: "कृष्ण एकादशी", tithi_krishna_dwadashi: "कृष्ण द्वादशी", tithi_krishna_trayodashi: "कृष्ण त्रयोदशी", tithi_krishna_chaturdashi: "कृष्ण चतुर्दशी", tithi_amavasya: "अमावस्या",
+        // Choghadiya
+        "Char": "चर", "Amrit": "अमृत", "Labh": "लाभ", "Shubh": "शुभ", 
+        "Rog": "रोग", "Kaal": "काल", "Udveg": "उद्वेग",
+
+        // Nakshatras
+        "Uttara Bhadrapada": "उत्तराभाद्रपद", "Revati": "रेवती", "Ashwini": "अश्विनी", 
+        "Bharani": "भरणी", "Krittika": "कृत्तika", "Rohini": "रोहिणी", "Mrigashira": "मृगशिरा", 
+        "Ardra": "आर्द्रा", "Punarvasu": "पूनर्वसु", "Pushya": "पुष्य", "Ashlesha": "आश्लेषा", 
+        "Magha": "मघा", "Purva Phalguni": "पूर्वा फाल्गुनी", "Uttara Phalguni": "उत्तरा फाल्गुनी", 
+        "Hasta": "हस्त", "Chitra": "चित्रा", "Swati": "स्वाति", "Vishakha": "विशाखा", 
+        "Anuradha": "अनुराधा", "Jyeshtha": "ज्येष्ठा", "Mula": "मूल", "Purva Ashadha": "पूर्वाषाढ़ा", 
+        "Uttara Ashadha": "उत्तराषाढ़ा", "Shravana": "श्रवण", "Dhanishta": "धनिष्ठा", 
+        "Shatabhisha": "शतभिषा", "Purva Bhadrapada": "पूर्वाभाद्रपद",
+
+        // Yoga & Karana
+        "Sadhya": "साध्य", "Shubha": "शुभ", "Shukla": "शुक्ल", "Brahma": "ब्रह्म", 
+        "Indra": "इन्द्र", "Vaidhriti": "वैधृति", "Vishkumbha": "विष्कुम्भ", "Priti": "प्रीति", 
+        "Ayushman": "आयुष्मान", "Taitila": "तैतिल", "Vanija": "वणिज", "Bava": "बव", 
+        "Kaulava": "कौलव", "Gara": "गर", "Vishti": "विष्टि",
         
         back_home: "← वापस जाएं",
     }
