@@ -1,23 +1,53 @@
 import { rtdb } from './panchang-config.js'; 
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-// 🔱 MIDDLE-MAN: Direct connection to translation.js
+// 🔱 MIDDLE-MAN: Direct connection to translation.js (Dictionary Master)
 const MiddleMan = {
     getTranslation(key, lang) {
         if (!key) return "--";
-        // Yeh line seedha translation.js ki dictionary mein jhaankti hai
-        return window.translations?.[lang]?.[key] || key;
+        const dict = window.translations?.[lang];
+        if (!dict) return key;
+
+        // 1. Direct check (e.g., 'Amrit')
+        if (dict[key]) return dict[key];
+
+        // 2. Choghadiya mapping (Firebase 'Amrit' -> 'chaug_amrit')
+        const chaugKey = "chaug_" + key.toLowerCase();
+        if (dict[chaugKey]) return dict[chaugKey];
+
+        // 3. Tithi/Yoga/Nakshatra mapping (Prefix matching)
+        const lowerKey = key.toLowerCase().replace(/\s+/g, '_');
+        if (dict["tithi_shukla_" + lowerKey]) return dict["tithi_shukla_" + lowerKey];
+        if (dict["tithi_krishna_" + lowerKey]) return dict["tithi_krishna_" + lowerKey];
+        if (dict["yoga_" + lowerKey]) return dict["yoga_" + lowerKey];
+        if (dict["nak_" + lowerKey]) return dict["nak_" + lowerKey];
+
+        return key;
     },
 
     processChoghadiya(list, lang) {
         if (!list) return `<tr><td colspan="3" style="text-align:center; padding:20px;">Data coming soon...</td></tr>`;
         
+        // Nature Mapping (As per your translation.js keys)
+        const natureMap = {
+            'Amrit': 'chaug_best',
+            'Labh': 'chaug_best',
+            'Shubh': 'chaug_good',
+            'Char': 'chaug_neutral',
+            'Rog': 'chaug_bad',
+            'Kaal': 'chaug_bad',
+            'Udveg': 'chaug_bad'
+        };
+
         return Object.entries(list).map(([timeKey, name]) => {
             const displayTime = timeKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
+            
+            // Choghadiya Name (Amrit -> अमृत)
             const translatedName = this.getTranslation(name, lang);
             
-            // Nature bhi translation.js se aayega (Make sure 'Amrit_Nature' etc. are in your file)
-            const nature = this.getTranslation(name + "_Nature", lang); 
+            // Nature (chaug_best -> सर्वश्रेष्ठ)
+            const nKey = natureMap[name] || 'chaug_neutral';
+            const translatedNature = window.translations?.[lang]?.[nKey] || "--";
             
             return `
                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
@@ -28,7 +58,7 @@ const MiddleMan = {
                         ${translatedName}
                     </td>
                     <td style="padding: 12px; color: #888; width: 30%; text-align: right; font-size: 0.85rem;">
-                        ${nature}
+                        ${translatedNature}
                     </td>
                 </tr>
             `;
@@ -36,7 +66,7 @@ const MiddleMan = {
     }
 };
 
-// 🔱 MASTER RENDER
+// 🔱 MASTER RENDER (Firebase Data + Translation)
 window.masterTranslatePanchang = async function() {
     const currentLang = localStorage.getItem('selectedLanguage') || 'hi';
     const year = 2026;
@@ -53,7 +83,6 @@ window.masterTranslatePanchang = async function() {
     const d = window["Data" + year][currentM]?.[currentD];
 
     if (d) {
-        // Dynamic Fields from Firebase translated by translation.js
         const mapping = {
             'pan-tithi': d.tithi,
             'pan-nak': d.nakshatra,
@@ -68,29 +97,57 @@ window.masterTranslatePanchang = async function() {
             if (el) el.innerText = MiddleMan.getTranslation(val, currentLang);
         });
 
-        // Fixed Data
-        if (document.getElementById('pan-sun')) {
-            document.getElementById('pan-sun').innerText = d.sun ? `${d.sun.rise} / ${d.sun.set}` : "--";
-        }
-        if (document.getElementById('pan-muh')) {
-            document.getElementById('pan-muh').innerText = d.muhurat?.abhijit || "--";
-        }
-        if (document.getElementById('pan-rahu')) {
-            document.getElementById('pan-rahu').innerText = d.muhurat?.rahukaal || "--";
-        }
+        if (document.getElementById('pan-sun')) document.getElementById('pan-sun').innerText = d.sun ? `${d.sun.rise} / ${d.sun.set}` : "--";
+        if (document.getElementById('pan-muh')) document.getElementById('pan-muh').innerText = d.muhurat?.abhijit || "--";
+        if (document.getElementById('pan-rahu')) document.getElementById('pan-rahu').innerText = d.muhurat?.rahukaal || "--";
 
-        // Choghadiya Table
         const dBox = document.getElementById('day-chaug-body');
         const nBox = document.getElementById('night-chaug-body');
         if (dBox) dBox.innerHTML = MiddleMan.processChoghadiya(d.choghadiya?.day, currentLang);
         if (nBox) nBox.innerHTML = MiddleMan.processChoghadiya(d.choghadiya?.night, currentLang);
 
-        // Header Months
         updateMonthDisplay(currentLang);
-        
-        // Static UI elements (Titles, Buttons)
         if (typeof window.applyTranslations === 'function') window.applyTranslations();
     }
+};
+
+// 🔱 CALENDAR GENERATOR
+window.renderCalendar = function() {
+    const calendarGrid = document.getElementById('calendar-grid');
+    if (!calendarGrid) return;
+
+    calendarGrid.innerHTML = '';
+    const now = new Date();
+    const year = 2026;
+    const month = window.currentMonth !== undefined ? window.currentMonth : now.getMonth();
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const todayDate = now.getDate();
+    const isCurrentMonth = (now.getMonth() === month && now.getFullYear() === year);
+
+    for (let i = 0; i < firstDay; i++) calendarGrid.innerHTML += `<div class="calendar-day empty"></div>`;
+
+    for (let day = 1; day <= daysInMonth; day++) {
+        const isSelected = (window.selectedDay === day) ? 'selected' : '';
+        const isToday = (isCurrentMonth && day === todayDate) ? 'today' : '';
+        calendarGrid.innerHTML += `<div class="calendar-day ${isSelected} ${isToday}" onclick="selectDay(${day})">${day}</div>`;
+    }
+};
+
+window.selectDay = function(day) {
+    window.selectedDay = day;
+    window.renderCalendar();
+    window.masterTranslatePanchang();
+};
+
+window.changeMonth = function(offset) {
+    let newMonth = (window.currentMonth !== undefined ? window.currentMonth : new Date().getMonth()) + offset;
+    if (newMonth < 0) newMonth = 11;
+    if (newMonth > 11) newMonth = 0;
+    window.currentMonth = newMonth;
+    window.selectedDay = 1;
+    window.renderCalendar();
+    window.masterTranslatePanchang();
 };
 
 // 🔱 DATA SYNC
@@ -114,67 +171,13 @@ function updateMonthDisplay(lang) {
     }
 }
 
-// 🔱 CALENDAR GENERATOR (Add this inside or after MiddleMan)
-window.renderCalendar = function() {
-    const calendarGrid = document.getElementById('calendar-grid');
-    if (!calendarGrid) return;
-
-    calendarGrid.innerHTML = '';
-    const now = new Date();
-    const year = 2026;
-    const month = window.currentMonth !== undefined ? window.currentMonth : now.getMonth();
-    
-    // Month details
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const todayDate = now.getDate();
-    const isCurrentMonth = (now.getMonth() === month && now.getFullYear() === year);
-
-    // Empty slots for previous month
-    for (let i = 0; i < firstDay; i++) {
-        calendarGrid.innerHTML += `<div class="calendar-day empty"></div>`;
-    }
-
-    // Days of the month
-    for (let day = 1; day <= daysInMonth; day++) {
-        const isSelected = (window.selectedDay === day) ? 'selected' : '';
-        const isToday = (isCurrentMonth && day === todayDate) ? 'today' : '';
-        
-        calendarGrid.innerHTML += `
-            <div class="calendar-day ${isSelected} ${isToday}" onclick="selectDay(${day})">
-                ${day}
-            </div>
-        `;
-    }
-};
-
-// 🔱 DAY SELECTION LOGIC
-window.selectDay = function(day) {
-    window.selectedDay = day;
-    window.renderCalendar(); // Refresh Grid
-    window.masterTranslatePanchang(); // Load Firebase Data for this day
-};
-
-// 🔱 MONTH NAVIGATION
-window.changeMonth = function(offset) {
-    let newMonth = (window.currentMonth !== undefined ? window.currentMonth : new Date().getMonth()) + offset;
-    
-    if (newMonth < 0) newMonth = 11;
-    if (newMonth > 11) newMonth = 0;
-    
-    window.currentMonth = newMonth;
-    window.selectedDay = 1; // Reset to 1st of month
-    window.renderCalendar();
-    window.masterTranslatePanchang();
-};
-
 // 🔱 LISTENERS
 window.addEventListener('languageChanged', () => {
     window.masterTranslatePanchang();
-    window.renderCalendar(); // Language change par calendar bhi refresh ho
+    window.renderCalendar();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    window.renderCalendar(); // Sabse pehle calendar dikhao
-    window.getPanchangFromFirebase(2026); // Phir Firebase se data lao
+    window.renderCalendar();
+    window.getPanchangFromFirebase(2026);
 });
