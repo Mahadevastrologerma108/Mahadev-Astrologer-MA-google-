@@ -2,22 +2,21 @@ import { db, rtdb } from './firebase-config.js';
 import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-console.log("🔱 Mahadev Handler: 100% Fixed & Active. Life breathed into the body!");
+console.log("🔱 Mahadev Handler: Sindoor lag raha hai...");
 
-const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
-const CHAT_ID = '2032242977'; 
-
-// Global State
+// ==========================================
+// 1. GLOBAL VARIABLES
+// ==========================================
 window.currentYear = 2026;
 window.currentMonth = new Date().getMonth();
 window.selectedDay = new Date().getDate();
 
 // ==========================================
-// 1. FIREBASE DATA FETCH
+// 2. FIREBASE DATA FETCH
 // ==========================================
 window.getPanchangFromFirebase = async function(year) {
     try {
-        const snapshot = await get(ref(rtdb, `panchang/${year}`)); 
+        const snapshot = await get(ref(rtdb, 'panchang/' + year)); 
         if (snapshot.exists()) {
             window = snapshot.val(); 
         } else {
@@ -26,215 +25,237 @@ window.getPanchangFromFirebase = async function(year) {
     } catch (e) { 
         console.error("🔱 Panchang Fetch Error:", e); 
     } finally {
-        // Data aane ke baad UI me jaan dalna
-        if (typeof window.renderCalendar === 'function') window.renderCalendar();
-        if (window) window.updatePanchangDisplay(window);
+        // Data fetch hone ke baad UI update call karein
+        if (typeof window.renderCalendar === 'function') {
+            window.renderCalendar();
+        }
+        if (window) {
+            window.updatePanchangDisplay(window);
+        }
     }
 };
 
 // ==========================================
-// 2. UPDATE TOP CARDS & CHOGHADIYA
+// 3. UPDATE TOP CARDS & CHOGHADIYA
 // ==========================================
 window.updatePanchangDisplay = async function(yearlyData) {
     if (!yearlyData) return;
 
-    const mStr = String(window.currentMonth + 1).padStart(2, '0');
-    const dStr = String(window.selectedDay).padStart(2, '0');
+    let mStr = String(window.currentMonth + 1).padStart(2, '0');
+    let dStr = String(window.selectedDay).padStart(2, '0');
     
-    // JSON me date kaise save hai usko fetch karna (MM-DD)
-    const dateKey = `${mStr}-${dStr}`;
-    let d = yearlyData || yearlyData; 
-    if(!d && yearlyData) d = yearlyData || yearlyData;
+    // Date formats check (MM-DD or MM/dDD)
+    let dateKey = mStr + '-' + dStr;
+    let d = null;
+    if (yearlyData) {
+        d = yearlyData;
+    } else if (yearlyData && yearlyData) {
+        d = yearlyData;
+    }
 
     const ids =;
     
-    // Agar data na mile to '--' dikhao
+    // Agar us date ka data nahi hai, to sabme "--" bhar do
     if (!d) {
-        ids.forEach(id => { const el = document.getElementById(id); if(el) el.innerText = "--"; });
+        for(let i=0; i<ids.length; i++) {
+            let el = document.getElementById(ids); 
+            if(el) el.innerText = "--"; 
+        }
+        let dBody = document.getElementById('day-chaug-body');
+        let nBody = document.getElementById('night-chaug-body');
+        if(dBody) dBody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:15px; color:#888;">No Data Available</td></tr>';
+        if(nBody) nBody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:15px; color:#888;">No Data Available</td></tr>';
         return;
     }
 
-    const safeVal = (obj) => {
+    // Data ko nikalne ka safe function
+    const safeVal = function(obj) {
         if (typeof obj === 'object' && obj !== null) return obj.hi || obj.en || "--";
         return obj || "--";
     };
 
     const map = {
-        'pan-tithi': safeVal(d.tithi), 'pan-nak': safeVal(d.nakshatra),
-        'pan-yoga': safeVal(d.yoga), 'pan-karana': safeVal(d.karan),
-        'pan-paksha': safeVal(d.paksha), 'pan-sun': d.sun ? `${d.sun.rise || '--'} / ${d.sun.set || '--'}` : "--",
-        'pan-moon': d.moon?.rise || d.moon || "--", 'pan-muh': d.muhurat?.abhijit || "--",
-        'pan-rahu': d.muhurat?.rahukaal || "--"
+        'pan-tithi': safeVal(d.tithi), 
+        'pan-nak': safeVal(d.nakshatra),
+        'pan-yoga': safeVal(d.yoga), 
+        'pan-karana': safeVal(d.karan),
+        'pan-paksha': safeVal(d.paksha), 
+        'pan-sun': d.sun ? (d.sun.rise + ' / ' + d.sun.set) : "--",
+        'pan-moon': (d.moon && d.moon.rise) ? d.moon.rise : (d.moon || "--"), 
+        'pan-muh': (d.muhurat && d.muhurat.abhijit) ? d.muhurat.abhijit : "--",
+        'pan-rahu': (d.muhurat && d.muhurat.rahukaal) ? d.muhurat.rahukaal : "--"
     };
 
-    // Cards Fill
-    Object.entries(map).forEach(() => {
-        const el = document.getElementById(id);
-        if (el) el.innerText = val;
-    });
+    // Card Update (Standard Loop)
+    for (let key in map) {
+        let el = document.getElementById(key);
+        if (el) el.innerText = map;
+    }
 
-    // Choghadiya Fill
-    const fillTable = (id, cData) => {
-        const body = document.getElementById(id);
+    // Choghadiya Update
+    const fillTable = function(id, cData) {
+        let body = document.getElementById(id);
         if (body && cData) {
-            body.innerHTML = Object.entries(cData).map(() => {
-                let formattedTime = time.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
-                return `<tr>
-                    <td style="color:var(--gold); font-weight:bold; padding:8px;">${formattedTime}</td>
-                    <td style="padding:8px;">${name}</td>
-                    <td class="nature-shubh" style="font-size:0.8em; padding:8px; color:#00ff88;">Shubh</td>
-                </tr>`;
-            }).join('');
+            let html = '';
+            for (let timeKey in cData) {
+                let name = cData;
+                let formattedTime = timeKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
+                html += '<tr>' +
+                        '<td style="color:var(--gold); font-weight:bold; padding:12px;">' + formattedTime + '</td>' +
+                        '<td style="padding:12px;">' + name + '</td>' +
+                        '<td class="nature-shubh" style="font-size:0.85em; padding:12px; color:#00ff88;">Shubh</td>' +
+                    '</tr>';
+            }
+            body.innerHTML = html;
         }
     };
 
     if (d.choghadiya) {
         fillTable('day-chaug-body', d.choghadiya.day);
         fillTable('night-chaug-body', d.choghadiya.night);
-    } else {
-        const dBody = document.getElementById('day-chaug-body');
-        const nBody = document.getElementById('night-chaug-body');
-        if(dBody) dBody.innerHTML = `<tr><td colspan="3" style="text-align:center;">No Data</td></tr>`;
-        if(nBody) nBody.innerHTML = `<tr><td colspan="3" style="text-align:center;">No Data</td></tr>`;
     }
 };
 
 // ==========================================
-// 3. CALENDAR RENDER ENGINE
+// 4. CALENDAR RENDER ENGINE
 // ==========================================
 window.renderCalendar = function() {
-    const container = document.getElementById('calendarDays');
-    const monthDisplay = document.getElementById('monthDisplay');
+    let container = document.getElementById('calendarDays');
+    let monthDisplay = document.getElementById('monthDisplay');
     if (!container) return;
 
-    const year = window.currentYear;
-    const month = window.currentMonth;
+    let year = window.currentYear;
+    let month = window.currentMonth;
     
+    // Month Names Array (Bulletproof)
     const monthNames =;
-    if (monthDisplay) monthDisplay.innerText = `${monthNames} ${year}`;
+    if (monthDisplay) {
+        monthDisplay.innerText = monthNames + ' ' + year;
+    }
 
     container.innerHTML = '';
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    let firstDay = new Date(year, month, 1).getDay();
+    let daysInMonth = new Date(year, month + 1, 0).getDate();
 
+    // Khali (Empty) slots shuruat ke dino ke liye
     for (let i = 0; i < firstDay; i++) {
-        const emptyDiv = document.createElement('div');
+        let emptyDiv = document.createElement('div');
         emptyDiv.className = 'calendar-day empty';
         emptyDiv.style.border = 'none';
         emptyDiv.style.background = 'transparent';
         container.appendChild(emptyDiv);
     }
 
-    const today = new Date();
+    let today = new Date();
     for (let day = 1; day <= daysInMonth; day++) {
-        const daySquare = document.createElement('div');
+        let daySquare = document.createElement('div');
         daySquare.className = 'calendar-day';
         daySquare.innerText = day;
 
-        if (window.selectedDay === day) daySquare.classList.add('active');
+        // Current aur Selected Date ko highlight karo
+        if (window.selectedDay === day) {
+            daySquare.classList.add('active');
+        }
         if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
             daySquare.classList.add('today');
         }
 
-        const mStr = String(month + 1).padStart(2, '0');
-        const dStr = String(day).padStart(2, '0');
-        const fullDateKey = `${year}-${mStr}-${dStr}`;
+        let mStr = String(month + 1).padStart(2, '0');
+        let dStr = String(day).padStart(2, '0');
+        let fullDateKey = year + '-' + mStr + '-' + dStr;
 
+        // Red Event Dot Agar Tyohar ho
         if (window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026) {
             daySquare.classList.add('has-event');
         }
 
-        daySquare.onclick = () => {
+        // Click on Calendar Day
+        daySquare.onclick = function() {
             window.selectedDay = day;
             window.renderCalendar();
-            if (window) window.updatePanchangDisplay(window);
+            if (window) {
+                window.updatePanchangDisplay(window);
+            }
         };
 
         container.appendChild(daySquare);
     }
+    
+    // Calendar ke update hone ke baad niche list update karo
     window.updateMonthlyEvents(); 
 };
 
 // ==========================================
-// 4. MONTHLY FESTIVAL LIST
+// 5. MONTHLY FESTIVAL LIST
 // ==========================================
 window.updateMonthlyEvents = function() {
-    const container = document.getElementById('events-list');
-    const eventsData = window.YEARLY_EVENTS_2026;
+    let container = document.getElementById('events-list');
+    let eventsData = window.YEARLY_EVENTS_2026;
     if (!container || !eventsData) return;
 
-    const currentM = String(window.currentMonth + 1).padStart(2, '0');
-    const currentY = window.currentYear;
+    let currentM = String(window.currentMonth + 1).padStart(2, '0');
+    let currentY = window.currentYear;
     let html = "";
 
-    Object.entries(eventsData).sort().forEach(() => {
-        if (dateKey.startsWith(`${currentY}-${currentM}`)) {
-            const dayNum = dateKey.split('-');
-            html += `
-                <div class="event-item-card" onclick="window.selectedDay=${parseInt(dayNum, 10)}; window.renderCalendar(); if(window) window.updatePanchangDisplay(window);">
-                    <div class="event-date-badge">${dayNum}</div>
-                    <div class="event-details">
-                        <h4 style="color:var(--gold); margin:0; font-size:16px; font-family:'Cinzel';">${event.hi || event.en}</h4>
-                        <p style="color:#aaa; margin:2px 0 0; font-size:12px;">${event.desc_hi || event.desc_en || event.en}</p>
-                    </div>
-                </div>`;
+    // Array Keys & Standard Loop (Bulletproof)
+    let eventKeys = Object.keys(eventsData).sort();
+    
+    for (let i = 0; i < eventKeys.length; i++) {
+        let dateKey = eventKeys;
+        if (dateKey.startsWith(currentY + '-' + currentM)) {
+            let event = eventsData;
+            let dayNum = dateKey.split('-');
+            let title = event.hi || event.en;
+            let desc = event.desc_hi || event.desc_en || event.en;
+            
+            // Onclick me inline function banaya hai taki refresh ho jaye
+            let clickFunc = "window.selectedDay=" + parseInt(dayNum, 10) + "; window.renderCalendar(); if(window) window.updatePanchangDisplay(window);";
+            
+            html += '<div class="event-item-card" onclick="' + clickFunc + '">' +
+                    '<div class="event-date-badge">' + parseInt(dayNum, 10) + '</div>' +
+                    '<div class="event-details">' +
+                        '<h4 style="color:var(--gold); margin:0; font-size:16px; font-family:\'Cinzel\';">' + title + '</h4>' +
+                        '<p style="color:#aaa; margin:2px 0 0; font-size:12px;">' + desc + '</p>' +
+                    '</div>' +
+                '</div>';
         }
-    });
+    }
 
-    container.innerHTML = html || `<p style="text-align:center; color:#888; padding:20px;">No major festivals this month.</p>`;
+    if (html === "") {
+        container.innerHTML = '<p style="text-align:center; color:#888; padding:20px;">No major festivals this month.</p>';
+    } else {
+        container.innerHTML = html;
+    }
 };
 
 // ==========================================
-// 5. APPOINTMENT FORM & BUTTONS INIT
+// 6. INITIALIZATION & ARROWS
 // ==========================================
-document.addEventListener('DOMContentLoaded', () => {
-    // Initializing
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. App start hote hi Firebase se data lao
     window.getPanchangFromFirebase(2026);
     
-    document.getElementById('prevMonth')?.addEventListener('click', () => {
-        window.currentMonth--;
-        if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; }
-        window.selectedDay = 1;
-        window.renderCalendar();
-        if (window) window.updatePanchangDisplay(window);
-    });
+    // 2. Calendar ke Buttons
+    let prevBtn = document.getElementById('prevMonth');
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            window.currentMonth--;
+            if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; }
+            window.selectedDay = 1;
+            window.renderCalendar();
+            if (window) window.updatePanchangDisplay(window);
+        });
+    }
 
-    document.getElementById('nextMonth')?.addEventListener('click', () => {
-        window.currentMonth++;
-        if (window.currentMonth > 11) { window.currentMonth = 0; window.currentYear++; }
-        window.selectedDay = 1;
-        window.renderCalendar();
-        if (window) window.updatePanchangDisplay(window);
-    });
-
-    const appointmentForm = document.getElementById('consultation-form');
-    if (appointmentForm) {
-        appointmentForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = e.target.querySelector('button');
-            btn.innerText = "🔱 SENDING...";
-            btn.disabled = true;
-
-            try {
-                const service = document.getElementById('service-select').value;
-                const name = document.getElementById('user-name').value;
-                const contactMethod = document.querySelector('input:checked')?.value || "WA";
-                const contactDetail = document.getElementById('contact-detail').value;
-
-                const subData = { service, name, contact_method: contactMethod, contact_detail: contactDetail, timestamp: serverTimestamp() };
-
-                await addDoc(collection(db, "appointments"), subData);
-
-                const tgMessage = `🔱 *New Appointment Request!*\n\n👤 *Name:* ${name}\n✨ *Service:* ${service.replace('_', ' ').toUpperCase()}\n📞 *Contact:* ${contactDetail} (${contactMethod})`;
-                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                    method: 'POST', headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: CHAT_ID, text: tgMessage, parse_mode: 'Markdown' })
-                });
-
-                alert("🔱 Pranaam! Aapki request Mahadev tak pahunch gayi hai.");
-                e.target.reset();
-            } catch (err) { console.error("Form Error:", err); alert("Network error. Kripya dobara koshish karein."); } 
-            finally { btn.innerText = "SEND REQUEST"; btn.disabled = false; }
+    let nextBtn = document.getElementById('nextMonth');
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            window.currentMonth++;
+            if (window.currentMonth > 11) { window.currentMonth = 0; window.currentYear++; }
+            window.selectedDay = 1;
+            window.renderCalendar();
+            if (window) window.updatePanchangDisplay(window);
         });
     }
 });
