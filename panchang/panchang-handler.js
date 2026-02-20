@@ -114,6 +114,67 @@ function updateMonthDisplay(lang) {
     }
 }
 
+// 🔱 CALENDAR GENERATOR (Add this inside or after MiddleMan)
+window.renderCalendar = function() {
+    const calendarGrid = document.getElementById('calendar-grid');
+    if (!calendarGrid) return;
+
+    calendarGrid.innerHTML = '';
+    const now = new Date();
+    const year = 2026;
+    const month = window.currentMonth !== undefined ? window.currentMonth : now.getMonth();
+    
+    // Month details
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const todayDate = now.getDate();
+    const isCurrentMonth = (now.getMonth() === month && now.getFullYear() === year);
+
+    // Empty slots for previous month
+    for (let i = 0; i < firstDay; i++) {
+        calendarGrid.innerHTML += `<div class="calendar-day empty"></div>`;
+    }
+
+    // Days of the month
+    for (let day = 1; day <= daysInMonth; day++) {
+        const isSelected = (window.selectedDay === day) ? 'selected' : '';
+        const isToday = (isCurrentMonth && day === todayDate) ? 'today' : '';
+        
+        calendarGrid.innerHTML += `
+            <div class="calendar-day ${isSelected} ${isToday}" onclick="selectDay(${day})">
+                ${day}
+            </div>
+        `;
+    }
+};
+
+// 🔱 DAY SELECTION LOGIC
+window.selectDay = function(day) {
+    window.selectedDay = day;
+    window.renderCalendar(); // Refresh Grid
+    window.masterTranslatePanchang(); // Load Firebase Data for this day
+};
+
+// 🔱 MONTH NAVIGATION
+window.changeMonth = function(offset) {
+    let newMonth = (window.currentMonth !== undefined ? window.currentMonth : new Date().getMonth()) + offset;
+    
+    if (newMonth < 0) newMonth = 11;
+    if (newMonth > 11) newMonth = 0;
+    
+    window.currentMonth = newMonth;
+    window.selectedDay = 1; // Reset to 1st of month
+    window.renderCalendar();
+    window.masterTranslatePanchang();
+};
+
 // 🔱 LISTENERS
-window.addEventListener('languageChanged', () => window.masterTranslatePanchang());
-document.addEventListener('DOMContentLoaded', () => window.getPanchangFromFirebase(2026));
+window.addEventListener('languageChanged', () => {
+    window.masterTranslatePanchang();
+    window.renderCalendar(); // Language change par calendar bhi refresh ho
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.renderCalendar(); // Sabse pehle calendar dikhao
+    window.getPanchangFromFirebase(2026); // Phir Firebase se data lao
+});
