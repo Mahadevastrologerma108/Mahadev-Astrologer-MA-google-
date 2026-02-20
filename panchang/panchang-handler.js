@@ -22,9 +22,9 @@ window.updatePanchangDisplay = async function(yearlyData, customDate = null) {
     const d = yearlyData[dateKey];
     if (!d) return;
 
-    // Current Language check
     const currentLang = localStorage.getItem('selectedLanguage') || 'hi';
 
+    // 1. TOP CARDS DATA
     const elements = {
         'pan-tithi': currentLang === 'hi' ? d.tithi?.hi : d.tithi?.en,
         'pan-nak': currentLang === 'hi' ? d.nakshatra?.hi : d.nakshatra?.en,
@@ -42,12 +42,32 @@ window.updatePanchangDisplay = async function(yearlyData, customDate = null) {
         if (el) el.innerText = val || "--";
     });
 
+    // 2. CHAUGHADIA TRANSLATION (Fixed Logic)
     if (d.choghadiya) {
         const fill = (id, cData) => {
             const body = document.getElementById(id);
             if (body && cData) {
                 body.innerHTML = Object.entries(cData)
-                    .map(([t, n]) => `<tr><td>${t}</td><td>${n}</td><td class="nature-shubh" data-key="pan_shubh">Shubh</td></tr>`).join('');
+                    .map(([time, name]) => {
+                        // Firebase se "Amrit" aayega, hum use translations.js ki key banayenge
+                        const lowName = name.toLowerCase();
+                        const nameKey = `chaug_${lowName}`;
+                        const transName = (window.translations[currentLang] && window.translations[currentLang][nameKey]) ? window.translations[currentLang][nameKey] : name;
+                        
+                        // Nature logic: Shubh/Amrit/Labh = Good, etc.
+                        let natureKey = "chaug_neutral";
+                        if (['shubh', 'amrit', 'labh'].includes(lowName)) natureKey = "chaug_best";
+                        if (['char'].includes(lowName)) natureKey = "chaug_good";
+                        if (['rog', 'kaal', 'udveg'].includes(lowName)) natureKey = "chaug_bad";
+                        
+                        const transNature = (window.translations[currentLang] && window.translations[currentLang][natureKey]) ? window.translations[currentLang][natureKey] : "Nature";
+
+                        return `<tr>
+                            <td>${time}</td>
+                            <td class="chaug-name">${transName}</td>
+                            <td class="nature-${natureKey.split('_')[1]}">${transNature}</td>
+                        </tr>`;
+                    }).join('');
             }
         };
         fill('day-chaug-body', d.choghadiya.day);
@@ -56,7 +76,7 @@ window.updatePanchangDisplay = async function(yearlyData, customDate = null) {
     
     window.updateMonthlyEvents();
     
-    // 🔱 Force translation for static labels
+    // Static labels ko translate karne ka aakhri dhakka
     if (typeof window.applyTranslations === 'function') window.applyTranslations();
 };
 
@@ -81,12 +101,17 @@ window.updateMonthlyEvents = function() {
                 </div>`;
         }
     });
-    container.innerHTML = html || `<p style="text-align:center; color:#888;">No festivals.</p>`;
+    container.innerHTML = html || `<p style="text-align:center; color:#888;" data-key="no_events">No festivals this month.</p>`;
 };
 
-// 🔱 Listen for language changes from layout.js
+// 🔱 Listeners
 window.addEventListener('languageChanged', () => {
     if (window["Data2026"]) window.updatePanchangDisplay(window["Data2026"]);
+});
+
+// Jab calendar ka mahina badle, tab events refresh honge
+window.addEventListener('monthChanged', () => {
+    window.updateMonthlyEvents();
 });
 
 document.addEventListener('DOMContentLoaded', () => window.getPanchangFromFirebase(2026));
