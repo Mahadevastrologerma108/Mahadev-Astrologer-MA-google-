@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- CSS Files -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="panchang.css">
 </head>
@@ -19,7 +20,7 @@
         <div class="panchang-main-header" style="text-align: center;">
             <h2 id="static-title" data-key="static_title" style="color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 15px;">Today's Panchang</h2>
             <div class="ribbon-container" style="margin-bottom: 30px;">
-                <div class="ribbon"><span id="ribbon-text">Jai Mahadev</span></div>
+                <div class="event-ribbon"><span id="ribbon-text">Jai Mahadev</span></div>
             </div>
         </div>
 
@@ -78,13 +79,14 @@
 
     <div id="footer-placeholder"></div>
 
+    <!-- JavaScript Files -->
     <script src="../assets/js/translations.js"></script>
-    <script src="../assets/js/layout.js"></script>
     <script src="yearly-events-2026.js"></script>
-    <script src="panchang-logic.js"></script>
+    <!-- Master Handler Module (Logic + Firebase Merged) -->
     <script type="module" src="panchang-handler.js"></script>
 
     <script>
+        // Tab Switching Logic for Chaughadia
         function showChaug(type) {
             document.getElementById('day-chaug').style.display = type === 'day' ? 'block' : 'none';
             document.getElementById('night-chaug').style.display = type === 'night' ? 'block' : 'none';
@@ -92,12 +94,11 @@
             document.getElementById('btn-night').classList.toggle('active', type === 'night');
         }
 
-        // 🔱 Language Switch Hone Pe Panchang Update Karne Ka Command
+        // Language Switch Listener
         window.addEventListener('languageChanged', () => {
             if (typeof window.updateMonthlyEvents === 'function') window.updateMonthlyEvents();
-            // Firebase data ko bhi refresh karne ke liye agar load ho gaya hai
-            if (window["Data2026"] && typeof window.updatePanchangDisplay === 'function') {
-                window.updatePanchangDisplay(window["Data2026"]);
+            if (window && typeof window.masterTranslatePanchang === 'function') {
+                window.masterTranslatePanchang();
             }
         });
     </script>
