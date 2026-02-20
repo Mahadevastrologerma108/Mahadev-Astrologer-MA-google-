@@ -78,9 +78,9 @@
 
     <div id="footer-placeholder"></div>
 
-    <script src="yearly-events-2026.js"></script>
     <script src="../assets/js/translations.js"></script>
     <script src="../assets/js/layout.js"></script>
+    <script src="yearly-events-2026.js"></script>
     <script src="panchang-logic.js"></script>
     <script type="module" src="panchang-handler.js"></script>
 
@@ -91,6 +91,15 @@
             document.getElementById('btn-day').classList.toggle('active', type === 'day');
             document.getElementById('btn-night').classList.toggle('active', type === 'night');
         }
+
+        // 🔱 Language Switch Hone Pe Panchang Update Karne Ka Command
+        window.addEventListener('languageChanged', () => {
+            if (typeof window.updateMonthlyEvents === 'function') window.updateMonthlyEvents();
+            // Firebase data ko bhi refresh karne ke liye agar load ho gaya hai
+            if (window["Data2026"] && typeof window.updatePanchangDisplay === 'function') {
+                window.updatePanchangDisplay(window["Data2026"]);
+            }
+        });
     </script>
 </body>
 </html>
