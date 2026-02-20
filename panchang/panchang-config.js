@@ -3,7 +3,6 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase
 import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 const firebaseConfig = {
-    const firebaseConfig = {
   apiKey: "AIzaSyAgcfrzQm6wezgtU5Q5BP8wxXatmoWqYrw",
   authDomain: "mahadev-astrologer.firebaseapp.com",
   databaseURL: "https://mahadev-astrologer-default-rtdb.firebaseio.com",
