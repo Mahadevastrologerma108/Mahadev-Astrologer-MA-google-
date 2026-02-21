@@ -9,7 +9,7 @@ window.yearlyPanchangData = null;
 
 // 2. TRANSLATION MIDDLEMAN
 const MiddleMan = {
-    getTranslation: function(val, type) {
+    getTranslation: function(val) {
         if (!val) return "--";
         const lang = localStorage.getItem('selectedLanguage') || 'hi';
         const dict = window.translations?.[lang];
@@ -31,7 +31,7 @@ window.getPanchangFromFirebase = async function(year) {
     } catch (e) { console.error("🔱 Fetch Error:", e); }
 };
 
-// 4. UI DISPLAY
+// 4. UI DISPLAY (Panchang + Choghadiya)
 window.updatePanchangDisplay = function() {
     const data = window.yearlyPanchangData;
     if (!data) return;
@@ -40,15 +40,11 @@ window.updatePanchangDisplay = function() {
     const dKey = "d" + String(window.selectedDay).padStart(2, '0');
     const d = (data[mKey] && data[mKey][dKey]) ? data[mKey][dKey] : null;
 
-    if (!d) {
-        const resetIds = ['pan-tithi', 'pan-nak', 'pan-yoga', 'pan-karana', 'pan-paksha'];
-        resetIds.forEach(id => { if(document.getElementById(id)) document.getElementById(id).innerText = "--"; });
-        return;
-    }
+    if (!d) return;
 
-    const update = (id, val, type) => {
+    const update = (id, val) => {
         const el = document.getElementById(id);
-        if (el) el.innerText = MiddleMan.getTranslation(val, type);
+        if (el) el.innerText = MiddleMan.getTranslation(val);
     };
 
     update('pan-tithi', d.tithi);
@@ -61,27 +57,30 @@ window.updatePanchangDisplay = function() {
     if(document.getElementById('pan-muh')) document.getElementById('pan-muh').innerText = d.muhurat?.abhijit || "--";
     if(document.getElementById('pan-rahu')) document.getElementById('pan-rahu').innerText = d.muhurat?.rahukaal || "--";
 
-    const fillChaug = (id, list) => {
-        const body = document.getElementById(id);
-        if (!body) return;
-        if (!list) { body.innerHTML = '<tr><td colspan="3">No Data</td></tr>'; return; }
+    // 🌓 Choghadiya Logic
+    const fillChaug = (tableId, list) => {
+        const tableBody = document.getElementById(tableId);
+        if (!tableBody) return;
+        if (!list) { tableBody.innerHTML = '<tr><td colspan="3">No Data</td></tr>'; return; }
 
         let html = '';
         Object.entries(list).forEach(([tKey, name]) => {
             const time = tKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
             const transName = MiddleMan.getTranslation(name);
-            let statusColor = "#00ff88"; 
+            
+            let statusColor = "#00ff88"; // Shubh/Amrit
             if (["Rog", "Kaal", "Udveg", "रोग", "काल", "उद्वेग"].includes(name)) statusColor = "#ff4d4d";
             else if (["Char", "चर"].includes(name)) statusColor = "#ffcc00";
 
             html += `<tr>
                 <td style="color:var(--gold); font-weight:bold; padding:10px;">${time}</td>
                 <td>${transName}</td>
-                <td style="color:${statusColor}; font-size:0.8em; font-weight:bold;">Status</td>
+                <td style="color:${statusColor}; font-weight:bold;">●</td>
             </tr>`;
         });
-        body.innerHTML = html;
+        tableBody.innerHTML = html;
     };
+
     fillChaug('day-chaug-body', d.choghadiya?.day);
     fillChaug('night-chaug-body', d.choghadiya?.night);
 };
@@ -114,57 +113,55 @@ window.renderCalendar = function() {
     for (let d = 1; d <= daysInMonth; d++) {
         const daySquare = document.createElement('div');
         daySquare.className = 'calendar-day';
-        
         const mKey = String(window.currentMonth + 1).padStart(2, '0');
         const dKey = String(d).padStart(2, '0');
         const fullDateKey = `${window.currentYear}-${mKey}-${dKey}`;
 
-        // Indicator Dot
-        if (window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026[fullDateKey]) {
-            daySquare.classList.add('has-event');
-        }
+        if (window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026[fullDateKey]) daySquare.classList.add('has-event');
 
-        // Special Tithi Glow (Safe Check)
         const dayData = window.yearlyPanchangData?.[mKey]?.["d"+dKey];
         if (dayData?.tithi) {
             const t = dayData.tithi.toLowerCase();
-            if (t.includes('purnima') || t.includes('amavasya') || t.includes('ekadashi')) {
-                daySquare.classList.add('special-tithi');
-            }
+            if (t.includes('purnima') || t.includes('amavasya') || t.includes('ekadashi')) daySquare.classList.add('special-tithi');
         }
 
         if (window.selectedDay === d) daySquare.classList.add('active');
-        if (d === today.getDate() && window.currentMonth === today.getMonth() && window.currentYear === today.getFullYear()) {
-            daySquare.classList.add('today');
-        }
+        if (d === today.getDate() && window.currentMonth === today.getMonth() && window.currentYear === today.getFullYear()) daySquare.classList.add('today');
 
         daySquare.innerText = d;
-        daySquare.onclick = () => { 
-            window.selectedDay = d; 
-            window.renderCalendar(); 
-            window.updatePanchangDisplay(); 
-        };
+        daySquare.onclick = () => { window.selectedDay = d; window.renderCalendar(); window.updatePanchangDisplay(); };
         container.appendChild(daySquare);
     }
-    if (typeof window.updateMonthlyEvents === 'function') window.updateMonthlyEvents();
+    window.updateMonthlyEvents(); // Call events update
+};
+
+// 🚩 Missing Events List Function
+window.updateMonthlyEvents = function() {
+    const list = document.getElementById('events-list');
+    if (!list || !window.YEARLY_EVENTS_2026) return;
+    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    const mKey = `${window.currentYear}-${String(window.currentMonth + 1).padStart(2, '0')}`;
+    let html = '';
+    
+    Object.keys(window.YEARLY_EVENTS_2026).sort().forEach(date => {
+        if (date.startsWith(mKey)) {
+            const ev = window.YEARLY_EVENTS_2026[date];
+            const dNum = parseInt(date.split('-')[2]);
+            html += `<div class="event-item-card" onclick="window.selectedDay=${dNum}; window.renderCalendar(); window.updatePanchangDisplay();">
+                <div class="event-date-badge">${dNum}</div>
+                <div class="event-details">
+                    <h4>${lang === 'hi' ? ev.hi : ev.en}</h4>
+                    <p>${lang === 'hi' ? ev.desc_hi : ev.desc_en}</p>
+                </div>
+            </div>`;
+        }
+    });
+    list.innerHTML = html || '<p style="text-align:center; padding:20px; color:#888;">No Festivals</p>';
 };
 
 // 6. INITIALIZE
 document.addEventListener('DOMContentLoaded', () => {
     window.getPanchangFromFirebase(2026);
-    if (typeof window.masterTranslatePanchang === 'function') window.masterTranslatePanchang();
-    
-    document.getElementById('prevMonth')?.addEventListener('click', () => {
-        window.currentMonth--;
-        if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; window.getPanchangFromFirebase(window.currentYear); }
-        window.selectedDay = 1; window.renderCalendar(); window.updatePanchangDisplay();
-    });
-
-    document.getElementById('nextMonth')?.addEventListener('click', () => {
-        window.currentMonth++;
-        if (window.currentMonth > 11) { window.currentMonth = 0; window.currentYear++; window.getPanchangFromFirebase(window.currentYear); }
-        window.selectedDay = 1; window.renderCalendar(); window.updatePanchangDisplay();
-    });
 });
 
 window.addEventListener('languageChanged', () => {
