@@ -1,74 +1,44 @@
-// 1. IMPORTS (Sirf ek baar, sabse upar)
+// 1. IMPORTS
 import { db, rtdb } from './panchang-config.js'; 
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-// ================= DEBUGGER START =================
-console.log("🚀 Debugger Active: Panchang Handler Loading...");
+// ================= 2. TRANSLATION MIDDLEMAN (SABSE UPAR) =================
+const MiddleMan = {
+    getTranslation: function(val) {
+        if (!val) return "--";
+        const lang = localStorage.getItem('selectedLanguage') || 'hi';
+        const dict = window.translations?.[lang];
+        if (!dict) return val;
 
-function runDiagnostic() {
-    console.group("🔱 PANCHANG DIAGNOSTIC REPORT");
-    if (window.translations) {
-        console.log("✅ Translation File: Found!");
-        console.log("Available Languages:", Object.keys(window.translations));
-    } else {
-        console.error("❌ Translation File: NOT FOUND! Check path in HTML.");
-    }
-    const lang = localStorage.getItem('selectedLanguage') || 'hi';
-    console.log(`🌍 Selected Language: ${lang}`);
-    if (window.translations && window.translations[lang]) {
-        console.log(`✅ Dictionary for '${lang}': Loaded.`);
-    } else {
-        console.error(`❌ Dictionary for '${lang}': MISSING!`);
-    }
-    console.groupEnd();
-}
-setTimeout(runDiagnostic, 2000); 
-// ================= DEBUGGER END =================
+        let originalVal = val.toString().trim();
+        let lowerVal = originalVal.toLowerCase();
 
-// 2. GLOBAL STATE
-window.currentYear = 2026;
+        // Brahmastra Strategy: Exact -> Lowercase -> Original
+        return dict[originalVal] || dict[lowerVal] || originalVal;
+    }
+};
+
+// ================= 3. BRAHMASTRA (WATCHER) =================
+let lastLang = localStorage.getItem('selectedLanguage') || 'hi';
+setInterval(() => {
+    let currentLang = localStorage.getItem('selectedLanguage') || 'hi';
+    if (currentLang !== lastLang) {
+        console.log(`🚀 Brahmastra: Language Change Detected (${lastLang} -> ${currentLang})`);
+        lastLang = currentLang;
+        if (typeof window.masterTranslatePanchang === 'function') window.masterTranslatePanchang();
+        if (typeof window.renderCalendar === 'function') window.renderCalendar();
+        if (typeof window.updatePanchangDisplay === 'function') window.updatePanchangDisplay();
+    }
+}, 500);
+
+// ================= 4. GLOBAL STATE =================
+window.currentYear = new Date().getFullYear(); // Dynamic (2026 and beyond)
 window.currentMonth = new Date().getMonth();
 window.selectedDay = new Date().getDate();
 window.yearlyPanchangData = null;
 
-// 3. TRANSLATION MIDDLEMAN (AGGRESSIVE & ACTIVE)
-const MiddleMan = {
-    getTranslation: function(val) {
-        if (!val) return "--";
-        
-        // 1. Fresh Language Load
-        const lang = localStorage.getItem('selectedLanguage') || 'hi';
-        const dict = window.translations?.[lang];
-        
-        if (!dict) {
-            console.error(`🛑 CRITICAL: Dictionary for '${lang}' is missing!`);
-            return val;
-        }
+// ================= 5. CORE FUNCTIONS =================
 
-        // 2. Cleaning & Prep
-        let originalVal = val.toString().trim();
-        let lowerVal = originalVal.toLowerCase();
-
-        // 3. AGGRESSIVE SEARCH STRATEGY
-        // Step A: Exact Match (Jaise: "Amavasya")
-        if (dict[originalVal]) return dict[originalVal];
-        
-        // Step B: Case-Insensitive Match (Jaise: "amavasya")
-        if (dict[lowerVal]) return dict[lowerVal];
-
-        // Step C: Status Logic (Force translation for Good/Bad/Neutral)
-        const statusMap = { "good": "Good", "bad": "Bad", "neutral": "Neutral" };
-        if (statusMap[lowerVal]) {
-            let statusKey = statusMap[lowerVal];
-            if (dict[statusKey]) return dict[statusKey];
-        }
-
-        // 4. ACTIVE LOGGING (Agar ab bhi nahi mila toh report karega)
-        console.warn(`⚠️ MiddleMan Missing: [${originalVal}] in '${lang}' dictionary.`);
-        return originalVal;
-    }
-};
-// 4. FIREBASE FETCH
 window.getPanchangFromFirebase = async function(year) {
     try {
         const snapshot = await get(ref(rtdb, `panchang/${year}`));
@@ -80,7 +50,6 @@ window.getPanchangFromFirebase = async function(year) {
     } catch (e) { console.error("🔱 Firebase Error:", e); }
 };
 
-// 5. UI DISPLAY (Panchang + Choghadiya)
 window.updatePanchangDisplay = function() {
     const data = window.yearlyPanchangData;
     if (!data) return;
@@ -112,6 +81,7 @@ window.updatePanchangDisplay = function() {
     if(document.getElementById('pan-muh')) document.getElementById('pan-muh').innerText = d.muhurat?.abhijit || "--";
     if(document.getElementById('pan-rahu')) document.getElementById('pan-rahu').innerText = d.muhurat?.rahukaal || "--";
 
+    // Choghadiya Logic
     const fillChaug = (tableId, list) => {
         const tableBody = document.getElementById(tableId);
         if (!tableBody) return;
@@ -144,7 +114,6 @@ window.updatePanchangDisplay = function() {
     fillChaug('night-chaug-body', d.choghadiya?.night);
 };
 
-// 6. CALENDAR & EVENTS
 window.renderCalendar = function() {
     const container = document.getElementById('calendarDays');
     if (!container) return;
@@ -158,9 +127,7 @@ window.renderCalendar = function() {
     container.innerHTML = '';
     const firstDay = new Date(window.currentYear, window.currentMonth, 1).getDay();
     const daysInMonth = new Date(window.currentYear, window.currentMonth + 1, 0).getDate();
-    for (let i = 0; i < firstDay; i++) {
-        container.innerHTML += '<div class="calendar-day empty"></div>';
-    }
+    for (let i = 0; i < firstDay; i++) container.innerHTML += '<div class="calendar-day empty"></div>';
     for (let d = 1; d <= daysInMonth; d++) {
         const daySquare = document.createElement('div');
         daySquare.className = 'calendar-day';
@@ -187,9 +154,11 @@ window.updateMonthlyEvents = function() {
     list.innerHTML = html || '<p>No Festivals</p>';
 };
 
-// 7. INITIALIZE & EVENT LISTENERS
+// ================= 6. INITIALIZE =================
 document.addEventListener('DOMContentLoaded', () => {
-    window.getPanchangFromFirebase(2026);
+    window.masterTranslatePanchang();
+    window.getPanchangFromFirebase(window.currentYear);
+    
     document.getElementById('prevMonth')?.addEventListener('click', () => {
         window.currentMonth--;
         if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; window.getPanchangFromFirebase(window.currentYear); }
@@ -200,13 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.currentMonth > 11) { window.currentMonth = 0; window.currentYear++; window.getPanchangFromFirebase(window.currentYear); }
         window.selectedDay = 1; window.renderCalendar(); window.updatePanchangDisplay();
     });
-});
-
-window.addEventListener('languageChanged', () => {
-    console.log("🔱 Signal Received: Updating...");
-    window.masterTranslatePanchang();
-    window.renderCalendar();
-    window.updatePanchangDisplay();
 });
 
 window.masterTranslatePanchang = function() {
