@@ -7,13 +7,15 @@ window.currentMonth = new Date().getMonth();
 window.selectedDay = new Date().getDate();
 window.yearlyPanchangData = null;
 
-// 2. TRANSLATION MIDDLEMAN
+// 2. TRANSLATION MIDDLEMAN (Fresh Dictionary Access)
 const MiddleMan = {
     getTranslation: function(val) {
         if (!val) return "--";
+        // Forcefully getting fresh language choice
         const lang = localStorage.getItem('selectedLanguage') || 'hi';
         const dict = window.translations?.[lang];
         if (!dict) return val;
+        
         let trimmedVal = val.toString().trim();
         return dict[trimmedVal] || val;
     }
@@ -28,7 +30,7 @@ window.getPanchangFromFirebase = async function(year) {
             window.renderCalendar();
             window.updatePanchangDisplay();
         }
-    } catch (e) { console.error("🔱 Fetch Error:", e); }
+    } catch (e) { console.error("🔱 Firebase Error:", e); }
 };
 
 // 4. UI DISPLAY (Panchang + Choghadiya)
@@ -40,7 +42,14 @@ window.updatePanchangDisplay = function() {
     const dKey = "d" + String(window.selectedDay).padStart(2, '0');
     const d = (data[mKey] && data[mKey][dKey]) ? data[mKey][dKey] : null;
 
-    if (!d) return;
+    if (!d) {
+        // Reset if data not found
+        ['pan-tithi', 'pan-nak', 'pan-yoga', 'pan-karana', 'pan-paksha'].forEach(id => {
+            const el = document.getElementById(id);
+            if(el) el.innerText = "--";
+        });
+        return;
+    }
 
     const update = (id, val) => {
         const el = document.getElementById(id);
@@ -57,7 +66,7 @@ window.updatePanchangDisplay = function() {
     if(document.getElementById('pan-muh')) document.getElementById('pan-muh').innerText = d.muhurat?.abhijit || "--";
     if(document.getElementById('pan-rahu')) document.getElementById('pan-rahu').innerText = d.muhurat?.rahukaal || "--";
 
-    // 🌓 Choghadiya Logic (Nested inside updatePanchangDisplay)
+    // Choghadiya Builder
     const fillChaug = (tableId, list) => {
         const tableBody = document.getElementById(tableId);
         if (!tableBody) return;
@@ -89,10 +98,9 @@ window.updatePanchangDisplay = function() {
         tableBody.innerHTML = html;
     };
 
-    // YEH RAHI WO LINES JO MISSING THI
     fillChaug('day-chaug-body', d.choghadiya?.day);
     fillChaug('night-chaug-body', d.choghadiya?.night);
-}; // <--- IS BRACKET SE updatePanchangDisplay KHATAM HOTA HAI
+};
 
 // 5. CALENDAR & EVENTS
 window.renderCalendar = function() {
@@ -114,9 +122,7 @@ window.renderCalendar = function() {
     const today = new Date();
 
     for (let i = 0; i < firstDay; i++) {
-        const empty = document.createElement('div');
-        empty.className = 'calendar-day empty';
-        container.appendChild(empty);
+        container.innerHTML += '<div class="calendar-day empty"></div>';
     }
 
     for (let d = 1; d <= daysInMonth; d++) {
@@ -171,6 +177,7 @@ window.updateMonthlyEvents = function() {
 document.addEventListener('DOMContentLoaded', () => {
     window.getPanchangFromFirebase(2026);
     
+    // Month Navigation
     document.getElementById('prevMonth')?.addEventListener('click', () => {
         window.currentMonth--;
         if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; window.getPanchangFromFirebase(window.currentYear); }
@@ -184,10 +191,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// FORCE REFRESH ON LANGUAGE CHANGE
 window.addEventListener('languageChanged', () => {
-    if (typeof window.masterTranslatePanchang === 'function') window.masterTranslatePanchang();
-    window.updatePanchangDisplay();
+    console.log("🔱 Signal Received: Updating all translations...");
+    window.masterTranslatePanchang();
     window.renderCalendar();
+    window.updatePanchangDisplay();
 });
 
 window.masterTranslatePanchang = function() {
