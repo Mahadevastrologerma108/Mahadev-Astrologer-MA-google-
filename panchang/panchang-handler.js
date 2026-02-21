@@ -57,7 +57,7 @@ window.updatePanchangDisplay = function() {
     if(document.getElementById('pan-muh')) document.getElementById('pan-muh').innerText = d.muhurat?.abhijit || "--";
     if(document.getElementById('pan-rahu')) document.getElementById('pan-rahu').innerText = d.muhurat?.rahukaal || "--";
 
-    // 🌓 Choghadiya Logic
+    // 🌓 Choghadiya Logic (Nested inside updatePanchangDisplay)
     const fillChaug = (tableId, list) => {
         const tableBody = document.getElementById(tableId);
         if (!tableBody) return;
@@ -68,23 +68,17 @@ window.updatePanchangDisplay = function() {
             const time = tKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
             const transName = MiddleMan.getTranslation(name);
             
-            // Logic for Status and Color
-            let statusText = "Good"; // Default (Shubh, Amrit, Labh)
-            let statusColor = "#00ff88"; 
-
+            let statusText = "Good", statusColor = "#00ff88"; 
             if (["Rog", "Kaal", "Udveg", "रोग", "काल", "उद्वेग"].includes(name)) {
-                statusText = "Bad";
-                statusColor = "#ff4d4d";
+                statusText = "Bad"; statusColor = "#ff4d4d";
             } else if (["Char", "चर"].includes(name)) {
-                statusText = "Neutral";
-                statusColor = "#ffcc00";
+                statusText = "Neutral"; statusColor = "#ffcc00";
             }
 
-            // Design: Dot + Translated Text
             html += `<tr>
                 <td style="color:var(--gold); font-weight:bold; padding:10px;">${time}</td>
-                <td style="font-weight: 500;">${transName}</td>
-                <td style="padding:10px;">
+                <td>${transName}</td>
+                <td>
                     <div style="display: flex; align-items: center; gap: 6px; color:${statusColor}; font-size: 0.85rem; font-weight: bold;">
                         <span style="font-size: 1.2rem; line-height: 0;">●</span>
                         <span>${MiddleMan.getTranslation(statusText)}</span>
@@ -94,6 +88,11 @@ window.updatePanchangDisplay = function() {
         });
         tableBody.innerHTML = html;
     };
+
+    // YEH RAHI WO LINES JO MISSING THI
+    fillChaug('day-chaug-body', d.choghadiya?.day);
+    fillChaug('night-chaug-body', d.choghadiya?.night);
+}; // <--- IS BRACKET SE updatePanchangDisplay KHATAM HOTA HAI
 
 // 5. CALENDAR & EVENTS
 window.renderCalendar = function() {
@@ -142,10 +141,9 @@ window.renderCalendar = function() {
         daySquare.onclick = () => { window.selectedDay = d; window.renderCalendar(); window.updatePanchangDisplay(); };
         container.appendChild(daySquare);
     }
-    window.updateMonthlyEvents(); // Call events update
+    window.updateMonthlyEvents();
 };
 
-// 🚩 Missing Events List Function
 window.updateMonthlyEvents = function() {
     const list = document.getElementById('events-list');
     if (!list || !window.YEARLY_EVENTS_2026) return;
@@ -172,6 +170,18 @@ window.updateMonthlyEvents = function() {
 // 6. INITIALIZE
 document.addEventListener('DOMContentLoaded', () => {
     window.getPanchangFromFirebase(2026);
+    
+    document.getElementById('prevMonth')?.addEventListener('click', () => {
+        window.currentMonth--;
+        if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; window.getPanchangFromFirebase(window.currentYear); }
+        window.selectedDay = 1; window.renderCalendar(); window.updatePanchangDisplay();
+    });
+
+    document.getElementById('nextMonth')?.addEventListener('click', () => {
+        window.currentMonth++;
+        if (window.currentMonth > 11) { window.currentMonth = 0; window.currentYear++; window.getPanchangFromFirebase(window.currentYear); }
+        window.selectedDay = 1; window.renderCalendar(); window.updatePanchangDisplay();
+    });
 });
 
 window.addEventListener('languageChanged', () => {
