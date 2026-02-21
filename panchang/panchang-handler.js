@@ -68,22 +68,32 @@ window.updatePanchangDisplay = function() {
             const time = tKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
             const transName = MiddleMan.getTranslation(name);
             
-            let statusColor = "#00ff88"; // Shubh/Amrit
-            if (["Rog", "Kaal", "Udveg", "रोग", "काल", "उद्वेग"].includes(name)) statusColor = "#ff4d4d";
-            else if (["Char", "चर"].includes(name)) statusColor = "#ffcc00";
+            // Logic for Status and Color
+            let statusText = "Good"; // Default (Shubh, Amrit, Labh)
+            let statusColor = "#00ff88"; 
 
+            if (["Rog", "Kaal", "Udveg", "रोग", "काल", "उद्वेग"].includes(name)) {
+                statusText = "Bad";
+                statusColor = "#ff4d4d";
+            } else if (["Char", "चर"].includes(name)) {
+                statusText = "Neutral";
+                statusColor = "#ffcc00";
+            }
+
+            // Design: Dot + Translated Text
             html += `<tr>
                 <td style="color:var(--gold); font-weight:bold; padding:10px;">${time}</td>
-                <td>${transName}</td>
-                <td style="color:${statusColor}; font-weight:bold;">●</td>
+                <td style="font-weight: 500;">${transName}</td>
+                <td style="padding:10px;">
+                    <div style="display: flex; align-items: center; gap: 6px; color:${statusColor}; font-size: 0.85rem; font-weight: bold;">
+                        <span style="font-size: 1.2rem; line-height: 0;">●</span>
+                        <span>${MiddleMan.getTranslation(statusText)}</span>
+                    </div>
+                </td>
             </tr>`;
         });
         tableBody.innerHTML = html;
     };
-
-    fillChaug('day-chaug-body', d.choghadiya?.day);
-    fillChaug('night-chaug-body', d.choghadiya?.night);
-};
 
 // 5. CALENDAR & EVENTS
 window.renderCalendar = function() {
