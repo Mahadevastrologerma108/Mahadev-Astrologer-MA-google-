@@ -118,8 +118,8 @@ window.renderCalendar = function() {
     if (!container) return;
     const lang = localStorage.getItem('selectedLanguage') || 'hi';
     const months = ["mon_jan", "mon_feb", "mon_mar", "mon_apr", "mon_may", "mon_jun", "mon_jul", "mon_aug", "mon_sep", "mon_oct", "mon_nov", "mon_dec"];
-    
-    // Update Month Title
+
+    // 1. Update Month Title
     if (document.getElementById('monthDisplay')) {
         const mName = window.translations?.[lang]?.[months[window.currentMonth]] || months[window.currentMonth];
         document.getElementById('monthDisplay').innerText = `${mName} ${window.currentYear}`;
@@ -129,24 +129,39 @@ window.renderCalendar = function() {
     const firstDay = new Date(window.currentYear, window.currentMonth, 1).getDay();
     const daysInMonth = new Date(window.currentYear, window.currentMonth + 1, 0).getDate();
 
-    // Empty Slots
+    // 2. Empty Slots
     for (let i = 0; i < firstDay; i++) container.innerHTML += '<div class="calendar-day empty"></div>';
 
-    // Days with Event Markers
+    // 3. Days with Event Markers
     for (let d = 1; d <= daysInMonth; d++) {
         const daySquare = document.createElement('div');
         daySquare.className = 'calendar-day' + (window.selectedDay === d ? ' active' : '');
-        daySquare.innerText = d;
+        
+        // --- Indicator ko niche lane ke liye styling ---
+        daySquare.style.display = "flex";
+        daySquare.style.flexDirection = "column";
+        daySquare.style.alignItems = "center";
+        daySquare.style.justifyContent = "center";
+        daySquare.style.cursor = "pointer";
+        daySquare.style.minHeight = "50px"; // Adjust according to your UI
+
+        // Number ko span mein rakha taaki dot niche aaye
+        daySquare.innerHTML = `<span class="day-number">${d}</span>`;
 
         // Event Dot Logic
         const dateKey = `${window.currentYear}-${String(window.currentMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
         if (window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026[dateKey]) {
             const dot = document.createElement('div');
-            dot.style.cssText = "width:5px; height:5px; background:var(--gold); border-radius:50%; margin: 2px auto 0;";
+            // Dot styling: dot hamesha number ke niche center hoga
+            dot.style.cssText = "width:6px; height:6px; background:var(--gold, #FFD700); border-radius:50%; margin-top: 4px;";
             daySquare.appendChild(dot);
         }
 
-        daySquare.onclick = () => { window.selectedDay = d; window.renderCalendar(); window.updatePanchangDisplay(); };
+        daySquare.onclick = () => { 
+            window.selectedDay = d; 
+            window.renderCalendar(); 
+            window.updatePanchangDisplay(); 
+        };
         container.appendChild(daySquare);
     }
     if (window.updateMonthlyEvents) window.updateMonthlyEvents();
