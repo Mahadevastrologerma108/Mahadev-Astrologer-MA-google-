@@ -1,4 +1,4 @@
-import { db, rtdb } from './firebase-config.js'; 
+import { db, rtdb } from './panchang-config.js'; 
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 // 1. GLOBAL STATE
