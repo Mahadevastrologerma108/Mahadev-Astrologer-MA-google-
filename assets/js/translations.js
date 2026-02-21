@@ -197,8 +197,19 @@ window.translations = {
         "Trayodashi": "त्रयोदशी", "Chaturdashi": "चतुर्दशी", "Purnima": "पूर्णिमा", "Amavasya": "अमावस्या",
 
         // Choghadiya
-        "Char": "चर", "Amrit": "अमृत", "Labh": "लाभ", "Shubh": "शुभ", 
-        "Rog": "रोग", "Kaal": "काल", "Udveg": "उद्वेग",
+        // ... baaki translations ...
+        "Good": "शुभ",
+        "Bad": "अशुभ",
+        "Neutral": "सामान्य",
+        
+        // Agar Choghadiya ke names bhi English mein aa rahe hain toh ye bhi check kar lo:
+        "Rog": "रोग",
+        "Kaal": "काल",
+        "Udveg": "उद्वेग",
+        "Char": "चर",
+        "Labh": "लाभ",
+        "Amrit": "अमृत",
+        "Shubh": "शुभ",
 
         // Nakshatras
         "Uttara Bhadrapada": "उत्तराभाद्रपद", "Revati": "रेवती", "Ashwini": "अश्विनी", 
