@@ -1,102 +1,194 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="title_panchang">Panchang 2026 | Mahadev Astrologer MA</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="panchang.css">
-</head>
-<body class="panchang-body">
+// 1. IMPORTS
+import { db, rtdb } from './panchang-config.js'; 
+import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    <div id="header-placeholder"></div>
+// ================= 2. THE PROTECTOR (MIDDLEMAN) =================
+// Ise sabse upar rakha hai taki baaki functions ise use kar sakein
+const MiddleMan = {
+    getTranslation: function(val) {
+        if (!val) return "--";
+        const lang = localStorage.getItem('selectedLanguage') || 'hi';
+        const dict = window.translations?.[lang];
+        if (!dict) return val;
 
-    <main style="margin-top: 100px;">
-        <div class="panchang-main-header" style="text-align: center;">
-            <h2 id="static-title" data-key="static_title" style="color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 15px;">Today's Panchang</h2>
-            <div class="ribbon-container" style="margin-bottom: 30px;">
-                <div class="event-ribbon"><span id="ribbon-text">Jai Mahadev</span></div>
-            </div>
-        </div>
+        let originalVal = val.toString().trim();
+        let lowerVal = originalVal.toLowerCase();
+        let sentenceVal = lowerVal.charAt(0).toUpperCase() + lowerVal.slice(1);
 
-        <div class="pan-grid container">
-            <div class="p-card"><span class="label" data-key="pan_tithi">Tithi</span><h4 id="pan-tithi" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_nak">Nakshatra</span><h4 id="pan-nak" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_yoga">Yoga</span><h4 id="pan-yoga" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_karana">Karana</span><h4 id="pan-karana" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_paksha">Paksha</span><h4 id="pan-paksha" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_sun">Sunrise/Set</span><h4 id="pan-sun" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_muh">Abhijit</span><h4 id="pan-muh" class="val">--</h4></div>
-            <div class="p-card rahu-kaal-card"><span class="label" data-key="pan_rahu">Rahu Kaal</span><h4 id="pan-rahu" class="val">--</h4></div>
-        </div>
+        // Sab tareeko se matching: Exact -> lowercase -> Sentence Case
+        return dict[originalVal] || dict[lowerVal] || dict[sentenceVal] || originalVal;
+    }
+};
 
-        <div class="chaughadia-section container">
-            <h2 class="p-title" data-key="pan_shubh_chaug">Shubh Chaughadia</h2>
-            <div class="chaughadia-tabs">
-                <button class="c-tab active day-btn" id="btn-day" onclick="showChaug('day')"><i class="fas fa-sun"></i> <span data-key="pan_day">Day</span></button>
-                <button class="c-tab night-btn" id="btn-night" onclick="showChaug('night')"><i class="fas fa-moon"></i> <span data-key="pan_night">Night</span></button>
-            </div>
+// ================= 3. BRAHMASTRA (WATCHER) =================
+let lastLang = localStorage.getItem('selectedLanguage') || 'hi';
+setInterval(() => {
+    let currentLang = localStorage.getItem('selectedLanguage') || 'hi';
+    if (currentLang !== lastLang) {
+        lastLang = currentLang;
+        // Jab language badle, toh in teeno ko dobara chalao
+        if (typeof window.masterTranslatePanchang === 'function') window.masterTranslatePanchang();
+        if (typeof window.renderCalendar === 'function') window.renderCalendar();
+        if (typeof window.updatePanchangDisplay === 'function') window.updatePanchangDisplay();
+    }
+}, 500);
+
+// ================= 4. GLOBAL STATE =================
+window.currentYear = new Date().getFullYear();
+window.currentMonth = new Date().getMonth();
+window.selectedDay = new Date().getDate();
+window.yearlyPanchangData = null;
+
+// ================= 5. CORE FUNCTIONS =================
+
+window.getPanchangFromFirebase = async function(year) {
+    try {
+        const snapshot = await get(ref(rtdb, `panchang/${year}`));
+        if (snapshot.exists()) {
+            window.yearlyPanchangData = snapshot.val();
+            window.renderCalendar();
+            window.updatePanchangDisplay();
+        }
+    } catch (e) { console.error("🔱 Firebase Error:", e); }
+};
+
+window.updatePanchangDisplay = function() {
+    const data = window.yearlyPanchangData;
+    if (!data) return;
+
+    const mKey = String(window.currentMonth + 1).padStart(2, '0');
+    const dKey = "d" + String(window.selectedDay).padStart(2, '0');
+    const d = (data[mKey] && data[mKey][dKey]) ? data[mKey][dKey] : null;
+
+    const updateLabel = (id, val) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = MiddleMan.getTranslation(val || "--");
+    };
+
+    if (!d) {
+        ['pan-tithi', 'pan-nak', 'pan-yoga', 'pan-karana', 'pan-paksha'].forEach(id => updateLabel(id, "--"));
+        return;
+    }
+
+    updateLabel('pan-tithi', d.tithi);
+    updateLabel('pan-nak', d.nakshatra);
+    updateLabel('pan-yoga', d.yoga);
+    updateLabel('pan-karana', d.karan || d.karana);
+    updateLabel('pan-paksha', d.paksha);
+
+    if(document.getElementById('pan-sun')) document.getElementById('pan-sun').innerText = d.sun ? `${d.sun.rise} / ${d.sun.set}` : "--";
+    if(document.getElementById('pan-muh')) document.getElementById('pan-muh').innerText = d.muhurat?.abhijit || "--";
+    if(document.getElementById('pan-rahu')) document.getElementById('pan-rahu').innerText = d.muhurat?.rahukaal || "--";
+
+    // Choghadiya Table Logic
+    const fillChaug = (tableId, list) => {
+        const tableBody = document.getElementById(tableId);
+        if (!tableBody || !list) return;
+        let html = '';
+        Object.entries(list).forEach(([tKey, name]) => {
+            const time = tKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
+            const transName = MiddleMan.getTranslation(name);
+            let statusText = "Good", statusColor = "#00ff88"; 
+            if (["Rog", "Kaal", "Udveg", "रोग", "काल", "उद्वेग"].includes(name)) { statusText = "Bad"; statusColor = "#ff4d4d"; }
+            else if (["Char", "चर"].includes(name)) { statusText = "Neutral"; statusColor = "#ffcc00"; }
             
-            <div id="day-chaug" class="chaug-content active">
-                <table class="chaug-table">
-                    <thead><tr><th data-key="pan_time">Time</th><th data-key="pan_chaug">Chaughadia</th><th data-key="pan_nature">Nature</th></tr></thead>
-                    <tbody id="day-chaug-body"></tbody>
-                </table>
-            </div>
-            <div id="night-chaug" class="chaug-content" style="display:none;">
-                <table class="chaug-table">
-                    <thead><tr><th data-key="pan_time">Time</th><th data-key="pan_chaug">Chaughadia</th><th data-key="pan_nature">Nature</th></tr></thead>
-                    <tbody id="night-chaug-body"></tbody>
-                </table>
-            </div>
-        </div>
+            html += `<tr>
+                <td style="color:var(--gold); font-weight:bold; padding:10px;">${time}</td>
+                <td>${transName}</td>
+                <td>
+                    <div style="display: flex; align-items: center; gap: 6px; color:${statusColor}; font-size: 0.85rem; font-weight: bold;">
+                        <span style="font-size: 1.2rem; line-height: 0;">●</span>
+                        <span>${MiddleMan.getTranslation(statusText)}</span>
+                    </div>
+                </td>
+            </tr>`;
+        });
+        tableBody.innerHTML = html;
+    };
+    fillChaug('day-chaug-body', d.choghadiya?.day);
+    fillChaug('night-chaug-body', d.choghadiya?.night);
+};
 
-        <div class="calendar-container container">
-            <p class="calendar-hint" data-key="pan_cal_hint">Select a date 👇</p>
-            <div class="calendar-header">
-                <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
-                <h2 id="monthDisplay">--</h2>
-                <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
-            </div>
-            <div class="calendar-weekdays">
-                <div data-key="day_sun">Sun</div><div data-key="day_mon">Mon</div><div data-key="day_tue">Tue</div>
-                <div data-key="day_wed">Wed</div><div data-key="day_thu">Thu</div><div data-key="day_fri">Fri</div>
-                <div data-key="day_sat">Sat</div>
-            </div>
-            <div class="calendar-days" id="calendarDays"></div>
-        </div>
+window.renderCalendar = function() {
+    const container = document.getElementById('calendarDays');
+    if (!container) return;
+    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    const months = ["mon_jan", "mon_feb", "mon_mar", "mon_apr", "mon_may", "mon_jun", "mon_jul", "mon_aug", "mon_sep", "mon_oct", "mon_nov", "mon_dec"];
+    
+    const mDisplay = document.getElementById('monthDisplay');
+    if (mDisplay) {
+        const mName = window.translations?.[lang]?.[months[window.currentMonth]] || months[window.currentMonth];
+        mDisplay.innerText = `${mName} ${window.currentYear}`;
+    }
 
-        <div class="event-section container">
-            <h2 class="p-title" data-key="pan_events_title">Monthly Festivals</h2>
-            <div id="events-list" class="monthly-list-grid"></div>
-        </div>
-    </main>
+    container.innerHTML = '';
+    const firstDay = new Date(window.currentYear, window.currentMonth, 1).getDay();
+    const daysInMonth = new Date(window.currentYear, window.currentMonth + 1, 0).getDate();
 
-    <div id="footer-placeholder"></div>
+    for (let i = 0; i < firstDay; i++) container.innerHTML += '<div class="calendar-day empty"></div>';
 
-    <script src="../assets/js/translations.js"></script>
-    <script src="../assets/js/layout.js"></script> 
-    <script src="yearly-events-2026.js"></script>
-    <script type="module" src="panchang-handler.js"></script>
+    for (let d = 1; d <= daysInMonth; d++) {
+        const daySquare = document.createElement('div');
+        daySquare.className = 'calendar-day';
+        if (window.selectedDay === d) daySquare.classList.add('active');
+        daySquare.innerText = d;
 
-    <script>
-        // Tab Switching Logic
-        function showChaug(type) {
-            document.getElementById('day-chaug').style.display = type === 'day' ? 'block' : 'none';
-            document.getElementById('night-chaug').style.display = type === 'night' ? 'block' : 'none';
-            document.getElementById('btn-day').classList.toggle('active', type === 'day');
-            document.getElementById('btn-night').classList.toggle('active', type === 'night');
+        // 🚩 INDICATOR DOT LOGIC
+        const dateKey = `${window.currentYear}-${String(window.currentMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        if (window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026[dateKey]) {
+            const dot = document.createElement('div');
+            dot.style.cssText = "width:5px; height:5px; background:var(--gold); border-radius:50%; margin: 2px auto 0;";
+            daySquare.appendChild(dot);
         }
 
-        // Handle Language Change UI
-        window.addEventListener('languageChanged', () => {
-            if (typeof window.renderCalendar === 'function') window.renderCalendar();
-            if (typeof window.updatePanchangDisplay === 'function') window.updatePanchangDisplay();
-        });
-    </script>
-</body>
-</html>
+        daySquare.onclick = () => { 
+            window.selectedDay = d; 
+            window.renderCalendar(); 
+            window.updatePanchangDisplay(); 
+        };
+        container.appendChild(daySquare);
+    }
+    if (window.updateMonthlyEvents) window.updateMonthlyEvents();
+};
+
+window.updateMonthlyEvents = function() {
+    const list = document.getElementById('events-list');
+    if (!list || !window.YEARLY_EVENTS_2026) return;
+    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    const mKey = `${window.currentYear}-${String(window.currentMonth + 1).padStart(2, '0')}`;
+    let html = '';
+    Object.keys(window.YEARLY_EVENTS_2026).sort().forEach(date => {
+        if (date.startsWith(mKey)) {
+            const ev = window.YEARLY_EVENTS_2026[date];
+            html += `<div class="event-item-card"><h4>${lang === 'hi' ? ev.hi : ev.en}</h4></div>`;
+        }
+    });
+    list.innerHTML = html || '<p>No Festivals</p>';
+};
+
+window.masterTranslatePanchang = function() {
+    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    const dict = window.translations?.[lang];
+    if (!dict) return;
+    document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (dict[key]) el.innerText = dict[key];
+    });
+};
+
+// ================= 6. INITIALIZE =================
+document.addEventListener('DOMContentLoaded', () => {
+    window.masterTranslatePanchang();
+    window.getPanchangFromFirebase(window.currentYear);
+    
+    document.getElementById('prevMonth')?.addEventListener('click', () => {
+        window.currentMonth--;
+        if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; window.getPanchangFromFirebase(window.currentYear); }
+        window.selectedDay = 1; window.renderCalendar(); window.updatePanchangDisplay();
+    });
+    document.getElementById('nextMonth')?.addEventListener('click', () => {
+        window.currentMonth++;
+        if (window.currentMonth > 11) { window.currentMonth = 0; window.currentYear++; window.getPanchangFromFirebase(window.currentYear); }
+        window.selectedDay = 1; window.renderCalendar(); window.updatePanchangDisplay();
+    });
+});
