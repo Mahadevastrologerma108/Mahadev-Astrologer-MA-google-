@@ -197,45 +197,54 @@ window.updateMonthlyEvents = function() {
     list.innerHTML = html || '<p style="text-align:center; padding:20px; color:#888;">No Festivals</p>';
 };
 
-// 6. INITIALIZE (Optimized for 2026)
+// 6. INITIALIZE (Yahan se neeche ka hissa bas itna rakho)
 document.addEventListener('DOMContentLoaded', () => {
-    // Aaj ki date set karein taaki data aate hi aaj ka panchang dikhe
     const today = new Date();
-    window.currentYear = 2026; // Default Year
-    window.currentMonth = today.getMonth(); // Aaj ka mahina (0-11)
-    window.selectedDay = today.getDate(); // Aaj ki tarikh
+    window.currentYear = 2026;
+    window.currentMonth = today.getMonth();
+    window.selectedDay = today.getDate();
 
-    // Firebase se data mangwayein
     window.getPanchangFromFirebase(2026);
+    window.masterTranslatePanchang(); // Load hote hi static text translate karo
 
-    // Prev Month Button
     document.getElementById('prevMonth')?.addEventListener('click', () => {
         window.currentMonth--;
-        if (window.currentMonth < 0) { 
-            window.currentMonth = 11; 
-            window.currentYear--; 
-            window.getPanchangFromFirebase(window.currentYear); // Naye saal ka data load karein
-        }
-        window.selectedDay = 1;
-        window.renderCalendar();
-        window.updatePanchangDisplay();
+        if (window.currentMonth < 0) { window.currentMonth = 11; window.currentYear--; window.getPanchangFromFirebase(window.currentYear); }
+        window.selectedDay = 1; window.renderCalendar(); window.updatePanchangDisplay();
     });
 
-    // Next Month Button
     document.getElementById('nextMonth')?.addEventListener('click', () => {
         window.currentMonth++;
-        if (window.currentMonth > 11) { 
-            window.currentMonth = 0; 
-            window.currentYear++; 
-            window.getPanchangFromFirebase(window.currentYear); // Naye saal ka data load karein
-        }
-        window.selectedDay = 1;
-        window.renderCalendar();
-        window.updatePanchangDisplay();
+        if (window.currentMonth > 11) { window.currentMonth = 0; window.currentYear++; window.getPanchangFromFirebase(window.currentYear); }
+        window.selectedDay = 1; window.renderCalendar(); window.updatePanchangDisplay();
     });
 });
 
+// --- GLOBAL LISTENER (Sirf ek baar) ---
 window.addEventListener('languageChanged', () => {
-    window.renderCalendar();
-    window.updatePanchangDisplay();
+    console.log("🔱 Panchang Page: Language Change Detected!");
+    
+    window.masterTranslatePanchang(); // Labels badlo
+
+    if (typeof window.updatePanchangDisplay === 'function') {
+        window.updatePanchangDisplay(); // Firebase data (Tithi etc.) badlo
+    }
+
+    if (typeof window.renderCalendar === 'function') {
+        window.renderCalendar(); // Calendar months/days badlo
+    }
 });
+
+// --- STATIC TRANSLATOR ---
+window.masterTranslatePanchang = function() {
+    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    const dict = window.translations?.[lang];
+    if (!dict) return;
+
+    document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (dict[key]) {
+            el.innerText = dict[key];
+        }
+    });
+};
