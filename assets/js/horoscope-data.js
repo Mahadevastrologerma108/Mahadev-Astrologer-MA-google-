@@ -2,266 +2,230 @@
 const dailyHoroscope = {
   aries: {
     career: {
-      hi: "आज काम में थोड़ा दबाव महसूस हो सकता है। अपने फैसले सोच-समझकर लें।\nनई जिम्मेदारियां चुनौतीपूर्ण होंगी, लेकिन संभलकर काम करेंगे तो फायदा होगा।",
-      en: "You may feel some pressure at work today. Take decisions carefully.\nNew responsibilities may be challenging, but handling them wisely will benefit you."
+      hi: "आज पैसों को लेकर थोड़ा सोच-विचार ज्यादा रह सकता है। खर्च अचानक सामने आ सकता है, लेकिन संभलकर चलोगे तो संतुलन बना रहेगा।",
+      en: "Money matters may need extra attention today. Sudden expenses are possible, but mindful handling can keep things balanced."
     },
     love: {
-      hi: "रिश्तों में छोटी बातों पर धैर्य रखें। प्यार और समझ से माहौल अच्छा रहेगा।\nसाझा समय बिताना रिश्तों को मजबूत करेगा।",
-      en: "Be patient with small matters in relationships. Love and understanding will keep things smooth.\nSpending quality time together will strengthen bonds."
+      hi: "परिवार या पार्टनर के साथ पैसों को लेकर बातचीत हो सकती है। शांत तरीके से बात करने पर गलतफहमी कम हो सकती है।",
+      en: "Discussions about finances may happen with family or partner. Calm communication can avoid misunderstandings."
     },
     health: {
-      hi: "थकान या सिर भारी लग सकता है। थोड़ा आराम और ध्यान फायदेमंद रहेगा।\n'ॐ नमः शिवाय' मंत्र का उच्चारण मन को शांति देगा।",
-      en: "You may feel tired or heavy-headed. Some rest and mindfulness will help.\nChanting 'Om Namah Shivaya' can calm your mind."
+      hi: "मानसिक थकान महसूस हो सकती है। थोड़ा आराम और गहरी सांस लेना फायदेमंद रहेगा।",
+      en: "Mental tiredness may be felt. Rest and deep breathing can help."
     },
+    tip: "ॐ नमः शिवाय का मन ही मन जप",
     luckyColor: "Red",
     luckyNumber: "1",
-    luckyTime: "10:00 AM",
-    advice: {
-      hi: "आज धैर्य और समझदारी सबसे जरूरी है। अपनी ऊर्जा सही काम में लगाएं।",
-      en: "Patience and wisdom are key today. Focus your energy on the right tasks."
-    }
+    luckyTime: "10:00 AM"
   },
 
   taurus: {
     career: {
-      hi: "काम से जुड़े फैसलों में थोड़ी सावधानी रखें। जल्दीबाज़ी से बचें।\nनई योजनाएं धीरे-धीरे अपनाएं, इससे स्थिरता बनी रहेगी।",
-      en: "Be cautious with work decisions. Avoid rushing.\nAdopt new plans gradually; it will bring stability."
+      hi: "कमाई को लेकर धीरे-धीरे स्थिति साफ होती दिख सकती है। जल्दबाज़ी में कोई बड़ा फैसला टालना ठीक रहेगा।",
+      en: "Income-related matters may slowly become clearer. Avoid rushing into big decisions."
     },
     love: {
-      hi: "परिवार और साथी के साथ समय बिताना लाभकारी होगा।\nखुलकर बातें करने से समझ बढ़ेगी।",
-      en: "Spending time with family and partner will be beneficial.\nOpen conversations will improve understanding."
+      hi: "घर में पैसों को लेकर सहमति बन सकती है। भरोसे से बात करने पर माहौल हल्का रहेगा।",
+      en: "Financial understanding may improve within the family. Trust-based talks will help."
     },
     health: {
-      hi: "खानपान और नींद पर ध्यान दें। छोटी-छोटी आदतें फर्क डालेंगी।\n'ॐ सोमाय नमः' मंत्र का उच्चारण मन को शांत करेगा।",
-      en: "Pay attention to diet and sleep. Small habits make a difference.\nChanting 'Om Somaya Namah' will calm your mind."
+      hi: "खानपान में लापरवाही से बचना सही रहेगा। पेट से जुड़ी हल्की दिक्कत महसूस हो सकती है।",
+      en: "Avoid careless eating habits. Minor digestive issues are possible."
     },
+    tip: "ॐ सोमाय नमः",
     luckyColor: "White",
     luckyNumber: "6",
-    luckyTime: "12:30 PM",
-    advice: {
-      hi: "आज सोच-समझकर फैसले लें और अपने समय का सही उपयोग करें।",
-      en: "Make thoughtful decisions today and use your time wisely."
-    }
+    luckyTime: "12:30 PM"
   },
 
   gemini: {
     career: {
-      hi: "काम में बातचीत ज्यादा हो सकती है। सुनना भी उतना ही जरूरी है।\nसाझा विचार और सहयोग से काम आसान होगा।",
-      en: "Communication may increase at work. Listening is equally important.\nCollaboration and shared ideas will make work easier."
+      hi: "पैसों को लेकर बातचीत या मीटिंग हो सकती है। सही बात सही समय पर कहना फायदेमंद रहेगा।",
+      en: "Money-related discussions or meetings may happen. Speaking wisely can benefit you."
     },
     love: {
-      hi: "रिश्तों में थोड़ी चिंता हो सकती है। धैर्य और प्यार से समाधान मिलेगा।\nछोटी-छोटी बातें समझदारी से संभालें।",
-      en: "Some concerns may arise in relationships. Patience and love will help resolve them.\nHandle small matters wisely."
+      hi: "परिवार के किसी सदस्य की सलाह काम आ सकती है। सुनने से नया नजरिया मिल सकता है।",
+      en: "Advice from a family member may help. Listening can give a new perspective."
     },
     health: {
-      hi: "स्वास्थ्य सामान्य रहेगा। थोड़ी हल्की व्यायाम लाभकारी होगी।\n'ॐ नमः शिवाय' मंत्र का उच्चारण मन को शांति देगा।",
-      en: "Health will be normal. Light exercise will be beneficial.\nChanting 'Om Namah Shivaya' will calm your mind."
+      hi: "थोड़ी बेचैनी या तनाव महसूस हो सकता है। खुद को ज़्यादा थकाने से बचो।",
+      en: "Restlessness or stress may occur. Avoid overworking yourself."
     },
+    tip: "मन शांत रखो, जल्दबाज़ी मत करो",
     luckyColor: "Yellow",
     luckyNumber: "5",
-    luckyTime: "3:45 PM",
-    advice: {
-      hi: "आज धैर्य और संतुलन बनाए रखें, किसी भी कार्य में जल्दबाज़ी से बचें।",
-      en: "Maintain patience and balance today; avoid haste in any task."
-    }
+    luckyTime: "3:45 PM"
   },
 
   cancer: {
     career: {
-      hi: "आज खर्च और कमाई दोनों पर ध्यान दें। संतुलित निर्णय लाभ देंगे।\nनए अवसरों पर सोच-समझकर काम करें।",
-      en: "Pay attention to income and expenses today. Balanced decisions will help.\nThink carefully before taking new opportunities."
+      hi: "आज खर्च और सेविंग दोनों पर ध्यान जा सकता है। संतुलन बनाए रखने की कोशिश फायदेमंद रहेगी।",
+      en: "Expenses and savings may both need attention today. Maintaining balance is important."
     },
     love: {
-      hi: "परिवार और साथी के साथ भावनात्मक समय अच्छा रहेगा।\nसाझा प्रयास से रिश्तों में सामंजस्य बढ़ेगा।",
-      en: "Emotional moments with family and partner will be good.\nJoint efforts will enhance harmony in relationships."
+      hi: "परिवार का सहयोग मन को सुकून देगा। पैसों से जुड़ा कोई फैसला मिलकर लिया जा सकता है।",
+      en: "Family support will bring comfort. Financial decisions can be made together."
     },
     health: {
-      hi: "स्वास्थ्य में हल्की कमजोरी महसूस हो सकती है। आराम और पोषण पर ध्यान दें।\nगायत्री मंत्र का उच्चारण मन को शांति देगा।",
-      en: "You may feel slightly weak. Focus on rest and nutrition.\nChanting Gayatri Mantra will calm your mind."
+      hi: "मौसम के कारण सुस्ती लग सकती है। पानी और आराम पर ध्यान दो।",
+      en: "Seasonal laziness may be felt. Stay hydrated and rest well."
     },
+    tip: "गायत्री मंत्र का स्मरण",
     luckyColor: "Silver",
     luckyNumber: "2",
-    luckyTime: "9:15 AM",
-    advice: {
-      hi: "आज संतुलन और संयम सबसे ज्यादा जरूरी है।",
-      en: "Balance and self-control are most important today."
-    }
+    luckyTime: "9:15 AM"
   },
 
   leo: {
     career: {
-      hi: "काम में फोकस जरूरी है। ध्यान भटकने से बचें।\nसुरुचिपूर्ण योजना से सफलता मिल सकती है।",
-      en: "Focus is necessary at work. Avoid distractions.\nA well-planned approach can lead to success."
+      hi: "कमाई बढ़ाने के नए विचार मन में आ सकते हैं। अभी योजना बनाना बेहतर रहेगा।",
+      en: "New ideas to increase income may come up. Planning is better than acting immediately."
     },
     love: {
-      hi: "रिश्तों में थोड़ी परीक्षा हो सकती है। धैर्य बनाए रखें।\nसाझा समय और समझदारी से रिश्ते मजबूत होंगे।",
-      en: "Relationships may be tested. Maintain patience.\nQuality time and understanding will strengthen bonds."
+      hi: "रिश्तों में ईगो से बचना ज़रूरी है। पैसों की बात नरमी से रखें।",
+      en: "Avoid ego in relationships. Handle money discussions gently."
     },
     health: {
-      hi: "पानी और नींद पर ध्यान दें। थकान कम करने के उपाय करें।\n'ॐ नमो भगवते वासुदेवाय' मंत्र से मन स्थिर होगा।",
-      en: "Pay attention to hydration and sleep. Take measures to reduce fatigue.\nChanting 'Om Namo Bhagavate Vasudevaya' will stabilize your mind."
+      hi: "थकान महसूस हो सकती है। शरीर के संकेतों को नज़रअंदाज़ न करें।",
+      en: "Fatigue may be felt. Don’t ignore your body’s signals."
     },
+    tip: "ॐ नमो भगवते वासुदेवाय",
     luckyColor: "Gold",
     luckyNumber: "1",
-    luckyTime: "11:20 AM",
-    advice: {
-      hi: "आज योजना और संयम से काम करें, जल्दबाज़ी से बचें।",
-      en: "Act with planning and patience today; avoid haste."
-    }
+    luckyTime: "11:20 AM"
   },
 
   virgo: {
     career: {
-      hi: "व्यापार और काम में प्रगति संभव है। स्पष्ट योजना से आत्मविश्वास बढ़ेगा।\nसंकट के समय संयम बनाए रखें।",
-      en: "Progress in work and business is possible. Clear planning will boost confidence.\nMaintain composure during challenges."
+      hi: "पैसों से जुड़ा कोई पुराना काम आगे बढ़ सकता है। धैर्य रखने से फायदा दिख सकता है।",
+      en: "An old financial matter may move forward. Patience can bring benefits."
     },
     love: {
-      hi: "साथी या परिवार के साथ तालमेल अच्छा रहेगा।\nसाझा प्रयास रिश्तों को मजबूत करेगा।",
-      en: "Coordination with partner or family will be good.\nJoint efforts will strengthen relationships."
+      hi: "परिवार में आर्थिक सहयोग की भावना रहेगी। साथ मिलकर हल निकाल सकते हो।",
+      en: "Financial cooperation in the family is likely. Solutions can be found together."
     },
     health: {
-      hi: "पेट और गले से हल्की परेशानी हो सकती है। ध्यान और आराम लाभकारी होंगे।\nशिव मंत्र का उच्चारण शांति देगा।",
-      en: "Minor digestive or throat issues may occur. Rest and mindfulness will help.\nChanting Shiva mantra will bring peace."
+      hi: "पेट या गले से जुड़ी हल्की परेशानी हो सकती है। आराम जरूरी है।",
+      en: "Minor digestive or throat issues may occur. Proper rest is needed."
     },
+    tip: "धीरे चलो, सोच-समझकर",
     luckyColor: "Green",
     luckyNumber: "5",
-    luckyTime: "2:40 PM",
-    advice: {
-      hi: "आज सोच-समझकर कदम उठाएं और संतुलित रहें।",
-      en: "Take thoughtful steps today and stay balanced."
-    }
+    luckyTime: "2:40 PM"
   },
 
   libra: {
     career: {
-      hi: "आज खर्च बढ़ सकते हैं, संयम जरूरी है।\nनए अवसर सोच-समझकर अपनाएं।",
-      en: "Expenses may rise today; discipline is necessary.\nAdopt new opportunities carefully."
+      hi: "खर्च बढ़ने का एहसास हो सकता है। बजट पर ध्यान देने से स्थिति संभल सकती है।",
+      en: "Expenses may feel higher. Budget planning can help manage things."
     },
     love: {
-      hi: "रिश्तों में शब्दों का असर बढ़ सकता है।\nसोच-समझकर बातचीत करें।",
-      en: "Words may have more impact in relationships today.\nSpeak thoughtfully."
+      hi: "घर में पैसों को लेकर चर्चा हो सकती है। संतुलित शब्दों का इस्तेमाल करो।",
+      en: "Money-related talks may happen at home. Use balanced words."
     },
     health: {
-      hi: "पुरानी परेशानियों में राहत मिल सकती है।\nथोड़ा ध्यान और आराम जरूरी है।",
-      en: "Relief from old issues is possible.\nSome attention and rest are needed."
+      hi: "मानसिक तनाव थोड़ा कम हो सकता है। हल्का महसूस करोगे।",
+      en: "Mental stress may reduce. You may feel lighter."
     },
+    tip: "लक्ष्मी-गणेश का स्मरण",
     luckyColor: "Pink",
     luckyNumber: "6",
-    luckyTime: "4:10 PM",
-    advice: {
-      hi: "आज संयम और समझदारी से काम लें।",
-      en: "Act with prudence and patience today."
-    }
+    luckyTime: "4:10 PM"
   },
 
   scorpio: {
     career: {
-      hi: "काम में प्रशंसा या अवसर मिल सकता है।\nआत्मविश्वास बढ़ाने के लिए सकारात्मक सोच रखें।",
-      en: "Recognition or opportunity may come at work.\nMaintain positive thinking to boost confidence."
+      hi: "कमाई से जुड़ा कोई अच्छा संकेत मिल सकता है। आत्मविश्वास बढ़ेगा।",
+      en: "A positive sign related to income may appear. Confidence will rise."
     },
     love: {
-      hi: "परिवार और साथी का समर्थन महसूस होगा।\nमिलकर काम करने की भावना बनेगी।",
-      en: "Support from family and partner will be felt.\nA sense of teamwork will grow."
+      hi: "परिवार का साथ आर्थिक मामलों में मददगार रहेगा। भरोसा मजबूत होगा।",
+      en: "Family support will help in financial matters. Trust will grow."
     },
     health: {
-      hi: "स्वास्थ्य सामान्य रहेगा। हल्की सावधानी फायदेमंद होगी।\n'ॐ वैष्णवी नमः' मंत्र मन को शांत करेगा।",
-      en: "Health will be normal. Some caution will help.\nChanting 'Om Vaishnavi Namah' will calm your mind."
+      hi: "स्वास्थ्य सामान्य रहेगा। मन शांत महसूस हो सकता है।",
+      en: "Health should remain normal. A sense of calm may be felt."
     },
+    tip: "ॐ वैष्णवी नमः",
     luckyColor: "Maroon",
     luckyNumber: "9",
-    luckyTime: "8:15 PM",
-    advice: {
-      hi: "आज सकारात्मक सोच और संयम बनाए रखें।",
-      en: "Keep positive thinking and composure today."
-    }
+    luckyTime: "8:15 PM"
   },
 
   sagittarius: {
     career: {
-      hi: "बुजुर्गों या साथी की सलाह लाभकारी होगी।\nनए विचारों को अपनाएं और संयम बनाए रखें।",
-      en: "Advice from elders or partner will help.\nEmbrace new ideas and maintain composure."
+      hi: "किसी अनुभवी व्यक्ति की सलाह पैसों के मामले में काम आ सकती है। सुनना फायदेमंद रहेगा।",
+      en: "Advice from an experienced person may help financially. Listening is beneficial."
     },
     love: {
-      hi: "जल्दबाज़ी से बचें।\nधैर्य से रिश्तों में सुधार आएगा।",
-      en: "Avoid impulsiveness.\nPatience will improve relationships."
+      hi: "घर में खर्च को लेकर समझदारी दिखाने की ज़रूरत है। शांति बनाए रखें।",
+      en: "Wisdom is needed regarding expenses at home. Maintain calmness."
     },
     health: {
-      hi: "धूल और प्रदूषण से दूरी बनाएं।\n'ॐ' मंत्र का उच्चारण शांति देगा।",
-      en: "Avoid dust and pollution.\nChanting 'Om' will bring peace."
+      hi: "थोड़ी लापरवाही नुकसान दे सकती है। दिनचर्या संभालकर रखें।",
+      en: "Carelessness may cause issues. Maintain a proper routine."
     },
+    tip: "ॐ का जप",
     luckyColor: "Orange",
     luckyNumber: "3",
-    luckyTime: "7:30 AM",
-    advice: {
-      hi: "आज सोच-समझकर कदम उठाएं और संयम बनाए रखें।",
-      en: "Take thoughtful steps and stay composed today."
-    }
+    luckyTime: "7:30 AM"
   },
 
   capricorn: {
     career: {
-      hi: "आज खर्चों पर ध्यान दें। संतुलित रहना लाभकारी होगा।\nनए अवसर सोच-समझकर अपनाएं।",
-      en: "Pay attention to expenses today. Staying balanced will help.\nAdopt new opportunities carefully."
+      hi: "पैसों को लेकर दबाव महसूस हो सकता है। धीरे-धीरे स्थिति संभलती दिखेगी।",
+      en: "Financial pressure may be felt. Things may slowly stabilize."
     },
     love: {
-      hi: "गुस्सा रिश्तों को प्रभावित कर सकता है।\nशांति बनाए रखने से मधुरता बनी रहेगी।",
-      en: "Anger may affect relationships.\nMaintaining calm will keep harmony."
+      hi: "गुस्से से बचो, नहीं तो घर का माहौल प्रभावित हो सकता है।",
+      en: "Avoid anger, or it may affect the home atmosphere."
     },
     health: {
-      hi: "पुरानी परेशानियाँ उभर सकती हैं।\n'श्री शिवाय नमस्तुभ्यं' मंत्र का उच्चारण फायदेमंद होगा।",
-      en: "Old issues may resurface.\nChanting 'Shree Shivaya Namastubhyam' will be helpful."
+      hi: "पुरानी परेशानी हल्की सी उभर सकती है। आराम ज़रूरी है।",
+      en: "An old issue may slightly resurface. Rest is important."
     },
+    tip: "श्री शिवाय नमस्तुभ्यं",
     luckyColor: "Grey",
     luckyNumber: "8",
-    luckyTime: "1:20 PM",
-    advice: {
-      hi: "आज संयम और संतुलन बनाए रखें।",
-      en: "Maintain composure and balance today."
-    }
+    luckyTime: "1:20 PM"
   },
 
   aquarius: {
     career: {
-      hi: "काम में उतार-चढ़ाव होंगे।\nधैर्य बनाए रखने से चीजें आसान होंगी।",
-      en: "Ups and downs at work may occur.\nPatience will make things easier."
+      hi: "कमाई में उतार-चढ़ाव महसूस हो सकता है। धैर्य से काम लेने पर रास्ता साफ होगा।",
+      en: "Income fluctuations may be felt. Patience will clear the path."
     },
     love: {
-      hi: "रिश्तों में अपनापन लौट सकता है।\nखुलकर बात करें, समझ बढ़ेगी।",
-      en: "Warmth may return in relationships.\nOpen communication will improve understanding."
+      hi: "परिवार में अपनापन बढ़ेगा। पैसों की बात खुलकर हो सकती है।",
+      en: "Warmth will increase in the family. Financial talks may open up."
     },
     health: {
-      hi: "तनाव और ब्लड प्रेशर पर ध्यान दें।\n'ॐ नमः शिवाय' मंत्र शांति देगा।",
-      en: "Pay attention to stress and BP.\nChanting 'Om Namah Shivaya' will calm your mind."
+      hi: "तनाव थोड़ा परेशान कर सकता है। खुद को समय देना ज़रूरी है।",
+      en: "Stress may bother you. Giving time to yourself is necessary."
     },
+    tip: "ॐ नमः शिवाय",
     luckyColor: "Blue",
     luckyNumber: "11",
-    luckyTime: "6:45 PM",
-    advice: {
-      hi: "आज संयम और धैर्य रखें।",
-      en: "Maintain patience and composure today."
-    }
+    luckyTime: "6:45 PM"
   },
 
   pisces: {
     career: {
-      hi: "अति आत्मविश्वास से बचें।\nसोच-समझकर कदम उठाने से लाभ होगा।",
-      en: "Avoid overconfidence.\nThoughtful steps will be beneficial."
+      hi: "पैसों को लेकर भावनाओं में बहने से बचो। सोच-समझकर कदम उठाना सही रहेगा।",
+      en: "Avoid emotional decisions in money matters. Thoughtful steps are better."
     },
     love: {
-      hi: "परिवार में अच्छी खबर सुनने को मिल सकती है।\nसाझा समय खुशियाँ बढ़ाएगा।",
-      en: "Good news in family may come.\nSpending time together will increase happiness."
+      hi: "घर में कोई अच्छी खबर मन खुश कर सकती है। माहौल सकारात्मक रहेगा।",
+      en: "Good news at home may lift your mood. Positivity will be felt."
     },
     health: {
-      hi: "स्वास्थ्य सामान्य रहेगा।\nवाहन चलाते समय सावधानी रखें।",
-      en: "Health will remain fine.\nTake care while driving."
+      hi: "स्वास्थ्य सामान्य रहेगा। बस थोड़ी सावधानी ज़रूरी है।",
+      en: "Health should remain fine. Just maintain a bit of caution."
     },
+    tip: "मन शांत रखो, भरोसा रखो",
     luckyColor: "Light Pink",
     luckyNumber: "7",
-    luckyTime: "10:00 AM",
-    advice: {
-      hi: "आज समझदारी और धैर्य से काम लें।",
-      en: "Act wisely and with patience today."
-    }
+    luckyTime: "10:00 AM"
   }
 };
 
