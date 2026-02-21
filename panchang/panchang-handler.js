@@ -61,7 +61,6 @@ window.updatePanchangDisplay = function() {
     if(document.getElementById('pan-muh')) document.getElementById('pan-muh').innerText = d.muhurat?.abhijit || "--";
     if(document.getElementById('pan-rahu')) document.getElementById('pan-rahu').innerText = d.muhurat?.rahukaal || "--";
 
-    // --- Choghadiya Logic Inside updatePanchangDisplay ---
     const fillChaug = (id, list) => {
         const body = document.getElementById(id);
         if (!body) return;
@@ -71,26 +70,21 @@ window.updatePanchangDisplay = function() {
         Object.entries(list).forEach(([tKey, name]) => {
             const time = tKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
             const transName = MiddleMan.getTranslation(name);
-
-            let statusText = "Good", statusColor = "#00ff88"; 
-            if (["Rog", "Kaal", "Udveg", "रोग", "काल", "उद्वेग"].includes(name)) {
-                statusText = "Bad"; statusColor = "#ff4d4d";
-            } else if (["Char", "चर"].includes(name)) {
-                statusText = "Neutral"; statusColor = "#ffcc00";
-            }
+            let statusColor = "#00ff88"; 
+            if (["Rog", "Kaal", "Udveg", "रोग", "काल", "उद्वेग"].includes(name)) statusColor = "#ff4d4d";
+            else if (["Char", "चर"].includes(name)) statusColor = "#ffcc00";
 
             html += `<tr>
                 <td style="color:var(--gold); font-weight:bold; padding:10px;">${time}</td>
                 <td>${transName}</td>
-                <td style="color:${statusColor}; font-size:0.8em; font-weight:bold;">${MiddleMan.getTranslation(statusText)}</td>
+                <td style="color:${statusColor}; font-size:0.8em; font-weight:bold;">Status</td>
             </tr>`;
         });
         body.innerHTML = html;
     };
-
     fillChaug('day-chaug-body', d.choghadiya?.day);
     fillChaug('night-chaug-body', d.choghadiya?.night);
-}; // <--- YE BRACKET MISSING THA TUMHARE CODE MEIN
+};
 
 // 5. CALENDAR & EVENTS
 window.renderCalendar = function() {
@@ -111,35 +105,34 @@ window.renderCalendar = function() {
     const daysInMonth = new Date(window.currentYear, window.currentMonth + 1, 0).getDate();
     const today = new Date();
 
-    // Empty spaces for previous month's days
-    for (let i = 0; i < firstDay; i++) container.innerHTML += '<div class="calendar-day empty"></div>';
+    for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement('div');
+        empty.className = 'calendar-day empty';
+        container.appendChild(empty);
+    }
 
-    // Loop through days of the month
     for (let d = 1; d <= daysInMonth; d++) {
         const daySquare = document.createElement('div');
         daySquare.className = 'calendar-day';
         
-        // --- 1. SET DATE KEYS ---
         const mKey = String(window.currentMonth + 1).padStart(2, '0');
         const dKey = String(d).padStart(2, '0');
         const fullDateKey = `${window.currentYear}-${mKey}-${dKey}`;
 
-        // --- 2. EVENT INDICATOR (RED DOT) ---
+        // Indicator Dot
         if (window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026[fullDateKey]) {
             daySquare.classList.add('has-event');
         }
 
-        // --- 3. SPECIAL TITHI GLOW (Purnima, Amavasya, Ekadashi) ---
-        // Hum yearlyPanchangData se tithi check karte hain
-        const dayData = (window.yearlyPanchangData && window.yearlyPanchangData[mKey]) ? window.yearlyPanchangData[mKey]["d"+dKey] : null;
-        if (dayData && dayData.tithi) {
+        // Special Tithi Glow (Safe Check)
+        const dayData = window.yearlyPanchangData?.[mKey]?.["d"+dKey];
+        if (dayData?.tithi) {
             const t = dayData.tithi.toLowerCase();
             if (t.includes('purnima') || t.includes('amavasya') || t.includes('ekadashi')) {
                 daySquare.classList.add('special-tithi');
             }
         }
 
-        // --- 4. SELECTION & TODAY HIGHLIGHT ---
         if (window.selectedDay === d) daySquare.classList.add('active');
         if (d === today.getDate() && window.currentMonth === today.getMonth() && window.currentYear === today.getFullYear()) {
             daySquare.classList.add('today');
@@ -153,13 +146,13 @@ window.renderCalendar = function() {
         };
         container.appendChild(daySquare);
     }
-    window.updateMonthlyEvents();
+    if (typeof window.updateMonthlyEvents === 'function') window.updateMonthlyEvents();
 };
 
 // 6. INITIALIZE
 document.addEventListener('DOMContentLoaded', () => {
     window.getPanchangFromFirebase(2026);
-    window.masterTranslatePanchang();
+    if (typeof window.masterTranslatePanchang === 'function') window.masterTranslatePanchang();
     
     document.getElementById('prevMonth')?.addEventListener('click', () => {
         window.currentMonth--;
@@ -175,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('languageChanged', () => {
-    window.masterTranslatePanchang();
+    if (typeof window.masterTranslatePanchang === 'function') window.masterTranslatePanchang();
     window.updatePanchangDisplay();
     window.renderCalendar();
 });
