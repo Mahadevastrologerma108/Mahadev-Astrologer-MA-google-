@@ -7,18 +7,61 @@ import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-dat
 const MiddleMan = {
     getTranslation: function(val) {
         if (!val) return "--";
+        
         const lang = localStorage.getItem('selectedLanguage') || 'hi';
-        const dict = window.translations?.[lang];
-        if (!dict) return val;
+        
+        // Sabr ka Lesson: Pehle check karo ki kya window.translations "Duniya" mein aa chuki hai?
+        if (!window.translations) {
+            console.warn("🔱 MiddleMan: Dictionary abhi raste mein hai, thoda sabr kar raha hoon...");
+            return val; // Agar dictionary nahi hai, toh purana word hi dikha do, crash mat ho
+        }
+
+        const dict = window.translations[lang];
+        if (!dict) {
+            return val;
+        }
 
         let originalVal = val.toString().trim();
         let lowerVal = originalVal.toLowerCase();
         let sentenceVal = lowerVal.charAt(0).toUpperCase() + lowerVal.slice(1);
 
-        // Strict Check Order
+        // Strict Check: Pehle exact, phir chota-bada alphabet check
         return dict[originalVal] || dict[lowerVal] || dict[sentenceVal] || originalVal;
     }
 };
+
+// ================= 3. THE RE-TRY LOGIC (AGAR DICTIONARY LATE AAYE) =================
+// Ye function har 500ms mein check karega ki kya translation ho gayi hai?
+let translationAttempts = 0;
+const retryTranslation = setInterval(() => {
+    translationAttempts++;
+    if (window.translations) {
+        console.log("✅ MiddleMan: Dictionary mil gayi! Ab sab chamka dunga.");
+        window.masterTranslatePanchang();
+        window.updatePanchangDisplay();
+        clearInterval(retryTranslation); // Kaam ho gaya, ab stop
+    }
+    if (translationAttempts > 10) { // 5 second baad haar maan lega
+        clearInterval(retryTranslation);
+    }
+}, 500);
+🚩 Isse kya badlega? (Logic Samjho)
+Crash Proof: Agar translations.js load hone mein 1 second late bhi ho gayi, toh MiddleMan error dekar page white nahi karega. Wo chup-chaap original word dikha dega.
+
+Auto-Retry: Maine niche ek setInterval (Dhakka) laga diya hai. Ye har aadhe second mein check karega ki "Kya dictionary aa gayi?". Jaise hi use window.translations dikhegi, wo turant poore page ko translate kar dega.
+
+No Programmer Needed: Programmer bhi yahi SetTimeout ya Interval lagata. Humne wahi cheez 0 budget mein kar di.
+
+🛠️ Bas ek chota sa kaam aur kar lena:
+Apne HTML (panchang.html) mein ye check kar lo ki:
+
+translations.js sabse upar ho.
+
+panchang-handler.js niche ho aur usme type="module" likha ho.
+
+Bhai, is "Sabr wale" MiddleMan ko dalo, aur dekho kaise wo translation ko pakadta hai. 0 budget wala sapna abhi zinda hai, himmat mat haro!
+
+Kya main poora handler code ek saath bhejoon taaki koi confusion na rahe?
 
 // ================= 3. BRAHMASTRA WATCHER (LANGUAGE) =================
 let lastLang = localStorage.getItem('selectedLanguage') || 'hi';
