@@ -31,18 +31,43 @@ window.currentMonth = new Date().getMonth();
 window.selectedDay = new Date().getDate();
 window.yearlyPanchangData = null;
 
-// 3. TRANSLATION MIDDLEMAN
+// 3. TRANSLATION MIDDLEMAN (AGGRESSIVE & ACTIVE)
 const MiddleMan = {
     getTranslation: function(val) {
         if (!val) return "--";
+        
+        // 1. Fresh Language Load
         const lang = localStorage.getItem('selectedLanguage') || 'hi';
         const dict = window.translations?.[lang];
-        if (!dict) return val;
-        let trimmedVal = val.toString().trim();
-        return dict[trimmedVal] || val;
+        
+        if (!dict) {
+            console.error(`🛑 CRITICAL: Dictionary for '${lang}' is missing!`);
+            return val;
+        }
+
+        // 2. Cleaning & Prep
+        let originalVal = val.toString().trim();
+        let lowerVal = originalVal.toLowerCase();
+
+        // 3. AGGRESSIVE SEARCH STRATEGY
+        // Step A: Exact Match (Jaise: "Amavasya")
+        if (dict[originalVal]) return dict[originalVal];
+        
+        // Step B: Case-Insensitive Match (Jaise: "amavasya")
+        if (dict[lowerVal]) return dict[lowerVal];
+
+        // Step C: Status Logic (Force translation for Good/Bad/Neutral)
+        const statusMap = { "good": "Good", "bad": "Bad", "neutral": "Neutral" };
+        if (statusMap[lowerVal]) {
+            let statusKey = statusMap[lowerVal];
+            if (dict[statusKey]) return dict[statusKey];
+        }
+
+        // 4. ACTIVE LOGGING (Agar ab bhi nahi mila toh report karega)
+        console.warn(`⚠️ MiddleMan Missing: [${originalVal}] in '${lang}' dictionary.`);
+        return originalVal;
     }
 };
-
 // 4. FIREBASE FETCH
 window.getPanchangFromFirebase = async function(year) {
     try {
