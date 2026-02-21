@@ -111,13 +111,39 @@ window.renderCalendar = function() {
     const daysInMonth = new Date(window.currentYear, window.currentMonth + 1, 0).getDate();
     const today = new Date();
 
+    // Empty spaces for previous month's days
     for (let i = 0; i < firstDay; i++) container.innerHTML += '<div class="calendar-day empty"></div>';
 
+    // Loop through days of the month
     for (let d = 1; d <= daysInMonth; d++) {
         const daySquare = document.createElement('div');
         daySquare.className = 'calendar-day';
+        
+        // --- 1. SET DATE KEYS ---
+        const mKey = String(window.currentMonth + 1).padStart(2, '0');
+        const dKey = String(d).padStart(2, '0');
+        const fullDateKey = `${window.currentYear}-${mKey}-${dKey}`;
+
+        // --- 2. EVENT INDICATOR (RED DOT) ---
+        if (window.YEARLY_EVENTS_2026 && window.YEARLY_EVENTS_2026[fullDateKey]) {
+            daySquare.classList.add('has-event');
+        }
+
+        // --- 3. SPECIAL TITHI GLOW (Purnima, Amavasya, Ekadashi) ---
+        // Hum yearlyPanchangData se tithi check karte hain
+        const dayData = (window.yearlyPanchangData && window.yearlyPanchangData[mKey]) ? window.yearlyPanchangData[mKey]["d"+dKey] : null;
+        if (dayData && dayData.tithi) {
+            const t = dayData.tithi.toLowerCase();
+            if (t.includes('purnima') || t.includes('amavasya') || t.includes('ekadashi')) {
+                daySquare.classList.add('special-tithi');
+            }
+        }
+
+        // --- 4. SELECTION & TODAY HIGHLIGHT ---
         if (window.selectedDay === d) daySquare.classList.add('active');
-        if (d === today.getDate() && window.currentMonth === today.getMonth() && window.currentYear === today.getFullYear()) daySquare.classList.add('today');
+        if (d === today.getDate() && window.currentMonth === today.getMonth() && window.currentYear === today.getFullYear()) {
+            daySquare.classList.add('today');
+        }
 
         daySquare.innerText = d;
         daySquare.onclick = () => { 
@@ -128,28 +154,6 @@ window.renderCalendar = function() {
         container.appendChild(daySquare);
     }
     window.updateMonthlyEvents();
-};
-
-window.updateMonthlyEvents = function() {
-    const list = document.getElementById('events-list');
-    if (!list || !window.YEARLY_EVENTS_2026) return;
-    const lang = localStorage.getItem('selectedLanguage') || 'hi';
-    const mKey = `${window.currentYear}-${String(window.currentMonth + 1).padStart(2, '0')}`;
-    let html = '';
-    Object.keys(window.YEARLY_EVENTS_2026).sort().forEach(date => {
-        if (date.startsWith(mKey)) {
-            const ev = window.YEARLY_EVENTS_2026[date];
-            const dNum = parseInt(date.split('-')[2]);
-            html += `<div class="event-item-card" onclick="window.selectedDay=${dNum}; window.renderCalendar(); window.updatePanchangDisplay();">
-                <div class="event-date-badge">${dNum}</div>
-                <div class="event-details">
-                    <h4>${lang === 'hi' ? ev.hi : ev.en}</h4>
-                    <p>${lang === 'hi' ? ev.desc_hi : ev.desc_en}</p>
-                </div>
-            </div>`;
-        }
-    });
-    list.innerHTML = html || '<p style="text-align:center; padding:20px; color:#888;">No Festivals</p>';
 };
 
 // 6. INITIALIZE
