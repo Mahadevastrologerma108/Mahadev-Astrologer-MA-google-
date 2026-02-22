@@ -8,23 +8,43 @@ let selectedDay = new Date().getDate();
 let panchangData = null;
 let activeMode = 'day';
 
-// 1. SUPREME TRANSLATOR
+// 🔱 1. SUPREME TRANSLATOR (Modified for Object & Key Support)
 const smartTranslate = (key) => {
     if (!key) return "--";
     const lang = localStorage.getItem('selectedLanguage') || 'hi';
-const cleanKey = String(key).toLowerCase().trim();
-return window.translations?.[lang]?.[cleanKey] || key;};
 
-// 2. STATUS COLOR LOGIC
-const getStatusMeta = (key) => {
-    const badKeys = ["chaug_rog", "chaug_kaal", "chaug_udveg"];
-    const neutralKeys = ["chaug_char"];
-    if (badKeys.includes(key)) return { label: "bad", color: "#ff4d4d" };
-    if (neutralKeys.includes(key)) return { label: "neutral", color: "#ffcc00" };
-    return { label: "good", color: "#00ff88" };
+    // Check if key is a Firebase Object {hi: '...', en: '...'}
+    if (typeof key === 'object') {
+        return key[lang] || key['hi'] || "--";
+    }
+
+    // Standard key logic for translations.js
+    const cleanKey = String(key).toLowerCase().trim();
+    return window.translations?.[lang]?.[cleanKey] || key;
 };
 
-// 3. UI REFRESHER (Sab kuch ek saath update karega)
+// 🔱 2. STATUS COLOR LOGIC (Updated for Dual Format)
+const getStatusMeta = (details) => {
+    // Agar details ek object hai (naya format), toh uske 'en' status se color decide karo
+    let statusType = "";
+    
+    if (typeof details === 'object' && details.status) {
+        statusType = (details.status.en || "").toLowerCase();
+    } else {
+        // Purana format (string key)
+        statusType = String(details).toLowerCase();
+    }
+
+    if (statusType.includes("bad") || statusType.includes("rog") || statusType.includes("kaal") || statusType.includes("udveg")) {
+        return { color: "#ff4d4d" }; // Red
+    }
+    if (statusType.includes("neutral") || statusType.includes("char")) {
+        return { color: "#ffcc00" }; // Gold/Yellow
+    }
+    return { color: "#00ff88" }; // Green (Good/Shubh/Labh/Amrit)
+};
+
+// 3. UI REFRESHER
 const refreshAllUI = () => {
     renderCalendar();
     updatePanchangDetails();
@@ -64,21 +84,26 @@ const updatePanchangDetails = () => {
     const sunEl = document.getElementById('pan-sun');
     if (sunEl) sunEl.innerText = data.sun ? `${data.sun.rise} / ${data.sun.set}` : "--";
 
-// Choghadiya Table
-const chaugList = data.choghadiya?.[activeMode] || {};
-const tbody = document.getElementById('chaug-body');
-if (tbody) {
-    tbody.innerHTML = Object.entries(chaugList).map(([timeKey, nameKey]) => {
-        const status = getStatusMeta(nameKey);
-        const displayTime = timeKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
-        return `<tr>
-            <td class="gold-text" style="font-weight:600; text-align: center;">${displayTime}</td>
-            <td style="text-align: center;">${smartTranslate(nameKey)}</td>
-            <td style="color:${status.color}; font-weight:bold; text-align: center;">● ${smartTranslate(status.label)}</td>
-        </tr>`;
-    }).join('');
-}
-renderEvents(mStr);
+    // 🔱 Choghadiya Table (Center Aligned & Dual Format Support)
+    const chaugList = data.choghadiya?.[activeMode] || {};
+    const tbody = document.getElementById('chaug-body');
+    if (tbody) {
+        tbody.innerHTML = Object.entries(chaugList).map(([timeKey, details]) => {
+            // Support both old (string) and new (object) data
+            const name = typeof details === 'object' ? details.name : details;
+            const statusLabel = typeof details === 'object' ? details.status : "lbl_status"; // default if missing
+            
+            const meta = getStatusMeta(details);
+            const displayTime = timeKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
+            
+            return `<tr>
+                <td class="gold-text" style="font-weight:600; text-align: center;">${displayTime}</td>
+                <td style="text-align: center;">${smartTranslate(name)}</td>
+                <td style="color:${meta.color}; font-weight:bold; text-align: center;">● ${smartTranslate(statusLabel)}</td>
+            </tr>`;
+        }).join('');
+    }
+    renderEvents(mStr);
 };
 
 // 5. CALENDAR RENDERER
@@ -138,11 +163,10 @@ window.switchChaug = (mode) => {
     updatePanchangDetails(); 
 };
 
-// 🔱 THE MAGIC WAND: Ye function language badalte hi call hoga
 window.updateSiteLanguage = (newLang) => {
     localStorage.setItem('selectedLanguage', newLang);
     document.documentElement.lang = newLang;
-    refreshAllUI(); // Firebase data instant update
+    refreshAllUI(); 
 };
 
 // 8. INITIALIZE
