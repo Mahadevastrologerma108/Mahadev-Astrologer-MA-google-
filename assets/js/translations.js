@@ -103,7 +103,7 @@ mon_jul: "July", mon_aug: "August", mon_sep: "September", mon_oct: "October", mo
         "chaug_char": "Char", "chaug_labh": "Labh", "chaug_amrit": "Amrit", "chaug_shubh": "Shubh",
         "chaug_rog": "Rog", "chaug_kaal": "Kaal", "chaug_udveg": "Udveg",
         "bad": "Bad", "neutral": "Neutral", "good": "Good",
-        ph_time: "Time", ph_name: "Muhurat", ph_status: "Status",
+        ph_time: "Time", ph_name: "Muhurat", ph_status: "Status", nav_event:"Festivals & Events",
         
         // Yoga & Karana
     "yoga_01": "Vishkumbha", "yoga_02": "Priti", "yoga_03": "Ayushman", "yoga_04": "Saubhagya", "yoga_05": "Shobhana",
@@ -214,7 +214,7 @@ mon_jul: "जुलाई", mon_aug: "अगस्त", mon_sep: "सितं�
         "chaug_char": "चर", "chaug_labh": "लाभ", "chaug_amrit": "अमृत", "chaug_shubh": "शुभ",
         "chaug_rog": "रोग", "chaug_kaal": "काल", "chaug_udveg": "उद्वेग",
         "bad": "अशुभ", "neutral": "सामान्य", "good": "शुभ",
-        ph_time: "समय", ph_name: "मुहूर्त", ph_status: "स्थिति",
+        ph_time: "समय", ph_name: "मुहूर्त", ph_status: "स्थिति", nav_event: "त्यौहार और इवेंट्स",
 
         // Yoga & Karana
         "yoga_01": "विष्कुम्भ", "yoga_02": "प्रीति", "yoga_03": "आयुष्मान", "yoga_04": "सौभाग्य", "yoga_05": "शोभन",
