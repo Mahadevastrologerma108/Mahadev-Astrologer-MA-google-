@@ -94,10 +94,10 @@ window.translations = {
     "tithi_06": "Shashthi", "tithi_07": "Saptami", "tithi_08": "Ashtami", "tithi_09": "Navami", "tithi_10": "Dashami",
     "tithi_11": "Ekadashi", "tithi_12": "Dwadashi", "tithi_13": "Trayodashi", "tithi_14": "Chaturdashi", "tithi_15": "Purnima", "tithi_30": "Amavasya",
 
-        // ===== Month Name (EN) =====
+        // ===== Month Name & Days Name (EN) =====
+    day_sun: "Sun", day_mon: "Mon", day_tue: "Tue", day_wed: "Wed", day_thu: "Thu", day_fri: "Fri", day_sat: "Sat",
         mon_jan: "January", mon_feb: "February", mon_mar: "March", mon_apr: "April", mon_may: "May", mon_jun: "June",
-mon_jul: "July", mon_aug: "August", mon_sep: "September", mon_oct: "October", mon_nov: "November", mon_dec: "December",
-no_events: "No festivals today",
+mon_jul: "July", mon_aug: "August", mon_sep: "September", mon_oct: "October", mon_nov: "November", mon_dec: "December", no_events: "No festivals today",
         
         // Choghadiya
         "chaug_char": "Char", "chaug_labh": "Labh", "chaug_amrit": "Amrit", "chaug_shubh": "Shubh",
@@ -206,9 +206,9 @@ no_events: "No festivals today",
         "tithi_11": "एकादशी", "tithi_12": "द्वादशी", "tithi_13": "त्रयोदशी", "tithi_14": "चतुर्दशी", "tithi_15": "पूर्णिमा", "tithi_30": "अमावस्या",
 
         // ===== Montn Name (HI) =====
+        day_sun: "रवि", day_mon: "सोम", day_tue: "मंगल", day_wed: "बुध", day_thu: "गुरु", day_fri: "शुक्र", day_sat: "शनि",
         mon_jan: "जनवरी", mon_feb: "फरवरी", mon_mar: "मार्च", mon_apr: "अप्रैल", mon_may: "मई", mon_jun: "जून",
-mon_jul: "जुलाई", mon_aug: "अगस्त", mon_sep: "सितंबर", mon_oct: "अक्टूबर", mon_nov: "नवंबर", mon_dec: "दिसंबर",
-no_events: "आज कोई त्यौहार नहीं है",        
+mon_jul: "जुलाई", mon_aug: "अगस्त", mon_sep: "सितंबर", mon_oct: "अक्टूबर", mon_nov: "नवंबर", mon_dec: "दिसंबर", no_events: "आज कोई त्यौहार नहीं है",
         
         // Choghadiya
         "chaug_char": "चर", "chaug_labh": "लाभ", "chaug_amrit": "अमृत", "chaug_shubh": "शुभ",
@@ -224,8 +224,8 @@ no_events: "आज कोई त्यौहार नहीं है",
         "yoga_21": "सिद्ध", "yoga_22": "साध्य", "yoga_23": "शुभ", "yoga_24": "शुक्ल", "yoga_25": "ब्रह्म",
         "yoga_26": "इन्द्र", "yoga_27": "वैधृति",
         "karan_01": "बव", "karan_02": "बालव", "karan_03": "कौलव", "karan_04": "तैतिल", "karan_05": "गर",
-        "karan_06": "वणिज", "karan_07": "विष्टि", "karan_08": "शकुनि", "karan_09": "चतुष्पाद", "karan_10": "नाग", "karan_11": "किस्तुघ्न"
+        "karan_06": "वणिज", "karan_07": "विष्टि", "karan_08": "शकुनि", "karan_09": "चतुष्पाद", "karan_10": "नाग", "karan_11": "किस्तुघ्न",
        
-    back_home: "← वापस जाएं",
+    back_home: "← वापस जाएं"
     }
 };
