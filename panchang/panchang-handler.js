@@ -12,8 +12,8 @@ let activeMode = 'day';
 const smartTranslate = (key) => {
     if (!key) return "--";
     const lang = localStorage.getItem('selectedLanguage') || 'hi';
-    return window.translations?.[lang]?.[key] || key; 
-};
+const cleanKey = String(key).toLowerCase().trim();
+return window.translations?.[lang]?.[cleanKey] || key;};
 
 // 2. STATUS COLOR LOGIC
 const getStatusMeta = (key) => {
