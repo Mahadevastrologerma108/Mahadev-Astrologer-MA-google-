@@ -47,10 +47,17 @@ window.translations = {
 
         // ===== PLANETS & HOUSES =====
         planet_sun: "Sun (Surya)", planet_moon: "Moon (Chandra)", planet_mars: "Mars (Mangal)", planet_mercury: "Mercury (Budh)", planet_jupiter: "Jupiter (Guru)", planet_venus: "Venus (Shukra)", planet_saturn: "Saturn (Shani)", planet_rahu: "Rahu", planet_ketu: "Ketu",
-        house_1: "1st House (Self/Physical)", house_2: "2nd House (Wealth/Family)", house_3: "3rd House (Siblings/Courage)", house_4: "4th House (Mother/Happiness)", house_5: "5th House (Children/Wisdom)", house_6: "6th House (Debt/Enemies)", house_7: "7th House (Marriage/Partner)", house_8: "8th House (Longevity/Secrets)", house_9: "9th House (Luck/Dharma)", house_10: "10th House (Career/Karma)", house_11: "11th House (Income/Gains)", house_12: "12th House (Losses/Spirituality)",
+        house_1: "1st House (Self/Physical)", house_2: "2nd House (Wealth/Family)", house_3: "3rd House (Siblings/Courage)", house_4: "4th House (Mother/Happiness)", house_5: "5th House (Children/Wisdom)", 
+        house_6: "6th House (Debt/Enemies)", house_7: "7th House (Marriage/Partner)", house_8: "8th House (Longevity/Secrets)", house_9: "9th House (Luck/Dharma)", house_10: "10th House (Career/Karma)", 
+        house_11: "11th House (Income/Gains)", house_12: "12th House (Losses/Spirituality)",
 
         // ===== NAKSHATRA & YOGA =====
-        nak_ashwini: "Ashwini", nak_bharani: "Bharani", nak_krittika: "Krittika", nak_rohini: "Rohini", nak_mrigashira: "Mrigashira", nak_ardra: "Ardra", nak_punarvasu: "Punarvasu", nak_pushya: "Pushya", nak_ashlesha: "Ashlesha", nak_magha: "Magha", nak_purva_phalguni: "Purva Phalguni", nak_uttara_phalguni: "Uttara Phalguni", nak_hasta: "Hasta", nak_chitra: "Chitra", nak_swati: "Swati", nak_vishakha: "Vishakha", nak_anuradha: "Anuradha", nak_jyeshtha: "Jyeshtha", nak_mula: "Mula", nak_purva_ashadha: "Purva Ashadha", nak_uttara_ashadha: "Uttara Ashadha", nak_shravana: "Shravana", nak_dhanishta: "Dhanishta", nak_shatabhisha: "Shatabhisha", nak_purva_bhadrapada: "Purva Bhadrapada", nak_uttara_bhadrapada: "Uttara Bhadrapada", nak_revati: "Revati",
+       "nak_01": "Ashwini", "nak_02": "Bharani", "nak_03": "Krittika", "nak_04": "Rohini", "nak_05": "Mrigashira",
+        "nak_06": "Ardra", "nak_07": "Punarvasu", "nak_08": "Pushya", "nak_09": "Ashlesha", "nak_10": "Magha",
+        "nak_11": "Purva Phalguni", "nak_12": "Uttara Phalguni", "nak_13": "Hasta", "nak_14": "Chitra", "nak_15": "Swati",
+        "nak_16": "Vishakha", "nak_17": "Anuradha", "nak_18": "Jyeshtha", "nak_19": "Mula", "nak_20": "Purva Ashadha",
+        "nak_21": "Uttara Ashadha", "nak_22": "Shravana", "nak_23": "Dhanishta", "nak_24": "Shatabhisha", "nak_25": "Purva Bhadrapada",
+        "nak_26": "Uttara Bhadrapada", "nak_27": "Revati",
         yoga_gajkesari: "Gajkesari Yoga", yoga_budhaditya: "Budhaditya Yoga", yoga_shasha: "Shasha Yoga", yoga_malavya: "Malavya Yoga", yoga_hamsa: "Hamsa Yoga", yoga_bhadra: "Bhadra Yoga", yoga_ruchaka: "Ruchaka Yoga", yoga_laxmi: "Laxmi Yoga",
         dosha_mangal: "Mangal Dosha", dosha_kaal_sarp: "Kaal Sarp Dosha", dosha_pitar: "Pitar Dosha",
 
@@ -80,34 +87,27 @@ window.translations = {
         upanishad_isha: "Isha Upanishad", upanishad_kena: "Kena Upanishad", upanishad_katha: "Katha Upanishad", upanishad_prashna: "Prashna Upanishad", upanishad_mundaka: "Mundaka Upanishad", upanishad_mandukya: "Mandukya Upanishad",
 
        // ===== PANCHANG DIRECT KEYS (EN) =====
-        "Shukla Paksha": "Shukla Paksha",
-        "Krishna Paksha": "Krishna Paksha",
+       "paksha_shukla": "Shukla Paksha", "paksha_krishna": "Krishna Paksha",
         
         // Tithis
-        "Prathama": "Prathama", "Dwitiya": "Dwitiya", "Tritiya": "Tritiya", "Chaturthi": "Chaturthi", 
-        "Panchami": "Panchami", "Shashthi": "Shashthi", "Saptami": "Saptami", "Ashtami": "Ashtami", 
-        "Navami": "Navami", "Dashami": "Dashami", "Ekadashi": "Ekadashi", "Dwadashi": "Dwadashi", 
-        "Trayodashi": "Trayodashi", "Chaturdashi": "Chaturdashi", "Purnima": "Purnima", "Amavasya": "Amavasya",
+    "tithi_01": "Pratipada", "tithi_02": "Dwitiya", "tithi_03": "Tritiya", "tithi_04": "Chaturthi", "tithi_05": "Panchami",
+    "tithi_06": "Shashthi", "tithi_07": "Saptami", "tithi_08": "Ashtami", "tithi_09": "Navami", "tithi_10": "Dashami",
+    "tithi_11": "Ekadashi", "tithi_12": "Dwadashi", "tithi_13": "Trayodashi", "tithi_14": "Chaturdashi", "tithi_15": "Purnima", "tithi_30": "Amavasya",
 
         // Choghadiya
-        "Char": "Chara", "Amrit": "Amrit", "Labh": "Labh", "Shubh": "Shubh", 
-        "Rog": "Rog", "Kaal": "Kaal", "Udveg": "Udveg",
-
-        // Nakshatras
-        "Uttara Bhadrapada": "Uttara Bhadrapada", "Revati": "Revati", "Ashwini": "Ashwini", 
-        "Bharani": "Bharani", "Krittika": "Krittika", "Rohini": "Rohini", "Mrigashira": "Mrigashira", 
-        "Ardra": "Ardra", "Punarvasu": "Punarvasu", "Pushya": "Pushya", "Ashlesha": "Ashlesha", 
-        "Magha": "Magha", "Purva Phalguni": "Purva Phalguni", "Uttara Phalguni": "Uttara Phalguni", 
-        "Hasta": "Hasta", "Chitra": "Chitra", "Swati": "Swati", "Vishakha": "Vishakha", 
-        "Anuradha": "Anuradha", "Jyeshtha": "Jyeshtha", "Mula": "Mula", "Purva Ashadha": "Purva Ashadha", 
-        "Uttara Ashadha": "Uttara Ashadha", "Shravana": "Shravana", "Dhanishta": "Dhanishta", 
-        "Shatabhisha": "Shatabhisha", "Purva Bhadrapada": "Purva Bhadrapada",
+        "chaug_char": "Char", "chaug_labh": "Labh", "chaug_amrit": "Amrit", "chaug_shubh": "Shubh",
+        "chaug_rog": "Rog", "chaug_kaal": "Kaal", "chaug_udveg": "Udveg",
+        "bad": "Bad", "neutral": "Neutral", "good": "Good",
         
         // Yoga & Karana
-        "Sadhya": "Sadhya", "Shubha": "Shubha", "Shukla": "Shukla", "Brahma": "Brahma", 
-        "Indra": "Indra", "Vaidhriti": "Vaidhriti", "Vishkumbha": "Vishkumbha", "Priti": "Priti", 
-        "Ayushman": "Ayushman", "Taitila": "Taitila", "Vanija": "Vanija", "Bava": "Bava", 
-        "Kaulava": "Kaulava", "Gara": "Gara", "Vishti": "Vishti",
+    "yoga_01": "Vishkumbha", "yoga_02": "Priti", "yoga_03": "Ayushman", "yoga_04": "Saubhagya", "yoga_05": "Shobhana",
+    "yoga_06": "Atiganda", "yoga_07": "Sukarma", "yoga_08": "Dhriti", "yoga_09": "Shoola", "yoga_10": "Ganda",
+    "yoga_11": "Vriddhi", "yoga_12": "Dhruva", "yoga_13": "Vyaghata", "yoga_14": "Harshana", "yoga_15": "Vajra",
+    "yoga_16": "Siddhi", "yoga_17": "Vyatipata", "yoga_18": "Variyana", "yoga_19": "Parigha", "yoga_20": "Shiva",
+    "yoga_21": "Siddha", "yoga_22": "Sadhya", "yoga_23": "Shubha", "yoga_24": "Shukla", "yoga_25": "Brahma",
+    "yoga_26": "Indra", "yoga_27": "Vaidhriti",
+    "karan_01": "Bava", "karan_02": "Balava", "karan_03": "Kaulava", "karan_04": "Taitila", "karan_05": "Gara", "karan_06": "Vanija", "karan_07": "Vishti", 
+    "karan_08": "Shakuni", "karan_09": "Chatushpada", "karan_10": "Naga", "karan_11": "Kimstughna",
         
         back_home: "← Back to Home",
     },
@@ -159,7 +159,12 @@ window.translations = {
         house_1: "प्रथम भाव (तनु)", house_2: "द्वितीय भाव (धन)", house_3: "तृतीय भाव (सहज)", house_4: "चतुर्थ भाव (सुख)", house_5: "पंचम भाव (सुत)", house_6: "षष्ठ भाव (रिपु)", house_7: "सप्तम भाव (जाया)", house_8: "अष्टम भाव (आयु)", house_9: "नवम भाव (भाग्य)", house_10: "दशम भाव (कर्म)", house_11: "एकादश भाव (आय)", house_12: "द्वादश भाव (व्यय)",
 
         // ===== NAKSHATRA & YOGA =====
-        nak_ashwini: "अश्विनी", nak_bharani: "भरणी", nak_krittika: "कृत्तिका", nak_rohini: "रोहिणी", nak_mrigashira: "मृगशिरा", nak_ardra: "आर्द्रा", nak_punarvasu: "पूनर्वसु", nak_pushya: "पुष्य", nak_ashlesha: "आश्लेषा", nak_magha: "मघा", nak_purva_phalguni: "पूर्वा फाल्गुनी", nak_uttara_phalguni: "उत्तरा फाल्गुनी", nak_hasta: "हस्त", nak_chitra: "चित्रा", nak_swati: "स्वाति", nak_vishakha: "विशाखा", nak_anuradha: "अनुराधा", nak_jyeshtha: "ज्येष्ठा", nak_mula: "मूल", nak_purva_ashadha: "पूर्वाषाढ़ा", nak_uttara_ashadha: "उत्तराषाढ़ा", nak_shravana: "श्रवण", nak_dhanishta: "धनिष्ठा", nak_shatabhisha: "शतभिषा", nak_purva_bhadrapada: "पूर्वाभाद्रपद", nak_uttara_bhadrapada: "उत्तराभाद्रपद", nak_revati: "रेवती",
+        "nak_01": "अश्विनी", "nak_02": "भरणी", "nak_03": "कृत्तिका", "nak_04": "रोहिणी", "nak_05": "मृगशिरा",
+        "nak_06": "आर्द्रा", "nak_07": "पुनर्वसु", "nak_08": "पुष्य", "nak_09": "आश्लेषा", "nak_10": "मघा",
+        "nak_11": "पूर्वा फाल्गुनी", "nak_12": "उत्तरा फाल्गुनी", "nak_13": "हस्त", "nak_14": "चित्रा", "nak_15": "स्वाती",
+        "nak_16": "विशाखा", "nak_17": "अनुराधा", "nak_18": "ज्येष्ठा", "nak_19": "मूल", "nak_20": "पूर्वाषाढ़ा",
+        "nak_21": "उत्तराषाढ़ा", "nak_22": "श्रवण", "nak_23": "धनिष्ठा", "nak_24": "शतभिषा", "nak_25": "पूर्वा भाद्रपद",
+        "nak_26": "उत्तर भाद्रपद", "nak_27": "रेवती",
         yoga_gajkesari: "गजकेसरी योग", yoga_budhaditya: "बुधादित्य योग", yoga_shasha: "शश योग", yoga_malavya: "मालव्य योग", yoga_hamsa: "हंस योग", yoga_bhadra: "भद्र योग", yoga_ruchaka: "रुचक योग", yoga_laxmi: "लक्ष्मी योग",
         dosha_mangal: "मंगल दोष", dosha_kaal_sarp: "काल सर्प दोष", dosha_pitar: "पितृ दोष",
 
@@ -187,46 +192,28 @@ window.translations = {
         upanishad_isha: "ईश उपनिषद", upanishad_kena: "केन उपनिषद", upanishad_katha: "कठ उपनिषद", upanishad_prashna: "प्रश्न उपनिषद", upanishad_mundaka: "मुण्डक उपनिषद", upanishad_mandukya: "माण्डूक्य उपनिषद",
 
         // ===== PANCHANG DIRECT KEYS (HI) =====
-        "Shukla Paksha": "शुक्ल पक्ष",
-        "Krishna Paksha": "कृष्ण पक्ष",
+         "paksha_shukla": "शुक्ल पक्ष", "paksha_krishna": "कृष्ण पक्ष",
         
         // Tithis
-        "Prathama": "प्रतिपदा", "Dwitiya": "द्वितीया", "Tritiya": "तृतीया", "Chaturthi": "चतुर्थी", 
-        "Panchami": "पंचमी", "Shashthi": "षष्ठी", "Saptami": "सप्तमी", "Ashtami": "अष्टमी", 
-        "Navami": "नवमी", "Dashami": "दशमी", "Ekadashi": "एकादशी", "Dwadashi": "द्वादशी", 
-        "Trayodashi": "त्रयोदशी", "Chaturdashi": "चतुर्दशी", "Purnima": "पूर्णिमा", "Amavasya": "अमावस्या",
+        "tithi_01": "प्रतिपदा", "tithi_02": "द्वितीया", "tithi_03": "तृतीया", "tithi_04": "चतुर्थी", "tithi_05": "पंचमी",
+        "tithi_06": "षष्ठी", "tithi_07": "सप्तमी", "tithi_08": "अष्टमी", "tithi_09": "नवमी", "tithi_10": "दशमी",
+        "tithi_11": "एकादशी", "tithi_12": "द्वादशी", "tithi_13": "त्रयोदशी", "tithi_14": "चतुर्दशी", "tithi_15": "पूर्णिमा", "tithi_30": "अमावस्या",
 
         // Choghadiya
-        // ... baaki translations ...
-        "Good": "शुभ",
-        "Bad": "अशुभ",
-        "Neutral": "सामान्य",
-        
-        // Agar Choghadiya ke names bhi English mein aa rahe hain toh ye bhi check kar lo:
-        "Rog": "रोग",
-        "Kaal": "काल",
-        "Udveg": "उद्वेग",
-        "Char": "चर",
-        "Labh": "लाभ",
-        "Amrit": "अमृत",
-        "Shubh": "शुभ",
-
-        // Nakshatras
-        "Uttara Bhadrapada": "उत्तराभाद्रपद", "Revati": "रेवती", "Ashwini": "अश्विनी", 
-        "Bharani": "भरणी", "Krittika": "कृत्तika", "Rohini": "रोहिणी", "Mrigashira": "मृगशिरा", 
-        "Ardra": "आर्द्रा", "Punarvasu": "पूनर्वसु", "Pushya": "पुष्य", "Ashlesha": "आश्लेषा", 
-        "Magha": "मघा", "Purva Phalguni": "पूर्वा फाल्गुनी", "Uttara Phalguni": "उत्तरा फाल्गुनी", 
-        "Hasta": "हस्त", "Chitra": "चित्रा", "Swati": "स्वाति", "Vishakha": "विशाखा", 
-        "Anuradha": "अनुराधा", "Jyeshtha": "ज्येष्ठा", "Mula": "मूल", "Purva Ashadha": "पूर्वाषाढ़ा", 
-        "Uttara Ashadha": "उत्तराषाढ़ा", "Shravana": "श्रवण", "Dhanishta": "धनिष्ठा", 
-        "Shatabhisha": "शतभिषा", "Purva Bhadrapada": "पूर्वाभाद्रपद",
+        "chaug_char": "चर", "chaug_labh": "लाभ", "chaug_amrit": "अमृत", "chaug_shubh": "शुभ",
+        "chaug_rog": "रोग", "chaug_kaal": "काल", "chaug_udveg": "उद्वेग",
+        "bad": "अशुभ", "neutral": "सामान्य", "good": "शुभ"
 
         // Yoga & Karana
-        "Sadhya": "साध्य", "Shubha": "शुभ", "Shukla": "शुक्ल", "Brahma": "ब्रह्म", 
-        "Indra": "इन्द्र", "Vaidhriti": "वैधृति", "Vishkumbha": "विष्कुम्भ", "Priti": "प्रीति", 
-        "Ayushman": "आयुष्मान", "Taitila": "तैतिल", "Vanija": "वणिज", "Bava": "बव", 
-        "Kaulava": "कौलव", "Gara": "गर", "Vishti": "विष्टि",
-        
-        back_home: "← वापस जाएं",
+        "yoga_01": "विष्कुम्भ", "yoga_02": "प्रीति", "yoga_03": "आयुष्मान", "yoga_04": "सौभाग्य", "yoga_05": "शोभन",
+        "yoga_06": "अतिगण्ड", "yoga_07": "सुकर्मा", "yoga_08": "धृति", "yoga_09": "शूल", "yoga_10": "गण्ड",
+        "yoga_11": "वृद्धि", "yoga_12": "ध्रुव", "yoga_13": "व्याघात", "yoga_14": "हर्षण", "yoga_15": "वज्र",
+        "yoga_16": "सिद्धि", "yoga_17": "व्यतिपात", "yoga_18": "वरीयान", "yoga_19": "परिघ", "yoga_20": "शिव",
+        "yoga_21": "सिद्ध", "yoga_22": "साध्य", "yoga_23": "शुभ", "yoga_24": "शुक्ल", "yoga_25": "ब्रह्म",
+        "yoga_26": "इन्द्र", "yoga_27": "वैधृति",
+        "karan_01": "बव", "karan_02": "बालव", "karan_03": "कौलव", "karan_04": "तैतिल", "karan_05": "गर",
+        "karan_06": "वणिज", "karan_07": "विष्टि", "karan_08": "शकुनि", "karan_09": "चतुष्पाद", "karan_10": "नाग", "karan_11": "किस्तुघ्न"
+       
+    back_home: "← वापस जाएं",
     }
 };
