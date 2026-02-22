@@ -39,14 +39,25 @@
             </div>
         </section>
 
-        <section class="calendar-wrapper" style="margin: 40px 0;">
-            <div class="calendar-nav">
-                <button onclick="changeMonth(-1)" class="gold-btn-outline">←</button>
-                <h2 id="monthDisplay" class="gold-text cinzel"></h2>
-                <button onclick="changeMonth(1)" class="gold-btn-outline">→</button>
-            </div>
-            <div id="calendarDays" class="calendar-grid"></div>
-        </section>
+<section class="calendar-wrapper" style="margin: 40px 0;">
+    <div class="calendar-nav">
+        <button onclick="changeMonth(-1)" class="gold-btn-outline">←</button>
+        <h2 id="monthDisplay" class="gold-text cinzel"></h2>
+        <button onclick="changeMonth(1)" class="gold-btn-outline">→</button>
+    </div>
+
+    <div class="calendar-day-headers" style="display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; color: #f5c542; margin-bottom: 10px; border-bottom: 1px solid rgba(245, 197, 66, 0.2); padding-bottom: 8px;">
+        <div data-key="day_sun">Sun</div>
+        <div data-key="day_mon">Mon</div>
+        <div data-key="day_tue">Tue</div>
+        <div data-key="day_wed">Wed</div>
+        <div data-key="day_thu">Thu</div>
+        <div data-key="day_fri">Fri</div>
+        <div data-key="day_sat">Sat</div>
+    </div>
+
+    <div id="calendarDays" class="calendar-grid"></div>
+</section>
 
         <section id="events-area">
             <h3 class="gold-text center cinzel" style="font-size: 2rem; margin-bottom: 25px;" data-key="nav_articles">Festivals</h3>
