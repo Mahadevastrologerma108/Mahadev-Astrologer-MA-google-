@@ -64,21 +64,21 @@ const updatePanchangDetails = () => {
     const sunEl = document.getElementById('pan-sun');
     if (sunEl) sunEl.innerText = data.sun ? `${data.sun.rise} / ${data.sun.set}` : "--";
 
-    // Choghadiya Table
-    const chaugList = data.choghadiya?.[activeMode] || {};
-    const tbody = document.getElementById('chaug-body');
-    if (tbody) {
-        tbody.innerHTML = Object.entries(chaugList).map(([timeKey, nameKey]) => {
-            const status = getStatusMeta(nameKey);
-            const displayTime = timeKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
-            return `<tr>
-                <td class="gold-text" style="font-weight:600;">${displayTime}</td>
-                <td>${smartTranslate(nameKey)}</td>
-                <td style="color:${status.color}; font-weight:bold;">● ${smartTranslate(status.label)}</td>
-            </tr>`;
-        }).join('');
-    }
-    renderEvents(mStr);
+// Choghadiya Table
+const chaugList = data.choghadiya?.[activeMode] || {};
+const tbody = document.getElementById('chaug-body');
+if (tbody) {
+    tbody.innerHTML = Object.entries(chaugList).map(([timeKey, nameKey]) => {
+        const status = getStatusMeta(nameKey);
+        const displayTime = timeKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
+        return `<tr>
+            <td class="gold-text" style="font-weight:600; text-align: center;">${displayTime}</td>
+            <td style="text-align: center;">${smartTranslate(nameKey)}</td>
+            <td style="color:${status.color}; font-weight:bold; text-align: center;">● ${smartTranslate(status.label)}</td>
+        </tr>`;
+    }).join('');
+}
+renderEvents(mStr);
 };
 
 // 5. CALENDAR RENDERER
