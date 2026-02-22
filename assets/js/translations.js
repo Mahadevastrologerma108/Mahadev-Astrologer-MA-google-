@@ -94,10 +94,16 @@ window.translations = {
     "tithi_06": "Shashthi", "tithi_07": "Saptami", "tithi_08": "Ashtami", "tithi_09": "Navami", "tithi_10": "Dashami",
     "tithi_11": "Ekadashi", "tithi_12": "Dwadashi", "tithi_13": "Trayodashi", "tithi_14": "Chaturdashi", "tithi_15": "Purnima", "tithi_30": "Amavasya",
 
+        // ===== Month Name (EN) =====
+        mon_jan: "January", mon_feb: "February", mon_mar: "March", mon_apr: "April", mon_may: "May", mon_jun: "June",
+mon_jul: "July", mon_aug: "August", mon_sep: "September", mon_oct: "October", mon_nov: "November", mon_dec: "December",
+no_events: "No festivals today",
+        
         // Choghadiya
         "chaug_char": "Char", "chaug_labh": "Labh", "chaug_amrit": "Amrit", "chaug_shubh": "Shubh",
         "chaug_rog": "Rog", "chaug_kaal": "Kaal", "chaug_udveg": "Udveg",
         "bad": "Bad", "neutral": "Neutral", "good": "Good",
+        ph_time: "Time", ph_name: "Muhurat", ph_status: "Status",
         
         // Yoga & Karana
     "yoga_01": "Vishkumbha", "yoga_02": "Priti", "yoga_03": "Ayushman", "yoga_04": "Saubhagya", "yoga_05": "Shobhana",
@@ -199,10 +205,16 @@ window.translations = {
         "tithi_06": "षष्ठी", "tithi_07": "सप्तमी", "tithi_08": "अष्टमी", "tithi_09": "नवमी", "tithi_10": "दशमी",
         "tithi_11": "एकादशी", "tithi_12": "द्वादशी", "tithi_13": "त्रयोदशी", "tithi_14": "चतुर्दशी", "tithi_15": "पूर्णिमा", "tithi_30": "अमावस्या",
 
+        // ===== Montn Name (HI) =====
+        mon_jan: "जनवरी", mon_feb: "फरवरी", mon_mar: "मार्च", mon_apr: "अप्रैल", mon_may: "मई", mon_jun: "जून",
+mon_jul: "जुलाई", mon_aug: "अगस्त", mon_sep: "सितंबर", mon_oct: "अक्टूबर", mon_nov: "नवंबर", mon_dec: "दिसंबर",
+no_events: "आज कोई त्यौहार नहीं है",        
+        
         // Choghadiya
         "chaug_char": "चर", "chaug_labh": "लाभ", "chaug_amrit": "अमृत", "chaug_shubh": "शुभ",
         "chaug_rog": "रोग", "chaug_kaal": "काल", "chaug_udveg": "उद्वेग",
-        "bad": "अशुभ", "neutral": "सामान्य", "good": "शुभ"
+        "bad": "अशुभ", "neutral": "सामान्य", "good": "शुभ",
+        ph_time: "समय", ph_name: "मुहूर्त", ph_status: "स्थिति",
 
         // Yoga & Karana
         "yoga_01": "विष्कुम्भ", "yoga_02": "प्रीति", "yoga_03": "आयुष्मान", "yoga_04": "सौभाग्य", "yoga_05": "शोभन",
