@@ -1,102 +1,69 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="title_panchang">Panchang 2026 | Mahadev Astrologer MA</title>
-    
+    <title data-key="nav_panchang">Panchang | Mahadev Astrologer MA</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="panchang.css">
 </head>
-<body class="panchang-body">
+<body>
 
     <div id="header-placeholder"></div>
 
-    <main style="margin-top: 100px;">
-        <div class="panchang-main-header" style="text-align: center;">
-            <h2 id="static-title" data-key="static_title" style="color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 15px;">Today's Panchang</h2>
-            <div class="ribbon-container" style="margin-bottom: 30px;">
-                <div class="event-ribbon"><span id="ribbon-text">Jai Mahadev</span></div>
-            </div>
-        </div>
+    <main class="p-container">
+        
+        <h2 class="gold-text center" data-key="ins_panchang_title" style="margin-top: 20px;"></h2>
+        
+        <section class="service-grid card-section" style="margin-bottom: 30px;">
+            <div class="service-card"><h4 data-key="tithi"></h4><p id="pan-tithi" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="nakshatra"></h4><p id="pan-nak" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="yoga"></h4><p id="pan-yoga" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="karan"></h4><p id="pan-karan" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="paksha"></h4><p id="pan-paksha" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="sunrise"></h4><p id="pan-sun" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="abhijit"></h4><p id="pan-muh" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="rahukaal"></h4><p id="pan-rahu" class="gold-text">--</p></div>
+        </section>
 
-        <div class="pan-grid container">
-            <div class="p-card"><span class="label" data-key="pan_tithi">Tithi</span><h4 id="pan-tithi" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_nak">Nakshatra</span><h4 id="pan-nak" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_yoga">Yoga</span><h4 id="pan-yoga" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_karana">Karana</span><h4 id="pan-karana" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_paksha">Paksha</span><h4 id="pan-paksha" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_sun">Sunrise/Set</span><h4 id="pan-sun" class="val">--</h4></div>
-            <div class="p-card"><span class="label" data-key="pan_muh">Abhijit</span><h4 id="pan-muh" class="val">--</h4></div>
-            <div class="p-card rahu-kaal-card"><span class="label" data-key="pan_rahu">Rahu Kaal</span><h4 id="pan-rahu" class="val">--</h4></div>
-        </div>
-
-        <div class="chaughadia-section container">
-            <h2 class="p-title" data-key="pan_shubh_chaug">Shubh Chaughadia</h2>
-            <div class="chaughadia-tabs">
-                <button class="c-tab active day-btn" id="btn-day" onclick="showChaug('day')"><i class="fas fa-sun"></i> <span data-key="pan_day">Day</span></button>
-                <button class="c-tab night-btn" id="btn-night" onclick="showChaug('night')"><i class="fas fa-moon"></i> <span data-key="pan_night">Night</span></button>
+        <section class="service-card choghadiya-section" style="margin-bottom: 50px;">
+            <div class="tab-container">
+                <button id="btn-day" class="tab-btn active" onclick="switchChaug('day')">Day</button>
+                <button id="btn-night" class="tab-btn" onclick="switchChaug('night')">Night</button>
             </div>
-            
-            <div id="day-chaug" class="chaug-content active">
+            <div class="table-responsive">
                 <table class="chaug-table">
-                    <thead><tr><th data-key="pan_time">Time</th><th data-key="pan_chaug">Chaughadia</th><th data-key="pan_nature">Nature</th></tr></thead>
-                    <tbody id="day-chaug-body"></tbody>
+                    <thead>
+                        <tr><th data-key="ph_time"></th><th data-key="ph_name"></th><th data-key="lbl_privacy"></th></tr>
+                    </thead>
+                    <tbody id="chaug-body"></tbody>
                 </table>
             </div>
-            <div id="night-chaug" class="chaug-content" style="display:none;">
-                <table class="chaug-table">
-                    <thead><tr><th data-key="pan_time">Time</th><th data-key="pan_chaug">Chaughadia</th><th data-key="pan_nature">Nature</th></tr></thead>
-                    <tbody id="night-chaug-body"></tbody>
-                </table>
-            </div>
-        </div>
+        </section>
 
-        <div class="calendar-container container">
-            <p class="calendar-hint" data-key="pan_cal_hint">Select a date 👇</p>
-            <div class="calendar-header">
-                <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
-                <h2 id="monthDisplay">--</h2>
-                <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+        <section class="service-card calendar-wrapper" style="margin-bottom: 50px;">
+            <div class="calendar-nav">
+                <button onclick="changeMonth(-1)" class="gold-btn-outline">←</button>
+                <h2 id="monthDisplay" class="gold-text cinzel"></h2>
+                <button onclick="changeMonth(1)" class="gold-btn-outline">→</button>
             </div>
-            <div class="calendar-weekdays">
-                <div data-key="day_sun">Sun</div><div data-key="day_mon">Mon</div><div data-key="day_tue">Tue</div>
-                <div data-key="day_wed">Wed</div><div data-key="day_thu">Thu</div><div data-key="day_fri">Fri</div>
-                <div data-key="day_sat">Sat</div>
-            </div>
-            <div class="calendar-days" id="calendarDays"></div>
-        </div>
+            <div id="calendarDays" class="calendar-grid"></div>
+        </section>
 
-        <div class="event-section container">
-            <h2 class="p-title" data-key="pan_events_title">Monthly Festivals</h2>
-            <div id="events-list" class="monthly-list-grid"></div>
-        </div>
+        <section id="events-area">
+            <h3 class="gold-text center cinzel" style="font-size: 2rem; margin-bottom: 25px;" data-key="nav_articles"></h3>
+            <div id="events-list" class="event-list-container"></div>
+        </section>
+
     </main>
 
     <div id="footer-placeholder"></div>
 
     <script src="../assets/js/translations.js"></script>
-    <script src="../assets/js/layout.js"></script> 
+    <script src="../assets/js/layout.js"></script>
     <script src="yearly-events-2026.js"></script>
     <script type="module" src="panchang-handler.js"></script>
-
-    <script>
-        // Tab Switching Logic
-        function showChaug(type) {
-            document.getElementById('day-chaug').style.display = type === 'day' ? 'block' : 'none';
-            document.getElementById('night-chaug').style.display = type === 'night' ? 'block' : 'none';
-            document.getElementById('btn-day').classList.toggle('active', type === 'day');
-            document.getElementById('btn-night').classList.toggle('active', type === 'night');
-        }
-
-        // Handle Language Change UI
-        window.addEventListener('languageChanged', () => {
-            if (typeof window.renderCalendar === 'function') window.renderCalendar();
-            if (typeof window.updatePanchangDisplay === 'function') window.updatePanchangDisplay();
-        });
-    </script>
 </body>
 </html>
