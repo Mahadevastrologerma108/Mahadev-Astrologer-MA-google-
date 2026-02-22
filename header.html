@@ -31,44 +31,58 @@
 </header>
 
 <script>
-    // A. Explicit Mobile Menu Logic
+    // 1. Navigation Drawer Logic
     const mobileBtn = document.getElementById('mobile-menu');
     const closeBtn = document.getElementById('close-menu');
     const drawer = document.getElementById('nav-drawer');
     const overlay = document.getElementById('menu-overlay');
 
-    if (mobileBtn) {
-        mobileBtn.addEventListener('click', function() {
-            drawer.style.right = '0';
-            overlay.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        });
-    }
+    const openNav = () => {
+        drawer.style.right = '0';
+        overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    };
 
-    function closeNav() {
+    const closeNav = () => {
         drawer.style.right = '-280px';
         overlay.style.display = 'none';
         document.body.style.overflow = 'auto';
-    }
+    };
 
+    if (mobileBtn) mobileBtn.onclick = openNav;
     if (closeBtn) closeBtn.onclick = closeNav;
     if (overlay) overlay.onclick = closeNav;
 
-    // B. Explicit Language Logic
+    // 2. MASTER LANGUAGE TOGGLE (Syncs everything)
     window.toggleLanguage = function() {
+        // Current lang uthao (Default 'hi')
         let currentLang = localStorage.getItem('selectedLang') || 'hi';
         let newLang = (currentLang === 'hi') ? 'en' : 'hi';
+        
+        // Save preference
         localStorage.setItem('selectedLang', newLang);
         
-        // Ensure UI updates across all files
-        if (window.translatePage) window.translatePage(newLang);
-        if (window.updateUI) window.updateUI();
-        
-        // Reload to prevent any logic mismatch
-        location.reload();
+        // A. Static HTML badlo (Jo data-key wale elements hain)
+        if (typeof window.applyTranslations === 'function') {
+            window.applyTranslations();
+        }
+
+        // B. Firebase/Panchang data badlo (Agar Panchang page par ho)
+        if (typeof window.refreshAllUI === 'function') {
+            window.refreshAllUI();
+        }
+
+        // C. Header Toggle Text update karo
+        const langDisplay = document.getElementById('lang-text');
+        if(langDisplay) {
+            langDisplay.innerText = (newLang === 'hi') ? "हिंदी / Eng" : "Eng / हिंदी";
+        }
+
+        // Optional: Agar koi page bina AJAX ke hai, toh reload kar sakte hain
+        // Lekin best experience ke liye humne ise dynamic rakha hai.
     };
 
-    // C. Explicit Scroll Interaction
+    // 3. Scroll & UI Interactions
     window.addEventListener('scroll', function() {
         const header = document.getElementById('main-header');
         const logo = document.getElementById('header-logo');
@@ -85,23 +99,40 @@
         }
     });
 
-    // D. Initial Page Load Sync
-    (function() {
-        // Sync Language Text
-        const saved = localStorage.getItem('selectedLang') || 'hi';
-        const langDisplay = document.getElementById('lang-text');
-        if(langDisplay) {
-            langDisplay.innerText = (saved === 'hi') ? "हिंदी / Eng" : "Eng / हिंदी";
+// 4. Initial Sync on Page Load (Full & Final Version)
+    document.addEventListener('DOMContentLoaded', () => {
+        // A. Lang Preference Check
+        const savedLang = localStorage.getItem('selectedLang') || 'hi';
+        
+        // B. Set HTML Lang Attribute (SEO aur Browser ke liye achha hai)
+        document.documentElement.lang = savedLang;
+
+        // C. Trigger Translation (Static Text ke liye)
+        if (typeof window.applyTranslations === 'function') {
+            window.applyTranslations();
         }
 
-        // Highlight Active Link Logic
+        // D. Sync Header Button Display
+        const langDisplay = document.getElementById('lang-text');
+        if(langDisplay) {
+            langDisplay.innerText = (savedLang === 'hi') ? "हिंदी / Eng" : "Eng / हिंदी";
+        }
+
+        // E. Highlight Active Page Link
         const currentPage = window.location.pathname.split("/").pop() || 'index.html';
-        const allNavLinks = document.querySelectorAll('.nav-link');
-        allNavLinks.forEach(link => {
-            if(link.getAttribute('href').includes(currentPage)) {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            const href = link.getAttribute('href');
+            if(href && (href.includes(currentPage) || (currentPage === 'index.html' && href === '/'))) {
                 link.style.borderBottom = '1px solid var(--gold)';
                 link.style.opacity = '1';
+                link.classList.add('active-page'); // Extra class safety ke liye
             }
         });
-    })();
+
+        // F. Trigger Firebase/Panchang Sync (Agar hum Panchang page par hain)
+        if (typeof window.refreshAllUI === 'function') {
+            window.refreshAllUI();
+        }
+    });
+    });
 </script>
