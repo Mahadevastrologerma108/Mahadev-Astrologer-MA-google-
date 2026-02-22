@@ -5,30 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-key="nav_panchang">Panchang | Mahadev Astrologer MA</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="panchang.css">
 </head>
 <body>
-
     <div id="header-placeholder"></div>
 
     <main class="p-container">
-        
-        <h2 class="gold-text center" data-key="ins_panchang_title" style="margin-top: 20px;"></h2>
-        
-        <section class="service-grid card-section" style="margin-bottom: 30px;">
-            <div class="service-card"><h4 data-key="tithi"></h4><p id="pan-tithi" class="gold-text">--</p></div>
-            <div class="service-card"><h4 data-key="nakshatra"></h4><p id="pan-nak" class="gold-text">--</p></div>
-            <div class="service-card"><h4 data-key="yoga"></h4><p id="pan-yoga" class="gold-text">--</p></div>
-            <div class="service-card"><h4 data-key="karan"></h4><p id="pan-karan" class="gold-text">--</p></div>
-            <div class="service-card"><h4 data-key="paksha"></h4><p id="pan-paksha" class="gold-text">--</p></div>
-            <div class="service-card"><h4 data-key="sunrise"></h4><p id="pan-sun" class="gold-text">--</p></div>
-            <div class="service-card"><h4 data-key="abhijit"></h4><p id="pan-muh" class="gold-text">--</p></div>
-            <div class="service-card"><h4 data-key="rahukaal"></h4><p id="pan-rahu" class="gold-text">--</p></div>
+        <h2 class="gold-text center cinzel" data-key="ins_panchang_title" style="margin-top: 20px;"></h2>
+        <section class="card-section">
+            <div class="service-card"><h4 data-key="tithi">Tithi</h4><p id="pan-tithi" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="nakshatra">Nakshatra</h4><p id="pan-nak" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="yoga">Yoga</h4><p id="pan-yoga" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="karan">Karan</h4><p id="pan-karan" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="paksha">Paksha</h4><p id="pan-paksha" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="sunrise">Sun</h4><p id="pan-sun" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="abhijit">Abhijit</h4><p id="pan-muh" class="gold-text">--</p></div>
+            <div class="service-card"><h4 data-key="rahukaal">Rahu</h4><p id="pan-rahu" class="gold-text">--</p></div>
         </section>
 
-        <section class="service-card choghadiya-section" style="margin-bottom: 50px;">
+        <section class="choghadiya-section">
             <div class="tab-container">
                 <button id="btn-day" class="tab-btn active" onclick="switchChaug('day')">Day</button>
                 <button id="btn-night" class="tab-btn" onclick="switchChaug('night')">Night</button>
@@ -36,14 +32,14 @@
             <div class="table-responsive">
                 <table class="chaug-table">
                     <thead>
-                        <tr><th data-key="ph_time"></th><th data-key="ph_name"></th><th data-key="lbl_privacy"></th></tr>
+                        <tr><th data-key="ph_time">Time</th><th data-key="ph_name">Muhurat</th><th data-key="lbl_privacy">Status</th></tr>
                     </thead>
                     <tbody id="chaug-body"></tbody>
                 </table>
             </div>
         </section>
 
-        <section class="service-card calendar-wrapper" style="margin-bottom: 50px;">
+        <section class="calendar-wrapper" style="margin: 40px 0;">
             <div class="calendar-nav">
                 <button onclick="changeMonth(-1)" class="gold-btn-outline">←</button>
                 <h2 id="monthDisplay" class="gold-text cinzel"></h2>
@@ -53,10 +49,9 @@
         </section>
 
         <section id="events-area">
-            <h3 class="gold-text center cinzel" style="font-size: 2rem; margin-bottom: 25px;" data-key="nav_articles"></h3>
+            <h3 class="gold-text center cinzel" style="font-size: 2rem; margin-bottom: 25px;" data-key="nav_articles">Festivals</h3>
             <div id="events-list" class="event-list-container"></div>
         </section>
-
     </main>
 
     <div id="footer-placeholder"></div>
