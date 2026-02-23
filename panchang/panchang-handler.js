@@ -7,114 +7,84 @@ let currentMonth = new Date().getMonth();
 let selectedDay = new Date().getDate();
 let activeMode = 'day';
 
-// 🔱 1. SUPREME TRANSLATOR (For UI Labels only)
+// 🔱 1. Labels Translator (Sirf Tithi, Nakshatra jaise words ke liye)
 const updateUILabels = () => {
     const lang = localStorage.getItem('selectedLanguage') || 'hi';
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
-        if (window.translations && window.translations[lang] && window.translations[lang][key]) {
+        if (window.translations?.[lang]?.[key]) {
             el.innerText = window.translations[lang][key];
         }
     });
 };
 
-// 🔱 2. FETCH DATA FROM FIREBASE (Direct Folder Access)
+// 🔱 2. Fetch Data (Direct Path Logic)
 const fetchPanchang = async () => {
     const lang = localStorage.getItem('selectedLanguage') || 'hi';
-    const mStr = String(currentMonth + 1).padStart(2, '0');
-    const dStr = "d" + String(selectedDay).padStart(2, '0');
+    const mStr = String(currentMonth + 1).padStart(2, '0'); // Ye "02" banayega
+    const dStr = "d" + String(selectedDay).padStart(2, '0'); // Ye "d23" banayega
 
-    // Path: panchang/2026/hi/02/d20
-const dataPath = `panchang/${currentYear}/${mStr}/${lang}/${dStr}`;
+    // 🚩 Path Match: panchang/2026/02/hi/d23
+    const dataPath = `panchang/${currentYear}/${mStr}/${lang}/${dStr}`;
     
     try {
         const snap = await get(ref(rtdb, dataPath));
         if (snap.exists()) {
             renderUI(snap.val(), lang);
         } else {
-            console.log("No data for:", dataPath);
-            resetDisplay();
+            console.error("Data Not Found at:", dataPath);
         }
     } catch (err) {
         console.error("Firebase Error:", err);
     }
-    
-    updateUILabels();
-    renderCalendar();
-    renderEvents(mStr, lang);
 };
 
-// 🔱 3. RENDER UI
+// 🔱 3. Render UI (No smartTranslate here!)
 const renderUI = (data, lang) => {
-    // Basic Details
-    document.getElementById('pan-tithi').innerText = data.tithi || "--";
-    document.getElementById('pan-nak').innerText = data.nakshatra || "--";
-    document.getElementById('pan-yoga').innerText = data.yoga || "--";
-    document.getElementById('pan-karan').innerText = data.karan || "--";
-    document.getElementById('pan-paksha').innerText = data.paksha || "--";
-    
-    // Sun & Muhurat
-    document.getElementById('pan-sun').innerText = data.sun ? `${data.sun.rise} / ${data.sun.set}` : "--";
-    document.getElementById('pan-muh').innerText = data.muhurat?.abhijit || "--";
-    document.getElementById('pan-rahu').innerText = data.muhurat?.rahukaal || "--";
+    // Mapping IDs to Firebase Values (Direct Print - No Translation needed)
+    const mapping = {
+        'pan-tithi': data.tithi,
+        'pan-nak': data.nakshatra,
+        'pan-yoga': data.yoga,
+        'pan-karan': data.karan,
+        'pan-paksha': data.paksha,
+        'pan-muh': data.muhurat?.abhijit,
+        'pan-rahu': data.muhurat?.rahukaal
+    };
 
-    // Choghadiya Table
+    Object.entries(mapping).forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = val || "--"; // 👈 Direct Value (English folder se English aayega)
+    });
+
+    const sunEl = document.getElementById('pan-sun');
+    if (sunEl) sunEl.innerText = data.sun ? `${data.sun.rise} / ${data.sun.set}` : "--";
+
+    // Choghadiya Table Logic
     const chaugList = data.choghadiya?.[activeMode] || {};
     const tbody = document.getElementById('chaug-body');
     if (tbody) {
         tbody.innerHTML = Object.entries(chaugList).map(([timeKey, name]) => {
-            const meta = getStatusMeta(name);
             const displayTime = timeKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
             const statusLabel = lang === 'hi' ? 'स्थिति' : 'Status';
-            
             return `<tr>
                 <td class="gold-text" style="text-align: center;">${displayTime}</td>
                 <td style="text-align: center;">${name}</td>
-                <td style="color:${meta.color}; font-weight:bold; text-align: center;">● ${statusLabel}</td>
+                <td style="text-align: center;">● ${statusLabel}</td>
             </tr>`;
         }).join('');
     }
 };
 
-// Color Logic
-const getStatusMeta = (name) => {
-    const n = String(name).toLowerCase();
-    if (n.includes("bad") || n.includes("rog") || n.includes("kaal") || n.includes("udveg") || n.includes("रोग") || n.includes("काल")) {
-        return { color: "#ff4d4d" }; // Red
-    }
-    if (n.includes("char") || n.includes("neutral") || n.includes("चर")) {
-        return { color: "#ffcc00" }; // Gold
-    }
-    return { color: "#00ff88" }; // Green
-};
-
-// 🔱 4. CALENDAR RENDERER
-const renderCalendar = () => {
-    const container = document.getElementById('calendarDays');
-    if (!container) return;
-    
+// 🔱 4. Sabse Important: Initialize Logic
+document.addEventListener('DOMContentLoaded', async () => {
     const lang = localStorage.getItem('selectedLanguage') || 'hi';
-    const months = {
-        hi: ["जनवरी", "फरवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"],
-        en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    };
-    
-    document.getElementById('monthDisplay').innerText = `${months[lang][currentMonth]} ${currentYear}`;
-    
-    container.innerHTML = '';
-    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    document.documentElement.lang = lang;
 
-    for(let i=0; i<firstDay; i++) container.innerHTML += '<div class="calendar-day empty"></div>';
-    
-    for(let d=1; d<=daysInMonth; d++) {
-        const dayEl = document.createElement('div');
-        dayEl.className = `calendar-day ${selectedDay === d ? 'active' : ''}`;
-        dayEl.innerHTML = `<span>${d}</span>`;
-        dayEl.onclick = () => { selectedDay = d; fetchPanchang(); };
-        container.appendChild(dayEl);
-    }
-};
+    updateUILabels(); // Pehle Labels badlo
+    await fetchPanchang(); // Phir Firebase se data lao
+    renderCalendar(); // Calendar dikhao
+});
 
 // 🔱 5. EVENTS LIST
 const renderEvents = (mStr, lang) => {
