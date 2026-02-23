@@ -1,92 +1,103 @@
-import { rtdb } from './panchang-config.js';
-import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
-// Global Variables
+// 🔱 Global Variables
 let currentYear = 2026;
 let currentMonth = new Date().getMonth();
 let selectedDay = new Date().getDate();
 let activeMode = 'day';
 
-// 🔱 1. Labels Translator (Sirf Tithi, Nakshatra jaise words ke liye)
-const updateUILabels = () => {
+// 🔱 1. Month Loader (Yearly Folder Logic: data/2026/02.js)
+const loadMonthlyFile = (year, month) => {
+    return new Promise((resolve) => {
+        const mStr = String(month + 1).padStart(2, '0');
+        const scriptId = 'panchang-data-script';
+        
+        const oldScript = document.getElementById(scriptId);
+        if(oldScript) oldScript.remove();
+
+        const script = document.createElement('script');
+        script.id = scriptId;
+        script.src = `data/${year}/${mStr}.js`; // 👈 Naya Path Logic
+        
+        script.onload = () => resolve();
+        script.onerror = () => {
+            console.error(`Missing: data/${year}/${mStr}.js`);
+            resolve();
+        };
+        document.head.appendChild(script);
+    });
+};
+
+// 🔱 2. Main Update Function (Everything Together)
+const updateAll = async () => {
     const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    const mStr = String(currentMonth + 1).padStart(2, '0');
+    const dStr = "d" + String(selectedDay).padStart(2, '0');
+
+    // A. Pehle Data Load Karo
+    await loadMonthlyFile(currentYear, currentMonth);
+
+    // B. Static Labels (Translations)
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
-        if (window.translations?.[lang]?.[key]) {
-            el.innerText = window.translations[lang][key];
-        }
+        if (window.translations?.[lang]?.[key]) el.innerText = window.translations[lang][key];
     });
-};
 
-// 🔱 2. Fetch Data (Direct Path Logic)
-const fetchPanchang = async () => {
-    const lang = localStorage.getItem('selectedLanguage') || 'hi';
-    const mStr = String(currentMonth + 1).padStart(2, '0'); // Ye "02" banayega
-    const dStr = "d" + String(selectedDay).padStart(2, '0'); // Ye "d23" banayega
+    // C. Calendar & Events (Firebase code se uthaya logic)
+    renderCalendar(lang);
+    renderEvents(mStr, lang);
 
-    // 🚩 Path Match: panchang/2026/02/hi/d23
-    const dataPath = `panchang/${currentYear}/${mStr}/${lang}/${dStr}`;
+    // D. Data Cards & Choghadiya
+    const dayData = window.PANCHANG_DATABASE?.[currentYear]?.[mStr]?.[dStr]?.[lang];
     
-    try {
-        const snap = await get(ref(rtdb, dataPath));
-        if (snap.exists()) {
-            renderUI(snap.val(), lang);
-        } else {
-            console.error("Data Not Found at:", dataPath);
+    if (dayData) {
+        const mapping = {
+            'pan-tithi': dayData.tithi, 'pan-nak': dayData.nak, 'pan-yoga': dayData.yoga,
+            'pan-karan': dayData.karan, 'pan-paksha': dayData.paksha,
+            'pan-muh': dayData.abhijit, 'pan-rahu': dayData.rahu, 'pan-sun': dayData.sun
+        };
+        Object.entries(mapping).forEach(([id, val]) => {
+            const el = document.getElementById(id);
+            if (el) el.innerText = val || "--";
+        });
+
+        // Choghadiya Logic
+        const tbody = document.getElementById('chaug-body');
+        if (tbody && dayData.chaug) {
+            tbody.innerHTML = Object.entries(dayData.chaug).map(([timeKey, name]) => {
+                const displayTime = timeKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
+                return `<tr>
+                    <td class="gold-text" style="text-align: center;">${displayTime}</td>
+                    <td style="text-align: center;">${name}</td>
+                    <td style="text-align: center;">● ${lang === 'hi' ? 'स्थिति' : 'Status'}</td>
+                </tr>`;
+            }).join('');
         }
-    } catch (err) {
-        console.error("Firebase Error:", err);
     }
 };
 
-// 🔱 3. Render UI (No smartTranslate here!)
-const renderUI = (data, lang) => {
-    // Mapping IDs to Firebase Values (Direct Print - No Translation needed)
-    const mapping = {
-        'pan-tithi': data.tithi,
-        'pan-nak': data.nakshatra,
-        'pan-yoga': data.yoga,
-        'pan-karan': data.karan,
-        'pan-paksha': data.paksha,
-        'pan-muh': data.muhurat?.abhijit,
-        'pan-rahu': data.muhurat?.rahukaal
+// 🔱 3. Calendar & Events Rendering (From your old code)
+const renderCalendar = (lang) => {
+    const months = {
+        hi: ["जनवरी", "फरवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"],
+        en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     };
+    document.getElementById('monthDisplay').innerText = `${months[lang][currentMonth]} ${currentYear}`;
 
-    Object.entries(mapping).forEach(([id, val]) => {
-        const el = document.getElementById(id);
-        if (el) el.innerText = val || "--"; // 👈 Direct Value (English folder se English aayega)
-    });
-
-    const sunEl = document.getElementById('pan-sun');
-    if (sunEl) sunEl.innerText = data.sun ? `${data.sun.rise} / ${data.sun.set}` : "--";
-
-    // Choghadiya Table Logic
-    const chaugList = data.choghadiya?.[activeMode] || {};
-    const tbody = document.getElementById('chaug-body');
-    if (tbody) {
-        tbody.innerHTML = Object.entries(chaugList).map(([timeKey, name]) => {
-            const displayTime = timeKey.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
-            const statusLabel = lang === 'hi' ? 'स्थिति' : 'Status';
-            return `<tr>
-                <td class="gold-text" style="text-align: center;">${displayTime}</td>
-                <td style="text-align: center;">${name}</td>
-                <td style="text-align: center;">● ${statusLabel}</td>
-            </tr>`;
-        }).join('');
+    const grid = document.getElementById('calendarDays');
+    if (grid) {
+        grid.innerHTML = '';
+        const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+        const total = new Date(currentYear, currentMonth + 1, 0).getDate();
+        for(let i=0; i<firstDay; i++) grid.innerHTML += '<div class="calendar-day empty"></div>';
+        for(let d=1; d<=total; d++) {
+            const dayEl = document.createElement('div');
+            dayEl.className = `calendar-day ${selectedDay === d ? 'active' : ''}`;
+            dayEl.innerHTML = `<span>${d}</span>`;
+            dayEl.onclick = () => { selectedDay = d; updateAll(); };
+            grid.appendChild(dayEl);
+        }
     }
 };
 
-// 🔱 4. Sabse Important: Initialize Logic
-document.addEventListener('DOMContentLoaded', async () => {
-    const lang = localStorage.getItem('selectedLanguage') || 'hi';
-    document.documentElement.lang = lang;
-
-    updateUILabels(); // Pehle Labels badlo
-    await fetchPanchang(); // Phir Firebase se data lao
-    renderCalendar(); // Calendar dikhao
-});
-
-// 🔱 5. EVENTS LIST
 const renderEvents = (mStr, lang) => {
     const datePrefix = `${currentYear}-${mStr}`;
     const evList = document.getElementById('events-list');
@@ -102,20 +113,20 @@ const renderEvents = (mStr, lang) => {
     }
 };
 
-// Global Controls
+// 🔱 4. Global Controls
 window.changeMonth = (dir) => { 
     currentMonth += dir; 
     if(currentMonth < 0) { currentMonth = 11; currentYear--; } 
     if(currentMonth > 11) { currentMonth = 0; currentYear++; } 
-    fetchPanchang(); 
+    updateAll(); 
 };
 
 window.switchChaug = (mode) => { 
     activeMode = mode; 
     document.getElementById('btn-day').classList.toggle('active', mode === 'day'); 
     document.getElementById('btn-night').classList.toggle('active', mode === 'night'); 
-    fetchPanchang(); 
+    updateAll(); 
 };
 
-// Initial Load
-document.addEventListener('DOMContentLoaded', fetchPanchang);
+// 🔱 5. Initial Load
+document.addEventListener('DOMContentLoaded', updateAll);
