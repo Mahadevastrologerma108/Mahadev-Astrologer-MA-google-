@@ -25,7 +25,7 @@ const fetchPanchang = async () => {
     const dStr = "d" + String(selectedDay).padStart(2, '0');
 
     // Path: panchang/2026/hi/02/d20
-    const dataPath = `panchang/${currentYear}/${lang}/${mStr}/${dStr}`;
+const dataPath = `panchang/${currentYear}/${mStr}/${lang}/${dStr}`;
     
     try {
         const snap = await get(ref(rtdb, dataPath));
