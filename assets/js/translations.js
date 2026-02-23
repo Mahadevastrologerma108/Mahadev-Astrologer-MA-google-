@@ -116,6 +116,17 @@ mon_jul: "July", mon_aug: "August", mon_sep: "September", mon_oct: "October", mo
     "karan_08": "Shakuni", "karan_09": "Chatushpada", "karan_10": "Naga", "karan_11": "Kimstughna",
         
         back_home: "← Back to Home",
+
+        months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+tithi: "Tithi", 
+nakshatra: "Nakshatra", 
+yoga: "Yoga", 
+karan: "Karan", 
+paksha: "Paksha",
+sunrise: "Sun Rise/Set", 
+abhijit: "Abhijit Muhurat", 
+rahukaal: "Rahu Kaal",
+ins_panchang_title: "Daily Panchang 2026",
     },
 
     hi: {
@@ -226,6 +237,17 @@ mon_jul: "जुलाई", mon_aug: "अगस्त", mon_sep: "सितं�
         "karan_01": "बव", "karan_02": "बालव", "karan_03": "कौलव", "karan_04": "तैतिल", "karan_05": "गर",
         "karan_06": "वणिज", "karan_07": "विष्टि", "karan_08": "शकुनि", "karan_09": "चतुष्पाद", "karan_10": "नाग", "karan_11": "किस्तुघ्न",
        
-    back_home: "← वापस जाएं"
+    back_home: "← वापस जाएं",
+
+        months: ["जनवरी", "फरवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"],
+tithi: "तिथि", 
+nakshatra: "नक्षत्र", 
+yoga: "योग", 
+karan: "करण", 
+paksha: "पक्ष",
+sunrise: "सूर्योदय/अस्त", 
+abhijit: "अभिजीत मुहूर्त", 
+rahukaal: "राहुकाल",
+ins_panchang_title: "दैनिक पंचांग 2026",
     }
 };
