@@ -2,7 +2,7 @@
 let currentYear = 2026;
 let currentMonth = new Date().getMonth();
 let selectedDay = new Date().getDate();
-let currentChaugMode = 'day'; // 🔥 New Logic: Default mode set kiya
+let currentChaugMode = 'day';
 
 const getLang = () => localStorage.getItem('selectedLang') || 'hi';
 
@@ -17,16 +17,14 @@ const initPanchang = async () => {
     renderEvents(mStr, lang); 
 };
 
-// 🔥 New Logic: Day/Night Switcher Function (Jo gayab tha)
+// 🔱 Day/Night Switcher
 window.switchChaug = (mode) => {
     currentChaugMode = mode;
-    // UI Buttons Update
     const btnDay = document.getElementById('btn-day');
     const btnNight = document.getElementById('btn-night');
     if(btnDay) btnDay.classList.toggle('active', mode === 'day');
     if(btnNight) btnNight.classList.toggle('active', mode === 'night');
     
-    // Table refresh karo
     updatePanchangData(getLang());
 };
 
@@ -62,8 +60,6 @@ const updatePanchangData = (lang) => {
             if (el) el.innerText = val || "--";
         });
         
-        // 🔥 Logic Fix: Mode ke according data select karna (Day/Night)
-        // Agar database mein day/night alag hain toh yahan handle hoga
         renderChaugTable(data.chaug, lang);
     }
 };
@@ -95,6 +91,7 @@ const renderChaugTable = (chaugData, lang) => {
     }).join('');
 };
 
+// 🔱 EVENTS LIST - FIXED TO SCREENSHOT 3 STYLE
 const renderEvents = (mStr, lang) => {
     const list = document.getElementById('events-list');
     if (!list) return;
@@ -103,7 +100,6 @@ const renderEvents = (mStr, lang) => {
     const events = window.YEARLY_EVENTS_2026 || {};
     const trans = window.translations[lang];
 
-    // 🔥 Logic Fix: Match strictly for the year and month
     const monthlyEvents = Object.entries(events).filter(([date]) => {
         return date.startsWith(`2026-${mStr}`);
     });
@@ -113,14 +109,21 @@ const renderEvents = (mStr, lang) => {
         return;
     }
 
+    // Screenshot 3 Grid Layout
+    list.style.display = "grid";
+    list.style.gridTemplateColumns = "repeat(auto-fill, minmax(130px, 1fr))";
+    list.style.gap = "15px";
+
     monthlyEvents.sort().forEach(([date, names]) => {
         const d = date.split('-')[2]; 
         const div = document.createElement('div');
-        div.className = 'event-item';
-        div.style = "display: flex; justify-content: space-between; padding: 12px; border-bottom: 1px solid rgba(245, 197, 66, 0.2);";
+        div.className = 'service-card';
+        div.style = "text-align: center; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(245, 197, 66, 0.2);";
+        
         div.innerHTML = `
-            <span class="gold-text" style="font-weight: bold;">${d} ${trans.months[currentMonth]}</span>
-            <span style="color: white;">${names[lang]}</span>
+            <div class="gold-text cinzel" style="font-size: 1.4rem; font-weight: bold;">${d}</div>
+            <div style="font-size: 0.7rem; color: #aaa; margin-bottom: 5px;">${trans.months[currentMonth]}</div>
+            <div style="font-size: 0.85rem; color: white; font-weight: 600;">${names[lang]}</div>
         `;
         list.appendChild(div);
     });
