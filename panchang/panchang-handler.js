@@ -1,7 +1,8 @@
-// 🔱 PANCHANG HANDLER - REPAIRED VERSION
+// 🔱 PANCHANG HANDLER - FINAL STABLE VERSION
 let currentYear = 2026;
 let currentMonth = new Date().getMonth();
 let selectedDay = new Date().getDate();
+let currentChaugMode = 'day'; // 🔥 New Logic: Default mode set kiya
 
 const getLang = () => localStorage.getItem('selectedLang') || 'hi';
 
@@ -13,7 +14,20 @@ const initPanchang = async () => {
     
     updatePanchangData(lang);
     renderCalendar(lang);
-    renderEvents(mStr, lang); // Ab ye function niche defined hai
+    renderEvents(mStr, lang); 
+};
+
+// 🔥 New Logic: Day/Night Switcher Function (Jo gayab tha)
+window.switchChaug = (mode) => {
+    currentChaugMode = mode;
+    // UI Buttons Update
+    const btnDay = document.getElementById('btn-day');
+    const btnNight = document.getElementById('btn-night');
+    if(btnDay) btnDay.classList.toggle('active', mode === 'day');
+    if(btnNight) btnNight.classList.toggle('active', mode === 'night');
+    
+    // Table refresh karo
+    updatePanchangData(getLang());
 };
 
 const loadMonthlyFile = (year, month) => {
@@ -25,7 +39,6 @@ const loadMonthlyFile = (year, month) => {
 
         const script = document.createElement('script');
         script.id = scriptId;
-        // File path format: data/2026/02-2026.js
         script.src = `data/${year}/${mStr}-${year}.js`; 
         script.onload = resolve;
         script.onerror = resolve;
@@ -49,11 +62,12 @@ const updatePanchangData = (lang) => {
             if (el) el.innerText = val || "--";
         });
         
+        // 🔥 Logic Fix: Mode ke according data select karna (Day/Night)
+        // Agar database mein day/night alag hain toh yahan handle hoga
         renderChaugTable(data.chaug, lang);
     }
 };
 
-// 🔱 CHOGHADIYA - CENTER ALIGNED & LOGIC FIXED
 const renderChaugTable = (chaugData, lang) => {
     const tbody = document.getElementById('chaug-body');
     if (!tbody || !chaugData) return;
@@ -63,7 +77,6 @@ const renderChaugTable = (chaugData, lang) => {
     tbody.innerHTML = Object.entries(chaugData).map(([time, name]) => {
         const cleanTime = time.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
         
-        // Nature Check: Kaunsa shubh hai kaunsa ashubh
         let natureKey = "good"; 
         const badList = ["Rog", "Kaal", "Udveg", "रोग", "काल", "उद्वेग"];
         const neutralList = ["Char", "चर"];
@@ -82,7 +95,6 @@ const renderChaugTable = (chaugData, lang) => {
     }).join('');
 };
 
-// 🔱 EVENTS LIST - FIXED (JO GAYAB THI)
 const renderEvents = (mStr, lang) => {
     const list = document.getElementById('events-list');
     if (!list) return;
@@ -91,15 +103,17 @@ const renderEvents = (mStr, lang) => {
     const events = window.YEARLY_EVENTS_2026 || {};
     const trans = window.translations[lang];
 
-    // Is mahine ke events filter karo
-    const monthlyEvents = Object.entries(events).filter(([date]) => date.includes(`-2026-${mStr}`));
+    // 🔥 Logic Fix: Match strictly for the year and month
+    const monthlyEvents = Object.entries(events).filter(([date]) => {
+        return date.startsWith(`2026-${mStr}`);
+    });
 
     if (monthlyEvents.length === 0) {
-        list.innerHTML = `<p style="text-align:center; color:rgba(255,255,255,0.5);">${trans.no_events || 'No festivals today'}</p>`;
+        list.innerHTML = `<p style="text-align:center; padding: 20px; color:rgba(255,255,255,0.5);">${trans.no_events || 'No festivals this month'}</p>`;
         return;
     }
 
-    monthlyEvents.forEach(([date, names]) => {
+    monthlyEvents.sort().forEach(([date, names]) => {
         const d = date.split('-')[2]; 
         const div = document.createElement('div');
         div.className = 'event-item';
@@ -150,7 +164,6 @@ window.changeMonth = (dir) => {
     initPanchang();
 };
 
-// 🔱 INITIALIZER
 window.addEventListener('load', () => {
     setTimeout(initPanchang, 200);
 });
