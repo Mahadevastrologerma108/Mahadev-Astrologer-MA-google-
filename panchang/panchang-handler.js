@@ -1,11 +1,12 @@
-// 🔱 PANCHANG HANDLER - FINAL STABLE VERSION
+// 🔱 PANCHANG HANDLER - LIFETIME MASTER VERSION (NO TOUCH REQUIRED)
 let currentYear = 2026;
 let currentMonth = new Date().getMonth();
 let selectedDay = new Date().getDate();
-let currentChaugMode = 'day';
+let currentChaugMode = 'day'; 
 
 const getLang = () => localStorage.getItem('selectedLang') || 'hi';
 
+// 1. Initialize Panchang
 const initPanchang = async () => {
     const lang = getLang();
     const mStr = String(currentMonth + 1).padStart(2, '0');
@@ -17,7 +18,7 @@ const initPanchang = async () => {
     renderEvents(mStr, lang); 
 };
 
-// 🔱 Day/Night Switcher
+// 2. Day/Night Switcher (Logic Fix)
 window.switchChaug = (mode) => {
     currentChaugMode = mode;
     const btnDay = document.getElementById('btn-day');
@@ -28,6 +29,7 @@ window.switchChaug = (mode) => {
     updatePanchangData(getLang());
 };
 
+// 3. Load Monthly Data JS
 const loadMonthlyFile = (year, month) => {
     return new Promise((resolve) => {
         const mStr = String(month + 1).padStart(2, '0');
@@ -44,12 +46,14 @@ const loadMonthlyFile = (year, month) => {
     });
 };
 
+// 4. Update UI with Data
 const updatePanchangData = (lang) => {
     const mStr = String(currentMonth + 1).padStart(2, '0');
     const dStr = "d" + String(selectedDay).padStart(2, '0');
     const data = window.PANCHANG_DATABASE?.[currentYear]?.[mStr]?.[dStr]?.[lang];
 
     if (data) {
+        // Tithi, Nakshatra, etc.
         const fields = {
             'pan-tithi': data.tithi, 'pan-nak': data.nak, 'pan-yoga': data.yoga,
             'pan-karan': data.karan, 'pan-paksha': data.paksha,
@@ -60,10 +64,20 @@ const updatePanchangData = (lang) => {
             if (el) el.innerText = val || "--";
         });
         
-        renderChaugTable(data.chaug, lang);
+        // 🔱 SMART CHAUGHADIA SELECTOR
+        // Pehle chaug_day/night check karega, agar nahi mila toh 'chaug' use karega
+        let selectedChaug;
+        if (currentChaugMode === 'day') {
+            selectedChaug = data.chaug_day || data.chaug;
+        } else {
+            selectedChaug = data.chaug_night || data.chaug;
+        }
+        
+        renderChaugTable(selectedChaug, lang);
     }
 };
 
+// 5. Choghadiya Table Rendering
 const renderChaugTable = (chaugData, lang) => {
     const tbody = document.getElementById('chaug-body');
     if (!tbody || !chaugData) return;
@@ -71,7 +85,11 @@ const renderChaugTable = (chaugData, lang) => {
     const trans = window.translations[lang];
 
     tbody.innerHTML = Object.entries(chaugData).map(([time, name]) => {
-        const cleanTime = time.replace('t', '').replace(/^(\d{2})(\d{2})$/, '$1:$2');
+        // Time format check (t0652 -> 06:52)
+        let cleanTime = time.replace('t', '');
+        if (cleanTime.length === 4 && !cleanTime.includes(':')) {
+            cleanTime = cleanTime.replace(/^(\d{2})(\d{2})$/, '$1:$2');
+        }
         
         let natureKey = "good"; 
         const badList = ["Rog", "Kaal", "Udveg", "रोग", "काल", "उद्वेग"];
@@ -84,14 +102,14 @@ const renderChaugTable = (chaugData, lang) => {
         const colorClass = natureKey === 'bad' ? 'text-danger' : (natureKey === 'good' ? 'gold-text' : '');
 
         return `<tr>
-            <td class="gold-text" style="text-align: center;">${cleanTime}</td>
+            <td class="gold-text" style="text-align: center; font-weight: 500;">${cleanTime}</td>
             <td style="text-align: center;">${name}</td>
             <td class="${colorClass}" style="font-size: 0.8rem; text-align: center;">● ${natureText}</td>
         </tr>`;
     }).join('');
 };
 
-// 🔱 EVENTS LIST - FIXED TO SCREENSHOT 3 STYLE
+// 6. Events List (Screenshot 3 - Card Style)
 const renderEvents = (mStr, lang) => {
     const list = document.getElementById('events-list');
     if (!list) return;
@@ -101,7 +119,7 @@ const renderEvents = (mStr, lang) => {
     const trans = window.translations[lang];
 
     const monthlyEvents = Object.entries(events).filter(([date]) => {
-        return date.startsWith(`2026-${mStr}`);
+        return date.startsWith(`${currentYear}-${mStr}`);
     });
 
     if (monthlyEvents.length === 0) {
@@ -109,7 +127,7 @@ const renderEvents = (mStr, lang) => {
         return;
     }
 
-    // Screenshot 3 Grid Layout
+    // Grid Layout for Cards
     list.style.display = "grid";
     list.style.gridTemplateColumns = "repeat(auto-fill, minmax(130px, 1fr))";
     list.style.gap = "15px";
@@ -129,6 +147,7 @@ const renderEvents = (mStr, lang) => {
     });
 };
 
+// 7. Calendar Rendering
 const renderCalendar = (lang) => {
     const grid = document.getElementById('calendarDays');
     if (!grid) return;
@@ -156,8 +175,10 @@ const renderCalendar = (lang) => {
         grid.appendChild(dayEl);
     }
     
-    const mNames = window.translations?.[lang]?.months || [];
-    if(mNames[currentMonth]) document.getElementById('monthDisplay').innerText = `${mNames[currentMonth]} ${currentYear}`;
+    const trans = window.translations[lang];
+    if(trans?.months[currentMonth]) {
+        document.getElementById('monthDisplay').innerText = `${trans.months[currentMonth]} ${currentYear}`;
+    }
 };
 
 window.changeMonth = (dir) => {
