@@ -15,11 +15,16 @@ const loadMonthlyFile = (year, month) => {
 
         const script = document.createElement('script');
         script.id = scriptId;
-        script.src = `data/${year}/${mStr}.js`; // 👈 Naya Path Logic
         
-        script.onload = () => resolve();
+        // 🔱 FIXED PATH: Ab ye data/2026/02-2026.js ko dhundega
+        script.src = `data/${year}/${mStr}-${year}.js`; 
+        
+        script.onload = () => {
+            console.log("Success! File Loaded:", script.src);
+            resolve();
+        };
         script.onerror = () => {
-            console.error(`Missing: data/${year}/${mStr}.js`);
+            console.error("Path Error! File not found at:", script.src);
             resolve();
         };
         document.head.appendChild(script);
