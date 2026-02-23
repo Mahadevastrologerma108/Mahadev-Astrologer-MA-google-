@@ -87,11 +87,12 @@ const dailyHoroscope = {
 
 // 2. Integrated Load Function
 function loadHoroscope(rashiKey) {
-    const lang = localStorage.getItem('lang') || 'hi'; 
+    // 1. Language aur Data fetch karna
+    const lang = localStorage.getItem('selectedLang') || 'hi'; 
     const data = dailyHoroscope[rashiKey];
 
     if (data) {
-        // --- Translations Engine ---
+        // --- A. Static Labels Translation (Heading labels) ---
         if (window.translations && window.translations[lang]) {
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
@@ -99,22 +100,32 @@ function loadHoroscope(rashiKey) {
             });
         }
 
-        // --- Date setup ---
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        // --- B. Date setup (Bilingual Date) ---
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const todayStr = new Date().toLocaleDateString(lang === 'hi' ? 'hi-IN' : 'en-US', options);
-        document.getElementById('todayDate').innerText = (lang === 'hi' ? "आज का राशिफल: " : "Daily Horoscope: ") + todayStr;
+        const dateEl = document.getElementById('todayDate');
+        if(dateEl) {
+            dateEl.innerText = (lang === 'hi' ? "आज का परामर्श: " : "Today's Guidance: ") + todayStr;
+        }
 
-        // --- Content Update ---
-        document.getElementById('h-career').innerText = data.career[lang];
-        document.getElementById('h-love').innerText = data.love[lang];
-        document.getElementById('h-health').innerText = data.health[lang];
+        // --- C. Content Update (Dynamic Data from Objects) ---
+        // Hum check kar rahe hain ki agar value ek object hai toh lang ke hisaab se uthaye
+        const fields = {
+            'h-career': data.career[lang],
+            'h-love': data.love[lang],
+            'h-health': data.health[lang],
+            'h-tip': data.tip[lang], // Tip object handle
+            'h-color': data.luckyColor[lang], // Color object handle
+            'h-number': data.luckyNumber,
+            'h-time': data.luckyTime
+        };
 
-        // Lucky Bar
-        document.getElementById('h-color').innerText = data.luckyColor;
-        document.getElementById('h-number').innerText = data.luckyNumber;
-        document.getElementById('h-time').innerText = data.luckyTime;
+        Object.entries(fields).forEach(([id, val]) => {
+            const el = document.getElementById(id);
+            if(el) el.innerText = val || "--";
+        });
 
-        // --- Titles ---
+        // --- D. Rashi Title & Tab Title ---
         const rashiNames = {
             aries: { hi: "मेष", en: "Aries" }, taurus: { hi: "वृषभ", en: "Taurus" },
             gemini: { hi: "मिथुन", en: "Gemini" }, cancer: { hi: "कर्क", en: "Cancer" },
@@ -125,7 +136,16 @@ function loadHoroscope(rashiKey) {
         };
 
         const name = rashiNames[rashiKey];
-        document.getElementById('rashi-title').innerText = `${name[lang]} - ${lang === 'hi' ? 'राशिफल' : 'Horoscope'}`;
-        document.title = `${name[lang]} Daily Horoscope 2026 | Mahadev Astrologer`;
+        const titleEl = document.getElementById('rashi-title');
+        if(titleEl) {
+            titleEl.innerText = `${name[lang]} - ${lang === 'hi' ? 'दैनिक राशिफल' : 'Daily Horoscope'}`;
+        }
+        document.title = `${name[lang]} | ${lang === 'hi' ? 'आज का राशिफल' : 'Daily Horoscope'} 2026`;
     }
 }
+
+// 🔱 Auto-Refresh on Storage Change (Bhasha badalte hi data badle)
+window.addEventListener('storage', () => {
+    const rashiFromURL = window.location.pathname.split('/').pop().replace('.html', '');
+    if(rashiFromURL) loadHoroscope(rashiFromURL);
+});
