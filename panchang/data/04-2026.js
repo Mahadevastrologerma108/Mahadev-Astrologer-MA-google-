@@ -1,3 +1,0 @@
-window.PANCHANG_DATABASE = window.PANCHANG_DATABASE || {}; 
-window.PANCHANG_DATABASE["2026"] = window.PANCHANG_DATABASE["2026"] || {}; 
-window.PANCHANG_DATABASE["2026"]["04"] = {}; 
