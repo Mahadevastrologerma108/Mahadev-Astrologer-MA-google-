@@ -76,7 +76,8 @@ window.PANCHANG_DATABASE["2026"]["02"] = {
     }
 };
 
-// 🔱 Events Data for Feb
+// 🔱 February Events Correction
 window.YEARLY_EVENTS_2026 = window.YEARLY_EVENTS_2026 || {};
-window.YEARLY_EVENTS_2026["2026-02-23"] = { "hi": "विजया एकादशी व्रत", "en": "Vijaya Ekadashi Vrat" };
-window.YEARLY_EVENTS_2026["2026-02-26"] = { "hi": "पुष्य नक्षत्र", "en": "Pushya Nakshatra" };
+window.YEARLY_EVENTS_2026["2026-02-23"] = { "hi": "भानु सप्तमी / सूर्य सप्तमी", "en": "Bhanu Saptami" };
+window.YEARLY_EVENTS_2026["2026-02-24"] = { "hi": "होलाष्टक प्रारंभ", "en": "Holashtak Begins" };
+
