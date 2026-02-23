@@ -1,30 +1,82 @@
-// panchang/data/02-2026.js
 window.PANCHANG_DATABASE = window.PANCHANG_DATABASE || {};
 window.PANCHANG_DATABASE["2026"] = window.PANCHANG_DATABASE["2026"] || {};
 
 window.PANCHANG_DATABASE["2026"]["02"] = {
     "d23": {
-        "hi": { "tithi": "सप्तमी (शुक्ल पक्ष)", "nak": "भरणी", "yoga": "इंद्र", "karan": "भद्रा", "paksha": "शुक्ल", "sun": "06:52 / 18:15", "abhijit": "12:12 - 12:58", "rahu": "08:18 - 09:44", "chaug": { "t0652": "अमृत", "t0818": "काल", "t0944": "शुभ", "t1111": "रोग", "t1237": "उद्वेग", "t1403": "चर", "t1530": "लाभ", "t1656": "अमृत" } },
-        "en": { "tithi": "Saptami (Shukla)", "nak": "Bharani", "yoga": "Indra", "karan": "Bhadra", "paksha": "Shukla", "sun": "06:52 AM / 06:15 PM", "abhijit": "12:12 - 12:58", "rahu": "08:18 - 09:44", "chaug": { "t0652": "Amrit", "t0818": "Kaal", "t0944": "Shubh", "t1111": "Rog", "t1237": "Udveg", "t1403": "Char", "t1530": "Labh", "t1656": "Amrit" } }
+        "hi": { 
+            "tithi": "सप्तमी (शुक्ल पक्ष)", "nak": "भरणी", "yoga": "इंद्र", "karan": "भद्रा", "paksha": "शुक्ल", "sun": "06:52 / 18:15", "abhijit": "12:12 - 12:58", "rahu": "08:18 - 09:44", 
+            "chaug_day": { "t06:52": "अमृत", "t08:18": "काल", "t09:44": "शुभ", "t11:11": "रोग", "t12:37": "उद्वेग", "t14:03": "चर", "t15:30": "लाभ", "t16:56": "अमृत" },
+            "chaug_night": { "t18:15": "चर", "t19:49": "रोग", "t21:23": "काल", "t22:56": "लाभ", "t00:30": "उद्वेग", "t02:04": "शुभ", "t03:37": "अमृत", "t05:11": "चर" }
+        },
+        "en": { 
+            "tithi": "Saptami (Shukla)", "nak": "Bharani", "yoga": "Indra", "karan": "Bhadra", "paksha": "Shukla", "sun": "06:52 AM / 06:15 PM", "abhijit": "12:12 - 12:58", "rahu": "08:18 - 09:44", 
+            "chaug_day": { "t06:52": "Amrit", "t08:18": "Kaal", "t09:44": "Shubh", "t11:11": "Rog", "t12:37": "Udveg", "t14:03": "Char", "t15:30": "Labh", "t16:56": "Amrit" },
+            "chaug_night": { "t18:15": "Char", "t19:49": "Rog", "t21:23": "Kaal", "t22:56": "Labh", "t00:30": "Udveg", "t02:04": "Shubh", "t03:37": "Amrit", "t05:11": "Char" }
+        }
     },
     "d24": {
-        "hi": { "tithi": "अष्टमी (शुक्ल पक्ष)", "nak": "कृतिका", "yoga": "वैधृति", "karan": "बव", "paksha": "शुक्ल", "sun": "06:51 / 18:16", "abhijit": "12:12 - 12:58", "rahu": "15:23 - 16:49", "chaug": { "t0651": "रोग", "t0817": "उद्वेग", "t0943": "चर", "t1110": "लाभ", "t1237": "अमृत", "t1403": "काल", "t1530": "शुभ", "t1656": "रोग" } },
-        "en": { "tithi": "Ashtami (Shukla)", "nak": "Krittika", "yoga": "Vaidhriti", "karan": "Bava", "paksha": "Shukla", "sun": "06:51 AM / 06:16 PM", "abhijit": "12:12 - 12:58", "rahu": "03:23 PM - 04:49 PM", "chaug": { "t0651": "Rog", "t0817": "Udveg", "t0943": "Char", "t1110": "Labh", "t1237": "Amrit", "t1403": "Kaal", "t1530": "Shubh", "t1656": "Rog" } }
+        "hi": { 
+            "tithi": "अष्टमी (शुक्ल पक्ष)", "nak": "कृतिका", "yoga": "वैधृति", "karan": "बव", "paksha": "शुक्ल", "sun": "06:51 / 18:16", "abhijit": "12:12 - 12:58", "rahu": "15:23 - 16:49", 
+            "chaug_day": { "t06:51": "रोग", "t08:17": "उद्वेग", "t09:43": "चर", "t11:10": "लाभ", "t12:37": "अमृत", "t14:03": "काल", "t15:30": "शुभ", "t16:56": "रोग" },
+            "chaug_night": { "t18:16": "काल", "t19:49": "लाभ", "t21:23": "उद्वेग", "t22:56": "शुभ", "t00:30": "अमृत", "t02:03": "चर", "t03:37": "रोग", "t05:11": "काल" }
+        },
+        "en": { 
+            "tithi": "Ashtami (Shukla)", "nak": "Krittika", "yoga": "Vaidhriti", "karan": "Bava", "paksha": "Shukla", "sun": "06:51 AM / 06:16 PM", "abhijit": "12:12 - 12:58", "rahu": "03:23 PM - 04:49 PM", 
+            "chaug_day": { "t06:51": "Rog", "t08:17": "Udveg", "t09:43": "Char", "t11:10": "Labh", "t12:37": "Amrit", "t14:03": "Kaal", "t15:30": "Shubh", "t16:56": "Rog" },
+            "chaug_night": { "t18:16": "Kaal", "t19:49": "Labh", "t21:23": "Udveg", "t22:56": "Shubh", "t00:30": "Amrit", "t02:03": "Char", "t03:37": "Rog", "t05:11": "Kaal" }
+        }
     },
     "d25": {
-        "hi": { "tithi": "नवमी (शुक्ल पक्ष)", "nak": "रोहिणी", "yoga": "विष्कुम्भ", "karan": "कौलव", "paksha": "शुक्ल", "sun": "06:50 / 18:17", "abhijit": "12:12 - 12:58", "rahu": "12:34 - 13:59", "chaug": { "t0650": "चर", "t0816": "लाभ", "t0942": "अमृत", "t1108": "काल", "t1234": "शुभ", "t1400": "रोग", "t1526": "उद्वेग", "t1652": "चर" } },
-        "en": { "tithi": "Navami (Shukla)", "nak": "Rohini", "yoga": "Vishkumbha", "karan": "Kaulava", "paksha": "Shukla", "sun": "06:50 AM / 06:17 PM", "abhijit": "12:12 - 12:58", "rahu": "12:34 PM - 01:59 PM", "chaug": { "t0650": "Char", "t0816": "Labh", "t0942": "Amrit", "t1108": "Kaal", "t1234": "Shubh", "t1400": "Rog", "t1526": "Udveg", "t1652": "Char" } }
+        "hi": { 
+            "tithi": "नवमी (शुक्ल पक्ष)", "nak": "रोहिणी", "yoga": "विष्कुम्भ", "karan": "कौलव", "paksha": "शुक्ल", "sun": "06:50 / 18:17", "abhijit": "12:12 - 12:58", "rahu": "12:34 - 13:59", 
+            "chaug_day": { "t06:50": "चर", "t08:16": "लाभ", "t09:42": "अमृत", "t11:08": "काल", "t12:34": "शुभ", "t14:00": "रोग", "t15:26": "उद्वेग", "t16:52": "चर" },
+            "chaug_night": { "t18:17": "शुभ", "t19:49": "अमृत", "t21:23": "चर", "t22:56": "रोग", "t00:30": "काल", "t02:03": "लाभ", "t03:36": "उद्वेग", "t05:10": "शुभ" }
+        },
+        "en": { 
+            "tithi": "Navami (Shukla)", "nak": "Rohini", "yoga": "Vishkumbha", "karan": "Kaulava", "paksha": "Shukla", "sun": "06:50 AM / 06:17 PM", "abhijit": "12:12 - 12:58", "rahu": "12:34 PM - 01:59 PM", 
+            "chaug_day": { "t06:50": "Char", "t08:16": "Labh", "t09:42": "Amrit", "t11:08": "Kaal", "t12:34": "Shubh", "t14:00": "Rog", "t15:26": "Udveg", "t16:52": "Char" },
+            "chaug_night": { "t18:17": "Shubh", "t19:49": "Amrit", "t21:23": "Char", "t22:56": "Rog", "t00:30": "Kaal", "t02:03": "Labh", "t03:36": "Udveg", "t05:10": "Shubh" }
+        }
     },
     "d26": {
-        "hi": { "tithi": "दशमी (शुक्ल पक्ष)", "nak": "मृगशिरा", "yoga": "प्रीति", "karan": "गर", "paksha": "शुक्ल", "sun": "06:49 / 18:18", "abhijit": "12:11 - 12:57", "rahu": "13:59 - 15:26", "chaug": { "t0649": "शुभ", "t0815": "रोग", "t0941": "उद्वेग", "t1107": "चर", "t1233": "लाभ", "t1359": "अमृत", "t1526": "काल", "t1652": "शुभ" } },
-        "en": { "tithi": "Dashami (Shukla)", "nak": "Mrigashira", "yoga": "Priti", "karan": "Gara", "paksha": "Shukla", "sun": "06:49 AM / 06:18 PM", "abhijit": "12:11 - 12:57", "rahu": "01:59 PM - 03:26 PM", "chaug": { "t0649": "Shubh", "t0815": "Rog", "t0941": "Udveg", "t1107": "Char", "t1233": "Labh", "t1359": "Amrit", "t1526": "Kaal", "t1652": "Shubh" } }
+        "hi": { 
+            "tithi": "दशमी (शुक्ल पक्ष)", "nak": "मृगशिरा", "yoga": "प्रीति", "karan": "गर", "paksha": "शुक्ल", "sun": "06:49 / 18:18", "abhijit": "12:11 - 12:57", "rahu": "13:59 - 15:26", 
+            "chaug_day": { "t06:49": "शुभ", "t08:15": "रोग", "t09:41": "उद्वेग", "t11:07": "चर", "t12:33": "लाभ", "t13:59": "अमृत", "t15:26": "काल", "t16:52": "शुभ" },
+            "chaug_night": { "t18:18": "अमृत", "t19:49": "चर", "t21:22": "रोग", "t22:56": "काल", "t00:29": "लाभ", "t02:03": "उद्वेग", "t03:36": "शुभ", "t05:09": "अमृत" }
+        },
+        "en": { 
+            "tithi": "Dashami (Shukla)", "nak": "Mrigashira", "yoga": "Priti", "karan": "Gara", "paksha": "Shukla", "sun": "06:49 AM / 06:18 PM", "abhijit": "12:11 - 12:57", "rahu": "01:59 PM - 03:26 PM", 
+            "chaug_day": { "t06:49": "Shubh", "t08:15": "Rog", "t09:41": "Udveg", "t11:07": "Char", "t12:33": "Labh", "t13:59": "Amrit", "t15:26": "Kaal", "t16:52": "Shubh" },
+            "chaug_night": { "t18:18": "Amrit", "t19:49": "Char", "t21:22": "Rog", "t22:56": "Kaal", "t00:29": "Labh", "t02:03": "Udveg", "t03:36": "Shubh", "t05:09": "Amrit" }
+        }
     },
     "d27": {
-        "hi": { "tithi": "एकादशी (शुक्ल पक्ष)", "nak": "आर्द्रा", "yoga": "आयुष्मान", "karan": "वणिज", "paksha": "शुक्ल", "sun": "06:48 / 18:19", "abhijit": "12:11 - 12:57", "rahu": "11:06 - 12:33", "chaug": { "t0648": "अमृत", "t0814": "काल", "t0940": "शुभ", "t1106": "रोग", "t1232": "उद्वेग", "t1358": "चर", "t1524": "लाभ", "t1650": "अमृत" } },
-        "en": { "tithi": "Ekadashi (Shukla)", "nak": "Ardra", "yoga": "Ayushman", "karan": "Vanija", "paksha": "Shukla", "sun": "06:48 AM / 06:19 PM", "abhijit": "12:11 - 12:57", "rahu": "11:06 AM - 12:33 PM", "chaug": { "t0648": "Amrit", "t0814": "Kaal", "t0940": "Shubh", "t1106": "Rog", "t1232": "Udveg", "t1358": "Char", "t1524": "Labh", "t1650": "Amrit" } }
+        "hi": { 
+            "tithi": "एकादशी (शुक्ल पक्ष)", "nak": "आर्द्रा", "yoga": "आयुष्मान", "karan": "वणिज", "paksha": "शुक्ल", "sun": "06:48 / 18:19", "abhijit": "12:11 - 12:57", "rahu": "11:06 - 12:33", 
+            "chaug_day": { "t06:48": "अमृत", "t08:14": "काल", "t09:40": "शुभ", "t11:06": "रोग", "t12:32": "उद्वेग", "t13:58": "चर", "t15:24": "लाभ", "t16:50": "अमृत" },
+            "chaug_night": { "t18:19": "चर", "t19:49": "रोग", "t21:22": "काल", "t22:55": "लाभ", "t00:29": "उद्वेग", "t02:02": "शुभ", "t03:35": "अमृत", "t05:08": "चर" }
+        },
+        "en": { 
+            "tithi": "Ekadashi (Shukla)", "nak": "Ardra", "yoga": "Ayushman", "karan": "Vanija", "paksha": "Shukla", "sun": "06:48 AM / 06:19 PM", "abhijit": "12:11 - 12:57", "rahu": "11:06 AM - 12:33 PM", 
+            "chaug_day": { "t06:48": "Amrit", "t08:14": "Kaal", "t09:40": "Shubh", "t11:06": "Rog", "t12:32": "Udveg", "t13:58": "Char", "t15:24": "Labh", "t16:50": "Amrit" },
+            "chaug_night": { "t18:19": "Char", "t19:49": "Rog", "t21:22": "Kaal", "t22:55": "Labh", "t00:29": "Udveg", "t02:02": "Shubh", "t03:35": "Amrit", "t05:08": "Char" }
+        }
     },
     "d28": {
-        "hi": { "tithi": "द्वादशी (शुक्ल पक्ष)", "nak": "पुनर्वसु", "yoga": "सौभाग्य", "karan": "बव", "paksha": "शुक्ल", "sun": "06:47 / 18:20", "abhijit": "12:11 - 12:57", "rahu": "09:39 - 11:05", "chaug": { "t0647": "चर", "t0813": "लाभ", "t0939": "अमृत", "t1105": "काल", "t1231": "शुभ", "t1357": "रोग", "t1523": "उद्वेग", "t1649": "चर" } },
-        "en": { "tithi": "Dwadashi (Shukla)", "nak": "Punarvasu", "yoga": "Saubhagya", "karan": "Bava", "paksha": "Shukla", "sun": "06:47 AM / 06:20 PM", "abhijit": "12:11 - 12:57", "rahu": "09:39 AM - 11:05 AM", "chaug": { "t0647": "Char", "t0813": "Labh", "t0939": "Amrit", "t1105": "Kaal", "t1231": "Shubh", "t1357": "Rog", "t1523": "Udveg", "t1649": "Char" } }
+        "hi": { 
+            "tithi": "द्वादशी (शुक्ल पक्ष)", "nak": "पुनर्वसु", "yoga": "सौभाग्य", "karan": "बव", "paksha": "शुक्ल", "sun": "06:47 / 18:20", "abhijit": "12:11 - 12:57", "rahu": "09:39 - 11:05", 
+            "chaug_day": { "t06:47": "चर", "t08:13": "लाभ", "t09:39": "अमृत", "t11:05": "काल", "t12:31": "शुभ", "t13:57": "रोग", "t15:23": "उद्वेग", "t16:49": "चर" },
+            "chaug_night": { "t18:20": "रोग", "t19:49": "काल", "t21:22": "लाभ", "t22:55": "उद्वेग", "t00:28": "शुभ", "t02:01": "अमृत", "t03:35": "चर", "t05:08": "रोग" }
+        },
+        "en": { 
+            "tithi": "Dwadashi (Shukla)", "nak": "Punarvasu", "yoga": "Saubhagya", "karan": "Bava", "paksha": "Shukla", "sun": "06:47 AM / 06:20 PM", "abhijit": "12:11 - 12:57", "rahu": "09:39 AM - 11:05 AM", 
+            "chaug_day": { "t06:47": "Char", "t08:13": "Labh", "t09:39": "Amrit", "t11:05": "Kaal", "t12:31": "Shubh", "t13:57": "Rog", "t15:23": "Udveg", "t16:49": "Char" },
+            "chaug_night": { "t18:20": "Rog", "t19:49": "Kaal", "t21:22": "Labh", "t22:55": "Udveg", "t00:28": "Shubh", "t02:01": "Amrit", "t03:35": "Char", "t05:08": "Rog" }
+        }
     }
 };
+
+// 🔱 Events Data for Feb
+window.YEARLY_EVENTS_2026 = window.YEARLY_EVENTS_2026 || {};
+window.YEARLY_EVENTS_2026["2026-02-23"] = { "hi": "विजया एकादशी व्रत", "en": "Vijaya Ekadashi Vrat" };
+window.YEARLY_EVENTS_2026["2026-02-26"] = { "hi": "पुष्य नक्षत्र", "en": "Pushya Nakshatra" };
