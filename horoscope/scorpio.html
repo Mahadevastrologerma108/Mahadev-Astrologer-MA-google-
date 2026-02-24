@@ -7,22 +7,59 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <style>
         .horo-card { max-width: 800px; margin: 120px auto 50px; padding: 30px; background: rgba(245,197,66,0.05); border: 1px solid #f5c542; border-radius: 20px; text-align: center; }
-        .rashi-title { font-family: 'Cinzel'; color: #f5c542; font-size: 2.5rem; }
+        .rashi-title { font-family: 'Cinzel'; color: #f5c542; font-size: 2.5rem; margin-bottom: 5px; }
+        .date-line { color: #888; margin-bottom: 30px; font-size: 0.9rem; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left; margin-top: 20px; }
+        .info-box { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border-left: 3px solid #f5c542; }
+        .info-box h3 { color: #f5c542; font-size: 1.1rem; margin-bottom: 8px; font-family: 'Cinzel'; }
+        .info-box p { font-size: 0.95rem; line-height: 1.6; color: #ddd; margin: 0; }
+        .lucky-strip { margin-top: 30px; display: flex; justify-content: space-around; background: rgba(245,197,66,0.1); padding: 15px; border-radius: 10px; color: #f5c542; font-weight: 600; border: 1px dashed rgba(245,197,66,0.3); }
+        @media (max-width: 600px) { .grid-container { grid-template-columns: 1fr; } .lucky-strip { flex-direction: column; gap: 10px; } }
     </style>
 </head>
 <body class="panchang-body">
     <div id="header-placeholder"></div>
+    
     <div class="horo-card">
-        <h1 id="rashi-title">Loading...</h1>
-        <div id="h-career"></div><div id="h-love"></div>
+        <h1 id="rashi-title" class="rashi-title">Loading...</h1>
+        <p id="todayDate" class="date-line"></p>
+        
+        <div class="grid-container">
+            <div class="info-box">
+                <h3 data-key="horo_career">Career</h3>
+                <p id="h-career">Fetching data...</p>
+            </div>
+            <div class="info-box">
+                <h3 data-key="horo_love">Love</h3>
+                <p id="h-love">Fetching data...</p>
+            </div>
+            <div class="info-box">
+                <h3 data-key="horo_health">Health</h3>
+                <p id="h-health">Fetching data...</p>
+            </div>
+            <div class="info-box">
+                <h3 data-key="tip_title">Divine Tip</h3>
+                <p id="h-tip">Fetching data...</p>
+            </div>
+        </div>
+
+        <div class="lucky-strip">
+            <span>Color: <b id="h-color">-</b></span>
+            <span>Number: <b id="h-number">-</b></span>
+            <span>Time: <b id="h-time">-</b></span>
+        </div>
     </div>
+
     <div id="footer-placeholder"></div>
+
     <script src="/assets/js/translations.js"></script>
     <script src="/assets/js/layout.js"></script>
     <script src="horoscope-data.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            if (typeof loadHoroscope === 'function') { loadHoroscope('scorpio'); }
+            if (typeof loadHoroscope === 'function') {
+                loadHoroscope('scorpio');
+            }
         });
     </script>
 </body>
