@@ -26,6 +26,7 @@ window.translations = {
         hero_sub: "ESTABLISHED VEDIC LINEAGE",
         hero_title: "Discover the Truth of Your Destiny",
         hero_desc: "Authentic Vedic Astrology and precise remedial solutions by Mahadev Astrologer MA.", 
+        "guide_title": "Latest Divine Guide",
 
         event_tag: "Holi 2026",
         event_text: "🔱 Holi Muhurat & Rituals",
@@ -159,6 +160,7 @@ ins_panchang_title: "Daily Panchang 2026",
         hero_sub: "प्राचीन वैदिक परंपरा",
         hero_title: "अपने भाग्य का दिव्य सत्य जानें",
         hero_desc: "वैदिक ज्योतिष एवं शास्त्रोक्त सटीक उपाय, सीधे Mahadev Astrologer MA के माध्यम से।",
+        "guide_title": "नवीनतम दिव्य मार्गदर्शन",
 
         event_tag: "होली 2026",
         event_text: "🔱 होली मुहूर्त और विधि",
