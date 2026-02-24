@@ -3,7 +3,12 @@ window.translations = {
         // ===== NAV & ZODIAC =====
         nav_home: "Home", nav_horoscope: "Horoscope", nav_panchang: "Panchang", nav_guide: "Update", nav_book: "Book Now",
         zod_aries: "Aries", zod_taurus: "Taurus", zod_gemini: "Gemini", zod_cancer: "Cancer", zod_leo: "Leo", zod_virgo: "Virgo", zod_libra: "Libra", zod_scorpio: "Scorpio", zod_sagittarius: "Sagittarius", zod_capricorn: "Capricorn", zod_aquarius: "Aquarius", zod_pisces: "Pisces",
-
+        finder_title: "🔱 Identify Your Zodiac (Rashi Finder)",
+        finder_name_label: "By First Letter of Name:",
+        finder_date_label: "By Date & Month of Birth:",
+        finder_select: "Select...",
+        finder_divider: "OR",
+        
         horo_career: "Career & Finance", horo_love: "Love & Family", horo_health: "Health & Wellness",
         player_title: "Divine Anthem 🔱", player_subtitle: "Coming Soon: Healing Sounds by Parth", player_msg: "The Divine Melody is being tuned. Coming Soon! 🚩",
 
@@ -133,6 +138,11 @@ ins_panchang_title: "Daily Panchang 2026",
         // ===== NAV & ZODIAC (HI) =====
         nav_home: "होम", nav_horoscope: "राशिफल", nav_panchang: "पंचांग", nav_guide: "अपडेट", nav_book: "बुक करें",
         zod_aries: "मेष", zod_taurus: "वृषभ", zod_gemini: "मिथुन", zod_cancer: "कर्क", zod_leo: "सिंह", zod_virgo: "कन्या", zod_libra: "तुला", zod_scorpio: "वृश्चिक", zod_sagittarius: "धनु", zod_capricorn: "मकर", zod_aquarius: "कुंभ", zod_pisces: "मीन",
+        finder_title: "🔱 अपना राशि पहचानें (Rashi Finder)",
+        finder_name_label: "नाम के पहले अक्षर से:", // HTML wali key se match karo
+        finder_date_label: "जन्म तिथि और महीने से:",
+        finder_select: "चुनें...",
+        finder_divider: "या",
 
         horo_career: "करियर और वित्त", horo_love: "प्रेम और परिवार", horo_health: "स्वास्थ्य और कल्याण",
         player_title: "दिव्य संगीत 🔱", player_subtitle: "शीघ्र आ रहा है: पार्थ की आवाज़ में हीलिंग संगीत", player_msg: "प्रभु की कृपा से, दिव्य संगीत जल्द ही प्रकट होगा! 🚩",
