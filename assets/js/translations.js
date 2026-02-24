@@ -8,6 +8,8 @@ window.translations = {
         finder_date_label: "By Date & Month of Birth:",
         finder_select: "Select...",
         finder_divider: "OR",
+        'horoscope_title': 'Daily Horoscope',
+        'horoscope_subtitle': 'Choose your zodiac and get today\'s guidance',
         
         horo_career: "Career & Finance", horo_love: "Love & Family", horo_health: "Health & Wellness",
         player_title: "Divine Anthem 🔱", player_subtitle: "Coming Soon: Healing Sounds by Parth", player_msg: "The Divine Melody is being tuned. Coming Soon! 🚩",
@@ -143,6 +145,8 @@ ins_panchang_title: "Daily Panchang 2026",
         finder_date_label: "जन्म तिथि और महीने से:",
         finder_select: "चुनें...",
         finder_divider: "या",
+        'horoscope_title': 'दैनिक राशिफल',
+        'horoscope_subtitle': 'अपनी राशि चुनें और आज का परामर्श प्राप्त करें',
 
         horo_career: "करियर और वित्त", horo_love: "प्रेम और परिवार", horo_health: "स्वास्थ्य और कल्याण",
         player_title: "दिव्य संगीत 🔱", player_subtitle: "शीघ्र आ रहा है: पार्थ की आवाज़ में हीलिंग संगीत", player_msg: "प्रभु की कृपा से, दिव्य संगीत जल्द ही प्रकट होगा! 🚩",
