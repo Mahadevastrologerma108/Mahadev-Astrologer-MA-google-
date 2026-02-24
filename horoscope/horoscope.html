@@ -57,48 +57,50 @@
     <p style="color:#888; margin-bottom:40px;" data-key="horoscope_subtitle">अपनी राशि चुनें और आज का परामर्श प्राप्त करें</p>
 
     <div class="magic-tool">
-        <h3 style="color:var(--gold); font-family:'Cinzel'; font-size: 1.1rem; margin:0;" data-key="finder_title">🔱 अपना राशि पहचानें</h3>
-        <div class="finder-grid">
-            <div class="finder-box">
-                <label data-key="finder_name_label">नाम के पहले अक्षर से:</label>
-                <select onchange="if(this.value) window.location.href=this.value + '.html'">
-                    <option value="" data-key="finder_select">अक्षर चुनें...</option>
-                    <option value="aries">अ, ल, ई (A, L, E)</option>
-                    <option value="taurus">ब, व, उ (B, V, U)</option>
-                    <option value="gemini">क, छ, घ (K, CH, G)</option>
-                    <option value="cancer">ही, हू, हे, हो (H, D)</option>
-                    <option value="leo">मा, मी, मू, मे (M, T)</option>
-                    <option value="virgo">टो, पा, पी, पू (P, T, N)</option>
-                    <option value="libra">रा, री, रू, रे (R, T)</option>
-                    <option value="scorpio">तो, ना, नी, नू (N, Y)</option>
-                    <option value="sagittarius">ये, यो, भा, भी (B, D, P)</option>
-                    <option value="capricorn">भो, जा, जी, खी (J, K)</option>
-                    <option value="aquarius">गू, गे, गो, सा (S, G, D)</option>
-                    <option value="pisces">दी, दू, थ, झ (D, C, T)</option>
-                </select>
-            </div>
-            <div class="finder-box">
-                <label data-key="finder_date_label">जन्म तिथि से:</label>
-                <select onchange="if(this.value) window.location.href=this.value + '.html'">
-                    <option value="" data-key="finder_select">तारीख चुनें...</option>
-                    <option value="aries">13 Apr - 13 May</option>
-                    <option value="taurus">14 May - 13 Jun</option>
-                    <option value="gemini">14 Jun - 15 Jul</option>
-                    <option value="cancer">16 Jul - 15 Aug</option>
-                    <option value="leo">16 Aug - 15 Sep</option>
-                    <option value="virgo">16 Sep - 16 Oct</option>
-                    <option value="libra">17 Oct - 14 Nov</option>
-                    <option value="scorpio">15 Nov - 14 Dec</option>
-                    <option value="sagittarius">15 Dec - 14 Jan</option>
-                    <option value="capricorn">15 Jan - 12 Feb</option>
-                    <option value="aquarius">13 Feb - 13 Mar</option>
-                    <option value="pisces">14 Mar - 12 Apr</option>
-                </select>
-                <div id="magicResult" style="margin-top: 20px; min-height: 100px; display: none;">
-    </div>
-            </div>
+    <h3 style="color:var(--gold); font-family:'Cinzel'; font-size: 1.1rem; margin:0;" data-key="finder_title">🔱 अपना राशि पहचानें</h3>
+    <div class="finder-grid">
+        <div class="finder-box">
+            <label data-key="finder_name_label">नाम के पहले अक्षर से:</label>
+            <select id="nameFinder" onchange="handleMagicFind(this.value)">
+                <option value="" data-key="finder_select">अक्षर चुनें...</option>
+                <option value="aries">अ, ल, ई (A, L, E)</option>
+                <option value="taurus">ब, व, उ (B, V, U)</option>
+                <option value="gemini">क, छ, घ (K, CH, G)</option>
+                <option value="cancer">ही, हू, हे, हो (H, D)</option>
+                <option value="leo">मा, मी, मू, मे (M, T)</option>
+                <option value="virgo">टो, पा, पी, पू (P, T, N)</option>
+                <option value="libra">रा, री, रू, रे (R, T)</option>
+                <option value="scorpio">तो, ना, नी, नू (N, Y)</option>
+                <option value="sagittarius">ये, यो, भा, भी (B, D, P)</option>
+                <option value="capricorn">भो, जा, जी, खी (J, K)</option>
+                <option value="aquarius">गू, गे, गो, सा (S, G, D)</option>
+                <option value="pisces">दी, दू, थ, झ (D, C, T)</option>
+            </select>
+        </div>
+
+        <div class="finder-box">
+            <label data-key="finder_date_label">जन्म तिथि से:</label>
+            <select id="monthFinder" onchange="handleMagicFind(this.value)">
+                <option value="" data-key="finder_select">तारीख चुनें...</option>
+                <option value="aries">13 Apr - 13 May</option>
+                <option value="taurus">14 May - 13 Jun</option>
+                <option value="gemini">14 Jun - 15 Jul</option>
+                <option value="cancer">16 Jul - 15 Aug</option>
+                <option value="leo">16 Aug - 15 Sep</option>
+                <option value="virgo">16 Sep - 16 Oct</option>
+                <option value="libra">17 Oct - 14 Nov</option>
+                <option value="scorpio">15 Nov - 14 Dec</option>
+                <option value="sagittarius">15 Dec - 14 Jan</option>
+                <option value="capricorn">15 Jan - 12 Feb</option>
+                <option value="aquarius">13 Feb - 13 Mar</option>
+                <option value="pisces">14 Mar - 12 Apr</option>
+            </select>
         </div>
     </div>
+    
+    <div id="magicResult" style="margin-top: 25px; min-height: 120px; display: none; background: rgba(245, 197, 66, 0.05); border-radius: 15px; border: 1px solid rgba(245, 197, 66, 0.1);">
+    </div>
+</div>
 
     <div class="selection-grid">
         <a href="aries.html" class="zodiac-card"><span>♈</span><p data-key="zod_aries">Aries</p></a>
