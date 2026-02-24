@@ -3,64 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://www.mahadevastrologerma.in/horoscope.html">
-    
+    <link rel="canonical" href="https://www.mahadevastrologerma.in/horoscope/horoscope.html">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>
     <title>Daily Horoscope & Rashifal 2026 | Mahadev Astrologer MA</title>
-    <meta name="description" content="Check your accurate Daily Horoscope (Rashifal). Know how stars influence your career, love, and health today with Mahadev Astrologer MA.">
-
+    
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
     
     <style>
-        /* 🔱 Selection Grid Style - Locked */
-        .selection-grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 15px; 
-            padding: 20px; 
-            max-width: 800px; 
-            margin: 110px auto 40px; /* Adjusted for Header space */
-        }
+        :root { --gold: #f5c542; --bg: #0a0a14; }
+        body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; margin: 0; }
+        
+        /* 🔱 Selection Grid Style */
+        .selection-container { max-width: 900px; margin: 130px auto 50px; padding: 20px; text-align: center; }
+        .selection-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
+        
         .zodiac-card { 
-            background: rgba(245, 197, 66, 0.05); 
-            border: 1px solid #f5c542; 
-            border-radius: 15px; 
-            padding: 20px 10px; 
-            text-align: center; 
-            transition: 0.3s; 
-            text-decoration: none; 
-            color: #f5c542; 
-            cursor: pointer; 
+            background: rgba(245, 197, 66, 0.05); border: 1px solid rgba(245, 197, 66, 0.2); 
+            border-radius: 15px; padding: 25px 10px; text-align: center; transition: 0.3s; 
+            text-decoration: none; color: var(--gold); cursor: pointer; 
         }
         .zodiac-card:hover { 
-            background: rgba(245, 197, 66, 0.15); 
-            transform: translateY(-5px); 
-            box-shadow: 0 0 15px rgba(245, 197, 66, 0.3); 
+            background: rgba(245, 197, 66, 0.15); transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4), 0 0 15px rgba(245, 197, 66, 0.2); border-color: var(--gold);
         }
-        .zodiac-card span { font-size: 40px; display: block; margin-bottom: 8px; }
-        .zodiac-card p { margin: 0; font-family: 'Cinzel'; font-size: 13px; font-weight: bold; }
+        .zodiac-card span { font-size: 45px; display: block; margin-bottom: 10px; }
+        .zodiac-card p { margin: 0; font-family: 'Cinzel'; font-size: 14px; font-weight: bold; }
 
-        @media (max-width: 480px) { .selection-grid { grid-template-columns: repeat(2, 1fr); } }
+        /* 🔱 Magic Tool (Finder) Styling */
+        .magic-tool { 
+            background: rgba(255,255,255,0.02); border: 1px dashed var(--gold); 
+            padding: 25px; border-radius: 20px; margin-bottom: 40px; 
+        }
+        .finder-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
+        .finder-box select { 
+            background: #000; color: #fff; border: 1px solid var(--gold); 
+            padding: 12px; border-radius: 8px; font-family: 'Poppins'; cursor: pointer; outline: none;
+        }
+        .finder-box label { display: block; font-size: 0.8rem; color: #888; margin-bottom: 8px; }
+
+        @media (max-width: 600px) { 
+            .selection-grid { grid-template-columns: repeat(2, 1fr); } 
+            .selection-container { margin-top: 100px; }
+        }
     </style>
 </head>
 <body class="panchang-body">
 
 <div id="header-placeholder"></div>
 
-<div class="selection-grid">
-    <a href="/horoscope/aries.html" class="zodiac-card"><span>♈</span><p data-key="zod_aries">Aries</p></a>
-    <a href="/horoscope/taurus.html" class="zodiac-card"><span>♉</span><p data-key="zod_taurus">Taurus</p></a>
-    <a href="/horoscope/gemini.html" class="zodiac-card"><span>♊</span><p data-key="zod_gemini">Gemini</p></a>
-    <a href="/horoscope/cancer.html" class="zodiac-card"><span>♋</span><p data-key="zod_cancer">Cancer</p></a>
-    <a href="/horoscope/leo.html" class="zodiac-card"><span>♌</span><p data-key="zod_leo">Leo</p></a>
-    <a href="/horoscope/virgo.html" class="zodiac-card"><span>♍</span><p data-key="zod_virgo">Virgo</p></a>
-    <a href="/horoscope/libra.html" class="zodiac-card"><span>♎</span><p data-key="zod_libra">Libra</p></a>
-    <a href="/horoscope/scorpio.html" class="zodiac-card"><span>♏</span><p data-key="zod_scorpio">Scorpio</p></a>
-    <a href="/horoscope/sagittarius.html" class="zodiac-card"><span>♐</span><p data-key="zod_sagittarius">Sagittarius</p></a>
-    <a href="/horoscope/capricorn.html" class="zodiac-card"><span>♑</span><p data-key="zod_capricorn">Capricorn</p></a>
-    <a href="/horoscope/aquarius.html" class="zodiac-card"><span>♒</span><p data-key="zod_aquarius">Aquarius</p></a>
-    <a href="/horoscope/pisces.html" class="zodiac-card"><span>♓</span><p data-key="zod_pisces">Pisces</p></a>
+<div class="selection-container">
+    <h1 class="gold-text" style="font-family:'Cinzel'; color:var(--gold); margin-bottom:10px;" data-key="horoscope_title">दैनिक राशिफल</h1>
+    <p style="color:#888; margin-bottom:40px;" data-key="horoscope_subtitle">अपनी राशि चुनें और आज का परामर्श प्राप्त करें</p>
+
+    <div class="magic-tool">
+        <h3 style="color:var(--gold); font-family:'Cinzel'; font-size: 1.1rem; margin:0;" data-key="finder_title">🔱 अपना राशि पहचानें</h3>
+        <div class="finder-grid">
+            <div class="finder-box">
+                <label data-key="finder_name_label">नाम के पहले अक्षर से:</label>
+                <select onchange="if(this.value) window.location.href=this.value + '.html'">
+                    <option value="" data-key="finder_select">अक्षर चुनें...</option>
+                    <option value="aries">अ, ल, ई (A, L, E)</option>
+                    <option value="taurus">ब, व, उ (B, V, U)</option>
+                    <option value="gemini">क, छ, घ (K, CH, G)</option>
+                    <option value="cancer">ही, हू, हे, हो (H, D)</option>
+                    <option value="leo">मा, मी, मू, मे (M, T)</option>
+                    <option value="virgo">टो, पा, पी, पू (P, T, N)</option>
+                    <option value="libra">रा, री, रू, रे (R, T)</option>
+                    <option value="scorpio">तो, ना, नी, नू (N, Y)</option>
+                    <option value="sagittarius">ये, यो, भा, भी (B, D, P)</option>
+                    <option value="capricorn">भो, जा, जी, खी (J, K)</option>
+                    <option value="aquarius">गू, गे, गो, सा (S, G, D)</option>
+                    <option value="pisces">दी, दू, थ, झ (D, C, T)</option>
+                </select>
+            </div>
+            <div class="finder-box">
+                <label data-key="finder_date_label">जन्म तिथि से:</label>
+                <select onchange="if(this.value) window.location.href=this.value + '.html'">
+                    <option value="" data-key="finder_select">तारीख चुनें...</option>
+                    <option value="aries">13 Apr - 13 May</option>
+                    <option value="taurus">14 May - 13 Jun</option>
+                    <option value="gemini">14 Jun - 15 Jul</option>
+                    <option value="cancer">16 Jul - 15 Aug</option>
+                    <option value="leo">16 Aug - 15 Sep</option>
+                    <option value="virgo">16 Sep - 16 Oct</option>
+                    <option value="libra">17 Oct - 14 Nov</option>
+                    <option value="scorpio">15 Nov - 14 Dec</option>
+                    <option value="sagittarius">15 Dec - 14 Jan</option>
+                    <option value="capricorn">15 Jan - 12 Feb</option>
+                    <option value="aquarius">13 Feb - 13 Mar</option>
+                    <option value="pisces">14 Mar - 12 Apr</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="selection-grid">
+        <a href="aries.html" class="zodiac-card"><span>♈</span><p data-key="zod_aries">Aries</p></a>
+        <a href="taurus.html" class="zodiac-card"><span>♉</span><p data-key="zod_taurus">Taurus</p></a>
+        <a href="gemini.html" class="zodiac-card"><span>♊</span><p data-key="zod_gemini">Gemini</p></a>
+        <a href="cancer.html" class="zodiac-card"><span>♋</span><p data-key="zod_cancer">Cancer</p></a>
+        <a href="leo.html" class="zodiac-card"><span>♌</span><p data-key="zod_leo">Leo</p></a>
+        <a href="virgo.html" class="zodiac-card"><span>♍</span><p data-key="zod_virgo">Virgo</p></a>
+        <a href="libra.html" class="zodiac-card"><span>♎</span><p data-key="zod_libra">Libra</p></a>
+        <a href="scorpio.html" class="zodiac-card"><span>♏</span><p data-key="zod_scorpio">Scorpio</p></a>
+        <a href="sagittarius.html" class="zodiac-card"><span>♐</span><p data-key="zod_sagittarius">Sagittarius</p></a>
+        <a href="capricorn.html" class="zodiac-card"><span>♑</span><p data-key="zod_capricorn">Capricorn</p></a>
+        <a href="aquarius.html" class="zodiac-card"><span>♒</span><p data-key="zod_aquarius">Aquarius</p></a>
+        <a href="pisces.html" class="zodiac-card"><span>♓</span><p data-key="zod_pisces">Pisces</p></a>
+    </div>
 </div>
 
 <div id="footer-placeholder"></div>
