@@ -1,0 +1,30 @@
+name: Generate Rashi Files
+
+on:
+  push:
+    paths:
+      - 'generate_files.py' # Jab bhi aap python file update karenge ye chalega
+  workflow_dispatch:      # Isse aap manual bhi chala sakte hain button daba kar
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run generation script
+        run: python generate_files.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add horoscope/*.html
+          git commit -m "Auto-generated 12 rashi files via Python" || echo "No changes to commit"
+          git push
