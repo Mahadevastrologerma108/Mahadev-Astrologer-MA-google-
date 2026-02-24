@@ -4,7 +4,8 @@ async function loadLayout() {
     const path = window.location.pathname;
     const isInsideFolder = path.includes('/panchang/') || 
                            path.includes('/latest-guide/') || 
-                           path.includes('/pages/');
+                           path.includes('/pages/') || 
+                           path.includes('/horoscope/');
     
     const prefix = isInsideFolder ? '../' : '';
 
