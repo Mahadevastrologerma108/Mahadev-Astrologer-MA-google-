@@ -3,11 +3,21 @@ import os
 rashis = ["aries", "taurus", "gemini", "cancer", "leo", "virgo", 
           "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"]
 
+# 🔱 Aapka AdSense Snippet
+adsense_snippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>'
+
+# 🔱 Base URL for Canonical Tags
+base_url = "https://www.mahadevastrologerma.in/horoscope/"
+
 template = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="canonical" href="{canonical_url}">
+    {adsense_code}
+
     <title>{title} | Daily Horoscope 2026</title>
     <link rel="stylesheet" href="/assets/css/style.css">
     <style>
@@ -59,7 +69,8 @@ template = """<!DOCTYPE html>
 
     <script src="/assets/js/translations.js"></script>
     <script src="/assets/js/layout.js"></script>
-    <script src="horoscope-data.js"></script>
+    <script src="/assets/js/horoscope-data.js"></script>
+    <script src="/assets/js/horoscope-handler.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {{
             if (typeof loadHoroscope === 'function') {{
@@ -76,7 +87,15 @@ if not os.path.exists(target_dir):
 
 for r in rashis:
     file_path = os.path.join(target_dir, r + ".html")
+    # Har rashi ke liye unique canonical URL
+    current_canonical = f"{base_url}{r}.html"
+    
     with open(file_path, "w", encoding="utf-8") as f:
-        f.write(template.format(title=r.capitalize(), rashi_key=r))
+        f.write(template.format(
+            title=r.capitalize(), 
+            rashi_key=r,
+            canonical_url=current_canonical,
+            adsense_code=adsense_snippet
+        ))
 
-print("🔱 12 Files updated with FULL design!")
+print("🔱 Done! 12 pages with AdSense & Unique Canonical links created.")
