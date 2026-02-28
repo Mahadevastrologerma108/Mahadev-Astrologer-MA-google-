@@ -3,22 +3,19 @@ import os
 rashis = ["aries", "taurus", "gemini", "cancer", "leo", "virgo", 
           "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"]
 
-# 🔱 Aapka AdSense Snippet
 adsense_snippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>'
-
-# 🔱 Base URL for Canonical Tags
 base_url = "https://www.mahadevastrologerma.in/horoscope/"
 
+# ✅ Template mein paths ko fix kar diya gaya hai
 template = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="canonical" href="{canonical_url}">
     {adsense_code}
-
-    <title>{title} | Daily Horoscope 2026</title>
+    <title>{title} | Daily Horoscope 2026 | Mahadev Astrologer MA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
     <style>
         .horo-card {{ max-width: 800px; margin: 120px auto 50px; padding: 30px; background: rgba(245,197,66,0.05); border: 1px solid #f5c542; border-radius: 20px; text-align: center; }}
@@ -34,43 +31,30 @@ template = """<!DOCTYPE html>
 </head>
 <body class="panchang-body">
     <div id="header-placeholder"></div>
-    
     <div class="horo-card">
         <h1 id="rashi-title" class="rashi-title">Loading...</h1>
         <p id="todayDate" class="date-line"></p>
-        
         <div class="grid-container">
-            <div class="info-box">
-                <h3 data-key="horo_career">Career</h3>
-                <p id="h-career">Fetching data...</p>
-            </div>
-            <div class="info-box">
-                <h3 data-key="horo_love">Love</h3>
-                <p id="h-love">Fetching data...</p>
-            </div>
-            <div class="info-box">
-                <h3 data-key="horo_health">Health</h3>
-                <p id="h-health">Fetching data...</p>
-            </div>
-            <div class="info-box">
-                <h3 data-key="tip_title">Divine Tip</h3>
-                <p id="h-tip">Fetching data...</p>
-            </div>
+            <div class="info-box"><h3 data-key="horo_career">Career</h3><p id="h-career">Fetching...</p></div>
+            <div class="info-box"><h3 data-key="horo_love">Love</h3><p id="h-love">Fetching...</p></div>
+            <div class="info-box"><h3 data-key="horo_health">Health</h3><p id="h-health">Fetching...</p></div>
+            <div class="info-box"><h3 data-key="tip_title">Divine Tip</h3><p id="h-tip">Fetching...</p></div>
         </div>
-
         <div class="lucky-strip">
             <span>Color: <b id="h-color">-</b></span>
             <span>Number: <b id="h-number">-</b></span>
             <span>Time: <b id="h-time">-</b></span>
         </div>
     </div>
-
     <div id="footer-placeholder"></div>
 
     <script src="/assets/js/translations.js"></script>
     <script src="/assets/js/layout.js"></script>
-    <script src="/assets/js/horoscope-data.js"></script>
+    
+    <script src="horoscope-data.js"></script>
+    
     <script src="/assets/js/horoscope-handler.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {{
             if (typeof loadHoroscope === 'function') {{
@@ -87,9 +71,7 @@ if not os.path.exists(target_dir):
 
 for r in rashis:
     file_path = os.path.join(target_dir, r + ".html")
-    # Har rashi ke liye unique canonical URL
     current_canonical = f"{base_url}{r}.html"
-    
     with open(file_path, "w", encoding="utf-8") as f:
         f.write(template.format(
             title=r.capitalize(), 
@@ -98,4 +80,4 @@ for r in rashis:
             adsense_code=adsense_snippet
         ))
 
-print("🔱 Done! 12 pages with AdSense & Unique Canonical links created.")
+print("🔱 Mahadev Astrologer MA: All 12 pages updated with correct paths!")
