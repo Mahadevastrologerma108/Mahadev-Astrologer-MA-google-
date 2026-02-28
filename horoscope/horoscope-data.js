@@ -1,250 +1,250 @@
 const dailyHoroscope = {
   aries: {
     career: {
-      hi: "आज काम का दबाव थोड़ा बढ़ सकता है, लेकिन आप संभाल लेंगे। धैर्य रखकर काम करेंगे तो अच्छे परिणाम मिलेंगे।",
-      en: "Work pressure may increase today, but you will handle it. Working with patience will bring good results."
+      hi: "आज काम में तेजी रहेगी और नए अवसर मिल सकते हैं। आत्मविश्वास से लिया गया निर्णय लाभ देगा।",
+      en: "You may experience progress at work today with new opportunities. Decisions taken confidently will bring gains."
     },
     love: {
-      hi: "परिवार के साथ समय बिताने से मन हल्का रहेगा। छोटी बातों को बढ़ाने से बचें।",
-      en: "Spending time with family will lighten your mood. Avoid escalating small issues."
+      hi: "रिश्तों में खुलकर बात करें, गलतफहमियां दूर होंगी। परिवार के साथ समय अच्छा रहेगा।",
+      en: "Communicate openly in relationships to clear misunderstandings. Family time will be pleasant."
     },
     health: {
-      hi: "सिरदर्द या थकान महसूस हो सकती है, आराम ज़रूर करें। स्क्रीन टाइम कम रखें।",
-      en: "You may feel a headache or fatigue; make sure to rest. Keep screen time low."
+      hi: "ऊर्जा अच्छी रहेगी लेकिन गुस्से पर नियंत्रण रखें। हल्का व्यायाम लाभ देगा।",
+      en: "Energy levels will be good but control your anger. Light exercise will be beneficial."
     },
-    tip: { 
-      hi: "ॐ नमः शिवाय का 11 बार जाप करें।", 
-      en: "Chant 'Om Namah Shivaya' 11 times." 
+    tip: {
+      hi: "ॐ नमः शिवाय का 11 बार जाप करें।",
+      en: "Chant 'Om Namah Shivaya' 11 times."
     },
     luckyColor: { hi: "लाल", en: "Red" },
     luckyNumber: "9",
-    luckyTime: { hi: "सुबह 10:15", en: "10:15 AM" },
+    luckyTime: { hi: "सुबह 9:00 से 11:00", en: "09:00 AM - 11:00 AM" },
     luckyDate: "Feb 27, 2026"
   },
 
   taurus: {
     career: {
-      hi: "नए अवसर मिल सकते हैं, लेकिन जल्दबाज़ी में निर्णय न लें। सोच-समझकर कदम बढ़ाएं।",
-      en: "New opportunities may arise, but don't make decisions in haste. Step forward thoughtfully."
+      hi: "धैर्य से काम लें, आर्थिक मामलों में सोच-समझकर निर्णय लें। मेहनत का फल मिलेगा।",
+      en: "Work patiently and make financial decisions carefully. Your hard work will pay off."
     },
     love: {
-      hi: "जीवनसाथी की बात ध्यान से सुनें, इससे रिश्ते और भी मजबूत होंगे।",
-      en: "Listen carefully to your partner; this will strengthen your relationship further."
+      hi: "जीवनसाथी का सहयोग मिलेगा। रिश्तों में स्थिरता बनी रहेगी।",
+      en: "Support from your partner will strengthen your relationship."
     },
     health: {
-      hi: "हल्का और संतुलित भोजन करें, पानी ज्यादा पिएं और हाइड्रेटेड रहें।",
-      en: "Eat light and balanced meals; drink plenty of water and stay hydrated."
+      hi: "गले और सर्दी से बचें। संतुलित भोजन करें।",
+      en: "Take care of throat-related issues. Eat balanced meals."
     },
-    tip: { 
-      hi: "किसी जरूरतमंद की मदद करें।", 
-      en: "Help someone in need." 
+    tip: {
+      hi: "जरूरतमंद की सहायता करें।",
+      en: "Help someone in need."
     },
-    luckyColor: { hi: "सफेद", en: "White" },
+    luckyColor: { hi: "हरा", en: "Green" },
     luckyNumber: "6",
-    luckyTime: { hi: "दोपहर 12:45", en: "12:45 PM" },
+    luckyTime: { hi: "दोपहर 1:00 से 3:00", en: "01:00 PM - 03:00 PM" },
     luckyDate: "Feb 27, 2026"
   },
 
   gemini: {
     career: {
-      hi: "आपकी बातचीत की कला आज काम आएगी। नए लोगों से संपर्क लाभ देगा।",
-      en: "Your communication skills will be useful today. Contacting new people will bring benefits."
+      hi: "कम्युनिकेशन स्किल्स से सफलता मिलेगी। नए संपर्क लाभ देंगे।",
+      en: "Your communication skills will bring success. New contacts will be beneficial."
     },
     love: {
-      hi: "पुराने दोस्तों से बात होगी जिससे मन प्रसन्न रहेगा। यादें ताज़ा होंगी।",
-      en: "Talking to old friends will make you happy. Memories will be refreshed."
+      hi: "दोस्तों और परिवार के साथ समय खुशनुमा रहेगा।",
+      en: "Time spent with friends and family will be joyful."
     },
     health: {
-      hi: "हल्की एक्सरसाइज़ करें, शरीर में दिनभर ताजगी बनी रहेगी।",
-      en: "Do light exercises; it will keep your body fresh throughout the day."
+      hi: "मानसिक थकान से बचें। आराम करें।",
+      en: "Avoid mental stress and take proper rest."
     },
-    tip: { 
-      hi: "पक्षियों को दाना डालें।", 
-      en: "Feed the birds." 
+    tip: {
+      hi: "ॐ गं गणपतये नमः का जप करें।",
+      en: "Chant 'Om Gan Ganpataye Namah.'"
     },
-    luckyColor: { hi: "हरा", en: "Green" },
+    luckyColor: { hi: "पीला", en: "Yellow" },
     luckyNumber: "5",
-    luckyTime: { hi: "शाम 3:30", en: "03:30 PM" },
+    luckyTime: { hi: "शाम 4:00 से 6:00", en: "04:00 PM - 06:00 PM" },
     luckyDate: "Feb 27, 2026"
   },
 
   cancer: {
     career: {
-      hi: "मेहनत का फल धीरे-धीरे मिलेगा, धैर्य रखें। किसी काम को अधूरा न छोड़ें।",
-      en: "The fruits of your hard work will come slowly; stay patient. Do not leave any task incomplete."
+      hi: "भावनाओं में आकर निर्णय न लें। सीनियर्स का सहयोग मिलेगा।",
+      en: "Avoid emotional decisions. Seniors will support you."
     },
     love: {
-      hi: "भावुकता पर नियंत्रण रखें, समझदारी से बात करें और शांत रहें।",
-      en: "Control your emotions, speak wisely, and stay calm."
+      hi: "परिवार के साथ भावनात्मक जुड़ाव बढ़ेगा।",
+      en: "Emotional bonding with family will grow stronger."
     },
     health: {
-      hi: "गले और छाती का ध्यान रखें, ठंडी चीज़ों के सेवन से बचें।",
-      en: "Take care of your throat and chest; avoid consuming cold items."
+      hi: "पेट का ध्यान रखें। हल्का भोजन करें।",
+      en: "Take care of your stomach and eat light food."
     },
-    tip: { 
-      hi: "गायत्री मंत्र का पाठ करें।", 
-      en: "Recite the Gayatri Mantra." 
+    tip: {
+      hi: "माता-पिता का आशीर्वाद लें।",
+      en: "Seek blessings from parents."
     },
-    luckyColor: { hi: "चांदी", en: "Silver" },
+    luckyColor: { hi: "सफेद", en: "White" },
     luckyNumber: "2",
-    luckyTime: { hi: "सुबह 9:00", en: "09:00 AM" },
+    luckyTime: { hi: "सुबह 8:00", en: "08:00 AM" },
     luckyDate: "Feb 27, 2026"
   },
 
   leo: {
     career: {
-      hi: "टीमवर्क से सफलता मिलेगी। अहंकार और क्रोध से दूर रहें।",
-      en: "Teamwork will bring success. Stay away from ego and anger."
+      hi: "लीडरशिप दिखाने का मौका मिलेगा। नई जिम्मेदारी मिल सकती है।",
+      en: "You may get a chance to showcase leadership. New responsibilities may come."
     },
     love: {
-      hi: "प्यार से बातचीत करेंगे तो रिश्ते और भी ज्यादा मजबूत होंगे।",
-      en: "Communicating with love will make your relationships much stronger."
+      hi: "अहम से बचें और साथी की भावनाओं को समझें।",
+      en: "Avoid ego and understand your partner’s feelings."
     },
     health: {
-      hi: "पीठ और रीढ़ की हड्डी का ध्यान रखें, भारी सामान न उठाएं।",
-      en: "Take care of your back and spine; do not lift heavy objects."
+      hi: "थकान से बचें, पर्याप्त आराम करें।",
+      en: "Avoid exhaustion and take enough rest."
     },
-    tip: { 
-      hi: "सूर्य देव को जल अर्पित करें।", 
-      en: "Offer water to the Sun God." 
+    tip: {
+      hi: "ॐ सूर्याय नमः का जप करें।",
+      en: "Chant 'Om Suryaya Namah.'"
     },
     luckyColor: { hi: "सुनहरा", en: "Golden" },
     luckyNumber: "1",
-    luckyTime: { hi: "सुबह 8:15", en: "08:15 AM" },
+    luckyTime: { hi: "दोपहर 12:00", en: "12:00 PM" },
     luckyDate: "Feb 27, 2026"
   },
 
   virgo: {
     career: {
-      hi: "बारीकियों पर ध्यान देंगे तो सफलता मिलेगी। खुद पर ज्यादा दबाव न डालें।",
-      en: "Focusing on details will bring success. Don't put too much pressure on yourself."
+      hi: "बारीकी से काम करने पर सफलता मिलेगी। रुका काम पूरा होगा।",
+      en: "Attention to detail will bring success. Pending tasks will complete."
     },
     love: {
-      hi: "परिवार के साथ समय बिताने से मन पूरे दिन खुश रहेगा।",
-      en: "Spending time with family will keep you happy all day."
+      hi: "रिश्तों में मिठास बढ़ेगी। छोटी बातों को नजरअंदाज करें।",
+      en: "Sweetness will increase in relationships. Ignore minor issues."
     },
     health: {
-      hi: "सादा और घर का बना खाना आपके स्वास्थ्य के लिए फायदेमंद रहेगा।",
-      en: "Simple and home-cooked food will be beneficial for your health."
+      hi: "पाचन का ध्यान रखें। योग लाभ देगा।",
+      en: "Take care of digestion. Yoga will help."
     },
-    tip: { 
-      hi: "गणेश जी को दूर्वा चढ़ाएं।", 
-      en: "Offer Durva to Lord Ganesha." 
+    tip: {
+      hi: "गणेश जी को दूर्वा चढ़ाएं।",
+      en: "Offer Durva to Lord Ganesha."
     },
-    luckyColor: { hi: "पिस्ता", en: "Pistachio" },
+    luckyColor: { hi: "हल्का हरा", en: "Light Green" },
     luckyNumber: "7",
-    luckyTime: { hi: "सुबह 11:30", en: "11:30 AM" },
+    luckyTime: { hi: "सुबह 11:00", en: "11:00 AM" },
     luckyDate: "Feb 27, 2026"
   },
 
   libra: {
     career: {
-      hi: "आर्थिक मामलों में संतुलन बनाए रखें। सोच-समझकर ही निवेश करें।",
-      en: "Maintain balance in financial matters. Invest only after careful thought."
+      hi: "संतुलन बनाए रखें। आर्थिक लाभ संभव है।",
+      en: "Maintain balance. Financial gain is possible."
     },
     love: {
-      hi: "पार्टनर के साथ क्वालिटी समय बिताने का बेहतरीन मौका मिलेगा।",
-      en: "You will get a great opportunity to spend quality time with your partner."
+      hi: "जीवनसाथी का सहयोग मिलेगा।",
+      en: "You will receive support from your partner."
     },
     health: {
-      hi: "पर्याप्त पानी पिएं और खुद को पूरी तरह हाइड्रेट रखें।",
-      en: "Drink enough water and keep yourself fully hydrated."
+      hi: "कमर दर्द से बचें। हल्की स्ट्रेचिंग करें।",
+      en: "Avoid back pain. Do light stretching."
     },
-    tip: { 
-      hi: "हल्की खुशबू या इत्र का प्रयोग करें।", 
-      en: "Use a mild fragrance or perfume." 
+    tip: {
+      hi: "ॐ शुक्राय नमः का जप करें।",
+      en: "Chant 'Om Shukraya Namah.'"
     },
-    luckyColor: { hi: "नीला", en: "Blue" },
+    luckyColor: { hi: "गुलाबी", en: "Pink" },
     luckyNumber: "8",
-    luckyTime: { hi: "शाम 4:20", en: "04:20 PM" },
+    luckyTime: { hi: "सुबह 10:00", en: "10:00 AM" },
     luckyDate: "Feb 27, 2026"
   },
 
   scorpio: {
     career: {
-      hi: "अपनी ऊर्जा को सही दिशा में लगाएं, इससे आपका फोकस बढ़ेगा।",
-      en: "Channel your energy in the right direction; this will increase your focus."
+      hi: "गुप्त योजनाएं सफल होंगी। धैर्य रखें।",
+      en: "Secret plans will succeed. Stay patient."
     },
     love: {
-      hi: "आपसी भरोसा रिश्तों को पहले से अधिक मजबूत बनाएगा।",
-      en: "Mutual trust will make relationships stronger than before."
+      hi: "गलतफहमियां दूर होंगी।",
+      en: "Misunderstandings will clear."
     },
     health: {
-      hi: "पूरी नींद लें, देर रात तक जागने से सेहत बिगड़ सकती है।",
-      en: "Get full sleep; staying up late can affect your health."
+      hi: "ब्लड प्रेशर का ध्यान रखें।",
+      en: "Take care of blood pressure."
     },
-    tip: { 
-      hi: "हनुमान चालीसा का पाठ करें।", 
-      en: "Recite the Hanuman Chalisa." 
+    tip: {
+      hi: "हनुमान चालीसा का पाठ करें।",
+      en: "Recite the Hanuman Chalisa."
     },
     luckyColor: { hi: "मैरून", en: "Maroon" },
     luckyNumber: "9",
-    luckyTime: { hi: "शाम 7:45", en: "07:45 PM" },
+    luckyTime: { hi: "शाम 7:00", en: "07:00 PM" },
     luckyDate: "Feb 27, 2026"
   },
 
   sagittarius: {
     career: {
-      hi: "नई चीजें सीखने का मौका मिलेगा। अपना आत्मविश्वास बनाए रखें।",
-      en: "You will get a chance to learn new things. Keep up your confidence."
+      hi: "नई सीख और अवसर मिलेंगे। आत्मविश्वास बनाए रखें।",
+      en: "New learning and opportunities will come. Stay confident."
     },
     love: {
-      hi: "घर में हंसी-मजाक से माहौल काफी हल्का और खुशनुमा रहेगा।",
-      en: "Humor will keep the atmosphere at home very light and pleasant."
+      hi: "घर का माहौल खुशनुमा रहेगा।",
+      en: "The home atmosphere will be pleasant."
     },
     health: {
-      hi: "पैरों की हल्की मालिश से आपको काफी आराम मिलेगा।",
-      en: "A light foot massage will give you a lot of relief."
+      hi: "ऊर्जा अच्छी रहेगी। व्यायाम करें।",
+      en: "Energy levels will be good. Exercise regularly."
     },
-    tip: { 
-      hi: "माथे पर केसर का तिलक लगाएं।", 
-      en: "Apply a saffron tilak on your forehead." 
+    tip: {
+      hi: "ॐ गुरुवे नमः का जप करें।",
+      en: "Chant 'Om Gurave Namah.'"
     },
     luckyColor: { hi: "पीला", en: "Yellow" },
     luckyNumber: "3",
-    luckyTime: { hi: "सुबह 6:10", en: "06:10 AM" },
+    luckyTime: { hi: "सुबह 6:30", en: "06:30 AM" },
     luckyDate: "Feb 27, 2026"
   },
 
   capricorn: {
     career: {
-      hi: "अनुशासन आपकी सबसे बड़ी ताकत है, बस काम में संतुलन बनाए रखें।",
-      en: "Discipline is your greatest strength; just maintain balance in your work."
+      hi: "मेहनत का फल मिलेगा। आर्थिक लाभ संभव है।",
+      en: "Hard work will pay off. Financial gain is possible."
     },
     love: {
-      hi: "पुरानी गलतफहमियां दूर हो सकती हैं, बात करने की पहल करें।",
-      en: "Old misunderstandings can be resolved; take the initiative to talk."
+      hi: "परिवार का सहयोग मिलेगा।",
+      en: "Family support will be strong."
     },
     health: {
-      hi: "जोड़ों और घुटनों का ध्यान रखें, ज्यादा देर एक जगह न बैठें।",
-      en: "Take care of joints and knees; don't sit in one place for too long."
+      hi: "घुटनों का ध्यान रखें।",
+      en: "Take care of your knees."
     },
-    tip: { 
-      hi: "शनि चालीसा का पाठ करें।", 
-      en: "Recite the Shani Chalisa." 
+    tip: {
+      hi: "शनि चालीसा का पाठ करें।",
+      en: "Recite the Shani Chalisa."
     },
-    luckyColor: { hi: "काला", en: "Black" },
+    luckyColor: { hi: "नीला", en: "Blue" },
     luckyNumber: "8",
-    luckyTime: { hi: "शाम 5:50", en: "05:50 PM" },
+    luckyTime: { hi: "शाम 5:30", en: "05:30 PM" },
     luckyDate: "Feb 27, 2026"
   },
 
   aquarius: {
     career: {
-      hi: "अपनी बात स्पष्ट तरीके से रखें, इससे गलतफहमियां दूर होंगी।",
-      en: "Express your points clearly; this will clear up any misunderstandings."
+      hi: "नई सोच से सफलता मिलेगी।",
+      en: "Innovative thinking will bring success."
     },
     love: {
-      hi: "साथ मिलकर कोई अच्छा काम करेंगे तो रिश्ते में गहराई आएगी।",
-      en: "Doing something good together will bring depth to the relationship."
+      hi: "दोस्तों के साथ समय अच्छा रहेगा।",
+      en: "Good time with friends."
     },
     health: {
-      hi: "ताजी हवा में समय बिताएं, प्राणायाम करना लाभदायक रहेगा।",
-      en: "Spend time in fresh air; practicing Pranayama will be beneficial."
+      hi: "प्राणायाम लाभ देगा।",
+      en: "Pranayama will be beneficial."
     },
-    tip: { 
-      hi: "शिव चालीसा का पाठ करें।", 
-      en: "Recite the Shiv Chalisa." 
+    tip: {
+      hi: "शिव चालीसा का पाठ करें।",
+      en: "Recite the Shiv Chalisa."
     },
     luckyColor: { hi: "आसमानी", en: "Sky Blue" },
     luckyNumber: "11",
@@ -254,24 +254,24 @@ const dailyHoroscope = {
 
   pisces: {
     career: {
-      hi: "योजनाबद्ध तरीके से काम करेंगे तो आज बड़ी सफलता मिलेगी।",
-      en: "If you work in a planned manner, you will achieve great success today."
+      hi: "रचनात्मक कार्यों में सफलता मिलेगी।",
+      en: "Creative work will bring success."
     },
     love: {
-      hi: "आध्यात्मिक चर्चा रिश्तों को और भी गहरा और सार्थक बनाएगी।",
-      en: "Spiritual discussions will make relationships deeper and more meaningful."
+      hi: "भावनात्मक जुड़ाव मजबूत होगा।",
+      en: "Emotional bonding will strengthen."
     },
     health: {
-      hi: "पैरों को आराम दें और हल्के गुनगुने पानी का प्रयोग करें।",
-      en: "Rest your feet and use slightly lukewarm water."
+      hi: "आराम करें और पानी ज्यादा पिएं।",
+      en: "Rest well and drink more water."
     },
-    tip: { 
-      hi: "विष्णु सहस्रनाम का श्रवण (सुनना) करें।", 
-      en: "Listen to the Vishnu Sahasranamam." 
+    tip: {
+      hi: "विष्णु सहस्रनाम सुनें।",
+      en: "Listen to Vishnu Sahasranamam."
     },
-    luckyColor: { hi: "सुनहरा पीला", en: "Golden Yellow" },
+    luckyColor: { hi: "बैंगनी", en: "Purple" },
     luckyNumber: "7",
-    luckyTime: { hi: "शाम 4:50", en: "04:50 PM" },
+    luckyTime: { hi: "सुबह 7:00", en: "07:00 AM" },
     luckyDate: "Feb 27, 2026"
   }
 };
