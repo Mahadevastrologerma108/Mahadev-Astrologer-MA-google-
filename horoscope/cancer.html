@@ -39,18 +39,20 @@
     </div>
     <div id="footer-placeholder"></div>
 
+    <script src="/horoscope/horoscope-data.js"></script>
+    
+    <script src="/assets/js/horoscope-handler.js"></script>
+
     <script src="/assets/js/translations.js"></script>
     <script src="/assets/js/layout.js"></script>
     
-    <script src="/horoscope/horoscope-data.js"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Check karein ki function load hua ya nahi
+            // Ab loadHoroscope dhoondega handler.js mein
             if (typeof loadHoroscope === 'function') {
                 loadHoroscope('cancer');
             } else {
-                console.error("🔱 loadHoroscope function not found in horoscope-data.js");
+                console.error("🔱 Handler machine nahi mili!");
             }
         });
     </script>
