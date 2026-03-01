@@ -6,7 +6,6 @@ rashis = ["aries", "taurus", "gemini", "cancer", "leo", "virgo",
 adsense_snippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>'
 base_url = "https://www.mahadevastrologerma.in/horoscope/"
 
-# ✅ Template mein paths ko fix kar diya gaya hai
 template = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,7 @@ template = """<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="{canonical_url}">
     {adsense_code}
-    <title>{title} | Daily Horoscope 2026 | Mahadev Astrologer MA</title>
+    <title>{title} | Daily Horoscope 2026 | MAHADEV ASTROLOGER MA</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
     <style>
@@ -51,14 +50,15 @@ template = """<!DOCTYPE html>
     <script src="/assets/js/translations.js"></script>
     <script src="/assets/js/layout.js"></script>
     
-    <script src="horoscope-data.js"></script>
-    
-    <script src="/assets/js/horoscope-handler.js"></script>
+    <script src="/horoscope/horoscope-data.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {{
+            // Check karein ki function load hua ya nahi
             if (typeof loadHoroscope === 'function') {{
                 loadHoroscope('{rashi_key}');
+            }} else {{
+                console.error("🔱 loadHoroscope function not found in horoscope-data.js");
             }}
         }});
     </script>
@@ -80,4 +80,4 @@ for r in rashis:
             adsense_code=adsense_snippet
         ))
 
-print("🔱 Mahadev Astrologer MA: All 12 pages updated with correct paths!")
+print("🔱 Done! 12 pages updated. Paths are safe and handler logic removed.")
