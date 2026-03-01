@@ -47,18 +47,20 @@ template = """<!DOCTYPE html>
     </div>
     <div id="footer-placeholder"></div>
 
+    <script src="/horoscope/horoscope-data.js"></script>
+    
+    <script src="/assets/js/horoscope-handler.js"></script>
+
     <script src="/assets/js/translations.js"></script>
     <script src="/assets/js/layout.js"></script>
     
-    <script src="/horoscope/horoscope-data.js"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {{
-            // Check karein ki function load hua ya nahi
+            // Ab loadHoroscope dhoondega handler.js mein
             if (typeof loadHoroscope === 'function') {{
                 loadHoroscope('{rashi_key}');
             }} else {{
-                console.error("🔱 loadHoroscope function not found in horoscope-data.js");
+                console.error("🔱 Handler machine nahi mili!");
             }}
         }});
     </script>
@@ -80,4 +82,4 @@ for r in rashis:
             adsense_code=adsense_snippet
         ))
 
-print("🔱 Done! 12 pages updated. Paths are safe and handler logic removed.")
+print("🔱 Done! 12 pages synced with Handler and Data.")
