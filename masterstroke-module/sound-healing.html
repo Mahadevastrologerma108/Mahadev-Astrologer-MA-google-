@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naad Brahma: The Divine Sound Science | MAHADEV ASTROLOGER MA</title>
+    <title data-key="sound_page_title">Naad Brahma | MAHADEV ASTROLOGER MA</title>
     <link rel="stylesheet" href="module-style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -16,40 +16,40 @@
 
     <header class="module-header" style="text-align: center; padding: 60px 20px;">
         <div class="divine-symbol" style="font-size: 3rem;">🔱</div>
-        <h1 class="gold-text title-font" style="font-family: 'Cinzel'; color: #f5c542; letter-spacing: 2px;">Naad Brahma & Cosmic Resonance</h1>
-        <p class="subtitle" style="color: #aaa; font-style: italic;">"Music is not entertainment; it is the vibration of the Universe created by Mahadev's Damru."</p>
+        <h1 class="gold-text title-font" style="font-family: 'Cinzel'; color: #f5c542; letter-spacing: 2px;" data-key="sound_hero_title"></h1>
+        <p class="subtitle" style="color: #aaa; font-style: italic;" data-key="sound_hero_quote"></p>
 
         <div class="intro-box" style="max-width: 800px; margin: 30px auto; background: rgba(245,197,66,0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(245,197,66,0.1);">
-            <p>Vedic science ke anusar, universe ki har chiz ek specific frequency par vibrate karti hai. Hum **MAHADEV ASTROLOGER MA** mein usi 'Param-Naad' ko aapki Kundali aur Tridosha se jodte hain.</p>
-            <a href="#article-section" class="read-more-btn" style="color: #f5c542; text-decoration: none; font-weight: bold; border: 1px solid #f5c542; padding: 10px 20px; border-radius: 50px; display: inline-block; margin-top: 15px;">🔱 READ SACRED ARTICLE</a>
+            <p data-key="sound_intro_para"></p>
+            <a href="#article-section" class="read-more-btn" style="color: #f5c542; text-decoration: none; font-weight: bold; border: 1px solid #f5c542; padding: 10px 20px; border-radius: 50px; display: inline-block; margin-top: 15px;" data-key="btn_read_article"></a>
         </div>
     </header>
 
     <main class="module-container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
 
         <section class="dosha-section">
-            <h2 class="gold-text section-title" style="text-align: center; font-family: 'Cinzel';">Tridosha: Vibrational Balance</h2>
+            <h2 class="gold-text section-title" style="text-align: center; font-family: 'Cinzel';" data-key="dosha_section_title"></h2>
             <div id="dosha-quiz-container" style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border: 1px solid rgba(245,197,66,0.2); text-align: center; margin: 30px 0;">
-                <button class="module-btn" id="start-quiz-btn" onclick="checkDoshaOptionB()" style="background: #f5c542; color: #000; border: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; cursor: pointer;">🔱 DISCOVER YOUR DOMINANT DOSHA</button>
+                <button class="module-btn" id="start-quiz-btn" onclick="checkDoshaOptionB()" style="background: #f5c542; color: #000; border: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; cursor: pointer;" data-key="btn_start_quiz"></button>
                 <div id="quiz-ui" style="display:none; margin-top: 20px;">
                     <p id="quiz-question" style="font-size: 1.2rem; margin-bottom: 20px;"></p>
                     <div id="quiz-options"></div>
                 </div>
             </div>
             <div id="dosha-warning" class="warning-note" style="display:none; background: rgba(255,77,77,0.1); border: 1px dashed #ff4d4d; padding: 20px; border-radius: 10px; color: #eee; font-size: 0.9rem; margin-bottom: 40px;">
-                <strong style="color: #ff4d4d;">⚠️ PARAM-AAVASHYAK:</strong> Yeh result ek prathmik anuman hai. Sahi Healing Frequency ke liye Kundali vishleshan anivarya hai.
+                <strong style="color: #ff4d4d;" data-key="warning_label"></strong> <span data-key="dosha_warning_text"></span>
             </div>
         </section>
 
         <section class="matrix-section">
-            <h2 class="gold-text section-title" style="text-align: center; font-family: 'Cinzel';">Vedic Navgrah Resonance Matrix</h2>
+            <h2 class="gold-text section-title" style="text-align: center; font-family: 'Cinzel';" data-key="matrix_title"></h2>
             <div class="table-wrapper" style="overflow-x: auto; margin: 30px 0;">
                 <table class="resonance-table" style="width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.3);">
                     <thead style="background: rgba(245,197,66,0.1); color: #f5c542;">
                         <tr>
-                            <th style="padding: 15px; border: 1px solid rgba(245,197,66,0.2);">Planet</th>
-                            <th style="padding: 15px; border: 1px solid rgba(245,197,66,0.2);">Vedic Raag</th>
-                            <th style="padding: 15px; border: 1px solid rgba(245,197,66,0.2);">Status</th>
+                            <th style="padding: 15px; border: 1px solid rgba(245,197,66,0.2);" data-key="col_planet"></th>
+                            <th style="padding: 15px; border: 1px solid rgba(245,197,66,0.2);" data-key="col_raag"></th>
+                            <th style="padding: 15px; border: 1px solid rgba(245,197,66,0.2);" data-key="col_status"></th>
                         </tr>
                     </thead>
                     <tbody id="resonance-data-body"></tbody>
@@ -59,35 +59,29 @@
 
         <section class="ethics-section" style="margin: 60px 0;">
             <div class="mystery-card" style="border: 1px solid #ff4d4d; padding: 30px; border-radius: 20px; background: rgba(255,77,77,0.02);">
-                <h2 style="color: #ff4d4d; font-family: 'Cinzel'; margin: 0 0 20px 0;">Ethical Boundary & Safety</h2>
-                <p style="font-size: 0.9rem; color: #ccc;">YouTube ki random frequencies bina Kundali vishleshan ke sunna hanikarak ho sakta hai. <b>MAHADEV ASTROLOGER MA</b> sirf shastrokt vidhi hi pradan karta hai.</p>
+                <h2 style="color: #ff4d4d; font-family: 'Cinzel'; margin: 0 0 20px 0;" data-key="ethics_title"></h2>
+                <p style="font-size: 0.9rem; color: #ccc;" data-key="ethics_desc"></p>
             </div>
         </section>
 
         <section id="article-section" style="padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05);">
             <div class="sacred-article-content">
-                <h2 class="gold-text" style="font-family: 'Cinzel'; text-align: center; margin-bottom: 30px;">Naad-Brahma: Universe Ka Asli DNA</h2>
-                <p>Hum aksar music ko entertainment mante hain, lekin Vedic Science mein music 'Upaveda' (Gandharva Veda) ka hissa hai. **MAHADEV ASTROLOGER MA** ke is portal par hum us gyan ki charcha kar rahe hain jo sadiyon se gupt rakha gaya. Jab Mahadev ne Tandav ke samay apna Damru bajaya, toh usse 14 'Maheshwara Sutras' nikle. Ye sutras hi universe ki foundation frequencies hain.</p>
-                
-                <h3 style="color: #f5c542; margin-top: 30px;">1. Damru Se Nikli 14 Frequencies Ka Rahasya</h3>
-                <p>Panini ne bataya ki kaise Mahadev ke damru ki dhwani ne cosmic vibrations ko janm diya. Modern science ise <b>Cymatics</b> kehti hai. Aapka sharir 70% pani hai, aur sound waves aapke DNA ki geometry ko badalne ki takat rakhti hain.</p>
-                
-                <h3 style="color: #f5c542; margin-top: 30px;">2. YouTube Frequencies vs Authentic Vedic Sound</h3>
-                <p>YouTube ki random frequencies aapke nervous system ko disturb kar sakti hain. Sahi frequency ka chayan hamesha aapki <b>Planetary Degrees</b> par depend karta hai.</p>
+                <h2 class="gold-text" style="font-family: 'Cinzel'; text-align: center; margin-bottom: 30px;" data-key="art_main_title"></h2>
+                <p data-key="art_para_1"></p>
 
-                <h3 style="color: #f5c542; margin-top: 30px;">3. Navgrah aur Unke 'Sonic Signatures'</h3>
-                <ul style="list-style-type: '🔱 '; padding-left: 20px;">
-                    <li><b>Surya (Sun):</b> Raag Bilawal — Soul Power</li>
-                    <li><b>Shani (Saturn):</b> Raag Todi — Karmic Balance</li>
-                    <li><b>Chandra (Moon):</b> Raag Bhairavi — Emotional Healing</li>
-                </ul>
+                <h3 style="color: #f5c542; margin-top: 30px;" data-key="art_sub_1"></h3>
+                <p data-key="art_para_2"></p>
 
-                <h3 style="color: #f5c542; margin-top: 30px;">4. Sound Healing: Ek 'Digital Kavach'</h3>
-                <p>Hum aapke Birth Chart ka 'Sonic Audit' karte hain aur dekhte hain ki kaunsa grah kis frequency se 'Recharge' hoga. Ye aapke aura ke liye ek <b>Digital Kavach</b> hai.</p>
+                <h3 style="color: #f5c542; margin-top: 30px;" data-key="art_sub_2"></h3>
+                <p data-key="art_para_3"></p>
 
-                <blockquote style="border-left: 3px solid #f5c542; padding-left: 20px; font-style: italic; margin: 40px 0; color: #f5c542;">
-                    "Sound is the medicine of the future, provided the dosage is calculated by the stars."
-                </blockquote>
+                <h3 style="color: #f5c542; margin-top: 30px;" data-key="art_sub_3"></h3>
+                <ul id="planet-list-placeholder"></ul>
+
+                <h3 style="color: #f5c542; margin-top: 30px;" data-key="art_sub_4"></h3>
+                <p data-key="art_para_4"></p>
+
+                <blockquote style="border-left: 3px solid #f5c542; padding-left: 20px; font-style: italic; margin: 40px 0; color: #f5c542;" data-key="art_footer_quote"></blockquote>
             </div>
         </section>
 
@@ -100,5 +94,6 @@
     <script src="module-content.js"></script>
     <script type="module" src="../assets/js/firebase-handler.js"></script>
     <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/translations.js"></script>
 </body>
 </html>
