@@ -1,52 +1,62 @@
 /**
  * MAHADEV ASTROLOGER MA - Sound Module Logic
  * Folder: masterstroke-module/
+ * Updated: Translation Bridge Added
  */
 
 let currentStep = 1;
 let scores = [];
 
-// 1. Navgrah Database (Perfect as it is)
+// 1. Navgrah Database (Mapping with Translation Keys)
 const soundDatabase = {
     planets: [
-        { name: "Sun (Surya)", raag: "Bilawal", time: "Sunrise", status: "🔐 Locked", effect: "Soul Power" },
-        { name: "Moon (Chandra)", raag: "Bhairavi", time: "Anytime", status: "🔐 Locked", effect: "Mental Peace" },
-        { name: "Mars (Mangal)", raag: "Bhairav", time: "Dawn", status: "🔐 Locked", effect: "Willpower" },
-        { name: "Mercury (Budh)", raag: "Kafi", time: "Daytime", status: "🔐 Locked", effect: "Intellect" },
-        { name: "Jupiter (Guru)", raag: "Yaman", time: "Evening", status: "🔐 Locked", effect: "Luck & Growth" },
-        { name: "Venus (Shukra)", raag: "Khamaj", time: "Night", status: "🔐 Locked", effect: "Prosperity" },
-        { name: "Saturn (Shani)", raag: "Todi", time: "Morning", status: "🔐 Locked", effect: "Discipline" },
-        { name: "Rahu (North Node)", raag: "Asavari", time: "Twilight", status: "🔐 Locked", effect: "Shadow Clearing" },
-        { name: "Ketu (South Node)", raag: "Shree", time: "Midnight", status: "🔐 Locked", effect: "Intuition" }
+        { pKey: "planet_sun", rKey: "raag_sun", sKey: "status_locked", eKey: "Soul Power" },
+        { pKey: "planet_moon", rKey: "raag_moon", sKey: "status_locked", eKey: "Mental Peace" },
+        { pKey: "planet_mars", rKey: "raag_mars", sKey: "status_locked", eKey: "Willpower" },
+        { pKey: "planet_mercury", rKey: "raag_mercury", sKey: "status_locked", eKey: "Intellect" },
+        { pKey: "planet_jupiter", rKey: "raag_jupiter", sKey: "status_locked", eKey: "Luck & Growth" },
+        { pKey: "planet_venus", rKey: "raag_venus", sKey: "status_locked", eKey: "Prosperity" },
+        { pKey: "planet_saturn", rKey: "raag_saturn", sKey: "status_locked", eKey: "Discipline" },
+        { pKey: "planet_rahu", rKey: "raag_rahu", sKey: "status_locked", eKey: "Shadow Clearing" },
+        { pKey: "planet_ketu", rKey: "raag_ketu", sKey: "status_locked", eKey: "Intuition" }
     ]
 };
 
-// 2. Load Table
+// 2. Load Table (Now with Translation Support)
 function loadTable() {
     const tableBody = document.getElementById('resonance-data-body');
-    if(tableBody) {
+    const lang = localStorage.getItem('selectedLanguage') || 'en';
+    const t = window.translations[lang]; // Global translation bridge
+
+    if(tableBody && t) {
         let rows = "";
         soundDatabase.planets.forEach(p => {
             rows += `<tr>
-                <td style="padding:15px; border:1px solid rgba(245,197,66,0.1);"><b>${p.name}</b><br><small style="color:#666;">${p.effect}</small></td>
-                <td style="padding:15px; border:1px solid rgba(245,197,66,0.1);">${p.raag}</td>
-                <td class="gold-text" style="padding:15px; border:1px solid rgba(245,197,66,0.1);">${p.status}</td>
+                <td style="padding:15px; border:1px solid rgba(245,197,66,0.1);">
+                    <b>${t[p.pKey] || p.pKey}</b><br>
+                    <small style="color:#aaa;">${p.eKey}</small>
+                </td>
+                <td style="padding:15px; border:1px solid rgba(245,197,66,0.1); font-style: italic; color: #f5c542;">
+                    ${t[p.rKey] || p.rKey}
+                </td>
+                <td class="gold-text" style="padding:15px; border:1px solid rgba(245,197,66,0.1); font-weight: bold; font-size: 0.85rem;">
+                    ${t[p.sKey] || '🔐 LOCKED'}
+                </td>
             </tr>`;
         });
         tableBody.innerHTML = rows;
     }
 }
 
-// 3. Quiz Navigation (Fixed Flow)
+// 3. Quiz Navigation (Aapka original logic)
 window.checkDoshaOptionB = function() {
     document.getElementById('start-quiz-btn').style.display = 'none';
     const quizUI = document.getElementById('quiz-ui');
     quizUI.style.display = 'block';
-    
-    // Load Question 1 Immediately
+
     const questionPara = document.getElementById('quiz-question');
     const optionsDiv = document.getElementById('quiz-options');
-    
+
     questionPara.innerText = "1. Aapki skin aur body ka prakriti kaisa hai?";
     optionsDiv.innerHTML = `
         <button class="quiz-opt" onclick="nextStep('A')">Rukhi/Dry (Vata)</button>
@@ -81,7 +91,7 @@ window.nextStep = function(val) {
     }
 }
 
-// 4. Final Result (Added UI styling for better Vibe)
+// 4. Final Result
 function showFinalResult() {
     let finalDosha = (scores[0] === 'A') ? "VATA" : (scores[0] === 'B' ? "PITTA" : "KAPHA");
     const container = document.getElementById('dosha-quiz-container');
@@ -97,10 +107,9 @@ function showFinalResult() {
             </div>
         </div>
     `;
-    document.getElementById('dosha-warning').style.display = 'block';
 }
 
-// 5. Dynamic Form (Added form-input styles in JS for safety)
+// 5. Dynamic Form (Aapka original logic)
 window.loadDivineForm = function(method, dosha) {
     const container = document.getElementById('dosha-quiz-container');
     let formHTML = `
@@ -119,13 +128,11 @@ window.loadDivineForm = function(method, dosha) {
                 <input type="time" id="cust_time" required class="quiz-opt" style="font-size:0.8rem;">
             </div>
             <input type="text" id="cust_place" placeholder="Birth Place (City/State)" required class="quiz-opt" style="text-align:left; background:rgba(255,255,255,0.05);">`;
-    } else if (method === 'Palmistry') {
-        formHTML += `<p style="color:var(--gold); font-size:0.8rem;">📸 Note: Please send clear photos of both palms on WhatsApp after submitting.</p>`;
     }
 
     formHTML += `
                 <textarea id="cust_issue" placeholder="Aapki mukhya samasya? (Optional)" class="quiz-opt" style="height:80px; text-align:left; background:rgba(255,255,255,0.05);"></textarea>
-                <button type="submit" class="quiz-opt" style="background:var(--gold); color:#000; font-weight:bold; margin-top:20px;">INVOKE FREQUENCY MAPPING ➔</button>
+                <button type="submit" class="quiz-opt" style="background:#f5c542; color:#000; font-weight:bold; margin-top:20px;">INVOKE FREQUENCY MAPPING ➔</button>
             </form>
         </div>
     `;
@@ -133,10 +140,9 @@ window.loadDivineForm = function(method, dosha) {
     container.scrollIntoView({ behavior: 'smooth' });
 }
 
-// 6. Submit Logic
+// 6. Submit Logic (Firebase Bridge)
 function handleFinalSubmit(event, method, dosha) {
     event.preventDefault();
-
     const formData = {
         name: document.getElementById('cust_name').value,
         whatsapp: document.getElementById('cust_whatsapp').value,
@@ -148,7 +154,6 @@ function handleFinalSubmit(event, method, dosha) {
         timestamp: new Date().getTime()
     };
 
-    // Global bridge to firebase-handler.js
     if (window.handleSoundHealingSubmit) {
         window.handleSoundHealingSubmit(formData);
         document.getElementById('dosha-quiz-container').innerHTML = `
@@ -159,8 +164,7 @@ function handleFinalSubmit(event, method, dosha) {
             </div>
         `;
     } else {
-        console.error("Firebase Bridge Missing!");
-        alert("System busy. Please try again or contact via WhatsApp directly.");
+        alert("System busy. Please contact via WhatsApp directly.");
     }
 }
 
