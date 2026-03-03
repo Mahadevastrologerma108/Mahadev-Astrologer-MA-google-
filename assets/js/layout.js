@@ -1,12 +1,14 @@
-// --- 1. SMART LAYOUT LOADING ---
 async function loadLayout() {
     // Detect folder depth for GitHub Pages fix
     const path = window.location.pathname;
+    
+    // 🔱 UPDATE: Added '/masterstroke-module/' in the list
     const isInsideFolder = path.includes('/panchang/') || 
                            path.includes('/latest-guide/') || 
                            path.includes('/pages/') || 
-                           path.includes('/horoscope/');
-    
+                           path.includes('/horoscope/') ||
+                           path.includes('/masterstroke-module/'); 
+
     const prefix = isInsideFolder ? '../' : '';
 
     try {
@@ -20,7 +22,7 @@ async function loadLayout() {
             document.getElementById('footer-placeholder').innerHTML = await fResp.text();
             
             initMenu(); // Re-bind menu events
-            window.updateUI(); // Apply translations
+            if (window.updateUI) window.updateUI(); // Apply translations
             fixAllLinks(prefix); // Adjust links for subfolders
         }
     } catch (e) { console.error("Layout failed to load:", e); }
