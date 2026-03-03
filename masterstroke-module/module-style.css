@@ -1,33 +1,96 @@
+/* MAHADEV ASTROLOGER MA - Sound Healing Module CSS */
+
+:root {
+    --gold: #f5c542;
+    --gold-glow: rgba(245, 197, 66, 0.4);
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --body-bg: #0a0a14;
+}
+
+/* Form Elements */
 .form-input {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(245,197,66,0.3);
-    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(245, 197, 66, 0.3);
+    border-radius: 8px; /* Slightly smoother */
     color: #fff;
-    font-family: 'Poppins';
-    box-sizing: border-box; /* Important for padding */
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: 0.3s ease;
 }
 
 .form-input:focus {
     border-color: var(--gold);
     outline: none;
-    box-shadow: 0 0 10px rgba(245,197,66,0.2);
+    box-shadow: 0 0 12px var(--gold-glow);
+    background: rgba(245, 197, 66, 0.02);
 }
 
+/* Method Selection Buttons */
+.quiz-opt, .method-btn {
+    width: 100%;
+    margin: 10px 0;
+    padding: 14px 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--gold);
+    color: #fff;
+    border-radius: 50px; /* Modern Pill Shape */
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: center;
+}
+
+.quiz-opt:hover, .method-btn:hover {
+    background: var(--gold);
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--gold-glow);
+}
+
+/* Special Instructions Box */
 .palm-instruction {
-    background: rgba(245,197,66,0.1);
+    background: rgba(245, 197, 66, 0.08);
     padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
     font-size: 0.85rem;
+    line-height: 1.5;
     color: #eee;
     border: 1px dashed var(--gold);
+    animation: fadeIn 0.5s ease;
 }
 
-.method-btn {
+/* Table Design for Navgrah Matrix */
+.resonance-table {
     width: 100%;
-    margin: 8px 0;
-    /* Purani styles same rahengi */
+    border-spacing: 0;
+    margin: 20px 0;
+    border: 1px solid rgba(245, 197, 66, 0.1);
+}
+
+.resonance-table td, .resonance-table th {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Success Message Animation */
+.divine-success {
+    animation: divineFade 1.2s ease-out;
+}
+
+@keyframes divineFade {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive Tweaks for Phone */
+@media (max-width: 600px) {
+    .module-header h1 { font-size: 1.8rem; }
+    .form-input { padding: 14px; } /* Larger touch area */
 }
