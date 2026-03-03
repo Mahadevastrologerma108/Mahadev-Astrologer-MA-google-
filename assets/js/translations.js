@@ -198,7 +198,21 @@ pan_disclaimer: "* This Panchang is based on Vedic mathematics. For accurate per
 "art_footer_quote": "\"Sound is the medicine of the future, provided the dosage is calculated by the stars.\"",
 "benefits_title": "Divine Benefits of Naad Healing",
 "benefit_1": "Balances your mental state and reduces stress.",
-"benefit_2": "Aligns your body vibrations with planetary energy.",        
+"benefit_2": "Aligns your body vibrations with planetary energy.",   
+    
+ // --- Quiz Section ---
+quiz_q1: "1. What is your skin and body type?",
+quiz_q1_a: "Dry/Rough (Vata)", 
+quiz_q1_b: "Sensitive/Warm (Pitta)", 
+quiz_q1_c: "Soft/Oily (Kapha)",
+quiz_q2: "2. What is your natural temperament?",
+quiz_q2_a: "Restless/Active", 
+quiz_q2_b: "Fiery/Sharp", 
+quiz_q2_c: "Calm/Stable",
+quiz_q3: "3. How does weather affect you?",
+quiz_q3_a: "Sensitive to Cold", 
+quiz_q3_b: "Sensitive to Heat", 
+quiz_q3_c: "Sensitive to Humidity",
 
 // ===== SOUND MODULE KEYS (EN) =====
 status_locked: "🔐 LOCKED",
@@ -406,6 +420,19 @@ pan_disclaimer: "* यह पंचांग वैदिक गणित पर
 "benefit_1": "यह आपकी मानसिक स्थिति को संतुलित करता है और तनाव कम करता है।",
 "benefit_2": "यह आपके शरीर के स्पंदन को ग्रहों की ऊर्जा के साथ जोड़ता है।",
         
+// --- Quiz Section ---
+quiz_q1: "1. आपकी त्वचा और शरीर की प्रकृति कैसी है?",
+quiz_q1_a: "शुष्क/रूखी (वात)", 
+quiz_q1_b: "संवेदनशील/गर्म (पित्त)", 
+quiz_q1_c: "कोमल/तैलीय (कफ)",
+quiz_q2: "2. आपका जन्मजात स्वभाव कैसा है?",
+quiz_q2_a: "चंचल/सक्रिय", 
+quiz_q2_b: "उग्र/तेज", 
+quiz_q2_c: "शांत/स्थिर",
+quiz_q3: "3. मौसम का आप पर क्या प्रभाव पड़ता है?",
+quiz_q3_a: "अधिक शीत (ठंड) लगती है", 
+quiz_q3_b: "गर्मी सहन नहीं होती", 
+quiz_q3_c: "नमी/उमस से परेशानी",
 
 // 🔱 ADD THESE MISSING KEYS FOR SOUND MODULE
 status_locked: "🔐 लॉक है",
