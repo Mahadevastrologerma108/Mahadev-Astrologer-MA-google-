@@ -1,119 +1,65 @@
-/* MAHADEV ASTROLOGER MA - Sound Healing Module CSS */
+/* ============================================================
+   🔱 GLOBAL NAV & FOOTER FIX (Gold Theme & Menu Behavior)
+   ============================================================ */
 
-:root {
-    --gold: #f5c542;
-    --gold-glow: rgba(245, 197, 66, 0.4);
-    --card-bg: rgba(255, 255, 255, 0.05);
-    --body-bg: #0a0a14;
-    --error-red: #ff4d4d;
+/* 1. Nav Menu (Drawer) ka Initial State */
+#nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -280px; /* Screen ke bahar rakho */
+    width: 280px;
+    height: 100%;
+    background: #0a0a14 !important; /* Deep Dark Background */
+    z-index: 10000;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 1px solid rgba(245, 197, 66, 0.2);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
 }
 
-/* 🔱 Form Elements Refined */
-.form-input, .quiz-opt {
-    width: 100%;
-    padding: 14px 20px;
-    margin-bottom: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(245, 197, 66, 0.2);
-    border-radius: 12px; /* Smoother Boxy look for inputs */
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
+/* 2. Blue Links ko Gold mein badlo (Universal Fix) */
+#header-placeholder a, 
+#footer-placeholder a, 
+#nav-drawer a,
+.brand-name {
+    color: var(--gold) !important;
+    text-decoration: none !important;
+    transition: 0.3s;
 }
 
-/* 🔱 Interactive Buttons (Pill Shape) */
-button.quiz-opt, .method-btn {
-    border-radius: 50px; 
-    background: var(--card-bg);
-    border: 1px solid var(--gold);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+/* 3. Hamburger Icon aur Buttons ka Blue khatam */
+#mobile-menu, #close-menu, .menu-icon {
+    color: var(--gold) !important;
     cursor: pointer;
-    margin-top: 10px;
 }
 
-button.quiz-opt:hover, .method-btn:hover {
-    background: var(--gold);
-    color: #000;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px var(--gold-glow);
-}
-
-/* 🔱 Active State for Quiz Options */
-.quiz-opt.active {
-    background: var(--gold);
-    color: #000;
-}
-
-/* 🔱 Table Styling (Navgrah Matrix) */
-.resonance-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 25px 0;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.resonance-table th {
+/* 4. Nav Links Hover Effect */
+#nav-drawer a:hover {
+    color: #fff !important;
     background: rgba(245, 197, 66, 0.1);
-    color: var(--gold);
-    font-family: 'Cinzel';
-    text-align: left;
-    padding: 18px 15px;
-    font-size: 0.9rem;
-    border-bottom: 2px solid rgba(245, 197, 66, 0.2);
+    padding-left: 10px;
 }
 
-.resonance-table td {
-    padding: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    font-size: 0.9rem;
-    color: #ccc;
+/* 5. Overlay (Pichhe ka andhera) */
+#menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: none;
+    z-index: 9999;
 }
 
-/* 🔱 Custom Scrollbar for Table (Mobile) */
-.table-wrapper {
-    overflow-x: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--gold) transparent;
-}
-
-/* 🔱 Form Grid Layout */
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-/* 🔱 Instructions & Success */
-.palm-instruction {
-    background: rgba(245, 197, 66, 0.05);
-    padding: 15px;
-    border-radius: 12px;
-    margin: 15px 0;
+/* 6. Footer Links Alignment */
+#footer-placeholder .footer-links a {
+    margin: 0 10px;
     font-size: 0.85rem;
-    color: #f5c542;
-    border: 1px dashed var(--gold);
-    text-align: center;
+    opacity: 0.7;
 }
 
-.divine-success {
-    text-align: center;
-    padding: 30px;
-    animation: divineFade 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes divineFade {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-/* 🔱 Responsive Adjustments */
-@media (max-width: 600px) {
-    .form-grid { grid-template-columns: 1fr; }
-    .resonance-table td, .resonance-table th { padding: 12px 10px; font-size: 0.8rem; }
+#footer-placeholder .footer-links a:hover {
+    opacity: 1;
+    color: var(--gold) !important;
 }
