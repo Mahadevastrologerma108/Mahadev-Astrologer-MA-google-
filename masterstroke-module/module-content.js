@@ -1,7 +1,7 @@
 /**
  * MAHADEV ASTROLOGER MA - Sound Module Logic
  * Folder: masterstroke-module/
- * Updated: Translation Bridge Added
+ * Fixed: Variable consistency (selectedLang) & Delay Loading
  */
 
 let currentStep = 1;
@@ -22,13 +22,23 @@ const soundDatabase = {
     ]
 };
 
-// 2. Load Table (Now with Translation Support)
+// 2. Load Table (With Delay and Correct Variable)
 function loadTable() {
     const tableBody = document.getElementById('resonance-data-body');
-    const lang = localStorage.getItem('selectedLanguage') || 'en';
-    const t = window.translations[lang]; // Global translation bridge
+    
+    // 🔱 FIXED: layout.js uses 'selectedLang', so we use it here too
+    const lang = localStorage.getItem('selectedLang') || 'hi';
+    
+    // Safety check: wait if translations aren't loaded yet
+    if (!window.translations || !window.translations[lang]) {
+        console.log("🔱 Waiting for translations...");
+        setTimeout(loadTable, 100);
+        return;
+    }
 
-    if(tableBody && t) {
+    const t = window.translations[lang];
+
+    if(tableBody) {
         let rows = "";
         soundDatabase.planets.forEach(p => {
             rows += `<tr>
@@ -48,11 +58,13 @@ function loadTable() {
     }
 }
 
-// 3. Quiz Navigation (Aapka original logic)
+// 3. Quiz Navigation
 window.checkDoshaOptionB = function() {
-    document.getElementById('start-quiz-btn').style.display = 'none';
+    const startBtn = document.getElementById('start-quiz-btn');
+    if(startBtn) startBtn.style.display = 'none';
+    
     const quizUI = document.getElementById('quiz-ui');
-    quizUI.style.display = 'block';
+    if(quizUI) quizUI.style.display = 'block';
 
     const questionPara = document.getElementById('quiz-question');
     const optionsDiv = document.getElementById('quiz-options');
@@ -109,7 +121,7 @@ function showFinalResult() {
     `;
 }
 
-// 5. Dynamic Form (Aapka original logic)
+// 5. Dynamic Form 
 window.loadDivineForm = function(method, dosha) {
     const container = document.getElementById('dosha-quiz-container');
     let formHTML = `
@@ -140,8 +152,8 @@ window.loadDivineForm = function(method, dosha) {
     container.scrollIntoView({ behavior: 'smooth' });
 }
 
-// 6. Submit Logic (Firebase Bridge)
-function handleFinalSubmit(event, method, dosha) {
+// 6. Submit Logic (Bridge to firebase-handler.js)
+window.handleFinalSubmit = function(event, method, dosha) {
     event.preventDefault();
     const formData = {
         name: document.getElementById('cust_name').value,
@@ -150,22 +162,18 @@ function handleFinalSubmit(event, method, dosha) {
         method: method,
         dosha: dosha,
         type: "Sound Healing Request",
-        date: new Date().toLocaleDateString(),
         timestamp: new Date().getTime()
     };
 
+    // Calling the function from firebase-handler.js
     if (window.handleSoundHealingSubmit) {
-        window.handleSoundHealingSubmit(formData);
-        document.getElementById('dosha-quiz-container').innerHTML = `
-            <div style="padding:40px; text-align:center;">
-                <div style="font-size:3rem; margin-bottom:20px;">🐚</div>
-                <h3 class="gold-text" style="font-family:'Cinzel';">Pranam, ${formData.name}!</h3>
-                <p>Aapka anurodh (request) Mahadev Astrologer MA tak pahunch gaya hai. Jald hi aapse WhatsApp par sampark kiya jayega.</p>
-            </div>
-        `;
+        window.handleSoundHealingSubmit(event, method, dosha);
     } else {
-        alert("System busy. Please contact via WhatsApp directly.");
+        alert("🔱 Request Sent! We will contact you on WhatsApp.");
     }
 }
 
-document.addEventListener('DOMContentLoaded', loadTable);
+// 🔱 FINAL CALL: 500ms Delay to ensure translations are ready
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(loadTable, 500);
+});
