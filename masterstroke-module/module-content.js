@@ -6,7 +6,7 @@
 let currentStep = 1;
 let scores = [];
 
-// 1. Navgrah Database
+// 1. Navgrah Database (Perfect as it is)
 const soundDatabase = {
     planets: [
         { name: "Sun (Surya)", raag: "Bilawal", time: "Sunrise", status: "🔐 Locked", effect: "Soul Power" },
@@ -28,29 +28,37 @@ function loadTable() {
         let rows = "";
         soundDatabase.planets.forEach(p => {
             rows += `<tr>
-                <td><b>${p.name}</b><br><small style="color:#666;">${p.effect}</small></td>
-                <td>${p.raag}</td>
-                <td class="gold-text">${p.status}</td>
+                <td style="padding:15px; border:1px solid rgba(245,197,66,0.1);"><b>${p.name}</b><br><small style="color:#666;">${p.effect}</small></td>
+                <td style="padding:15px; border:1px solid rgba(245,197,66,0.1);">${p.raag}</td>
+                <td class="gold-text" style="padding:15px; border:1px solid rgba(245,197,66,0.1);">${p.status}</td>
             </tr>`;
         });
         tableBody.innerHTML = rows;
     }
 }
 
-// 3. Quiz Navigation
+// 3. Quiz Navigation (Fixed Flow)
 window.checkDoshaOptionB = function() {
     document.getElementById('start-quiz-btn').style.display = 'none';
-    const container = document.getElementById('dosha-quiz-container');
-    container.style.display = 'block';
+    const quizUI = document.getElementById('quiz-ui');
+    quizUI.style.display = 'block';
+    
+    // Load Question 1 Immediately
+    const questionPara = document.getElementById('quiz-question');
+    const optionsDiv = document.getElementById('quiz-options');
+    
+    questionPara.innerText = "1. Aapki skin aur body ka prakriti kaisa hai?";
+    optionsDiv.innerHTML = `
+        <button class="quiz-opt" onclick="nextStep('A')">Rukhi/Dry (Vata)</button>
+        <button class="quiz-opt" onclick="nextStep('B')">Sensitive/Garm (Pitta)</button>
+        <button class="quiz-opt" onclick="nextStep('C')">Soft/Oily (Kapha)</button>
+    `;
 }
 
 window.nextStep = function(val) {
     scores.push(val);
     const questionPara = document.getElementById('quiz-question');
     const optionsDiv = document.getElementById('quiz-options');
-    const quizUI = document.getElementById('quiz-ui');
-    
-    quizUI.style.display = 'block';
 
     if(currentStep === 1) {
         questionPara.innerText = "2. Aapka swabhava (nature) kaisa hai?";
@@ -65,7 +73,7 @@ window.nextStep = function(val) {
         optionsDiv.innerHTML = `
             <button class="quiz-opt" onclick="nextStep('A')">Thand zyada lagti hai</button>
             <button class="quiz-opt" onclick="nextStep('B')">Garmi bardasht nahi hoti</button>
-            <button class="quiz-opt" onclick="nextStep('C')">Moisture se pareshani</button>
+            <button class="quiz-opt" onclick="nextStep('C')">Moisture/Humidity se pareshani</button>
         `;
         currentStep++;
     } else {
@@ -73,52 +81,51 @@ window.nextStep = function(val) {
     }
 }
 
-// 4. Final Result & Method Selection
+// 4. Final Result (Added UI styling for better Vibe)
 function showFinalResult() {
     let finalDosha = (scores[0] === 'A') ? "VATA" : (scores[0] === 'B' ? "PITTA" : "KAPHA");
     const container = document.getElementById('dosha-quiz-container');
-    
+
     container.innerHTML = `
-        <div class="result-box divine-success">
-            <h2 class="gold-text">Result: ${finalDosha} Dominant</h2>
-            <p>Select a method to unlock your Frequency Chart:</p>
-            <div style="margin-top:20px;">
-                <button class="method-btn" onclick="loadDivineForm('Kundali', '${finalDosha}')">🔱 Via Kundali</button>
-                <button class="method-btn" onclick="loadDivineForm('Palmistry', '${finalDosha}')">✋ Via Palmistry</button>
-                <button class="method-btn" onclick="loadDivineForm('Numerology', '${finalDosha}')">🔢 Via Numerology</button>
+        <div class="result-box divine-success" style="padding:20px; text-align:center;">
+            <h2 class="gold-text" style="font-family:'Cinzel';">Dosha: ${finalDosha} Dominant</h2>
+            <p style="color:#ccc;">Select your preferred method to unlock your Frequency Chart:</p>
+            <div style="display:flex; flex-direction:column; gap:10px; margin-top:20px;">
+                <button class="quiz-opt" onclick="loadDivineForm('Kundali', '${finalDosha}')">🔱 Via Kundali (Most Accurate)</button>
+                <button class="quiz-opt" onclick="loadDivineForm('Palmistry', '${finalDosha}')">✋ Via Palmistry</button>
+                <button class="quiz-opt" onclick="loadDivineForm('Numerology', '${finalDosha}')">🔢 Via Numerology</button>
             </div>
         </div>
     `;
     document.getElementById('dosha-warning').style.display = 'block';
 }
 
-// 5. Dynamic Form with Firebase Trigger
+// 5. Dynamic Form (Added form-input styles in JS for safety)
 window.loadDivineForm = function(method, dosha) {
     const container = document.getElementById('dosha-quiz-container');
     let formHTML = `
-        <div class="magical-form-box">
-            <h3 class="gold-text">🔱 ${method} Analysis</h3>
-            <p style="font-size:0.8rem; margin-bottom:20px; color:#aaa;">Frequency Mapping for: <b>${dosha}</b></p>
+        <div class="magical-form-box" style="padding:20px;">
+            <h3 class="gold-text" style="font-family:'Cinzel';">🔱 ${method} Analysis</h3>
+            <p style="font-size:0.8rem; margin-bottom:20px; color:#aaa;">Mapping frequencies for your <b>${dosha}</b> profile.</p>
             <form id="healing-contact-form" onsubmit="handleFinalSubmit(event, '${method}', '${dosha}')">
-                <input type="text" id="cust_name" placeholder="Full Name" required class="form-input">
+                <input type="text" id="cust_name" placeholder="Purn Naam (Full Name)" required class="quiz-opt" style="text-align:left; background:rgba(255,255,255,0.05);">
+                <input type="tel" id="cust_whatsapp" placeholder="WhatsApp Number" required class="quiz-opt" style="text-align:left; background:rgba(255,255,255,0.05);">
     `;
 
     if (method === 'Kundali') {
-        formHTML += `<input type="date" id="cust_dob" required class="form-input">
-                     <input type="time" id="cust_time" required class="form-input">
-                     <input type="text" id="cust_place" placeholder="Birth Place" required class="form-input">`;
+        formHTML += `
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                <input type="date" id="cust_dob" required class="quiz-opt" style="font-size:0.8rem;">
+                <input type="time" id="cust_time" required class="quiz-opt" style="font-size:0.8rem;">
+            </div>
+            <input type="text" id="cust_place" placeholder="Birth Place (City/State)" required class="quiz-opt" style="text-align:left; background:rgba(255,255,255,0.05);">`;
     } else if (method === 'Palmistry') {
-        formHTML += `<input type="text" id="cust_loc" placeholder="Current Location" required class="form-input">
-                     <div class="palm-instruction">📸 Keep hand photos ready for WhatsApp.</div>`;
-    } else {
-        formHTML += `<input type="date" id="cust_dob" required class="form-input">
-                     <input type="text" id="cust_name_spell" placeholder="Name Spelling" required class="form-input">`;
+        formHTML += `<p style="color:var(--gold); font-size:0.8rem;">📸 Note: Please send clear photos of both palms on WhatsApp after submitting.</p>`;
     }
 
     formHTML += `
-                <input type="tel" id="cust_whatsapp" placeholder="WhatsApp Number" required class="form-input">
-                <textarea id="cust_issue" placeholder="Any specific issue?" class="form-input" style="height:80px;"></textarea>
-                <button type="submit" class="method-btn" style="background:var(--gold); color:#000;">INVOKE FREQUENCY MAPPING ➔</button>
+                <textarea id="cust_issue" placeholder="Aapki mukhya samasya? (Optional)" class="quiz-opt" style="height:80px; text-align:left; background:rgba(255,255,255,0.05);"></textarea>
+                <button type="submit" class="quiz-opt" style="background:var(--gold); color:#000; font-weight:bold; margin-top:20px;">INVOKE FREQUENCY MAPPING ➔</button>
             </form>
         </div>
     `;
@@ -126,10 +133,10 @@ window.loadDivineForm = function(method, dosha) {
     container.scrollIntoView({ behavior: 'smooth' });
 }
 
-// 6. The Bridge to Firebase
+// 6. Submit Logic
 function handleFinalSubmit(event, method, dosha) {
     event.preventDefault();
-    
+
     const formData = {
         name: document.getElementById('cust_name').value,
         whatsapp: document.getElementById('cust_whatsapp').value,
@@ -137,21 +144,23 @@ function handleFinalSubmit(event, method, dosha) {
         method: method,
         dosha: dosha,
         type: "Sound Healing Request",
-        timestamp: new Date().toISOString()
+        date: new Date().toLocaleDateString(),
+        timestamp: new Date().getTime()
     };
 
-    // Linking to your main firebase-handler
+    // Global bridge to firebase-handler.js
     if (window.handleSoundHealingSubmit) {
         window.handleSoundHealingSubmit(formData);
         document.getElementById('dosha-quiz-container').innerHTML = `
-            <div class="divine-success">
-                <h3 class="gold-text">Pranam, ${formData.name}!</h3>
-                <p>Aapka data Mahadev Astrologer MA ke pas surakshit pahunch gaya hai. Hamari team jald hi aapse sampark karegi.</p>
-                <div style="font-size:3rem; margin-top:20px;">🐚</div>
+            <div style="padding:40px; text-align:center;">
+                <div style="font-size:3rem; margin-bottom:20px;">🐚</div>
+                <h3 class="gold-text" style="font-family:'Cinzel';">Pranam, ${formData.name}!</h3>
+                <p>Aapka anurodh (request) Mahadev Astrologer MA tak pahunch gaya hai. Jald hi aapse WhatsApp par sampark kiya jayega.</p>
             </div>
         `;
     } else {
-        alert("System connecting... Please try again in a moment.");
+        console.error("Firebase Bridge Missing!");
+        alert("System busy. Please try again or contact via WhatsApp directly.");
     }
 }
 
