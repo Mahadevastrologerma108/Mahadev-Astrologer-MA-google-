@@ -1,5 +1,5 @@
 import { db, rtdb } from './firebase-config.js'; 
-import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 console.log("🔱 Mahadev Handler: Panchang & Appointment System Active.");
@@ -264,9 +264,79 @@ window.handleSoundHealingSubmit = async function(event, method, dosha) {
 };
 
 // ==========================================
-// 6. INITIALIZATION
+// 6. FEEDBACK & RATING SYSTEM (MODULAR)
+// ==========================================
+
+// A. Feedback Submit Karne ka Logic
+window.submitFeedback = async function() {
+    const feedbackText = document.getElementById('user-feedback').value;
+    const rating = window.selectedRating || 0;
+    const lang = localStorage.getItem('selectedLanguage') || 'en';
+
+    if (!feedbackText || rating === 0) {
+        alert(lang === 'hi' ? "कृपया रेटिंग और संदेश दोनों भरें।" : "Please provide both rating and feedback.");
+        return;
+    }
+
+    try {
+        await addDoc(collection(db, "feedbacks"), {
+            text: feedbackText,
+            rating: parseInt(rating),
+            timestamp: serverTimestamp(),
+            status: "approved"
+        });
+
+        alert(lang === 'hi' ? "आपका अनुभव साझा करने के लिए धन्यवाद! 🚩" : "Thank you for sharing your experience! 🚩");
+        
+        document.getElementById('user-feedback').value = "";
+        window.location.reload(); 
+    } catch (error) {
+        console.error("🔱 Feedback Error:", error);
+        alert("Error saving feedback.");
+    }
+};
+
+// B. Feedbacks Live Dikhane ka Logic
+window.fetchFeedbacks = async function() {
+    const container = document.getElementById('display-feedbacks');
+    if (!container) return;
+
+    try {
+        const q = query(collection(db, "feedbacks"), orderBy("timestamp", "desc"), limit(5));
+        const snapshot = await getDocs(q);
+
+        if (snapshot.empty) {
+            container.innerHTML = `<p style="color:#666;">Be the first to share your experience!</p>`;
+            return;
+        }
+
+        let html = "";
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            const stars = "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
+            html += `
+                <div class="feedback-item" style="margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px; animation: fadeIn 0.5s;">
+                    <div style="color: #f5c542; font-size: 1.2rem; letter-spacing:3px;">${stars}</div>
+                    <p style="font-size: 1rem; color:#eee; margin: 10px 0; font-style: italic;">"${data.text}"</p>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    } catch (err) {
+        console.error("🔱 Fetch Feedback Error:", err);
+    }
+};
+
+// ==========================================
+// 7. INITIALIZATION
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
     window.getPanchangFromFirebase(2026);
     window.applyFormLogic(); // Initialize form state
+    
+    // 🔱 Ye line add karni hai
+    if (typeof window.fetchFeedbacks === 'function') {
+        window.fetchFeedbacks(); 
+    }
 });
+
