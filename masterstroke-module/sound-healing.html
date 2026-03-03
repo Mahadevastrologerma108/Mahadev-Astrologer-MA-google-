@@ -3,94 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naad Brahma: The Divine Sound Science | Mahadev Astrologer MA</title>
+    <title>Naad Brahma: The Divine Sound Science | MAHADEV ASTROLOGER MA</title>
     <link rel="stylesheet" href="module-style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Extra safety for phone display */
+        .quiz-opt { display: block; width: 100%; margin: 10px 0; padding: 12px; background: rgba(245,197,66,0.1); border: 1px solid var(--gold); color: #fff; border-radius: 8px; cursor: pointer; }
+        .quiz-opt:hover { background: var(--gold); color: #000; }
+    </style>
 </head>
-<body class="module-body">
+<body class="module-body" style="background: #0a0a14; color: #fff; font-family: 'Poppins', sans-serif;">
 
-    <div id="header-placeholder"></div>
+    <header class="module-header" style="text-align: center; padding: 60px 20px;">
+        <div class="divine-symbol" style="font-size: 3rem;">🔱</div>
+        <h1 class="gold-text title-font" style="font-family: 'Cinzel'; color: #f5c542; letter-spacing: 2px;">Naad Brahma & Cosmic Resonance</h1>
+        <p class="subtitle" style="color: #aaa; font-style: italic;">"Music is not entertainment; it is the vibration of the Universe created by Mahadev's Damru."</p>
 
-    <header class="module-header">
-        <div class="divine-symbol">🔱</div>
-        <h1 class="gold-text title-font">Naad Brahma & Cosmic Resonance</h1>
-        <p class="subtitle">"Music is not entertainment; it is the vibration of the Universe created by Mahadev's Damru."</p>
-
-        <div class="intro-box">
-            <p>Vedic science ke anusar, universe ki har chiz ek specific frequency par vibrate karti hai. Hum **Mahadev Astrologer MA** mein usi 'Param-Naad' ko aapki Kundali, Birth-Time aur Tridosha se jodte hain. Raag aur Thaat sirf ek body hain, lekin 'Exact Frequency' uski aatma hai.</p>
-            <a href="naad-article.html" class="read-more-btn">🔱 READ SACRED ARTICLE (800+ Words)</a>
+        <div class="intro-box" style="max-width: 800px; margin: 30px auto; background: rgba(245,197,66,0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(245,197,66,0.1);">
+            <p>Vedic science ke anusar, universe ki har chiz ek specific frequency par vibrate karti hai. Hum **MAHADEV ASTROLOGER MA** mein usi 'Param-Naad' ko aapki Kundali aur Tridosha se jodte hain.</p>
+            <a href="#article-section" class="read-more-btn" style="color: #f5c542; text-decoration: none; font-weight: bold; border: 1px solid #f5c542; padding: 10px 20px; border-radius: 50px; display: inline-block; margin-top: 15px;">🔱 READ SACRED ARTICLE</a>
         </div>
     </header>
 
-    <main class="module-container">
+    <main class="module-container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
 
         <section class="dosha-section">
-            <h2 class="gold-text section-title">Tridosha: Health & Vibrational Balance</h2>
-            <p style="text-align: center; margin-bottom: 30px;">Vata, Pitta, aur Kapha—ye teenon sharir ki urja ko control karte hain. Inka balance hi asli swasthya hai.</p>
-
-            <div class="dosha-grid">
-                <div class="dosha-card vata"><h3>Vata</h3><p>Air & Space: Needs Grounding Earth Tones.</p></div>
-                <div class="dosha-card pitta"><h3>Pitta</h3><p>Fire & Water: Needs Cooling Liquid Melodies.</p></div>
-                <div class="dosha-card kapha"><h3>Kapha</h3><p>Earth & Water: Needs Uplifting High Beats.</p></div>
+            <h2 class="gold-text section-title" style="text-align: center; font-family: 'Cinzel';">Tridosha: Vibrational Balance</h2>
+            <div id="dosha-quiz-container" style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border: 1px solid rgba(245,197,66,0.2); text-align: center; margin: 30px 0;">
+                <button class="module-btn" id="start-quiz-btn" onclick="checkDoshaOptionB()" style="background: #f5c542; color: #000; border: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; cursor: pointer;">🔱 DISCOVER YOUR DOMINANT DOSHA</button>
+                
+                <div id="quiz-ui" style="display:none; margin-top: 20px;">
+                    <p id="quiz-question" style="font-size: 1.2rem; margin-bottom: 20px;"></p>
+                    <div id="quiz-options"></div>
+                </div>
             </div>
 
-           <div style="text-align: center; margin: 30px 0;">
-    <button class="module-btn" id="start-quiz-btn" onclick="checkDoshaOptionB()">🔱 DISCOVER YOUR DOMINANT DOSHA</button>
-</div>
-
-<div id="dosha-quiz-container" style="display:none; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; margin: 20px 0; border: 1px solid var(--gold); text-align: center;">
-    <h3 class="gold-text" id="quiz-header">Sahi vikalp chunein:</h3>
-    <div id="quiz-step">
-        <p id="quiz-question" style="font-size: 1.2rem; margin-bottom: 20px;">1. Aapka sharir kaisa hai?</p>
-        <div id="quiz-options">
-            <button class="quiz-opt" onclick="nextStep('A')">Dubla/Patla</button>
-            <button class="quiz-opt" onclick="nextStep('B')">Medium/Athletic</button>
-            <button class="quiz-opt" onclick="nextStep('C')">Bhari/Sthir</button>
-        </div>
-    </div>
-</div>
-
-<div id="dosha-warning" class="warning-note" style="display:none;">
-    <strong>⚠️ PARAM-AAVASHYAK SUCHNA:</strong> 
-    Yeh result ek prathmik anuman (initial estimate) hai. Sahi Dosha aur exact Healing Frequency ke liye **Kundali, Birth-Time aur Planetary Degrees** ka vishleshan anivarya hai. Galat frequency ka chayan mansik tanav paida kar sakta hai. Sahi maarg-darshan ke liye hamse paraamarsh (consult) karein.
-</div>
+            <div id="dosha-warning" class="warning-note" style="display:none; background: rgba(255,77,77,0.1); border: 1px dashed #ff4d4d; padding: 20px; border-radius: 10px; color: #eee; font-size: 0.9rem; margin-bottom: 40px;">
+                <strong style="color: #ff4d4d;">⚠️ PARAM-AAVASHYAK:</strong> Yeh result ek prathmik anuman hai. Sahi Healing Frequency ke liye Kundali vishleshan anivarya hai.
+            </div>
         </section>
 
         <section class="matrix-section">
-            <h2 class="gold-text section-title">Vedic Navgrah Resonance Matrix</h2>
-            <p style="text-align:center; font-size: 0.9rem; color: #888;">Note: Exact Hertz (Hz) is calculated based on Planetary Degrees and Rashi placement.</p>
-            <div class="table-wrapper">
-                <table class="resonance-table">
-                    <thead>
+            <h2 class="gold-text section-title" style="text-align: center; font-family: 'Cinzel';">Vedic Navgrah Resonance Matrix</h2>
+            <div class="table-wrapper" style="overflow-x: auto; margin: 30px 0;">
+                <table class="resonance-table" style="width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.3);">
+                    <thead style="background: rgba(245,197,66,0.1); color: #f5c542;">
                         <tr>
-                            <th>Navgrah (9 Planets)</th>
-                            <th>Vedic Raag</th>
-                            <th>Vedic Prahar</th>
-                            <th>Frequency Status</th>
+                            <th style="padding: 15px; border: 1px solid rgba(245,197,66,0.2);">Planet</th>
+                            <th style="padding: 15px; border: 1px solid rgba(245,197,66,0.2);">Vedic Raag</th>
+                            <th style="padding: 15px; border: 1px solid rgba(245,197,66,0.2);">Status</th>
                         </tr>
                     </thead>
-                    <tbody id="resonance-data-body">
-                        </tbody>
+                    <tbody id="resonance-data-body"></tbody>
                 </table>
             </div>
         </section>
 
-        <section class="ethics-section">
-            <div class="mystery-card warning-accent">
-                <h2 style="color: #ff4d4d; font-family: 'Cinzel'; margin-top:0;">Ethical Boundary & Safety Protocols</h2>
-                <ul class="ethics-list">
-                    <li><strong>Avoid Generic Healers:</strong> Bina Brahma-Muhurat aur Degree calculation ke music therapy sirf "Shor" (Noise) hai.</li>
-                    <li><strong>Frequency Toxicity:</strong> YouTube ki random frequencies aapke nervous system aur mental peace ko disturb kar sakti hain.</li>
-                    <li><strong>Our Divine Oath:</strong> Hum sirf Mahadev ke shastron (Ayurveda/Astrology) par adharit 'Sahi Jeevan Vidhi' hi pradan karte hain.</li>
-                </ul>
-                <p class="thenga-text">"Don't be a victim of experimental healing. Get your Authentic Sonic Birth Chart today."</p>
+        <section class="ethics-section" style="margin: 60px 0;">
+            <div class="mystery-card" style="border: 1px solid #ff4d4d; padding: 30px; border-radius: 20px; background: rgba(255,77,77,0.02);">
+                <h2 style="color: #ff4d4d; font-family: 'Cinzel'; margin: 0 0 20px 0;">Ethical Boundary & Safety</h2>
+                <p style="font-size: 0.9rem; color: #ccc;">YouTube ki random 432Hz ya 528Hz frequencies bina Kundali vishleshan ke sunna aapke nervous system ko disturb kar sakta hai. <b>MAHADEV ASTROLOGER MA</b> sirf shastrokt vidhi hi pradan karta hai.</p>
             </div>
         </section>
 
+        <section id="article-section" style="padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05);">
+            </section>
+
     </main>
 
-    <div id="footer-placeholder"></div>
+    <footer style="text-align: center; padding: 40px; color: #444; font-size: 0.8rem;">
+        &copy; 2026 MAHADEV ASTROLOGER MA
+    </footer>
 
     <script src="module-content.js"></script>
+    
+    <script type="module" src="../assets/js/firebase-handler.js"></script>
+
 </body>
 </html>
