@@ -5,20 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-key="sound_page_title">Naad Brahma | MAHADEV ASTROLOGER MA</title>
 
-    <link rel="stylesheet" href="../assets/css/style.css"> <link rel="stylesheet" href="module-style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="module-style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* FIX: Adding space for Nav Menu so Title doesn't overlap */
+        /* 🔱 CONTENT VISIBILITY FIX */
         .module-container { 
-            padding-top: 100px !important; /* Header ke liye jagah */
+            padding-top: 120px !important; 
             max-width: 1000px; 
-            margin: 0 auto; 
+            margin: 0 auto;
+            position: relative; /* Isse content gayab nahi hoga */
+            z-index: 1;
+            display: block !important; /* Forcefully showing content */
         }
         .quiz-opt { display: block; width: 100%; margin: 10px 0; padding: 12px; background: rgba(245,197,66,0.1); border: 1px solid #f5c542; color: #fff; border-radius: 8px; cursor: pointer; font-family: 'Poppins'; }
         .quiz-opt:hover { background: #f5c542; color: #000; }
         .sacred-article-content { line-height: 1.8; color: #ddd; font-family: 'Poppins'; margin-top: 30px; }
         .module-hero { text-align: center; padding: 40px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        table { width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.3); color: #fff; }
+        th, td { padding: 18px; border: 1px solid rgba(245,197,66,0.2); text-align: center; }
     </style>
 </head>
 <body class="module-body" style="background: #0a0a14; color: #fff; font-family: 'Poppins', sans-serif; margin: 0;">
@@ -29,7 +35,7 @@
 
         <section class="module-hero">
             <div class="divine-symbol" style="font-size: 3rem; margin-bottom: 10px;">🔱</div>
-            <h1 class="gold-text title-font" style="font-family: 'Cinzel'; color: #f5c542; letter-spacing: 2px; margin: 20px 0 0 0;" data-key="sound_hero_title"></h1>
+            <h1 class="gold-text title-font" style="font-family: 'Cinzel'; color: #f5c542; letter-spacing: 2px; margin: 0;" data-key="sound_hero_title"></h1>
             <p class="subtitle" style="color: #aaa; font-style: italic; margin-top: 10px;" data-key="sound_hero_quote"></p>
 
             <div class="intro-box" style="max-width: 800px; margin: 40px auto; background: rgba(245,197,66,0.05); padding: 30px; border-radius: 15px; border: 1px solid rgba(245,197,66,0.1);">
@@ -49,8 +55,29 @@
             </div>
         </section>
 
-        <section class="matrix-section">...</section>
-        <article id="article-section" class="sacred-article-content">...</article>
+        <section class="matrix-section" style="padding: 50px 0;">
+            <h2 class="gold-text section-title" style="text-align: center; font-family: 'Cinzel';" data-key="matrix_title"></h2>
+            <div class="table-wrapper" style="overflow-x: auto; margin-top: 30px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-key="col_planet"></th>
+                            <th data-key="col_raag"></th>
+                            <th data-key="col_status"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="resonance-data-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <article id="article-section" class="sacred-article-content" style="padding-bottom: 80px;">
+            <h2 class="gold-text" style="font-family: 'Cinzel'; text-align: center; font-size: 2rem; margin-bottom: 40px;" data-key="art_main_title"></h2>
+            <p data-key="art_para_1"></p>
+            <h3 style="color: #f5c542; margin-top: 40px;" data-key="art_sub_1"></h3>
+            <p data-key="art_para_2"></p>
+            <blockquote style="border-left: 4px solid #f5c542; padding: 20px; font-style: italic; margin: 50px 0; color: #f5c542; background: rgba(245,197,66,0.05);" data-key="art_footer_quote"></blockquote>
+        </article>
 
     </main>
 
