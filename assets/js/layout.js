@@ -1,8 +1,12 @@
+/**
+ * MAHADEV ASTROLOGER MA - Master Layout Engine
+ * Handles: Header/Footer, Folder Depth, Translation, & Feedback UI
+ */
+
 async function loadLayout() {
-    // Detect folder depth for GitHub Pages fix
     const path = window.location.pathname;
-    
-    // 🔱 UPDATE: Added '/masterstroke-module/' in the list
+
+    // Folder depth detection for GitHub Pages
     const isInsideFolder = path.includes('/panchang/') || 
                            path.includes('/latest-guide/') || 
                            path.includes('/pages/') || 
@@ -20,10 +24,10 @@ async function loadLayout() {
         if (hResp.ok && fResp.ok) {
             document.getElementById('header-placeholder').innerHTML = await hResp.text();
             document.getElementById('footer-placeholder').innerHTML = await fResp.text();
-            
-            initMenu(); // Re-bind menu events
-            if (window.updateUI) window.updateUI(); // Apply translations
-            fixAllLinks(prefix); // Adjust links for subfolders
+
+            initMenu(); 
+            if (window.updateUI) window.updateUI(); 
+            fixAllLinks(prefix); 
         }
     } catch (e) { console.error("Layout failed to load:", e); }
 }
@@ -63,6 +67,7 @@ window.updateUI = function() {
     const t = window.translations;
     if (!t || !t[lang]) return;
 
+    // Translate Text & Links
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
         const val = t[lang][key];
@@ -70,6 +75,13 @@ window.updateUI = function() {
             if (el.tagName === 'A' && !key.includes('nav')) { el.href = val; } 
             else { el.innerHTML = val; }
         }
+    });
+
+    // 🔱 Safe Addition: Translate Placeholders (For Feedback Box)
+    document.querySelectorAll('[data-placeholder-key]').forEach(el => {
+        const key = el.getAttribute('data-placeholder-key');
+        const val = t[lang][key];
+        if (val) el.placeholder = val;
     });
 
     const btnText = document.getElementById('lang-text');
@@ -81,5 +93,19 @@ window.toggleLanguage = function() {
     localStorage.setItem('selectedLang', current === 'hi' ? 'en' : 'hi');
     location.reload(); 
 };
+
+// --- 🔱 3. FEEDBACK STARS LOGIC (SAFE EVENT DELEGATION) ---
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('star')) {
+        const val = e.target.getAttribute('data-value');
+        window.selectedRating = val; 
+
+        document.querySelectorAll('.star').forEach(s => {
+            const sVal = s.getAttribute('data-value');
+            s.style.color = sVal <= val ? '#f5c542' : '#888';
+            s.innerText = sVal <= val ? '★' : '☆';
+        });
+    }
+});
 
 document.addEventListener('DOMContentLoaded', loadLayout);
