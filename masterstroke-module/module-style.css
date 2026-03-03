@@ -5,92 +5,115 @@
     --gold-glow: rgba(245, 197, 66, 0.4);
     --card-bg: rgba(255, 255, 255, 0.05);
     --body-bg: #0a0a14;
+    --error-red: #ff4d4d;
 }
 
-/* Form Elements */
-.form-input {
+/* 🔱 Form Elements Refined */
+.form-input, .quiz-opt {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(245, 197, 66, 0.3);
-    border-radius: 8px; /* Slightly smoother */
+    padding: 14px 20px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(245, 197, 66, 0.2);
+    border-radius: 12px; /* Smoother Boxy look for inputs */
     color: #fff;
     font-family: 'Poppins', sans-serif;
     font-size: 0.95rem;
     box-sizing: border-box;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.form-input:focus {
-    border-color: var(--gold);
-    outline: none;
-    box-shadow: 0 0 12px var(--gold-glow);
-    background: rgba(245, 197, 66, 0.02);
-}
-
-/* Method Selection Buttons */
-.quiz-opt, .method-btn {
-    width: 100%;
-    margin: 10px 0;
-    padding: 14px 20px;
+/* 🔱 Interactive Buttons (Pill Shape) */
+button.quiz-opt, .method-btn {
+    border-radius: 50px; 
     background: var(--card-bg);
     border: 1px solid var(--gold);
-    color: #fff;
-    border-radius: 50px; /* Modern Pill Shape */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    text-align: center;
+    margin-top: 10px;
 }
 
-.quiz-opt:hover, .method-btn:hover {
+button.quiz-opt:hover, .method-btn:hover {
     background: var(--gold);
     color: #000;
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px var(--gold-glow);
+    box-shadow: 0 8px 20px var(--gold-glow);
 }
 
-/* Special Instructions Box */
-.palm-instruction {
-    background: rgba(245, 197, 66, 0.08);
-    padding: 15px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    font-size: 0.85rem;
-    line-height: 1.5;
-    color: #eee;
-    border: 1px dashed var(--gold);
-    animation: fadeIn 0.5s ease;
+/* 🔱 Active State for Quiz Options */
+.quiz-opt.active {
+    background: var(--gold);
+    color: #000;
 }
 
-/* Table Design for Navgrah Matrix */
+/* 🔱 Table Styling (Navgrah Matrix) */
 .resonance-table {
     width: 100%;
-    border-spacing: 0;
-    margin: 20px 0;
-    border: 1px solid rgba(245, 197, 66, 0.1);
+    border-collapse: collapse;
+    margin: 25px 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
 }
 
-.resonance-table td, .resonance-table th {
-    padding: 15px;
+.resonance-table th {
+    background: rgba(245, 197, 66, 0.1);
+    color: var(--gold);
+    font-family: 'Cinzel';
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 18px 15px;
+    font-size: 0.9rem;
+    border-bottom: 2px solid rgba(245, 197, 66, 0.2);
 }
 
-/* Success Message Animation */
+.resonance-table td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* 🔱 Custom Scrollbar for Table (Mobile) */
+.table-wrapper {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent;
+}
+
+/* 🔱 Form Grid Layout */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* 🔱 Instructions & Success */
+.palm-instruction {
+    background: rgba(245, 197, 66, 0.05);
+    padding: 15px;
+    border-radius: 12px;
+    margin: 15px 0;
+    font-size: 0.85rem;
+    color: #f5c542;
+    border: 1px dashed var(--gold);
+    text-align: center;
+}
+
 .divine-success {
-    animation: divineFade 1.2s ease-out;
+    text-align: center;
+    padding: 30px;
+    animation: divineFade 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes divineFade {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive Tweaks for Phone */
+/* 🔱 Responsive Adjustments */
 @media (max-width: 600px) {
-    .module-header h1 { font-size: 1.8rem; }
-    .form-input { padding: 14px; } /* Larger touch area */
+    .form-grid { grid-template-columns: 1fr; }
+    .resonance-table td, .resonance-table th { padding: 12px 10px; font-size: 0.8rem; }
 }
