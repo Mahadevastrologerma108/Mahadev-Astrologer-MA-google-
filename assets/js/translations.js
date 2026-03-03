@@ -196,6 +196,20 @@ pan_disclaimer: "* This Panchang is based on Vedic mathematics. For accurate per
 "art_sub_2": "2. YouTube Frequencies vs Authentic Vedic Sound",
 "art_para_3": "Random frequencies can disturb your nervous system. Selection depends on your planetary degrees.",
 "art_footer_quote": "\"Sound is the medicine of the future, provided the dosage is calculated by the stars.\"",
+
+// ===== SOUND MODULE KEYS (EN) =====
+status_locked: "🔐 LOCKED",
+status_unlocked: "🔓 UNLOCKED",
+raag_sun: "Deepak / Bilawal",
+raag_moon: "Khamaj / Bhairavi",
+raag_mars: "Bhairav / Marwa",
+raag_mercury: "Sarang / Megh",
+raag_jupiter: "Darbari / Todi",
+raag_venus: "Yaman / Khamaj",
+raag_saturn: "Bhimpalasi / Malkauns",
+raag_rahu: "Chhayanat",
+raag_ketu: "Lalit",
+
     },
 
     hi: {
@@ -250,7 +264,7 @@ pan_disclaimer: "* This Panchang is based on Vedic mathematics. For accurate per
         testi_title: "🔱 भक्त जनों के अनुभव", feedback_heading: "आपकी प्रतिक्रिया हमारे लिए महत्वपूर्ण है",
 
         // ===== PLANETS & HOUSES =====
-        planet_sun: "सूर्य देव", planet_moon: "चंद्र देव", planet_mars: "मंगल देव", planet_mercury: "बुध देव", planet_jupiter: "बृहस्पति (गुरु)", planet_venus: "शुक्र देव", planet_saturn: "शनi देव", planet_rahu: "राहु ग्रह", planet_ketu: "केतु ग्रह",
+        planet_sun: "सूर्य देव", planet_moon: "चंद्र देव", planet_mars: "मंगल देव", planet_mercury: "बुध देव", planet_jupiter: "बृहस्पति (गुरु)", planet_venus: "शुक्र देव", planet_saturn: "शनि देव", planet_rahu: "राहु ग्रह", planet_ketu: "केतु ग्रह",
         house_1: "प्रथम भाव (तनु)", house_2: "द्वितीय भाव (धन)", house_3: "तृतीय भाव (सहज)", house_4: "चतुर्थ भाव (सुख)", house_5: "पंचम भाव (सुत)", house_6: "षष्ठ भाव (रिपु)", house_7: "सप्तम भाव (जाया)", house_8: "अष्टम भाव (आयु)", house_9: "नवम भाव (भाग्य)", house_10: "दशम भाव (कर्म)", house_11: "एकादश भाव (आय)", house_12: "द्वादश भाव (व्यय)",
 
         // ===== NAKSHATRA & YOGA =====
@@ -386,5 +400,19 @@ pan_disclaimer: "* यह पंचांग वैदिक गणित पर
 "art_sub_2": "2. यूट्यूब फ्रीक्वेंसी बनाम प्रामाणिक वैदिक ध्वनि",
 "art_para_3": "यूट्यूब की रैंडम फ्रीक्वेंसी आपके तंत्रिका तंत्र (Nervous System) को परेशान कर सकती हैं।",
 "art_footer_quote": "“ध्वनि भविष्य की औषधि है, बशर्ते उसकी खुराक सितारों द्वारा तय की गई हो।”",
+
+// 🔱 ADD THESE MISSING KEYS FOR SOUND MODULE
+status_locked: "🔐 लॉक है",
+status_unlocked: "🔓 अनलॉक",
+raag_sun: "दीपक / बिलावल",
+raag_moon: "खमाज / भैरवी",
+raag_mars: "भैरव / मारवा",
+raag_mercury: "सारंग / मेघ",
+raag_jupiter: "दरबारी / तोड़ी",
+raag_venus: "यमन / खमाज",
+raag_saturn: "भीमपलासी / मालकौंस",
+raag_rahu: "छायानट",
+raag_ketu: "ललित",
+
     }
 };
