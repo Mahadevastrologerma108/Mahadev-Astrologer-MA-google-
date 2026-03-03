@@ -58,47 +58,61 @@ function loadTable() {
     }
 }
 
-// 3. Quiz Navigation
+// 3. 🔱 Bilingual Quiz Navigation (Logic by Gemini)
 window.checkDoshaOptionB = function() {
+    // 1. Pehle pata karo user ne kaunsi language choose ki hai
+    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    const t = translations[lang]; // Translation data uthao
+
+    // 2. Buttons aur UI set karo
     const startBtn = document.getElementById('start-quiz-btn');
     if(startBtn) startBtn.style.display = 'none';
-    
+
     const quizUI = document.getElementById('quiz-ui');
     if(quizUI) quizUI.style.display = 'block';
 
     const questionPara = document.getElementById('quiz-question');
     const optionsDiv = document.getElementById('quiz-options');
 
-    questionPara.innerText = "1. Aapki skin aur body ka prakriti kaisa hai?";
+    // 3. Pehla Sawal (Q1) Translation se load karo
+    questionPara.innerText = t.quiz_q1;
     optionsDiv.innerHTML = `
-        <button class="quiz-opt" onclick="nextStep('A')">Rukhi/Dry (Vata)</button>
-        <button class="quiz-opt" onclick="nextStep('B')">Sensitive/Garm (Pitta)</button>
-        <button class="quiz-opt" onclick="nextStep('C')">Soft/Oily (Kapha)</button>
+        <button class="quiz-opt" onclick="nextStep('A')">${t.quiz_q1_a}</button>
+        <button class="quiz-opt" onclick="nextStep('B')">${t.quiz_q1_b}</button>
+        <button class="quiz-opt" onclick="nextStep('C')">${t.quiz_q1_c}</button>
     `;
 }
 
 window.nextStep = function(val) {
-    scores.push(val);
+    scores.push(val); // User ka choice save karo
+    
+    // Phir se language check karo
+    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    const t = translations[lang];
+    
     const questionPara = document.getElementById('quiz-question');
     const optionsDiv = document.getElementById('quiz-options');
 
     if(currentStep === 1) {
-        questionPara.innerText = "2. Aapka swabhava (nature) kaisa hai?";
+        // Dusra Sawal (Q2) load karo
+        questionPara.innerText = t.quiz_q2;
         optionsDiv.innerHTML = `
-            <button class="quiz-opt" onclick="nextStep('A')">Chanchal (Restless)</button>
-            <button class="quiz-opt" onclick="nextStep('B')">Tez/Gusse wala (Fiery)</button>
-            <button class="quiz-opt" onclick="nextStep('C')">Shant (Calm/Stable)</button>
+            <button class="quiz-opt" onclick="nextStep('A')">${t.quiz_q2_a}</button>
+            <button class="quiz-opt" onclick="nextStep('B')">${t.quiz_q2_b}</button>
+            <button class="quiz-opt" onclick="nextStep('C')">${t.quiz_q2_c}</button>
         `;
         currentStep++;
     } else if(currentStep === 2) {
-        questionPara.innerText = "3. Mausam ka asar aap par kaisa hota hai?";
+        // Tisra Sawal (Q3) load karo
+        questionPara.innerText = t.quiz_q3;
         optionsDiv.innerHTML = `
-            <button class="quiz-opt" onclick="nextStep('A')">Thand zyada lagti hai</button>
-            <button class="quiz-opt" onclick="nextStep('B')">Garmi bardasht nahi hoti</button>
-            <button class="quiz-opt" onclick="nextStep('C')">Moisture/Humidity se pareshani</button>
+            <button class="quiz-opt" onclick="nextStep('A')">${t.quiz_q3_a}</button>
+            <button class="quiz-opt" onclick="nextStep('B')">${t.quiz_q3_b}</button>
+            <button class="quiz-opt" onclick="nextStep('C')">${t.quiz_q3_c}</button>
         `;
         currentStep++;
     } else {
+        // Saare sawal khatam, result dikhao
         showFinalResult();
     }
 }
