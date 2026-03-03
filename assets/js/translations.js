@@ -214,6 +214,21 @@ quiz_q3_a: "Sensitive to Cold",
 quiz_q3_b: "Sensitive to Heat", 
 quiz_q3_c: "Sensitive to Humidity",
 
+// --- Quiz Result & Form ---
+        "res_title": "Dominant Dosha:",
+        "res_subtitle": "Select your preferred method to unlock your Frequency Chart:",
+        "btn_kundali": "Via Kundali (Most Accurate)",
+        "btn_palm": "Via Palmistry",
+        "btn_num": "Via Numerology",
+        "form_analysis": "Analysis",
+        "form_mapping": "Mapping frequencies for your",
+        "ph_name": "Full Name",
+        "ph_whatsapp": "WhatsApp Number",
+        "ph_place": "Birth Place (City/State)",
+        "ph_issue": "Main Health/Life Concern? (Optional)",
+        "btn_submit_form": "INVOKE FREQUENCY MAPPING ➔",
+        "alert_success": "🔱 Request Sent! We will contact you on WhatsApp.",
+
 // ===== SOUND MODULE KEYS (EN) =====
 status_locked: "🔐 LOCKED",
 status_unlocked: "🔓 UNLOCKED",
@@ -433,6 +448,21 @@ quiz_q3: "3. मौसम का आप पर क्या प्रभाव �
 quiz_q3_a: "अधिक शीत (ठंड) लगती है", 
 quiz_q3_b: "गर्मी सहन नहीं होती", 
 quiz_q3_c: "नमी/उमस से परेशानी",
+
+// --- Quiz Result & Form ---
+        "res_title": "प्रमुख दोष:",
+        "res_subtitle": "अपना फ्रीक्वेंसी चार्ट प्राप्त करने के लिए अपनी पसंदीदा विधि चुनें:",
+        "btn_kundali": "कुण्डली द्वारा (सबसे सटीक)",
+        "btn_palm": "हस्तरेखा द्वारा",
+        "btn_num": "अंक ज्योतिष द्वारा",
+        "form_analysis": "विश्लेषण",
+        "form_mapping": "आपके प्रोफाइल के लिए फ्रीक्वेंसी मैपिंग:",
+        "ph_name": "पूरा नाम",
+        "ph_whatsapp": "व्हाट्सएप नंबर",
+        "ph_place": "जन्म स्थान (शहर/राज्य)",
+        "ph_issue": "आपकी मुख्य समस्या? (वैकल्पिक)",
+        "btn_submit_form": "फ्रीक्वेंसी मैपिंग शुरू करें ➔",
+        "alert_success": "🔱 अनुरोध भेज दिया गया है! हम आपसे व्हाट्सएप पर संपर्क करेंगे।",
 
 // 🔱 ADD THESE MISSING KEYS FOR SOUND MODULE
 status_locked: "🔐 लॉक है",
