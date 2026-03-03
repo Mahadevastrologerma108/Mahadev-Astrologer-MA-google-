@@ -1,13 +1,12 @@
 /**
  * MAHADEV ASTROLOGER MA - Sound Module Logic
- * Folder: masterstroke-module/
- * Fixed: Variable consistency (selectedLang) & Delay Loading
+ * Fixed: Variable consistency (selectedLang), Bilingual Result & Form
  */
 
 let currentStep = 1;
 let scores = [];
 
-// 1. Navgrah Database (Mapping with Translation Keys)
+// 1. Navgrah Database
 const soundDatabase = {
     planets: [
         { pKey: "planet_sun", rKey: "raag_sun", sKey: "status_locked", eKey: "Soul Power" },
@@ -22,16 +21,13 @@ const soundDatabase = {
     ]
 };
 
-// 2. Load Table (With Delay and Correct Variable)
+// 2. Load Table (Consistency Fix)
 function loadTable() {
     const tableBody = document.getElementById('resonance-data-body');
-    
-    // 🔱 FIXED: layout.js uses 'selectedLang', so we use it here too
+    // 🔱 FIXED: Always use 'selectedLang' to match your layout.js
     const lang = localStorage.getItem('selectedLang') || 'hi';
-    
-    // Safety check: wait if translations aren't loaded yet
+
     if (!window.translations || !window.translations[lang]) {
-        console.log("🔱 Waiting for translations...");
         setTimeout(loadTable, 100);
         return;
     }
@@ -58,23 +54,18 @@ function loadTable() {
     }
 }
 
-// 3. 🔱 Bilingual Quiz Navigation (Logic by Gemini)
+// 3. 🔱 Bilingual Quiz Navigation
 window.checkDoshaOptionB = function() {
-    // 1. Pehle pata karo user ne kaunsi language choose ki hai
-    const lang = localStorage.getItem('selectedLanguage') || 'hi';
-    const t = translations[lang]; // Translation data uthao
+    const lang = localStorage.getItem('selectedLang') || 'hi'; // FIXED variable
+    const t = translations[lang];
 
-    // 2. Buttons aur UI set karo
     const startBtn = document.getElementById('start-quiz-btn');
     if(startBtn) startBtn.style.display = 'none';
 
-    const quizUI = document.getElementById('quiz-ui');
-    if(quizUI) quizUI.style.display = 'block';
-
+    document.getElementById('quiz-ui').style.display = 'block';
     const questionPara = document.getElementById('quiz-question');
     const optionsDiv = document.getElementById('quiz-options');
 
-    // 3. Pehla Sawal (Q1) Translation se load karo
     questionPara.innerText = t.quiz_q1;
     optionsDiv.innerHTML = `
         <button class="quiz-opt" onclick="nextStep('A')">${t.quiz_q1_a}</button>
@@ -84,17 +75,13 @@ window.checkDoshaOptionB = function() {
 }
 
 window.nextStep = function(val) {
-    scores.push(val); // User ka choice save karo
-    
-    // Phir se language check karo
-    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    scores.push(val);
+    const lang = localStorage.getItem('selectedLang') || 'hi'; // FIXED variable
     const t = translations[lang];
-    
     const questionPara = document.getElementById('quiz-question');
     const optionsDiv = document.getElementById('quiz-options');
 
     if(currentStep === 1) {
-        // Dusra Sawal (Q2) load karo
         questionPara.innerText = t.quiz_q2;
         optionsDiv.innerHTML = `
             <button class="quiz-opt" onclick="nextStep('A')">${t.quiz_q2_a}</button>
@@ -103,7 +90,6 @@ window.nextStep = function(val) {
         `;
         currentStep++;
     } else if(currentStep === 2) {
-        // Tisra Sawal (Q3) load karo
         questionPara.innerText = t.quiz_q3;
         optionsDiv.innerHTML = `
             <button class="quiz-opt" onclick="nextStep('A')">${t.quiz_q3_a}</button>
@@ -112,39 +98,43 @@ window.nextStep = function(val) {
         `;
         currentStep++;
     } else {
-        // Saare sawal khatam, result dikhao
         showFinalResult();
     }
 }
 
-// 4. Final Result
+// 4. Final Result (Bilingual Fix)
 function showFinalResult() {
+    const lang = localStorage.getItem('selectedLang') || 'hi';
+    const t = translations[lang];
     let finalDosha = (scores[0] === 'A') ? "VATA" : (scores[0] === 'B' ? "PITTA" : "KAPHA");
     const container = document.getElementById('dosha-quiz-container');
 
     container.innerHTML = `
         <div class="result-box divine-success" style="padding:20px; text-align:center;">
-            <h2 class="gold-text" style="font-family:'Cinzel';">Dosha: ${finalDosha} Dominant</h2>
-            <p style="color:#ccc;">Select your preferred method to unlock your Frequency Chart:</p>
+            <h2 class="gold-text" style="font-family:'Cinzel';">${t.res_title} ${finalDosha}</h2>
+            <p style="color:#ccc;">${t.res_subtitle}</p>
             <div style="display:flex; flex-direction:column; gap:10px; margin-top:20px;">
-                <button class="quiz-opt" onclick="loadDivineForm('Kundali', '${finalDosha}')">🔱 Via Kundali (Most Accurate)</button>
-                <button class="quiz-opt" onclick="loadDivineForm('Palmistry', '${finalDosha}')">✋ Via Palmistry</button>
-                <button class="quiz-opt" onclick="loadDivineForm('Numerology', '${finalDosha}')">🔢 Via Numerology</button>
+                <button class="quiz-opt" onclick="loadDivineForm('Kundali', '${finalDosha}')">🔱 ${t.btn_kundali}</button>
+                <button class="quiz-opt" onclick="loadDivineForm('Palmistry', '${finalDosha}')">✋ ${t.btn_palm}</button>
+                <button class="quiz-opt" onclick="loadDivineForm('Numerology', '${finalDosha}')">🔢 ${t.btn_num}</button>
             </div>
         </div>
     `;
 }
 
-// 5. Dynamic Form 
+// 5. Dynamic Form (Bilingual Placeholders)
 window.loadDivineForm = function(method, dosha) {
+    const lang = localStorage.getItem('selectedLang') || 'hi';
+    const t = translations[lang];
     const container = document.getElementById('dosha-quiz-container');
+
     let formHTML = `
         <div class="magical-form-box" style="padding:20px;">
-            <h3 class="gold-text" style="font-family:'Cinzel';">🔱 ${method} Analysis</h3>
-            <p style="font-size:0.8rem; margin-bottom:20px; color:#aaa;">Mapping frequencies for your <b>${dosha}</b> profile.</p>
+            <h3 class="gold-text" style="font-family:'Cinzel';">🔱 ${method} ${t.form_analysis}</h3>
+            <p style="font-size:0.8rem; margin-bottom:20px; color:#aaa;">${t.form_mapping} <b>${dosha}</b> profile.</p>
             <form id="healing-contact-form" onsubmit="handleFinalSubmit(event, '${method}', '${dosha}')">
-                <input type="text" id="cust_name" placeholder="Purn Naam (Full Name)" required class="quiz-opt" style="text-align:left; background:rgba(255,255,255,0.05);">
-                <input type="tel" id="cust_whatsapp" placeholder="WhatsApp Number" required class="quiz-opt" style="text-align:left; background:rgba(255,255,255,0.05);">
+                <input type="text" id="cust_name" placeholder="${t.ph_name}" required class="quiz-opt" style="text-align:left; background:rgba(255,255,255,0.05);">
+                <input type="tel" id="cust_whatsapp" placeholder="${t.ph_whatsapp}" required class="quiz-opt" style="text-align:left; background:rgba(255,255,255,0.05);">
     `;
 
     if (method === 'Kundali') {
@@ -153,12 +143,12 @@ window.loadDivineForm = function(method, dosha) {
                 <input type="date" id="cust_dob" required class="quiz-opt" style="font-size:0.8rem;">
                 <input type="time" id="cust_time" required class="quiz-opt" style="font-size:0.8rem;">
             </div>
-            <input type="text" id="cust_place" placeholder="Birth Place (City/State)" required class="quiz-opt" style="text-align:left; background:rgba(255,255,255,0.05);">`;
+            <input type="text" id="cust_place" placeholder="${t.ph_place}" required class="quiz-opt" style="text-align:left; background:rgba(255,255,255,0.05);">`;
     }
 
     formHTML += `
-                <textarea id="cust_issue" placeholder="Aapki mukhya samasya? (Optional)" class="quiz-opt" style="height:80px; text-align:left; background:rgba(255,255,255,0.05);"></textarea>
-                <button type="submit" class="quiz-opt" style="background:#f5c542; color:#000; font-weight:bold; margin-top:20px;">INVOKE FREQUENCY MAPPING ➔</button>
+                <textarea id="cust_issue" placeholder="${t.ph_issue}" class="quiz-opt" style="height:80px; text-align:left; background:rgba(255,255,255,0.05);"></textarea>
+                <button type="submit" class="quiz-opt" style="background:#f5c542; color:#000; font-weight:bold; margin-top:20px;">${t.btn_submit_form}</button>
             </form>
         </div>
     `;
@@ -166,28 +156,17 @@ window.loadDivineForm = function(method, dosha) {
     container.scrollIntoView({ behavior: 'smooth' });
 }
 
-// 6. Submit Logic (Bridge to firebase-handler.js)
+// 6. Submit Logic
 window.handleFinalSubmit = function(event, method, dosha) {
     event.preventDefault();
-    const formData = {
-        name: document.getElementById('cust_name').value,
-        whatsapp: document.getElementById('cust_whatsapp').value,
-        issue: document.getElementById('cust_issue').value || "NA",
-        method: method,
-        dosha: dosha,
-        type: "Sound Healing Request",
-        timestamp: new Date().getTime()
-    };
-
-    // Calling the function from firebase-handler.js
     if (window.handleSoundHealingSubmit) {
         window.handleSoundHealingSubmit(event, method, dosha);
     } else {
-        alert("🔱 Request Sent! We will contact you on WhatsApp.");
+        const lang = localStorage.getItem('selectedLang') || 'hi';
+        alert(translations[lang].alert_success);
     }
 }
 
-// 🔱 FINAL CALL: 500ms Delay to ensure translations are ready
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(loadTable, 500);
 });
