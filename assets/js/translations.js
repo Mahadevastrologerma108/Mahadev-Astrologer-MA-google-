@@ -17,6 +17,7 @@ window.translations = {
 
         ph_name_input: "Your Full Name", ph_wa_input: "WhatsApp Number", ph_city_input: "Birth City/Place",
         ph_m_name_input: "Male Name", ph_f_name_input: "Female Name", btn_submit: "Invoke Divine Guidance",
+        rel_label: "Information for?", rel_self: "Self", rel_father: "Father", rel_mother: "Mother", rel_spouse: "Spouse", rel_child: "Child", rel_other: "Other / Friend",
 
         title_terms: "Terms & Conditions | Mahadev Astrologer MA",
         terms_title: "Terms & Conditions",
@@ -260,7 +261,8 @@ raag_ketu: "Lalit",
         player_title: "दिव्य संगीत 🔱", player_subtitle: "शीघ्र आ रहा है: पार्थ की आवाज़ में हीलिंग संगीत", player_msg: "प्रभु की कृपा से, दिव्य संगीत जल्द ही प्रकट होगा! 🚩",
 
         ph_name_input: "आपका पूरा नाम", ph_wa_input: "व्हाट्सएप नंबर", ph_city_input: "जन्म स्थान / शहर",
-        ph_m_name_input: "पुरुष का नाम", ph_f_name_input: "महिला का नाम", btn_submit: "दैवीय मार्गदर्शन प्राप्त करें",        
+        ph_m_name_input: "पुरुष का नाम", ph_f_name_input: "महिला का नाम", btn_submit: "दैवीय मार्गदर्शन प्राप्त करें", 
+        rel_label: "किसके लिए जानकारी चाहिए?", rel_self: "स्वयं (मेरे लिए)", rel_father: "पिता जी", rel_mother: "माता जी", rel_spouse: "पति / पत्नी", rel_child: "बच्चा", rel_other: "अन्य / मित्र",
 
         site_title: "Mahadev Astrologer MA | दिव्य वैदिक ज्ञान",
         btn_install: "Mahadev Astrologer MA ऐप इंस्टॉल करें",
