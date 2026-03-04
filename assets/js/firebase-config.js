@@ -1,7 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-// 🆕 Realtime Database ke liye ye import zaroori hai
-import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+// 🔱 Login (Authentication) ke liye ye do zaroori hain
+import { getAuth, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 // 🔱 1. NORMAL PROJECT (Appointments & Telegram Notifications)
 const normalConfig = {
@@ -24,15 +25,18 @@ const studioConfig = {
   appId: "1:5515803520:web:20a1cf63c84e73006cdf65"
 };
 
-// Dono Projects ko Initialize karein
+// --- Dono Projects ko Initialize karein ---
 const normalApp = initializeApp(normalConfig);
 const studioApp = initializeApp(studioConfig, "studioApp");
 
-// --- Exports ---
+// --- Firestore Instances ---
 const db = getFirestore(normalApp);        // Appointments ke liye
 const dbStudio = getFirestore(studioApp);  // Studio ke liye
 
-// 🆕 Panchang ke liye Realtime Database instance
-const rtdb = getDatabase(normalApp); 
+// 🔱 Login (Authentication) Engine Setup
+const auth = getAuth(normalApp);           // User Login control karne ke liye
+const provider = new GoogleAuthProvider(); // Google service se jodne ke liye
 
-export { db, dbStudio, rtdb }; // rtdb ko bhi export kar rahe hain
+// --- Final Exports ---
+// Ab hum rtdb nahi balki auth aur provider export kar rahe hain
+export { db, dbStudio, auth, provider };
