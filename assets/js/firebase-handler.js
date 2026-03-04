@@ -1,8 +1,18 @@
-import { db, rtdb } from './firebase-config.js'; 
-import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+// 1. Firebase Config se zaruri instances mangwayein
+// rtdb hata diya gaya hai, auth aur provider jodd diya gaya hai
+import { db, dbStudio, auth, provider } from './firebase-config.js'; 
 
-console.log("🔱 Mahadev Handler: Panchang & Appointment System Active.");
+// 2. Firestore ke liye zaruri tools (Appointments ke liye)
+import { 
+    collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit 
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// 3. 🆕 Auth (Login) ke liye zaruri tools
+import { 
+    signInWithPopup, onAuthStateChanged, signOut 
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+console.log("🔱 Mahadev Handler: Login & Appointment System Active.");
 
 // ==========================================
 // 1. CONFIGURATION (TELEGRAM BOT)
