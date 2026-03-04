@@ -20,104 +20,9 @@ console.log("🔱 Mahadev Handler: Login & Appointment System Active.");
 const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
 const CHAT_ID = '2032242977'; 
 
-// ==========================================
-// 2. PANCHANG ENGINE (FIREBASE FETCH)
-// ==========================================
-window.getPanchangFromFirebase = async function(year) {
-    try {
-        const snapshot = await get(ref(rtdb, `panchang/${year}`)); 
-        if (snapshot.exists()) {
-            const data = snapshot.val();
-            window = data; 
-
-            await window.updatePanchangDisplay(data);
-            
-            if (typeof window.renderCalendar === 'function') window.renderCalendar();
-            window.updateMonthlyEvents(); 
-            if (window.applyTranslations) window.applyTranslations();
-        }
-    } catch (e) { 
-        console.error("🔱 Panchang Fetch Error:", e); 
-    }
-};
 
 // ==========================================
-// 3. UI UPDATE (TOP CARDS & CHOGHADIYA)
-// ==========================================
-window.updatePanchangDisplay = async function(yearlyData, customDate = null) {
-    const today = new Date();
-    // Default format: MM-DD (e.g., "02-21")
-    const dateKey = customDate || `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-    const d = yearlyData;
-    
-    if (!d) return;
-
-    // Safe extraction helper (supports both {hi: "..."} and direct string)
-    const safeVal = (obj) => obj?.hi || obj || "--";
-
-    const map = {
-        'pan-tithi': safeVal(d.tithi), 'pan-nak': safeVal(d.nakshatra),
-        'pan-yoga': safeVal(d.yoga), 'pan-karana': safeVal(d.karan),
-        'pan-paksha': safeVal(d.paksha), 'pan-sun': d.sun ? `${d.sun.rise} / ${d.sun.set}` : "--",
-        'pan-moon': d.moon?.rise || d.moon || "--", 'pan-muh': d.muhurat?.abhijit || "--",
-        'pan-rahu': d.muhurat?.rahukaal || "--"
-    };
-
-    Object.entries(map).forEach(() => {
-        const el = document.getElementById(id);
-        if (el) el.innerText = val;
-    });
-
-    const fillTable = (id, cData) => {
-        const body = document.getElementById(id);
-        if (body && cData) {
-            body.innerHTML = Object.entries(cData).map(() => 
-                `<tr>
-                    <td style="color:var(--gold); font-weight:bold;">${time}</td>
-                    <td>${name}</td>
-                    <td class="nature-shubh" style="font-size:0.8em;">Shubh</td>
-                </tr>`
-            ).join('');
-        }
-    };
-
-    if (d.choghadiya) {
-        fillTable('day-chaug-body', d.choghadiya.day);
-        fillTable('night-chaug-body', d.choghadiya.night);
-    }
-};
-
-// ==========================================
-// 4. MONTHLY EVENTS (BOTTOM LIST)
-// ==========================================
-window.updateMonthlyEvents = function() {
-    const container = document.getElementById('events-list');
-    const eventsData = window.YEARLY_EVENTS_2026;
-    if (!container || !eventsData) return;
-
-    const currentM = String((window.currentMonth !== undefined ? window.currentMonth : new Date().getMonth()) + 1).padStart(2, '0');
-    const currentY = window.currentYear || 2026;
-    let html = "";
-
-    Object.entries(eventsData).sort().forEach(() => {
-        if (dateKey.startsWith(`${currentY}-${currentM}`)) {
-            const dayNum = dateKey.split('-');
-            html += `
-                <div class="event-item-card">
-                    <div class="event-date-badge">${dayNum}</div>
-                    <div class="event-details">
-                        <h4 style="color:var(--gold); margin:0; font-size:16px;">${event.hi || event.en}</h4>
-                        <p style="color:#aaa; margin:2px 0 0; font-size:12px;">${event.en || event.hi}</p>
-                    </div>
-                </div>`;
-        }
-    });
-
-    container.innerHTML = html || `<p style="text-align:center; color:#888; padding:20px;">No major festivals this month.</p>`;
-};
-
-// ==========================================
-// 5. APPOINTMENT FORM LOGIC & TELEGRAM
+// 2. APPOINTMENT FORM LOGIC & TELEGRAM
 // ==========================================
 const appointmentForm = document.getElementById('consultation-form');
 if (appointmentForm) {
@@ -190,7 +95,7 @@ window.syncContactMethod = function(method) {
 };
 
 // ==========================================
-// 5a. SOUND HEALING SPECIAL LOGIC
+// 3. SOUND HEALING SPECIAL LOGIC
 // ==========================================
 
 window.handleSoundHealingSubmit = async function(event, method, dosha) {
@@ -274,7 +179,7 @@ window.handleSoundHealingSubmit = async function(event, method, dosha) {
 };
 
 // ==========================================
-// 6. FEEDBACK & RATING SYSTEM (MODULAR)
+// 4. FEEDBACK & RATING SYSTEM (MODULAR)
 // ==========================================
 
 // A. Feedback Submit Karne ka Logic
@@ -338,15 +243,71 @@ window.fetchFeedbacks = async function() {
 };
 
 // ==========================================
-// 7. INITIALIZATION
+// 5.🔱 LOGIN & AUTH UI LOGIC
+// ==========================================
+
+// Google Login Function
+window.loginWithGoogle = async () => {
+    try { 
+        await signInWithPopup(auth, provider); 
+    } catch (err) { 
+        console.error("Login Error:", err); 
+        alert("Login failed. Please try again.");
+    }
+};
+
+// Logout Function
+window.logoutUser = async () => {
+    try { 
+        await signOut(auth); 
+        window.location.reload(); // Refresh to clear state
+    } catch (err) { 
+        console.error("Logout Error:", err); 
+    }
+};
+
+// UI ko update karne wala function (Login ke baad photo dikhane ke liye)
+const updateAuthUI = (user) => {
+    const dBox = document.getElementById('user-display-desktop');
+    const mBox = document.getElementById('user-display-mobile');
+
+    const uiHtml = user ? `
+        <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.05); padding:8px 15px; border-radius:50px; border:1px solid rgba(245,197,66,0.3);">
+            <img src="${user.photoURL}" style="width:32px; height:32px; border-radius:50%; border:1.5px solid var(--gold-main); object-fit:cover;">
+            <div style="text-align:left;">
+                <p style="color:var(--gold-light); font-size:0.85rem; margin:0; font-weight:600; font-family:'Poppins';">Hi, ${user.displayName.split(' ')[0]}</p>
+                <span onclick="window.logoutUser()" style="color:#ff4d4d; cursor:pointer; font-size:0.7rem; text-decoration:underline; font-weight:500;">Logout</span>
+            </div>
+        </div>` 
+    : `<button onclick="window.loginWithGoogle()" class="gold-btn" style="padding:10px 25px; font-size:0.85rem; letter-spacing:1px;">LOGIN</button>`;
+
+    if (dBox) dBox.innerHTML = uiHtml;
+    
+    if (mBox) {
+        mBox.innerHTML = uiHtml;
+        mBox.style.display = "flex";
+        mBox.style.justifyContent = "center";
+    }
+};
+
+// Auth State Listener (Hamesha check karega login hai ya nahi)
+onAuthStateChanged(auth, (user) => { 
+    updateAuthUI(user); 
+});
+
+// ==========================================
+// 6. INITIALIZATION (Clean & Fast)
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    window.getPanchangFromFirebase(2026);
-    window.applyFormLogic(); // Initialize form state
+    // 1. Appointment Form ke fields reset aur setup karega
+    if (typeof window.applyFormLogic === 'function') {
+        window.applyFormLogic(); 
+    }
     
-    // 🔱 Ye line add karni hai
+    // 2. Feedbacks ko Firestore se load karega (agar container milta hai)
     if (typeof window.fetchFeedbacks === 'function') {
         window.fetchFeedbacks(); 
     }
-});
 
+    console.log("🔱 MAHADEV ASTROLOGER MA: Systems Initialized without Panchang dependency.");
+});
