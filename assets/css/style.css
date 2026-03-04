@@ -349,3 +349,55 @@ body {
     .sticker-center p { font-size: 0.85rem !important; }
     .sticker-wrap { padding: 10px 15px !important; }
 }
+
+/* =========================================
+   10. AUTH & LOGIN DISPLAY (Desktop vs Mobile)
+   ========================================= */
+
+/* Desktop Layout: Header mein login dikhao, drawer mein chhupao */
+@media screen and (min-width: 769px) {
+    #user-display-desktop { 
+        display: block !important; 
+    }
+    #user-display-mobile { 
+        display: none !important; 
+    }
+}
+
+/* Mobile Layout: Header se login hatao, Drawer (☰ menu) mein dikhao */
+@media screen and (max-width: 768px) {
+    #user-display-desktop { 
+        display: none !important; 
+    }
+    #user-display-mobile { 
+        display: block !important; 
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    /* Mobile Header container ko balance karne ke liye */
+    .header-container {
+        gap: 5px; /* Kam bheed ke liye */
+    }
+}
+
+/* Login Button Specific styling (Aapke theme se match karta hua) */
+#user-display-desktop button, 
+#user-display-mobile button {
+    cursor: pointer;
+    padding: 7px 15px;
+    background: transparent;
+    border: 1px solid var(--gold-main);
+    color: var(--gold-main);
+    border-radius: 4px;
+    font-family: 'Poppins';
+    font-size: 0.8rem;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+#user-display-desktop button:hover, 
+#user-display-mobile button:hover {
+    background: rgba(212, 175, 55, 0.1);
+    box-shadow: 0 0 10px var(--gold-glow);
+}
