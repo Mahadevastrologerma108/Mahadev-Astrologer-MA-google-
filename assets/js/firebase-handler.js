@@ -179,64 +179,81 @@ window.handleSoundHealingSubmit = async function(event, method, dosha) {
 };
 
 // ==========================================
-// 4. FEEDBACK & RATING SYSTEM (MODULAR)
+// 4. FEEDBACK & RATING SYSTEM (SAFE & MODERATED)
 // ==========================================
 
-// A. Feedback Submit Karne ka Logic
+// A. Feedback Submit Karne ka Logic (With Pending Status)
 window.submitFeedback = async function() {
-    const feedbackText = document.getElementById('user-feedback').value;
-    const rating = window.selectedRating || 0;
-    const lang = localStorage.getItem('selectedLanguage') || 'en';
+    const feedbackText = document.getElementById('user-feedback').value.trim();
+    const rating = window.selectedRating || 0; // Global variable check karein
+    const user = auth.currentUser; // Login user ki details
 
     if (!feedbackText || rating === 0) {
-        alert(lang === 'hi' ? "कृपया रेटिंग और संदेश दोनों भरें।" : "Please provide both rating and feedback.");
+        alert("Kripya rating aur anubhav dono bharein! 🚩");
         return;
     }
 
     try {
-        await addDoc(collection(db, "feedbacks"), {
+        const feedbackData = {
             text: feedbackText,
             rating: parseInt(rating),
             timestamp: serverTimestamp(),
-            status: "approved"
-        });
+            // 🚩 Approval System: Naya feedback hamesha pending rahega
+            status: "pending", 
+            // User details agar login hai, warna guest
+            userName: user ? user.displayName : "Anonymous Bhakt",
+            userPhoto: user ? user.photoURL : "assets/images/default-avatar.png",
+            userId: user ? user.uid : "guest"
+        };
 
-        alert(lang === 'hi' ? "आपका अनुभव साझा करने के लिए धन्यवाद! 🚩" : "Thank you for sharing your experience! 🚩");
+        await addDoc(collection(db, "feedbacks"), feedbackData);
+
+        alert("🔱 Dhanyawad! Aapka anubhav Mahadev tak pahunch gaya hai. Review ke baad ye site par dikhega.");
         
         document.getElementById('user-feedback').value = "";
-        window.location.reload(); 
+        // Optional: Reset stars UI here if needed
     } catch (error) {
         console.error("🔱 Feedback Error:", error);
-        alert("Error saving feedback.");
+        alert("Kshama karein, saving error: " + error.message);
     }
 };
 
-// B. Feedbacks Live Dikhane ka Logic
+// B. Feedbacks Live Dikhane ka Logic (Sirf Approved Wale)
 window.fetchFeedbacks = async function() {
     const container = document.getElementById('display-feedbacks');
     if (!container) return;
 
     try {
-        const q = query(collection(db, "feedbacks"), orderBy("timestamp", "desc"), limit(5));
+        // 🚩 Filter: Sirf "approved" status wale hi mangwayein
+        const feedbackRef = collection(db, "feedbacks");
+        const q = query(
+            feedbackRef, 
+            orderBy("timestamp", "desc"), 
+            limit(10) // Zyada feedbacks dikha sakte hain
+        );
+        
         const snapshot = await getDocs(q);
-
-        if (snapshot.empty) {
-            container.innerHTML = `<p style="color:#666;">Be the first to share your experience!</p>`;
-            return;
-        }
-
         let html = "";
+
         snapshot.forEach(doc => {
             const data = doc.data();
-            const stars = "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
-            html += `
-                <div class="feedback-item" style="margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px; animation: fadeIn 0.5s;">
-                    <div style="color: #f5c542; font-size: 1.2rem; letter-spacing:3px;">${stars}</div>
-                    <p style="font-size: 1rem; color:#eee; margin: 10px 0; font-style: italic;">"${data.text}"</p>
-                </div>
-            `;
+            // 🚩 Sirf approved data ko hi UI mein joddna hai
+            if (data.status === "approved") {
+                const stars = "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
+                html += `
+                    <div class="feedback-item" style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+                        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                            <img src="${data.userPhoto}" style="width:30px; height:30px; border-radius:50%; border:1px solid var(--gold);">
+                            <span style="color:var(--gold); font-weight:600; font-size:0.9rem;">${data.userName}</span>
+                        </div>
+                        <div style="color: #f5c542; font-size: 1rem; letter-spacing:2px;">${stars}</div>
+                        <p style="font-size: 0.95rem; color:#eee; margin: 8px 0; font-style: italic;">"${data.text}"</p>
+                    </div>
+                `;
+            }
         });
-        container.innerHTML = html;
+
+        container.innerHTML = html || `<p style="color:#666;">Be the first to share your experience!</p>`;
     } catch (err) {
         console.error("🔱 Fetch Feedback Error:", err);
     }
@@ -299,15 +316,30 @@ onAuthStateChanged(auth, (user) => {
 // 6. INITIALIZATION (Clean & Fast)
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // 🚩 A. Stars click karne ka logic yahan daalna hai
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('star')) {
+            const val = e.target.getAttribute('data-value');
+            window.selectedRating = val; // Rating save karna
+            
+            // Stars ka color update karna (Golden color)
+            document.querySelectorAll('.star').forEach(s => {
+                s.style.color = s.getAttribute('data-value') <= val ? '#f5c542' : '#555';
+            });
+            console.log("🔱 Selected Rating:", val);
+        }
+    });
+
     // 1. Appointment Form ke fields reset aur setup karega
     if (typeof window.applyFormLogic === 'function') {
         window.applyFormLogic(); 
     }
     
-    // 2. Feedbacks ko Firestore se load karega (agar container milta hai)
+    // 2. Feedbacks ko Firestore se load karega
     if (typeof window.fetchFeedbacks === 'function') {
         window.fetchFeedbacks(); 
     }
 
-    console.log("🔱 MAHADEV ASTROLOGER MA: Systems Initialized without Panchang dependency.");
+    console.log("🔱 MAHADEV ASTROLOGER MA: Systems Initialized.");
 });
