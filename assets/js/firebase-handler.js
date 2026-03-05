@@ -287,17 +287,18 @@ window.loginWithGoogle = async () => {
 window.logoutUser = async () => {
     try { 
         await signOut(auth); 
-        window.location.reload(); // Refresh to clear state
+        window.location.reload(); 
     } catch (err) { 
         console.error("Logout Error:", err); 
     }
 };
 
-// UI ko update karne wala function (Login ke baad photo dikhane ke liye)
+// UI Update Function
 const updateAuthUI = (user) => {
     const dBox = document.getElementById('user-display-desktop');
     const mBox = document.getElementById('user-display-mobile');
 
+    // Button ya Profile ka HTML
     const uiHtml = user ? `
         <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.05); padding:8px 15px; border-radius:50px; border:1px solid rgba(245,197,66,0.3);">
             <img src="${user.photoURL}" style="width:32px; height:32px; border-radius:50%; border:1.5px solid var(--gold-main); object-fit:cover;">
@@ -306,7 +307,7 @@ const updateAuthUI = (user) => {
                 <span onclick="window.logoutUser()" style="color:#ff4d4d; cursor:pointer; font-size:0.7rem; text-decoration:underline; font-weight:500;">Logout</span>
             </div>
         </div>` 
-    : `<button onclick="window.loginWithGoogle()" class="gold-btn" style="padding:10px 25px; font-size:0.85rem; letter-spacing:1px;">LOGIN</button>`;
+    : `<button onclick="window.loginWithGoogle()" class="gold-btn" style="cursor:pointer; padding:7px 15px; background:transparent; border:1px solid var(--gold); color:var(--gold); border-radius:4px; font-family:'Poppins'; font-size:0.8rem; transition:0.3s; font-weight:600;">LOGIN</button>`;
 
     if (dBox) dBox.innerHTML = uiHtml;
     
@@ -314,42 +315,60 @@ const updateAuthUI = (user) => {
         mBox.innerHTML = uiHtml;
         mBox.style.display = "flex";
         mBox.style.justifyContent = "center";
+        mBox.style.marginTop = "15px"; // Mobile spacing fix
     }
 };
 
-// Auth State Listener (Hamesha check karega login hai ya nahi)
-onAuthStateChanged(auth, (user) => { 
-    updateAuthUI(user); 
-});
+// ==========================================
+// 6. INITIALIZATION (Smart Sync with Layout.js)
+// ==========================================
 
-// ==========================================
-// 6. INITIALIZATION (Clean & Fast)
-// ==========================================
+const initGlobalAuth = () => {
+    // 🚩 Smart Waiter: Ye check karega ki Layout.js ne header chipka diya ya nahi
+    const checkHeader = setInterval(() => {
+        const desktopTarget = document.getElementById('user-display-desktop');
+        
+        if (desktopTarget) {
+            clearInterval(checkHeader); // Header mil gaya! Ab loop band karo.
+            console.log("🔱 Header Sync: Success. Activating Auth UI...");
+
+            // Header milne ke BAAD hi Auth listener shuru karein
+            onAuthStateChanged(auth, (user) => { 
+                updateAuthUI(user); 
+            });
+
+            // Feedbacks load karein (sirf agar container ho)
+            if (typeof window.fetchFeedbacks === 'function') {
+                window.fetchFeedbacks(); 
+            }
+        }
+    }, 100); // Har 0.1 second mein check
+
+    // Safety: 5 second baad check band (taaki resources waste na hon)
+    setTimeout(() => clearInterval(checkHeader), 5000);
+};
+
+// Jab page load ho, tab Smart Sync shuru karein
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 🚩 A. Stars click karne ka logic yahan daalna hai
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('star')) {
-            const val = e.target.getAttribute('data-value');
-            window.selectedRating = val; // Rating save karna
-            
-            // Stars ka color update karna (Golden color)
-            document.querySelectorAll('.star').forEach(s => {
-                s.style.color = s.getAttribute('data-value') <= val ? '#f5c542' : '#555';
-            });
-            console.log("🔱 Selected Rating:", val);
-        }
-    });
+    // Auth aur Header sync shuru karein
+    initGlobalAuth();
 
-    // 1. Appointment Form ke fields reset aur setup karega
+    // Appointment Form logic
     if (typeof window.applyFormLogic === 'function') {
         window.applyFormLogic(); 
     }
-    
-    // 2. Feedbacks ko Firestore se load karega
-    if (typeof window.fetchFeedbacks === 'function') {
-        window.fetchFeedbacks(); 
-    }
 
-    console.log("🔱 MAHADEV ASTROLOGER MA: Systems Initialized.");
+    // Stars rating click handler (Global delegation)
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('star')) {
+            const val = e.target.getAttribute('data-value');
+            window.selectedRating = val;
+            document.querySelectorAll('.star').forEach(s => {
+                s.style.color = s.getAttribute('data-value') <= val ? '#f5c542' : '#555';
+            });
+        }
+    });
+
+    console.log("🔱 MAHADEV ASTROLOGER MA: Global Handler Ready.");
 });
