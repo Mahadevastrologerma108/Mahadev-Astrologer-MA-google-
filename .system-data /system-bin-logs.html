@@ -50,7 +50,7 @@
     </div>
 
     <script type="module">
-        import { db, auth } from './assets/js/firebase-config.js';
+        import { db, auth } from '../assets/js/firebase-config.js';
         import { collection, query, where, getDocs, doc, updateDoc, deleteDoc, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
@@ -76,37 +76,61 @@
         };
 
         // --- FEEDBACK LOGIC ---
-        async function loadFeedbacks() {
-            const list = document.getElementById('feedback-list');
-            try {
-                const q = query(collection(db, "feedbacks"), where("status", "==", "pending"), orderBy("timestamp", "desc"));
-                const snap = await getDocs(q);
-                let html = "";
-                snap.forEach(d => {
-                    const data = d.data();
-                    html += `<div class="card" id="fb-${d.id}">
-                        <span class="tag tag-pending">Pending</span>
-                        <p><strong class="gold-text">${data.userName}</strong> (${data.rating} Stars)</p>
-                        <p>"${data.text}"</p>
-                        <button class="btn-approve" onclick="approveFB('${d.id}')">✅ Approve</button>
-                        <button class="btn-delete" onclick="deleteFB('${d.id}')">🗑️ Delete</button>
-                    </div>`;
-                });
-                list.innerHTML = html || "Sab clear hai! Koi pending feedback nahi hai.";
-            } catch (e) { list.innerHTML = "Error loading feedbacks."; }
-        }
+async function loadFeedbacks() {
+    const list = document.getElementById('feedback-list');
+    try {
+        // Simple query: Pehle sirf pending mangwayein (taaki Index ka error na aaye)
+        const q = query(collection(db, "feedbacks"), where("status", "==", "pending"));
+        const snap = await getDocs(q);
+        
+        let html = "";
+        // Client-side par sort kar rahe hain (Latest upar)
+        const docs = snap.docs.sort((a, b) => b.data().timestamp - a.data().timestamp);
 
-        window.approveFB = async (id) => {
-            await updateDoc(doc(db, "feedbacks", id), { status: "approved" });
+        docs.forEach(d => {
+            const data = d.data();
+            html += `<div class="card" id="fb-${d.id}">
+                <span class="tag tag-pending">Pending</span>
+                <p><strong class="gold-text">${data.userName || 'Guest'}</strong> (${data.rating} Stars)</p>
+                <p>"${data.text}"</p>
+                <button class="btn-approve" onclick="approveFB('${d.id}')">✅ Approve</button>
+                <button class="btn-delete" onclick="deleteFB('${d.id}')">🗑️ Delete</button>
+            </div>`;
+        });
+        list.innerHTML = html || "Sab clear hai! Koi pending feedback nahi hai. 🔱";
+    } catch (e) { 
+        console.error("🔱 Load Error:", e);
+        list.innerHTML = "Error loading feedbacks. Check console."; 
+    }
+}
+
+// Approve Function: Status ko 'approved' karega
+window.approveFB = async (id) => {
+    try {
+        // "import { doc } from ..." check kar lena upar script mein hai ya nahi
+        const feedbackRef = doc(db, "feedbacks", id); 
+        await updateDoc(feedbackRef, { status: "approved" });
+        
+        const element = document.getElementById(`fb-${id}`);
+        if(element) element.remove();
+        alert("🔱 Approved! Ab ye website par dikhega.");
+    } catch (err) {
+        alert("Permission Denied! Check if you are logged in as Admin.");
+    }
+};
+
+// Delete Function
+window.deleteFB = async (id) => {
+    if(confirm("Hamesha ke liye delete?")) {
+        try {
+            const feedbackRef = doc(db, "feedbacks", id);
+            await deleteDoc(feedbackRef);
             document.getElementById(`fb-${id}`).remove();
-        };
-
-        window.deleteFB = async (id) => {
-            if(confirm("Hamesha ke liye delete?")) {
-                await deleteDoc(doc(db, "feedbacks", id));
-                document.getElementById(`fb-${id}`).remove();
-            }
-        };
+        } catch (err) {
+            alert("Error: " + err.message);
+        }
+    }
+};
 
         // --- APPOINTMENT LOGIC ---
         async function loadAppointments() {
