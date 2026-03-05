@@ -101,36 +101,3 @@ function loadHoroscope(rashiKey) {
         dateEl.innerText = new Date().toLocaleDateString(lang === 'hi' ? 'hi-IN' : 'en-US', options);
     }
 }
-
-// ==========================================
-// 🔱 UNIVERSAL AUTH SYNC (Sabhi Pages ke liye)
-// ==========================================
-const syncAuthUIEverywhere = () => {
-    // Ye interval har 100ms mein check karega ki Header load hua ya nahi
-    const checkHeaderInterval = setInterval(() => {
-        const desktopBox = document.getElementById('user-display-desktop');
-        const mobileBox = document.getElementById('user-display-mobile');
-
-        // Jaise hi 'user-display-desktop' mil jaye (Matlab header load ho gaya)
-        if (desktopBox || mobileBox) {
-            clearInterval(checkHeaderInterval); // Check karna band karo
-            console.log("🔱 Header Detected! Syncing Login Button...");
-
-            // Firebase Auth ko trigger karo taaki wo button/photo update kare
-            onAuthStateChanged(auth, (user) => { 
-                if (typeof updateAuthUI === 'function') {
-                    updateAuthUI(user); 
-                }
-            });
-
-            // Baki systems jo header par depend karte hain
-            if (typeof window.fetchFeedbacks === 'function') window.fetchFeedbacks();
-        }
-    }, 100);
-
-    // Safety: Agar 4 second tak header nahi mila toh ruk jao
-    setTimeout(() => clearInterval(checkHeaderInterval), 4000);
-};
-
-// Ise turant call karein
-syncAuthUIEverywhere();
