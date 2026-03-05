@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔱 MA Admin Control</title>
+    <style>
+        :root { --gold: #f5c542; --dark: #0a0a0a; --card: #161616; }
+        body { background: var(--dark); color: #eee; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
+        .header { text-align: center; border-bottom: 2px solid var(--gold); padding-bottom: 20px; margin-bottom: 30px; }
+        .tabs { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; }
+        .tab-btn { background: none; border: 1px solid var(--gold); color: var(--gold); padding: 10px 25px; cursor: pointer; border-radius: 5px; font-weight: bold; }
+        .tab-btn.active { background: var(--gold); color: var(--dark); }
+        
+        .section { display: none; max-width: 900px; margin: 0 auto; }
+        .section.active { display: block; }
+        
+        .card { background: var(--card); border: 1px solid #333; padding: 15px; margin-bottom: 15px; border-radius: 10px; position: relative; }
+        .card:hover { border-color: var(--gold); }
+        .tag { position: absolute; top: 10px; right: 10px; font-size: 0.7rem; padding: 3px 8px; border-radius: 3px; text-transform: uppercase; }
+        .tag-pending { background: #ffc107; color: #000; }
+        .tag-appointment { background: #007bff; color: #fff; }
+
+        .btn-approve { background: #28a745; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 5px; margin-top: 10px; }
+        .btn-delete { background: #dc3545; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 5px; margin-top: 10px; margin-left: 10px; }
+        .details { font-size: 0.9rem; line-height: 1.5; color: #ccc; }
+        .gold-text { color: var(--gold); }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1 class="gold-text">🔱 MAHADEV ASTROLOGER MA</h1>
+        <p id="admin-welcome">Checking Authentication...</p>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('feedbacks')">Feedbacks</button>
+        <button class="tab-btn" onclick="showTab('appointments')">Appointments</button>
+    </div>
+
+    <div id="feedbacks" class="section active">
+        <h2 class="gold-text">Pending Feedbacks</h2>
+        <div id="feedback-list">Loading Feedbacks...</div>
+    </div>
+
+    <div id="appointments" class="section">
+        <h2 class="gold-text">All Appointment Requests</h2>
+        <div id="appointment-list">Loading Appointments...</div>
+    </div>
+
+    <script type="module">
+        import { db, auth } from './assets/js/firebase-config.js';
+        import { collection, query, where, getDocs, doc, updateDoc, deleteDoc, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const ADMIN_EMAIL = "mannumani108@gmail.com";
+
+        onAuthStateChanged(auth, (user) => {
+            if (user && user.email === ADMIN_EMAIL) {
+                document.getElementById('admin-welcome').innerText = `Welcome, Mahadev (Admin: ${user.email})`;
+                loadFeedbacks();
+                loadAppointments();
+            } else {
+                document.body.innerHTML = `<h1 style="color:red; text-align:center; margin-top:100px;">❌ ACCESS DENIED</h1>
+                <p style="text-align:center;">Kripya sahi Admin ID se login karein.</p>`;
+            }
+        });
+
+        // Tab Switching Logic
+        window.showTab = (tabName) => {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        };
+
+        // --- FEEDBACK LOGIC ---
+        async function loadFeedbacks() {
+            const list = document.getElementById('feedback-list');
+            try {
+                const q = query(collection(db, "feedbacks"), where("status", "==", "pending"), orderBy("timestamp", "desc"));
+                const snap = await getDocs(q);
+                let html = "";
+                snap.forEach(d => {
+                    const data = d.data();
+                    html += `<div class="card" id="fb-${d.id}">
+                        <span class="tag tag-pending">Pending</span>
+                        <p><strong class="gold-text">${data.userName}</strong> (${data.rating} Stars)</p>
+                        <p>"${data.text}"</p>
+                        <button class="btn-approve" onclick="approveFB('${d.id}')">✅ Approve</button>
+                        <button class="btn-delete" onclick="deleteFB('${d.id}')">🗑️ Delete</button>
+                    </div>`;
+                });
+                list.innerHTML = html || "Sab clear hai! Koi pending feedback nahi hai.";
+            } catch (e) { list.innerHTML = "Error loading feedbacks."; }
+        }
+
+        window.approveFB = async (id) => {
+            await updateDoc(doc(db, "feedbacks", id), { status: "approved" });
+            document.getElementById(`fb-${id}`).remove();
+        };
+
+        window.deleteFB = async (id) => {
+            if(confirm("Hamesha ke liye delete?")) {
+                await deleteDoc(doc(db, "feedbacks", id));
+                document.getElementById(`fb-${id}`).remove();
+            }
+        };
+
+        // --- APPOINTMENT LOGIC ---
+        async function loadAppointments() {
+            const list = document.getElementById('appointment-list');
+            try {
+                const q = query(collection(db, "appointments"), orderBy("timestamp", "desc"));
+                const snap = await getDocs(q);
+                let html = "";
+                snap.forEach(d => {
+                    const data = d.data();
+                    const date = data.timestamp?.toDate().toLocaleString() || "Unknown Date";
+                    html += `<div class="card" id="ap-${d.id}">
+                        <span class="tag tag-appointment">${data.service || 'Request'}</span>
+                        <p><strong class="gold-text">Name: ${data.name}</strong></p>
+                        <div class="details">
+                            <p>📞 Contact: ${data.contact_detail} (${data.contact_method})</p>
+                            ${data.dob ? `<p>📅 DOB: ${data.dob}</p>` : ''}
+                            ${data.place ? `<p>📍 Place: ${data.place}</p>` : ''}
+                            <p>⏰ Received: ${date}</p>
+                        </div>
+                        <button class="btn-delete" onclick="deleteAP('${d.id}')">🗑️ Mark as Done (Delete)</button>
+                    </div>`;
+                });
+                list.innerHTML = html || "Abhi koi appointment nahi hai.";
+            } catch (e) { list.innerHTML = "Error loading appointments."; }
+        }
+
+        window.deleteAP = async (id) => {
+            if(confirm("Appointment complete ho gaya? Ise list se hata dein?")) {
+                await deleteDoc(doc(db, "appointments", id));
+                document.getElementById(`ap-${id}`).remove();
+            }
+        };
+    </script>
+</body>
+</html>
