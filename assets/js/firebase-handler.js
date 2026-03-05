@@ -179,14 +179,14 @@ window.handleSoundHealingSubmit = async function(event, method, dosha) {
 };
 
 // ==========================================
-// 4. FEEDBACK & RATING SYSTEM (SAFE & MODERATED)
+// 4. FEEDBACK & RATING SYSTEM (WITH TELEGRAM)
 // ==========================================
 
-// A. Feedback Submit Karne ka Logic (With Pending Status)
+// A. Feedback Submit Karne ka Logic (Notification ke saath)
 window.submitFeedback = async function() {
     const feedbackText = document.getElementById('user-feedback').value.trim();
-    const rating = window.selectedRating || 0; // Global variable check karein
-    const user = auth.currentUser; // Login user ki details
+    const rating = window.selectedRating || 0;
+    const user = auth.currentUser;
 
     if (!feedbackText || rating === 0) {
         alert("Kripya rating aur anubhav dono bharein! 🚩");
@@ -198,20 +198,36 @@ window.submitFeedback = async function() {
             text: feedbackText,
             rating: parseInt(rating),
             timestamp: serverTimestamp(),
-            // 🚩 Approval System: Naya feedback hamesha pending rahega
             status: "pending", 
-            // User details agar login hai, warna guest
             userName: user ? user.displayName : "Anonymous Bhakt",
             userPhoto: user ? user.photoURL : "assets/images/default-avatar.png",
             userId: user ? user.uid : "guest"
         };
 
+        // 1. Database mein save karein
         await addDoc(collection(db, "feedbacks"), feedbackData);
+
+        // 2. 🚩 TELEGRAM NOTIFICATION (Instant Alert)
+        const tgMessage = `🔱 *MAHADEV ASTROLOGER MA*\n\n` +
+                          `📝 *Naya Feedback Aaya!* (Pending)\n` +
+                          `⭐ *Rating:* ${feedbackData.rating}/5\n` +
+                          `👤 *User:* ${feedbackData.userName}\n` +
+                          `💬 *Message:* ${feedbackData.text}\n\n` +
+                          `🚩 _Ise approve karne ke liye .system-data logs kholiye._`;
+
+        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: CHAT_ID, text: tgMessage, parse_mode: 'Markdown' })
+        });
 
         alert("🔱 Dhanyawad! Aapka anubhav Mahadev tak pahunch gaya hai. Review ke baad ye site par dikhega.");
         
+        // UI Reset
         document.getElementById('user-feedback').value = "";
-        // Optional: Reset stars UI here if needed
+        document.querySelectorAll('.star').forEach(s => s.style.color = '#555');
+        window.selectedRating = 0;
+
     } catch (error) {
         console.error("🔱 Feedback Error:", error);
         alert("Kshama karein, saving error: " + error.message);
@@ -224,20 +240,15 @@ window.fetchFeedbacks = async function() {
     if (!container) return;
 
     try {
-        // 🚩 Filter: Sirf "approved" status wale hi mangwayein
         const feedbackRef = collection(db, "feedbacks");
-        const q = query(
-            feedbackRef, 
-            orderBy("timestamp", "desc"), 
-            limit(10) // Zyada feedbacks dikha sakte hain
-        );
+        const q = query(feedbackRef, orderBy("timestamp", "desc"), limit(20));
         
         const snapshot = await getDocs(q);
         let html = "";
 
         snapshot.forEach(doc => {
             const data = doc.data();
-            // 🚩 Sirf approved data ko hi UI mein joddna hai
+            // Sirf wahi dikhao jo admin ne approve kiye hain
             if (data.status === "approved") {
                 const stars = "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
                 html += `
@@ -258,7 +269,6 @@ window.fetchFeedbacks = async function() {
         console.error("🔱 Fetch Feedback Error:", err);
     }
 };
-
 // ==========================================
 // 5.🔱 LOGIN & AUTH UI LOGIC
 // ==========================================
