@@ -71,3 +71,54 @@ document.getElementById('consultation-form')?.addEventListener('submit', (e) => 
     e.preventDefault();
     alert("🔱 Pranaam! Mahadev Astrologer MA will contact you soon.");
 });
+
+// 5. 🔱 PWA INSTALL BUTTON LOGIC ---
+
+let deferredPrompt;
+const installContainer = document.getElementById('install-container');
+const installBtn = document.getElementById('btn-install');
+
+// --1. जब ब्राउज़र इंस्टॉल करने का सिग्नल दे (Install Prompt Ready)
+window.addEventListener('beforeinstallprompt', (e) => {
+    // डिफ़ॉल्ट बैनर को रोकें (ताकि हमारा कस्टम गोल्ड बटन दिखे)
+    e.preventDefault();
+    // इवेंट को सुरक्षित रखें ताकि बाद में ट्रिगर कर सकें
+    deferredPrompt = e;
+    
+    // छिपे हुए इंस्टॉल बटन वाले बॉक्स को दिखाएँ
+    if (installContainer) {
+        installContainer.style.display = 'block';
+        console.log('🔱 App Install Prompt: Ready');
+    }
+});
+
+// --2. जब यूजर "🔱 Install App" बटन पर क्लिक करे
+if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+        if (!deferredPrompt) return;
+        
+        // ब्राउज़र का इंस्टॉल डायलॉग दिखाएँ
+        deferredPrompt.prompt();
+        
+        // यूजर के जवाब का इंतज़ार करें (Accepted या Dismissed)
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User choice: ${outcome}`);
+        
+        // प्रॉम्प्ट एक बार ही इस्तेमाल होता है, इसे रिसेट करें
+        deferredPrompt = null;
+        
+        // क्लिक के बाद बटन को छिपा दें
+        if (installContainer) {
+            installContainer.style.display = 'none';
+        }
+    });
+}
+
+// --3. ऐप सफलतापूर्वक इंस्टॉल होने के बाद
+window.addEventListener('appinstalled', () => {
+    console.log('🔱 Mahadev Astrologer MA: App Installed Successfully!');
+    // बटन को पूरी तरह से हटा दें
+    if (installContainer) {
+        installContainer.style.display = 'none';
+    }
+});
