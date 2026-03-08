@@ -4,8 +4,8 @@
   <url><loc>https://www.mahadevastrologerma.in/index.html</loc><priority>1.00</priority></url>
   <url><loc>https://www.mahadevastrologerma.in/horoscope.html</loc><priority>0.90</priority></url>
   <url><loc>https://www.mahadevastrologerma.in/panchang/panchang.html</loc><priority>0.85</priority></url>
-  <url><loc>https://www.mahadevastrologerma.in/latest-guide/index.html</loc><priority>0.85</priority></url>
   <url><loc>https://www.mahadevastrologerma.in/latest-guide/guides.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/masterstroke-module/sound-healing.html</loc><priority>0.95</priority></url>
 
   <url><loc>https://www.mahadevastrologerma.in/pages/about.html</loc><priority>0.70</priority></url>
   <url><loc>https://www.mahadevastrologerma.in/pages/contact.html</loc><priority>0.80</priority></url>
@@ -13,18 +13,18 @@
   <url><loc>https://www.mahadevastrologerma.in/pages/privacy.html</loc><priority>0.50</priority></url>
   <url><loc>https://www.mahadevastrologerma.in/pages/terms.html</loc><priority>0.50</priority></url>
 
-  <url><loc>https://www.mahadevastrologerma.in/pages/aries.html</loc><priority>0.80</priority></url>
-  <url><loc>https://www.mahadevastrologerma.in/pages/taurus.html</loc><priority>0.80</priority></url>
-  <url><loc>https://www.mahadevastrologerma.in/pages/gemini.html</loc><priority>0.80</priority></url>
-  <url><loc>https://www.mahadevastrologerma.in/pages/cancer.html</loc><priority>0.80</priority></url>
-  <url><loc>https://www.mahadevastrologerma.in/pages/leo.html</loc><priority>0.80</priority></url>
-  <url><loc>https://www.mahadevastrologerma.in/pages/virgo.html</loc><priority>0.80</priority></url>
-  <url><loc>https://www.mahadevastrologerma.in/pages/libra.html</loc><priority>0.80</priority></url>
-  <url><loc>https://www.mahadevastrologerma.in/pages/scorpio.html</loc><priority>0.80</priority></url>
-  <url><loc>https://www.mahadevastrologerma.in/pages/sagittarius.html</loc><priority>0.80</priority></url>
-  <url><loc>https://www.mahadevastrologerma.in/pages/capricorn.html</loc><priority>0.80</priority></url>
-  <url><loc>https://www.mahadevastrologerma.in/pages/aquarius.html</loc><priority>0.80</priority></url>
-  <url><loc>https://www.mahadevastrologerma.in/pages/pisces.html</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/horoscope/aries.html</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/horoscope/taurus.html</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/horoscope/gemini.html</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/horoscope/cancer.html</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/horoscope/leo.html</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/horoscope/virgo.html</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/horoscope/libra.html</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/horoscope/scorpio.html</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/horoscope/sagittarius.html</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/horoscope/capricorn.html</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/horoscope/aquarius.html</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/horoscope/pisces.html</loc><priority>0.80</priority></url>
 
   <url><loc>https://www.mahadevastrologerma.in/latest-guide/article.html?id=2118859752251433874</loc><priority>0.85</priority></url>
   <url><loc>https://www.mahadevastrologerma.in/latest-guide/article.html?id=6940747782216918055</loc><priority>0.80</priority></url>
@@ -69,9 +69,8 @@
   <url><loc>https://www.mahadevastrologerma.in/latest-guide/article.html?id=6458142056202744744</loc><priority>0.80</priority></url>
   <url><loc>https://www.mahadevastrologerma.in/latest-guide/article.html?id=140142426157351653</loc><priority>0.80</priority></url>
   <url><loc>https://www.mahadevastrologerma.in/latest-guide/article.html?id=909774959846921377</loc><priority>0.80</priority></url>
-
-<url><loc>https://www.mahadevastrologerma.in/latest-guide/article.html?id=6408606802958228263</loc><priority>0.80</priority></url>
-
-<url><loc>https://www.mahadevastrologerma.in/latest-guide/article.html?id=7591463486673008592</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/latest-guide/article.html?id=7774966114438706005</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/latest-guide/article.html?id=6408606802958228263</loc><priority>0.80</priority></url>
+  <url><loc>https://www.mahadevastrologerma.in/latest-guide/article.html?id=7591463486673008592</loc><priority>0.80</priority></url>
 
 </urlset>
