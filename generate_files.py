@@ -3,6 +3,22 @@ import os
 rashis = ["aries", "taurus", "gemini", "cancer", "leo", "virgo", 
           "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"]
 
+# 🔱 Static Data for each Rashi (ये Keys translations.js में होनी चाहिए)
+rashi_details = {
+    "aries": {"lord": "Mars (Mangal)", "element": "Fire", "mantra": "Ram"},
+    "taurus": {"lord": "Venus (Shukra)", "element": "Earth", "mantra": "Eem"},
+    "gemini": {"lord": "Mercury (Budh)", "element": "Air", "mantra": "Aim"},
+    "cancer": {"lord": "Moon (Chandra)", "element": "Water", "mantra": "Shreem"},
+    "leo": {"lord": "Sun (Surya)", "element": "Fire", "mantra": "Hreem"},
+    "virgo": {"lord": "Mercury (Budh)", "element": "Earth", "mantra": "Aim"},
+    "libra": {"lord": "Venus (Shukra)", "element": "Air", "mantra": "Eem"},
+    "scorpio": {"lord": "Mars (Mangal)", "element": "Water", "mantra": "Ram"},
+    "sagittarius": {"lord": "Jupiter (Guru)", "element": "Fire", "mantra": "Hreem"},
+    "capricorn": {"lord": "Saturn (Shani)", "element": "Earth", "mantra": "Sham"},
+    "aquarius": {"lord": "Saturn (Shani)", "element": "Air", "mantra": "Sham"},
+    "pisces": {"lord": "Jupiter (Guru)", "element": "Water", "mantra": "Hreem"},
+}
+
 adsense_snippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>'
 base_url = "https://www.mahadevastrologerma.in/horoscope/"
 
@@ -25,6 +41,8 @@ template = """<!DOCTYPE html>
         .info-box h3 {{ color: #f5c542; font-size: 1.1rem; margin-bottom: 8px; font-family: 'Cinzel'; }}
         .info-box p {{ font-size: 0.95rem; line-height: 1.6; color: #ddd; margin: 0; }}
         .lucky-strip {{ margin-top: 30px; display: flex; justify-content: space-around; background: rgba(245,197,66,0.1); padding: 15px; border-radius: 10px; color: #f5c542; font-weight: 600; border: 1px dashed rgba(245,197,66,0.3); }}
+        .wisdom-box {{ margin-top: 40px; text-align: left; border-top: 1px solid rgba(245,197,66,0.1); padding-top: 20px; }}
+        .resonance-card {{ background: rgba(245,197,66,0.05); padding: 15px; border-radius: 10px; margin-top: 15px; border: 1px solid rgba(245,197,66,0.2); }}
         @media (max-width: 600px) {{ .grid-container {{ grid-template-columns: 1fr; }} .lucky-strip {{ flex-direction: column; gap: 10px; }} }}
     </style>
 </head>
@@ -44,19 +62,29 @@ template = """<!DOCTYPE html>
             <span>Number: <b id="h-number">-</b></span>
             <span>Time: <b id="h-time">-</b></span>
         </div>
+
+        <div class="wisdom-box">
+            <h3 class="gold-text" data-key="about_rashi_title">About This Rashi</h3>
+            <p style="font-size: 0.9rem; color: #aaa; line-height: 1.6;" data-key="{rashi_key}_desc">
+                {title} is ruled by <b>{lord}</b>. As a <b>{element}</b> element sign, it carries unique cosmic vibrations.
+            </p>
+            <div class="resonance-card">
+                <h4 class="gold-text" data-key="naad_brahma_title">Naad Brahma Resonance</h4>
+                <p style="font-size: 0.85rem; color: #ccc; margin: 0;" data-key="{rashi_key}_resonance">
+                    Align your energy by chanting the Beej Mantra <b>"{mantra}"</b> for {title}.
+                </p>
+            </div>
+        </div>
     </div>
     <div id="footer-placeholder"></div>
 
     <script src="/horoscope/horoscope-data.js"></script>
-    
     <script src="/assets/js/horoscope-handler.js"></script>
-
     <script src="/assets/js/translations.js"></script>
     <script src="/assets/js/layout.js"></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {{
-            // Ab loadHoroscope dhoondega handler.js mein
             if (typeof loadHoroscope === 'function') {{
                 loadHoroscope('{rashi_key}');
             }} else {{
@@ -74,12 +102,17 @@ if not os.path.exists(target_dir):
 for r in rashis:
     file_path = os.path.join(target_dir, r + ".html")
     current_canonical = f"{base_url}{r}.html"
+    details = rashi_details[r]
+    
     with open(file_path, "w", encoding="utf-8") as f:
         f.write(template.format(
             title=r.capitalize(), 
             rashi_key=r,
             canonical_url=current_canonical,
-            adsense_code=adsense_snippet
+            adsense_code=adsense_snippet,
+            lord=details['lord'],
+            element=details['element'],
+            mantra=details['mantra']
         ))
 
-print("🔱 Done! 12 pages synced with Handler and Data.")
+print("🔱 12 Pages Updated with Bilingual Data-Keys!")
