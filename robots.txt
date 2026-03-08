@@ -3,7 +3,19 @@ Allow: /
 Allow: /pages/
 Allow: /panchang/
 Allow: /latest-guide/
+Allow: /horoscope/
+Allow: /masterstroke-module/
+
+# Allow CSS and JS within feature folders for proper rendering
+Allow: /horoscope/*.js
+Allow: /horoscope/*.css
+Allow: /panchang/*.js
+Allow: /masterstroke-module/*.js
+
+# Disallow private assets and core system files
 Disallow: /assets/css/
 Disallow: /assets/js/
 Disallow: /assets/images/
+
+# Sitemap Link
 Sitemap: https://www.mahadevastrologerma.in/sitemap.xml
