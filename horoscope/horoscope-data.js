@@ -1,277 +1,277 @@
 window.dailyHoroscope = {
   aries: {
     career: {
-      hi: "आज कार्यक्षेत्र में नई जिम्मेदारियां मिल सकती हैं। धैर्य और आत्मविश्वास से काम करेंगे तो सफलता मिलेगी।",
-      en: "New responsibilities may come at work today. Confidence and patience will bring success."
+      hi: "आज कार्यक्षेत्र में महादेव की कृपा से नई ऊर्जा मिलेगी। रुके हुए काम गति पकड़ेंगे।",
+      en: "By Lord Shiva's grace, you will feel new energy at work. Pending tasks will gain momentum."
     },
     love: {
-      hi: "जीवनसाथी या परिवार के साथ समय अच्छा बीतेगा। रिश्तों में मधुरता बनी रहेगी।",
-      en: "You will spend good time with your partner or family. Harmony will remain in relationships."
+      hi: "जीवनसाथी के साथ धार्मिक यात्रा या पूजा का योग है। संबंधों में प्रगाढ़ता आएगी।",
+      en: "Possibility of a religious trip or puja with your partner. Relationships will deepen."
     },
     health: {
-      hi: "थोड़ी थकान महसूस हो सकती है। पर्याप्त आराम और पानी पीना फायदेमंद रहेगा।",
-      en: "You may feel a bit tired. Proper rest and hydration will help."
+      hi: "स्वास्थ्य उत्तम रहेगा, बस खान-पान में शुद्धता बनाए रखें।",
+      en: "Health will be excellent; just maintain purity in your diet."
     },
     tip: {
-      hi: "ॐ नमः शिवाय का 11 बार जाप करें।",
-      en: "Chant 'Om Namah Shivaya' 11 times."
+      hi: "शिवलिंग पर जल और बेलपत्र अर्पित करें।",
+      en: "Offer water and Belpatra to the Shivling."
     },
     luckyColor: { hi: "लाल", en: "Red" },
     luckyNumber: "9",
-    luckyTime: { hi: "सुबह 9:30", en: "09:30 AM" },
-    luckyDate: "Mar 7, 2026"
+    luckyTime: { hi: "सुबह 08:30", en: "08:30 AM" },
+    luckyDate: "Mar 8, 2026"
   },
 
   taurus: {
     career: {
-      hi: "आर्थिक मामलों में सोच-समझकर निर्णय लें। पुराने काम पूरे हो सकते हैं।",
-      en: "Take financial decisions carefully. Pending work may get completed."
+      hi: "आर्थिक लाभ के नए अवसर मिलेंगे। व्यापार में निवेश लाभकारी हो सकता है।",
+      en: "New opportunities for financial gain will arise. Business investments can be profitable."
     },
     love: {
-      hi: "रिश्तों में समझदारी से बात करें। परिवार का सहयोग मिलेगा।",
-      en: "Communicate wisely in relationships. Family support will help."
+      hi: "परिवार में सुख-शांति बनी रहेगी। बड़ों का आशीर्वाद मिलेगा।",
+      en: "Peace and happiness will prevail in the family. You will receive elders' blessings."
     },
     health: {
-      hi: "पाचन का ध्यान रखें और हल्का भोजन करें।",
-      en: "Take care of digestion and eat light food."
-    },
-    tip: {
-      hi: "किसी जरूरतमंद को भोजन कराएं।",
-      en: "Offer food to someone in need."
-    },
-    luckyColor: { hi: "हरा", en: "Green" },
-    luckyNumber: "6",
-    luckyTime: { hi: "दोपहर 1:15", en: "01:15 PM" },
-    luckyDate: "Mar 7, 2026"
-  },
-
-  gemini: {
-    career: {
-      hi: "नई योजनाओं पर काम शुरू कर सकते हैं। संपर्क बढ़ाने से लाभ होगा।",
-      en: "You may start new plans today. Expanding contacts will be beneficial."
-    },
-    love: {
-      hi: "दोस्तों और परिवार के साथ समय अच्छा बीतेगा।",
-      en: "Time with friends and family will be pleasant."
-    },
-    health: {
-      hi: "मानसिक तनाव से बचें और थोड़ा आराम करें।",
-      en: "Avoid mental stress and take proper rest."
-    },
-    tip: {
-      hi: "गणेश जी का ध्यान करें।",
-      en: "Meditate on Lord Ganesha."
-    },
-    luckyColor: { hi: "पीला", en: "Yellow" },
-    luckyNumber: "5",
-    luckyTime: { hi: "शाम 4:10", en: "04:10 PM" },
-    luckyDate: "Mar 7, 2026"
-  },
-
-  cancer: {
-    career: {
-      hi: "काम में स्थिरता रहेगी। सीनियर्स का सहयोग मिलेगा।",
-      en: "Work will remain stable. Seniors will support you."
-    },
-    love: {
-      hi: "परिवार के साथ भावनात्मक जुड़ाव बढ़ेगा।",
-      en: "Emotional bonding with family will grow."
-    },
-    health: {
-      hi: "ठंडी चीजों से बचें और गले का ध्यान रखें।",
-      en: "Avoid cold items and take care of your throat."
-    },
-    tip: {
-      hi: "गायत्री मंत्र का जाप करें।",
-      en: "Chant the Gayatri Mantra."
-    },
-    luckyColor: { hi: "सफेद", en: "White" },
-    luckyNumber: "2",
-    luckyTime: { hi: "सुबह 8:45", en: "08:45 AM" },
-    luckyDate: "Mar 7, 2026"
-  },
-
-  leo: {
-    career: {
-      hi: "लीडरशिप दिखाने का मौका मिलेगा। नई जिम्मेदारी मिल सकती है।",
-      en: "You may get a chance to show leadership. New responsibilities may come."
-    },
-    love: {
-      hi: "साथी के साथ खुलकर बातचीत करें। रिश्ते मजबूत होंगे।",
-      en: "Communicate openly with your partner. It will strengthen the relationship."
-    },
-    health: {
-      hi: "पीठ और थकान का ध्यान रखें।",
-      en: "Take care of back strain and fatigue."
-    },
-    tip: {
-      hi: "सूर्य देव को जल अर्पित करें।",
-      en: "Offer water to the Sun God."
-    },
-    luckyColor: { hi: "सुनहरा", en: "Golden" },
-    luckyNumber: "1",
-    luckyTime: { hi: "सुबह 7:30", en: "07:30 AM" },
-    luckyDate: "Mar 7, 2026"
-  },
-
-  virgo: {
-    career: {
-      hi: "बारीकी से काम करने से सफलता मिलेगी।",
-      en: "Paying attention to details will bring success."
-    },
-    love: {
-      hi: "परिवार के साथ समय अच्छा रहेगा।",
-      en: "You will have a pleasant time with family."
-    },
-    health: {
-      hi: "पाचन का ध्यान रखें।",
-      en: "Take care of your digestion."
-    },
-    tip: {
-      hi: "गणेश जी को दूर्वा चढ़ाएं।",
-      en: "Offer Durva to Lord Ganesha."
-    },
-    luckyColor: { hi: "हल्का हरा", en: "Light Green" },
-    luckyNumber: "7",
-    luckyTime: { hi: "सुबह 11:20", en: "11:20 AM" },
-    luckyDate: "Mar 7, 2026"
-  },
-
-  libra: {
-    career: {
-      hi: "आर्थिक मामलों में संतुलन बनाए रखें।",
-      en: "Maintain balance in financial matters."
-    },
-    love: {
-      hi: "पार्टनर के साथ समय अच्छा बीतेगा।",
-      en: "You will enjoy good moments with your partner."
-    },
-    health: {
-      hi: "पानी अधिक पिएं।",
-      en: "Drink more water."
-    },
-    tip: {
-      hi: "ॐ शुक्राय नमः का जप करें।",
-      en: "Chant 'Om Shukraya Namah'."
-    },
-    luckyColor: { hi: "गुलाबी", en: "Pink" },
-    luckyNumber: "6",
-    luckyTime: { hi: "दोपहर 12:50", en: "12:50 PM" },
-    luckyDate: "Mar 7, 2026"
-  },
-
-  scorpio: {
-    career: {
-      hi: "धैर्य से काम लें, योजनाएं सफल होंगी।",
-      en: "Work patiently; your plans will succeed."
-    },
-    love: {
-      hi: "रिश्तों में भरोसा बनाए रखें।",
-      en: "Maintain trust in relationships."
-    },
-    health: {
-      hi: "नींद पूरी लें।",
-      en: "Get proper sleep."
-    },
-    tip: {
-      hi: "हनुमान चालीसा का पाठ करें।",
-      en: "Recite the Hanuman Chalisa."
-    },
-    luckyColor: { hi: "मैरून", en: "Maroon" },
-    luckyNumber: "9",
-    luckyTime: { hi: "शाम 7:10", en: "07:10 PM" },
-    luckyDate: "Mar 7, 2026"
-  },
-
-  sagittarius: {
-    career: {
-      hi: "नई चीजें सीखने का अवसर मिलेगा।",
-      en: "You will get an opportunity to learn new things."
-    },
-    love: {
-      hi: "घर का माहौल खुशनुमा रहेगा।",
-      en: "The home environment will remain cheerful."
-    },
-    health: {
-      hi: "व्यायाम से लाभ होगा।",
-      en: "Exercise will benefit you."
-    },
-    tip: {
-      hi: "माथे पर केसर का तिलक लगाएं।",
-      en: "Apply saffron tilak on your forehead."
-    },
-    luckyColor: { hi: "पीला", en: "Yellow" },
-    luckyNumber: "3",
-    luckyTime: { hi: "सुबह 6:15", en: "06:15 AM" },
-    luckyDate: "Mar 7, 2026"
-  },
-
-  capricorn: {
-    career: {
-      hi: "मेहनत का फल मिलेगा और काम में प्रगति होगी।",
-      en: "Hard work will pay off and progress will be seen."
-    },
-    love: {
-      hi: "परिवार के साथ समय बिताने से मन खुश रहेगा।",
-      en: "Spending time with family will make you happy."
-    },
-    health: {
-      hi: "घुटनों और जोड़ों का ध्यान रखें।",
-      en: "Take care of knees and joints."
-    },
-    tip: {
-      hi: "शनि चालीसा का पाठ करें।",
-      en: "Recite the Shani Chalisa."
-    },
-    luckyColor: { hi: "नीला", en: "Blue" },
-    luckyNumber: "8",
-    luckyTime: { hi: "शाम 5:40", en: "05:40 PM" },
-    luckyDate: "Mar 7, 2026"
-  },
-
-  aquarius: {
-    career: {
-      hi: "नई सोच से सफलता मिलेगी।",
-      en: "Innovative ideas will bring success."
-    },
-    love: {
-      hi: "दोस्तों से मुलाकात खुशी देगी।",
-      en: "Meeting friends will bring joy."
-    },
-    health: {
-      hi: "प्राणायाम लाभ देगा।",
-      en: "Pranayama will be beneficial."
+      hi: "मानसिक शांति महसूस होगी। ध्यान (Meditation) करना फायदेमंद रहेगा।",
+      en: "You will feel mental peace. Practicing meditation will be beneficial."
     },
     tip: {
       hi: "शिव चालीसा का पाठ करें।",
       en: "Recite the Shiv Chalisa."
     },
+    luckyColor: { hi: "सफेद", en: "White" },
+    luckyNumber: "6",
+    luckyTime: { hi: "सुबह 10:15", en: "10:15 AM" },
+    luckyDate: "Mar 8, 2026"
+  },
+
+  gemini: {
+    career: {
+      hi: "कार्यस्थल पर आपकी बौद्धिक क्षमता की सराहना होगी। नई योजनाएं सफल होंगी।",
+      en: "Your intellectual abilities will be appreciated at work. New plans will succeed."
+    },
+    love: {
+      hi: "मित्रों के साथ महादेव के दर्शन का अवसर मिल सकता है।",
+      en: "Opportunity to visit Lord Shiva's temple with friends."
+    },
+    health: {
+      hi: "आंखों का थोड़ा ध्यान रखें, पर्याप्त नींद लें।",
+      en: "Take care of your eyes and get sufficient sleep."
+    },
+    tip: {
+      hi: "पंचाक्षरी मंत्र 'ॐ नमः शिवाय' का मानसिक जाप करें।",
+      en: "Mentally chant the Panchakshari Mantra 'Om Namah Shivaya'."
+    },
+    luckyColor: { hi: "हरा", en: "Green" },
+    luckyNumber: "5",
+    luckyTime: { hi: "दोपहर 02:45", en: "02:45 PM" },
+    luckyDate: "Mar 8, 2026"
+  },
+
+  cancer: {
+    career: {
+      hi: "नौकरी में पदोन्नति के योग बन रहे हैं। अधिकारी वर्ग का सहयोग मिलेगा।",
+      en: "Chances of promotion in job. Cooperation from officials is expected."
+    },
+    love: {
+      hi: "भावुकता पर नियंत्रण रखें। परिवार के साथ धार्मिक अनुष्ठान में शामिल होंगे।",
+      en: "Keep emotions in check. You will participate in religious rituals with family."
+    },
+    health: {
+      hi: "आज स्फूर्ति का अनुभव करेंगे। पुराने रोगों से मुक्ति मिल सकती है।",
+      en: "You will feel energetic today. Relief from old ailments is possible."
+    },
+    tip: {
+      hi: "दूध से शिवलिंग का अभिषेक करें।",
+      en: "Perform Abhishekam of the Shivling with milk."
+    },
+    luckyColor: { hi: "सिल्वर", en: "Silver" },
+    luckyNumber: "2",
+    luckyTime: { hi: "सुबह 09:00", en: "09:00 AM" },
+    luckyDate: "Mar 8, 2026"
+  },
+
+  leo: {
+    career: {
+      hi: "प्रशासनिक कार्यों में सफलता मिलेगी। आत्मविश्वास से लक्ष्य प्राप्त करेंगे।",
+      en: "Success in administrative tasks. Achieve goals with self-confidence."
+    },
+    love: {
+      hi: "समाज में मान-सम्मान बढ़ेगा। जीवनसाथी के साथ सामंजस्य बना रहेगा।",
+      en: "Social prestige will increase. Harmony with your spouse will remain."
+    },
+    health: {
+      hi: "हृदय रोगियों को सावधानी बरतनी चाहिए। गुस्सा न करें।",
+      en: "Heart patients should take precautions. Avoid getting angry."
+    },
+    tip: {
+      hi: "सूर्य देव को जल दें और महामृत्युंजय मंत्र पढ़ें।",
+      en: "Offer water to the Sun and recite the Mahamrityunjaya Mantra."
+    },
+    luckyColor: { hi: "सुनहरा", en: "Golden" },
+    luckyNumber: "1",
+    luckyTime: { hi: "दोपहर 12:30", en: "12:30 PM" },
+    luckyDate: "Mar 8, 2026"
+  },
+
+  virgo: {
+    career: {
+      hi: "सोचे हुए काम आज पूरे होंगे। आर्थिक स्थिति मजबूत होगी।",
+      en: "Planned tasks will be completed today. Financial status will strengthen."
+    },
+    love: {
+      hi: "पुराने मित्रों से मुलाकात मन को प्रसन्न करेगी।",
+      en: "Meeting old friends will bring joy to your mind."
+    },
+    health: {
+      hi: "स्वास्थ्य सामान्य रहेगा, योग और प्राणायाम करें।",
+      en: "Health will be normal; practice yoga and pranayama."
+    },
+    tip: {
+      hi: "भगवान गणेश और शिव की संयुक्त आराधना करें।",
+      en: "Worship Lord Ganesha and Shiva together."
+    },
+    luckyColor: { hi: "फिरोजी", en: "Turquoise" },
+    luckyNumber: "7",
+    luckyTime: { hi: "शाम 04:20", en: "04:20 PM" },
+    luckyDate: "Mar 8, 2026"
+  },
+
+  libra: {
+    career: {
+      hi: "साझेदारी के कामों में पारदर्शिता रखें। धन का आगमन शुभ होगा।",
+      en: "Maintain transparency in partnership works. Inflow of money will be auspicious."
+    },
+    love: {
+      hi: "प्रेम संबंधों में नया मोड़ आ सकता है। विवाह की चर्चा संभव है।",
+      en: "A new turn in love relationships. Discussion about marriage is possible."
+    },
+    health: {
+      hi: "पीठ दर्द की समस्या हो सकती है, भारी सामान न उठाएं।",
+      en: "Back pain issues may occur; do not lift heavy weights."
+    },
+    tip: {
+      hi: "सफेद चंदन का तिलक लगाएं।",
+      en: "Apply white sandalwood tilak."
+    },
+    luckyColor: { hi: "क्रीम", en: "Cream" },
+    luckyNumber: "6",
+    luckyTime: { hi: "सुबह 11:45", en: "11:45 AM" },
+    luckyDate: "Mar 8, 2026"
+  },
+
+  scorpio: {
+    career: {
+      hi: "चुनौतियों का सामना साहस से करेंगे। गुप्त शत्रु परास्त होंगे।",
+      en: "Face challenges with courage. Hidden enemies will be defeated."
+    },
+    love: {
+      hi: "आज का दिन परिवार के साथ भक्ति भाव में बीतेगा।",
+      en: "Today will be spent in devotion with family."
+    },
+    health: {
+      hi: "त्वचा संबंधी समस्या हो सकती है, साफ-सफाई का ध्यान रखें।",
+      en: "Skin-related issues might occur; maintain hygiene."
+    },
+    tip: {
+      hi: "हनुमान जी के साथ शिव जी की भी पूजा करें।",
+      en: "Worship Lord Hanuman along with Lord Shiva."
+    },
+    luckyColor: { hi: "मैरून", en: "Maroon" },
+    luckyNumber: "9",
+    luckyTime: { hi: "शाम 06:15", en: "06:15 PM" },
+    luckyDate: "Mar 8, 2026"
+  },
+
+  sagittarius: {
+    career: {
+      hi: "उच्च शिक्षा की ओर कदम बढ़ेंगे। कार्यक्षेत्र में मान बढ़ेगा।",
+      en: "Steps towards higher education. Respect will increase at work."
+    },
+    love: {
+      hi: "संतान पक्ष से खुशी मिलेगी। दांपत्य जीवन सुखद रहेगा।",
+      en: "Happiness from the children's side. Married life will be pleasant."
+    },
+    health: {
+      hi: "खान-पान में संयम रखें, लिवर का ध्यान दें।",
+      en: "Exercise restraint in eating; take care of your liver."
+    },
+    tip: {
+      hi: "पीले फूलों से महादेव का पूजन करें।",
+      en: "Worship Mahadev with yellow flowers."
+    },
+    luckyColor: { hi: "पीला", en: "Yellow" },
+    luckyNumber: "3",
+    luckyTime: { hi: "सुबह 07:15", en: "07:15 AM" },
+    luckyDate: "Mar 8, 2026"
+  },
+
+  capricorn: {
+    career: {
+      hi: "अनुशासन और मेहनत से बड़े प्रोजेक्ट्स पूरे होंगे।",
+      en: "Complete big projects with discipline and hard work."
+    },
+    love: {
+      hi: "घर के बुजुर्गों की सलाह लेना फायदेमंद रहेगा।",
+      en: "Taking advice from elders at home will be beneficial."
+    },
+    health: {
+      hi: "जोड़ों के दर्द में आराम मिलेगा। पैदल चलना जारी रखें।",
+      en: "Relief in joint pain. Continue walking regularly."
+    },
+    tip: {
+      hi: "शिवलिंग पर काले तिल चढ़ाएं।",
+      en: "Offer black sesame seeds to the Shivling."
+    },
+    luckyColor: { hi: "गहरा नीला", en: "Dark Blue" },
+    luckyNumber: "8",
+    luckyTime: { hi: "शाम 05:00", en: "05:00 PM" },
+    luckyDate: "Mar 8, 2026"
+  },
+
+  aquarius: {
+    career: {
+      hi: "तकनीकी क्षेत्र से जुड़े लोगों को लाभ होगा। नया अवसर मिल सकता है।",
+      en: "Benefits for those in technical fields. A new opportunity may arise."
+    },
+    love: {
+      hi: "पार्टनर के साथ वैचारिक मतभेद दूर होंगे।",
+      en: "Ideological differences with your partner will be resolved."
+    },
+    health: {
+      hi: "नसों में खिंचाव हो सकता है, हल्का व्यायाम करें।",
+      en: "Nerve strain is possible; do light exercises."
+    },
+    tip: {
+      hi: "महाशिवरात्रि का व्रत रखें या शिव स्तुति करें।",
+      en: "Observe Mahashivratri fast or perform Shiv Stuti."
+    },
     luckyColor: { hi: "आसमानी", en: "Sky Blue" },
     luckyNumber: "11",
-    luckyTime: { hi: "दोपहर 1:30", en: "01:30 PM" },
-    luckyDate: "Mar 7, 2026"
+    luckyTime: { hi: "दोपहर 01:00", en: "01:00 PM" },
+    luckyDate: "Mar 8, 2026"
   },
 
   pisces: {
     career: {
-      hi: "रचनात्मक कार्यों में सफलता मिलेगी।",
-      en: "Creative work will bring success."
+      hi: "धार्मिक व्यापार से जुड़े लोगों के लिए आज का दिन बहुत लाभकारी है।",
+      en: "A very profitable day for those involved in religious businesses."
     },
     love: {
-      hi: "रिश्तों में भावनात्मक जुड़ाव बढ़ेगा।",
-      en: "Emotional bonding will increase."
+      hi: "मन में शांति और दया का भाव रहेगा। दूसरों की मदद करेंगे।",
+      en: "Peace and kindness will prevail in the mind. You will help others."
     },
     health: {
-      hi: "आराम और पानी पीना जरूरी है।",
-      en: "Rest and hydration are important."
+      hi: "सर्दी-जुकाम से बचें, गर्म पानी का सेवन करें।",
+      en: "Avoid cold and cough; consume warm water."
     },
     tip: {
-      hi: "विष्णु सहस्रनाम सुनें।",
-      en: "Listen to Vishnu Sahasranamam."
+      hi: "रुद्राष्टकम का पाठ करें।",
+      en: "Recite the Rudrashtakam."
     },
     luckyColor: { hi: "बैंगनी", en: "Purple" },
-    luckyNumber: "7",
-    luckyTime: { hi: "सुबह 7:40", en: "07:40 AM" },
-    luckyDate: "Mar 7, 2026"
+    luckyNumber: "3",
+    luckyTime: { hi: "सुबह 08:00", en: "08:00 AM" },
+    luckyDate: "Mar 8, 2026"
   }
 };
