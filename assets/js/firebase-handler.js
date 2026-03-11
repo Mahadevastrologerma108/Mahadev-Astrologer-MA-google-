@@ -35,7 +35,7 @@ if (appointmentForm) {
         try {
             const service = document.getElementById('service-select').value;
             const name = document.getElementById('user-name').value;
-            const contactMethod = document.querySelector('input:checked').value;
+            const contactMethod = document.querySelector('input[name="contact-method"]:checked').value;
             const contactDetail = document.getElementById('contact-detail').value;
 
             const subData = {
@@ -43,13 +43,24 @@ if (appointmentForm) {
                 timestamp: serverTimestamp()
             };
 
-            // Conditional Data based on Service
+            // 🔱 CORRECTED: सारा डेटा (Date, Time, Place) सही से कैप्चर करें
             if (service === 'kundli_matching') {
-                subData.male_details = { name: document.getElementById('m-name').value, dob: document.getElementById('m-dob').value };
-                subData.female_details = { name: document.getElementById('f-name').value, dob: document.getElementById('f-dob').value };
+                subData.male_details = { 
+                    name: document.getElementById('m-name').value, 
+                    dob: document.getElementById('m-dob').value,
+                    time: document.getElementById('m-time').value,
+                    place: document.getElementById('m-place').value
+                };
+                subData.female_details = { 
+                    name: document.getElementById('f-name').value, 
+                    dob: document.getElementById('f-dob').value,
+                    time: document.getElementById('f-time').value,
+                    place: document.getElementById('f-place').value
+                };
             } else {
                 subData.dob = document.getElementById('single-dob').value;
-                subData.place = document.getElementById('single-place').value;
+                subData.time = document.getElementById('single-time')?.value || "";
+                subData.place = document.getElementById('single-place')?.value || "";
             }
 
             // 1. Save to Firestore
@@ -77,21 +88,53 @@ if (appointmentForm) {
     });
 }
 
-// UI Toggles for Form
+// 🔱 CORRECTED: फॉर्म के डब्बे छुपाने/दिखाने का मास्टर लॉजिक
 window.applyFormLogic = function() {
-    const isMatching = document.getElementById('service-select')?.value === 'kundli_matching';
-    const mSec = document.getElementById('section-matching');
-    const sSec = document.getElementById('section-single');
+    const serviceSelect = document.getElementById('service-select');
+    if (!serviceSelect) return;
+    const service = serviceSelect.value;
     
-    if (mSec && sSec) {
-        mSec.style.display = isMatching ? 'block' : 'none';
-        sSec.style.display = isMatching ? 'none' : 'block';
+    const sectionSingle = document.getElementById('section-single');
+    const sectionMatching = document.getElementById('section-matching');
+    const palmInstruction = document.getElementById('palm-instruction');
+    const timePlaceGroup = document.getElementById('time-place-group'); 
+
+    // सबसे पहले सब कुछ छुपा दें
+    if(sectionSingle) sectionSingle.style.display = 'none';
+    if(sectionMatching) sectionMatching.style.display = 'none';
+    if(palmInstruction) palmInstruction.style.display = 'none';
+    if(timePlaceGroup) timePlaceGroup.style.display = 'grid'; 
+
+    // सर्विस के हिसाब से डब्बे दिखाएं
+    if (service === 'kundli_making' || service === 'numerology') {
+        if(sectionSingle) sectionSingle.style.display = 'block';
+    } else if (service === 'kundli_matching') {
+        if(sectionMatching) sectionMatching.style.display = 'block';
+    } else if (service === 'palmistry') {
+        if(sectionSingle) sectionSingle.style.display = 'block';
+        if(timePlaceGroup) timePlaceGroup.style.display = 'none'; // पामिस्ट्री में टाइम/प्लेस गायब
+        if(palmInstruction) palmInstruction.style.display = 'block';
+    } else if (service === 'combo_analysis') {
+        if(sectionSingle) sectionSingle.style.display = 'block';
+        if(palmInstruction) palmInstruction.style.display = 'block';
     }
 };
 
 window.syncContactMethod = function(method) {
     const input = document.getElementById('contact-detail');
-    if (input) input.placeholder = method === 'WA' ? "WhatsApp Number" : "Username / Email ID";
+    const warning = document.getElementById('email-warning');
+    if (!input) return;
+
+    if (method === 'WA') {
+        input.placeholder = "WhatsApp Number";
+        if(warning) warning.style.display = 'none';
+    } else if (method === 'TG') {
+        input.placeholder = "Telegram Username / Number";
+        if(warning) warning.style.display = 'none';
+    } else if (method === 'EM') {
+        input.placeholder = "Email ID";
+        if(warning) warning.style.display = 'block';
+    }
 };
 
 // ==========================================
