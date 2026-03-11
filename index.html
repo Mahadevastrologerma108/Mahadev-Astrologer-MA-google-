@@ -20,6 +20,8 @@
     <title data-key="site_title"></title>
 
     <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -52,20 +54,7 @@
             background: rgba(255,255,255,0.02); border: 1px solid var(--border); 
             border-radius: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); 
         }
-        .input-field { 
-            width: 100%; padding: 18px; margin-bottom: 20px; box-sizing: border-box;
-            background: rgba(0,0,0,0.3); border: 1px solid var(--border); 
-            border-radius: 15px; color: white; outline: none; transition: 0.3s; font-family: 'Poppins';
-        }
-        .input-field:focus { border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); }
-        .gold-btn { 
-            background: var(--gold); color: black; border: none; padding: 20px; font-weight: bold; 
-            border-radius: 50px; cursor: pointer; transition: 0.4s; font-family: 'Cinzel'; width: 100%; 
-            text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; 
-        }
-        .gold-btn:hover { background: #fff; transform: translateY(-3px); }
-        .footer-link { color: #666; text-decoration: none; transition: 0.3s; margin: 0 15px; font-size: 0.9rem; }
-    </style>
+         </style>
 </head>
 <body>
 
@@ -326,9 +315,10 @@
 
 <div id="footer-placeholder"></div>
 
-<script src="/assets/js/translations.js"></script>
-<script src="/assets/js/layout.js"></script>
-<script src="/assets/js/script.js"></script> <script type="module" src="assets/js/firebase-handler.js"></script>
+<script src="assets/js/translations.js" defer></script>
+<script src="assets/js/layout.js" defer></script>
+<script src="assets/js/script.js" defer></script> 
+<script type="module" src="assets/js/firebase-handler.js" defer></script>
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
