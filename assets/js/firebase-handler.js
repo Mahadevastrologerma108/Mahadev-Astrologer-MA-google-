@@ -37,9 +37,14 @@ if (appointmentForm) {
             const name = document.getElementById('user-name').value;
             const contactMethod = document.querySelector('input[name="contact-method"]:checked').value;
             const contactDetail = document.getElementById('contact-detail').value;
+            
+            // 🔱 नया: UID चेकबॉक्स का पता लगाना
+            const wantsUID = document.getElementById('generate-uid').checked; 
+            const uidText = wantsUID ? "Haan (Yes) ✅" : "Nahi (No) ❌";
 
             const subData = {
                 service, name, contact_method: contactMethod, contact_detail: contactDetail,
+                generate_uid: wantsUID, // 👈 डेटाबेस में सेव करने के लिए
                 timestamp: serverTimestamp()
             };
 
@@ -66,8 +71,9 @@ if (appointmentForm) {
             // 1. Save to Firestore
             await addDoc(collection(db, "appointments"), subData);
 
-            // 2. Send Telegram Notification
-            const tgMessage = `🔱 *New Appointment Request!*\n\n👤 *Name:* ${name}\n✨ *Service:* ${service.replace('_', ' ').toUpperCase()}\n📞 *Contact:* ${contactDetail} (${contactMethod})`;
+            // 2. Send Telegram Notification (UID के साथ)
+            const tgMessage = `🔱 *New Appointment Request!*\n\n👤 *Name:* ${name}\n✨ *Service:* ${service.replace('_', ' ').toUpperCase()}\n📞 *Contact:* ${contactDetail} (${contactMethod})\n🔑 *UID Chahiye?:* ${uidText}`;
+            
             await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -80,62 +86,13 @@ if (appointmentForm) {
 
         } catch (err) { 
             console.error("🔱 Form Error:", err); 
-            alert("Kshama karein, network error aaya. Kripya dobara koshish karein."); 
+            alert("Kshama karein, network error aaya. Kripya dobara prayas karein."); 
         } finally { 
             btn.innerText = "SEND REQUEST"; 
             btn.disabled = false; 
         }
     });
 }
-
-// 🔱 CORRECTED: फॉर्म के डब्बे छुपाने/दिखाने का मास्टर लॉजिक
-window.applyFormLogic = function() {
-    const serviceSelect = document.getElementById('service-select');
-    if (!serviceSelect) return;
-    const service = serviceSelect.value;
-    
-    const sectionSingle = document.getElementById('section-single');
-    const sectionMatching = document.getElementById('section-matching');
-    const palmInstruction = document.getElementById('palm-instruction');
-    const timePlaceGroup = document.getElementById('time-place-group'); 
-
-    // सबसे पहले सब कुछ छुपा दें
-    if(sectionSingle) sectionSingle.style.display = 'none';
-    if(sectionMatching) sectionMatching.style.display = 'none';
-    if(palmInstruction) palmInstruction.style.display = 'none';
-    if(timePlaceGroup) timePlaceGroup.style.display = 'grid'; 
-
-    // सर्विस के हिसाब से डब्बे दिखाएं
-    if (service === 'kundli_making' || service === 'numerology') {
-        if(sectionSingle) sectionSingle.style.display = 'block';
-    } else if (service === 'kundli_matching') {
-        if(sectionMatching) sectionMatching.style.display = 'block';
-    } else if (service === 'palmistry') {
-        if(sectionSingle) sectionSingle.style.display = 'block';
-        if(timePlaceGroup) timePlaceGroup.style.display = 'none'; // पामिस्ट्री में टाइम/प्लेस गायब
-        if(palmInstruction) palmInstruction.style.display = 'block';
-    } else if (service === 'combo_analysis') {
-        if(sectionSingle) sectionSingle.style.display = 'block';
-        if(palmInstruction) palmInstruction.style.display = 'block';
-    }
-};
-
-window.syncContactMethod = function(method) {
-    const input = document.getElementById('contact-detail');
-    const warning = document.getElementById('email-warning');
-    if (!input) return;
-
-    if (method === 'WA') {
-        input.placeholder = "WhatsApp Number";
-        if(warning) warning.style.display = 'none';
-    } else if (method === 'TG') {
-        input.placeholder = "Telegram Username / Number";
-        if(warning) warning.style.display = 'none';
-    } else if (method === 'EM') {
-        input.placeholder = "Email ID";
-        if(warning) warning.style.display = 'block';
-    }
-};
 
 // ==========================================
 // 3. SOUND HEALING SPECIAL LOGIC
