@@ -154,7 +154,7 @@ body {
 }
 
 /* =========================================
-   7. FORMS & BUTTONS (Metallic Touch)
+   7. FORMS & BUTTONS (Metallic Touch - FIXED)
    ========================================= */
 .form-card {
     background: var(--card-bg); padding: 30px; border-radius: 15px;
@@ -162,12 +162,31 @@ body {
 }
 
 .input-field {
-    width: 100%; padding: 12px; margin: 10px 0; background: rgba(0,0,0,0.5);
-    border: 1px solid #333; color: #fff; border-radius: 5px;
+    width: 100%; 
+    padding: 16px; /* मोबाइल पर टाइप करने में आसानी के लिए थोड़ा बड़ा किया */
+    margin: 10px 0 20px 0; 
+    background: rgba(255, 255, 255, 0.08); /* 👈 हल्का सफ़ेद शीशे जैसा (Glass effect) */
+    border: 1px solid rgba(212, 175, 55, 0.4); /* 👈 सुनहरा बॉर्डर ताकि डब्बा साफ़ दिखे */
+    color: #fff; 
+    border-radius: 10px; 
+    font-family: 'Poppins', sans-serif;
+    outline: none; 
+    transition: 0.3s;
+    -webkit-appearance: none; /* 👈 मोबाइल के अंधेरे शैडो को ब्लॉक करेगा */
+    appearance: none;
 }
 
-.input-field:focus { border-color: var(--gold-main); outline: none; }
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* Placeholder टेक्स्ट को थोड़ा साफ़ किया */
+}
 
+.input-field:focus { 
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--gold-main); 
+    box-shadow: 0 0 15px var(--gold-glow); 
+}
+
+/* 🔱 सुनहरे बटन का सुरक्षित कोड (इसे नहीं हटाना है) 🔱 */
 .gold-btn {
     background: linear-gradient(135deg, var(--gold-dark), var(--gold-main), var(--gold-light)) !important;
     color: #000 !important; padding: 15px; border: none !important;
@@ -179,6 +198,9 @@ body {
     background: linear-gradient(135deg, var(--gold-light), var(--gold-main), var(--gold-dark)) !important;
     box-shadow: 0 0 20px var(--gold-glow);
 }
+/* 🔱 Grid Layout for Form (Time & Place) 🔱 */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+@media (max-width: 480px) { .grid-2 { grid-template-columns: 1fr; } } /* छोटे मोबाइल पर एक के नीचे एक */
 
 /* =========================================
    8. PANCHANG UTILITIES
