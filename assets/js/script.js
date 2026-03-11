@@ -44,6 +44,7 @@ window.applyFormLogic = function() {
         if(matchingSec) matchingSec.style.display = 'block';
     } else if (svc === 'palmistry') {
         if(palmInst) palmInst.style.display = 'block';
+        if(timePlaceGroup) timePlaceGroup.style.display = 'none';
     } else if (svc === 'numerology') {
         if(timePlaceGroup) timePlaceGroup.style.display = 'none';
     } else if (svc === 'combo_analysis') {
@@ -66,13 +67,8 @@ window.syncWithTranslation = function() {
     window.syncContactMethod(type);
 };
 
-// 4. Form Submission
-document.getElementById('consultation-form')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert("🔱 Pranaam! Mahadev Astrologer MA will contact you soon.");
-});
 
-// 5. 🔱 PWA INSTALL BUTTON LOGIC ---
+// 4. 🔱 PWA INSTALL BUTTON LOGIC ---
 
 let deferredPrompt;
 const installContainer = document.getElementById('install-container');
