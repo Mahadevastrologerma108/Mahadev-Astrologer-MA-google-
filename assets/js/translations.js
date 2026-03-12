@@ -177,7 +177,6 @@ pan_disclaimer: "* This Panchang is based on Vedic mathematics. For accurate per
 
 "sound_page_title": "Naad Brahma: Divine Sound Science | MAHADEV ASTROLOGER MA",
 "sound_hero_title": "Naad Brahma & Cosmic Resonance",
-"sound_hero_quote": "\"Music is not entertainment; it is the vibration of the Universe created by Mahadev's Damru.\"",
 "sound_intro_para": "According to Vedic science, everything in the universe vibrates at a specific frequency. We link that 'Param-Naad' to your Kundali and Tridosha.",
 about_rashi_title: "Ancient Vedic Wisdom",
 naad_brahma_title: "Naad Brahma Resonance",
