@@ -256,6 +256,18 @@ quiz_q3_c: "Sensitive to Humidity",
         "btn_submit_form": "INVOKE FREQUENCY MAPPING ➔",
         "alert_success": "🔱 Request Sent! We will contact you on WhatsApp.",
 
+// --- Hero & Intro ---
+"sound_hero_quote": "Sound is the divine nectar of the future, provided its resonance is chosen according to your stars.",
+"btn_read_article": "Explore Vedic Science ➔",
+
+// --- Quiz Result (Missing Keys Added) ---
+"res_status_label": "Current State:",
+"res_path_label": "Alignment Path:",
+"res_warning_title": "🔱 Mandatory Warning",
+"res_warning_desc": "Without an exact analysis of <b>Planetary Positions</b>, using specific frequencies can harm your energy balance. These tips are intended to alert you about which resonance to avoid.",
+"form_analysis_prompt": "For precise Frequency & Alignment, please provide details:",
+"btn_consult_expert": "Consult with Expert ➔",
+
 // ===== SOUND MODULE KEYS (EN) =====
 status_locked: "🔐 LOCKED",
 status_unlocked: "🔓 UNLOCKED",
@@ -517,6 +529,18 @@ quiz_q3_c: "नमी/उमस से परेशानी",
         "ph_issue": "आपकी मुख्य समस्या? (वैकल्पिक)",
         "btn_submit_form": "फ्रीक्वेंसी मैपिंग शुरू करें ➔",
         "alert_success": "🔱 अनुरोध भेज दिया गया है! हम आपसे व्हाट्सएप पर संपर्क करेंगे।",
+
+// --- Hero & Intro (Urdu Removed) ---
+"sound_hero_quote": "नाद (ध्वनि) भविष्य का दिव्य अमृत है, यदि उसका चयन आपके नक्षत्रों के अनुरूप हो।",
+"btn_read_article": "वैदिक विज्ञान को समझें ➔",
+
+// --- Quiz Result (Missing Keys Added) ---
+"res_status_label": "वर्तमान स्थिति:",
+"res_path_label": "अलाइनमेंट मार्ग:",
+"res_warning_title": "🔱 अनिवार्य चेतावनी / Disclaimer",
+"res_warning_desc": "बिना सटीक <b>Planetary Positions (ग्रहों की स्थिति)</b> के विश्लेषण के, किसी भी फ्रीक्वेंसी का प्रयोग ऊर्जा चक्रों को असंतुलित कर सकता है। यह जानकारी आपको केवल सतर्क करने के लिए है।",
+"form_analysis_prompt": "सटीक फ्रीक्वेंसी और सुरक्षित अलाइनमेंट के लिए विवरण भरें:",
+"btn_consult_expert": "विशेषज्ञ परामर्श प्राप्त करें ➔",
 
 // 🔱 ADD THESE MISSING KEYS FOR SOUND MODULE
 status_locked: "🔐 लॉक है",
