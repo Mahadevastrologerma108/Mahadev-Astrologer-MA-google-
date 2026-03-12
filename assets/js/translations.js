@@ -225,7 +225,8 @@ pisces_resonance: "Pisces aligns with the Crown Chakra. Chanting 'Hreem' leads t
 "art_footer_quote": "\"Sound is the medicine of the future, provided the dosage is calculated by the stars.\"",
 "benefits_title": "Divine Benefits of Naad Healing",
 "benefit_1": "Balances your mental state and reduces stress.",
-"benefit_2": "Aligns your body vibrations with planetary energy.",   
+"benefit_2": "Aligns your body vibrations with planetary energy.",  
+"benefit_3": "Spiritual peace and vibrational balance through Vedic sounds.", 
     
  // --- Quiz Section ---
 quiz_q1: "1. What is your skin and body type?",
@@ -267,6 +268,7 @@ quiz_q3_c: "Sensitive to Humidity",
 "res_warning_desc": "Without an exact analysis of <b>Planetary Positions</b>, using specific frequencies can harm your energy balance. These tips are intended to alert you about which resonance to avoid.",
 "form_analysis_prompt": "For precise Frequency & Alignment, please provide details:",
 "btn_consult_expert": "Consult with Expert ➔",
+"art_footer_quote": "\"Mastering the Naad is mastering the Self; let the cosmic vibrations lead you to eternal balance.\""
 
 // ===== SOUND MODULE KEYS (EN) =====
 status_locked: "🔐 LOCKED",
@@ -541,6 +543,11 @@ quiz_q3_c: "नमी/उमस से परेशानी",
 "res_warning_desc": "बिना सटीक <b>Planetary Positions (ग्रहों की स्थिति)</b> के विश्लेषण के, किसी भी फ्रीक्वेंसी का प्रयोग ऊर्जा चक्रों को असंतुलित कर सकता है। यह जानकारी आपको केवल सतर्क करने के लिए है।",
 "form_analysis_prompt": "सटीक फ्रीक्वेंसी और सुरक्षित अलाइनमेंट के लिए विवरण भरें:",
 "btn_consult_expert": "विशेषज्ञ परामर्श प्राप्त करें ➔",
+// --- Benefit 3 को जोड़ें ---
+"benefit_3": "वैदिक ध्वनियों के माध्यम से आत्मिक शांति और संतुलन।",
+
+// --- औषधि और खुराक वाले जुमले को बदलें ---
+"art_footer_quote": "“नाद की सिद्धि ही स्वयं की सिद्धि है; ब्रह्मांडीय स्पंदनों को अपने जीवन के परम संतुलन का मार्ग बनने दें।”"
 
 // 🔱 ADD THESE MISSING KEYS FOR SOUND MODULE
 status_locked: "🔐 लॉक है",
