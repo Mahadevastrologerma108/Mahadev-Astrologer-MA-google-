@@ -222,7 +222,7 @@ pisces_resonance: "Pisces aligns with the Crown Chakra. Chanting 'Hreem' leads t
 "art_para_2": "Panini explained how the sound of Mahadev's Damru gave birth to cosmic vibrations. Modern science calls this Cymatics.",
 "art_sub_2": "2. YouTube Frequencies vs Authentic Vedic Sound",
 "art_para_3": "Random frequencies can disturb your nervous system. Selection depends on your planetary degrees.",
-"art_footer_quote": "\"Sound is the medicine of the future, provided the dosage is calculated by the stars.\"",
+
 "benefits_title": "Divine Benefits of Naad Healing",
 "benefit_1": "Balances your mental state and reduces stress.",
 "benefit_2": "Aligns your body vibrations with planetary energy.",  
@@ -498,7 +498,7 @@ pisces_resonance: "मीन सहस्रार चक्र के साथ
 "art_para_2": "पाणिनी ने बताया कि कैसे महादेव के डमरू की ध्वनि ने ब्रह्मांडीय कंपन को जन्म दिया। आधुनिक विज्ञान इसे साइमैटिक्स (Cymatics) कहता है।",
 "art_sub_2": "2. यूट्यूब फ्रीक्वेंसी बनाम प्रामाणिक वैदिक ध्वनि",
 "art_para_3": "यूट्यूब की रैंडम फ्रीक्वेंसी आपके तंत्रिका तंत्र (Nervous System) को परेशान कर सकती हैं।",
-"art_footer_quote": "“ध्वनि भविष्य की औषधि है, बशर्ते उसकी खुराक सितारों द्वारा तय की गई हो।”",
+
 "benefits_title": "नाद उपचार के दिव्य लाभ",
 "benefit_1": "यह आपकी मानसिक स्थिति को संतुलित करता है और तनाव कम करता है।",
 "benefit_2": "यह आपके शरीर के स्पंदन को ग्रहों की ऊर्जा के साथ जोड़ता है।",
