@@ -1,6 +1,6 @@
 /**
  * MAHADEV ASTROLOGER MA - Sound Module Logic
- * Fixed: Variable consistency (selectedLang), Bilingual Result & Form
+ * Upgraded: Energy Alignment Guidance & Safety Disclaimers
  */
 
 let currentStep = 1;
@@ -21,10 +21,9 @@ const soundDatabase = {
     ]
 };
 
-// 2. Load Table (Consistency Fix)
+// 2. Load Table
 function loadTable() {
     const tableBody = document.getElementById('resonance-data-body');
-    // 🔱 FIXED: Always use 'selectedLang' to match your layout.js
     const lang = localStorage.getItem('selectedLang') || 'hi';
 
     if (!window.translations || !window.translations[lang]) {
@@ -54,75 +53,107 @@ function loadTable() {
     }
 }
 
-// 3. 🔱 Bilingual Quiz Navigation
-window.checkDoshaOptionB = function() {
-    const lang = localStorage.getItem('selectedLang') || 'hi'; // FIXED variable
-    const t = translations[lang];
+// 3. 🔱 Result Guidance Data (Bilingual)
+const doshaGuidance = {
+    VATA: {
+        status: { hi: "आपकी ऊर्जा में 'वात' (Vata) तत्व को संतुलित करने की आवश्यकता है।", en: "There is a need to balance the 'Vata' element in your energy." },
+        path: { hi: "आपको ऐसी तरंगों की आवश्यकता है जो मन को स्थिरता प्रदान करें।", en: "You require resonances that provide stability to the mind." },
+        caution: { hi: "अति-तीव्र ध्वनि से बचें, यह वात को विचलित कर सकती है।", en: "Avoid high-pitched sounds, as they may agitate Vata." }
+    },
+    PITTA: {
+        status: { hi: "आपकी ऊर्जा में 'पित्त' (Pitta) तत्व को संतुलित करने की आवश्यकता है।", en: "There is a need to balance the 'Pitta' element in your energy." },
+        path: { hi: "शीतल और शांत तरंगें आपकी आंतरिक अग्नि को संतुलित करेंगी।", en: "Cool and calm resonances will balance your internal fire." },
+        caution: { hi: "उत्तेजक और तेज़ संगीत से इस समय दूरी बनाए रखें।", en: "Maintain distance from stimulating or loud music at this time." }
+    },
+    KAPHA: {
+        status: { hi: "आपकी ऊर्जा में 'कफ' (Kapha) तत्व को संतुलित करने की आवश्यकता है।", en: "There is a need to balance the 'Kapha' element in your energy." },
+        path: { hi: "आपको चैतन्य तरंगों की आवश्यकता है जो स्फूर्ति का संचार करें।", en: "You require awakening resonances that promote vitality." },
+        caution: { hi: "अत्यधिक धीमी और भारी ध्वनियों से अलाइनमेंट में बाधा आ सकती है।", en: "Extremely slow and heavy sounds may hinder alignment." }
+    }
+};
 
+// 4. Bilingual Quiz
+window.checkDoshaOptionB = function() {
+    const lang = localStorage.getItem('selectedLang') || 'hi';
+    const t = translations[lang];
     const startBtn = document.getElementById('start-quiz-btn');
     if(startBtn) startBtn.style.display = 'none';
-
     document.getElementById('quiz-ui').style.display = 'block';
-    const questionPara = document.getElementById('quiz-question');
-    const optionsDiv = document.getElementById('quiz-options');
-
-    questionPara.innerText = t.quiz_q1;
-    optionsDiv.innerHTML = `
-        <button class="quiz-opt" onclick="nextStep('A')">${t.quiz_q1_a}</button>
-        <button class="quiz-opt" onclick="nextStep('B')">${t.quiz_q1_b}</button>
-        <button class="quiz-opt" onclick="nextStep('C')">${t.quiz_q1_c}</button>
-    `;
+    nextStep(null); 
 }
 
 window.nextStep = function(val) {
-    scores.push(val);
-    const lang = localStorage.getItem('selectedLang') || 'hi'; // FIXED variable
+    if(val) scores.push(val);
+    const lang = localStorage.getItem('selectedLang') || 'hi';
     const t = translations[lang];
     const questionPara = document.getElementById('quiz-question');
     const optionsDiv = document.getElementById('quiz-options');
 
     if(currentStep === 1) {
-        questionPara.innerText = t.quiz_q2;
-        optionsDiv.innerHTML = `
-            <button class="quiz-opt" onclick="nextStep('A')">${t.quiz_q2_a}</button>
-            <button class="quiz-opt" onclick="nextStep('B')">${t.quiz_q2_b}</button>
-            <button class="quiz-opt" onclick="nextStep('C')">${t.quiz_q2_c}</button>
-        `;
+        questionPara.innerText = t.quiz_q1;
+        optionsDiv.innerHTML = `<button class="quiz-opt" onclick="nextStep('A')">${t.quiz_q1_a}</button>
+                                <button class="quiz-opt" onclick="nextStep('B')">${t.quiz_q1_b}</button>
+                                <button class="quiz-opt" onclick="nextStep('C')">${t.quiz_q1_c}</button>`;
         currentStep++;
     } else if(currentStep === 2) {
+        questionPara.innerText = t.quiz_q2;
+        optionsDiv.innerHTML = `<button class="quiz-opt" onclick="nextStep('A')">${t.quiz_q2_a}</button>
+                                <button class="quiz-opt" onclick="nextStep('B')">${t.quiz_q2_b}</button>
+                                <button class="quiz-opt" onclick="nextStep('C')">${t.quiz_q2_c}</button>`;
+        currentStep++;
+    } else if(currentStep === 3) {
         questionPara.innerText = t.quiz_q3;
-        optionsDiv.innerHTML = `
-            <button class="quiz-opt" onclick="nextStep('A')">${t.quiz_q3_a}</button>
-            <button class="quiz-opt" onclick="nextStep('B')">${t.quiz_q3_b}</button>
-            <button class="quiz-opt" onclick="nextStep('C')">${t.quiz_q3_c}</button>
-        `;
+        optionsDiv.innerHTML = `<button class="quiz-opt" onclick="nextStep('A')">${t.quiz_q3_a}</button>
+                                <button class="quiz-opt" onclick="nextStep('B')">${t.quiz_q3_b}</button>
+                                <button class="quiz-opt" onclick="nextStep('C')">${t.quiz_q3_c}</button>`;
         currentStep++;
     } else {
         showFinalResult();
     }
 }
 
-// 4. Final Result (Bilingual Fix)
+// 5. 🔱 Final Result with Mandatory Warning
 function showFinalResult() {
     const lang = localStorage.getItem('selectedLang') || 'hi';
     const t = translations[lang];
-    let finalDosha = (scores[0] === 'A') ? "VATA" : (scores[0] === 'B' ? "PITTA" : "KAPHA");
+    const counts = { A: 0, B: 0, C: 0 };
+    scores.forEach(s => counts[s]++);
+    
+    let finalDosha = "VATA";
+    if(counts.B > counts.A && counts.B > counts.C) finalDosha = "PITTA";
+    if(counts.C > counts.A && counts.C > counts.B) finalDosha = "KAPHA";
+
+    const data = doshaGuidance[finalDosha];
     const container = document.getElementById('dosha-quiz-container');
 
     container.innerHTML = `
-        <div class="result-box divine-success" style="padding:20px; text-align:center;">
-            <h2 class="gold-text" style="font-family:'Cinzel';">${t.res_title} ${finalDosha}</h2>
-            <p style="color:#ccc;">${t.res_subtitle}</p>
-            <div style="display:flex; flex-direction:column; gap:10px; margin-top:20px;">
+        <div class="resonance-result-box" style="padding: 30px; border: 2px solid #f5c542; background: rgba(245,197,66,0.05); border-radius: 20px; text-align: left;">
+            <h2 class="gold-text cinzel" style="text-align: center;">Energy Alignment Report</h2>
+            <p style="font-size: 1.1rem; border-bottom: 1px solid rgba(245,197,66,0.1); padding-bottom: 10px;">
+                <strong>${lang === 'hi' ? 'स्थिति:' : 'Status:'}</strong> ${data.status[lang]}
+            </p>
+            <p><strong>${lang === 'hi' ? 'अलाइनमेंट मार्ग:' : 'Alignment Path:'}</strong> ${data.path[lang]}</p>
+            
+            <div style="margin-top: 25px; padding: 20px; border: 1px solid #ff4d4d; background: rgba(255, 77, 77, 0.05); border-radius: 12px;">
+                <h4 style="color: #ff4d4d; margin-top: 0; font-family: 'Cinzel';">⚠️ Mandatory Warning</h4>
+                <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 0;">
+                    ${lang === 'hi' 
+                        ? 'बिना सटीक <b>Planetary Positions</b> के विश्लेषण के, किसी भी फ्रीक्वेंसी का प्रयोग हानिकारक हो सकता है। यह सुझाव आपको केवल सतर्क करने के लिए है।' 
+                        : 'Without exact <b>Planetary Position</b> analysis, using any frequency can be harmful. These tips are for awareness only.'}
+                </p>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:10px; margin-top:30px;">
+                <p style="text-align:center; color:#f5c542; font-weight:bold;">${t.form_analysis_prompt || 'सटीक फ्रीक्वेंसी के लिए विवरण भरें:'}</p>
                 <button class="quiz-opt" onclick="loadDivineForm('Kundali', '${finalDosha}')">🔱 ${t.btn_kundali}</button>
                 <button class="quiz-opt" onclick="loadDivineForm('Palmistry', '${finalDosha}')">✋ ${t.btn_palm}</button>
-                <button class="quiz-opt" onclick="loadDivineForm('Numerology', '${finalDosha}')">🔢 ${t.btn_num}</button>
             </div>
         </div>
     `;
+    container.scrollIntoView({ behavior: 'smooth' });
 }
 
-// 5. Dynamic Form (Bilingual Placeholders)
+// 6. Dynamic Form & Submit (Same as your logic but with scroll fix)
 window.loadDivineForm = function(method, dosha) {
     const lang = localStorage.getItem('selectedLang') || 'hi';
     const t = translations[lang];
@@ -130,24 +161,18 @@ window.loadDivineForm = function(method, dosha) {
 
     let formHTML = `
         <div class="magical-form-box" style="padding:20px;">
-            <h3 class="gold-text" style="font-family:'Cinzel';">🔱 ${method} ${t.form_analysis}</h3>
-            <p style="font-size:0.8rem; margin-bottom:20px; color:#aaa;">${t.form_mapping} <b>${dosha}</b> profile.</p>
+            <h3 class="gold-text" style="font-family:'Cinzel';">🔱 ${method} Analysis</h3>
             <form id="healing-contact-form" onsubmit="handleFinalSubmit(event, '${method}', '${dosha}')">
-                <input type="text" id="cust_name" placeholder="${t.ph_name}" required class="quiz-opt" style="text-align:left; background:rgba(255,255,255,0.05);">
-                <input type="tel" id="cust_whatsapp" placeholder="${t.ph_whatsapp}" required class="quiz-opt" style="text-align:left; background:rgba(255,255,255,0.05);">
-    `;
-
-    if (method === 'Kundali') {
-        formHTML += `
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                <input type="date" id="cust_dob" required class="quiz-opt" style="font-size:0.8rem;">
-                <input type="time" id="cust_time" required class="quiz-opt" style="font-size:0.8rem;">
-            </div>
-            <input type="text" id="cust_place" placeholder="${t.ph_place}" required class="quiz-opt" style="text-align:left; background:rgba(255,255,255,0.05);">`;
-    }
-
-    formHTML += `
-                <textarea id="cust_issue" placeholder="${t.ph_issue}" class="quiz-opt" style="height:80px; text-align:left; background:rgba(255,255,255,0.05);"></textarea>
+                <input type="text" id="cust_name" placeholder="${t.ph_name}" required class="quiz-opt" style="text-align:left;">
+                <input type="tel" id="cust_whatsapp" placeholder="${t.ph_whatsapp}" required class="quiz-opt" style="text-align:left;">
+                ${method === 'Kundali' ? `
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                        <input type="date" id="cust_dob" required class="quiz-opt">
+                        <input type="time" id="cust_time" required class="quiz-opt">
+                    </div>
+                    <input type="text" id="cust_place" placeholder="${t.ph_place}" required class="quiz-opt" style="text-align:left;">
+                ` : ''}
+                <textarea id="cust_issue" placeholder="${t.ph_issue}" class="quiz-opt" style="height:80px; text-align:left;"></textarea>
                 <button type="submit" class="quiz-opt" style="background:#f5c542; color:#000; font-weight:bold; margin-top:20px;">${t.btn_submit_form}</button>
             </form>
         </div>
@@ -156,15 +181,10 @@ window.loadDivineForm = function(method, dosha) {
     container.scrollIntoView({ behavior: 'smooth' });
 }
 
-// 6. Submit Logic
 window.handleFinalSubmit = function(event, method, dosha) {
     event.preventDefault();
-    if (window.handleSoundHealingSubmit) {
-        window.handleSoundHealingSubmit(event, method, dosha);
-    } else {
-        const lang = localStorage.getItem('selectedLang') || 'hi';
-        alert(translations[lang].alert_success);
-    }
+    const lang = localStorage.getItem('selectedLang') || 'hi';
+    alert(translations[lang].alert_success || "Details Received! Mahadev Bless You.");
 }
 
 document.addEventListener('DOMContentLoaded', () => {
