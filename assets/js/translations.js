@@ -37,10 +37,10 @@ window.translations = {
         svc_kundli_title: "Kundali Making", svc_kundli_desc: "Detailed birth chart analysis and planetary insights.",
         svc_matching_title: "Kundali Matching", svc_matching_desc: "Guna Milan and compatibility for a blessed marriage.",
         svc_combo_title: "Combo Analysis", svc_combo_desc: "Complete Kundali + Palmistry report on your WhatsApp.",
+    
         badge_best: "BEST VALUE", svc_palm_title: "Palmistry Analysis", svc_palm_desc: "In-depth study of palm lines for future guidance.",
         svc_num_title: "Numerology", svc_num_desc: "Success through numbers and vibrational analysis.",
 
-        ins_panchang_title: "Today's Panchang", ins_panchang_desc: "Check Shubh Muhurat, Tithi and Choghadiya.",
         ins_horo_title: "Daily Horoscope", ins_horo_desc: "Discover what the stars have in store for you today.",
         nav_articles: "Divine Articles", articles_desc: "A collection of Vedic stories and spiritual wisdom.",
 
@@ -204,7 +204,6 @@ aquarius_desc: "Aquarius is an Air sign ruled by Saturn (Shani). It represents i
 aquarius_resonance: "Aquarius resonates with the Third Eye. Chanting 'Sham' opens the mind to futuristic ideas and social harmony.",
 pisces_desc: "Pisces is a Water sign ruled by Jupiter (Guru). It symbolizes the merger of the soul with the divine and spiritual liberation.",
 pisces_resonance: "Pisces aligns with the Crown Chakra. Chanting 'Hreem' leads to deep meditation and spiritual enlightenment.",
-"btn_read_article": "🔱 READ SACRED ARTICLE",
 "btn_start_quiz": "🔱 DISCOVER YOUR DOMINANT DOSHA",
 "dosha_section_title": "Tridosha: Vibrational Balance",
 "warning_label": "⚠️ CRITICAL:",
@@ -267,7 +266,7 @@ quiz_q3_c: "Sensitive to Humidity",
 "res_warning_desc": "Without an exact analysis of <b>Planetary Positions</b>, using specific frequencies can harm your energy balance. These tips are intended to alert you about which resonance to avoid.",
 "form_analysis_prompt": "For precise Frequency & Alignment, please provide details:",
 "btn_consult_expert": "Consult with Expert ➔",
-"art_footer_quote": "\"Mastering the Naad is mastering the Self; let the cosmic vibrations lead you to eternal balance.\""
+"new_art_footer_quote": "\"Mastering the Naad is mastering the Self; let the cosmic vibrations lead you to eternal balance.\"",
 
 // ===== SOUND MODULE KEYS (EN) =====
 status_locked: "🔐 LOCKED",
@@ -320,7 +319,6 @@ raag_ketu: "Lalit",
         badge_best: "सर्वश्रेष्ठ", svc_palm_title: "हस्तरेखा विश्लेषण", svc_palm_desc: " सामुद्रिक शास्त्र के माध्यम से आपके करियर और छिपी क्षमताओं का अध्ययन।",
         svc_num_title: "अंक ज्योतिष", svc_num_desc: "अपना भाग्यशाली अंक, नाम सुधार और शुभ तिथियां जानें।",
 
-        ins_panchang_title: "आज का पंचांग", ins_panchang_desc: "शुभ मुहूर्त, सटीक तिथि एवं चौघड़िया की जांच करें।",
         ins_horo_title: "आज का राशिफल", ins_horo_desc: "अपनी राशि के अनुसार जानें कैसा रहेगा आपका आज का दिन।",
         nav_articles: "दिव्य लेख संग्रह", articles_desc: "पौराणिक कथाएं और आध्यात्मिक ज्ञान का भंडार।",
 
@@ -480,7 +478,6 @@ aquarius_resonance: "कुंभ आज्ञा चक्र के साथ 
 pisces_desc: "मीन एक जल तत्व राशि है जिसका स्वामी गुरु है। यह दिव्य चेतना के साथ आत्मा के विलय और आध्यात्मिक मुक्ति का प्रतीक है।",
 pisces_resonance: "मीन सहस्रार चक्र के साथ संरेखित होता है। 'ह्रीं' का जाप गहन ध्यान और आध्यात्मिक ज्ञान की ओर ले जाता है।",
 
-"btn_read_article": "🔱 पवित्र लेख पढ़ें",
 "btn_start_quiz": "🔱 अपने प्रमुख दोष की खोज करें",
 "dosha_section_title": "त्रिदोष: कंपन संतुलन",
 "warning_label": "⚠️ परम-आवश्यक:",
@@ -543,7 +540,7 @@ quiz_q3_c: "नमी/उमस से परेशानी",
 "res_warning_desc": "बिना सटीक <b>Planetary Positions (ग्रहों की स्थिति)</b> के विश्लेषण के, किसी भी फ्रीक्वेंसी का प्रयोग ऊर्जा चक्रों को असंतुलित कर सकता है। यह जानकारी आपको केवल सतर्क करने के लिए है।",
 "form_analysis_prompt": "सटीक फ्रीक्वेंसी और सुरक्षित अलाइनमेंट के लिए विवरण भरें:",
 "btn_consult_expert": "विशेषज्ञ परामर्श प्राप्त करें ➔",
-"art_footer_quote": "“नाद की सिद्धि ही स्वयं की सिद्धि है; ब्रह्मांडीय स्पंदनों को अपने जीवन के परम संतुलन का मार्ग बनने दें।”"
+"new_art_footer_quote": "“नाद की सिद्धि ही स्वयं की सिद्धि है; ब्रह्मांडीय स्पंदनों को अपने जीवन के परम संतुलन का मार्ग बनने दें।”",
 
 // 🔱 ADD THESE MISSING KEYS FOR SOUND MODULE
 status_locked: "🔐 लॉक है",
@@ -557,6 +554,5 @@ raag_venus: "यमन / खमाज",
 raag_saturn: "भीमपलासी / मालकौंस",
 raag_rahu: "छायानट",
 raag_ketu: "ललित",
-
     }
 };
