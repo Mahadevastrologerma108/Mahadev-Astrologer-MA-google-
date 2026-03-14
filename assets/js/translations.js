@@ -50,7 +50,7 @@ window.translations = {
 
         lbl_privacy: "PRIVACY & CONTACT PREFERENCE:", lbl_uid: "Client UID (To keep your details secure)",
         lbl_male_details: "👦 Male Details", lbl_female_details: "👧 Female Details",
-        palm_note: "✋ Note: Keep clear photos of both sides of your palms ready.",
+        palm_note: "✋ Note: Keep clear photos of both sides of your both palms ready.",
         email_note: "⚠️ Note: Email response might be slower.",
         ph_name: "Enter Your Full Name", ph_contact: "WhatsApp / Telegram Number", ph_city: "Birth City/Place", ph_feedback: "Share your experience here...",
         testi_title: "🔱 Client Testimonials", feedback_heading: "Your Feedback is Valuable",
@@ -328,7 +328,7 @@ raag_ketu: "Lalit",
         
         lbl_privacy: "गोपनीयता एवं संपर्क प्राथमिकता:", lbl_uid: "क्लाइंट UID",
         lbl_male_details: "👦 पुरुष का विवरण", lbl_female_details: "👧 महिला का विवरण",
-        palm_note: "✋ ध्यान दें: हाथ के दोनों तरफ के स्पष्ट चित्र तैयार रखें।",
+        palm_note: "✋ ध्यान दें:दोनों हाथ के दोनों तरफ के स्पष्ट चित्र तैयार रखें।",
         email_note: "⚠️ उत्तर देने में समय लग सकता है। व्हाट्सएप का उपयोग करें।",
         ph_name: "आपका पूर्ण नाम लिखें", ph_contact: "व्हाट्सएप / टेलीग्राम नंबर", ph_city: "जन्म स्थान (शहर)", ph_feedback: "अपना अनुभव साझा करें...",
         testi_title: "🔱 भक्त जनों के अनुभव", feedback_heading: "आपकी प्रतिक्रिया हमारे लिए महत्वपूर्ण है",
