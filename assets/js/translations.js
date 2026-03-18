@@ -1,7 +1,7 @@
 window.translations = {
     en: {
         // ===== NAV & ZODIAC =====
-        nav_home: "Home", nav_horoscope: "Horoscope", nav_panchang: "Panchang", nav_guide: "Update", nav_book: "Book Now",nav_sound: "Sound Healing",'nav_tools': 'Vedic Tools',
+        nav_home: "Home", nav_horoscope: "Horoscope", nav_panchang: "Panchang", nav_guide: "Update", nav_book: "Book Now",nav_sound: "Sound Healing",nav_tools: 'Vedic Tools',
         zod_aries: "Aries", zod_taurus: "Taurus", zod_gemini: "Gemini", zod_cancer: "Cancer", zod_leo: "Leo", zod_virgo: "Virgo", zod_libra: "Libra", zod_scorpio: "Scorpio", zod_sagittarius: "Sagittarius", zod_capricorn: "Capricorn", zod_aquarius: "Aquarius", zod_pisces: "Pisces",
         finder_title: "🔱 Identify Your Zodiac (Rashi Finder)",
         finder_name_label: "By First Letter of Name:",
