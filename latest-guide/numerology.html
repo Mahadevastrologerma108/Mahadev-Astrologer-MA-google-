@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Lucky Number & Mantra Finder | MAHADEV ASTROLOGER MA</title>
+    <meta name="description" content="MAHADEV ASTROLOGER MA के एडवांस टूल से अपना मूलांक, भाग्यांक, शुभ-अशुभ अंक (Lucky & Enemy Numbers) और नवग्रह बीज मंत्र जानें।">
+    
+    <link rel="canonical" href="https://www.mahadevastrologerma.in/latest-guide/lucky-number.html">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <style>
+        :root { --gold: #f5c542; --bg: #0a0a14; }
+        body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+
+        /* 🔱 Calculator Styling */
+        .calc-container { max-width: 800px; margin: 120px auto 40px; padding: 40px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(245, 197, 66, 0.2); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .input-group { margin-bottom: 25px; }
+        .input-group label { display: block; font-family: 'Cinzel'; color: var(--gold); margin-bottom: 10px; font-size: 1.1rem; }
+        .input-group input { width: 100%; padding: 15px; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 197, 66, 0.3); color: #fff; font-size: 1rem; border-radius: 8px; font-family: 'Poppins'; outline: none; }
+        .input-group input:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(245, 197, 66, 0.2); }
+        
+        .calc-btn { width: 100%; padding: 15px; background: var(--gold); color: #000; font-size: 1.2rem; font-weight: bold; font-family: 'Cinzel'; border: none; border-radius: 50px; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .calc-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(245, 197, 66, 0.5); }
+
+        /* 🔱 Result Box */
+        #result-section { display: none; margin-top: 40px; padding: 30px; background: linear-gradient(145deg, #111, #06060c); border: 2px dashed var(--gold); border-radius: 15px; text-align: center; animation: fadeIn 1s; }
+        .number-circles { display: flex; justify-content: center; gap: 30px; margin: 20px 0; flex-wrap: wrap; }
+        .num-circle { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(245, 197, 66, 0.05); }
+        .num-circle span { font-size: 0.8rem; color: #ccc; text-transform: uppercase; }
+        .num-circle strong { font-size: 2.5rem; color: var(--gold); font-family: 'Cinzel'; line-height: 1; margin-top: 5px; }
+        
+        /* 🔱 Friendly / Enemy Badges */
+        .number-match-box { display: flex; justify-content: space-around; background: rgba(0,0,0,0.4); padding: 15px; border-radius: 10px; margin-top: 25px; border: 1px solid #333; }
+        .badge-lucky { color: #4caf50; font-weight: bold; font-size: 1.1rem; }
+        .badge-avoid { color: #f44336; font-weight: bold; font-size: 1.1rem; }
+
+        .remedy-box { background: rgba(245, 197, 66, 0.05); border-left: 3px solid var(--gold); padding: 20px; text-align: left; margin-top: 25px; border-radius: 0 10px 10px 0; }
+
+        /* 🔱 Article & Mantra Table */
+        .master-article { max-width: 850px; margin: 0 auto 80px; padding: 0 20px; line-height: 1.8; color: #ccc; font-size: 1.05rem; }
+        .master-article h2 { font-family: 'Cinzel'; color: var(--gold); font-size: 2rem; margin: 50px 0 20px; border-bottom: 1px solid rgba(245, 197, 66, 0.2); padding-bottom: 10px; }
+        
+        .mantra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 30px; }
+        .mantra-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(245, 197, 66, 0.2); padding: 15px; border-radius: 10px; text-align: center; transition: 0.3s; }
+        .mantra-card:hover { border-color: var(--gold); background: rgba(245, 197, 66, 0.1); transform: translateY(-3px); }
+        .mantra-card h4 { color: var(--gold); font-family: 'Cinzel'; margin: 0 0 10px; font-size: 1.2rem; }
+        .mantra-card p { color: #fff; font-size: 0.95rem; margin: 0; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 600px) { .calc-container { margin-top: 100px; padding: 20px; } .number-circles { gap: 15px; } .number-match-box { flex-direction: column; gap: 15px; text-align: center; } }
+    </style>
+</head>
+<body class="panchang-body">
+
+    <div id="header-placeholder"></div>
+
+    <main class="calc-container" id="calculator-section">
+        <h1 class="gold-text" style="font-family: 'Cinzel'; text-align: center; font-size: 2.2rem; margin-bottom: 10px;">🔱 Advanced Numerology</h1>
+        <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 0.95rem;">अपना मूलांक, शुभ/अशुभ अंक (Friendly & Enemy Numbers) और बीज मंत्र जानें।</p>
+
+        <form id="numerologyForm" onsubmit="event.preventDefault(); calculateNumbers();">
+            <div class="input-group">
+                <label for="userName">1. आपका पूरा नाम (Full Name)</label>
+                <input type="text" id="userName" placeholder="e.g. Rahul Kumar" required>
+            </div>
+            <div class="input-group">
+                <label for="userDOB">2. जन्म तिथि (Date of Birth)</label>
+                <input type="date" id="userDOB" required>
+            </div>
+            <button type="submit" class="calc-btn">GENERATE REPORT ➔</button>
+        </form>
+
+        <div id="result-section">
+            <h2 class="gold-text" style="font-family: 'Cinzel'; font-size: 1.5rem; margin-top: 0;">Cosmic Energy Report</h2>
+            
+            <div class="number-circles">
+                <div class="num-circle"><span>Moolank</span><strong id="moolankRes">-</strong></div>
+                <div class="num-circle"><span>Bhagyank</span><strong id="bhagyankRes">-</strong></div>
+                <div class="num-circle"><span>Namank</span><strong id="namankRes">-</strong></div>
+            </div>
+
+            <div class="number-match-box">
+                <div>
+                    <span style="color: #aaa; font-size: 0.85rem; display: block;">✅ शुभ अंक (Lucky Numbers)</span>
+                    <span class="badge-lucky" id="luckyNumRes">-</span>
+                </div>
+                <div style="width: 1px; background: #333;"></div>
+                <div>
+                    <span style="color: #aaa; font-size: 0.85rem; display: block;">❌ शत्रु अंक (Avoid Numbers)</span>
+                    <span class="badge-avoid" id="avoidNumRes">-</span>
+                </div>
+            </div>
+
+            <div class="remedy-box">
+                <h3 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.2rem; margin-top: 0;" id="lordTitle">🔱 स्वामी ग्रह: </h3>
+                <p id="natureRes" style="color: #fff; font-size: 0.95rem; margin-bottom: 15px;"></p>
+                
+                <p style="margin: 5px 0;"><strong>शुभ रंग:</strong> <span id="colorRes" style="color: var(--gold);"></span></p>
+                <p style="margin: 5px 0;"><strong>शुभ दिन:</strong> <span id="dayRes" style="color: var(--gold);"></span></p>
+                <p style="margin: 15px 0 0; padding-top: 10px; border-top: 1px dashed rgba(245,197,66,0.3); font-size: 1.1rem; color: #fff;"><strong>📿 सिद्ध बीज मंत्र:</strong> <br><span id="mantraRes" style="color: var(--gold); font-family: 'Cinzel'; font-weight: bold; letter-spacing: 1px;"></span></p>
+            </div>
+        </div>
+    </main>
+
+    <article class="master-article">
+        
+        <h2 style="text-align: center; border: none; font-size: 2.2rem; margin-top: 20px;">अंक ज्योतिष: मित्र, शत्रु अंक और नवग्रह मंत्र</h2>
+        <p style="text-align: center; color: var(--gold); font-style: italic; margin-bottom: 40px;">"प्रत्येक अंक एक ग्रह का प्रतिनिधित्व करता है, और प्रत्येक ग्रह एक मंत्र से नियंत्रित होता है।"</p>
+
+        <p>हमारे जीवन में कुछ तारीखें या मोबाइल नंबर हमारे लिए बहुत भाग्यशाली (Lucky) साबित होते हैं, जबकि कुछ नंबर हमें हमेशा नुकसान पहुँचाते हैं। इसका कारण है <strong>मित्र और शत्रु अंकों (Friendly and Enemy Numbers)</strong> का ब्रह्मांडीय विज्ञान। <strong>MAHADEV ASTROLOGER M.A.</strong> के अनुसार, यदि आप कोई नया कार्य आरंभ कर रहे हैं, वाहन खरीद रहे हैं, या नया मोबाइल नंबर ले रहे हैं, तो हमेशा अपने 'शुभ अंकों' का ही चयन करें।</p>
+
+        <h2>1 से 9 अंकों के स्वामी ग्रह और उनके वैदिक बीज मंत्र</h2>
+        <p>यदि आपका मूलांक या भाग्यांक कमज़ोर है, या जीवन में संघर्ष अधिक है, तो अपने अंक के स्वामी ग्रह (Lord Planet) के <strong>बीज मंत्र</strong> का नित्य 108 बार जाप करना सबसे अचूक उपाय है। यहाँ 1 से 9 अंकों के स्वामी और उनके सिद्ध मंत्र दिए गए हैं:</p>
+
+        <div class="mantra-grid">
+            <div class="mantra-card">
+                <h4>अंक 1 (सूर्य / Sun)</h4>
+                <p>ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः</p>
+            </div>
+            <div class="mantra-card">
+                <h4>अंक 2 (चंद्रमा / Moon)</h4>
+                <p>ॐ श्रां श्रीं श्रौं सः चन्द्रमसे नमः</p>
+            </div>
+            <div class="mantra-card">
+                <h4>अंक 3 (गुरु / Jupiter)</h4>
+                <p>ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः</p>
+            </div>
+            <div class="mantra-card">
+                <h4>अंक 4 (राहु / Rahu)</h4>
+                <p>ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः</p>
+            </div>
+            <div class="mantra-card">
+                <h4>अंक 5 (बुध / Mercury)</h4>
+                <p>ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः</p>
+            </div>
+            <div class="mantra-card">
+                <h4>अंक 6 (शुक्र / Venus)</h4>
+                <p>ॐ द्रां द्रीं द्रौं सः शुक्राय नमः</p>
+            </div>
+            <div class="mantra-card">
+                <h4>अंक 7 (केतु / Ketu)</h4>
+                <p>ॐ स्रां स्रीं स्रौं सः केतवे नमः</p>
+            </div>
+            <div class="mantra-card">
+                <h4>अंक 8 (शनि / Saturn)</h4>
+                <p>ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः</p>
+            </div>
+            <div class="mantra-card">
+                <h4>अंक 9 (मंगल / Mars)</h4>
+                <p>ॐ क्रां क्रीं क्रौं सः भौमाय नमः</p>
+            </div>
+        </div>
+
+        <div style="background: rgba(245, 197, 66, 0.05); border-left: 4px solid var(--gold); padding: 20px; margin: 40px 0; border-radius: 0 10px 10px 0;">
+            <p style="margin: 0; color: #fff;"><strong>विशेष परामर्श:</strong> नाम की स्पेलिंग (Name Correction) और अंकों के महा-विश्लेषण के लिए <strong>MAHADEV ASTROLOGER MA</strong> से अपनी व्यक्तिगत न्यूमरोलॉजी रिपोर्ट प्राप्त करें।</p>
+        </div>
+
+    </article>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../assets/js/translations.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script type="module" src="../assets/js/firebase-handler.js"></script>
+
+    <script>
+        const chaldeanMap = { 'a':1, 'i':1, 'j':1, 'q':1, 'y':1, 'b':2, 'k':2, 'r':2, 'c':3, 'g':3, 'l':3, 's':3, 'd':4, 'm':4, 't':4, 'e':5, 'h':5, 'n':5, 'x':5, 'u':6, 'v':6, 'w':6, 'o':7, 'z':7, 'f':8, 'p':8 };
+
+        // New Data with Lucky/Avoid Numbers and Mantras
+        const numberData = {
+            1: { p: "सूर्य (Sun)", c: "नारंगी, पीला", d: "रविवार, सोमवार", lucky: "1, 2, 3, 9", avoid: "8", mantra: "ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः", n: "आप जन्मजात लीडर हैं। सूर्य के प्रभाव से आपमें स्वाभिमान और प्रशासनिक क्षमता है।" },
+            2: { p: "चंद्रमा (Moon)", c: "सफेद, हल्का हरा", d: "सोमवार, शुक्रवार", lucky: "1, 2, 3, 5", avoid: "8, 9", mantra: "ॐ श्रां श्रीं श्रौं सः चन्द्रमसे नमः", n: "आप अत्यंत भावुक और कल्पनाशील हैं। चंद्रमा आपको कला और शांति से जोड़ता है।" },
+            3: { p: "गुरु (Jupiter)", c: "पीला, केसरिया", d: "गुरुवार, मंगलवार", lucky: "1, 2, 3, 9", avoid: "6", mantra: "ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः", n: "ज्ञान और शिक्षा आपका मूल स्वभाव है। आप दूसरों का मार्गदर्शन करने में निपुण हैं।" },
+            4: { p: "राहु (Rahu)", c: "नीला, भूरा (Brown)", d: "रविवार, सोमवार", lucky: "1, 4, 5, 6, 7", avoid: "2, 8", mantra: "ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः", n: "आपका जीवन रहस्यमयी है। आप लीक से हटकर सोचने वाले (Out of the box thinker) हैं।" },
+            5: { p: "बुध (Mercury)", c: "हरा (Green)", d: "बुधवार, शुक्रवार", lucky: "1, 5, 6", avoid: "2", mantra: "ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः", n: "आप बहुत चतुर और व्यापारिक बुद्धि वाले हैं। संचार कौशल (Communication) आपकी ताकत है।" },
+            6: { p: "शुक्र (Venus)", c: "सफेद, गुलाबी", d: "शुक्रवार, मंगलवार", lucky: "5, 6, 8", avoid: "3", mantra: "ॐ द्रां द्रीं द्रौं सः शुक्राय नमः", n: "सौंदर्य, प्रेम और विलासिता आपको आकर्षित करती है। शुक्र आपको कलात्मक बनाता है।" },
+            7: { p: "केतु (Ketu)", c: "हल्का पीला, सफेद", d: "रविवार, सोमवार", lucky: "1, 4, 5, 7", avoid: "2", mantra: "ॐ स्रां स्रीं स्रौं सः केतवे नमः", n: "आप एक गहरे विचारक और खोजी हैं। आध्यात्म और रहस्य में आपकी गहरी रुचि है।" },
+            8: { p: "शनि (Saturn)", c: "काला, गहरा नीला", d: "शनिवार, शुक्रवार", lucky: "5, 6, 8", avoid: "1, 2, 9", mantra: "ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः", n: "आप कर्मठ और न्यायप्रिय हैं। सफलता देर से मिल सकती है, परंतु वह अपार और स्थायी होती है।" },
+            9: { p: "मंगल (Mars)", c: "लाल, गुलाबी", d: "मंगलवार, गुरुवार", lucky: "1, 2, 3, 9", avoid: "4, 8", mantra: "ॐ क्रां क्रीं क्रौं सः भौमाय नमः", n: "आपमें गज़ब की ऊर्जा और साहस है। आप हार न मानने वाले योद्धा हैं।" }
+        };
+
+        function reduceToSingle(num) {
+            while (num > 9) { num = String(num).split('').reduce((acc, curr) => acc + parseInt(curr), 0); }
+            return num;
+        }
+
+        function calculateNumbers() {
+            const name = document.getElementById('userName').value.toLowerCase().replace(/[^a-z]/g, '');
+            const dob = document.getElementById('userDOB').value;
+
+            if(!name || !dob) return;
+
+            let namankTotal = 0; for(let char of name) if(chaldeanMap[char]) namankTotal += chaldeanMap[char];
+            const finalNamank = reduceToSingle(namankTotal);
+
+            const dayStr = dob.split('-')[2];
+            const finalMoolank = reduceToSingle(parseInt(dayStr[0]) + (dayStr[1] ? parseInt(dayStr[1]) : 0));
+
+            let bhagyankTotal = 0; for(let char of dob.replace(/-/g, '')) bhagyankTotal += parseInt(char);
+            const finalBhagyank = reduceToSingle(bhagyankTotal);
+
+            document.getElementById('moolankRes').innerText = finalMoolank;
+            document.getElementById('bhagyankRes').innerText = finalBhagyank;
+            document.getElementById('namankRes').innerText = finalNamank;
+
+            const data = numberData[finalMoolank];
+            
+            // Populate New Data
+            document.getElementById('luckyNumRes').innerText = data.lucky;
+            document.getElementById('avoidNumRes').innerText = data.avoid;
+            document.getElementById('mantraRes').innerText = data.mantra;
+            
+            // Standard Data
+            document.getElementById('lordTitle').innerText = `🔱 स्वामी ग्रह: ${data.p}`;
+            document.getElementById('natureRes').innerText = data.n;
+            document.getElementById('colorRes').innerText = data.c;
+            document.getElementById('dayRes').innerText = data.d;
+
+            const resultSection = document.getElementById('result-section');
+            resultSection.style.display = 'block';
+            resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
