@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grih Dosh Scanner & Scientific Vastu Guide | MAHADEV ASTROLOGER MA</title>
+    <meta name="description" content="MAHADEV ASTROLOGER M.A. के इस टूल से अपने घर की ऊर्जा का परीक्षण करें। गृह दोष, जियोपैथिक स्ट्रेस (Geopathic Stress) और वैदिक वास्तु के अचूक उपाय जानें।">
+    
+    <link rel="canonical" href="https://www.mahadevastrologerma.in/latest-guide/grih-dosh.html">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <style>
+        :root { --gold: #f5c542; --bg: #0a0a14; }
+        body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+
+        /* 🔱 Scanner Tool Styling */
+        .scanner-container { max-width: 850px; margin: 120px auto 40px; padding: 40px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(245, 197, 66, 0.2); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .question-box { margin-bottom: 25px; padding: 20px; background: rgba(0, 0, 0, 0.4); border-left: 3px solid var(--gold); border-radius: 10px; }
+        .question-box h4 { font-family: 'Cinzel'; color: var(--gold); margin-top: 0; font-size: 1.1rem; }
+        .option-label { display: block; margin: 10px 0; cursor: pointer; padding: 12px; background: rgba(245, 197, 66, 0.05); border-radius: 8px; transition: 0.3s; border: 1px solid transparent; }
+        .option-label:hover { border-color: rgba(245, 197, 66, 0.5); background: rgba(245, 197, 66, 0.1); }
+        input[type="radio"] { accent-color: var(--gold); transform: scale(1.2); margin-right: 10px; }
+        
+        .scan-btn { width: 100%; padding: 15px; background: var(--gold); color: #000; font-size: 1.2rem; font-weight: bold; font-family: 'Cinzel'; border: none; border-radius: 50px; cursor: pointer; transition: 0.3s; margin-top: 30px; box-shadow: 0 5px 15px rgba(245, 197, 66, 0.3); }
+        .scan-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(245, 197, 66, 0.5); }
+
+        /* 🔱 Result Box */
+        #result-section { display: none; margin-top: 40px; padding: 30px; background: linear-gradient(145deg, #111, #06060c); border: 2px dashed var(--gold); border-radius: 15px; text-align: center; animation: fadeIn 1s; }
+        .score-circle { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: bold; color: var(--gold); margin: 0 auto 20px; box-shadow: 0 0 20px rgba(245, 197, 66, 0.3); font-family: 'Cinzel'; }
+
+        /* 🔱 Vastu Alignment Box (Sales Magnet) */
+        .vastu-alignment-box { margin-top: 25px; padding: 25px; background: linear-gradient(145deg, rgba(245, 197, 66, 0.08), rgba(0,0,0,0.8)); border: 1px solid rgba(245,197,66,0.3); border-radius: 12px; text-align: left; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .vastu-alignment-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
+        .align-btn { display: inline-block; padding: 10px 25px; background: transparent; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-weight: bold; font-family: 'Cinzel'; border-radius: 50px; font-size: 0.9rem; transition: 0.3s; margin-top: 15px; }
+        .align-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 15px rgba(245,197,66,0.4); }
+
+        /* 🔱 Article Styling (SEO Optimized) */
+        .master-article { max-width: 850px; margin: 0 auto 80px; padding: 0 20px; line-height: 1.8; color: #ccc; font-size: 1.05rem; }
+        .master-article h2 { font-family: 'Cinzel'; color: var(--gold); font-size: 2rem; margin: 50px 0 20px; border-bottom: 1px solid rgba(245, 197, 66, 0.2); padding-bottom: 10px; }
+        .master-article h3 { font-family: 'Cinzel'; color: #fff; font-size: 1.4rem; margin: 30px 0 15px; }
+        .master-article p { margin-bottom: 20px; text-align: justify; }
+        .master-article ul { margin-bottom: 25px; padding-left: 20px; }
+        .master-article li { margin-bottom: 10px; }
+        .highlight-box { background: rgba(245, 197, 66, 0.05); border-left: 4px solid var(--gold); padding: 20px; margin: 30px 0; border-radius: 0 10px 10px 0; }
+        .highlight-box p { margin: 0; color: #fff; font-style: italic; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 600px) { .scanner-container { margin-top: 100px; padding: 20px; } .master-article h2 { font-size: 1.6rem; } }
+    </style>
+</head>
+<body class="panchang-body">
+
+    <div id="header-placeholder"></div>
+
+    <main class="scanner-container" id="dosh-calculator-section">
+        <h1 class="gold-text" style="font-family: 'Cinzel'; text-align: center; font-size: 2.2rem; margin-bottom: 10px;">🔱 Grih Dosh Scanner</h1>
+        <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 0.95rem;">वैदिक वास्तु और ब्रह्मांडीय ऊर्जा (Cosmic Energy) के आधार पर अपने घर का वैज्ञानिक परीक्षण करें।</p>
+
+        <form id="doshForm">
+            <div class="question-box">
+                <h4>1. घर में प्रवेश करते ही आपको कैसा अनुभव होता है?</h4>
+                <label class="option-label"><input type="radio" name="q1" value="0"> शांति और सकारात्मक ऊर्जा</label>
+                <label class="option-label"><input type="radio" name="q1" value="5"> सामान्य (कुछ विशेष नहीं)</label>
+                <label class="option-label"><input type="radio" name="q1" value="15"> भारीपन, घुटन या अकारण क्रोध</label>
+            </div>
+
+            <div class="question-box">
+                <h4>2. घर के ईशान कोण (North-East) की स्थिति क्या है?</h4>
+                <label class="option-label"><input type="radio" name="q2" value="0"> स्वच्छ है और वहां पूजा स्थान है</label>
+                <label class="option-label"><input type="radio" name="q2" value="10"> वहां भारी सामान रखा है</label>
+                <label class="option-label"><input type="radio" name="q2" value="20"> वहां शौचालय (Toilet) या कूड़ा है</label>
+            </div>
+
+            <div class="question-box">
+                <h4>3. धन और स्वास्थ्य की वर्तमान स्थिति कैसी है?</h4>
+                <label class="option-label"><input type="radio" name="q3" value="0"> उत्तम स्वास्थ्य और आर्थिक वृद्धि</label>
+                <label class="option-label"><input type="radio" name="q3" value="10"> धन आता है परंतु रोग में व्यय होता है</label>
+                <label class="option-label"><input type="radio" name="q3" value="20"> निरंतर आर्थिक संकट और गंभीर रोग</label>
+            </div>
+
+            <div class="question-box">
+                <h4>4. क्या घर में इलेक्ट्रॉनिक उपकरण अकारण खराब होते हैं?</h4>
+                <label class="option-label"><input type="radio" name="q4" value="0"> नहीं, ऐसा नहीं होता</label>
+                <label class="option-label"><input type="radio" name="q4" value="5"> कभी-कभी होता है</label>
+                <label class="option-label"><input type="radio" name="q4" value="15"> हाँ, बहुत अधिक होता है</label>
+            </div>
+
+            <button type="button" class="scan-btn" onclick="calculateDosh()">SCAN ENERGY ➔</button>
+        </form>
+
+        <div id="result-section">
+            <h2 class="gold-text" style="font-family: 'Cinzel'; font-size: 1.5rem;">Energy Report</h2>
+            <div class="score-circle" id="doshScore">0%</div>
+            <h3 id="doshLevel" style="color: #fff; margin-bottom: 15px; font-size: 1.2rem;"></h3>
+            <p id="doshRemedy" style="color: #ccc; font-size: 0.95rem; line-height: 1.6; text-align: left; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px; border-left: 3px solid var(--gold);"></p>
+
+            <div class="vastu-alignment-box" id="vastuActionBox" style="display: none;">
+                <h4 style="color: var(--gold); font-family: 'Cinzel'; margin: 0 0 10px 0; font-size: 1.2rem;">✨ Vastu Correction (वास्तु उपाय) क्यों ज़रूरी है?</h4>
+                <p style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin: 0 0 10px 0;">
+                    जब घर की दिशाएं और पंचतत्व (Earth, Water, Fire, Air, Space) असंतुलित हो जाते हैं, तो इसे <strong>'Geopathic Stress'</strong> कहा जाता है। यह तनाव सीधे आपकी आर्थिक वृद्धि और स्वास्थ्य को अवरुद्ध करता है।
+                </p>
+                <p style="color: #fff; font-size: 0.95rem; line-height: 1.6; margin: 0 0 10px 0; font-style: italic;">
+                    "बिना तोड़-फोड़ के केवल ऊर्जा (Energy) और दिशाओं को अलाइन करके घर को एक 'सकारात्मक चुंबक' (Positive Magnet) बनाया जा सकता है।"
+                </p>
+                <div style="text-align: center;">
+                    <a href="../index.html#book" class="align-btn">Book Vastu Consultation ➔</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <article class="master-article">
+        
+        <h2 style="text-align: center; border: none; font-size: 2.5rem; margin-top: 20px;">गृह दोष: विज्ञान, ब्रह्मांडीय ऊर्जा और वैदिक समाधान</h2>
+        <p style="text-align: center; color: var(--gold); font-style: italic; margin-bottom: 40px;">"जहाँ ऊर्जा का संतुलन है, वहीं महादेव का वास है।"</p>
+
+        <p>हमारा घर केवल ईंट और पत्थर का ढांचा नहीं है; यह एक जीवंत इकाई (Living Entity) है। ब्रह्मांड की समस्त ऊर्जा हमारे निवास स्थान से होकर गुजरती है। जब यह ऊर्जा सकारात्मक होती है, तो घर में सुख, शांति और समृद्धि का वास होता है। परंतु जब इस ऊर्जा का प्रवाह बाधित होता है, तो उसे वैदिक ज्योतिष में <strong>'गृह दोष' (Grih Dosh)</strong> कहा जाता है।</p>
+
+        <p><strong>MAHADEV ASTROLOGER M.A.</strong> के इस शोध पत्र में हम यह समझेंगे कि गृह दोष केवल एक प्राचीन मान्यता नहीं है, बल्कि इसके पीछे गहरा विज्ञान (Science) छिपा है।</p>
+
+        <h2>वैज्ञानिक दृष्टिकोण: जियोपैथिक स्ट्रेस (Geopathic Stress)</h2>
+        <p>आधुनिक विज्ञान जिसे 'Geopathic Stress' कहता है, हमारे प्राचीन ऋषियों ने उसे सहस्रों वर्ष पूर्व 'वास्तु दोष' के रूप में पहचान लिया था। पृथ्वी के गर्भ में निरंतर चुंबकीय (Magnetic) और विद्युतीय (Electric) तरंगें बहती रहती हैं। जब घर का निर्माण पृथ्वी की इन प्राकृतिक चुंबकीय रेखाओं के विरुद्ध किया जाता है, तो घर के भीतर एक प्रकार का तनाव उत्पन्न होता है।</p>
+        
+        <ul>
+            <li><strong>फ्रीक्वेंसी का असंतुलन:</strong> मानव शरीर 7.83 Hz (Schumann Resonance) पर सर्वोत्तम कार्य करता है। नकारात्मक ऊर्जा वाले घर में यह फ्रीक्वेंसी बिगड़ जाती है, जिससे अकारण थकान और क्रोध उत्पन्न होता है।</li>
+            <li><strong>इलेक्ट्रॉनिक्स पर प्रभाव:</strong> जहाँ नकारात्मक ऊर्जा (Negative Ionic Charge) अधिक होती है, वहाँ इलेक्ट्रॉनिक उपकरण बार-बार खराब होते हैं।</li>
+        </ul>
+
+        <h2>घर में नकारात्मक ऊर्जा के मुख्य लक्षण</h2>
+        <p>महादेव के संकेतों को समझना आवश्यक है। यदि आपके घर में गृह दोष है, तो आपको निम्नलिखित लक्षण अनुभव हो सकते हैं:</p>
+        <ul>
+            <li><strong>स्वास्थ्य हानि:</strong> घर के सदस्यों का निरंतर अस्वस्थ रहना और औषधियों का प्रभाव न होना।</li>
+            <li><strong>आर्थिक अवरोध:</strong> धन का आगमन रुक जाना या धन संचय न हो पाना।</li>
+            <li><strong>मानसिक अशांति:</strong> घर में प्रवेश करते ही भारीपन और घुटन का अनुभव होना।</li>
+            <li><strong>अनिद्रा (Insomnia):</strong> रात्रि में बुरे स्वप्न आना और नींद पूर्ण न होना।</li>
+        </ul>
+
+        <div class="highlight-box">
+            <p><strong>शिव सूत्र:</strong> जिस स्थान पर निरंतर कलह होता है, वहाँ से लक्ष्मी और नारायण दोनों प्रस्थान कर जाते हैं। ऊर्जा का शुद्धिकरण ही एकमात्र मार्ग है।</p>
+        </div>
+
+        <h2>दिशाओं का विज्ञान और शिव-शक्ति ऊर्जा</h2>
+        <p>वैदिक वास्तु शास्त्र के अनुसार, घर की प्रत्येक दिशा ब्रह्मांडीय ऊर्जा के एक विशिष्ट रूप को नियंत्रित करती है।</p>
+        <ul>
+            <li><strong>ईशान कोण (North-East):</strong> यह जल तत्व और देव गुरु बृहस्पति का स्थान है। यहाँ महादेव का वास माना जाता है। इस दिशा का अशुद्ध होना सबसे बड़ा गृह दोष है।</li>
+            <li><strong>आग्नेय कोण (South-East):</strong> यह अग्नि तत्व का स्थान है। यहाँ असंतुलन होने पर घर में रोग और धन हानि होती है।</li>
+            <li><strong>नैऋत्य कोण (South-West):</strong> यह पृथ्वी तत्व है। यहाँ का दोष जीवन में अस्थिरता और दुर्घटनाओं का कारण बनता है।</li>
+        </ul>
+
+        <h2>अचूक वैदिक समाधान (Vedic Remedies)</h2>
+        <p>यदि आपने हमारे <strong>Grih Dosh Scanner</strong> के माध्यम से घर में दोष पाया है, तो निराश न हों। महादेव की कृपा से हर समस्या का समाधान उपलब्ध है:</p>
+
+        <h3>1. ध्वनि ऊर्जा (Sound Healing) का प्रयोग</h3>
+        <p>मंत्रों की ध्वनि तरंगें (Acoustic Waves) नकारात्मक ऊर्जा को नष्ट करने की सबसे शक्तिशाली विधि हैं। प्रातः और संध्या के समय घर में 'रुद्राष्टकम' या 'महामृत्युंजय मंत्र' का श्रवण करें। शंख और घंटी की ध्वनि घर के वायुमंडल को शुद्ध करती है।</p>
+
+        <h3>2. समुद्री नमक (Sea Salt) का विज्ञान</h3>
+        <p>समुद्री नमक में नकारात्मक आयनों (Negative Ions) को सोखने की अद्भुत क्षमता होती है। घर में पोंछा लगाते समय जल में थोड़ा सा समुद्री नमक अवश्य मिलाएं।</p>
+
+        <h3>3. कर्पूर और लौंग की अग्नि</h3>
+        <p>कर्पूर (Camphor) जलने पर जो रासायनिक प्रतिक्रिया (Chemical Reaction) होती है, वह वायु को शुद्ध करती है। नित्य संध्याकाल में कर्पूर और लौंग प्रज्वलित कर पूरे घर में घुमाएं।</p>
+
+        <h3>4. रुद्राक्ष की स्थापना</h3>
+        <p>पंचमुखी रुद्राक्ष को घर के मुख्य द्वार पर स्थापित करने से यह एक सुरक्षा कवच (Energy Shield) का कार्य करता है, जो बाहरी नकारात्मक ऊर्जा को घर में प्रवेश करने से रोकता है।</p>
+
+    </article>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../assets/js/translations.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script type="module" src="../assets/js/firebase-handler.js"></script>
+
+    <script>
+        function calculateDosh() {
+            const form = document.getElementById('doshForm');
+            let totalDosh = 0;
+            let answered = 0;
+
+            for (let i = 1; i <= 4; i++) {
+                const q = form.querySelector(`input[name="q${i}"]:checked`);
+                if (q) {
+                    totalDosh += parseInt(q.value);
+                    answered++;
+                }
+            }
+
+            if (answered < 4) {
+                alert("सटीक परिणाम हेतु कृपया सभी प्रश्नों के उत्तर दें।");
+                return;
+            }
+
+            const resultSection = document.getElementById('result-section');
+            const scoreDisplay = document.getElementById('doshScore');
+            const levelDisplay = document.getElementById('doshLevel');
+            const remedyDisplay = document.getElementById('doshRemedy');
+            const actionBox = document.getElementById('vastuActionBox');
+
+            resultSection.style.display = 'block';
+
+            // Max points = 70
+            let doshPercentage = Math.round((totalDosh / 70) * 100);
+            scoreDisplay.innerText = doshPercentage + "%";
+
+            if (doshPercentage <= 20) {
+                scoreDisplay.style.borderColor = "#4caf50";
+                scoreDisplay.style.color = "#4caf50";
+                levelDisplay.innerText = "🔱 शुद्ध एवं सकारात्मक ऊर्जा";
+                remedyDisplay.innerHTML = "अति उत्तम! आपके घर की ऊर्जा अत्यंत शुद्ध है।<br><br><strong>परामर्श:</strong> इस सकारात्मकता को बनाए रखने के लिए नित्य संध्या आरती करें।";
+                actionBox.style.display = "none"; // Hide action box if all good
+            } 
+            else if (doshPercentage > 20 && doshPercentage <= 60) {
+                scoreDisplay.style.borderColor = "#ffeb3b";
+                scoreDisplay.style.color = "#ffeb3b";
+                levelDisplay.innerText = "⚠️ मध्यम ऊर्जा दोष";
+                remedyDisplay.innerHTML = "आपके घर में कुछ वास्तु दोष या 'Geopathic Stress' उपस्थित है।<br><br><strong>परामर्श:</strong> ईशान कोण (North-East) को स्वच्छ रखें और समुद्री नमक का प्रयोग करें। विस्तृत जानकारी नीचे दिए गए लेख में पढ़ें।";
+                actionBox.style.display = "block"; // Show action box to encourage consultation
+            } 
+            else {
+                scoreDisplay.style.borderColor = "#f44336";
+                scoreDisplay.style.color = "#f44336";
+                levelDisplay.innerText = "🛑 तीव्र नकारात्मक दोष";
+                remedyDisplay.innerHTML = "परीक्षण के अनुसार घर में भारी वास्तु दोष उपस्थित है, जो आर्थिक एवं शारीरिक हानि का कारण है।<br><br><strong>तत्काल परामर्श:</strong> घर में नित्य 'महामृत्युंजय मंत्र' चलाएं। व्यक्तिगत समाधान हेतु <strong>MAHADEV ASTROLOGER M.A.</strong> से संपर्क करें।";
+                actionBox.style.display = "block"; // Show action box strongly
+            }
+
+            resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
