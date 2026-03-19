@@ -7,6 +7,7 @@ Allow: /panchang/
 Allow: /latest-guide/
 Allow: /horoscope/
 Allow: /masterstroke-module/
+Allow: /tools/
 
 # 🔱 Allow Core Logic & Content (The Soul of your site)
 Allow: /assets/js/translations.js
@@ -14,6 +15,9 @@ Allow: /assets/js/layout.js
 Allow: /assets/css/style.css
 Allow: /horoscope/horoscope-data.js
 Allow: /assets/js/horoscope-handler.js
+Allow: /assets/js/blogger-fetcher.js
+Allow: /assets/js/article-viewer.js
+Allow: /assets/js/script.js
 
 # 🔱 Disallow Everything Else in Assets (फालतू फाइलों को ब्लॉक किया)
 Disallow: /assets/js/
