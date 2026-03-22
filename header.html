@@ -4,25 +4,24 @@
     <div id="close-menu" style="color:var(--gold); font-size:2rem; cursor:pointer; text-align:right; margin-bottom:30px; transition: 0.3s;">✕</div>
 
     <nav style="display: flex; flex-direction: column; gap: 25px;">
-    <a href="/index.html" class="nav-link gold-text" data-key="nav_home" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Home</a>
+        <a href="/index.html" class="nav-link gold-text" data-key="nav_home" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Home</a>
 
-    <a href="/horoscope/horoscope.html" class="nav-link gold-text" data-key="nav_horoscope" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Horoscope</a>
+        <a href="/horoscope/horoscope.html" class="nav-link gold-text" data-key="nav_horoscope" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Horoscope</a>
 
-    <a href="/panchang/panchang.html" class="nav-link gold-text" data-key="nav_panchang" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Panchang</a>
+        <a href="/panchang/panchang.html" class="nav-link gold-text" data-key="nav_panchang" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Panchang</a>
 
-    <a href="/tools/tools.html" class="nav-link gold-text" data-key="nav_tools" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Vedic Tools</a>
+        <a href="/tools/tools.html" class="nav-link gold-text" data-key="nav_tools" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Vedic Tools</a>
 
-    <a href="/latest-guide/guides.html" class="nav-link gold-text" data-key="nav_guide" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Latest Update</a>
+        <a href="/latest-guide/index.html" class="nav-link gold-text" data-key="nav_guide" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Latest Update</a>
 
-    <a href="/masterstroke-module/sound-healing.html" class="nav-link gold-text" data-key="nav_sound" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Sound Healing</a>
+        <a href="/masterstroke-module/sound-healing.html" class="nav-link gold-text" data-key="nav_sound" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Sound Healing</a>
 
-    <a href="/latest-guide/numerology.html" class="nav-link gold-text" data-key="number_tool" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Numerology</a>
+        <a href="/latest-guide/numerology.html" class="nav-link gold-text" data-key="number_tool" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Numerology</a>
         
-    <a href="/index.html#book" class="nav-link gold-text" data-key="nav_book" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Book Now</a>
+        <a href="/index.html#book" class="nav-link gold-text" data-key="nav_book" style="text-decoration:none; font-family:'Cinzel'; font-size: 1.1rem;">Book Now</a>
 
-    <div id="user-display-mobile" style="margin-top: 15px; padding-top: 20px; border-top: 1px solid rgba(245,197,66,0.15); text-align: center;">
-    </div>
-</nav>
+        <div id="user-display-mobile" style="margin-top: 15px; padding-top: 20px; border-top: 1px solid rgba(245,197,66,0.15); text-align: center;"></div>
+    </nav>
 </div>
 
 <header id="main-header" style="position:fixed; top:0; width:100%; z-index:1000; background:rgba(10, 10, 20, 0.85); backdrop-filter:blur(20px); border-bottom:1px solid rgba(245,197,66,0.15); height:85px; display:flex; align-items:center; transition: all 0.3s ease;">
@@ -42,17 +41,18 @@
             </div>
 
             <div id="auth-container">
-    <div id="user-display-desktop"> 
-        <button onclick="window.loginWithGoogle()" style="cursor:pointer; padding:7px 15px; background:transparent; border:1px solid var(--gold); color:var(--gold); border-radius:4px; font-family:'Poppins'; font-size:0.8rem; transition:0.3s; font-weight:600;">
-            LOGIN
-        </button>
-    </div>
-</div>
+                <div id="user-display-desktop"> 
+                    <button onclick="window.loginWithGoogle()" style="cursor:pointer; padding:7px 15px; background:transparent; border:1px solid var(--gold); color:var(--gold); border-radius:4px; font-family:'Poppins'; font-size:0.8rem; transition:0.3s; font-weight:600;">
+                        LOGIN
+                    </button>
+                </div>
+            </div>
 
             <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2rem; display: flex; align-items: center; margin-left:5px;">☰</div>
         </div>
     </div>
 </header>
+
 <script>
 (function() {
     const mobileBtn = document.getElementById('mobile-menu');
@@ -75,6 +75,11 @@
     if (mobileBtn) mobileBtn.onclick = openNav;
     if (closeBtn) closeBtn.onclick = closeNav;
     if (overlay) overlay.onclick = closeNav;
+
+    // 🔱 Smart Trick: मोबाइल में लिंक क्लिक करते ही मेन्यू अपने आप बंद हो जाएगा
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', closeNav);
+    });
 
     // Master Language Sync
     window.toggleLanguage = function() {
@@ -122,7 +127,9 @@
         // Active Page Highlight Fix
         const currentPath = window.location.pathname;
         document.querySelectorAll('.nav-link').forEach(link => {
-            if (currentPath.includes(link.getAttribute('href'))) {
+            const linkPath = link.getAttribute('href');
+            // 🔱 Fix: सिर्फ #book वाले लिंक को छोड़कर बाकियों को हाईलाइट करे
+            if (linkPath !== "/index.html#book" && currentPath.includes(linkPath.split('#')[0])) {
                 link.style.borderBottom = '1px solid var(--gold)';
             }
         });
