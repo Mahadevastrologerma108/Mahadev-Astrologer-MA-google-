@@ -117,65 +117,76 @@
     <script type="module" src="../assets/js/firebase-handler.js"></script>
 
     <script>
-    async function generateMahadevKundli() {
-        const dob = document.getElementById('k_dob').value;
-        const time = document.getElementById('k_time').value;
-        const lat = document.getElementById('k_lat').value;
-        const lon = document.getElementById('k_lon').value;
-        const resultSection = document.getElementById('result-section');
-        const resultBox = document.getElementById('kundli_result_box');
-        const submitBtn = document.getElementById('submitBtn');
+async function generateMahadevKundli() {
+    const dob = document.getElementById('k_dob').value;
+    const time = document.getElementById('k_time').value;
+    const lat = document.getElementById('k_lat').value;
+    const lon = document.getElementById('k_lon').value;
+    const resultSection = document.getElementById('result-section');
+    const resultBox = document.getElementById('kundli_result_box');
+    const submitBtn = document.getElementById('submitBtn');
 
-        // Loading State
-        submitBtn.innerText = "गणना हो रही है... ⏳";
-        submitBtn.style.opacity = "0.7";
-        resultSection.style.display = "block";
-        resultBox.innerHTML = "<p style='color: var(--gold); text-align: center; font-family: Poppins;'>✨ ब्रह्मांडीय सर्वर से संपर्क किया जा रहा है...</p>";
-        resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if(!dob || !time || !lat || !lon) {
+        alert("🔱 कृपया सभी आवश्यक जानकारी भरें!");
+        return;
+    }
 
-        const datetime = `${dob}T${time}:00+05:30`;
-        const coordinates = `${lat},${lon}`;
-        
-        // ⚠️ LIVE VERCEL API LINK
-        const API_URL = "https://mahadev-astrologer-api.vercel.app/api/kundli"; 
+    submitBtn.innerText = "गणना हो रही है... ⏳";
+    submitBtn.style.opacity = "0.7";
+    resultSection.style.display = "block";
+    resultBox.innerHTML = "<p style='color: var(--gold); text-align: center; font-family: Poppins;'>✨ ब्रह्मांडीय सर्वर से संपर्क किया जा रहा है...</p>";
+    resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-        try {
-            const response = await fetch(API_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ datetime, coordinates })
-            });
+    const datetime = `${dob}T${time}:00+05:30`;
+    const coordinates = `${lat},${lon}`;
+    
+    // ⚠️ LIVE VERCEL API LINK
+    const API_URL = "https://mahadev-astrologer-api.vercel.app/api/kundli"; 
 
-            const data = await response.json();
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ datetime, coordinates })
+        });
 
-            if(data.errors || data.error) {
-                resultBox.innerHTML = `<p style="color: #ff4d4d; text-align: center;">❌ API Error: कृपया अपनी जन्म तिथि और समय का प्रारूप जांचें।</p>`;
-                submitBtn.innerText = "कुण्डली बनाएं ➔";
-                submitBtn.style.opacity = "1";
-                return;
-            }
+        const data = await response.json();
 
-            const nakshatra = data.data?.nakshatra_details?.nakshatra?.name || "N/A";
-            const chandraRashi = data.data?.nakshatra_details?.chandra_rasi?.name || "N/A";
-            const sooryaRashi = data.data?.nakshatra_details?.soorya_rasi?.name || "N/A";
-            const mangalDosha = data.data?.mangal_dosha?.has_dosha ? "<span style='color:#ff4d4d; font-weight: bold;'>हाँ (Yes)</span>" : "<span style='color:#4caf50; font-weight: bold;'>नहीं (No)</span>";
-
-            resultBox.innerHTML = `
-                <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>🌙 चंद्र राशि (Moon Sign):</strong> <span style="color: var(--gold);">${chandraRashi}</span></p>
-                <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>☀️ सूर्य राशि (Sun Sign):</strong> <span style="color: var(--gold);">${sooryaRashi}</span></p>
-                <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>⭐ नक्षत्र (Nakshatra):</strong> <span style="color: var(--gold);">${nakshatra}</span></p>
-                <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>🔴 मंगल दोष (Mangal Dosha):</strong> ${mangalDosha}</p>
-                <p style="font-size: 0.8rem; color: #888; margin-top: 15px; border-top: 1px dashed rgba(245,197,66,0.3); padding-top: 10px; text-align: center;">* Computed securely by MAHADEV ASTROLOGER MA Astro Engine.</p>
-            `;
-
-        } catch (error) {
-            console.error("Fetch Error:", error);
-            resultBox.innerHTML = "<p style='color: #ff4d4d; text-align: center;'>❌ सर्वर से संपर्क विफल। कृपया अपना इंटरनेट कनेक्शन जांचें।</p>";
-        } finally {
+        // 🛑 यह भाग असली त्रुटि (Real Error) दिखाएगा
+        if(data.errors || data.error) {
+            console.log("PROKERALA ERROR:", data);
+            let realErrorMsg = data.errors ? JSON.stringify(data.errors) : JSON.stringify(data.error);
+            
+            resultBox.innerHTML = `<p style="color: #ff4d4d; text-align: left; word-break: break-all;">
+                <strong>❌ API Error Details:</strong><br> ${realErrorMsg}
+            </p>`;
+            
             submitBtn.innerText = "कुण्डली बनाएं ➔";
             submitBtn.style.opacity = "1";
+            return;
         }
+
+        const nakshatra = data.data?.nakshatra_details?.nakshatra?.name || "N/A";
+        const chandraRashi = data.data?.nakshatra_details?.chandra_rasi?.name || "N/A";
+        const sooryaRashi = data.data?.nakshatra_details?.soorya_rasi?.name || "N/A";
+        const mangalDosha = data.data?.mangal_dosha?.has_dosha ? "<span style='color:#ff4d4d; font-weight: bold;'>हाँ (Yes)</span>" : "<span style='color:#4caf50; font-weight: bold;'>नहीं (No)</span>";
+
+        resultBox.innerHTML = `
+            <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>🌙 चंद्र राशि (Moon Sign):</strong> <span style="color: var(--gold);">${chandraRashi}</span></p>
+            <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>☀️ सूर्य राशि (Sun Sign):</strong> <span style="color: var(--gold);">${sooryaRashi}</span></p>
+            <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>⭐ नक्षत्र (Nakshatra):</strong> <span style="color: var(--gold);">${nakshatra}</span></p>
+            <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>🔴 मंगल दोष (Mangal Dosha):</strong> ${mangalDosha}</p>
+            <p style="font-size: 0.8rem; color: #888; margin-top: 15px; border-top: 1px dashed rgba(245,197,66,0.3); padding-top: 10px; text-align: center;">* Computed securely by MAHADEV ASTROLOGER MA Astro Engine.</p>
+        `;
+
+    } catch (error) {
+        console.error("Fetch Error:", error);
+        resultBox.innerHTML = "<p style='color: #ff4d4d; text-align: center;'>❌ सर्वर से संपर्क विफल। कृपया अपना इंटरनेट कनेक्शन जांचें।</p>";
+    } finally {
+        submitBtn.innerText = "कुण्डली बनाएं ➔";
+        submitBtn.style.opacity = "1";
     }
-    </script>
+}
+</script>
 </body>
 </html>
