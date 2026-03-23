@@ -1,277 +1,277 @@
 window.dailyHoroscope = {
   aries: {
     career: {
-      hi: "आज रविवार का दिन सूर्य की प्रखर ऊर्जा (Solar Energy) से भरा है। कार्यक्षेत्र में आपके नेतृत्व कौशल (Leadership skills) में वृद्धि होगी। प्रशासनिक निर्णय सफल सिद्ध होंगे।",
-      en: "Sunday is filled with intense Solar Energy. Your leadership skills at the workplace will enhance. Administrative decisions will prove successful."
+      hi: "आज सोमवार के दिन चंद्र देव की ऊर्जा आपके कार्यक्षेत्र में शीतलता लाएगी। जल्दबाजी में निर्णय लेने से बचें। धैर्य और 'Strategic Planning' आपको बड़े आर्थिक लाभ की ओर ले जाएगी।",
+      en: "The Moon's energy will bring calmness to your workplace this Monday. Avoid hasty decisions. Patience and strategic planning will lead you towards major financial gains."
     },
     love: {
-      hi: "पारिवारिक वातावरण में गर्माहट और उत्साह रहेगा। दांपत्य जीवन में 'Aura' को सकारात्मक रखने के लिए साथ में सूर्य देव की उपासना करें।",
-      en: "Warmth and enthusiasm will remain in the family environment. Worship the Sun God together to keep your marital aura positive."
+      hi: "दांपत्य जीवन में भावनाओं (Emotions) का प्रवाह तीव्र रहेगा। जीवनसाथी के साथ संवाद में सौम्यता बनाए रखें। परिवार में शांति का वातावरण रहेगा।",
+      en: "The flow of emotions in married life will be intense. Maintain gentleness in communication with your spouse. A peaceful atmosphere will prevail in the family."
     },
     health: {
-      hi: "सूर्य भेदी प्राणायाम करें। यह आपके शरीर की रोग प्रतिरोधक क्षमता (Immunity) को बढ़ाकर ऊर्जा का संतुलन करेगा।",
-      en: "Practice Surya Bhedi Pranayama. It will balance your energy by boosting your body's immunity."
+      hi: "रक्तचाप (Blood Pressure) और क्रोध को नियंत्रित रखने के लिए आज 'शीतली प्राणायाम' अत्यंत लाभकारी सिद्ध होगा। जल का सेवन अधिक करें।",
+      en: "Practicing 'Sheetali Pranayama' will prove highly beneficial to control blood pressure and anger today. Consume more water."
     },
     tip: {
-      hi: "आदित्य हृदय स्तोत्र का पाठ करें और तांबे के पात्र से सूर्य नारायण को अर्घ्य दें।",
-      en: "Recite Aditya Hridaya Stotra and offer Arghya to Surya Narayan using a copper vessel."
+      hi: "महादेव के मंदिर में जाकर शिवलिंग पर कच्चा दूध और अक्षत अर्पित करें।",
+      en: "Visit a Mahadev temple and offer raw milk and whole rice grains (Akshat) on the Shivling."
     },
-    luckyColor: { hi: "सुनहरा", en: "Golden" },
-    luckyNumber: "1",
-    luckyTime: { hi: "प्रातः 07:00 से 08:30", en: "07:00 AM to 08:30 AM" },
-    luckyDate: "Mar 22, 2026"
+    luckyColor: { hi: "श्वेत", en: "White" },
+    luckyNumber: "2",
+    luckyTime: { hi: "प्रातः 08:15 से 10:00", en: "08:15 AM to 10:00 AM" },
+    luckyDate: "Mar 23, 2026"
   },
 
   taurus: {
     career: {
-      hi: "आर्थिक प्रबंधन (Financial Management) के लिए आज का दिन श्रेष्ठ है। रचनात्मक और 'Analytical' विचार आपको व्यापार में नई दिशा और लाभ देंगे।",
-      en: "Today is excellent for financial management. Creative and analytical thoughts will give a new direction and profit to your business."
+      hi: "चंद्रमा आपकी राशि में उच्च का होता है। आज आपकी रचनात्मकता (Creativity) चरम पर होगी। कला, सौंदर्य और वित्तीय प्रबंधन के क्षेत्र में अपार सफलता के योग हैं।",
+      en: "The Moon is exalted in your sign. Your creativity will be at its peak today. Boundless success is indicated in the fields of art, beauty, and financial management."
     },
     love: {
-      hi: "जीवनसाथी के साथ समय बिताने से आपका 'Heart Chakra' संतुलित होगा। प्रेम संबंधों में स्थायित्व और मधुरता आएगी।",
-      en: "Spending time with your spouse will balance your Heart Chakra. Stability and sweetness will come in love relations."
+      hi: "स्वाधिष्ठान चक्र (Sacral Chakra) के सक्रिय होने से प्रेम संबंधों में मधुरता और आकर्षण बढ़ेगा। घर की 'Cosmic Energy' को शुद्ध करने के लिए संध्याकाल में दीप प्रज्वलित करें।",
+      en: "Activation of the Sacral Chakra will increase sweetness and attraction in love relations. Light a lamp in the evening to purify the home's cosmic energy."
     },
     health: {
-      hi: "नेत्रों (Eyes) का विशेष ध्यान रखें। प्रातःकाल नंगे पैर हरी घास पर चलना (Earthing) अत्यंत लाभकारी होगा।",
-      en: "Take special care of your eyes. Walking barefoot on green grass (Earthing) in the morning will be highly beneficial."
+      hi: "गले और स्वरयंत्र (Vocal Cords) का विशेष ध्यान रखें। मधुर संगीत या 'Sound Healing' सुनना मानसिक शांति प्रदान करेगा।",
+      en: "Take special care of your throat and vocal cords. Listening to soothing music or sound healing will provide mental peace."
     },
     tip: {
-      hi: "शिवलिंग पर श्वेत चंदन अर्पित करें और गायत्री मंत्र का जाप करें।",
-      en: "Offer white sandalwood to the Shivling and chant the Gayatri Mantra."
+      hi: "माता गौरी की स्तुति करें और सुहागिन स्त्रियों को श्वेत मिष्ठान्न भेंट करें।",
+      en: "Praise Mata Gauri and offer white sweets to married women."
     },
-    luckyColor: { hi: "श्वेत", en: "White" },
+    luckyColor: { hi: "रजत (सिल्वर)", en: "Silver" },
     luckyNumber: "6",
-    luckyTime: { hi: "प्रातः 10:15 से 11:45", en: "10:15 AM to 11:45 AM" },
-    luckyDate: "Mar 22, 2026"
+    luckyTime: { hi: "दोपहर 12:00 से 01:30", en: "12:00 PM to 01:30 PM" },
+    luckyDate: "Mar 23, 2026"
   },
 
   gemini: {
     career: {
-      hi: "संचार (Communication) के क्षेत्र में ऊर्जा का प्रवाह उत्तम रहेगा। आपकी बौद्धिक क्षमता और 'Frequency' आज उच्च स्तर पर होगी।",
-      en: "Energy flow in communication will be excellent. Your intellectual capacity and frequency will be at a high level today."
+      hi: "बुद्धि (Mercury) और मन (Moon) का अद्भुत संतुलन आज आपको बहुआयामी कार्य करने की शक्ति देगा। संचार और लेखन कार्यों में आपको विशेष ख्याति प्राप्त होगी।",
+      en: "An amazing balance of intellect (Mercury) and mind (Moon) will give you the power to multitask today. You will gain special fame in communication and writing tasks."
     },
     love: {
-      hi: "मित्रों के साथ वैचारिक आदान-प्रदान से मानसिक शांति मिलेगी। पारिवारिक संबंधों में स्पष्टता (Clarity) बनाए रखें।",
-      en: "Ideological exchange with friends will bring mental peace. Maintain clarity in family relationships."
+      hi: "मित्रों और प्रियजनों के साथ वैचारिक संवाद से मन प्रसन्न रहेगा। किसी पुराने विवाद का अंत होगा और संबंधों में नवीन ऊर्जा का संचार होगा।",
+      en: "Ideological dialogues with friends and loved ones will keep the mind happy. An old dispute will end, bringing new energy to relationships."
     },
     health: {
-      hi: "तंत्रिका तंत्र (Nervous System) को शांत रखने के लिए ध्यान (Meditation) करें। पर्याप्त जल का सेवन करें।",
-      en: "Meditate to keep your nervous system calm. Consume adequate water."
+      hi: "अत्यधिक विचारों के कारण अनिद्रा की स्थिति उत्पन्न हो सकती है। 'ध्यान' (Meditation) द्वारा अपने तंत्रिका तंत्र को विश्राम दें।",
+      en: "Excessive thoughts may cause a state of insomnia. Give rest to your nervous system through meditation."
     },
     tip: {
-      hi: "सूर्य देव को रोली मिश्रित जल चढ़ाएं और गौ माता को हरा चारा खिलाएं।",
-      en: "Offer water mixed with Roli to the Sun God and feed green grass to a cow."
+      hi: "गाय को हरा चारा खिलाएं और 'ॐ नमः शिवाय' का 108 बार जाप करें।",
+      en: "Feed green fodder to a cow and chant 'Om Namah Shivaya' 108 times."
     },
-    luckyColor: { hi: "हल्का हरा", en: "Light Green" },
+    luckyColor: { hi: "समुद्री हरा", en: "Sea Green" },
     luckyNumber: "5",
-    luckyTime: { hi: "अपराह्न 02:30 से 04:00", en: "02:30 PM to 04:00 PM" },
-    luckyDate: "Mar 22, 2026"
+    luckyTime: { hi: "अपराह्न 03:00 से 04:30", en: "03:00 PM to 04:30 PM" },
+    luckyDate: "Mar 23, 2026"
   },
 
   cancer: {
     career: {
-      hi: "कार्यक्षेत्र में भावनाओं (Emotions) को नियंत्रित रखें। 'Logical' निर्णय लेने से आर्थिक लाभ के मार्ग प्रशस्त होंगे।",
-      en: "Control emotions at the workplace. Taking logical decisions will pave the way for financial gains."
+      hi: "आज आपकी राशि का स्वामी चंद्र पूर्ण प्रभाव में है। आपकी अंतर्ज्ञान क्षमता (Intuition) सटीक रहेगी। व्यवसाय में आपके द्वारा लिए गए निर्णय दीर्घकालिक लाभ देंगे।",
+      en: "Your ruling planet Moon is in full effect today. Your intuitive power will be highly accurate. Decisions made by you in business will yield long-term benefits."
     },
     love: {
-      hi: "माता के आशीर्वाद से घर की 'Cosmic Energy' शुद्ध होगी। परिवार के साथ सात्विक भोजन ग्रहण करें।",
-      en: "Mother's blessings will purify the home's cosmic energy. Have Sattvic food with your family."
+      hi: "हृदय चक्र (Heart Chakra) पूर्णतः ऊर्जावान रहेगा। माता के आशीर्वाद से आपके पारिवारिक जीवन में अपार सुख और समृद्धि का आगमन होगा।",
+      en: "The Heart Chakra will be fully energized. With your mother's blessings, immense happiness and prosperity will arrive in your family life."
     },
     health: {
-      hi: "छाती और फेफड़ों का ध्यान रखें। अनुलोम-विलोम प्राणायाम आपके शरीर के जल तत्व को संतुलित करेगा।",
-      en: "Take care of your chest and lungs. Anulom-Vilom Pranayama will balance the water element in your body."
+      hi: "शरीर में जल तत्व का संतुलन बनाए रखें। छाती और फेफड़ों के स्वास्थ्य हेतु अनुलोम-विलोम का निरंतर अभ्यास करें।",
+      en: "Maintain the balance of the water element in your body. Practice Anulom-Vilom continuously for the health of your chest and lungs."
     },
     tip: {
-      hi: "शिवलिंग पर दूध अर्पित करें और 'ॐ नमः शिवाय' का जाप करें।",
-      en: "Offer milk to the Shivling and chant 'Om Namah Shivaya'."
+      hi: "चांदी के पात्र में जल रखकर ग्रहण करें और शिवलिंग का रुद्राभिषेक करें।",
+      en: "Consume water kept in a silver vessel and perform Rudrabhishek of the Shivling."
     },
-    luckyColor: { hi: "मोती के समान सफेद", en: "Pearl White" },
+    luckyColor: { hi: "मोती सा श्वेत", en: "Pearl White" },
     luckyNumber: "2",
-    luckyTime: { hi: "शाम 04:00 से 05:30", en: "04:00 PM to 05:30 PM" },
-    luckyDate: "Mar 22, 2026"
+    luckyTime: { hi: "प्रातः 10:30 से 12:00", en: "10:30 AM to 12:00 PM" },
+    luckyDate: "Mar 23, 2026"
   },
 
   leo: {
     career: {
-      hi: "आज आपका स्वामी ग्रह सूर्य अत्यंत बलवान है। कार्यक्षेत्र में आपका 'Aura' और प्रभाव चरम पर रहेगा। सरकारी कार्यों में सफलता निश्चित है।",
-      en: "Your ruling planet Sun is very strong today. Your aura and influence at work will be at their peak. Success in government tasks is certain."
+      hi: "सूर्य के तेज और चंद्रमा की शीतलता का समन्वय आपको कार्यक्षेत्र में अजेय बनाएगा। प्रशासनिक कार्यों में आपकी नीतियों की सर्वत्र प्रशंसा होगी।",
+      en: "The harmony of the Sun's radiance and the Moon's coolness will make you invincible at the workplace. Your policies in administrative tasks will be universally praised."
     },
     love: {
-      hi: "आत्मविश्वास और प्रेम का अद्भुत संतुलन रहेगा। परिवार में पिता या पिता तुल्य व्यक्ति का सम्मान करें।",
-      en: "An amazing balance of confidence and love will prevail. Respect your father or a father-figure in the family."
+      hi: "अहंकार (Ego) को त्यागकर सौम्यता से बात करने पर पारिवारिक संबंध अत्यंत सुदृढ़ होंगे। दांपत्य जीवन में समर्पण का भाव रखें।",
+      en: "Renouncing ego and speaking gently will make family relations very strong. Maintain a sense of dedication in your married life."
     },
     health: {
-      hi: "मणिपुर चक्र (Solar Plexus) अत्यंत सक्रिय है। शारीरिक ऊर्जा उच्च स्तर पर रहेगी, सकारात्मक कार्यों में इसका उपयोग करें।",
-      en: "The Solar Plexus chakra is highly active. Physical energy will remain at a high level; use it in positive tasks."
+      hi: "रीढ़ की हड्डी और हृदय का ध्यान रखें। सूर्य नमस्कार के पश्चात ध्यान मुद्रा में बैठने से शारीरिक ऊर्जा का ऊर्ध्वगमन होगा।",
+      en: "Take care of your spine and heart. Sitting in a meditative posture after Surya Namaskar will elevate your physical energy."
     },
     tip: {
-      hi: "तांबे के लोटे से सूर्य नारायण को अर्घ्य दें और आदित्य हृदय स्तोत्र का तीन बार पाठ करें।",
-      en: "Offer Arghya to Surya Narayan with a copper vessel and recite Aditya Hridaya Stotra three times."
+      hi: "जल में कुमकुम मिलाकर सूर्य देव को अर्घ्य दें और शिव पंचाक्षर स्तोत्र का पाठ करें।",
+      en: "Offer Arghya to the Sun God by mixing kumkum in water and recite Shiva Panchakshara Stotra."
     },
-    luckyColor: { hi: "नारंगी", en: "Orange" },
+    luckyColor: { hi: "स्वर्णिम पीला", en: "Golden Yellow" },
     luckyNumber: "1",
-    luckyTime: { hi: "प्रातः 08:00 से 10:00", en: "08:00 AM to 10:00 AM" },
-    luckyDate: "Mar 22, 2026"
+    luckyTime: { hi: "प्रातः 07:00 से 08:30", en: "07:00 AM to 08:30 AM" },
+    luckyDate: "Mar 23, 2026"
   },
 
   virgo: {
     career: {
-      hi: "आज का दिन योजना (Planning) बनाने के लिए उत्तम है। आपकी 'Analytical' दृष्टि किसी बड़ी व्यावसायिक समस्या का समाधान खोज निकालेगी।",
-      en: "Today is excellent for planning. Your analytical vision will find the solution to a major business problem."
+      hi: "व्यावसायिक रूपरेखा (Business Outline) तैयार करने के लिए दिन उत्तम है। आपकी विश्लेषणात्मक दृष्टि और चंद्र की शांति मिलकर आपको आर्थिक सफलता के शिखर पर ले जाएगी।",
+      en: "The day is excellent for preparing a business outline. Your analytical vision combined with the Moon's peace will take you to the pinnacle of financial success."
     },
     love: {
-      hi: "वाणी में मधुरता रखें। आपके शब्दों की 'Sound Vibration' आज घर के वातावरण को शांत और सुखद करेगी।",
-      en: "Keep sweetness in your speech. The sound vibration of your words will calm and pleasant the home environment today."
+      hi: "अपने जीवनसाथी की मानसिक स्थिति को समझें और उन्हें भावनात्मक सहयोग प्रदान करें। घर में स्वच्छता रखने से सकारात्मक ऊर्जा का वास होगा।",
+      en: "Understand your spouse's mental state and provide them emotional support. Keeping the house clean will ensure the residence of positive energy."
     },
     health: {
-      hi: "उदर (Stomach) संबंधी कष्ट से बचने के लिए सुपाच्य आहार लें। भोजन के पश्चात वज्रासन का अभ्यास लाभकारी है।",
-      en: "Consume easily digestible food to avoid stomach discomfort. Practicing Vajrasana after meals is beneficial."
+      hi: "पाचन तंत्र (Digestive System) संवेदनशील हो सकता है। आयुर्वेद के अनुसार सात्विक और सुपाच्य आहार ही ग्रहण करें।",
+      en: "The digestive system might be sensitive. Consume only Sattvic and easily digestible food according to Ayurveda."
     },
     tip: {
-      hi: "भगवान गणेश की स्तुति करें और मस्तक पर चंदन का तिलक धारण करें।",
-      en: "Praise Lord Ganesha and apply a sandalwood tilak on your forehead."
+      hi: "तुलसी के पौधे के समक्ष घी का दीपक प्रज्वलित करें और गणेश जी का ध्यान करें।",
+      en: "Light a ghee lamp in front of the Tulsi plant and meditate on Lord Ganesha."
     },
-    luckyColor: { hi: "पन्ना हरा", en: "Emerald Green" },
+    luckyColor: { hi: "हल्का नीला", en: "Light Blue" },
     luckyNumber: "5",
-    luckyTime: { hi: "दोपहर 12:30 से 02:00", en: "12:30 PM to 02:00 PM" },
-    luckyDate: "Mar 22, 2026"
+    luckyTime: { hi: "शाम 04:30 से 06:00", en: "04:30 PM to 06:00 PM" },
+    luckyDate: "Mar 23, 2026"
   },
 
   libra: {
     career: {
-      hi: "व्यापार में सामंजस्य (Harmony) और 'Balance' बना रहेगा। कला और सौंदर्य से जुड़े क्षेत्रों में उत्तम आर्थिक लाभ की संभावना है।",
-      en: "Harmony and balance will be maintained in business. Excellent financial gain is possible in fields related to art and beauty."
+      hi: "कार्यस्थल पर सामंजस्य (Harmony) स्थापित करने में आप सफल रहेंगे। नवीन साझेदारी (Partnership) के लिए ब्रह्मांडीय ऊर्जा आपके पक्ष में है।",
+      en: "You will be successful in establishing harmony at the workplace. Cosmic energy is in your favor for new partnerships."
     },
     love: {
-      hi: "दांपत्य जीवन में ऊर्जा का स्तर बहुत अच्छा रहेगा। जीवनसाथी के साथ आध्यात्मिक यात्रा की योजना बन सकती है।",
-      en: "Energy levels in married life will be very good. A spiritual journey with your spouse can be planned."
+      hi: "रोमांस और दांपत्य सुख के लिए आज का दिन अत्यंत शुभ है। शुक्र और चंद्र का प्रभाव आपके जीवन में सौंदर्य और आनंद की वृद्धि करेगा।",
+      en: "Today is extremely auspicious for romance and marital bliss. The influence of Venus and the Moon will increase beauty and joy in your life."
     },
     health: {
-      hi: "जल तत्व (Hydration) का पूर्ण ध्यान रखें। गुर्दों (Kidneys) को स्वस्थ रखने के लिए शुद्ध जल का सेवन बढ़ाएं।",
-      en: "Take full care of hydration. Increase pure water intake to keep your kidneys healthy."
+      hi: "जल चिकित्सा (Water Therapy) आपके लिए लाभकारी रहेगी। गुर्दों (Kidneys) के शोधन के लिए तांबे के पात्र का जल ग्रहण करें।",
+      en: "Water therapy will be beneficial for you. Consume water from a copper vessel for the purification of your kidneys."
     },
     tip: {
-      hi: "शिवलिंग पर जल और इत्र अर्पित करें, तथा सूर्य देव को नमस्कार करें।",
-      en: "Offer water and perfume to the Shivling, and greet the Sun God."
+      hi: "भगवान शिव को श्वेत पुष्प अर्पित करें और निर्धन व्यक्तियों को वस्त्र दान करें।",
+      en: "Offer white flowers to Lord Shiva and donate clothes to the poor."
     },
-    luckyColor: { hi: "गुलाबी", en: "Pink" },
+    luckyColor: { hi: "श्वेत एवं गुलाबी", en: "White and Pink" },
     luckyNumber: "6",
-    luckyTime: { hi: "प्रातः 09:15 से 10:45", en: "09:15 AM to 10:45 AM" },
-    luckyDate: "Mar 22, 2026"
+    luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
+    luckyDate: "Mar 23, 2026"
   },
 
   scorpio: {
     career: {
-      hi: "आपके भीतर असीम ऊर्जा का संचार होगा। गुप्त विद्याओं और 'Research' के क्षेत्र में आज कोई महत्वपूर्ण 'Breakthrough' मिल सकता है।",
-      en: "Boundless energy will flow within you. A significant breakthrough may be achieved in occult sciences and research today."
+      hi: "चंद्रमा आज नीचस्थ अवस्था से निकलकर आपकी अंतर्दृष्टि को तीव्र करेगा। गुप्त अनुसंधान (Research) और तकनीकी क्षेत्रों में अप्रत्याशित सफलता प्राप्त होगी।",
+      en: "The Moon, emerging from its debilitated state, will sharpen your insight today. Unexpected success will be achieved in secret research and technical fields."
     },
     love: {
-      hi: "गहरे और आत्मीय संबंधों में वृद्धि होगी। अकारण क्रोध से बचें ताकि घर की ऊर्जा सकारात्मक रहे।",
-      en: "Deep and intimate relationships will grow. Avoid unnecessary anger to keep the home's energy positive."
+      hi: "भावनात्मक रूप से दिन अत्यंत गहन रहेगा। पुराने मानसिक अवरोधों (Blocks) को दूर करने और क्षमा करने का यह सर्वोत्तम समय है।",
+      en: "Emotionally, the day will be very profound. It is the best time to remove old mental blocks and practice forgiveness."
     },
     health: {
-      hi: "मूलाधार चक्र (Root Chakra) को सक्रिय करने के लिए योग का अभ्यास करें। मसालेदार भोजन से पूर्णतः बचें।",
-      en: "Practice yoga to activate the Root Chakra. Completely avoid spicy food."
+      hi: "मूलाधार चक्र की ऊर्जा को संतुलित करने के लिए योग का अभ्यास अनिवार्य है। नकारात्मक विचारों का त्याग करें।",
+      en: "Practicing yoga is mandatory to balance the energy of the Root Chakra. Renounce negative thoughts."
     },
     tip: {
-      hi: "हनुमान जी को लाल पुष्प अर्पित करें और 'ॐ सूर्याय नमः' का जाप करें।",
-      en: "Offer red flowers to Lord Hanuman and chant 'Om Suryaya Namah'."
+      hi: "शिवलिंग पर बेलपत्र अर्पित करते हुए 'ॐ नमः शिवाय' का 108 बार मानसिक जाप करें।",
+      en: "Mentally chant 'Om Namah Shivaya' 108 times while offering Belpatra on the Shivling."
     },
-    luckyColor: { hi: "रक्त लाल", en: "Blood Red" },
+    luckyColor: { hi: "गहरा लाल", en: "Dark Red" },
     luckyNumber: "9",
-    luckyTime: { hi: "शाम 06:00 से 07:30", en: "06:00 PM to 07:30 PM" },
-    luckyDate: "Mar 22, 2026"
+    luckyTime: { hi: "शाम 06:30 से 08:00", en: "06:30 PM to 08:00 PM" },
+    luckyDate: "Mar 23, 2026"
   },
 
   sagittarius: {
     career: {
-      hi: "ज्ञान और शिक्षा के क्षेत्र में आपका 'Aura' चमकेगा। धन निवेश और 'Long-term' व्यावसायिक योजनाओं के लिए दिन अति अनुकूल है।",
-      en: "Your aura will shine in the field of knowledge and education. The day is highly favorable for wealth investment and long-term business plans."
+      hi: "ज्ञान और अध्यात्म के क्षेत्र में आपके विचारों का सम्मान होगा। लंबी दूरी की व्यावसायिक यात्राओं से भविष्य में उत्तम आर्थिक लाभ के मार्ग खुलेंगे।",
+      en: "Your thoughts will be respected in the fields of knowledge and spirituality. Long-distance business travels will open paths for excellent financial gains in the future."
     },
     love: {
-      hi: "आध्यात्मिक चर्चाओं से मन प्रसन्न रहेगा। गुरुजनों और वृद्धों का आशीर्वाद आपके 'Karmic' पथ को सरल बनाएगा।",
-      en: "Spiritual discussions will make the mind happy. Blessings from mentors and elders will smooth your karmic path."
+      hi: "गुरु और वृद्धजनों का आशीर्वाद आपके पारिवारिक जीवन को सुखमय बनाएगा। धर्म और दर्शन के विषयों पर परिवार के साथ सकारात्मक चर्चा होगी।",
+      en: "Blessings from gurus and elders will make your family life joyful. Positive discussions on religion and philosophy will happen with the family."
     },
     health: {
-      hi: "यकृत (Liver) का विशेष ध्यान रखें। हल्दी मिश्रित गर्म जल का सेवन आपकी रोग प्रतिरोधक क्षमता को बढ़ाएगा।",
-      en: "Take special care of your liver. Consuming warm water mixed with turmeric will boost your immunity."
+      hi: "यकृत (Liver) और जांघों का ध्यान रखें। प्रातःकाल भ्रमण (Walking) करने से शरीर में प्राणवायु का संचार सुचारु रूप से होगा।",
+      en: "Take care of your liver and thighs. Morning walking will ensure the smooth circulation of vital air (Prana) in the body."
     },
     tip: {
-      hi: "भगवान विष्णु की आराधना करें और सूर्य देव को हल्दी मिश्रित जल चढ़ाएं।",
-      en: "Worship Lord Vishnu and offer turmeric-mixed water to the Sun God."
+      hi: "पीले चंदन का तिलक मस्तक पर लगाएं और शिव जी को पंचामृत से स्नान कराएं।",
+      en: "Apply a yellow sandalwood tilak on your forehead and bathe Lord Shiva with Panchamrit."
     },
-    luckyColor: { hi: "पीला", en: "Yellow" },
+    luckyColor: { hi: "हल्का पीला", en: "Light Yellow" },
     luckyNumber: "3",
-    luckyTime: { hi: "प्रातः 06:30 से 08:00", en: "06:30 AM to 08:00 AM" },
-    luckyDate: "Mar 22, 2026"
+    luckyTime: { hi: "प्रातः 09:00 से 10:30", en: "09:00 AM to 10:30 AM" },
+    luckyDate: "Mar 23, 2026"
   },
 
   capricorn: {
     career: {
-      hi: "कार्यक्षेत्र में आपका अनुशासन और 'Focus' आपको सफलता दिलाएगा। मेहनत के अनुपात में स्थिर आर्थिक लाभ प्राप्त होगा।",
-      en: "Your discipline and focus at work will bring you success. Stable financial gain will be proportional to your hard work."
+      hi: "कर्म भाव में शनि और चंद्रमा का प्रभाव आपको अत्यंत कर्मठ बनाएगा। अनुशासन और निरंतरता (Consistency) से आज आप किसी कठिन कार्य को भी सरलता से पूर्ण कर लेंगे।",
+      en: "The influence of Saturn and Moon in the house of karma will make you highly diligent. With discipline and consistency, you will easily complete even a difficult task today."
     },
     love: {
-      hi: "पारिवारिक दायित्वों को निष्ठापूर्वक निभाएं। जीवनसाथी के प्रति समर्पण आपके संबंधों को प्रगाढ़ और सुरक्षित करेगा।",
-      en: "Fulfill family responsibilities with devotion. Dedication towards your spouse will deepen and secure your relationship."
+      hi: "पारिवारिक दायित्वों का निर्वहन निष्ठापूर्वक करें। जीवनसाथी के स्वास्थ्य और भावनाओं का विशेष ध्यान रखने की आवश्यकता है।",
+      en: "Fulfill family responsibilities with devotion. There is a need to take special care of your spouse's health and emotions."
     },
     health: {
-      hi: "अस्थियों (Bones) और जोड़ों में दर्द हो सकता है। सूर्य के प्रकाश (Vitamin D) का भरपूर सेवन अवश्य करें।",
-      en: "Pain in bones and joints is possible. Ensure abundant intake of sunlight (Vitamin D)."
+      hi: "अस्थियों और घुटनों में पीड़ा की संभावना है। शरीर में वात (Vata) दोष को संतुलित करने के लिए गर्म और सात्विक भोजन ग्रहण करें।",
+      en: "Possibility of pain in bones and knees. Consume warm and Sattvic food to balance the Vata dosha in the body."
     },
     tip: {
-      hi: "शनिदेव का ध्यान करते हुए सूर्य देव को काले तिल डालकर अर्घ्य दें।",
-      en: "Meditating on Lord Saturn, offer Arghya to the Sun God with black sesame seeds."
+      hi: "शिव चालीसा का पाठ करें और असहाय व्यक्तियों को अन्न का दान दें।",
+      en: "Recite Shiva Chalisa and donate food to helpless individuals."
     },
-    luckyColor: { hi: "भूरा", en: "Brown" },
+    luckyColor: { hi: "स्लेटी (ग्रे)", en: "Grey" },
     luckyNumber: "8",
-    luckyTime: { hi: "अपराह्न 03:00 से 04:30", en: "03:00 PM to 04:30 PM" },
-    luckyDate: "Mar 22, 2026"
+    luckyTime: { hi: "अपराह्न 02:00 से 03:30", en: "02:00 PM to 03:30 PM" },
+    luckyDate: "Mar 23, 2026"
   },
 
   aquarius: {
     career: {
-      hi: "'Innovation' और तकनीकी कार्यों में आपका मन लगेगा। किसी नए विचार (Idea) पर कार्य आरंभ करने के लिए ब्रह्मांडीय ऊर्जा अनुकूल है।",
-      en: "Your mind will be engaged in innovation and technical tasks. Cosmic energy is favorable to start working on a new idea."
+      hi: "तकनीकी (Technical) और नवीन अनुसंधान के कार्यों में आपको सफलता मिलेगी। सामूहिक कार्य (Teamwork) के माध्यम से आज आप बड़ी व्यावसायिक उपलब्धि प्राप्त करेंगे।",
+      en: "You will find success in technical and innovative research work. Through teamwork, you will achieve a major business milestone today."
     },
     love: {
-      hi: "सामाजिक और आध्यात्मिक दायरों में आपका सम्मान बढ़ेगा। मित्रों के साथ उच्च स्तरीय (Intellectual) चर्चा होगी।",
-      en: "Your respect will increase in social and spiritual circles. Intellectual discussions will take place with friends."
+      hi: "समाज कल्याण और परोपकार की भावना आपके हृदय में रहेगी। मित्रों के सहयोग से मानसिक शांति मिलेगी और संबंधों में प्रगाढ़ता आएगी।",
+      en: "A sense of social welfare and benevolence will remain in your heart. Support from friends will bring mental peace and deepen relationships."
     },
     health: {
-      hi: "मानसिक थकान दूर करने के लिए 'Sound Healing' या ॐ (Om) का उच्चारण करें। स्नायु तंत्र (Nervous system) को विश्राम दें।",
-      en: "Use sound healing or chant Om to relieve mental fatigue. Give rest to your nervous system."
+      hi: "पिंडलियों (Calves) और तंत्रिका तंत्र का ध्यान रखें। 'नाद योग' (Sound Resonance) का अभ्यास आपकी मानसिक थकावट को तुरंत दूर करेगा।",
+      en: "Take care of your calves and nervous system. The practice of 'Naad Yoga' will instantly remove your mental exhaustion."
     },
     tip: {
-      hi: "गरीब और असहाय लोगों की सहायता करें। शिव मंदिर में दीप प्रज्वलित करें।",
-      en: "Help poor and helpless people. Light a lamp in a Shiva temple."
+      hi: "शिवलिंग पर शमी पत्र अर्पित करें और किसी प्यासे को जल पिलाएं।",
+      en: "Offer Shami leaves to the Shivling and give water to a thirsty person."
     },
-    luckyColor: { hi: "आसमानी", en: "Sky Blue" },
+    luckyColor: { hi: "नीला", en: "Blue" },
     luckyNumber: "8",
-    luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
-    luckyDate: "Mar 22, 2026"
+    luckyTime: { hi: "शाम 05:30 से 07:00", en: "05:30 PM to 07:00 PM" },
+    luckyDate: "Mar 23, 2026"
   },
 
   pisces: {
     career: {
-      hi: "आपकी अंतर्ज्ञान क्षमता (Intuitive Power) आज आपको सही दिशा दिखाएगी। कला, साहित्य या अध्यात्म से जुड़े कार्यों में आर्थिक वृद्धि होगी।",
-      en: "Your intuitive power will guide you in the right direction today. Financial growth in tasks related to art, literature, or spirituality."
+      hi: "चंद्रमा का गोचर आपके आध्यात्मिक ज्ञान और कलात्मक कौशल को निखारेगा। विदेश से जुड़े कार्यों या 'Online' व्यवसाय में अप्रत्याशित वृद्धि के संकेत हैं।",
+      en: "The transit of the Moon will polish your spiritual knowledge and artistic skills. Unexpected growth is indicated in overseas tasks or online business."
     },
     love: {
-      hi: "मन में करुणा और दया का भाव रहेगा। जीवनसाथी के साथ एकांत में समय बिताना संबंधों की ऊर्जा को शुद्ध करेगा।",
-      en: "Compassion and kindness will remain in your heart. Spending time in solitude with your spouse will purify the energy of the relationship."
+      hi: "सहस्रार चक्र (Crown Chakra) सक्रिय रहेगा। जीवनसाथी के साथ एकांत और शांतिपूर्ण समय बिताना आपके संबंधों की ऊर्जा को दिव्य स्तर पर ले जाएगा।",
+      en: "The Crown Chakra will remain active. Spending solitary and peaceful time with your spouse will elevate the energy of your relationship to a divine level."
     },
     health: {
-      hi: "पैरों की देखभाल करें। ध्यान (Meditation) आपके मन की चंचलता को शांत कर असीम शांति प्रदान करेगा।",
-      en: "Take care of your feet. Meditation will calm the restlessness of your mind and provide infinite peace."
+      hi: "पैरों और निद्रा चक्र (Sleep Cycle) का ध्यान रखें। रात्रि में सोने से पूर्व ध्यान करने से आपकी चेतना को असीम विश्राम प्राप्त होगा।",
+      en: "Take care of your feet and sleep cycle. Meditating before sleeping at night will provide infinite rest to your consciousness."
     },
     tip: {
-      hi: "भगवान सूर्य को कुमकुम युक्त जल अर्पित करें और विष्णु सहस्रनाम का पाठ करें।",
-      en: "Offer Kumkum-mixed water to Lord Sun and recite Vishnu Sahasranama."
+      hi: "महादेव का केसर मिश्रित जल से अभिषेक करें और विष्णु सहस्रनाम का श्रवण करें।",
+      en: "Perform Abhishek of Mahadev with saffron-mixed water and listen to Vishnu Sahasranama."
     },
-    luckyColor: { hi: "सुनहरा पीला", en: "Golden Yellow" },
+    luckyColor: { hi: "हल्दी पीला", en: "Turmeric Yellow" },
     luckyNumber: "3",
-    luckyTime: { hi: "प्रातः 07:30 से 09:00", en: "07:30 AM to 09:00 AM" },
-    luckyDate: "Mar 22, 2026"
+    luckyTime: { hi: "प्रातः 06:30 से 08:00", en: "06:30 AM to 08:00 AM" },
+    luckyDate: "Mar 23, 2026"
   }
 };
