@@ -7,7 +7,6 @@
     <meta name="description" content="MAHADEV ASTROLOGER MA के एडवांस Astro Engine से अपनी सटीक जन्म कुण्डली, चंद्र राशि, सूर्य राशि, नक्षत्र और मंगल दोष की जानकारी प्राप्त करें।">
     
     <link rel="canonical" href="https://www.mahadevastrologerma.in/latest-guide/kundali.html">
-    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -29,9 +28,21 @@
         .calc-btn { width: 100%; padding: 15px; background: var(--gold); color: #000; font-size: 1.2rem; font-weight: bold; font-family: 'Cinzel'; border: none; border-radius: 50px; cursor: pointer; transition: 0.3s; margin-top: 10px; }
         .calc-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(245, 197, 66, 0.5); }
 
+        /* 🔱 Updated Result Section Styles */
         #result-section { display: none; margin-top: 40px; padding: 30px; background: linear-gradient(145deg, #111, #06060c); border: 2px dashed var(--gold); border-radius: 15px; text-align: center; animation: fadeIn 1s; }
         
-        .remedy-box { background: rgba(245, 197, 66, 0.05); border-left: 3px solid var(--gold); padding: 20px; text-align: left; margin-top: 25px; border-radius: 0 10px 10px 0; }
+        .chart-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
+        .chart-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(245, 197, 66, 0.3); padding: 15px; border-radius: 10px; width: 280px; text-align: center; }
+        .svg-container svg { width: 100%; height: auto; border-radius: 5px; filter: drop-shadow(0 0 5px rgba(245, 197, 66, 0.2)); }
+        
+        #planets_table { width: 100%; border-collapse: collapse; margin-top: 20px; color: #ccc; font-size: 0.9rem; }
+        #planets_table th, #planets_table td { border-bottom: 1px solid #333; padding: 12px; text-align: left; }
+        #planets_table th { color: var(--gold); font-family: 'Cinzel'; }
+
+        /* 🔒 Premium Paywall Styles */
+        .paywall-container { position: relative; margin-top: 50px; padding: 40px 20px; background: rgba(0,0,0,0.6); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; }
+        .lock-icon { font-size: 40px; color: var(--gold); margin-bottom: 15px; }
+        .blur-text { filter: blur(5px); opacity: 0.3; user-select: none; pointer-events: none; }
 
         .master-article { max-width: 850px; margin: 0 auto 80px; padding: 0 20px; line-height: 1.8; color: #ccc; font-size: 1.05rem; }
         .master-article h2 { font-family: 'Cinzel'; color: var(--gold); font-size: 2rem; margin: 50px 0 20px; border-bottom: 1px solid rgba(245, 197, 66, 0.2); padding-bottom: 10px; }
@@ -40,7 +51,7 @@
         .faq-q { color: var(--gold); font-weight: 600; font-size: 1.1rem; margin-bottom: 5px; font-family: 'Cinzel'; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 600px) { .calc-container { margin-top: 100px; padding: 20px; } .row-group { flex-direction: column; gap: 0; } }
+        @media (max-width: 600px) { .calc-container { margin-top: 100px; padding: 20px; } .row-group { flex-direction: column; gap: 0; } .chart-box { width: 100%; } }
     </style>
 </head>
 <body class="panchang-body">
@@ -78,35 +89,62 @@
         </form>
 
         <div id="result-section">
-            <h2 class="gold-text" style="font-family: 'Cinzel'; font-size: 1.5rem; margin-top: 0;" data-key="k_res_title">Cosmic Blueprint Result</h2>
+            <h2 class="gold-text cinzel" data-key="k_res_title">Cosmic Blueprint Result</h2>
             
-            <div class="remedy-box" id="kundli_result_box">
+            <div class="chart-grid">
+                <div class="chart-box">
+                    <h4 class="gold-text cinzel">लग्न चक्र (D1)</h4>
+                    <div id="lagna_svg" class="svg-container"></div>
                 </div>
+                <div class="chart-box">
+                    <h4 class="gold-text cinzel">नवांश चक्र (D9)</h4>
+                    <div id="navamsha_svg" class="svg-container"></div>
+                </div>
+                <div class="chart-box">
+                    <h4 class="gold-text cinzel">चंद्र चक्र</h4>
+                    <div id="chandra_svg" class="svg-container"></div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; overflow-x: auto;">
+                <h3 class="gold-text cinzel" style="text-align: left;">Planetary Positions</h3>
+                <table id="planets_table">
+                    <thead>
+                        <tr>
+                            <th>Planet</th>
+                            <th>Rasi</th>
+                            <th>Degree</th>
+                            <th>Nakshatra</th>
+                        </tr>
+                    </thead>
+                    <tbody id="planets_body"></tbody>
+                </table>
+            </div>
+
+            <div class="paywall-container">
+                <div class="lock-icon">🔒</div>
+                <h3 class="gold-text cinzel">अनलॉक महादेव प्रीमियम</h3>
+                <p style="font-size: 0.9rem; color: #ccc;">विस्तृत भविष्यवाणियां, विंशोत्तरी महादशा, कालसर्प एवं पितृ दोष रिपोर्ट के लिए प्रीमियम अनलॉक करें।</p>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                    <a href="https://wa.me/YOUR_NUMBER" class="calc-btn" style="text-decoration:none; padding:10px 20px; font-size:0.9rem; width:auto;">संपर्क करें</a>
+                    <button class="calc-btn" style="background:#fff; color:#000; padding:10px 20px; font-size:0.9rem; width:auto;">अनलॉक (₹99)</button>
+                </div>
+                <div class="blur-text" style="margin-top:20px;">
+                    <p>Maha Dasha: Rahu | Antardasha: Jupiter | Prediction: Success in career...</p>
+                </div>
+            </div>
         </div>
     </main>
 
     <article class="master-article">
         <h2 style="text-align: center; border: none; font-size: 2.2rem; margin-top: 20px;" data-key="k_art_title">वैदिक कुण्डली का महत्व | Importance of Vedic Kundli</h2>
         <p style="text-align: center; color: var(--gold); font-style: italic; margin-bottom: 40px;" data-key="k_art_quote">"ग्रहों की गति हमारे जीवन का मार्गदर्शन करती है।"</p>
-
-        <p data-key="k_art_p1">मानव जीवन ब्रह्मांडीय ऊर्जा (Cosmic Energy) और ग्रहों की गति से निरंतर प्रभावित होता है। जन्म कुण्डली व्यक्ति के जन्म के समय आकाश मंडल का एक सटीक नक्शा है। <strong>MAHADEV ASTROLOGER MA</strong> के इस उन्नत 'Astro Engine' के माध्यम से आप अपने जीवन के मूल तत्वों की सटीक गणना प्राप्त कर सकते हैं।</p>
-
-        <p data-key="k_art_p2">Human life is continuously influenced by cosmic energy and planetary movements. Through our advanced API engine, you can obtain accurate calculations of your Moon Sign, Sun Sign, and Nakshatra, providing a proper guide for your future.</p>
-
-        <h2 data-key="k_faq_h1">Frequently Asked Questions (सामान्य प्रश्न)</h2>
-        
+        <p data-key="k_art_p1">मानव जीवन ब्रह्मांडीय ऊर्जा और ग्रहों की गति से निरंतर प्रभावित होता है। जन्म कुण्डली व्यक्ति के जन्म के समय आकाश मंडल का एक सटीक नक्शा है।</p>
+        <p data-key="k_art_p2">Human life is continuously influenced by cosmic energy and planetary movements. Through our advanced API engine, you can obtain accurate calculations.</p>
+        <h2 data-key="k_faq_h1">Frequently Asked Questions</h2>
         <div class="faq-item">
-            <div class="faq-q" data-key="k_faq_q1">1. Is this Kundli calculation accurate? (क्या यह कुण्डली सटीक है?)</div>
-            <p style="margin: 0;" data-key="k_faq_a1">Yes. <b>MAHADEV ASTROLOGER MA</b> utilizes an advanced API server that calculates planetary positions based on absolute astrological mathematics.</p>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-q" data-key="k_faq_q2">2. Does this tool detect Mangal Dosha? (क्या यह मंगल दोष बताता है?)</div>
-            <p style="margin: 0;" data-key="k_faq_a2">Absolutely. Our system provides a clear indication of Mangal Dosha, helping you in marriage matchmaking and future planning.</p>
-        </div>
-
-        <div style="background: rgba(245, 197, 66, 0.05); border-left: 4px solid var(--gold); padding: 20px; margin: 40px 0; border-radius: 0 10px 10px 0;">
-            <p style="margin: 0; color: #fff;" data-key="k_art_alert"><strong>विशेष परामर्श:</strong> संपूर्ण कुण्डली विश्लेषण (Full Horoscope Analysis) और सटीक उपाय जानने के लिए <strong>MAHADEV ASTROLOGER MA</strong> से संपर्क करें।</p>
+            <div class="faq-q" data-key="k_faq_q1">1. Is this Kundli calculation accurate?</div>
+            <p style="margin: 0;" data-key="k_faq_a1">Yes. <b>MAHADEV ASTROLOGER MA</b> utilizes an advanced API server.</p>
         </div>
     </article>
 
@@ -116,80 +154,75 @@
     <script src="../assets/js/layout.js"></script>
     <script type="module" src="../assets/js/firebase-handler.js"></script>
 
-   <script>
-async function generateMahadevKundli() {
-    const dob = document.getElementById('k_dob').value;
-    const time = document.getElementById('k_time').value;
-    const lat = document.getElementById('k_lat').value;
-    const lon = document.getElementById('k_lon').value;
-    const resultSection = document.getElementById('result-section');
-    const resultBox = document.getElementById('kundli_result_box');
-    const submitBtn = document.getElementById('submitBtn');
+    <script>
+    async function generateMahadevKundli() {
+        const dob = document.getElementById('k_dob').value;
+        const time = document.getElementById('k_time').value;
+        const lat = document.getElementById('k_lat').value;
+        const lon = document.getElementById('k_lon').value;
+        const resultSection = document.getElementById('result-section');
+        const submitBtn = document.getElementById('submitBtn');
 
-    if(!dob || !time || !lat || !lon) {
-        alert("🔱 कृपया सभी आवश्यक जानकारी भरें!");
-        return;
-    }
-
-    submitBtn.innerText = "गणना हो रही है... ⏳";
-    submitBtn.style.opacity = "0.7";
-    resultSection.style.display = "block";
-    resultBox.innerHTML = "<p style='color: var(--gold); text-align: center; font-family: Poppins;'>✨ ब्रह्मांडीय सर्वर से संपर्क किया जा रहा है...</p>";
-    resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-    // 🛑 THE MASTER FIX: + की जगह %2B लगाया गया है
-    const datetime = `${dob}T${time}:00%2B05:30`;
-    const coordinates = `${lat},${lon}`;
-    
-    // ⚠️ LIVE VERCEL API LINK
-    const API_URL = "https://mahadev-astrologer-api.vercel.app/api/kundli"; 
-
-    try {
-        const response = await fetch(API_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ datetime, coordinates })
-        });
-
-        const data = await response.json();
-
-        // यदि कोई एरर आता है
-        if(data.errors || data.error) {
-            console.log("PROKERALA ERROR:", data);
-            let realErrorMsg = data.errors ? JSON.stringify(data.errors) : JSON.stringify(data.error);
-            
-            resultBox.innerHTML = `<p style="color: #ff4d4d; text-align: left; word-break: break-all;">
-                <strong>❌ API Error Details:</strong><br> ${realErrorMsg}
-            </p>`;
-            
-            submitBtn.innerText = "कुण्डली बनाएं ➔";
-            submitBtn.style.opacity = "1";
+        if(!dob || !time || !lat || !lon) {
+            alert("🔱 कृपया सभी आवश्यक जानकारी भरें!");
             return;
         }
 
-        // कुण्डली का डेटा निकालना
-        const nakshatra = data.data?.nakshatra_details?.nakshatra?.name || "N/A";
-        const chandraRashi = data.data?.nakshatra_details?.chandra_rasi?.name || "N/A";
-        const sooryaRashi = data.data?.nakshatra_details?.soorya_rasi?.name || "N/A";
-        const mangalDosha = data.data?.mangal_dosha?.has_dosha ? "<span style='color:#ff4d4d; font-weight: bold;'>हाँ (Yes)</span>" : "<span style='color:#4caf50; font-weight: bold;'>नहीं (No)</span>";
+        submitBtn.innerText = "ब्रह्मांडीय गणना हो रही है... ⏳";
+        submitBtn.style.opacity = "0.7";
+        resultSection.style.display = "block";
+        
+        // Initial Loading View
+        document.getElementById('lagna_svg').innerHTML = "⏳ Loading...";
+        document.getElementById('navamsha_svg').innerHTML = "⏳ Loading...";
+        document.getElementById('chandra_svg').innerHTML = "⏳ Loading...";
+        document.getElementById('planets_body').innerHTML = "";
 
-        // परिणाम दिखाना
-        resultBox.innerHTML = `
-            <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>🌙 चंद्र राशि (Moon Sign):</strong> <span style="color: var(--gold);">${chandraRashi}</span></p>
-            <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>☀️ सूर्य राशि (Sun Sign):</strong> <span style="color: var(--gold);">${sooryaRashi}</span></p>
-            <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>⭐ नक्षत्र (Nakshatra):</strong> <span style="color: var(--gold);">${nakshatra}</span></p>
-            <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>🔴 मंगल दोष (Mangal Dosha):</strong> ${mangalDosha}</p>
-            <p style="font-size: 0.8rem; color: #888; margin-top: 15px; border-top: 1px dashed rgba(245,197,66,0.3); padding-top: 10px; text-align: center;">* Computed securely by MAHADEV ASTROLOGER MA Astro Engine.</p>
-        `;
+        resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-    } catch (error) {
-        console.error("Fetch Error:", error);
-        resultBox.innerHTML = "<p style='color: #ff4d4d; text-align: center;'>❌ सर्वर से संपर्क विफल। कृपया अपना इंटरनेट कनेक्शन जांचें।</p>";
-    } finally {
-        submitBtn.innerText = "कुण्डली बनाएं ➔";
-        submitBtn.style.opacity = "1";
+        const datetime = `${dob}T${time}:00%2B05:30`;
+        const coordinates = `${lat},${lon}`;
+        const API_URL = "https://mahadev-astrologer-api.vercel.app/api/kundli"; 
+
+        try {
+            const response = await fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ datetime, coordinates })
+            });
+
+            const data = await response.json();
+
+            if(!data.success) {
+                alert("API Error: " + JSON.stringify(data.error));
+                return;
+            }
+
+            // 🔱 Injecting Charts (SVGs)
+            document.getElementById('lagna_svg').innerHTML = data.charts.lagna;
+            document.getElementById('navamsha_svg').innerHTML = data.charts.navamsha;
+            document.getElementById('chandra_svg').innerHTML = data.charts.chandra;
+
+            // 🔱 Injecting Planets Table
+            let tableHTML = "";
+            data.planets.forEach(p => {
+                tableHTML += `<tr>
+                    <td>${p.name}</td>
+                    <td>${p.rasi}</td>
+                    <td>${p.degree.toFixed(2)}°</td>
+                    <td>${p.nakshatra}</td>
+                </tr>`;
+            });
+            document.getElementById('planets_body').innerHTML = tableHTML;
+
+        } catch (error) {
+            console.error("Fetch Error:", error);
+            alert("सर्वर से संपर्क विफल।");
+        } finally {
+            submitBtn.innerText = "कुण्डली बनाएं ➔";
+            submitBtn.style.opacity = "1";
+        }
     }
-}
-</script>
+    </script>
 </body>
 </html>
