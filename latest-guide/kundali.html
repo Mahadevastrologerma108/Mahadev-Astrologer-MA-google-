@@ -173,9 +173,9 @@
         resultSection.style.display = "block";
         
         // Initial Loading View
-        document.getElementById('lagna_svg').innerHTML = "⏳ Loading...";
-        document.getElementById('navamsha_svg').innerHTML = "⏳ Loading...";
-        document.getElementById('chandra_svg').innerHTML = "⏳ Loading...";
+        document.getElementById('lagna_svg').innerHTML = "⏳ ब्रह्मांडीय गणना जारी है...";
+        document.getElementById('navamsha_svg').innerHTML = "⏳ ग्रहों की स्थिति जांची जा रही है...";
+        document.getElementById('chandra_svg').innerHTML = "⏳ चंद्र चक्र तैयार हो रहा है...";
         document.getElementById('planets_body').innerHTML = "";
 
         resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -191,7 +191,16 @@
                 body: JSON.stringify({ datetime, coordinates })
             });
 
-            const data = await response.json();
+            // 🛑 असली सुधार: पहले टेक्स्ट में लो, फिर JSON में बदलो
+            const rawResponse = await response.text();
+            let data;
+            try {
+                data = JSON.parse(rawResponse);
+            } catch (e) {
+                console.error("Server Sent Non-JSON Data:", rawResponse);
+                alert("🔱 डेटा प्राप्त हुआ है परंतु प्रारूप (Format) सही नहीं है। कृपया 1 जनवरी वाली तारीख से दोबारा प्रयास करें।");
+                return;
+            }
 
             if(!data.success) {
                 alert("API Error: " + JSON.stringify(data.error));
