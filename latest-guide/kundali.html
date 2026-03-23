@@ -116,7 +116,7 @@
     <script src="../assets/js/layout.js"></script>
     <script type="module" src="../assets/js/firebase-handler.js"></script>
 
-    <script>
+   <script>
 async function generateMahadevKundli() {
     const dob = document.getElementById('k_dob').value;
     const time = document.getElementById('k_time').value;
@@ -137,7 +137,8 @@ async function generateMahadevKundli() {
     resultBox.innerHTML = "<p style='color: var(--gold); text-align: center; font-family: Poppins;'>✨ ब्रह्मांडीय सर्वर से संपर्क किया जा रहा है...</p>";
     resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-    const datetime = `${dob}T${time}:00+05:30`;
+    // 🛑 THE MASTER FIX: + की जगह %2B लगाया गया है
+    const datetime = `${dob}T${time}:00%2B05:30`;
     const coordinates = `${lat},${lon}`;
     
     // ⚠️ LIVE VERCEL API LINK
@@ -152,7 +153,7 @@ async function generateMahadevKundli() {
 
         const data = await response.json();
 
-        // 🛑 यह भाग असली त्रुटि (Real Error) दिखाएगा
+        // यदि कोई एरर आता है
         if(data.errors || data.error) {
             console.log("PROKERALA ERROR:", data);
             let realErrorMsg = data.errors ? JSON.stringify(data.errors) : JSON.stringify(data.error);
@@ -166,11 +167,13 @@ async function generateMahadevKundli() {
             return;
         }
 
+        // कुण्डली का डेटा निकालना
         const nakshatra = data.data?.nakshatra_details?.nakshatra?.name || "N/A";
         const chandraRashi = data.data?.nakshatra_details?.chandra_rasi?.name || "N/A";
         const sooryaRashi = data.data?.nakshatra_details?.soorya_rasi?.name || "N/A";
         const mangalDosha = data.data?.mangal_dosha?.has_dosha ? "<span style='color:#ff4d4d; font-weight: bold;'>हाँ (Yes)</span>" : "<span style='color:#4caf50; font-weight: bold;'>नहीं (No)</span>";
 
+        // परिणाम दिखाना
         resultBox.innerHTML = `
             <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>🌙 चंद्र राशि (Moon Sign):</strong> <span style="color: var(--gold);">${chandraRashi}</span></p>
             <p style="margin: 8px 0; color: #fff; font-size: 1.05rem;"><strong>☀️ सूर्य राशि (Sun Sign):</strong> <span style="color: var(--gold);">${sooryaRashi}</span></p>
