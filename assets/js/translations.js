@@ -415,6 +415,37 @@ quiz_q3_c: "Sensitive to Humidity",
     ln_art_c9: "Number 9 (Mars)",
     ln_art_alert: "<strong>Special Consultation:</strong> Get your personalized Numerology Report from <strong>MAHADEV ASTROLOGER MA</strong> for Name Correction and detailed number analysis.",
 
+   // Header & Meta
+    "k_title": "Free Janam Kundli | MAHADEV ASTROLOGER MA",
+    
+    // Main Form Section
+    "k_main_heading": "🔱 Janam Kundli (Kundli Engine)",
+    "k_sub_heading": "Discover your Moon sign, Nakshatra, and Mangal Dosha based on precise cosmic calculations.",
+    "k_dob_lbl": "1. Date of Birth",
+    "k_time_lbl": "2. Time of Birth",
+    "k_lat_lbl": "3. Latitude",
+    "k_lon_lbl": "4. Longitude",
+    "k_btn": "Generate Kundli ➔",
+    
+    // Result Section
+    "k_res_title": "Cosmic Blueprint Result",
+    
+    // Article & SEO Section
+    "k_art_title": "Importance of Vedic Kundli",
+    "k_art_quote": "\"Planetary movements securely guide our cosmic journey.\"",
+    "k_art_p1": "Human life is continuously influenced by cosmic energy and planetary movements. A Janam Kundli (Birth Chart) is a precise map of the celestial sphere at the exact time of an individual's birth. Through the advanced 'Astro Engine' of <strong>MAHADEV ASTROLOGER MA</strong>, you can obtain accurate calculations of your life's core elements.",
+    "k_art_p2": "This cosmic blueprint provides a proper guide for your career, health, and marital life, helping you align your actions with the universe.",
+    
+    // FAQ Section
+    "k_faq_h1": "Frequently Asked Questions",
+    "k_faq_q1": "1. Is this Kundli calculation highly accurate?",
+    "k_faq_a1": "Yes. <b>MAHADEV ASTROLOGER MA</b> utilizes an advanced API server that calculates planetary positions based on absolute astrological mathematics.",
+    "k_faq_q2": "2. Does this tool detect Mangal Dosha?",
+    "k_faq_a2": "Absolutely. Our system provides a clear indication of Mangal Dosha, helping you in marriage matchmaking and future planning.",
+    
+    // Alert Box
+    "k_art_alert": "<strong>Special Consultation:</strong> Contact <strong>MAHADEV ASTROLOGER MA</strong> for a full horoscope analysis and precise remedies.",     
+
 // ===== SOUND MODULE KEYS (EN) =====
 status_locked: "🔐 LOCKED",
 status_unlocked: "🔓 UNLOCKED",
@@ -812,6 +843,37 @@ quiz_q3_c: "नमी/उमस से परेशानी",
     ln_art_c9: "अंक 9 (मंगल)",
     ln_art_alert: "<strong>विशेष परामर्श:</strong> नाम की स्पेलिंग (Name Correction) और अंकों के महा-विश्लेषण के लिए <strong>MAHADEV ASTROLOGER MA</strong> से अपनी व्यक्तिगत न्यूमरोलॉजी रिपोर्ट प्राप्त करें।",    
 
+    // Header & Meta
+    "k_title": "फ्री जन्म कुण्डली | MAHADEV ASTROLOGER MA",
+    
+    // Main Form Section
+    "k_main_heading": "🔱 जन्म कुण्डली (Kundli Engine)",
+    "k_sub_heading": "सटीक ब्रह्मांडीय गणनाओं के आधार पर अपना राशिफल, नक्षत्र और मंगल दोष जानें।",
+    "k_dob_lbl": "1. जन्म तिथि (Date of Birth)",
+    "k_time_lbl": "2. जन्म समय (Time of Birth)",
+    "k_lat_lbl": "3. अक्षांश (Latitude)",
+    "k_lon_lbl": "4. देशांतर (Longitude)",
+    "k_btn": "कुण्डली बनाएं ➔",
+    
+    // Result Section
+    "k_res_title": "ब्रह्मांडीय ऊर्जा परिणाम",
+    
+    // Article & SEO Section
+    "k_art_title": "वैदिक कुण्डली का महत्व",
+    "k_art_quote": "\"ग्रहों की गति हमारे जीवन का मार्गदर्शन करती है।\"",
+    "k_art_p1": "मानव जीवन ब्रह्मांडीय ऊर्जा (Cosmic Energy) और ग्रहों की गति से निरंतर प्रभावित होता है। जन्म कुण्डली व्यक्ति के जन्म के समय आकाश मंडल का एक सटीक नक्शा है। <strong>MAHADEV ASTROLOGER MA</strong> के इस उन्नत 'Astro Engine' के माध्यम से आप अपने जीवन के मूल तत्वों की सटीक गणना प्राप्त कर सकते हैं।",
+    "k_art_p2": "यह ब्रह्मांडीय ब्लूप्रिंट आपके करियर, स्वास्थ्य और दांपत्य जीवन के लिए उचित मार्गदर्शिका प्रदान करता है, जिससे आप अपने कर्मों को ब्रह्मांड के अनुकूल बना सकते हैं।",
+    
+    // FAQ Section
+    "k_faq_h1": "सामान्य प्रश्न (FAQ)",
+    "k_faq_q1": "1. क्या यह कुण्डली गणना पूर्णतः सटीक है?",
+    "k_faq_a1": "हाँ। <b>MAHADEV ASTROLOGER MA</b> एक उन्नत API सर्वर का उपयोग करता है जो पूर्ण ज्योतिषीय गणित के आधार पर ग्रहों की स्थिति की गणना करता है।",
+    "k_faq_q2": "2. क्या यह उपकरण मंगल दोष का संकेत देता है?",
+    "k_faq_a2": "अवश्य। हमारा सिस्टम मंगल दोष का स्पष्ट संकेत प्रदान करता है, जो विवाह मिलान और भविष्य की योजना में आपकी सहायता करता है।",
+    
+    // Alert Box
+    "k_art_alert": "<strong>विशेष परामर्श:</strong> संपूर्ण कुण्डली विश्लेषण और सटीक उपाय जानने के लिए <strong>MAHADEV ASTROLOGER MA</strong> से संपर्क करें।",
+        
     // --- AYUSHMAN BHAVA (HEALTH CALCULATOR) ---
     ab_title: "🔱 आयुष्मान भव:",
     ab_desc: "आयुर्वेद और नाद विज्ञान के अनुसार अपनी शारीरिक प्रकृति, दैनिक जल (Water) और ऊर्जा (Steps) का सटीक मापन करें।",
