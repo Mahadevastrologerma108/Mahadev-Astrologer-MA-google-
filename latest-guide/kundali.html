@@ -28,21 +28,18 @@
         .calc-btn { width: 100%; padding: 15px; background: var(--gold); color: #000; font-size: 1.2rem; font-weight: bold; font-family: 'Cinzel'; border: none; border-radius: 50px; cursor: pointer; transition: 0.3s; margin-top: 10px; }
         .calc-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(245, 197, 66, 0.5); }
 
-        /* 🔱 Updated Result Section Styles */
+        /* 🔱 Result Section Styles */
         #result-section { display: none; margin-top: 40px; padding: 30px; background: linear-gradient(145deg, #111, #06060c); border: 2px dashed var(--gold); border-radius: 15px; text-align: center; animation: fadeIn 1s; }
 
         .chart-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
         .chart-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(245, 197, 66, 0.3); padding: 15px; border-radius: 10px; width: 280px; text-align: center; }
         .svg-container svg { width: 100%; height: auto; border-radius: 5px; filter: invert(1) brightness(1.5); }
 
-        #planets_table, #dasha_table { width: 100%; border-collapse: collapse; margin-top: 15px; color: #ccc; font-size: 0.9rem; }
-        #planets_table th, #planets_table td, #dasha_table th, #dasha_table td { border-bottom: 1px solid #333; padding: 12px; text-align: left; }
-        #planets_table th, #dasha_table th { color: var(--gold); font-family: 'Cinzel'; }
+        #planets_table { width: 100%; border-collapse: collapse; margin-top: 15px; color: #ccc; font-size: 0.9rem; }
+        #planets_table th, #planets_table td { border-bottom: 1px solid #333; padding: 12px; text-align: left; }
+        #planets_table th { color: var(--gold); font-family: 'Cinzel'; }
 
-        /* 🔒 Premium Paywall Styles */
         .paywall-container { position: relative; margin-top: 50px; padding: 40px 20px; background: rgba(0,0,0,0.6); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; }
-        .lock-icon { font-size: 40px; color: var(--gold); margin-bottom: 15px; }
-        .blur-text { filter: blur(5px); opacity: 0.3; user-select: none; pointer-events: none; transition: 0.5s; }
 
         .master-article { max-width: 850px; margin: 0 auto 80px; padding: 0 20px; line-height: 1.8; color: #ccc; font-size: 1.05rem; }
         .master-article h2 { font-family: 'Cinzel'; color: var(--gold); font-size: 2rem; margin: 50px 0 20px; border-bottom: 1px solid rgba(245, 197, 66, 0.2); padding-bottom: 10px; }
@@ -58,21 +55,18 @@
             #header-placeholder, #footer-placeholder, #calculator-section h1, #calculator-section p, form, .master-article, .paywall-container, .calc-btn { display: none !important; }
             body, main, #result-section { background: #ffffff !important; color: #000000 !important; box-shadow: none !important; border: none !important; margin: 0 !important; padding: 0 !important; }
             
-            /* 1. चार्ट्स को डार्क और स्पष्ट करें */
             .svg-container svg { filter: none !important; } 
             .svg-container svg text { fill: #000000 !important; font-weight: bold !important; font-size: 14px !important; }
             .svg-container svg line, .svg-container svg path, .svg-container svg polygon { stroke: #000000 !important; stroke-width: 1.5px !important; }
             
-            /* 2. चार्ट्स को एक सीध में रखें (पेज फटने से बचाएं) */
             .chart-grid { display: flex !important; flex-wrap: wrap !important; justify-content: space-between !important; }
             .chart-box { width: 48% !important; margin-bottom: 20px !important; border: 2px solid #000 !important; page-break-inside: avoid !important; background: none !important; }
             
-            /* 3. टेबल डिज़ाइन */
             table { width: 100% !important; border-collapse: collapse !important; page-break-inside: auto; }
             tr { page-break-inside: avoid; page-break-after: auto; }
             th, td { border: 1px solid #000 !important; color: #000 !important; padding: 8px !important; font-size: 13px !important; }
             .gold-text { color: #000000 !important; text-align: center; font-weight: bold; border-color: #000 !important; } 
-            #birth-details-section, #dasha-section { border: 2px solid #000 !important; background: none !important; page-break-inside: avoid !important; }
+            #birth-details-section { border: 2px solid #000 !important; background: none !important; page-break-inside: avoid !important; }
         }
     </style>
 </head>
@@ -127,16 +121,8 @@
                     <div id="navamsha_svg" class="svg-container"></div>
                 </div>
                 <div class="chart-box">
-                    <h4 class="gold-text cinzel">चंद्र चक्र</h4>
-                    <div id="chandra_svg" class="svg-container"></div>
-                </div>
-                <div class="chart-box">
                     <h4 class="gold-text cinzel">चलित चक्र (Chalit)</h4>
                     <div id="chalit_svg" class="svg-container"></div>
-                </div>
-                <div class="chart-box">
-                    <h4 class="gold-text cinzel">दशमांश (D10)</h4>
-                    <div id="dasamsa_svg" class="svg-container"></div>
                 </div>
             </div>
 
@@ -164,33 +150,16 @@
                 </div>
             </div>
 
-            <div id="dasha-section" style="margin-top: 40px; text-align: left; background: rgba(255,255,255,0.02); border: 1px solid rgba(245, 197, 66, 0.3); padding: 20px; border-radius: 10px;">
-                <h3 class="gold-text cinzel" style="text-align: center; border-bottom: 1px dashed var(--gold); padding-bottom: 10px;">विंशोत्तरी महादशा</h3>
-                <table id="dasha_table">
-                    <thead>
-                        <tr>
-                            <th>महादशा (Maha Dasha)</th>
-                            <th>आरंभ (Start Date)</th>
-                            <th>समाप्ति (End Date)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dasha_body">
-                        </tbody>
-                </table>
-            </div>
-
-            <div class="paywall-container" id="premium-paywall">
-                <div class="lock-icon">🔒</div>
-                <h3 class="gold-text cinzel">अनलॉक महादेव प्रीमियम</h3>
-                <p style="font-size: 0.9rem; color: #ccc;">विस्तृत भविष्यवाणियां एवं विस्तृत रिपोर्ट के लिए प्रीमियम अनलॉक करें।</p>
-                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
-                    <a href="https://wa.me/YOUR_NUMBER" class="calc-btn" style="text-decoration:none; padding:10px 20px; font-size:0.9rem; width:auto;">संपर्क करें</a>
-                    <button class="calc-btn" style="background:#fff; color:#000; padding:10px 20px; font-size:0.9rem; width:auto;">अनलॉक (₹99)</button>
+            <div class="paywall-container" id="premium-paywall" style="border-color: #25D366; background: rgba(37, 211, 102, 0.05);">
+                <h3 class="gold-text cinzel" style="margin-bottom: 10px;">🔱 विस्तृत कुण्डली विश्लेषण</h3>
+                <p style="font-size: 0.95rem; color: #fff; line-height: 1.6;">दशा (महादशा/अंतर्दशा), गोचर फल, कालसर्प दोष, मांगलिक दोष और सटीक उपायों की <b>संपूर्ण जानकारी</b> के लिए हमारे विशेषज्ञों से परामर्श लें।</p>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="calc-btn" style="text-decoration:none; padding:12px 25px; font-size:1rem; width:auto; background: #25D366; color: #fff; border-radius: 5px; font-family: 'Poppins';">
+                        📱 WhatsApp पर संपर्क करें
+                    </a>
                 </div>
             </div>
-            <div class="blur-text" style="margin-top:20px;">
-                <p>विस्तृत फल: आपके जीवन में गुरु की महादशा अत्यंत शुभ फल देने वाली है। करियर में उन्नति के योग...</p>
-            </div>
+
         </div>
     </main>
 
@@ -221,52 +190,46 @@
             return;
         }
 
+        // 🛑 SMART JUGAAD 1: Daily Limit Check (Max 2 API Calls Per Day)
+        const todayDate = new Date().toLocaleDateString();
+        let usage = JSON.parse(localStorage.getItem('kundliUsage')) || { date: todayDate, count: 0 };
+        
+        if (usage.date !== todayDate) {
+            usage = { date: todayDate, count: 0 }; // नया दिन, नया कोटा
+        }
+
+        // 🛑 SMART JUGAAD 2: Cache System Check
+        const cacheKey = `kundli_${dob}_${time}_${lat}_${lon}`;
+        const cachedData = localStorage.getItem(cacheKey);
+
+        if (!cachedData && usage.count >= 2) {
+            // अगर डेटा कैश में नहीं है और लिमिट पार हो गई है
+            alert("😂 Today's limit exhausted! Come tomorrow and try again or try after 12:00 AM 🕛");
+            return;
+        }
+
         submitBtn.innerText = "ब्रह्मांडीय गणना हो रही है... ⏳";
         submitBtn.style.opacity = "0.7";
         resultSection.style.display = "block";
 
         document.getElementById('lagna_svg').innerHTML = "⏳ लोड हो रहा है...";
         document.getElementById('navamsha_svg').innerHTML = "⏳ लोड हो रहा है...";
-        document.getElementById('chandra_svg').innerHTML = "⏳ लोड हो रहा है...";
         document.getElementById('chalit_svg').innerHTML = "⏳ लोड हो रहा है...";
-        document.getElementById('dasamsa_svg').innerHTML = "⏳ लोड हो रहा है...";
         document.getElementById('planets_body').innerHTML = "";
         document.getElementById('basic_panchang_data').innerHTML = "";
-        document.getElementById('dasha_body').innerHTML = "";
 
         resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-        const datetime = `${dob}T${time}:00%2B05:30`;
-        const coordinates = `${lat},${lon}`;
-        const API_URL = "https://mahadev-astrologer-api.vercel.app/api/kundli"; 
-
-        try {
-            const response = await fetch(API_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ datetime, coordinates })
-            });
-
-            const rawResponse = await response.text();
-            let data;
-            try {
-                data = JSON.parse(rawResponse);
-            } catch (e) {
-                console.error("Server Sent Non-JSON Data:", rawResponse);
-                alert("🔱 डेटा प्राप्त हुआ है परंतु प्रारूप (Format) सही नहीं है। कृपया दोबारा प्रयास करें।");
-                return;
+        // 🎨 UI Update Function
+        const renderKundli = (data) => {
+            // 1. Injecting 3 Premium Charts
+            if(data.charts) {
+                document.getElementById('lagna_svg').innerHTML = data.charts.lagna || "-";
+                document.getElementById('navamsha_svg').innerHTML = data.charts.navamsha || "-";
+                document.getElementById('chalit_svg').innerHTML = data.charts.chalit || "-";
             }
 
-            if(!data.success) {
-                alert("API Error: " + JSON.stringify(data.error));
-                return;
-            }
-
-           // 1. Injecting 2 Premium Charts (SVGs)
-            document.getElementById('lagna_svg').innerHTML = data.charts.lagna;
-            document.getElementById('navamsha_svg').innerHTML = data.charts.navamsha;
-            
-            // 2. Injecting Planets Table (100% Correct Keys now!)
+            // 2. Injecting Planets Table
             let tableHTML = "";
             if (data.planets && Array.isArray(data.planets)) {
                 data.planets.forEach(p => {
@@ -288,7 +251,7 @@
             }
             document.getElementById('planets_body').innerHTML = tableHTML;
 
-            // 3. Injecting Birth Details (Avakhada Chakra) - SMART EXTRACTOR
+            // 3. Injecting Birth Details (Avakhada Chakra)
             let bdHtml = "";
             if(data.birthDetails) {
                 const bd = data.birthDetails;
@@ -314,49 +277,59 @@
             }
             document.getElementById('basic_panchang_data').innerHTML = bdHtml;
 
-            // 4. Injecting Vimshottari Dasha
-            let dashaHtml = "";
-            const dashaList = data.dasha?.maha_dasha || data.dasha; 
-            
-            if(dashaList && Array.isArray(dashaList)) {
-                dashaList.forEach(d => {
-                    const startDate = new Date(d.start).toLocaleDateString('hi-IN', { year: 'numeric', month: 'short', day: 'numeric' });
-                    const endDate = new Date(d.end).toLocaleDateString('hi-IN', { year: 'numeric', month: 'short', day: 'numeric' });
-                    
-                    dashaHtml += `<tr>
-                        <td style="font-weight: bold;">${d.name || d.planet}</td>
-                        <td>${startDate}</td>
-                        <td>${endDate}</td>
-                    </tr>`;
-                });
-            } else {
-                dashaHtml = `<tr><td colspan="3" style="text-align:center; color: #ff4d4d;">दशा की जानकारी सर्वर से प्राप्त नहीं हुई</td></tr>`;
-            }
-            document.getElementById('dasha_body').innerHTML = dashaHtml;
-            
-            // 👑 Admin Access Magic (Paywall Unlock)
-            const ADMIN_EMAIL = "mannumani108@gmail.com"; 
-            const currentUserEmail = localStorage.getItem("userEmail"); 
-            
-            if (currentUserEmail === ADMIN_EMAIL) {
-                const paywall = document.getElementById('premium-paywall');
-                if(paywall) paywall.style.display = 'none';
-
-                const premiumContent = document.querySelector('.blur-text');
-                if(premiumContent) {
-                    premiumContent.style.filter = 'none';
-                    premiumContent.style.opacity = '1';
-                    premiumContent.style.pointerEvents = 'auto';
-                    premiumContent.style.userSelect = 'auto';
-                }
-            }
-
-        } catch (error) {
-            console.error("Fetch Error:", error);
-            alert("सर्वर से संपर्क विफल।");
-        } finally {
             submitBtn.innerText = "कुण्डली बनाएं ➔";
             submitBtn.style.opacity = "1";
+        };
+
+        // 🚀 THE DECISION: Cache or API?
+        if (cachedData) {
+            console.log("🔱 Data Loaded From Cache (Credits Saved!)");
+            renderKundli(JSON.parse(cachedData));
+        } else {
+            console.log("🔱 Fetching Fresh Data From Server...");
+            const datetime = `${dob}T${time}:00%2B05:30`;
+            const coordinates = `${lat},${lon}`;
+            const API_URL = "https://mahadev-astrologer-api.vercel.app/api/kundli"; 
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ datetime, coordinates })
+                });
+
+                const rawResponse = await response.text();
+                let data;
+                try {
+                    data = JSON.parse(rawResponse);
+                } catch (e) {
+                    console.error("Server Sent Non-JSON Data:", rawResponse);
+                    alert("🔱 डेटा प्राप्त हुआ है परंतु प्रारूप सही नहीं है। कृपया दोबारा प्रयास करें।");
+                    submitBtn.innerText = "कुण्डली बनाएं ➔";
+                    submitBtn.style.opacity = "1";
+                    return;
+                }
+
+                if(!data.success) {
+                    alert("API Error: " + JSON.stringify(data.error));
+                    submitBtn.innerText = "कुण्डली बनाएं ➔";
+                    submitBtn.style.opacity = "1";
+                    return;
+                }
+
+                // 💾 Save to Cache & Update Daily Limit
+                localStorage.setItem(cacheKey, JSON.stringify(data));
+                usage.count += 1;
+                localStorage.setItem('kundliUsage', JSON.stringify(usage));
+
+                renderKundli(data);
+
+            } catch (error) {
+                console.error("Fetch Error:", error);
+                alert("सर्वर से संपर्क विफल।");
+                submitBtn.innerText = "कुण्डली बनाएं ➔";
+                submitBtn.style.opacity = "1";
+            }
         }
     }
     </script>
