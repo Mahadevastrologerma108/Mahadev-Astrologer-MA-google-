@@ -33,7 +33,13 @@
         
         .chart-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
         .chart-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(245, 197, 66, 0.3); padding: 15px; border-radius: 10px; width: 280px; text-align: center; }
-        .svg-container svg { width: 100%; height: auto; border-radius: 5px; filter: drop-shadow(0 0 5px rgba(245, 197, 66, 0.2)); }
+        .svg-container svg { 
+    width: 100%; 
+    height: auto; 
+    border-radius: 5px; 
+    /* यह जादुई लाइन काले को सफ़ेद कर देगी */
+    filter: invert(1) brightness(1.5); 
+}
         
         #planets_table { width: 100%; border-collapse: collapse; margin-top: 20px; color: #ccc; font-size: 0.9rem; }
         #planets_table th, #planets_table td { border-bottom: 1px solid #333; padding: 12px; text-align: left; }
