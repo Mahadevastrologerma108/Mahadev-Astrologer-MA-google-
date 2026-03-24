@@ -1,5 +1,4 @@
 // 1. Firebase Config se zaruri instances mangwayein
-// rtdb hata diya gaya hai, auth aur provider jodd diya gaya hai
 import { db, dbStudio, auth, provider } from './firebase-config.js'; 
 
 // 2. Firestore ke liye zaruri tools (Appointments ke liye)
@@ -19,7 +18,6 @@ console.log("🔱 Mahadev Handler: Login & Appointment System Active.");
 // ==========================================
 const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
 const CHAT_ID = '2032242977'; 
-
 
 // ==========================================
 // 2. APPOINTMENT FORM LOGIC & TELEGRAM
@@ -44,7 +42,7 @@ if (appointmentForm) {
 
             const subData = {
                 service, name, contact_method: contactMethod, contact_detail: contactDetail,
-                generate_uid: wantsUID, // 👈 डेटाबेस में सेव करने के लिए
+                generate_uid: wantsUID,
                 timestamp: serverTimestamp()
             };
 
@@ -82,7 +80,7 @@ if (appointmentForm) {
 
             alert("🔱 Pranaam! Aapki request Mahadev tak pahunch gayi hai.");
             e.target.reset();
-            window.applyFormLogic(); // Reset UI state
+            window.applyFormLogic(); 
 
         } catch (err) { 
             console.error("🔱 Form Error:", err); 
@@ -97,7 +95,6 @@ if (appointmentForm) {
 // ==========================================
 // 3. SOUND HEALING SPECIAL LOGIC
 // ==========================================
-
 window.handleSoundHealingSubmit = async function(event, method, dosha) {
     event.preventDefault();
     const form = event.target;
@@ -108,13 +105,10 @@ window.handleSoundHealingSubmit = async function(event, method, dosha) {
     btn.disabled = true;
 
     try {
-        // Form Data Capture
-        const formData = new FormData(form);
         const name = form.querySelector('input[placeholder="Full Name"]').value;
         const contact = form.querySelector('input[type="tel"]').value;
         const extraInfo = form.querySelector('textarea')?.value || "None";
         
-        // Dynamic Fields based on Method
         let specificDetails = {};
         if (method === 'Kundali' || method === 'Numerology') {
             specificDetails.dob = form.querySelector('input[type="date"]').value;
@@ -137,16 +131,9 @@ window.handleSoundHealingSubmit = async function(event, method, dosha) {
             timestamp: serverTimestamp()
         };
 
-        // 1. Save to Firestore (Same Database, New Category)
         await addDoc(collection(db, "appointments"), subData);
 
-        // 2. Send Telegram Notification (Premium Format)
-        const tgMessage = `🔱 *New SOUND HEALING Request!*\n\n` +
-                          `👤 *Name:* ${name}\n` +
-                          `🌀 *Dosha:* ${dosha}\n` +
-                          `🛠️ *Method:* ${method}\n` +
-                          `📞 *Contact:* ${contact}\n` +
-                          `📝 *Note:* ${extraInfo}`;
+        const tgMessage = `🔱 *New SOUND HEALING Request!*\n\n👤 *Name:* ${name}\n🌀 *Dosha:* ${dosha}\n🛠️ *Method:* ${method}\n📞 *Contact:* ${contact}\n📝 *Note:* ${extraInfo}`;
 
         await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
             method: 'POST',
@@ -154,7 +141,6 @@ window.handleSoundHealingSubmit = async function(event, method, dosha) {
             body: JSON.stringify({ chat_id: CHAT_ID, text: tgMessage, parse_mode: 'Markdown' })
         });
 
-        // 3. SPECIAL REACTION: UI Transformation
         const container = document.getElementById('dosha-quiz-container');
         container.innerHTML = `
             <div class="divine-success" style="padding: 40px; text-align: center; animation: fadeIn 1s;">
@@ -167,7 +153,6 @@ window.handleSoundHealingSubmit = async function(event, method, dosha) {
                 <p style="font-size: 0.8rem; color: #888;">Aapko WhatsApp par jald hi report aur 'Healing Key' mil jayegi.</p>
             </div>
         `;
-        
         container.scrollIntoView({ behavior: 'smooth' });
 
     } catch (err) {
@@ -179,10 +164,8 @@ window.handleSoundHealingSubmit = async function(event, method, dosha) {
 };
 
 // ==========================================
-// 4. FEEDBACK & RATING SYSTEM (WITH TELEGRAM)
+// 4. FEEDBACK & RATING SYSTEM
 // ==========================================
-
-// A. Feedback Submit Karne ka Logic (Notification ke saath)
 window.submitFeedback = async function() {
     const feedbackText = document.getElementById('user-feedback').value.trim();
     const rating = window.selectedRating || 0;
@@ -204,16 +187,9 @@ window.submitFeedback = async function() {
             userId: user ? user.uid : "guest"
         };
 
-        // 1. Database mein save karein
         await addDoc(collection(db, "feedbacks"), feedbackData);
 
-        // 2. 🚩 TELEGRAM NOTIFICATION (Instant Alert)
-        const tgMessage = `🔱 *MAHADEV ASTROLOGER MA*\n\n` +
-                          `📝 *Naya Feedback Aaya!* (Pending)\n` +
-                          `⭐ *Rating:* ${feedbackData.rating}/5\n` +
-                          `👤 *User:* ${feedbackData.userName}\n` +
-                          `💬 *Message:* ${feedbackData.text}\n\n` +
-                          `🚩 _Ise approve karne ke liye .system-data logs kholiye._`;
+        const tgMessage = `🔱 *MAHADEV ASTROLOGER MA*\n\n📝 *Naya Feedback Aaya!* (Pending)\n⭐ *Rating:* ${feedbackData.rating}/5\n👤 *User:* ${feedbackData.userName}\n💬 *Message:* ${feedbackData.text}\n\n🚩 _Ise approve karne ke liye .system-data logs kholiye._`;
 
         fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
             method: 'POST',
@@ -223,7 +199,6 @@ window.submitFeedback = async function() {
 
         alert("🔱 Dhanyawad! Aapka anubhav Mahadev tak pahunch gaya hai. Review ke baad ye site par dikhega.");
         
-        // UI Reset
         document.getElementById('user-feedback').value = "";
         document.querySelectorAll('.star').forEach(s => s.style.color = '#555');
         window.selectedRating = 0;
@@ -234,7 +209,6 @@ window.submitFeedback = async function() {
     }
 };
 
-// B. Feedbacks Live Dikhane ka Logic (Sirf Approved Wale)
 window.fetchFeedbacks = async function() {
     const container = document.getElementById('display-feedbacks');
     if (!container) return;
@@ -248,7 +222,6 @@ window.fetchFeedbacks = async function() {
 
         snapshot.forEach(doc => {
             const data = doc.data();
-            // Sirf wahi dikhao jo admin ne approve kiye hain
             if (data.status === "approved") {
                 const stars = "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
                 html += `
@@ -269,11 +242,10 @@ window.fetchFeedbacks = async function() {
         console.error("🔱 Fetch Feedback Error:", err);
     }
 };
-// ==========================================
-// 5.🔱 LOGIN & AUTH UI LOGIC
-// ==========================================
 
-// Google Login Function
+// ==========================================
+// 5. LOGIN & AUTH UI LOGIC
+// ==========================================
 window.loginWithGoogle = async () => {
     try { 
         await signInWithPopup(auth, provider); 
@@ -283,7 +255,6 @@ window.loginWithGoogle = async () => {
     }
 };
 
-// Logout Function
 window.logoutUser = async () => {
     try { 
         await signOut(auth); 
@@ -293,12 +264,10 @@ window.logoutUser = async () => {
     }
 };
 
-// UI Update Function
 const updateAuthUI = (user) => {
     const dBox = document.getElementById('user-display-desktop');
     const mBox = document.getElementById('user-display-mobile');
 
-    // Button ya Profile ka HTML
     const uiHtml = user ? `
         <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.05); padding:8px 15px; border-radius:50px; border:1px solid rgba(245,197,66,0.3);">
             <img src="${user.photoURL}" style="width:32px; height:32px; border-radius:50%; border:1.5px solid var(--gold-main); object-fit:cover;">
@@ -315,87 +284,47 @@ const updateAuthUI = (user) => {
         mBox.innerHTML = uiHtml;
         mBox.style.display = "flex";
         mBox.style.justifyContent = "center";
-        mBox.style.marginTop = "15px"; // Mobile spacing fix
+        mBox.style.marginTop = "15px"; 
     }
 };
 
 // ==========================================
 // 6. INITIALIZATION (Smart Sync with Layout.js)
 // ==========================================
-
 const initGlobalAuth = () => {
-    // 🚩 Smart Waiter: Ye check karega ki Layout.js ne header chipka diya ya nahi
     const checkHeader = setInterval(() => {
         const desktopTarget = document.getElementById('user-display-desktop');
         
         if (desktopTarget) {
-            clearInterval(checkHeader); // Header mil gaya! Ab loop band karo.
+            clearInterval(checkHeader); 
             console.log("🔱 Header Sync: Success. Activating Auth UI...");
 
-            // 👑 NAYA CODE: यहाँ हमने 'पहचान पत्र' (localStorage) वाला कोड डाल दिया है
+            // 👑 NAYA CODE: एडमिन सिस्टम पहचान
             onAuthStateChanged(auth, (user) => { 
                 if (user) {
-                    // एडमिन की पहचान के लिए ईमेल सेव करें
                     localStorage.setItem("userEmail", user.email);
                 } else {
-                    // लॉगआउट होने पर पहचान हटा दें
                     localStorage.removeItem("userEmail");
                 }
                 updateAuthUI(user); 
             });
 
-            // Feedbacks load karein (sirf agar container ho)
             if (typeof window.fetchFeedbacks === 'function') {
                 window.fetchFeedbacks(); 
             }
         }
-    }, 100); // Har 0.1 second mein check
+    }, 100); 
 
-    // Safety: 5 second baad check band (taaki resources waste na hon)
     setTimeout(() => clearInterval(checkHeader), 5000);
 };
 
-// Jab page load ho, tab Smart Sync shuru karein
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Auth aur Header sync shuru karein
     initGlobalAuth();
 
-    // Appointment Form logic
     if (typeof window.applyFormLogic === 'function') {
         window.applyFormLogic(); 
     }
 
-    // Stars rating click handler (Global delegation)
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('star')) {
-            const val = e.target.getAttribute('data-value');
-            window.selectedRating = val;
-            document.querySelectorAll('.star').forEach(s => {
-                s.style.color = s.getAttribute('data-value') <= val ? '#f5c542' : '#555';
-            });
-        }
-    });
-
-    console.log("🔱 MAHADEV ASTROLOGER MA: Global Handler Ready.");
-});
-
-    // Safety: 5 second baad check band (taaki resources waste na hon)
-    setTimeout(() => clearInterval(checkHeader), 5000);
-};
-
-// Jab page load ho, tab Smart Sync shuru karein
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // Auth aur Header sync shuru karein
-    initGlobalAuth();
-
-    // Appointment Form logic
-    if (typeof window.applyFormLogic === 'function') {
-        window.applyFormLogic(); 
-    }
-
-    // Stars rating click handler (Global delegation)
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('star')) {
             const val = e.target.getAttribute('data-value');
