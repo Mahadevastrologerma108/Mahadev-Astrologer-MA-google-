@@ -332,8 +332,15 @@ const initGlobalAuth = () => {
             clearInterval(checkHeader); // Header mil gaya! Ab loop band karo.
             console.log("🔱 Header Sync: Success. Activating Auth UI...");
 
-            // Header milne ke BAAD hi Auth listener shuru karein
+            // 👑 NAYA CODE: यहाँ हमने 'पहचान पत्र' (localStorage) वाला कोड डाल दिया है
             onAuthStateChanged(auth, (user) => { 
+                if (user) {
+                    // एडमिन की पहचान के लिए ईमेल सेव करें
+                    localStorage.setItem("userEmail", user.email);
+                } else {
+                    // लॉगआउट होने पर पहचान हटा दें
+                    localStorage.removeItem("userEmail");
+                }
                 updateAuthUI(user); 
             });
 
@@ -343,6 +350,35 @@ const initGlobalAuth = () => {
             }
         }
     }, 100); // Har 0.1 second mein check
+
+    // Safety: 5 second baad check band (taaki resources waste na hon)
+    setTimeout(() => clearInterval(checkHeader), 5000);
+};
+
+// Jab page load ho, tab Smart Sync shuru karein
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Auth aur Header sync shuru karein
+    initGlobalAuth();
+
+    // Appointment Form logic
+    if (typeof window.applyFormLogic === 'function') {
+        window.applyFormLogic(); 
+    }
+
+    // Stars rating click handler (Global delegation)
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('star')) {
+            const val = e.target.getAttribute('data-value');
+            window.selectedRating = val;
+            document.querySelectorAll('.star').forEach(s => {
+                s.style.color = s.getAttribute('data-value') <= val ? '#f5c542' : '#555';
+            });
+        }
+    });
+
+    console.log("🔱 MAHADEV ASTROLOGER MA: Global Handler Ready.");
+});
 
     // Safety: 5 second baad check band (taaki resources waste na hon)
     setTimeout(() => clearInterval(checkHeader), 5000);
