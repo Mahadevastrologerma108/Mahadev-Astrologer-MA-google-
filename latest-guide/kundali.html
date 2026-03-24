@@ -262,36 +262,36 @@
                 return;
             }
 
-            // 1. Injecting 5 Charts (SVGs)
+           // 1. Injecting 2 Premium Charts (SVGs)
             document.getElementById('lagna_svg').innerHTML = data.charts.lagna;
             document.getElementById('navamsha_svg').innerHTML = data.charts.navamsha;
-            document.getElementById('chandra_svg').innerHTML = data.charts.chandra;
-            if(data.charts.chalit) document.getElementById('chalit_svg').innerHTML = data.charts.chalit;
-            if(data.charts.dasamsa) document.getElementById('dasamsa_svg').innerHTML = data.charts.dasamsa;
-
-            // 2. Injecting Expanded Planets Table
+            
+            // 2. Injecting Planets Table (100% Correct Keys now!)
             let tableHTML = "";
-            data.planets.forEach(p => {
-                let status = "मार्गी"; 
-                if(p.is_retrograde) status = "वक्री (R) 🔄";
-                if(p.is_combust) status += " अस्त (C)";
+            if (data.planets && Array.isArray(data.planets)) {
+                data.planets.forEach(p => {
+                    let status = "मार्गी"; 
+                    let isRetro = (p.isRetro === "true" || p.isRetro === true);
+                    if(isRetro) status = "वक्री (R) 🔄";
 
-                tableHTML += `<tr>
-                    <td><b>${p.name}</b></td>
-                    <td>${p.rasi}</td>
-                    <td>${p.degree.toFixed(2)}°</td>
-                    <td>${p.nakshatra}</td>
-                    <td>${p.nakshatra_pada || '-'}</td>
-                    <td style="color: ${p.is_retrograde ? '#ff4d4d' : '#4caf50'};">${status}</td>
-                </tr>`;
-            });
+                    tableHTML += `<tr>
+                        <td><b>${p.name || '-'}</b></td>
+                        <td>${p.sign || p.rasi || '-'}</td>
+                        <td>${p.normDegree ? p.normDegree.toFixed(2) : (p.degree ? p.degree.toFixed(2) : '-')}°</td>
+                        <td>${p.nakshatra || '-'}</td>
+                        <td>${p.nakshatra_pad || p.nakshatra_pada || '-'}</td>
+                        <td style="color: ${isRetro ? '#ff4d4d' : '#4caf50'};">${status}</td>
+                    </tr>`;
+                });
+            } else {
+                tableHTML = "<tr><td colspan='6' style='text-align:center;'>ग्रहों की जानकारी प्राप्त नहीं हुई।</td></tr>";
+            }
             document.getElementById('planets_body').innerHTML = tableHTML;
 
             // 3. Injecting Birth Details (Avakhada Chakra) - SMART EXTRACTOR
             let bdHtml = "";
             if(data.birthDetails) {
                 const bd = data.birthDetails;
-                // यह जादुई फंक्शन लिस्ट (Array) में से नाम निकाल लेगा
                 const extractName = (item) => {
                     if (Array.isArray(item) && item.length > 0) return item.map(i => i.name).join(", ");
                     return item?.name || "-";
@@ -309,28 +309,28 @@
                 bdHtml += `<div><b>गण:</b> ${bd.gana || "-"}</div>`;
                 bdHtml += `<div><b>नाड़ी:</b> ${bd.nadi || "-"}</div>`;
                 bdHtml += `<div><b>पाया:</b> ${bd.paya || "-"}</div>`;
+            } else {
+                 bdHtml = "<div style='grid-column: span 2; text-align:center;'>जन्म विवरण उपलब्ध नहीं</div>";
             }
             document.getElementById('basic_panchang_data').innerHTML = bdHtml;
 
-            // 4. Injecting Vimshottari Dasha - SMART EXTRACTOR
+            // 4. Injecting Vimshottari Dasha
             let dashaHtml = "";
-            // Prokerala का डेटा 'maha_dasha' के अंदर होता है
             const dashaList = data.dasha?.maha_dasha || data.dasha; 
             
             if(dashaList && Array.isArray(dashaList)) {
                 dashaList.forEach(d => {
-                    // तारीखों को सुंदर भारतीय फॉर्मेट में बदलें
                     const startDate = new Date(d.start).toLocaleDateString('hi-IN', { year: 'numeric', month: 'short', day: 'numeric' });
                     const endDate = new Date(d.end).toLocaleDateString('hi-IN', { year: 'numeric', month: 'short', day: 'numeric' });
                     
                     dashaHtml += `<tr>
-                        <td style="font-weight: bold;">${d.name}</td>
+                        <td style="font-weight: bold;">${d.name || d.planet}</td>
                         <td>${startDate}</td>
                         <td>${endDate}</td>
                     </tr>`;
                 });
             } else {
-                dashaHtml = `<tr><td colspan="3" style="text-align:center; color: red;">दशा की जानकारी सर्वर से प्राप्त नहीं हुई</td></tr>`;
+                dashaHtml = `<tr><td colspan="3" style="text-align:center; color: #ff4d4d;">दशा की जानकारी सर्वर से प्राप्त नहीं हुई</td></tr>`;
             }
             document.getElementById('dasha_body').innerHTML = dashaHtml;
             
