@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-key="k_title">फ्री जन्म कुण्डली | MAHADEV ASTROLOGER MA</title>
     <meta name="description" content="MAHADEV ASTROLOGER MA के एडवांस Astro Engine से अपनी सटीक जन्म कुण्डली, चंद्र राशि, सूर्य राशि, नक्षत्र और मंगल दोष की जानकारी प्राप्त करें।">
-    
+
     <link rel="canonical" href="https://www.mahadevastrologerma.in/latest-guide/kundali.html">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>
 
@@ -21,7 +21,7 @@
         .input-group label { display: block; font-family: 'Cinzel'; color: var(--gold); margin-bottom: 10px; font-size: 1.1rem; }
         .input-group input { width: 100%; padding: 15px; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 197, 66, 0.3); color: #fff; font-size: 1rem; border-radius: 8px; font-family: 'Poppins'; outline: none; box-sizing: border-box; }
         .input-group input:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(245, 197, 66, 0.2); }
-        
+
         .row-group { display: flex; gap: 15px; }
         .row-group .input-group { flex: 1; }
 
@@ -30,17 +30,17 @@
 
         /* 🔱 Updated Result Section Styles */
         #result-section { display: none; margin-top: 40px; padding: 30px; background: linear-gradient(145deg, #111, #06060c); border: 2px dashed var(--gold); border-radius: 15px; text-align: center; animation: fadeIn 1s; }
-        
+
         .chart-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
         .chart-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(245, 197, 66, 0.3); padding: 15px; border-radius: 10px; width: 280px; text-align: center; }
         .svg-container svg { 
-    width: 100%; 
-    height: auto; 
-    border-radius: 5px; 
-    /* यह जादुई लाइन काले को सफ़ेद कर देगी */
-    filter: invert(1) brightness(1.5); 
-}
-        
+            width: 100%; 
+            height: auto; 
+            border-radius: 5px; 
+            /* यह जादुई लाइन काले को सफ़ेद कर देगी */
+            filter: invert(1) brightness(1.5); 
+        }
+
         #planets_table { width: 100%; border-collapse: collapse; margin-top: 20px; color: #ccc; font-size: 0.9rem; }
         #planets_table th, #planets_table td { border-bottom: 1px solid #333; padding: 12px; text-align: left; }
         #planets_table th { color: var(--gold); font-family: 'Cinzel'; }
@@ -48,16 +48,34 @@
         /* 🔒 Premium Paywall Styles */
         .paywall-container { position: relative; margin-top: 50px; padding: 40px 20px; background: rgba(0,0,0,0.6); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; }
         .lock-icon { font-size: 40px; color: var(--gold); margin-bottom: 15px; }
-        .blur-text { filter: blur(5px); opacity: 0.3; user-select: none; pointer-events: none; }
+        .blur-text { filter: blur(5px); opacity: 0.3; user-select: none; pointer-events: none; transition: 0.5s; }
 
         .master-article { max-width: 850px; margin: 0 auto 80px; padding: 0 20px; line-height: 1.8; color: #ccc; font-size: 1.05rem; }
         .master-article h2 { font-family: 'Cinzel'; color: var(--gold); font-size: 2rem; margin: 50px 0 20px; border-bottom: 1px solid rgba(245, 197, 66, 0.2); padding-bottom: 10px; }
-        
+
         .faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; text-align: left; }
         .faq-q { color: var(--gold); font-weight: 600; font-size: 1.1rem; margin-bottom: 5px; font-family: 'Cinzel'; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 600px) { .calc-container { margin-top: 100px; padding: 20px; } .row-group { flex-direction: column; gap: 0; } .chart-box { width: 100%; } }
+
+        /* 🖨️ NAYA CODE: PDF & Print Magic (Ink Saver & Professional Mode) */
+        @media print {
+            #header-placeholder, #footer-placeholder, #calculator-section h1, #calculator-section p, form, .master-article, .paywall-container, .calc-btn { 
+                display: none !important; 
+            }
+            body, main, #result-section { 
+                background: #ffffff !important; 
+                color: #000000 !important; 
+                box-shadow: none !important;
+                border: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .svg-container svg { filter: none !important; } /* काले रंग में वापस लाएं */
+            #planets_table, #planets_table th, #planets_table td { color: #000000 !important; border-bottom: 1px solid #000000 !important; }
+            .gold-text { color: #b8860b !important; text-align: center; } 
+        }
     </style>
 </head>
 <body class="panchang-body">
@@ -66,7 +84,7 @@
 
     <main class="calc-container" id="calculator-section">
         <h1 class="gold-text" style="font-family: 'Cinzel'; text-align: center; font-size: 2.2rem; margin-bottom: 10px;" data-key="k_main_heading">🔱 जन्म कुण्डली (Kundli Engine)</h1>
-        <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 0.95rem;" data-key="k_sub_heading">सटीक ब्रह्मांडीय गणनाओं के आधार पर अपना राशिफल, नक्षत्र और मंगल दोष जानें।</p>
+        <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 0.95rem;" data-key="k_sub_heading">सटीक ब्रह्मांडीय गणनाओं के आधार पर अपना राशिफल, नक्षत्र और मंगल दोष जानें。</p>
 
         <form id="kundliForm" onsubmit="event.preventDefault(); generateMahadevKundli();">
             <div class="row-group">
@@ -90,13 +108,17 @@
                     <input type="text" id="k_lon" placeholder="e.g. 86.47" value="86.47" required>
                 </div>
             </div>
-            
+
             <button type="submit" class="calc-btn" id="submitBtn" data-key="k_btn">कुण्डली बनाएं ➔</button>
         </form>
 
         <div id="result-section">
             <h2 class="gold-text cinzel" data-key="k_res_title">Cosmic Blueprint Result</h2>
-            
+
+            <button type="button" class="calc-btn" onclick="window.print()" style="background: #4caf50; color: white; width: auto; padding: 10px 25px; margin: 15px auto; display: block; font-size: 1rem;">
+                📥 ग्राहक के लिए PDF डाउनलोड करें
+            </button>
+
             <div class="chart-grid">
                 <div class="chart-box">
                     <h4 class="gold-text cinzel">लग्न चक्र (D1)</h4>
@@ -135,9 +157,9 @@
                     <a href="https://wa.me/YOUR_NUMBER" class="calc-btn" style="text-decoration:none; padding:10px 20px; font-size:0.9rem; width:auto;">संपर्क करें</a>
                     <button class="calc-btn" style="background:#fff; color:#000; padding:10px 20px; font-size:0.9rem; width:auto;">अनलॉक (₹99)</button>
                 </div>
-                <div class="blur-text" style="margin-top:20px;">
-                    <p>Maha Dasha: Rahu | Antardasha: Jupiter | Prediction: Success in career...</p>
-                </div>
+            </div>
+            <div class="blur-text" style="margin-top:20px;">
+                <p>Maha Dasha: Rahu | Antardasha: Jupiter | Prediction: Success in career...</p>
             </div>
         </div>
     </main>
@@ -177,7 +199,7 @@
         submitBtn.innerText = "ब्रह्मांडीय गणना हो रही है... ⏳";
         submitBtn.style.opacity = "0.7";
         resultSection.style.display = "block";
-        
+
         // Initial Loading View
         document.getElementById('lagna_svg').innerHTML = "⏳ ब्रह्मांडीय गणना जारी है...";
         document.getElementById('navamsha_svg').innerHTML = "⏳ ग्रहों की स्थिति जांची जा रही है...";
@@ -229,6 +251,24 @@
                 </tr>`;
             });
             document.getElementById('planets_body').innerHTML = tableHTML;
+
+            // 👑 NAYA CODE: Admin Access Magic (Paywall Unlock System)
+            const ADMIN_EMAIL = "mahadevastrologerma@gmail.com"; // अपना ईमेल डालें
+            const currentUserEmail = localStorage.getItem("userEmail"); // Firebase से सेव किया गया ईमेल
+            
+            if (currentUserEmail === ADMIN_EMAIL) {
+                const paywall = document.querySelector('.paywall-container');
+                if(paywall) paywall.style.display = 'none';
+
+                const premiumContent = document.querySelector('.blur-text');
+                if(premiumContent) {
+                    premiumContent.style.filter = 'none';
+                    premiumContent.style.opacity = '1';
+                    premiumContent.style.pointerEvents = 'auto';
+                    premiumContent.style.userSelect = 'auto';
+                }
+                console.log("🔱 महादेव एडमिन मोड सक्रिय: प्रीमियम ताला खुल गया!");
+            }
 
         } catch (error) {
             console.error("Fetch Error:", error);
