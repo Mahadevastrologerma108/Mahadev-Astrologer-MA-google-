@@ -33,17 +33,11 @@
 
         .chart-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
         .chart-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(245, 197, 66, 0.3); padding: 15px; border-radius: 10px; width: 280px; text-align: center; }
-        .svg-container svg { 
-            width: 100%; 
-            height: auto; 
-            border-radius: 5px; 
-            /* यह जादुई लाइन काले को सफ़ेद कर देगी */
-            filter: invert(1) brightness(1.5); 
-        }
+        .svg-container svg { width: 100%; height: auto; border-radius: 5px; filter: invert(1) brightness(1.5); }
 
-        #planets_table { width: 100%; border-collapse: collapse; margin-top: 20px; color: #ccc; font-size: 0.9rem; }
-        #planets_table th, #planets_table td { border-bottom: 1px solid #333; padding: 12px; text-align: left; }
-        #planets_table th { color: var(--gold); font-family: 'Cinzel'; }
+        #planets_table, #dasha_table { width: 100%; border-collapse: collapse; margin-top: 15px; color: #ccc; font-size: 0.9rem; }
+        #planets_table th, #planets_table td, #dasha_table th, #dasha_table td { border-bottom: 1px solid #333; padding: 12px; text-align: left; }
+        #planets_table th, #dasha_table th { color: var(--gold); font-family: 'Cinzel'; }
 
         /* 🔒 Premium Paywall Styles */
         .paywall-container { position: relative; margin-top: 50px; padding: 40px 20px; background: rgba(0,0,0,0.6); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; }
@@ -59,22 +53,14 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 600px) { .calc-container { margin-top: 100px; padding: 20px; } .row-group { flex-direction: column; gap: 0; } .chart-box { width: 100%; } }
 
-        /* 🖨️ NAYA CODE: PDF & Print Magic (Ink Saver & Professional Mode) */
+        /* 🖨️ PDF & Print Magic */
         @media print {
-            #header-placeholder, #footer-placeholder, #calculator-section h1, #calculator-section p, form, .master-article, .paywall-container, .calc-btn { 
-                display: none !important; 
-            }
-            body, main, #result-section { 
-                background: #ffffff !important; 
-                color: #000000 !important; 
-                box-shadow: none !important;
-                border: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            .svg-container svg { filter: none !important; } /* काले रंग में वापस लाएं */
-            #planets_table, #planets_table th, #planets_table td { color: #000000 !important; border-bottom: 1px solid #000000 !important; }
-            .gold-text { color: #b8860b !important; text-align: center; } 
+            #header-placeholder, #footer-placeholder, #calculator-section h1, #calculator-section p, form, .master-article, .paywall-container, .calc-btn { display: none !important; }
+            body, main, #result-section { background: #ffffff !important; color: #000000 !important; box-shadow: none !important; border: none !important; margin: 0 !important; padding: 0 !important; }
+            .svg-container svg { filter: none !important; } 
+            table, th, td { color: #000000 !important; border-bottom: 1px solid #000000 !important; }
+            .gold-text { color: #b8860b !important; text-align: center; border-color: #000 !important; } 
+            .chart-box, #birth-details-section, #dasha-section { border: 1px solid #000 !important; background: none !important; }
         }
     </style>
 </head>
@@ -132,10 +118,18 @@
                     <h4 class="gold-text cinzel">चंद्र चक्र</h4>
                     <div id="chandra_svg" class="svg-container"></div>
                 </div>
+                <div class="chart-box">
+                    <h4 class="gold-text cinzel">चलित चक्र (Chalit)</h4>
+                    <div id="chalit_svg" class="svg-container"></div>
+                </div>
+                <div class="chart-box">
+                    <h4 class="gold-text cinzel">दशमांश (D10)</h4>
+                    <div id="dasamsa_svg" class="svg-container"></div>
+                </div>
             </div>
 
             <div style="margin-top: 30px; overflow-x: auto;">
-                <h3 class="gold-text cinzel" style="text-align: left;">Planetary Positions</h3>
+                <h3 class="gold-text cinzel" style="text-align: left; border-bottom: 1px dashed var(--gold); padding-bottom: 5px;">Planetary Positions</h3>
                 <table id="planets_table">
                     <thead>
                         <tr>
@@ -143,23 +137,47 @@
                             <th>Rasi</th>
                             <th>Degree</th>
                             <th>Nakshatra</th>
+                            <th>Pada</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody id="planets_body"></tbody>
                 </table>
             </div>
 
-            <div class="paywall-container">
+            <div id="birth-details-section" style="margin-top: 40px; text-align: left; background: rgba(255,255,255,0.02); border: 1px solid rgba(245, 197, 66, 0.3); padding: 20px; border-radius: 10px;">
+                <h3 class="gold-text cinzel" style="text-align: center; border-bottom: 1px dashed var(--gold); padding-bottom: 10px;">जन्म विवरण एवं अवकहड़ा चक्र</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; font-size: 0.95rem; color: #ccc;" id="basic_panchang_data">
+                    <div style="text-align: center; grid-column: span 2;">⏳ डेटा लोड हो रहा है...</div>
+                </div>
+            </div>
+
+            <div id="dasha-section" style="margin-top: 40px; text-align: left; background: rgba(255,255,255,0.02); border: 1px solid rgba(245, 197, 66, 0.3); padding: 20px; border-radius: 10px;">
+                <h3 class="gold-text cinzel" style="text-align: center; border-bottom: 1px dashed var(--gold); padding-bottom: 10px;">विंशोत्तरी महादशा</h3>
+                <table id="dasha_table">
+                    <thead>
+                        <tr>
+                            <th>महादशा (Maha Dasha)</th>
+                            <th>आरंभ (Start Date)</th>
+                            <th>समाप्ति (End Date)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dasha_body">
+                        </tbody>
+                </table>
+            </div>
+
+            <div class="paywall-container" id="premium-paywall">
                 <div class="lock-icon">🔒</div>
                 <h3 class="gold-text cinzel">अनलॉक महादेव प्रीमियम</h3>
-                <p style="font-size: 0.9rem; color: #ccc;">विस्तृत भविष्यवाणियां, विंशोत्तरी महादशा, कालसर्प एवं पितृ दोष रिपोर्ट के लिए प्रीमियम अनलॉक करें।</p>
+                <p style="font-size: 0.9rem; color: #ccc;">विस्तृत भविष्यवाणियां एवं विस्तृत रिपोर्ट के लिए प्रीमियम अनलॉक करें।</p>
                 <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
                     <a href="https://wa.me/YOUR_NUMBER" class="calc-btn" style="text-decoration:none; padding:10px 20px; font-size:0.9rem; width:auto;">संपर्क करें</a>
                     <button class="calc-btn" style="background:#fff; color:#000; padding:10px 20px; font-size:0.9rem; width:auto;">अनलॉक (₹99)</button>
                 </div>
             </div>
             <div class="blur-text" style="margin-top:20px;">
-                <p>Maha Dasha: Rahu | Antardasha: Jupiter | Prediction: Success in career...</p>
+                <p>विस्तृत फल: आपके जीवन में गुरु की महादशा अत्यंत शुभ फल देने वाली है। करियर में उन्नति के योग...</p>
             </div>
         </div>
     </main>
@@ -168,12 +186,7 @@
         <h2 style="text-align: center; border: none; font-size: 2.2rem; margin-top: 20px;" data-key="k_art_title">वैदिक कुण्डली का महत्व | Importance of Vedic Kundli</h2>
         <p style="text-align: center; color: var(--gold); font-style: italic; margin-bottom: 40px;" data-key="k_art_quote">"ग्रहों की गति हमारे जीवन का मार्गदर्शन करती है।"</p>
         <p data-key="k_art_p1">मानव जीवन ब्रह्मांडीय ऊर्जा और ग्रहों की गति से निरंतर प्रभावित होता है। जन्म कुण्डली व्यक्ति के जन्म के समय आकाश मंडल का एक सटीक नक्शा है।</p>
-        <p data-key="k_art_p2">Human life is continuously influenced by cosmic energy and planetary movements. Through our advanced API engine, you can obtain accurate calculations.</p>
-        <h2 data-key="k_faq_h1">Frequently Asked Questions</h2>
-        <div class="faq-item">
-            <div class="faq-q" data-key="k_faq_q1">1. Is this Kundli calculation accurate?</div>
-            <p style="margin: 0;" data-key="k_faq_a1">Yes. <b>MAHADEV ASTROLOGER MA</b> utilizes an advanced API server.</p>
-        </div>
+        <p data-key="k_art_p2">Through our advanced API engine, you can obtain accurate cosmic calculations.</p>
     </article>
 
     <div id="footer-placeholder"></div>
@@ -200,11 +213,14 @@
         submitBtn.style.opacity = "0.7";
         resultSection.style.display = "block";
 
-        // Initial Loading View
-        document.getElementById('lagna_svg').innerHTML = "⏳ ब्रह्मांडीय गणना जारी है...";
-        document.getElementById('navamsha_svg').innerHTML = "⏳ ग्रहों की स्थिति जांची जा रही है...";
-        document.getElementById('chandra_svg').innerHTML = "⏳ चंद्र चक्र तैयार हो रहा है...";
+        document.getElementById('lagna_svg').innerHTML = "⏳ लोड हो रहा है...";
+        document.getElementById('navamsha_svg').innerHTML = "⏳ लोड हो रहा है...";
+        document.getElementById('chandra_svg').innerHTML = "⏳ लोड हो रहा है...";
+        document.getElementById('chalit_svg').innerHTML = "⏳ लोड हो रहा है...";
+        document.getElementById('dasamsa_svg').innerHTML = "⏳ लोड हो रहा है...";
         document.getElementById('planets_body').innerHTML = "";
+        document.getElementById('basic_panchang_data').innerHTML = "";
+        document.getElementById('dasha_body').innerHTML = "";
 
         resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
@@ -219,14 +235,13 @@
                 body: JSON.stringify({ datetime, coordinates })
             });
 
-            // 🛑 असली सुधार: पहले टेक्स्ट में लो, फिर JSON में बदलो
             const rawResponse = await response.text();
             let data;
             try {
                 data = JSON.parse(rawResponse);
             } catch (e) {
                 console.error("Server Sent Non-JSON Data:", rawResponse);
-                alert("🔱 डेटा प्राप्त हुआ है परंतु प्रारूप (Format) सही नहीं है। कृपया 1 जनवरी वाली तारीख से दोबारा प्रयास करें।");
+                alert("🔱 डेटा प्राप्त हुआ है परंतु प्रारूप (Format) सही नहीं है। कृपया दोबारा प्रयास करें।");
                 return;
             }
 
@@ -235,29 +250,78 @@
                 return;
             }
 
-            // 🔱 Injecting Charts (SVGs)
+            // 1. Injecting 5 Charts (SVGs)
             document.getElementById('lagna_svg').innerHTML = data.charts.lagna;
             document.getElementById('navamsha_svg').innerHTML = data.charts.navamsha;
             document.getElementById('chandra_svg').innerHTML = data.charts.chandra;
+            if(data.charts.chalit) document.getElementById('chalit_svg').innerHTML = data.charts.chalit;
+            if(data.charts.dasamsa) document.getElementById('dasamsa_svg').innerHTML = data.charts.dasamsa;
 
-            // 🔱 Injecting Planets Table
+            // 2. Injecting Expanded Planets Table
             let tableHTML = "";
             data.planets.forEach(p => {
+                let status = "मार्गी"; 
+                if(p.is_retrograde) status = "वक्री (R) 🔄";
+                if(p.is_combust) status += " अस्त (C)";
+
                 tableHTML += `<tr>
-                    <td>${p.name}</td>
+                    <td><b>${p.name}</b></td>
                     <td>${p.rasi}</td>
                     <td>${p.degree.toFixed(2)}°</td>
                     <td>${p.nakshatra}</td>
+                    <td>${p.nakshatra_pada || '-'}</td>
+                    <td style="color: ${p.is_retrograde ? '#ff4d4d' : '#4caf50'};">${status}</td>
                 </tr>`;
             });
             document.getElementById('planets_body').innerHTML = tableHTML;
 
-            // 👑 NAYA CODE: Admin Access Magic (Paywall Unlock System)
-            const ADMIN_EMAIL = "mannumani108@gmail.com"; // अपना ईमेल डालें
-            const currentUserEmail = localStorage.getItem("userEmail"); // Firebase से सेव किया गया ईमेल
+            // 3. Injecting Birth Details (Avakhada Chakra)
+            let bdHtml = "";
+            if(data.birthDetails) {
+                const bd = data.birthDetails;
+                // Helper function to extract name safely
+                const getName = (obj) => obj && obj.name ? obj.name : (obj || "-");
+                
+                bdHtml += `<div><b>राशि:</b> ${getName(bd.chandra_rasi)}</div>`;
+                bdHtml += `<div><b>नक्षत्र:</b> ${getName(bd.nakshatra)}</div>`;
+                bdHtml += `<div><b>नक्षत्र पद:</b> ${bd.nakshatra_pada || "-"}</div>`;
+                bdHtml += `<div><b>तिथि:</b> ${getName(bd.tithi)}</div>`;
+                bdHtml += `<div><b>करण:</b> ${getName(bd.karan)}</div>`;
+                bdHtml += `<div><b>योग:</b> ${getName(bd.yoga)}</div>`;
+                bdHtml += `<div><b>वर्ण:</b> ${bd.varna || "-"}</div>`;
+                bdHtml += `<div><b>वश्य:</b> ${bd.vashya || "-"}</div>`;
+                bdHtml += `<div><b>योनि:</b> ${bd.yoni || "-"}</div>`;
+                bdHtml += `<div><b>गण:</b> ${bd.gana || "-"}</div>`;
+                bdHtml += `<div><b>नाड़ी:</b> ${bd.nadi || "-"}</div>`;
+                bdHtml += `<div><b>पाया:</b> ${bd.paya || "-"}</div>`;
+            }
+            document.getElementById('basic_panchang_data').innerHTML = bdHtml;
+
+            // 4. Injecting Vimshottari Dasha
+            let dashaHtml = "";
+            if(data.dasha && Array.isArray(data.dasha)) {
+                data.dasha.forEach(d => {
+                    // Formatting Date nicely
+                    const startDate = new Date(d.start).toLocaleDateString('hi-IN', { year: 'numeric', month: 'short', day: 'numeric' });
+                    const endDate = new Date(d.end).toLocaleDateString('hi-IN', { year: 'numeric', month: 'short', day: 'numeric' });
+                    
+                    dashaHtml += `<tr>
+                        <td style="font-weight: bold;">${d.name}</td>
+                        <td>${startDate}</td>
+                        <td>${endDate}</td>
+                    </tr>`;
+                });
+            } else {
+                dashaHtml = `<tr><td colspan="3" style="text-align:center;">दशा की जानकारी उपलब्ध नहीं है</td></tr>`;
+            }
+            document.getElementById('dasha_body').innerHTML = dashaHtml;
+
+            // 👑 Admin Access Magic (Paywall Unlock)
+            const ADMIN_EMAIL = "mannumani108@gmail.com"; 
+            const currentUserEmail = localStorage.getItem("userEmail"); 
             
             if (currentUserEmail === ADMIN_EMAIL) {
-                const paywall = document.querySelector('.paywall-container');
+                const paywall = document.getElementById('premium-paywall');
                 if(paywall) paywall.style.display = 'none';
 
                 const premiumContent = document.querySelector('.blur-text');
@@ -267,7 +331,6 @@
                     premiumContent.style.pointerEvents = 'auto';
                     premiumContent.style.userSelect = 'auto';
                 }
-                console.log("🔱 महादेव एडमिन मोड सक्रिय: प्रीमियम ताला खुल गया!");
             }
 
         } catch (error) {
