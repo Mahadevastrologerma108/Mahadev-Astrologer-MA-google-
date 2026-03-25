@@ -53,6 +53,10 @@
         .master-article { max-width: 850px; margin: 0 auto 80px; padding: 0 20px; line-height: 1.8; color: #ccc; font-size: 1.05rem; }
         .master-article h2 { font-family: 'Cinzel'; color: var(--gold); font-size: 2rem; margin: 50px 0 20px; border-bottom: 1px solid rgba(245, 197, 66, 0.2); padding-bottom: 10px; }
 
+        /* 🌟 FAQ CSS Added Back 🌟 */
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; text-align: left; }
+        .faq-q { color: var(--gold); font-weight: 600; font-size: 1.1rem; margin-bottom: 5px; font-family: 'Cinzel'; }
+
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 600px) { .calc-container { margin-top: 100px; padding: 20px; } .row-group { flex-direction: column; gap: 0; } .chart-box { max-width: 100%; } }
 
@@ -140,12 +144,12 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; font-size: 0.95rem; color: #ccc;" id="basic_panchang_data"></div>
             </div>
 
-            <div class="paywall-container" id="premium-paywall" style="border-color: #25D366; background: rgba(37, 211, 102, 0.05);">
+            <div class="paywall-container" id="premium-paywall" style="border-color: var(--gold); background: rgba(245, 197, 66, 0.05);">
                 <h3 class="gold-text cinzel" style="margin-bottom: 10px;">🔱 विस्तृत कुण्डली विश्लेषण</h3>
                 <p style="font-size: 0.95rem; color: #fff; line-height: 1.6;">दशा (महादशा/अंतर्दशा), गोचर फल, कालसर्प दोष, मांगलिक दोष और सटीक उपायों की <b>संपूर्ण जानकारी</b> के लिए हमारे विशेषज्ञों से परामर्श लें।</p>
                 <div style="display: flex; justify-content: center; margin-top: 20px;">
-                    <a href="https://wa.me/message/VCK5OVBDCN7YK1" target="_blank" class="calc-btn" style="text-decoration:none; padding:12px 25px; font-size:1rem; width:auto; background: #25D366; color: #fff; border-radius: 5px; font-family: 'Poppins';">
-                        📱 WhatsApp पर संपर्क करें
+                    <a href="/index.html#book" class="calc-btn" style="text-decoration:none; padding:12px 25px; font-size:1rem; width:auto; background: var(--gold); color: #000; border-radius: 5px; font-family: 'Poppins'; font-weight: bold;">
+                        📝 प्रीमियम कंसल्टेशन बुक करें
                     </a>
                 </div>
             </div>
@@ -157,7 +161,26 @@
         <h2 style="text-align: center; border: none; font-size: 2.2rem; margin-top: 20px;" data-key="k_art_title">वैदिक कुण्डली का महत्व | Importance of Vedic Kundli</h2>
         <p style="text-align: center; color: var(--gold); font-style: italic; margin-bottom: 40px;" data-key="k_art_quote">"ग्रहों की गति हमारे जीवन का मार्गदर्शन करती है।"</p>
         <p data-key="k_art_p1">मानव जीवन ब्रह्मांडीय ऊर्जा और ग्रहों की गति से निरंतर प्रभावित होता है। जन्म कुण्डली व्यक्ति के जन्म के समय आकाश मंडल का एक सटीक नक्शा है।</p>
-    </article>
+        
+        <div style="margin-top: 50px; text-align: left;">
+            <h3 class="gold-text cinzel" style="border-bottom: 1px dashed var(--gold); padding-bottom: 10px; margin-bottom: 20px;">अक्सर पूछे जाने वाले प्रश्न (FAQs)</h3>
+
+            <div class="faq-item">
+                <div class="faq-q">Q1. इस फ्री कुण्डली रिपोर्ट में मुझे क्या-क्या जानकारी मिलेगी?</div>
+                <div style="color: #ccc; font-size: 0.95rem; line-height: 1.6;">यह एक बेसिक (Basic) कुण्डली है। इसमें आपको मुख्य रूप से लग्न चक्र, नवांश चक्र, और ग्रहों की स्थिति का सटीक विवरण मिलता है। यह आपके जीवन की ब्रह्मांडीय ऊर्जा को समझने के लिए एक प्रारंभिक रिपोर्ट है।</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">Q2. क्या पेड कंसल्टेशन (Paid Consultation) में और भी चार्ट्स और डीप डिटेल्स मिलेंगी?</div>
+                <div style="color: #ccc; font-size: 0.95rem; line-height: 1.6;">जी बिल्कुल! यह फ्री वर्शन सिर्फ एक झलक है। <b>MAHADEV ASTROLOGER MA</b> के प्रीमियम कंसल्टेशन में आपको कई अन्य महत्वपूर्ण चार्ट्स (जैसे चलित, दशमांश आदि), महादशा-अंतर्दशा का गहरा विश्लेषण, गोचर फल, दोष (जैसे मांगलिक या कालसर्प) और उनके सटीक वैदिक उपाय (Remedies) विस्तार से बताए जाते हैं।</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">Q3. मैं विस्तृत कुण्डली विश्लेषण (Premium Consultation) के लिए कैसे अपॉइंटमेंट लूँ?</div>
+                <div style="color: #ccc; font-size: 0.95rem; line-height: 1.6;">अपनी कुण्डली का गहन विश्लेषण करवाने और सटीक समाधान प्राप्त करने के लिए, आप ऊपर दिए गए <b>'प्रीमियम कंसल्टेशन बुक करें'</b> बटन पर क्लिक करें। यह आपको हमारे मुख्य फॉर्म पेज पर ले जाएगा, जहाँ आप अपनी सुविधा के अनुसार (WhatsApp, Telegram या Email) संपर्क का सुरक्षित विकल्प चुनकर अपना विवरण हमें भेज सकते हैं।</div>
+            </div>
+        </div>
+        </article>
 
     <div id="footer-placeholder"></div>
 
@@ -276,7 +299,6 @@
 
                     let bdHtml = "";
                     detailsList.forEach(item => {
-                        // Agar value khali ("-") nahi hai, tabhi show karo
                         if (item.value && item.value !== "-" && item.value !== "undefined") {
                             bdHtml += `<div><b>${item.label}:</b> ${item.value}</div>`;
                         }
