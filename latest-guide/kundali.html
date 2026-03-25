@@ -190,9 +190,7 @@
         const todayDate = new Date().toLocaleDateString();
         let usage = JSON.parse(localStorage.getItem('kundliUsage')) || { date: todayDate, count: 0 };
         
-        if (usage.date !== todayDate) {
-            usage = { date: todayDate, count: 0 }; 
-        }
+        if (usage.date !== todayDate) usage = { date: todayDate, count: 0 }; 
 
         const cacheKey = `kundli_${dob}_${time}_${lat}_${lon}`;
         const cachedData = localStorage.getItem(cacheKey);
@@ -222,18 +220,30 @@
                     document.getElementById('chalit_svg').innerHTML = data.charts.chalit || "-";
                 }
 
+                // 🪐 PLANETS EXTRACTION FIX
                 let tableHTML = "";
-                const planetList = data.planets?.data || data.planets || []; 
-                
-                if (Array.isArray(planetList) && planetList.length > 0) {
+                let planetList = [];
+                if (data.planets && Array.isArray(data.planets.planet_position)) {
+                    planetList = data.planets.planet_position;
+                } else if (Array.isArray(data.planets)) {
+                    planetList = data.planets;
+                }
+
+                if (planetList.length > 0) {
                     planetList.forEach(p => {
                         let isRetro = (p.isRetro === "true" || p.isRetro === true || p.is_retrograde === true);
+                        let pName = p.name || '-';
+                        let rasiName = p.rasi ? p.rasi.name : (p.sign || '-');
+                        let degree = p.normDegree || p.degree || p.longitude || 0;
+                        let nakName = p.nakshatra ? p.nakshatra.name : '-';
+                        let pada = p.nakshatra_pad || p.nakshatra_pada || '-';
+
                         tableHTML += `<tr>
-                            <td><b>${p.name || '-'}</b></td>
-                            <td>${p.sign || p.rasi || '-'}</td>
-                            <td>${(p.normDegree || p.degree || 0).toFixed(2)}°</td>
-                            <td>${p.nakshatra || '-'}</td>
-                            <td>${p.nakshatra_pad || p.nakshatra_pada || '-'}</td>
+                            <td><b>${pName}</b></td>
+                            <td>${rasiName}</td>
+                            <td>${Number(degree).toFixed(2)}°</td>
+                            <td>${nakName}</td>
+                            <td>${pada}</td>
                             <td style="color: ${isRetro ? '#ff4d4d' : '#4caf50'};">${isRetro ? 'वक्री (R)' : 'मार्गी'}</td>
                         </tr>`;
                     });
@@ -242,21 +252,28 @@
                 }
                 document.getElementById('planets_body').innerHTML = tableHTML;
 
+                // 📜 BIRTH DETAILS EXTRACTION FIX
                 if(data.birthDetails) {
                     const bd = data.birthDetails;
                     const addInfo = bd.additional_info || bd; 
                     
-                    const getName = (item) => (Array.isArray(item) ? item[0]?.name : item?.name) || item || "-";
+                    // Smart function to handle API nested objects (like {id: 1, name: "Gaja"})
+                    const getName = (item) => {
+                        if (!item) return "-";
+                        if (Array.isArray(item)) return item[0]?.name || "-";
+                        if (typeof item === 'object') return item.name || "-";
+                        return item;
+                    };
                     
                     let bdHtml = `
                         <div><b>नक्षत्र:</b> ${getName(bd.nakshatra)}</div>
                         <div><b>राशि:</b> ${getName(bd.chandra_rasi)}</div>
-                        <div><b>सूर्य राशि:</b> ${getName(bd.soorya_rasi) || "-"}</div>
-                        <div><b>योनि:</b> ${addInfo.yoni || "-"}</div>
-                        <div><b>गण:</b> ${addInfo.gana || "-"}</div>
-                        <div><b>नाड़ी:</b> ${addInfo.nadi || "-"}</div>
-                        <div><b>वर्ण:</b> ${addInfo.varna || "-"}</div>
-                        <div><b>वश्य:</b> ${addInfo.vashya || "-"}</div>
+                        <div><b>सूर्य राशि:</b> ${getName(bd.soorya_rasi)}</div>
+                        <div><b>योनि:</b> ${getName(addInfo.yoni)}</div>
+                        <div><b>गण:</b> ${getName(addInfo.gana)}</div>
+                        <div><b>नाड़ी:</b> ${getName(addInfo.nadi)}</div>
+                        <div><b>वर्ण:</b> ${getName(addInfo.varna)}</div>
+                        <div><b>वश्य:</b> ${getName(addInfo.vashya)}</div>
                     `;
                     document.getElementById('basic_panchang_data').innerHTML = bdHtml;
                 } else {
@@ -311,7 +328,7 @@
 
             } catch (error) {
                 console.error("Fetch Error Detail:", error);
-                alert("🔱 सर्वर से संपर्क विफल! \nकारण: " + error.message + "\n\nकृपया सुनिश्चित करें कि आपका Vercel URL सही है और इंटरनेट चल रहा है।");
+                alert("🔱 सर्वर से संपर्क विफल! \nकारण: " + error.message + "\n\nकृपया सुनिश्चित करें कि आपका Vercel URL सही है।");
                 submitBtn.innerText = "कुण्डली बनाएं ➔";
                 submitBtn.style.opacity = "1";
             }
