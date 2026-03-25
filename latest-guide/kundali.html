@@ -325,13 +325,13 @@
                 renderKundli(data);
 
             } catch (error) {
-                console.error("Fetch Error:", error);
-                alert("सर्वर से संपर्क विफल।");
+                console.error("Fetch Error Detail:", error);
+                alert("🔱 सर्वर से संपर्क विफल! \nकारण: " + error.message + "\n\nकृपया सुनिश्चित करें कि आपका Vercel URL सही है और इंटरनेट चल रहा है।");
                 submitBtn.innerText = "कुण्डली बनाएं ➔";
                 submitBtn.style.opacity = "1";
             }
-        }
-    }
+        } // यह 'else' ब्लॉक को बंद करता है
+    } // यह 'generateMahadevKundli' फंक्शन को बंद करता है
     </script>
 </body>
 </html>
