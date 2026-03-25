@@ -44,13 +44,10 @@
         .master-article { max-width: 850px; margin: 0 auto 80px; padding: 0 20px; line-height: 1.8; color: #ccc; font-size: 1.05rem; }
         .master-article h2 { font-family: 'Cinzel'; color: var(--gold); font-size: 2rem; margin: 50px 0 20px; border-bottom: 1px solid rgba(245, 197, 66, 0.2); padding-bottom: 10px; }
 
-        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; text-align: left; }
-        .faq-q { color: var(--gold); font-weight: 600; font-size: 1.1rem; margin-bottom: 5px; font-family: 'Cinzel'; }
-
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 600px) { .calc-container { margin-top: 100px; padding: 20px; } .row-group { flex-direction: column; gap: 0; } .chart-box { width: 100%; } }
 
-        /* 🖨️ PDF & Print Magic (SUPER STRONG MODE) */
+        /* 🖨️ PDF & Print Magic */
         @media print {
             #header-placeholder, #footer-placeholder, #calculator-section h1, #calculator-section p, form, .master-article, .paywall-container, .calc-btn { display: none !important; }
             body, main, #result-section { background: #ffffff !important; color: #000000 !important; box-shadow: none !important; border: none !important; margin: 0 !important; padding: 0 !important; }
@@ -190,20 +187,17 @@
             return;
         }
 
-        // 🛑 SMART JUGAAD 1: Daily Limit Check (Max 2 API Calls Per Day)
         const todayDate = new Date().toLocaleDateString();
         let usage = JSON.parse(localStorage.getItem('kundliUsage')) || { date: todayDate, count: 0 };
         
         if (usage.date !== todayDate) {
-            usage = { date: todayDate, count: 0 }; // नया दिन, नया कोटा
+            usage = { date: todayDate, count: 0 }; 
         }
 
-        // 🛑 SMART JUGAAD 2: Cache System Check
         const cacheKey = `kundli_${dob}_${time}_${lat}_${lon}`;
         const cachedData = localStorage.getItem(cacheKey);
 
         if (!cachedData && usage.count >= 2) {
-            // अगर डेटा कैश में नहीं है और लिमिट पार हो गई है
             alert("😂 Today's limit exhausted! Come tomorrow and try again or try after 12:00 AM 🕛");
             return;
         }
@@ -220,70 +214,62 @@
 
         resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-        // 🎨 UI Update Function
         const renderKundli = (data) => {
-            // 1. Injecting 3 Premium Charts
-            if(data.charts) {
-                document.getElementById('lagna_svg').innerHTML = data.charts.lagna || "-";
-                document.getElementById('navamsha_svg').innerHTML = data.charts.navamsha || "-";
-                document.getElementById('chalit_svg').innerHTML = data.charts.chalit || "-";
-            }
+            try {
+                if(data.charts) {
+                    document.getElementById('lagna_svg').innerHTML = data.charts.lagna || "-";
+                    document.getElementById('navamsha_svg').innerHTML = data.charts.navamsha || "-";
+                    document.getElementById('chalit_svg').innerHTML = data.charts.chalit || "-";
+                }
 
-            // 2. Injecting Planets Table
-            let tableHTML = "";
-            if (data.planets && Array.isArray(data.planets)) {
-                data.planets.forEach(p => {
-                    let status = "मार्गी"; 
-                    let isRetro = (p.isRetro === "true" || p.isRetro === true);
-                    if(isRetro) status = "वक्री (R) 🔄";
-
-                    tableHTML += `<tr>
-                        <td><b>${p.name || '-'}</b></td>
-                        <td>${p.sign || p.rasi || '-'}</td>
-                        <td>${p.normDegree ? p.normDegree.toFixed(2) : (p.degree ? p.degree.toFixed(2) : '-')}°</td>
-                        <td>${p.nakshatra || '-'}</td>
-                        <td>${p.nakshatra_pad || p.nakshatra_pada || '-'}</td>
-                        <td style="color: ${isRetro ? '#ff4d4d' : '#4caf50'};">${status}</td>
-                    </tr>`;
-                });
-            } else {
-                tableHTML = "<tr><td colspan='6' style='text-align:center;'>ग्रहों की जानकारी प्राप्त नहीं हुई।</td></tr>";
-            }
-            document.getElementById('planets_body').innerHTML = tableHTML;
-
-            // 3. Injecting Birth Details (Avakhada Chakra)
-            let bdHtml = "";
-            if(data.birthDetails) {
-                const bd = data.birthDetails;
-                const extractName = (item) => {
-                    if (Array.isArray(item) && item.length > 0) return item.map(i => i.name).join(", ");
-                    return item?.name || "-";
-                };
+                let tableHTML = "";
+                const planetList = data.planets?.data || data.planets || []; 
                 
-                bdHtml += `<div><b>राशि:</b> ${extractName(bd.chandra_rasi)}</div>`;
-                bdHtml += `<div><b>नक्षत्र:</b> ${extractName(bd.nakshatra)}</div>`;
-                bdHtml += `<div><b>नक्षत्र पद:</b> ${bd.nakshatra_pada || "-"}</div>`;
-                bdHtml += `<div><b>तिथि:</b> ${extractName(bd.tithi)}</div>`;
-                bdHtml += `<div><b>करण:</b> ${extractName(bd.karan)}</div>`;
-                bdHtml += `<div><b>योग:</b> ${extractName(bd.yoga)}</div>`;
-                bdHtml += `<div><b>वर्ण:</b> ${bd.varna || "-"}</div>`;
-                bdHtml += `<div><b>वश्य:</b> ${bd.vashya || "-"}</div>`;
-                bdHtml += `<div><b>योनि:</b> ${bd.yoni || "-"}</div>`;
-                bdHtml += `<div><b>गण:</b> ${bd.gana || "-"}</div>`;
-                bdHtml += `<div><b>नाड़ी:</b> ${bd.nadi || "-"}</div>`;
-                bdHtml += `<div><b>पाया:</b> ${bd.paya || "-"}</div>`;
-            } else {
-                 bdHtml = "<div style='grid-column: span 2; text-align:center;'>जन्म विवरण उपलब्ध नहीं</div>";
-            }
-            document.getElementById('basic_panchang_data').innerHTML = bdHtml;
+                if (Array.isArray(planetList) && planetList.length > 0) {
+                    planetList.forEach(p => {
+                        let isRetro = (p.isRetro === "true" || p.isRetro === true || p.is_retrograde === true);
+                        tableHTML += `<tr>
+                            <td><b>${p.name || '-'}</b></td>
+                            <td>${p.sign || p.rasi || '-'}</td>
+                            <td>${(p.normDegree || p.degree || 0).toFixed(2)}°</td>
+                            <td>${p.nakshatra || '-'}</td>
+                            <td>${p.nakshatra_pad || p.nakshatra_pada || '-'}</td>
+                            <td style="color: ${isRetro ? '#ff4d4d' : '#4caf50'};">${isRetro ? 'वक्री (R)' : 'मार्गी'}</td>
+                        </tr>`;
+                    });
+                } else {
+                     tableHTML = "<tr><td colspan='6' style='text-align:center;'>ग्रहों की जानकारी प्राप्त नहीं हुई।</td></tr>";
+                }
+                document.getElementById('planets_body').innerHTML = tableHTML;
 
-            submitBtn.innerText = "कुण्डली बनाएं ➔";
-            submitBtn.style.opacity = "1";
+                if(data.birthDetails) {
+                    const bd = data.birthDetails;
+                    const addInfo = bd.additional_info || bd; 
+                    
+                    const getName = (item) => (Array.isArray(item) ? item[0]?.name : item?.name) || item || "-";
+                    
+                    let bdHtml = `
+                        <div><b>नक्षत्र:</b> ${getName(bd.nakshatra)}</div>
+                        <div><b>राशि:</b> ${getName(bd.chandra_rasi)}</div>
+                        <div><b>सूर्य राशि:</b> ${getName(bd.soorya_rasi) || "-"}</div>
+                        <div><b>योनि:</b> ${addInfo.yoni || "-"}</div>
+                        <div><b>गण:</b> ${addInfo.gana || "-"}</div>
+                        <div><b>नाड़ी:</b> ${addInfo.nadi || "-"}</div>
+                        <div><b>वर्ण:</b> ${addInfo.varna || "-"}</div>
+                        <div><b>वश्य:</b> ${addInfo.vashya || "-"}</div>
+                    `;
+                    document.getElementById('basic_panchang_data').innerHTML = bdHtml;
+                } else {
+                     document.getElementById('basic_panchang_data').innerHTML = "<div style='grid-column: span 2; text-align:center;'>जन्म विवरण उपलब्ध नहीं</div>";
+                }
+
+                submitBtn.innerText = "कुण्डली बनाएं ➔";
+                submitBtn.style.opacity = "1";
+            } catch(e) { console.error("Rendering Error:", e); }
         };
 
-        // 🚀 THE DECISION: Cache or API?
         if (cachedData) {
-            console.log("🔱 Data Loaded From Cache (Credits Saved!)");
+            console.log("🔱 Data Loaded From Cache");
             renderKundli(JSON.parse(cachedData));
         } else {
             console.log("🔱 Fetching Fresh Data From Server...");
@@ -317,7 +303,6 @@
                     return;
                 }
 
-                // 💾 Save to Cache & Update Daily Limit
                 localStorage.setItem(cacheKey, JSON.stringify(data));
                 usage.count += 1;
                 localStorage.setItem('kundliUsage', JSON.stringify(usage));
@@ -330,8 +315,8 @@
                 submitBtn.innerText = "कुण्डली बनाएं ➔";
                 submitBtn.style.opacity = "1";
             }
-        } // यह 'else' ब्लॉक को बंद करता है
-    } // यह 'generateMahadevKundli' फंक्शन को बंद करता है
+        } 
+    } 
     </script>
 </body>
 </html>
