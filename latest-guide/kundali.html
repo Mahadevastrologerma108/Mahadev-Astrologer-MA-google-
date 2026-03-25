@@ -1,337 +1,85 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="k_title">फ्री जन्म कुण्डली | MAHADEV ASTROLOGER MA</title>
-    <meta name="description" content="MAHADEV ASTROLOGER MA के एडवांस Astro Engine से अपनी सटीक जन्म कुण्डली, चंद्र राशि, सूर्य राशि, नक्षत्र और मंगल दोष की जानकारी प्राप्त करें।">
+module.exports = async function (req, res) {
+    // CORS Headers
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
-    <link rel="canonical" href="https://www.mahadevastrologerma.in/latest-guide/kundali.html">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    if (req.method !== 'POST') {
+        return res.status(405).json({ success: false, error: 'Method Not Allowed' });
+    }
 
-    <style>
-        :root { --gold: #f5c542; --bg: #0a0a14; }
-        body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
-
-        .calc-container { max-width: 800px; margin: 120px auto 40px; padding: 40px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(245, 197, 66, 0.2); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .input-group { margin-bottom: 25px; }
-        .input-group label { display: block; font-family: 'Cinzel'; color: var(--gold); margin-bottom: 10px; font-size: 1.1rem; }
-        .input-group input { width: 100%; padding: 15px; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 197, 66, 0.3); color: #fff; font-size: 1rem; border-radius: 8px; font-family: 'Poppins'; outline: none; box-sizing: border-box; }
-        .input-group input:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(245, 197, 66, 0.2); }
-
-        .row-group { display: flex; gap: 15px; }
-        .row-group .input-group { flex: 1; }
-
-        .calc-btn { width: 100%; padding: 15px; background: var(--gold); color: #000; font-size: 1.2rem; font-weight: bold; font-family: 'Cinzel'; border: none; border-radius: 50px; cursor: pointer; transition: 0.3s; margin-top: 10px; }
-        .calc-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(245, 197, 66, 0.5); }
-
-        /* 🔱 Result Section Styles */
-        #result-section { display: none; margin-top: 40px; padding: 30px; background: linear-gradient(145deg, #111, #06060c); border: 2px dashed var(--gold); border-radius: 15px; text-align: center; animation: fadeIn 1s; }
-
-        .chart-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
-        .chart-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(245, 197, 66, 0.3); padding: 15px; border-radius: 10px; width: 280px; text-align: center; }
-        .svg-container svg { width: 100%; height: auto; border-radius: 5px; filter: invert(1) brightness(1.5); }
-
-        #planets_table { width: 100%; border-collapse: collapse; margin-top: 15px; color: #ccc; font-size: 0.9rem; }
-        #planets_table th, #planets_table td { border-bottom: 1px solid #333; padding: 12px; text-align: left; }
-        #planets_table th { color: var(--gold); font-family: 'Cinzel'; }
-
-        .paywall-container { position: relative; margin-top: 50px; padding: 40px 20px; background: rgba(0,0,0,0.6); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; }
-
-        .master-article { max-width: 850px; margin: 0 auto 80px; padding: 0 20px; line-height: 1.8; color: #ccc; font-size: 1.05rem; }
-        .master-article h2 { font-family: 'Cinzel'; color: var(--gold); font-size: 2rem; margin: 50px 0 20px; border-bottom: 1px solid rgba(245, 197, 66, 0.2); padding-bottom: 10px; }
-
-        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; text-align: left; }
-        .faq-q { color: var(--gold); font-weight: 600; font-size: 1.1rem; margin-bottom: 5px; font-family: 'Cinzel'; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 600px) { .calc-container { margin-top: 100px; padding: 20px; } .row-group { flex-direction: column; gap: 0; } .chart-box { width: 100%; } }
-
-        /* 🖨️ PDF & Print Magic (SUPER STRONG MODE) */
-        @media print {
-            #header-placeholder, #footer-placeholder, #calculator-section h1, #calculator-section p, form, .master-article, .paywall-container, .calc-btn { display: none !important; }
-            body, main, #result-section { background: #ffffff !important; color: #000000 !important; box-shadow: none !important; border: none !important; margin: 0 !important; padding: 0 !important; }
-            
-            .svg-container svg { filter: none !important; } 
-            .svg-container svg text { fill: #000000 !important; font-weight: bold !important; font-size: 14px !important; }
-            .svg-container svg line, .svg-container svg path, .svg-container svg polygon { stroke: #000000 !important; stroke-width: 1.5px !important; }
-            
-            .chart-grid { display: flex !important; flex-wrap: wrap !important; justify-content: space-between !important; }
-            .chart-box { width: 48% !important; margin-bottom: 20px !important; border: 2px solid #000 !important; page-break-inside: avoid !important; background: none !important; }
-            
-            table { width: 100% !important; border-collapse: collapse !important; page-break-inside: auto; }
-            tr { page-break-inside: avoid; page-break-after: auto; }
-            th, td { border: 1px solid #000 !important; color: #000 !important; padding: 8px !important; font-size: 13px !important; }
-            .gold-text { color: #000000 !important; text-align: center; font-weight: bold; border-color: #000 !important; } 
-            #birth-details-section { border: 2px solid #000 !important; background: none !important; page-break-inside: avoid !important; }
-        }
-    </style>
-</head>
-<body class="panchang-body">
-
-    <div id="header-placeholder"></div>
-
-    <main class="calc-container" id="calculator-section">
-        <h1 class="gold-text" style="font-family: 'Cinzel'; text-align: center; font-size: 2.2rem; margin-bottom: 10px;" data-key="k_main_heading">🔱 जन्म कुण्डली (Kundli Engine)</h1>
-        <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 0.95rem;" data-key="k_sub_heading">सटीक ब्रह्मांडीय गणनाओं के आधार पर अपना राशिफल, नक्षत्र और मंगल दोष जानें。</p>
-
-        <form id="kundliForm" onsubmit="event.preventDefault(); generateMahadevKundli();">
-            <div class="row-group">
-                <div class="input-group">
-                    <label for="k_dob" data-key="k_dob_lbl">1. जन्म तिथि (Date of Birth)</label>
-                    <input type="date" id="k_dob" required>
-                </div>
-                <div class="input-group">
-                    <label for="k_time" data-key="k_time_lbl">2. जन्म समय (Time of Birth)</label>
-                    <input type="time" id="k_time" required>
-                </div>
-            </div>
-
-            <div class="row-group">
-                <div class="input-group">
-                    <label for="k_lat" data-key="k_lat_lbl">3. अक्षांश (Latitude)</label>
-                    <input type="text" id="k_lat" placeholder="e.g. 25.37" value="25.37" required>
-                </div>
-                <div class="input-group">
-                    <label for="k_lon" data-key="k_lon_lbl">4. देशांतर (Longitude)</label>
-                    <input type="text" id="k_lon" placeholder="e.g. 86.47" value="86.47" required>
-                </div>
-            </div>
-
-            <button type="submit" class="calc-btn" id="submitBtn" data-key="k_btn">कुण्डली बनाएं ➔</button>
-        </form>
-
-        <div id="result-section">
-            <h2 class="gold-text cinzel" data-key="k_res_title">Cosmic Blueprint Result</h2>
-
-            <button type="button" class="calc-btn" onclick="window.print()" style="background: #4caf50; color: white; width: auto; padding: 10px 25px; margin: 15px auto; display: block; font-size: 1rem;">
-                📥 ग्राहक के लिए PDF डाउनलोड करें
-            </button>
-
-            <div class="chart-grid">
-                <div class="chart-box">
-                    <h4 class="gold-text cinzel">लग्न चक्र (D1)</h4>
-                    <div id="lagna_svg" class="svg-container"></div>
-                </div>
-                <div class="chart-box">
-                    <h4 class="gold-text cinzel">नवांश चक्र (D9)</h4>
-                    <div id="navamsha_svg" class="svg-container"></div>
-                </div>
-                <div class="chart-box">
-                    <h4 class="gold-text cinzel">चलित चक्र (Chalit)</h4>
-                    <div id="chalit_svg" class="svg-container"></div>
-                </div>
-            </div>
-
-            <div style="margin-top: 30px; overflow-x: auto;">
-                <h3 class="gold-text cinzel" style="text-align: left; border-bottom: 1px dashed var(--gold); padding-bottom: 5px;">Planetary Positions</h3>
-                <table id="planets_table">
-                    <thead>
-                        <tr>
-                            <th>Planet</th>
-                            <th>Rasi</th>
-                            <th>Degree</th>
-                            <th>Nakshatra</th>
-                            <th>Pada</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="planets_body"></tbody>
-                </table>
-            </div>
-
-            <div id="birth-details-section" style="margin-top: 40px; text-align: left; background: rgba(255,255,255,0.02); border: 1px solid rgba(245, 197, 66, 0.3); padding: 20px; border-radius: 10px;">
-                <h3 class="gold-text cinzel" style="text-align: center; border-bottom: 1px dashed var(--gold); padding-bottom: 10px;">जन्म विवरण एवं अवकहड़ा चक्र</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; font-size: 0.95rem; color: #ccc;" id="basic_panchang_data">
-                    <div style="text-align: center; grid-column: span 2;">⏳ डेटा लोड हो रहा है...</div>
-                </div>
-            </div>
-
-            <div class="paywall-container" id="premium-paywall" style="border-color: #25D366; background: rgba(37, 211, 102, 0.05);">
-                <h3 class="gold-text cinzel" style="margin-bottom: 10px;">🔱 विस्तृत कुण्डली विश्लेषण</h3>
-                <p style="font-size: 0.95rem; color: #fff; line-height: 1.6;">दशा (महादशा/अंतर्दशा), गोचर फल, कालसर्प दोष, मांगलिक दोष और सटीक उपायों की <b>संपूर्ण जानकारी</b> के लिए हमारे विशेषज्ञों से परामर्श लें।</p>
-                <div style="display: flex; justify-content: center; margin-top: 20px;">
-                    <a href="https://wa.me/message/VCK5OVBDCN7YK1" target="_blank" class="calc-btn" style="text-decoration:none; padding:12px 25px; font-size:1rem; width:auto; background: #25D366; color: #fff; border-radius: 5px; font-family: 'Poppins';">
-                        📱 WhatsApp पर संपर्क करें
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <article class="master-article">
-        <h2 style="text-align: center; border: none; font-size: 2.2rem; margin-top: 20px;" data-key="k_art_title">वैदिक कुण्डली का महत्व | Importance of Vedic Kundli</h2>
-        <p style="text-align: center; color: var(--gold); font-style: italic; margin-bottom: 40px;" data-key="k_art_quote">"ग्रहों की गति हमारे जीवन का मार्गदर्शन करती है।"</p>
-        <p data-key="k_art_p1">मानव जीवन ब्रह्मांडीय ऊर्जा और ग्रहों की गति से निरंतर प्रभावित होता है। जन्म कुण्डली व्यक्ति के जन्म के समय आकाश मंडल का एक सटीक नक्शा है।</p>
-        <p data-key="k_art_p2">Through our advanced API engine, you can obtain accurate cosmic calculations.</p>
-    </article>
-
-    <div id="footer-placeholder"></div>
-
-    <script src="../assets/js/translations.js"></script>
-    <script src="../assets/js/layout.js"></script>
-    <script type="module" src="../assets/js/firebase-handler.js"></script>
-
-    <script>
-    async function generateMahadevKundli() {
-        const dob = document.getElementById('k_dob').value;
-        const time = document.getElementById('k_time').value;
-        const lat = document.getElementById('k_lat').value;
-        const lon = document.getElementById('k_lon').value;
-        const resultSection = document.getElementById('result-section');
-        const submitBtn = document.getElementById('submitBtn');
-
-        if(!dob || !time || !lat || !lon) {
-            alert("🔱 कृपया सभी आवश्यक जानकारी भरें!");
-            return;
+    try {
+        const { datetime, coordinates } = req.body;
+        if (!datetime || !coordinates) {
+            return res.status(400).json({ success: false, error: 'Missing datetime or coordinates' });
         }
 
-        // 🛑 SMART JUGAAD 1: Daily Limit Check (Max 2 API Calls Per Day)
-        const todayDate = new Date().toLocaleDateString();
-        let usage = JSON.parse(localStorage.getItem('kundliUsage')) || { date: todayDate, count: 0 };
+        // 1. Prokerala Token
+        const tokenResponse = await fetch('https://api.prokerala.com/token', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                grant_type: 'client_credentials',
+                client_id: process.env.PROKERALA_CLIENT_ID,
+                client_secret: process.env.PROKERALA_CLIENT_SECRET
+            })
+        });
+
+        const tokenData = await tokenResponse.json();
+        const accessToken = tokenData.access_token;
         
-        if (usage.date !== todayDate) {
-            usage = { date: todayDate, count: 0 }; // नया दिन, नया कोटा
+        if (!accessToken) {
+            throw new Error("Prokerala API Keys Missing or Invalid!");
         }
 
-        // 🛑 SMART JUGAAD 2: Cache System Check
-        const cacheKey = `kundli_${dob}_${time}_${lat}_${lon}`;
-        const cachedData = localStorage.getItem(cacheKey);
-
-        if (!cachedData && usage.count >= 2) {
-            // अगर डेटा कैश में नहीं है और लिमिट पार हो गई है
-            alert("😂 Today's limit exhausted! Come tomorrow and try again or try after 12:00 AM 🕛");
-            return;
-        }
-
-        submitBtn.innerText = "ब्रह्मांडीय गणना हो रही है... ⏳";
-        submitBtn.style.opacity = "0.7";
-        resultSection.style.display = "block";
-
-        document.getElementById('lagna_svg').innerHTML = "⏳ लोड हो रहा है...";
-        document.getElementById('navamsha_svg').innerHTML = "⏳ लोड हो रहा है...";
-        document.getElementById('chalit_svg').innerHTML = "⏳ लोड हो रहा है...";
-        document.getElementById('planets_body').innerHTML = "";
-        document.getElementById('basic_panchang_data').innerHTML = "";
-
-        resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-        // 🎨 UI Update Function
-        const renderKundli = (data) => {
-            // 1. Injecting 3 Premium Charts
-            if(data.charts) {
-                document.getElementById('lagna_svg').innerHTML = data.charts.lagna || "-";
-                document.getElementById('navamsha_svg').innerHTML = data.charts.navamsha || "-";
-                document.getElementById('chalit_svg').innerHTML = data.charts.chalit || "-";
-            }
-
-            // 2. Injecting Planets Table
-            let tableHTML = "";
-            if (data.planets && Array.isArray(data.planets)) {
-                data.planets.forEach(p => {
-                    let status = "मार्गी"; 
-                    let isRetro = (p.isRetro === "true" || p.isRetro === true);
-                    if(isRetro) status = "वक्री (R) 🔄";
-
-                    tableHTML += `<tr>
-                        <td><b>${p.name || '-'}</b></td>
-                        <td>${p.sign || p.rasi || '-'}</td>
-                        <td>${p.normDegree ? p.normDegree.toFixed(2) : (p.degree ? p.degree.toFixed(2) : '-')}°</td>
-                        <td>${p.nakshatra || '-'}</td>
-                        <td>${p.nakshatra_pad || p.nakshatra_pada || '-'}</td>
-                        <td style="color: ${isRetro ? '#ff4d4d' : '#4caf50'};">${status}</td>
-                    </tr>`;
-                });
-            } else {
-                tableHTML = "<tr><td colspan='6' style='text-align:center;'>ग्रहों की जानकारी प्राप्त नहीं हुई।</td></tr>";
-            }
-            document.getElementById('planets_body').innerHTML = tableHTML;
-
-            // 3. Injecting Birth Details (Avakhada Chakra)
-            let bdHtml = "";
-            if(data.birthDetails) {
-                const bd = data.birthDetails;
-                const extractName = (item) => {
-                    if (Array.isArray(item) && item.length > 0) return item.map(i => i.name).join(", ");
-                    return item?.name || "-";
-                };
-                
-                bdHtml += `<div><b>राशि:</b> ${extractName(bd.chandra_rasi)}</div>`;
-                bdHtml += `<div><b>नक्षत्र:</b> ${extractName(bd.nakshatra)}</div>`;
-                bdHtml += `<div><b>नक्षत्र पद:</b> ${bd.nakshatra_pada || "-"}</div>`;
-                bdHtml += `<div><b>तिथि:</b> ${extractName(bd.tithi)}</div>`;
-                bdHtml += `<div><b>करण:</b> ${extractName(bd.karan)}</div>`;
-                bdHtml += `<div><b>योग:</b> ${extractName(bd.yoga)}</div>`;
-                bdHtml += `<div><b>वर्ण:</b> ${bd.varna || "-"}</div>`;
-                bdHtml += `<div><b>वश्य:</b> ${bd.vashya || "-"}</div>`;
-                bdHtml += `<div><b>योनि:</b> ${bd.yoni || "-"}</div>`;
-                bdHtml += `<div><b>गण:</b> ${bd.gana || "-"}</div>`;
-                bdHtml += `<div><b>नाड़ी:</b> ${bd.nadi || "-"}</div>`;
-                bdHtml += `<div><b>पाया:</b> ${bd.paya || "-"}</div>`;
-            } else {
-                 bdHtml = "<div style='grid-column: span 2; text-align:center;'>जन्म विवरण उपलब्ध नहीं</div>";
-            }
-            document.getElementById('basic_panchang_data').innerHTML = bdHtml;
-
-            submitBtn.innerText = "कुण्डली बनाएं ➔";
-            submitBtn.style.opacity = "1";
+        const commonParams = `datetime=${datetime}&coordinates=${coordinates}&ayanamsa=1&la=hi`;
+        const headers = { 
+            'Authorization': `Bearer ${accessToken}`,
+            'Accept': 'application/json'
         };
 
-        // 🚀 THE DECISION: Cache or API?
-        if (cachedData) {
-            console.log("🔱 Data Loaded From Cache (Credits Saved!)");
-            renderKundli(JSON.parse(cachedData));
-        } else {
-            console.log("🔱 Fetching Fresh Data From Server...");
-            const datetime = `${dob}T${time}:00%2B05:30`;
-            const coordinates = `${lat},${lon}`;
-            const API_URL = "https://mahadev-astrologer-api.vercel.app/api/kundli"; 
-
+        // 2. Fetch Logic
+        async function smartFetch(url) {
             try {
-                const response = await fetch(API_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ datetime, coordinates })
-                });
-
-                const rawResponse = await response.text();
-                let data;
-                try {
-                    data = JSON.parse(rawResponse);
+                const response = await fetch(url, { headers });
+                const text = await response.text();
+                try { 
+                    return JSON.parse(text); 
                 } catch (e) {
-                    console.error("Server Sent Non-JSON Data:", rawResponse);
-                    alert("🔱 डेटा प्राप्त हुआ है परंतु प्रारूप सही नहीं है। कृपया दोबारा प्रयास करें।");
-                    submitBtn.innerText = "कुण्डली बनाएं ➔";
-                    submitBtn.style.opacity = "1";
-                    return;
+                    if (text.trim().startsWith('<svg')) return { data: { svg: text } }; 
+                    return { data: null };
                 }
-
-                if(!data.success) {
-                    alert("API Error: " + JSON.stringify(data.error));
-                    submitBtn.innerText = "कुण्डली बनाएं ➔";
-                    submitBtn.style.opacity = "1";
-                    return;
-                }
-
-                // 💾 Save to Cache & Update Daily Limit
-                localStorage.setItem(cacheKey, JSON.stringify(data));
-                usage.count += 1;
-                localStorage.setItem('kundliUsage', JSON.stringify(usage));
-
-                renderKundli(data);
-
-            } catch (error) {
-                console.error("Fetch Error Detail:", error);
-                alert("🔱 सर्वर से संपर्क विफल! \nकारण: " + error.message + "\n\nकृपया सुनिश्चित करें कि आपका Vercel URL सही है और इंटरनेट चल रहा है।");
-                submitBtn.innerText = "कुण्डली बनाएं ➔";
-                submitBtn.style.opacity = "1";
+            } catch (err) {
+                return { data: null };
             }
-        } // यह 'else' ब्लॉक को बंद करता है
-    } // यह 'generateMahadevKundli' फंक्शन को बंद करता है
-    </script>
-</body>
-</html>
+        }
+
+        // 3. API Calls
+        const [planets, lagna, navamsha, chalit, birthDetails] = await Promise.all([
+            smartFetch(`https://api.prokerala.com/v2/astrology/planet-position?${commonParams}`),
+            smartFetch(`https://api.prokerala.com/v2/astrology/chart?${commonParams}&chart_type=rasi&chart_style=north-indian`),
+            smartFetch(`https://api.prokerala.com/v2/astrology/chart?${commonParams}&chart_type=navamsa&chart_style=north-indian`),
+            smartFetch(`https://api.prokerala.com/v2/astrology/chart?${commonParams}&chart_type=chalit&chart_style=north-indian`),
+            smartFetch(`https://api.prokerala.com/v2/astrology/birth-details?${commonParams}`)
+        ]);
+
+        return res.status(200).json({
+            success: true,
+            planets: planets?.data || [],
+            birthDetails: birthDetails?.data || {},
+            charts: {
+                lagna: lagna?.data?.svg || "-",
+                navamsha: navamsha?.data?.svg || "-",
+                chalit: chalit?.data?.svg || "-"
+            }
+        });
+
+    } catch (error) {
+        return res.status(500).json({ success: false, error: error.message });
+    }
+};
