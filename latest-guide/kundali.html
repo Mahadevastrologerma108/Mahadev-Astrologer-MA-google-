@@ -220,7 +220,7 @@
                     document.getElementById('chalit_svg').innerHTML = data.charts.chalit || "-";
                 }
 
-                // 🪐 PLANETS EXTRACTION FIX
+                // 🪐 PLANETS EXTRACTION
                 let tableHTML = "";
                 let planetList = [];
                 if (data.planets && Array.isArray(data.planets.planet_position)) {
@@ -252,29 +252,46 @@
                 }
                 document.getElementById('planets_body').innerHTML = tableHTML;
 
-                // 📜 BIRTH DETAILS EXTRACTION FIX
+                // 📜 SMART BIRTH DETAILS FILTER (Jo nahi aayega wo chhip jayega)
                 if(data.birthDetails) {
                     const bd = data.birthDetails;
                     const addInfo = bd.additional_info || bd; 
                     
-                    // Smart function to handle API nested objects (like {id: 1, name: "Gaja"})
                     const getName = (item) => {
                         if (!item) return "-";
                         if (Array.isArray(item)) return item[0]?.name || "-";
                         if (typeof item === 'object') return item.name || "-";
                         return item;
                     };
+
+                    const detailsList = [
+                        { label: 'चंद्र राशि', value: getName(bd.chandra_rasi) },
+                        { label: 'सूर्य राशि', value: getName(bd.soorya_rasi) },
+                        { label: 'नक्षत्र', value: getName(bd.nakshatra) },
+                        { label: 'नक्षत्र पद', value: bd.nakshatra_pad || bd.nakshatra_pada || "-" },
+                        { label: 'तिथि', value: getName(bd.tithi) },
+                        { label: 'करण', value: getName(bd.karan) },
+                        { label: 'योग', value: getName(bd.yoga) },
+                        { label: 'योनि', value: getName(addInfo.yoni) },
+                        { label: 'गण', value: getName(addInfo.gana) },
+                        { label: 'नाड़ी', value: getName(addInfo.nadi) },
+                        { label: 'वर्ण', value: getName(addInfo.varna) },
+                        { label: 'वश्य', value: getName(addInfo.vashya) },
+                        { label: 'पाया', value: getName(addInfo.paya) }
+                    ];
+
+                    let bdHtml = "";
+                    detailsList.forEach(item => {
+                        // Agar value khali ("-") nahi hai, tabhi HTML mein jodo
+                        if (item.value && item.value !== "-" && item.value !== "undefined") {
+                            bdHtml += `<div><b>${item.label}:</b> ${item.value}</div>`;
+                        }
+                    });
+
+                    if (bdHtml === "") {
+                        bdHtml = "<div style='grid-column: span 2; text-align:center;'>जन्म विवरण उपलब्ध नहीं</div>";
+                    }
                     
-                    let bdHtml = `
-                        <div><b>नक्षत्र:</b> ${getName(bd.nakshatra)}</div>
-                        <div><b>राशि:</b> ${getName(bd.chandra_rasi)}</div>
-                        <div><b>सूर्य राशि:</b> ${getName(bd.soorya_rasi)}</div>
-                        <div><b>योनि:</b> ${getName(addInfo.yoni)}</div>
-                        <div><b>गण:</b> ${getName(addInfo.gana)}</div>
-                        <div><b>नाड़ी:</b> ${getName(addInfo.nadi)}</div>
-                        <div><b>वर्ण:</b> ${getName(addInfo.varna)}</div>
-                        <div><b>वश्य:</b> ${getName(addInfo.vashya)}</div>
-                    `;
                     document.getElementById('basic_panchang_data').innerHTML = bdHtml;
                 } else {
                      document.getElementById('basic_panchang_data').innerHTML = "<div style='grid-column: span 2; text-align:center;'>जन्म विवरण उपलब्ध नहीं</div>";
