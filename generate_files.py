@@ -1,9 +1,10 @@
 import os
 
+# Sabhi 12 Rashi ki list
 rashis = ["aries", "taurus", "gemini", "cancer", "leo", "virgo", 
           "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"]
 
-# 🔱 100% Unique SEO Data for each Rashi (AdSense Approval Booster)
+# 🔱 100% Unique SEO & Vedic Data (AdSense Approval Booster)
 rashi_details = {
     "aries": {"lord": "मंगल देव (Mars)", "element": "अग्नि (Fire)", "mantra": "रां (Ram)", "gem": "लाल मूंगा (Red Coral)", "rudraksha": "3 मुखी", 
               "nature": "मेष राशि वाले जातक जन्म से ही निडर, ऊर्जावान और बेहतरीन नेतृत्व क्षमता वाले होते हैं। ये चुनौतियों का सामना डटकर करते हैं।", 
@@ -12,7 +13,7 @@ rashi_details = {
                "nature": "वृषभ राशि के जातक शांत, धैर्यवान और कला प्रेमी होते हैं। इन्हें स्थिरता और विलासिता पसंद होती है।", 
                "shiv": "शुक्राचार्य भगवान शिव के परम भक्त थे। वृषभ राशि वालों को शिवलिंग पर सफेद चंदन लगाने से अपार सफलता मिलती है।"},
     "gemini": {"lord": "बुध देव (Mercury)", "element": "वायु (Air)", "mantra": "ऐं (Aim)", "gem": "पन्ना (Emerald)", "rudraksha": "4 मुखी", 
-               "nature": "मिथुन राशि वाले अत्यधिक बुद्धिमान, बातूनी और बहुमुखी प्रतिभा के धनी होते हैं। ये तेज़ी से नई चीज़ें सीखते हैं।", 
+               "nature": "मिथुन राशि वाले अत्यधिक बुद्धिमान, बातूनी और बहुमुखी प्रतिभा के धनवान होते हैं। ये तेज़ी से नई चीज़ें सीखते हैं।", 
                "shiv": "बुध को शिव जी का आशीर्वाद प्राप्त है। इन जातकों को शिव आराधना से मानसिक एकाग्रता और व्यापार में वृद्धि मिलती है।"},
     "cancer": {"lord": "चंद्र देव (Moon)", "element": "जल (Water)", "mantra": "श्रीं (Shreem)", "gem": "मोती (Pearl)", "rudraksha": "2 मुखी", 
                "nature": "कर्क राशि के लोग बहुत भावुक, परिवार को चाहने वाले और दूसरों की परवाह करने वाले होते हैं।", 
@@ -28,7 +29,7 @@ rashi_details = {
                "shiv": "तुला राशि वालों को शिव-पार्वती (अर्धनारीश्वर स्वरूप) की पूजा से वैवाहिक जीवन और साझेदारी में अपार सुख मिलता है।"},
     "scorpio": {"lord": "मंगल देव (Mars)", "element": "जल (Water)", "mantra": "रां (Ram)", "gem": "लाल मूंगा (Red Coral)", "rudraksha": "3 मुखी", 
                "nature": "वृश्चिक राशि वाले अत्यंत रहस्यमयी, जुनूनी और गहरी सोच वाले होते हैं। ये जो ठान लें, वो करते हैं।", 
-               "shiv": "महादेव के भैरव और रुद्रावतार की पूजा वृश्चिक राशि वालों के गुप्त शत्रुओं का नाश करती है और साहस बढ़ाती है।"},
+               "shiv": "महादेव के भैरव और रुद्रावतार की पूजा वृश्चिक राशि वालों के गुप्त शत्रुओं का नाश करती है और साहस बढ़ाती है।"},
     "sagittarius": {"lord": "बृहस्पति देव (Jupiter)", "element": "अग्नि (Fire)", "mantra": "ह्रीं (Hreem)", "gem": "पीला पुखराज (Yellow Sapphire)", "rudraksha": "5 मुखी", 
                "nature": "धनु राशि के लोग आशावादी, दार्शनिक और ज्ञान की खोज करने वाले होते हैं। इन्हें स्वतंत्रता पसंद है।", 
                "shiv": "गुरु बृहस्पति शिव के आराधक हैं। धनु राशि वालों द्वारा शिवलिंग पर पीले पुष्प अर्पित करने से भाग्य उदय होता है।"},
@@ -76,12 +77,17 @@ template = """<!DOCTYPE html>
     <div class="horo-card">
         <h1 id="rashi-title" class="rashi-title">Loading...</h1>
         <p id="todayDate" class="date-line"></p>
+        
         <div class="grid-container">
             <div class="info-box"><h3 data-key="horo_career">Career</h3><p id="h-career">Fetching...</p></div>
             <div class="info-box"><h3 data-key="horo_love">Love</h3><p id="h-love">Fetching...</p></div>
             <div class="info-box"><h3 data-key="horo_health">Health</h3><p id="h-health">Fetching...</p></div>
-            <div class="info-box"><h3 data-key="tip_title">Divine Tip</h3><p id="h-tip">Fetching...</p></div>
+            <div class="info-box"><h3 data-key="horo_remedy">Vedic Remedy</h3><p id="h-remedy">Fetching...</p></div>
+            <div class="info-box" style="grid-column: 1 / -1; border-left-color: #00ff88;">
+                <h3 data-key="expert_note">Expert Note</h3><p id="h-expert">Fetching...</p>
+            </div>
         </div>
+        
         <div class="lucky-strip">
             <span>Color: <b id="h-color">-</b></span>
             <span>Number: <b id="h-number">-</b></span>
@@ -156,4 +162,4 @@ for r in rashis:
             shiv=details['shiv']
         ))
 
-print("🔱 12 SEO & AdSense Optimized Pages Generated Successfully!")
+print("🔱 12 Sunday-Optimized Pages Generated Successfully!")
