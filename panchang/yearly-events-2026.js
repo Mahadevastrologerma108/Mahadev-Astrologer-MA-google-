@@ -58,14 +58,19 @@ window.YEARLY_EVENTS_2026 = {
     "2026-03-29": { en: "Kamada Ekadashi Fast", hi: "कामदा एकादशी व्रत", desc_en: "First Ekadashi of the Hindu year.", desc_hi: "रवि-कामदा एकादशी व्रत" },
     "2026-03-31": { en: "Mahavir Jayanti", hi: "महावीर जयंती-जैन", desc_en: "Important day for Jain community.", desc_hi: "मंगल-रेवती के सूर्य, महावीर जयंती-जैन" },
 
-    // --- APRIL ---
-    "2026-04-02": { en: "Hanuman Jayanti, Chaitra Purnima", hi: "चैत्र पूर्णिमा, हनुमान प्राकट्योत्सव", desc_en: "Birth of Lord Hanuman.", desc_hi: "गुरु-स्नान-दान की चैत्र पूर्णिमा, हनुमान प्राकट्योत्सव" },
-    "2026-04-05": { en: "Sankashti Ganesh Chaturthi Fast", hi: "संकष्टी गणेश चतुर्थी व्रत", desc_en: "Ganesh worship.", desc_hi: "रवि-संकष्टी गणेश चतुर्थी व्रत" },
-    "2026-04-13": { en: "Varuthini Ekadashi, Vallabhacharya Jayanti", hi: "वरूथिनी एकादशी व्रत, वल्लभाचार्य जयंती", desc_en: "Ekadashi for good luck.", desc_hi: "सोम-वरूथिनी एकादशी व्रत, श्रीवल्लभाचार्य जयंती" },
-    "2026-04-14": { en: "Makar Sankranti, Baisakhi, Ambedkar Jayanti", hi: "मेष संक्रांति, वैशाखी, अम्बेडकर जयंती", desc_en: "Solar New Year and Kharmas ends.", desc_hi: "मंगल-मेष संक्रांति, खरमास समाप्त, वैशाखी पर्व, अम्बेडकर जयंती" },
-    "2026-04-19": { en: "Parshuram Jayanti", hi: "परशुराम जयंती", desc_en: "Birth of 6th incarnation of Vishnu.", desc_hi: "रवि-परशुराम जयंती" },
-    "2026-04-20": { en: "Akshaya Tritiya Fast", hi: "अक्षय तृतीया व्रत", desc_en: "Auspicious day for buying gold and starting new things.", desc_hi: "सोम-अक्षय तृतीया व्रत" },
-    "2026-04-25": { en: "Sita Navami Fast", hi: "सीता नवमी व्रत, जानकीजी प्राक.", desc_en: "Birth anniversary of Mata Sita.", desc_hi: "शनि-सीता नवमी व्रत, श्रीजानकीजी प्राकट्योत्सव" },
+    // --- APRIL 2026 ---
+    "2026-04-01": { en: "Chaitra Purnima Vrat", hi: "चैत्र पूर्णिमा व्रत", desc_en: "Fasting day for Chaitra Purnima.", desc_hi: "चैत्र मास की पूर्णिमा का व्रत।" },
+    "2026-04-02": { en: "Hanuman Jayanti, Chaitra Purnima", hi: "चैत्र पूर्णिमा, हनुमान प्राकट्योत्सव", desc_en: "Birth of Lord Hanuman.", desc_hi: "गुरु-स्नान-दान की चैत्र पूर्णिमा, हनुमान प्राकट्योत्सव।" },
+    "2026-04-03": { en: "Good Friday", hi: "गुड फ्राइडे", desc_en: "Christian holiday commemorating the crucifixion of Jesus Christ.", desc_hi: "ईसाई धर्म का प्रमुख पर्व।" },
+    "2026-04-05": { en: "Sankashti Ganesh Chaturthi Fast", hi: "संकष्टी गणेश चतुर्थी व्रत", desc_en: "Ganesh worship.", desc_hi: "रवि-संकष्टी गणेश चतुर्थी व्रत।" },
+    "2026-04-13": { en: "Varuthini Ekadashi, Vallabhacharya Jayanti", hi: "वरूथिनी एकादशी व्रत, वल्लभाचार्य जयंती", desc_en: "Ekadashi for good luck.", desc_hi: "सोम-वरूथिनी एकादशी व्रत, श्रीवल्लभाचार्य जयंती।" },
+    "2026-04-14": { en: "Mesha Sankranti, Baisakhi, Ambedkar Jayanti", hi: "मेष संक्रांति, वैशाखी, अम्बेडकर जयंती", desc_en: "Solar New Year and Kharmas ends.", desc_hi: "मंगल-मेष संक्रांति, खरमास समाप्त, वैशाखी पर्व, अम्बेडकर जयंती।" },
+    "2026-04-15": { en: "Pradosh Vrat (Krishna)", hi: "प्रदोष व्रत (कृष्ण)", desc_en: "Auspicious fasting day dedicated to Lord Shiva.", desc_hi: "भगवान शिव की कृपा प्राप्ति हेतु प्रदोष व्रत।" },
+    "2026-04-17": { en: "Vaishakha Amavasya", hi: "वैशाख अमावस्या", desc_en: "New moon day of Vaishakha month, auspicious for ancestral rituals.", desc_hi: "वैशाख मास की अमावस्या, पितृ तर्पण एवं स्नान-दान हेतु शुभ।" },
+    "2026-04-19": { en: "Parshuram Jayanti", hi: "परशुराम जयंती", desc_en: "Birth of 6th incarnation of Vishnu.", desc_hi: "रवि-परशुराम जयंती, भगवान विष्णु के छठे अवतार का प्राकट्य।" },
+    "2026-04-20": { en: "Akshaya Tritiya Fast, Rohini Vrat", hi: "अक्षय तृतीया व्रत, रोहिणी व्रत", desc_en: "Auspicious day for buying gold and starting new things.", desc_hi: "सोम-अक्षय तृतीया व्रत एवं रोहिणी व्रत।" },
+    "2026-04-25": { en: "Sita Navami Fast", hi: "सीता नवमी व्रत, जानकीजी प्राक.", desc_en: "Birth anniversary of Mata Sita.", desc_hi: "शनि-सीता नवमी व्रत, श्रीजानकीजी प्राकट्योत्सव।" },
+    "2026-04-27": { en: "Mohini Ekadashi", hi: "मोहिनी एकादशी", desc_en: "Fasting day dedicated to the Mohini avatar of Lord Vishnu.", desc_hi: "भगवान विष्णु के मोहिनी अवतार की पूजा और एकादशी व्रत।" }
 
     // --- MAY ---
     "2026-05-01": { en: "Buddha Purnima, Labour Day", hi: "बुद्ध जयंती, श्रमिक दिवस", desc_en: "Lord Buddha's birth and enlightenment.", desc_hi: "शुक्र-बुद्ध जयंती, श्रमिक दिवस" },
