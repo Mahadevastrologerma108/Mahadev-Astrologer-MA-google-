@@ -55,6 +55,12 @@
             border-radius: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); 
         }
          </style>
+    <script>
+  if (window.location.search.indexOf('m=1') > -1) {
+    var clean_url = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    window.history.replaceState({}, document.title, clean_url);
+  }
+</script>
 </head>
 <body>
 
