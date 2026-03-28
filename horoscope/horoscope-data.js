@@ -1,18 +1,23 @@
 window.dailyHoroscope = {
   aries: {
+    meta: {
+      planetaryPosition: "शुक्र का गोचर और मंगल का प्रभाव",
+      predictionPower: "95%",
+      expertNote: "आज का दिन रचनात्मक ऊर्जा से भरपूर है।"
+    },
     career: {
-      hi: "आज शुक्रवार के दिन शुक्र देव के प्रभाव से आपके रचनात्मक कार्यों (Creative fields) में अप्रत्याशित उन्नति मिलेगी। यदि आप कला, मीडिया या सौंदर्य प्रसाधन के व्यापार से जुड़े हैं, तो आज का दिन विशेष आर्थिक लाभ प्रदान करेगा।",
-      en: "Today, on Friday, under the influence of Lord Venus, you will get unexpected progress in your creative fields. If you are associated with the business of art, media, or cosmetics, today will provide special financial benefits."
+      hi: "आज शुक्रवार के दिन शुक्र देव के शुभ प्रभाव से आपके रचनात्मक कार्यों (Creative fields) में अप्रत्याशित उन्नति मिलेगी। यदि आप कला, मीडिया या सौंदर्य प्रसाधन के व्यापार से जुड़े हैं, तो आज का दिन विशेष आर्थिक लाभ प्रदान करेगा।",
+      en: "Today, under the auspicious influence of Lord Venus, you will get unexpected progress in your creative fields. If you are associated with the business of art, media, or cosmetics, today will provide special financial benefits."
     },
     love: {
       hi: "दांपत्य जीवन में माधुर्य की वृद्धि होगी। अपने जीवनसाथी को कोई उपहार भेंट करने से आपके संबंधों में प्रगाढ़ता आएगी और पूर्व के सभी वैचारिक मतभेद समाप्त होंगे।",
       en: "Sweetness will increase in married life. Presenting a gift to your spouse will bring intensity to your relations and all previous ideological differences will end."
     },
     health: {
-      hi: "आज नेत्रों और सिर के पिछले भाग में पीड़ा का अनुभव हो सकता है। डिजिटल उपकरणों (Screens) से कुछ समय का विश्राम लें और प्रातः काल नंगे पैर हरी घास पर चलें।",
-      en: "Today you may experience pain in the eyes and the back of the head. Take a break from digital screens for some time and walk barefoot on green grass in the morning."
+      hi: "ग्रहों की स्थिति के कारण आज नेत्रों और सिर के पिछले भाग में पीड़ा का अनुभव हो सकता है। डिजिटल उपकरणों (Screens) से कुछ समय का विश्राम लें और प्रातः काल नंगे पैर हरी घास पर चलें।",
+      en: "Due to planetary positions, you may experience pain in the eyes and the back of the head today. Take a break from digital screens for some time and walk barefoot on green grass."
     },
-    tip: {
+    remedy: {
       hi: "माता लक्ष्मी के मंदिर में लाल पुष्प और सुहाग की सामग्री अर्पित करें।",
       en: "Offer red flowers and marital auspicious items (Suhag Samagri) in the temple of Goddess Lakshmi."
     },
@@ -23,19 +28,24 @@ window.dailyHoroscope = {
   },
 
   taurus: {
+    meta: {
+      planetaryPosition: "राशि स्वामी शुक्र का धन भाव पर प्रभाव",
+      predictionPower: "92%",
+      expertNote: "धन संचय और व्यावसायिक विस्तार के लिए उत्तम समय।"
+    },
     career: {
       hi: "आपकी राशि के स्वामी शुक्र आज धन संचय (Wealth accumulation) के नए मार्ग प्रशस्त करेंगे। वस्त्र उद्योग, आभूषण और विलासिता (Luxury) के साधनों का व्यापार करने वाले जातकों को आज कोई बड़ा अनुबंध (Contract) प्राप्त हो सकता है।",
       en: "Your zodiac lord Venus will pave new ways for wealth accumulation today. Natives trading in the textile industry, jewelry, and luxury items may receive a big contract today."
     },
     love: {
       hi: "परिवार की महिलाओं (माता, बहन या पत्नी) के सहयोग से आपका कोई रुका हुआ कार्य पूर्ण होगा। प्रेम प्रसंगों में मर्यादा और सत्यनिष्ठा बनाए रखना आपके यश को बढ़ाएगा।",
-      en: "With the cooperation of women in the family (mother, sister, or wife), any of your stalled work will be completed. Maintaining dignity and integrity in love affairs will increase your fame."
+      en: "With the cooperation of women in the family, any of your stalled work will be completed. Maintaining dignity and integrity in love affairs will increase your fame."
     },
     health: {
       hi: "मुख और कंठ (Throat) के स्वास्थ्य के प्रति सचेत रहें। ठंडे और खट्टे पदार्थों के सेवन से बचें। गुनगुने जल में सेंधा नमक डालकर गरारे करना लाभकारी सिद्ध होगा।",
       en: "Be conscious of the health of your mouth and throat. Avoid consuming cold and sour substances. Gargling with lukewarm water and rock salt will prove beneficial."
     },
-    tip: {
+    remedy: {
       hi: "कन्याओं को श्वेत मिष्ठान (सफेद मिठाई) का दान करें और उनका आशीर्वाद लें।",
       en: "Donate white sweets to young girls and take their blessings."
     },
@@ -46,9 +56,14 @@ window.dailyHoroscope = {
   },
 
   gemini: {
+    meta: {
+      planetaryPosition: "बुध ग्रह की प्रबलता और बौद्धिक विकास",
+      predictionPower: "88%",
+      expertNote: "तार्किक निर्णयों से सफलता सुनिश्चित होगी।"
+    },
     career: {
-      hi: "आज आपकी बौद्धिक क्षमता और तार्किक शक्ति चरम पर होगी। वाणिज्य (Commerce) और बैंकिंग क्षेत्र से जुड़े जातकों को वरिष्ठ अधिकारियों से विशेष प्रशंसा प्राप्त होगी। कोई भी नया निवेश सोच-समझकर ही करें।",
-      en: "Today your intellectual capacity and logical reasoning will be at their peak. Natives associated with commerce and banking sectors will receive special praise from senior officials. Make any new investment thoughtfully."
+      hi: "आज बुध की प्रबलता से आपकी बौद्धिक क्षमता और तार्किक शक्ति चरम पर होगी। वाणिज्य (Commerce) और बैंकिंग क्षेत्र से जुड़े जातकों को वरिष्ठ अधिकारियों से विशेष प्रशंसा प्राप्त होगी। कोई भी नया निवेश सोच-समझकर ही करें।",
+      en: "Today, due to the strength of Mercury, your intellectual capacity and logical reasoning will be at their peak. Natives associated with commerce and banking will receive special praise. Make new investments thoughtfully."
     },
     love: {
       hi: "मित्रों और प्रियजनों के साथ संवाद में स्पष्टता रखें। आज किसी पुराने मित्र से भेंट आपके मन को प्रसन्नता से भर देगी। पारिवारिक आयोजनों में आपकी भागीदारी महत्वपूर्ण रहेगी।",
@@ -58,7 +73,7 @@ window.dailyHoroscope = {
       hi: "त्वचा (Skin) और स्नायु तंत्र (Nervous system) से संबंधित समस्याएं उत्पन्न हो सकती हैं। पर्याप्त मात्रा में जल ग्रहण करें और प्राणायाम को अपनी दिनचर्या का अनिवार्य हिस्सा बनाएं।",
       en: "Problems related to the skin and nervous system may arise. Consume an adequate amount of water and make Pranayama an essential part of your daily routine."
     },
-    tip: {
+    remedy: {
       hi: "गौ माता को हरा चारा और थोड़ा सा गुड़ खिलाएं।",
       en: "Feed green fodder and a little jaggery to the mother cow."
     },
@@ -69,9 +84,14 @@ window.dailyHoroscope = {
   },
 
   cancer: {
+    meta: {
+      planetaryPosition: "चंद्रमा का शुभ गोचर",
+      predictionPower: "90%",
+      expertNote: "मानसिक शांति और नवीन योजनाओं के लिए शुभ दिवस।"
+    },
     career: {
-      hi: "आज आपके कार्यक्षेत्र में सहकर्मियों का पूर्ण सहयोग प्राप्त होगा। यदि आप किसी नए व्यावसायिक प्रतिष्ठान (Business setup) के शुभारंभ की योजना बना रहे हैं, तो आज का दिन रूपरेखा तैयार करने के लिए अत्यंत शुभ है।",
-      en: "Today you will get full cooperation from colleagues in your workplace. If you are planning to launch a new business setup, today is highly auspicious for preparing the outline."
+      hi: "चंद्रमा के शुभ प्रभाव से आज आपके कार्यक्षेत्र में सहकर्मियों का पूर्ण सहयोग प्राप्त होगा। यदि आप किसी नए व्यावसायिक प्रतिष्ठान (Business setup) के शुभारंभ की योजना बना रहे हैं, तो आज का दिन रूपरेखा तैयार करने के लिए अत्यंत शुभ है।",
+      en: "Due to the auspicious influence of the Moon, you will get full cooperation from colleagues today. If you are planning to launch a new business setup, today is highly auspicious."
     },
     love: {
       hi: "माता के स्वास्थ्य में सुधार होगा जिससे मानसिक शांति मिलेगी। दांपत्य जीवन में एक-दूसरे की भावनाओं का सम्मान करने से घर का वातावरण अत्यंत सात्विक और सुखमय बना रहेगा।",
@@ -79,9 +99,9 @@ window.dailyHoroscope = {
     },
     health: {
       hi: "कफ प्रकृति की अधिकता के कारण छाती में भारीपन अनुभव हो सकता है। शीतल वायु से स्वयं को बचाएं और आहार में तुलसी तथा अदरक का प्रयोग नियमित रूप से करें।",
-      en: "Due to an excess of phlegm nature, heaviness in the chest may be experienced. Protect yourself from cold winds and use basil and ginger regularly in your diet."
+      en: "Due to an excess of phlegm nature, heaviness in the chest may be experienced. Protect yourself from cold winds and use basil and ginger regularly."
     },
-    tip: {
+    remedy: {
       hi: "शिवलिंग पर कच्चा दूध और अक्षत अर्पित कर 'ॐ नमः शिवाय' का जाप करें।",
       en: "Offer raw milk and unbroken rice on the Shivling and chant 'Om Namah Shivaya'."
     },
@@ -92,19 +112,24 @@ window.dailyHoroscope = {
   },
 
   leo: {
+    meta: {
+      planetaryPosition: "सूर्य का प्रशासनिक प्रभाव",
+      predictionPower: "85%",
+      expertNote: "धैर्य और नेतृत्व क्षमता की परीक्षा का दिन।"
+    },
     career: {
-      hi: "राजकीय (Government) और प्रशासनिक कार्यों में आज विलंब का सामना करना पड़ सकता है। धैर्य बनाए रखें, क्योंकि आपकी नेतृत्व क्षमता ही अंततः आपको सफलता के शिखर तक ले जाएगी।",
-      en: "You may face delays in government and administrative work today. Maintain patience, as your leadership ability will ultimately take you to the pinnacle of success."
+      hi: "सूर्य की स्थिति के कारण राजकीय (Government) और प्रशासनिक कार्यों में आज विलंब का सामना करना पड़ सकता है। धैर्य बनाए रखें, क्योंकि आपकी नेतृत्व क्षमता ही अंततः आपको सफलता के शिखर तक ले जाएगी।",
+      en: "Due to the Sun's position, you may face delays in government and administrative work today. Maintain patience, as your leadership ability will ultimately bring success."
     },
     love: {
       hi: "अहंकार (Ego) को पारिवारिक संबंधों के मध्य न आने दें। जीवनसाथी के परामर्श से लिया गया कोई भी निर्णय आज आपके लिए लाभकारी और मंगलकारी सिद्ध होगा।",
-      en: "Do not let ego come in the middle of family relations. Any decision taken in consultation with your spouse will prove to be beneficial and auspicious for you today."
+      en: "Do not let ego come in the middle of family relations. Any decision taken in consultation with your spouse will prove to be beneficial and auspicious today."
     },
     health: {
       hi: "रक्तचाप (Blood Pressure) और हृदय से संबंधित रोग उभर सकते हैं। क्रोध और मानसिक तनाव से सर्वथा दूर रहें। प्रातःकाल सूर्य देव के दर्शन कर ध्यान अवश्य करें।",
-      en: "Blood pressure and heart-related diseases may emerge. Stay completely away from anger and mental stress. Be sure to meditate after seeing the Sun God in the morning."
+      en: "Blood pressure and heart-related diseases may emerge. Stay completely away from anger and mental stress. Be sure to meditate after seeing the Sun God."
     },
-    tip: {
+    remedy: {
       hi: "प्रातः स्नान के पश्चात तांबे के पात्र से सूर्य देव को अर्घ्य प्रदान करें।",
       en: "After the morning bath, offer Arghya to the Sun God from a copper vessel."
     },
@@ -115,9 +140,14 @@ window.dailyHoroscope = {
   },
 
   virgo: {
+    meta: {
+      planetaryPosition: "बुध का व्यापारिक और विश्लेषणात्मक गोचर",
+      predictionPower: "89%",
+      expertNote: "वित्तीय प्रबंधन और सटीक गणनाओं से लाभ।"
+    },
     career: {
-      hi: "व्यवसाय में आज आर्थिक प्रबंधन (Financial planning) पर विशेष ध्यान देने की आवश्यकता है। लेखा-जोखा (Accounting) और वकालत से जुड़े जातकों के लिए आज का दिन विशेष उपलब्धियों से भरा रहेगा।",
-      en: "There is a need to pay special attention to financial planning in business today. For natives associated with accounting and advocacy, today will be full of special achievements."
+      hi: "बुध के गोचर से व्यवसाय में आज आर्थिक प्रबंधन (Financial planning) पर विशेष ध्यान देने की आवश्यकता है। लेखा-जोखा (Accounting) और वकालत से जुड़े जातकों के लिए आज का दिन विशेष उपलब्धियों से भरा रहेगा।",
+      en: "Due to Mercury's transit, special attention is required on financial planning in business today. For natives associated with accounting and advocacy, today will bring special achievements."
     },
     love: {
       hi: "अपने प्रियजनों की आलोचना (Criticism) करने से बचें। मधुर वाणी और सहयोगात्मक दृष्टिकोण आपके पारिवारिक जीवन में नई ऊर्जा और प्रसन्नता का संचार करेगा।",
@@ -125,9 +155,9 @@ window.dailyHoroscope = {
     },
     health: {
       hi: "पाचन तंत्र (Digestive system) संवेदनशील रह सकता है। सुपाच्य और सात्विक भोजन ही ग्रहण करें। रात्रि के समय भारी भोजन से पूर्णतः परहेज करना आपके लिए उत्तम रहेगा।",
-      en: "The digestive system may remain sensitive. Consume only easily digestible and pure food. It would be best for you to completely avoid heavy meals at night."
+      en: "The digestive system may remain sensitive. Consume only easily digestible and pure food. It would be best to completely avoid heavy meals at night."
     },
-    tip: {
+    remedy: {
       hi: "श्री गणेश जी की स्तुति करें और उन्हें दूर्वा (हरी घास) अर्पित करें।",
       en: "Praise Lord Ganesha and offer him Durva (green grass)."
     },
@@ -138,9 +168,14 @@ window.dailyHoroscope = {
   },
 
   libra: {
+    meta: {
+      planetaryPosition: "शुक्र का साझेदारी भाव पर शुभ प्रभाव",
+      predictionPower: "94%",
+      expertNote: "संबंधों और व्यापारिक समझौतों के लिए उत्कृष्ट समय।"
+    },
     career: {
       hi: "आज शुक्र के प्रभाव से साझेदारी (Partnership) के व्यापार में उत्कृष्ट लाभ के योग निर्मित हो रहे हैं। यदि आप कोई नवीन व्यावसायिक समझौता (Agreement) करना चाहते हैं, तो आज का दिन अनुकूल है।",
-      en: "Today, under the influence of Venus, excellent profit yogas are being formed in partnership businesses. If you want to make a new business agreement, today is favorable."
+      en: "Today, under the influence of Venus, excellent profit yogas are forming in partnership businesses. If you want to make a new business agreement, today is favorable."
     },
     love: {
       hi: "आपका आकर्षण और शिष्टाचार आज सामाजिक आयोजनों में आपको केंद्र बिंदु बनाएगा। जीवनसाथी के साथ किसी सुरम्य स्थल की यात्रा की योजना बन सकती है।",
@@ -150,7 +185,7 @@ window.dailyHoroscope = {
       hi: "मूत्राशय (Urinary tract) और गुर्दों (Kidneys) के स्वास्थ्य को लेकर सजग रहें। तरल पदार्थों का सेवन बढ़ाएं और स्वच्छता का विशेष ध्यान रखें।",
       en: "Be vigilant about the health of your urinary tract and kidneys. Increase the intake of fluids and pay special attention to hygiene."
     },
-    tip: {
+    remedy: {
       hi: "किसी सुहागिन महिला को सौंदर्य सामग्री या इत्र (Perfume) भेंट करें।",
       en: "Gift cosmetics or perfume to a married woman."
     },
@@ -161,19 +196,24 @@ window.dailyHoroscope = {
   },
 
   scorpio: {
+    meta: {
+      planetaryPosition: "मंगल की ऊर्जा और अष्टम भाव का प्रभाव",
+      predictionPower: "87%",
+      expertNote: "गोपनीयता और अनुसंधान में सफलता प्राप्त होगी।"
+    },
     career: {
-      hi: "कार्यस्थल पर आज आपके गुप्त शत्रु सक्रिय हो सकते हैं, इसलिए अपनी योजनाओं को गोपनीय रखें। अनुसंधान (Research) और चिकित्सा क्षेत्र से जुड़े जातकों को आज अपने कार्य में अभूतपूर्व सफलता मिलेगी।",
-      en: "Your hidden enemies may become active at the workplace today, so keep your plans confidential. Natives associated with research and the medical field will get unprecedented success in their work today."
+      hi: "मंगल की दृष्टि से कार्यस्थल पर आज आपके गुप्त शत्रु सक्रिय हो सकते हैं, इसलिए अपनी योजनाओं को गोपनीय रखें। अनुसंधान (Research) और चिकित्सा क्षेत्र से जुड़े जातकों को आज अपने कार्य में अभूतपूर्व सफलता मिलेगी।",
+      en: "Due to Mars's aspect, hidden enemies may become active at the workplace, so keep your plans confidential. Natives in research and medical fields will get unprecedented success."
     },
     love: {
       hi: "पारिवारिक मामलों में आज मौन धारण करना ही बुद्धिमानी होगी। व्यर्थ के विवादों से स्वयं को दूर रखें और अपने साथी की मानसिक स्थिति को समझने का प्रयास करें।",
-      en: "It would be wise to remain silent in family matters today. Keep yourself away from useless disputes and try to understand the mental state of your partner."
+      en: "It would be wise to remain silent in family matters today. Keep away from useless disputes and try to understand the mental state of your partner."
     },
     health: {
       hi: "रक्त संबंधी विकार या किसी प्रकार के संक्रमण (Infection) की आशंका है। बाहर के खान-पान का पूर्णतः त्याग करें और अपनी रोग प्रतिरोधक क्षमता (Immunity) बढ़ाने पर ध्यान केंद्रित करें।",
-      en: "There is an apprehension of blood-related disorders or some kind of infection. Completely give up outside food and focus on increasing your immunity."
+      en: "There is an apprehension of blood-related disorders or infection. Completely give up outside food and focus on increasing your immunity."
     },
-    tip: {
+    remedy: {
       hi: "श्री बजरंग बाण का श्रद्धापूर्वक पाठ करें।",
       en: "Recite Shri Bajrang Baan with devotion."
     },
@@ -184,19 +224,24 @@ window.dailyHoroscope = {
   },
 
   sagittarius: {
+    meta: {
+      planetaryPosition: "बृहस्पति (गुरु) का विद्या और लाभ भाव पर गोचर",
+      predictionPower: "96%",
+      expertNote: "ज्ञान वृद्धि और निवेश के लिए भाग्यशाली दिन।"
+    },
     career: {
-      hi: "विद्यार्थियों और उच्च शिक्षा प्राप्त कर रहे जातकों के लिए आज का दिन अत्यंत शुभ फलदायी है। शेयर बाजार (Share Market) या सट्टेबाजी में निवेश करने से पूर्व किसी विशेषज्ञ का परामर्श अवश्य लें।",
-      en: "Today is highly auspicious and fruitful for students and natives pursuing higher education. Be sure to consult an expert before investing in the stock market or speculation."
+      hi: "गुरु की कृपा से विद्यार्थियों और उच्च शिक्षा प्राप्त कर रहे जातकों के लिए आज का दिन अत्यंत शुभ फलदायी है। शेयर बाजार (Share Market) या सट्टेबाजी में निवेश करने से पूर्व किसी विशेषज्ञ का परामर्श अवश्य लें।",
+      en: "By the grace of Jupiter, today is highly auspicious for students and those pursuing higher education. Consult an expert before investing in the stock market."
     },
     love: {
       hi: "संतान पक्ष से कोई अत्यंत शुभ समाचार प्राप्त होगा जिससे मन में हर्षोल्लास रहेगा। दांपत्य जीवन में आध्यात्मिक विचारों का आदान-प्रदान आपके संबंधों को एक नई दिशा प्रदान करेगा।",
-      en: "Very auspicious news will be received from the children's side, which will bring joy to the mind. The exchange of spiritual thoughts in married life will provide a new direction to your relations."
+      en: "Very auspicious news will be received from the children's side, bringing joy. The exchange of spiritual thoughts in married life will provide a new direction to your relations."
     },
     health: {
       hi: "यकृत (Liver) और उदर क्षेत्र में खिंचाव या पीड़ा हो सकती है। गरिष्ठ (भारी) और वसायुक्त भोजन का सर्वथा त्याग करें। योग में मकरासन का अभ्यास लाभकारी रहेगा।",
-      en: "There may be stretching or pain in the liver and abdominal region. Completely give up heavy and fatty food. The practice of Makarasana in Yoga will be beneficial."
+      en: "There may be stretching or pain in the liver and abdominal region. Completely give up heavy and fatty food. The practice of Makarasana will be beneficial."
     },
-    tip: {
+    remedy: {
       hi: "श्री विष्णु मंदिर में पीले पुष्पों की माला और पीली मिठाई अर्पित करें।",
       en: "Offer a garland of yellow flowers and yellow sweets in a Lord Vishnu temple."
     },
@@ -207,19 +252,24 @@ window.dailyHoroscope = {
   },
 
   capricorn: {
+    meta: {
+      planetaryPosition: "शनि का कर्म भाव पर कड़ा अनुशासन",
+      predictionPower: "86%",
+      expertNote: "कठोर परिश्रम और अनुशासन से ही सिद्धि मिलेगी।"
+    },
     career: {
-      hi: "आज कार्यक्षेत्र में अधिक परिश्रम और अनुशासन की आवश्यकता है। भवन निर्माण (Real Estate) और लौह उद्योग से जुड़े व्यापारियों को कुछ चुनौतियों का सामना करना पड़ सकता है, धैर्य न खोएं।",
-      en: "More hard work and discipline are required in the workplace today. Businessmen associated with real estate and the iron industry may have to face some challenges; do not lose patience."
+      hi: "शनि के प्रभाव से आज कार्यक्षेत्र में अधिक परिश्रम और अनुशासन की आवश्यकता है। भवन निर्माण (Real Estate) और लौह उद्योग से जुड़े व्यापारियों को कुछ चुनौतियों का सामना करना पड़ सकता है, धैर्य न खोएं।",
+      en: "Due to Saturn's influence, more hard work and discipline are required in the workplace. Businessmen associated with real estate and the iron industry may face challenges; do not lose patience."
     },
     love: {
       hi: "माता-पिता के स्वास्थ्य का विशेष ध्यान रखें। पारिवारिक संपत्ति से जुड़े मामलों में आज कोई भी बड़ा निर्णय लेने से बचें, अन्यथा विवाद उत्पन्न हो सकता है।",
-      en: "Take special care of the health of your parents. Avoid making any major decisions in matters related to family property today, otherwise a dispute may arise."
+      en: "Take special care of the health of your parents. Avoid making any major decisions in matters related to family property today to prevent disputes."
     },
     health: {
       hi: "घुटनों और अस्थियों (Bones) में दर्द की शिकायत बढ़ सकती है। ठंडे वातावरण से बचें और शरीर में कैल्शियम की आपूर्ति हेतु उचित आहार का सेवन करें।",
-      en: "Complaints of pain in knees and bones may increase. Avoid cold environments and consume an appropriate diet to supply calcium to the body."
+      en: "Complaints of pain in knees and bones may increase. Avoid cold environments and consume an appropriate diet to supply calcium."
     },
-    tip: {
+    remedy: {
       hi: "शनिदेव के समक्ष सरसों के तेल का दीपक प्रज्वलित करें और 'ॐ शं शनैश्चराय नमः' का जाप करें।",
       en: "Light a mustard oil lamp in front of Shani Dev and chant 'Om Sham Shanaishcharaya Namah'."
     },
@@ -230,19 +280,24 @@ window.dailyHoroscope = {
   },
 
   aquarius: {
+    meta: {
+      planetaryPosition: "शनि की स्थिरता और संचार भाव की ऊर्जा",
+      predictionPower: "91%",
+      expertNote: "नेटवर्किंग और प्रौद्योगिकी से जुड़े कार्यों में विशेष लाभ।"
+    },
     career: {
       hi: "आज आपके पराक्रम और संचार कौशल (Communication Skills) में वृद्धि होगी। सूचना प्रौद्योगिकी (IT) और मीडिया से जुड़े जातकों के लिए आज सफलता के नए द्वार खुलेंगे।",
       en: "Today your valor and communication skills will increase. New doors of success will open today for natives associated with IT and media."
     },
     love: {
       hi: "छोटे भाई-बहनों के साथ संबंध मधुर होंगे और उनका सहयोग आपको बल प्रदान करेगा। किसी लघु यात्रा (Short trip) पर जाने का अवसर प्राप्त होगा जो मानसिक रूप से तरोताजा कर देगा।",
-      en: "Relations with younger siblings will be sweet, and their cooperation will give you strength. You will get an opportunity to go on a short trip which will mentally refresh you."
+      en: "Relations with younger siblings will be sweet, and their cooperation will give you strength. You will get an opportunity for a short trip which will mentally refresh you."
     },
     health: {
       hi: "कंधों और गर्दन में सर्वाइकल की समस्या उभर सकती है। कंप्यूटर पर कार्य करते समय अपनी मुद्रा (Posture) का ध्यान रखें और बीच-बीच में व्यायाम करें।",
       en: "Cervical problems may emerge in the shoulders and neck. Take care of your posture while working on the computer and exercise in between."
     },
-    tip: {
+    remedy: {
       hi: "चींटियों को आटा और शक्कर मिलाकर खिलाएं।",
       en: "Mix flour and sugar and feed it to the ants."
     },
@@ -253,19 +308,24 @@ window.dailyHoroscope = {
   },
 
   pisces: {
+    meta: {
+      planetaryPosition: "बृहस्पति (गुरु) का धन भाव पर शुभ प्रभाव",
+      predictionPower: "95%",
+      expertNote: "आर्थिक संपन्नता और पारिवारिक हर्षोल्लास का योग।"
+    },
     career: {
-      hi: "आज आपकी आर्थिक स्थिति अत्यंत सुदृढ़ होगी। पैतृक व्यापार को आगे बढ़ाने के लिए आज का दिन श्रेष्ठ है। विदेशी संपर्कों (Foreign contacts) से भी धन लाभ के प्रबल योग निर्मित हो रहे हैं।",
-      en: "Your financial position will be very strong today. Today is an excellent day to take forward the ancestral business. Strong yogas of financial gain are also being formed from foreign contacts."
+      hi: "गुरु के शुभ गोचर से आज आपकी आर्थिक स्थिति अत्यंत सुदृढ़ होगी। पैतृक व्यापार को आगे बढ़ाने के लिए आज का दिन श्रेष्ठ है। विदेशी संपर्कों (Foreign contacts) से भी धन लाभ के प्रबल योग निर्मित हो रहे हैं।",
+      en: "Due to the auspicious transit of Jupiter, your financial position will be very strong today. It is an excellent day for ancestral business. Strong yogas of financial gain are forming from foreign contacts."
     },
     love: {
       hi: "कुटुंब (Extended Family) में कोई मांगलिक कार्य संपन्न हो सकता है। आपकी मधुर वाणी और सौम्य व्यवहार आज परिवार में सभी का मन मोह लेगा और संबंधों को प्रगाढ़ करेगा।",
-      en: "An auspicious function can be completed in the extended family. Your sweet speech and gentle behavior will captivate everyone's heart in the family today and strengthen relationships."
+      en: "An auspicious function can be completed in the extended family. Your sweet speech and gentle behavior will captivate everyone's heart today and strengthen relationships."
     },
     health: {
       hi: "दाहिनी आंख में जलन या दांतों में पीड़ा की संभावना है। अपनी व्यक्तिगत स्वच्छता (Personal hygiene) का विशेष ध्यान रखें और अत्यधिक मीठे पदार्थों के सेवन से बचें।",
-      en: "There is a possibility of a burning sensation in the right eye or a toothache. Pay special attention to your personal hygiene and avoid consuming excessively sweet substances."
+      en: "There is a possibility of a burning sensation in the right eye or a toothache. Pay special attention to personal hygiene and avoid consuming excessively sweet substances."
     },
-    tip: {
+    remedy: {
       hi: "श्री सूक्तम का पाठ करें और ब्राह्मणों को अन्नदान करें।",
       en: "Recite Sri Suktam and donate food grains to Brahmins."
     },
