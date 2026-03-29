@@ -12,7 +12,7 @@ window.translations = {
         'horoscope_subtitle': 'Choose your zodiac and get today\'s guidance',
         "guide_subtitle": "Ancient Wisdom for Modern Life",
         
-        horo_career: "Career & Finance", horo_love: "Love & Family", horo_health: "Health & Wellness",
+        horo_career: "Career & Finance", horo_love: "Love & Family", horo_health: "Health & Wellness", horo_remedy: "Vedic Remedy", expert_note: "Expert Note",
         player_title: "Divine Anthem 🔱", player_subtitle: "Coming Soon: Healing Sounds by Parth", player_msg: "The Divine Melody is being tuned. Coming Soon! 🚩",
 
         ph_name_input: "Your Full Name", ph_wa_input: "WhatsApp Number", ph_city_input: "Birth City/Place",
@@ -473,7 +473,7 @@ raag_ketu: "Lalit",
         'horoscope_subtitle': 'अपनी राशि चुनें और आज का परामर्श प्राप्त करें',
         "guide_subtitle": "आधुनिक जीवन के लिए प्राचीन ज्ञान",
 
-        horo_career: "करियर और वित्त", horo_love: "प्रेम और परिवार", horo_health: "स्वास्थ्य और कल्याण",
+        horo_career: "करियर और वित्त", horo_love: "प्रेम और परिवार", horo_health: "स्वास्थ्य और कल्याण",horo_remedy: "वैदिक अचूक उपाय", expert_note: "विशेषज्ञ की टिप्पणी",
         player_title: "दिव्य संगीत 🔱", player_subtitle: "शीघ्र आ रहा है: पार्थ की आवाज़ में हीलिंग संगीत", player_msg: "प्रभु की कृपा से, दिव्य संगीत जल्द ही प्रकट होगा! 🚩",
 
         ph_name_input: "आपका पूरा नाम", ph_wa_input: "व्हाट्सएप नंबर", ph_city_input: "जन्म स्थान / शहर",
