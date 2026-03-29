@@ -4,7 +4,7 @@ import os
 rashis = ["aries", "taurus", "gemini", "cancer", "leo", "virgo", 
           "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"]
 
-# 🔱 100% Unique SEO & Vedic Data (AdSense Approval Booster)
+# 🔱 100% Unique SEO & Vedic Data
 rashi_details = {
     "aries": {"lord": "मंगल देव (Mars)", "element": "अग्नि (Fire)", "mantra": "रां (Ram)", "gem": "लाल मूंगा (Red Coral)", "rudraksha": "3 मुखी", 
               "nature": "मेष राशि वाले जातक जन्म से ही निडर, ऊर्जावान और बेहतरीन नेतृत्व क्षमता वाले होते हैं। ये चुनौतियों का सामना डटकर करते हैं।", 
@@ -47,15 +47,37 @@ rashi_details = {
 adsense_snippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>'
 base_url = "https://www.mahadevastrologerma.in/horoscope/"
 
-template = """<!DOCTYPE html>
+target_dir = 'horoscope'
+if not os.path.exists(target_dir):
+    os.makedirs(target_dir)
+
+# Generator loop
+for r in rashis:
+    file_path = os.path.join(target_dir, r + ".html")
+    current_canonical = f"{base_url}{r}.html"
+    details = rashi_details[r]
+    
+    # Pre-calculate values
+    page_title = r.capitalize()
+    rashi_key = r
+    lord = details['lord']
+    element = details['element']
+    nature = details['nature']
+    shiv = details['shiv']
+    rudraksha = details['rudraksha']
+    gem = details['gem']
+    mantra = details['mantra']
+
+    # F-String template (Yahan braces ka koi issue nahi hoga)
+    html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{title} राशि का आज का राशिफल। महादेव एस्ट्रोलॉजर MA पर जानें आज का करियर, प्रेम, स्वास्थ्य और अचूक वैदिक उपाय।">
-    <link rel="canonical" href="{canonical_url}">
-    {adsense_code}
-    <title>{title} | Daily Horoscope 2026 | MAHADEV ASTROLOGER MA</title>
+    <meta name="description" content="{page_title} राशि का आज का राशिफल। महादेव एस्ट्रोलॉजर MA पर जानें आज का करियर, प्रेम, स्वास्थ्य और अचूक वैदिक उपाय।">
+    <link rel="canonical" href="{current_canonical}">
+    {adsense_snippet}
+    <title>{page_title} | Daily Horoscope 2026 | MAHADEV ASTROLOGER MA</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
     <style>
@@ -95,7 +117,7 @@ template = """<!DOCTYPE html>
         </div>
 
         <div class="wisdom-box">
-            <h3 class="gold-text" data-key="about_rashi_title">{title} राशि - स्वभाव और वैदिक महत्व</h3>
+            <h3 class="gold-text" data-key="about_rashi_title">{page_title} राशि - स्वभाव और वैदिक महत्व</h3>
             <p style="font-size: 0.95rem; color: #ddd; line-height: 1.8; margin-bottom: 15px;">
                 वैदिक ज्योतिष के अनुसार, इस राशि का तत्व <b>{element}</b> है और इसके स्वामी <b>{lord}</b> हैं। {nature}
             </p>
@@ -138,28 +160,8 @@ template = """<!DOCTYPE html>
 </body>
 </html>"""
 
-target_dir = 'horoscope'
-if not os.path.exists(target_dir):
-    os.makedirs(target_dir)
-
-for r in rashis:
-    file_path = os.path.join(target_dir, r + ".html")
-    current_canonical = f"{base_url}{r}.html"
-    details = rashi_details[r]
-
+    # Writing with UTF-8 to handle Hindi characters
     with open(file_path, "w", encoding="utf-8") as f:
-        f.write(template.format(
-            title=r.capitalize(), 
-            rashi_key=r,
-            canonical_url=current_canonical,
-            adsense_code=adsense_snippet,
-            lord=details['lord'],
-            element=details['element'],
-            mantra=details['mantra'],
-            gem=details['gem'],
-            rudraksha=details['rudraksha'],
-            nature=details['nature'],
-            shiv=details['shiv']
-        ))
+        f.write(html_content)
 
-print("🔱 12 Sunday-Optimized Pages Generated Successfully!")
+print("🔱 12 PRO Sunday-Optimized Pages Generated Successfully!")
