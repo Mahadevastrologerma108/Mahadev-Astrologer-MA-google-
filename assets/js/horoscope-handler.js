@@ -20,7 +20,7 @@ function handleMagicFind(val) {
     if (!resultBox) return; 
 
     const lang = localStorage.getItem('selectedLang') || 'hi';
-    const ui = horoscopeUI[lang];
+    const ui = horoscopeUI[lang] || horoscopeUI['hi'];
 
     const rashiMap = {
         aries: { hi: "मेष", en: "Aries", icon: "♈" },
@@ -62,15 +62,16 @@ function loadHoroscope(rashiKey) {
         return;
     }
 
-    // A. Content Fields Mapping (Fixed Object handling)
+    // A. Content Fields Mapping (🔥 UPDATE KIYA GAYA HAI)
     const fields = {
         'h-career': data.career[lang],
         'h-love': data.love[lang],
         'h-health': data.health[lang],
-        'h-tip': data.tip[lang],
+        'h-remedy': data.remedy[lang],                // Naya: Remedy (tip ki jagah)
+        'h-expert': data.meta.expertNote,             // Naya: Expert Note
         'h-color': data.luckyColor[lang],
         'h-number': data.luckyNumber,
-        // Yahan fix kiya hai: check karega ki time object hai ya string
+        // Yahan check karega ki time object hai ya string
         'h-time': typeof data.luckyTime === 'object' ? data.luckyTime[lang] : data.luckyTime
     };
 
@@ -91,10 +92,11 @@ function loadHoroscope(rashiKey) {
             aquarius: { hi: "कुंभ", en: "Aquarius" }, pisces: { hi: "मीन", en: "Pisces" }
         };
         const currentName = names[rashiKey] ? names[rashiKey][lang] : rashiKey;
-        rashiTitle.innerText = currentName + horoscopeUI[lang].rashi_suffix;
+        const uiSuffix = horoscopeUI[lang] ? horoscopeUI[lang].rashi_suffix : " Horoscope";
+        rashiTitle.innerText = currentName + uiSuffix;
     }
 
-    // C. Date Update
+    // C. Date Update (Dynamic Date Generator - Pro Feature)
     const dateEl = document.getElementById('todayDate');
     if (dateEl) {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
