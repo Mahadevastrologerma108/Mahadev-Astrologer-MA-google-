@@ -12,10 +12,13 @@
     <style>
         .horo-card { max-width: 800px; margin: 120px auto 50px; padding: 30px; background: rgba(245,197,66,0.05); border: 1px solid #f5c542; border-radius: 20px; text-align: center; }
         .rashi-title { font-family: 'Cinzel'; color: #f5c542; font-size: 2.5rem; margin-bottom: 5px; }
-        .date-line { color: #888; margin-bottom: 30px; font-size: 0.9rem; }
+        .date-line { color: #888; margin-bottom: 10px; font-size: 0.9rem; }
+        .tagline-text { color: #fff; font-family: 'Cinzel'; font-size: 1.2rem; margin-bottom: 10px; font-weight: bold; text-shadow: 1px 1px 5px rgba(245,197,66,0.5); }
+        .power-badge { display: inline-block; background: rgba(245,197,66,0.15); border: 1px solid rgba(245,197,66,0.5); padding: 5px 15px; border-radius: 20px; color: #f5c542; font-size: 0.85rem; margin-bottom: 25px; font-family: 'Poppins'; }
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left; margin-top: 20px; }
-        .info-box { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border-left: 3px solid #f5c542; }
-        .info-box h3 { color: #f5c542; font-size: 1.1rem; margin-bottom: 8px; font-family: 'Cinzel'; }
+        .info-box { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border-left: 3px solid #f5c542; position: relative; }
+        .info-box h3 { color: #f5c542; font-size: 1.1rem; margin-bottom: 8px; font-family: 'Cinzel'; display: flex; justify-content: space-between; align-items: center; }
+        .star-rating { font-size: 0.85rem; letter-spacing: 2px; }
         .info-box p { font-size: 0.95rem; line-height: 1.6; color: #ddd; margin: 0; }
         .lucky-strip { margin-top: 30px; display: flex; justify-content: space-around; background: rgba(245,197,66,0.1); padding: 15px; border-radius: 10px; color: #f5c542; font-weight: 600; border: 1px dashed rgba(245,197,66,0.3); }
         .wisdom-box { margin-top: 40px; text-align: left; border-top: 1px solid rgba(245,197,66,0.1); padding-top: 20px; }
@@ -29,11 +32,26 @@
         <h1 id="rashi-title" class="rashi-title">Loading...</h1>
         <p id="todayDate" class="date-line"></p>
         
+        <div id="h-tagline" class="tagline-text"></div>
+        <div class="power-badge">Prediction Power: <b id="h-power">--</b></div>
+        
         <div class="grid-container">
-            <div class="info-box"><h3 data-key="horo_career">Career</h3><p id="h-career">Fetching...</p></div>
-            <div class="info-box"><h3 data-key="horo_love">Love</h3><p id="h-love">Fetching...</p></div>
-            <div class="info-box"><h3 data-key="horo_health">Health</h3><p id="h-health">Fetching...</p></div>
-            <div class="info-box"><h3 data-key="horo_remedy">Vedic Remedy</h3><p id="h-remedy">Fetching...</p></div>
+            <div class="info-box">
+                <h3 data-key="horo_career">Career <span id="rating-career" class="star-rating"></span></h3>
+                <p id="h-career">Fetching...</p>
+            </div>
+            <div class="info-box">
+                <h3 data-key="horo_love">Love <span id="rating-love" class="star-rating"></span></h3>
+                <p id="h-love">Fetching...</p>
+            </div>
+            <div class="info-box">
+                <h3 data-key="horo_health">Health <span id="rating-health" class="star-rating"></span></h3>
+                <p id="h-health">Fetching...</p>
+            </div>
+            <div class="info-box">
+                <h3 data-key="horo_remedy">Vedic Remedy</h3>
+                <p id="h-remedy">Fetching...</p>
+            </div>
             <div class="info-box" style="grid-column: 1 / -1; border-left-color: #00ff88;">
                 <h3 data-key="expert_note">Expert Note</h3><p id="h-expert">Fetching...</p>
             </div>
