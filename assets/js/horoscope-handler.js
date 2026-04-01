@@ -13,6 +13,14 @@ const horoscopeUI = {
     }
 };
 
+// 🌟 NEW: Rating Generator (Stars)
+function generateStars(rating) {
+    if (!rating) return "--";
+    const fullStar = '⭐';
+    const emptyStar = '☆';
+    return fullStar.repeat(rating) + emptyStar.repeat(5 - rating);
+}
+
 // 🔍 MAGIC RASHI FINDER (For horoscope.html)
 function handleMagicFind(val) {
     if (!val) return;
@@ -54,7 +62,6 @@ function handleMagicFind(val) {
 // 📝 DATA LOADER (For aries.html, taurus.html etc.)
 function loadHoroscope(rashiKey) {
     const lang = localStorage.getItem('selectedLang') || 'hi'; 
-    // Data check: window.dailyHoroscope se feed le raha hai
     const data = window.dailyHoroscope ? window.dailyHoroscope[rashiKey] : null;
 
     if (!data) {
@@ -62,30 +69,42 @@ function loadHoroscope(rashiKey) {
         return;
     }
 
-    // A. Content Fields Mapping (🔥 UPDATE KIYA GAYA HAI)
+    // A. Main Content Fields Mapping
     const fields = {
         'h-career': data.career[lang],
         'h-love': data.love[lang],
         'h-health': data.health[lang],
-        'h-remedy': data.remedy[lang],                // Naya: Remedy (tip ki jagah)
-        'h-expert': data.meta.expertNote,             // Naya: Expert Note
+        'h-remedy': data.remedy[lang],                
+        'h-expert': data.meta.expertNote,             
         'h-color': data.luckyColor[lang],
         'h-number': data.luckyNumber,
-        // Yahan check karega ki time object hai ya string
         'h-time': typeof data.luckyTime === 'object' ? data.luckyTime[lang] : data.luckyTime
     };
 
+    // B. NEW: Ratings Mapping (Stars)
+    if (data.ratings) {
+        fields['rating-career'] = generateStars(data.ratings.career);
+        fields['rating-wealth'] = generateStars(data.ratings.wealth);
+        fields['rating-love'] = generateStars(data.ratings.love);
+        fields['rating-health'] = generateStars(data.ratings.health);
+    }
+
+    // NEW: Tagline & Prediction Power Mapping
+    fields['h-tagline'] = data.tagline || "";
+    fields['h-power'] = data.meta.predictionPower || "";
+
+    // Loop to inject all fields into HTML safely
     Object.entries(fields).forEach(([id, val]) => {
         const el = document.getElementById(id);
         if (el) el.innerText = val || "--";
     });
 
-    // B. Title Update (Bilingual Rashi Names)
+    // C. Title Update (Bilingual Rashi Names)
     const rashiTitle = document.getElementById('rashi-title');
     if (rashiTitle) {
         const names = {
             aries: { hi: "मेष", en: "Aries" }, taurus: { hi: "वृषभ", en: "Taurus" },
-            gemini: { hi: "मिथुन", en: "Gemini" }, cancer: { hi: "कर्क", en: "Cancer" },
+            gemini: { hi: "मिथुन", en: "Gemini" }, cancer: { कर्क: "कर्क", en: "Cancer" },
             leo: { hi: "सिंह", en: "Leo" }, virgo: { hi: "कन्या", en: "Virgo" },
             libra: { hi: "तुला", en: "Libra" }, scorpio: { hi: "वृश्चिक", en: "Scorpio" },
             sagittarius: { hi: "धनु", en: "Sagittarius" }, capricorn: { hi: "मकर", en: "Capricorn" },
@@ -96,7 +115,7 @@ function loadHoroscope(rashiKey) {
         rashiTitle.innerText = currentName + uiSuffix;
     }
 
-    // C. Date Update (Dynamic Date Generator - Pro Feature)
+    // D. Date Update (Dynamic Date Generator - Pro Feature)
     const dateEl = document.getElementById('todayDate');
     if (dateEl) {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
