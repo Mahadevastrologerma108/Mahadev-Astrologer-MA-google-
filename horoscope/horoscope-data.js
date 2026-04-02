@@ -8,7 +8,10 @@ window.dailyHoroscope = {
     meta: {
       planetaryPosition: "मंगल का चतुर्थ भाव पर प्रभाव और चंद्रमा की गति",
       predictionPower: "93%",
-      expertNote: "आज का दिन भूमि-भवन के विवादों को सुलझाने और मानसिक शांति प्राप्त करने का है।"
+      expertNote: { 
+        hi: "आज का दिन भूमि-भवन के विवादों को सुलझाने और मानसिक शांति प्राप्त करने का है।", 
+        en: "Today is for resolving land-building disputes and attaining mental peace." 
+      }
     },
     ratings: { health: 4, wealth: 4, love: 5, career: 4 },
     career: {
@@ -31,14 +34,17 @@ window.dailyHoroscope = {
     luckyNumber: "9",
     luckyTime: { hi: "प्रातः 08:30 से 10:00", en: "08:30 AM to 10:00 AM" },
     luckyDate: "Apr 2, 2026",
-    tagline: "शांति और सुख का आगमन!"
+    tagline: { hi: "शांति और सुख का आगमन!", en: "Arrival of peace and happiness!" }
   },
 
   taurus: {
     meta: {
       planetaryPosition: "शुक्र का मेष राशि में संचरण और गुरु की शुभ दृष्टि",
       predictionPower: "91%",
-      expertNote: "गुरुवार का दिन आपके संचार कौशल (Communication) और पराक्रम को बढ़ाने वाला है।"
+      expertNote: { 
+        hi: "गुरुवार का दिन आपके संचार कौशल (Communication) और पराक्रम को बढ़ाने वाला है।", 
+        en: "Thursday will enhance your communication skills and valor." 
+      }
     },
     ratings: { health: 5, wealth: 4, love: 4, career: 5 },
     career: {
@@ -61,14 +67,17 @@ window.dailyHoroscope = {
     luckyNumber: "6",
     luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
     luckyDate: "Apr 2, 2026",
-    tagline: "पराक्रम से मिलेगी सफलता!"
+    tagline: { hi: "पराक्रम से मिलेगी सफलता!", en: "Success through valor!" }
   },
 
   gemini: {
     meta: {
       planetaryPosition: "बुध का प्रभाव और द्वितीय भाव (धन भाव) की सक्रियता",
       predictionPower: "94%",
-      expertNote: "आज आपकी मीठी वाणी और तार्किक शक्ति आर्थिक लाभ का मार्ग प्रशस्त करेगी।"
+      expertNote: { 
+        hi: "आज आपकी मीठी वाणी और तार्किक शक्ति आर्थिक लाभ का मार्ग प्रशस्त करेगी।", 
+        en: "Today, your sweet speech and logical power will pave the way for financial gains." 
+      }
     },
     ratings: { health: 4, wealth: 5, love: 5, career: 4 },
     career: {
@@ -91,14 +100,17 @@ window.dailyHoroscope = {
     luckyNumber: "5",
     luckyTime: { hi: "प्रातः 10:45 से 12:15", en: "10:45 AM to 12:15 PM" },
     luckyDate: "Apr 2, 2026",
-    tagline: "वाणी ही आपकी सबसे बड़ी शक्ति है।"
+    tagline: { hi: "वाणी ही आपकी सबसे बड़ी शक्ति है।", en: "Speech is your biggest strength." }
   },
 
   cancer: {
     meta: {
       planetaryPosition: "चंद्रमा का आपकी राशि में प्रवेश और गुरु की कृपा",
       predictionPower: "96%",
-      expertNote: "आज का दिन मानसिक प्रसन्नता और नए आत्मविश्वास के उदय का है।"
+      expertNote: { 
+        hi: "आज का दिन मानसिक प्रसन्नता और नए आत्मविश्वास के उदय का है।", 
+        en: "Today brings mental happiness and the rise of new self-confidence." 
+      }
     },
     ratings: { health: 5, wealth: 4, love: 5, career: 4 },
     career: {
@@ -121,14 +133,17 @@ window.dailyHoroscope = {
     luckyNumber: "2",
     luckyTime: { hi: "शाम 03:30 से 05:00", en: "03:30 PM to 05:00 PM" },
     luckyDate: "Apr 2, 2026",
-    tagline: "मन की शांति ही असली सुख है।"
+    tagline: { hi: "मन की शांति ही असली सुख है।", en: "Peace of mind is true happiness." }
   },
 
   leo: {
     meta: {
       planetaryPosition: "सूर्य का मेष में उच्च स्थिति की ओर संचार और व्यय भाव पर दृष्टि",
       predictionPower: "87%",
-      expertNote: "आज धार्मिक कार्यों और परोपकार पर धन खर्च होने के योग हैं।"
+      expertNote: { 
+        hi: "आज धार्मिक कार्यों और परोपकार पर धन खर्च होने के योग हैं।", 
+        en: "Chances of spending money on religious deeds and charity today." 
+      }
     },
     ratings: { health: 3, wealth: 3, love: 4, career: 4 },
     career: {
@@ -151,14 +166,17 @@ window.dailyHoroscope = {
     luckyNumber: "1",
     luckyTime: { hi: "प्रातः 07:00 से 08:30", en: "07:00 AM to 08:30 AM" },
     luckyDate: "Apr 2, 2026",
-    tagline: "धैर्य से सुलझेंगे सब काम।"
+    tagline: { hi: "धैर्य से सुलझेंगे सब काम।", en: "Patience will resolve all tasks." }
   },
 
   virgo: {
     meta: {
       planetaryPosition: "बुध की अनुकूलता और एकादश भाव (लाभ भाव) की सक्रियता",
       predictionPower: "95%",
-      expertNote: "आज आपकी लंबे समय से रुकी हुई इच्छाएं पूर्ण होने का दिन है।"
+      expertNote: { 
+        hi: "आज आपकी लंबे समय से रुकी हुई इच्छाएं पूर्ण होने का दिन है।", 
+        en: "Today is the day your long-pending desires will be fulfilled." 
+      }
     },
     ratings: { health: 4, wealth: 5, love: 4, career: 5 },
     career: {
@@ -181,14 +199,17 @@ window.dailyHoroscope = {
     luckyNumber: "5",
     luckyTime: { hi: "दोपहर 12:30 से 02:00", en: "12:30 PM to 02:00 PM" },
     luckyDate: "Apr 2, 2026",
-    tagline: "सपनों को साकार करने का समय।"
+    tagline: { hi: "सपनों को साकार करने का समय।", en: "Time to realize your dreams." }
   },
 
   libra: {
     meta: {
       planetaryPosition: "शुक्र और चंद्रमा की युति का दशम भाव (कर्म भाव) पर प्रभाव",
       predictionPower: "92%",
-      expertNote: "आज करियर में बड़ी सफलता और मान-सम्मान मिलने के प्रबल योग हैं।"
+      expertNote: { 
+        hi: "आज करियर में बड़ी सफलता और मान-सम्मान मिलने के प्रबल योग हैं।", 
+        en: "Strong chances of achieving major success and respect in career today." 
+      }
     },
     ratings: { health: 4, wealth: 4, love: 4, career: 5 },
     career: {
@@ -211,14 +232,17 @@ window.dailyHoroscope = {
     luckyNumber: "6",
     luckyTime: { hi: "शाम 04:00 से 05:30", en: "04:00 PM to 05:30 PM" },
     luckyDate: "Apr 2, 2026",
-    tagline: "कर्म ही पूजा है, सफलता निश्चित है।"
+    tagline: { hi: "कर्म ही पूजा है, सफलता निश्चित है।", en: "Work is worship, success is certain." }
   },
 
   scorpio: {
     meta: {
       planetaryPosition: "मंगल का भाग्य भाव में संचार और गुरु की दृष्टि",
       predictionPower: "94%",
-      expertNote: "आज का दिन आध्यात्मिक यात्रा और भाग्य के सहयोग से उन्नति का है।"
+      expertNote: { 
+        hi: "आज का दिन आध्यात्मिक यात्रा और भाग्य के सहयोग से उन्नति का है।", 
+        en: "Today is for progress through spiritual journeys and luck's support." 
+      }
     },
     ratings: { health: 4, wealth: 4, love: 5, career: 5 },
     career: {
@@ -241,14 +265,17 @@ window.dailyHoroscope = {
     luckyNumber: "9",
     luckyTime: { hi: "प्रातः 09:30 से 11:00", en: "09:30 AM to 11:00 AM" },
     luckyDate: "Apr 2, 2026",
-    tagline: "भाग्य का साथ, सफलता आपके हाथ!"
+    tagline: { hi: "भाग्य का साथ, सफलता आपके हाथ!", en: "Luck's support, success in your hands!" }
   },
 
   sagittarius: {
     meta: {
       planetaryPosition: "गुरु का शुभ संचार और अष्टम भाव पर केतु का प्रभाव",
       predictionPower: "98%",
-      expertNote: "आज का दिन रहस्यमयी विद्याओं और गुरु कृपा से धन लाभ का है।"
+      expertNote: { 
+        hi: "आज का दिन रहस्यमयी विद्याओं और गुरु कृपा से धन लाभ का है।", 
+        en: "Today brings financial gains through mystical knowledge and Guru's grace." 
+      }
     },
     ratings: { health: 3, wealth: 5, love: 4, career: 4 },
     career: {
@@ -271,14 +298,17 @@ window.dailyHoroscope = {
     luckyNumber: "3",
     luckyTime: { hi: "दोपहर 02:30 से 04:00", en: "02:30 PM to 04:00 PM" },
     luckyDate: "Apr 2, 2026",
-    tagline: "गुरु कृपा से बदलेंगे हालात!"
+    tagline: { hi: "गुरु कृपा से बदलेंगे हालात!", en: "Situations will change by Guru's grace!" }
   },
 
   capricorn: {
     meta: {
       planetaryPosition: "शनि की स्थिरता और सप्तम भाव (साझेदारी भाव) की सक्रियता",
       predictionPower: "90%",
-      expertNote: "आज साझेदारी के व्यापार और वैवाहिक जीवन में संतुलन बनाए रखने का दिन है।"
+      expertNote: { 
+        hi: "आज साझेदारी के व्यापार और वैवाहिक जीवन में संतुलन बनाए रखने का दिन है।", 
+        en: "Today is to maintain balance in partnership business and married life." 
+      }
     },
     ratings: { health: 4, wealth: 4, love: 5, career: 4 },
     career: {
@@ -301,14 +331,17 @@ window.dailyHoroscope = {
     luckyNumber: "8",
     luckyTime: { hi: "शाम 05:30 से 07:00", en: "05:30 PM to 07:00 PM" },
     luckyDate: "Apr 2, 2026",
-    tagline: "अनुशासन और साझेदारी से उन्नति।"
+    tagline: { hi: "अनुशासन और साझेदारी से उन्नति।", en: "Progress through discipline and partnership." }
   },
 
   aquarius: {
     meta: {
       planetaryPosition: "शनि का संचार और षष्ठम भाव (शत्रु भाव) की सक्रियता",
       predictionPower: "92%",
-      expertNote: "आज आप अपनी मेहनत और सूझबूझ से शत्रुओं और कर्ज पर विजय प्राप्त करेंगे।"
+      expertNote: { 
+        hi: "आज आप अपनी मेहनत और सूझबूझ से शत्रुओं और कर्ज पर विजय प्राप्त करेंगे।", 
+        en: "Today you will conquer enemies and debts with hard work and wisdom." 
+      }
     },
     ratings: { health: 3, wealth: 4, love: 4, career: 5 },
     career: {
@@ -331,14 +364,17 @@ window.dailyHoroscope = {
     luckyNumber: "11",
     luckyTime: { hi: "प्रातः 11:30 से 01:00", en: "11:30 AM to 01:00 PM" },
     luckyDate: "Apr 2, 2026",
-    tagline: "मेहनत से मिलेगी जीत!"
+    tagline: { hi: "मेहनत से मिलेगी जीत!", en: "Victory through hard work!" }
   },
 
   pisces: {
     meta: {
       planetaryPosition: "राशि स्वामी गुरु का पंचम भाव में पूर्ण शुभत्व और चंद्रमा का प्रभाव",
       predictionPower: "97%",
-      expertNote: "आज का दिन संतान पक्ष से खुशी और विद्या प्राप्ति के लिए अत्यंत भाग्यशाली है।"
+      expertNote: { 
+        hi: "आज का दिन संतान पक्ष से खुशी और विद्या प्राप्ति के लिए अत्यंत भाग्यशाली है।", 
+        en: "Today is highly lucky for joy from children and gaining knowledge." 
+      }
     },
     ratings: { health: 4, wealth: 5, love: 5, career: 4 },
     career: {
@@ -361,6 +397,6 @@ window.dailyHoroscope = {
     luckyNumber: "3",
     luckyTime: { hi: "दोपहर 03:00 से 04:30", en: "03:00 PM to 04:30 PM" },
     luckyDate: "Apr 2, 2026",
-    tagline: "ज्ञान और आनंद का संगम।"
+    tagline: { hi: "ज्ञान और आनंद का संगम।", en: "Confluence of knowledge and joy." }
   }
 };
