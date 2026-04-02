@@ -75,7 +75,7 @@ function loadHoroscope(rashiKey) {
         'h-love': data.love[lang],
         'h-health': data.health[lang],
         'h-remedy': data.remedy[lang],                
-        'h-expert': data.meta.expertNote,             
+        'h-expert': data.meta.expertNote[lang],             
         'h-color': data.luckyColor[lang],
         'h-number': data.luckyNumber,
         'h-time': typeof data.luckyTime === 'object' ? data.luckyTime[lang] : data.luckyTime
@@ -90,7 +90,7 @@ function loadHoroscope(rashiKey) {
     }
 
     // NEW: Tagline & Prediction Power Mapping
-    fields['h-tagline'] = data.tagline || "";
+    fields['h-tagline'] = (data.tagline && data.tagline[lang]) ? data.tagline[lang] : "";
     fields['h-power'] = data.meta.predictionPower || "";
 
     // Loop to inject all fields into HTML safely
