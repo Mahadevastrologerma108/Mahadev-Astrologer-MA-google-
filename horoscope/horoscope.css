@@ -1,0 +1,37 @@
+<style>
+        :root { --gold: #f5c542; --bg: #0a0a14; }
+        body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; margin: 0; }
+        
+        /* 🔱 Selection Grid Style */
+        .selection-container { max-width: 900px; margin: 130px auto 50px; padding: 20px; text-align: center; }
+        .selection-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
+        
+        .zodiac-card { 
+            background: rgba(245, 197, 66, 0.05); border: 1px solid rgba(245, 197, 66, 0.2); 
+            border-radius: 15px; padding: 25px 10px; text-align: center; transition: 0.3s; 
+            text-decoration: none; color: var(--gold); cursor: pointer; 
+        }
+        .zodiac-card:hover { 
+            background: rgba(245, 197, 66, 0.15); transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4), 0 0 15px rgba(245, 197, 66, 0.2); border-color: var(--gold);
+        }
+        .zodiac-card span { font-size: 45px; display: block; margin-bottom: 10px; }
+        .zodiac-card p { margin: 0; font-family: 'Cinzel'; font-size: 14px; font-weight: bold; }
+
+        /* 🔱 Magic Tool (Finder) Styling */
+        .magic-tool { 
+            background: rgba(255,255,255,0.02); border: 1px dashed var(--gold); 
+            padding: 25px; border-radius: 20px; margin-bottom: 40px; 
+        }
+        .finder-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
+        .finder-box select { 
+            background: #000; color: #fff; border: 1px solid var(--gold); 
+            padding: 12px; border-radius: 8px; font-family: 'Poppins'; cursor: pointer; outline: none;
+        }
+        .finder-box label { display: block; font-size: 0.8rem; color: #888; margin-bottom: 8px; }
+
+        @media (max-width: 600px) { 
+            .selection-grid { grid-template-columns: repeat(2, 1fr); } 
+            .selection-container { margin-top: 100px; }
+        }
+    </style>
