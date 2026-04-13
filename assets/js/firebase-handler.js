@@ -164,8 +164,9 @@ window.handleSoundHealingSubmit = async function(event, method, dosha) {
 };
 
 // ==========================================
-// 4. FEEDBACK & RATING SYSTEM (HIGH-VALUE UPDATE)
+// 4. FEEDBACK & RATING SYSTEM
 // ==========================================
+
 window.submitFeedback = async function() {
     const feedbackText = document.getElementById('user-feedback').value.trim();
     const rating = window.selectedRating || 0;
@@ -175,7 +176,6 @@ window.submitFeedback = async function() {
         alert("🔱 कृपया रेटिंग (Rating) और अपना अनुभव दोनों साझा करें!");
         return;
     }
-
     try {
         const feedbackData = {
             text: feedbackText,
@@ -186,6 +186,7 @@ window.submitFeedback = async function() {
             userPhoto: user ? user.photoURL : "assets/images/default-avatar.png",
             userId: user ? user.uid : "guest"
         };
+
         // Saving to Firebase
         await addDoc(collection(db, "feedbacks"), feedbackData);
 
@@ -216,7 +217,7 @@ window.fetchFeedbacks = async function() {
     if (!container) return;
 
     try {
-        // Loading Animation Text
+        // Loading Message
         container.innerHTML = `<p style="color: var(--gold); text-align: center; font-style: italic; font-size: 1.1rem;">🔱 महादेव के भक्तों के अनुभव लोड हो रहे हैं...</p>`;
 
         const feedbackRef = collection(db, "feedbacks");
@@ -230,19 +231,20 @@ window.fetchFeedbacks = async function() {
             if (data.status === "approved") {
                 const stars = "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
                 
-                // Date Formatting (e.g., 13 April 2026)
+                // Format Date safely
                 let dateString = "";
                 if (data.timestamp) {
                     const dateObj = new Date(data.timestamp.seconds * 1000);
                     dateString = dateObj.toLocaleDateString('hi-IN', { day: 'numeric', month: 'long', year: 'numeric' });
                 }
-                // Premium Feedback Layout
+
+                // Premium Feedback Layout (Blink Issue Fixed)
                 html += `
                     <div class="feedback-item" style="background: linear-gradient(145deg, #111, #000); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: left;">
                         
                         <div style="display:flex; align-items:center; justify-content: space-between; margin-bottom:15px;">
                             <div style="display:flex; align-items:center; gap:12px;">
-                                <img src="${data.userPhoto}" onerror="this.src='assets/images/default-avatar.png'" style="width:45px; height:45px; border-radius:50%; border:2px solid var(--gold); object-fit: cover;">
+                                <img src="${data.userPhoto}" onerror="this.onerror=null; this.src='assets/images/default-avatar.png';" style="width:45px; height:45px; border-radius:50%; border:2px solid var(--gold); object-fit: cover;">
                                 <div>
                                     <span style="color:var(--gold); font-weight:bold; font-size:1.05rem; display:block;">
                                         ${data.userName} <span style="font-size: 0.8em; color: #4CAF50;" title="Verified User">✔</span>
@@ -252,18 +254,18 @@ window.fetchFeedbacks = async function() {
                             </div>
                             <div style="color: #f5c542; font-size: 1.2rem; letter-spacing:2px; text-shadow: 0 0 5px rgba(245, 197, 66, 0.4);">${stars}</div>
                         </div>
-                        <p style="font-size: 1rem; color:#ddd; margin: 0; font-style: italic; line-height: 1.6; border-left: 3px solid var(--gold); padding-left: 12px;">"${data.text}"</p>
+                        <p style="font-size: 1rem; color:#ddd; margin: 0; font-style: italic; line-height: 1.6; border-left: 3px solid var(--gold); padding-left: 12px;">"${data.text}"</p>                    
                     </div>
                 `;
             }
         });
+        // Ensure "var(--gold)" is working or fallback to hex
         container.innerHTML = html || `<p style="color:#888; text-align: center; font-style: italic;">🔱 सबसे पहले अपना अनुभव साझा करें!</p>`;
     } catch (err) {
         console.error("🔱 Fetch Feedback Error:", err);
         container.innerHTML = `<p style="color:red; text-align: center;">डेटा लोड करने में समस्या आई।</p>`;
     }
 };
-
 // ==========================================
 // 5. LOGIN & AUTH UI LOGIC
 // ==========================================
