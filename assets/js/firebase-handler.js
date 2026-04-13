@@ -164,7 +164,7 @@ window.handleSoundHealingSubmit = async function(event, method, dosha) {
 };
 
 // ==========================================
-// 4. FEEDBACK & RATING SYSTEM
+// 4. FEEDBACK & RATING SYSTEM (HIGH-VALUE UPDATE)
 // ==========================================
 window.submitFeedback = async function() {
     const feedbackText = document.getElementById('user-feedback').value.trim();
@@ -172,7 +172,7 @@ window.submitFeedback = async function() {
     const user = auth.currentUser;
 
     if (!feedbackText || rating === 0) {
-        alert("Kripya rating aur anubhav dono bharein! 🚩");
+        alert("🔱 कृपया रेटिंग (Rating) और अपना अनुभव दोनों साझा करें!");
         return;
     }
 
@@ -182,14 +182,15 @@ window.submitFeedback = async function() {
             rating: parseInt(rating),
             timestamp: serverTimestamp(),
             status: "pending", 
-            userName: user ? user.displayName : "Anonymous Bhakt",
+            userName: user ? user.displayName : "महादेव भक्त (Guest)",
             userPhoto: user ? user.photoURL : "assets/images/default-avatar.png",
             userId: user ? user.uid : "guest"
         };
-
+        // Saving to Firebase
         await addDoc(collection(db, "feedbacks"), feedbackData);
 
-        const tgMessage = `🔱 *MAHADEV ASTROLOGER MA*\n\n📝 *Naya Feedback Aaya!* (Pending)\n⭐ *Rating:* ${feedbackData.rating}/5\n👤 *User:* ${feedbackData.userName}\n💬 *Message:* ${feedbackData.text}\n\n🚩 _Ise approve karne ke liye .system-data logs kholiye._`;
+        // Telegram Notification
+        const tgMessage = `🔱 *MAHADEV ASTROLOGER MA*\n\n📝 *Naya Feedback Aaya!* (Pending)\n⭐ *Rating:* ${feedbackData.rating}/5\n👤 *User:* ${feedbackData.userName}\n💬 *Message:* ${feedbackData.text}\n\n🚩 _Ise approve karne ke liye database check karein._`;
 
         fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
             method: 'POST',
@@ -197,15 +198,16 @@ window.submitFeedback = async function() {
             body: JSON.stringify({ chat_id: CHAT_ID, text: tgMessage, parse_mode: 'Markdown' })
         });
 
-        alert("🔱 Dhanyawad! Aapka anubhav Mahadev tak pahunch gaya hai. Review ke baad ye site par dikhega.");
+        alert("🔱 धन्यवाद! आपका अनुभव महादेव के आशीर्वाद स्वरूप हमें प्राप्त हो गया है। रिव्यू के बाद यह साइट पर दिखाई देगा।");
         
+        // Reset Form
         document.getElementById('user-feedback').value = "";
         document.querySelectorAll('.star').forEach(s => s.style.color = '#555');
         window.selectedRating = 0;
 
     } catch (error) {
         console.error("🔱 Feedback Error:", error);
-        alert("Kshama karein, saving error: " + error.message);
+        alert("क्षमा करें, तकनीकी समस्या के कारण सेव नहीं हो पाया: " + error.message);
     }
 };
 
@@ -214,6 +216,9 @@ window.fetchFeedbacks = async function() {
     if (!container) return;
 
     try {
+        // Loading Animation Text
+        container.innerHTML = `<p style="color: var(--gold); text-align: center; font-style: italic; font-size: 1.1rem;">🔱 महादेव के भक्तों के अनुभव लोड हो रहे हैं...</p>`;
+
         const feedbackRef = collection(db, "feedbacks");
         const q = query(feedbackRef, orderBy("timestamp", "desc"), limit(20));
         
@@ -224,22 +229,38 @@ window.fetchFeedbacks = async function() {
             const data = doc.data();
             if (data.status === "approved") {
                 const stars = "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
+                
+                // Date Formatting (e.g., 13 April 2026)
+                let dateString = "";
+                if (data.timestamp) {
+                    const dateObj = new Date(data.timestamp.seconds * 1000);
+                    dateString = dateObj.toLocaleDateString('hi-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+                }
+                // Premium Feedback Layout
                 html += `
-                    <div class="feedback-item" style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
-                        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-                            <img src="${data.userPhoto}" style="width:30px; height:30px; border-radius:50%; border:1px solid var(--gold);">
-                            <span style="color:var(--gold); font-weight:600; font-size:0.9rem;">${data.userName}</span>
+                    <div class="feedback-item" style="background: linear-gradient(145deg, #111, #000); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: left;">
+                        
+                        <div style="display:flex; align-items:center; justify-content: space-between; margin-bottom:15px;">
+                            <div style="display:flex; align-items:center; gap:12px;">
+                                <img src="${data.userPhoto}" onerror="this.src='assets/images/default-avatar.png'" style="width:45px; height:45px; border-radius:50%; border:2px solid var(--gold); object-fit: cover;">
+                                <div>
+                                    <span style="color:var(--gold); font-weight:bold; font-size:1.05rem; display:block;">
+                                        ${data.userName} <span style="font-size: 0.8em; color: #4CAF50;" title="Verified User">✔</span>
+                                    </span>
+                                    <span style="color: #888; font-size: 0.8rem;">${dateString}</span>
+                                </div>
+                            </div>
+                            <div style="color: #f5c542; font-size: 1.2rem; letter-spacing:2px; text-shadow: 0 0 5px rgba(245, 197, 66, 0.4);">${stars}</div>
                         </div>
-                        <div style="color: #f5c542; font-size: 1rem; letter-spacing:2px;">${stars}</div>
-                        <p style="font-size: 0.95rem; color:#eee; margin: 8px 0; font-style: italic;">"${data.text}"</p>
+                        <p style="font-size: 1rem; color:#ddd; margin: 0; font-style: italic; line-height: 1.6; border-left: 3px solid var(--gold); padding-left: 12px;">"${data.text}"</p>
                     </div>
                 `;
             }
         });
-
-        container.innerHTML = html || `<p style="color:#666;">Be the first to share your experience!</p>`;
+        container.innerHTML = html || `<p style="color:#888; text-align: center; font-style: italic;">🔱 सबसे पहले अपना अनुभव साझा करें!</p>`;
     } catch (err) {
         console.error("🔱 Fetch Feedback Error:", err);
+        container.innerHTML = `<p style="color:red; text-align: center;">डेटा लोड करने में समस्या आई।</p>`;
     }
 };
 
