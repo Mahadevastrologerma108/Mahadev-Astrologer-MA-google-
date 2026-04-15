@@ -1,401 +1,401 @@
 window.dailyHoroscope = {
-  lastUpdated: "2026-04-15T06:00:00Z",
+  lastUpdated: "2026-04-16T06:00:00Z",
   source: "MAHADEV ASTROLOGER MA Team",
-  methodology: "Vedic Mercury-Transit & Budhwar Ganesh Siddhi Analysis",
+  methodology: "Vedic Jupiter-Transit & Guru Kripa Analysis",
 
   aries: {
     meta: {
-      planetaryPosition: "उच्च के सूर्य के साथ बुध का बौद्धिक प्रभाव",
-      predictionPower: "95%",
+      planetaryPosition: "उच्च के सूर्य पर गुरु की शुभ दृष्टि",
+      predictionPower: "96%",
       expertNote: { 
-        hi: "आज भगवान गणेश की कृपा से आपकी बौद्धिक क्षमता सर्वोच्च स्तर पर रहेगी। त्वरित निर्णय लेने से उत्तम लाभ प्राप्त होगा।", 
-        en: "By Lord Ganesha's grace, your intellectual capacity will be at its peak today. Quick decisions will yield excellent benefits." 
+        hi: "आज देवगुरु बृहस्पति और उच्च के सूर्य का अद्वितिय संयोग आपके लिए सफलता के नए द्वार खोलेगा। धर्म-कर्म में रुचि बढ़ेगी।", 
+        en: "The unique combination of Jupiter and the exalted Sun will open new doors of success for you today. Interest in religious activities will increase." 
       }
     },
     ratings: { health: 4, wealth: 5, love: 4, career: 5 },
     career: {
-      hi: "सूचना प्रौद्योगिकी (IT) और वाणिज्य (Commerce) के क्षेत्र से जुड़े जातकों को आज अभूतपूर्व सफलता मिलेगी। नवीन योजनाओं का क्रियान्वयन करें।",
-      en: "Natives associated with IT and commerce will achieve unprecedented success today. Implement new plans."
+      hi: "शिक्षण, प्रशासन और परामर्श (Consulting) से जुड़े जातकों के लिए आज का दिन अत्यंत भाग्यशाली है। पदोन्नति के प्रबल योग हैं।",
+      en: "An extremely lucky day for natives associated with teaching, administration, and consulting. Strong yogas for promotion."
     },
     love: {
-      hi: "प्रेम संबंधों में आज सार्थक और बौद्धिक चर्चाएं होंगी। जीवनसाथी के साथ किसी महत्वपूर्ण विषय पर सहमति बनेगी।",
-      en: "Meaningful and intellectual discussions will take place in love relationships. Consensus on an important matter with the spouse will be reached."
+      hi: "दांपत्य जीवन में आज आध्यात्मिक जुड़ाव महसूस होगा। जीवनसाथी के साथ किसी तीर्थ स्थल की यात्रा की योजना बन सकती है।",
+      en: "A spiritual connection will be felt in married life today. A plan for a pilgrimage with the spouse may be formed."
     },
     health: {
-      hi: "मानसिक ऊर्जा अत्यंत उच्च रहेगी। अत्यधिक विचार (Overthinking) से बचें और ध्यान (Meditation) करें।",
-      en: "Mental energy will be extremely high. Avoid overthinking and practice meditation."
+      hi: "शारीरिक ऊर्जा सकारात्मक रहेगी। प्राणायाम और ध्यान से आपकी मानसिक एकाग्रता में अभूतपूर्व वृद्धि होगी।",
+      en: "Physical energy will be positive. Pranayama and meditation will bring an unprecedented increase in your mental concentration."
     },
     remedy: {
-      hi: "भगवान गणेश को 21 दूर्वा (हरी घास) अर्पित करें और 'ॐ गं गणपतये नमः' का जाप करें।",
-      en: "Offer 21 Durva grass to Lord Ganesha and chant 'Om Gam Ganapataye Namah'."
+      hi: "गुरुवार का व्रत रखें या पीले वस्त्र धारण कर 'ॐ ग्रां ग्रीं ग्रौं सः गुरुवे नमः' का जाप करें।",
+      en: "Observe Thursday fast or wear yellow clothes and chant 'Om Gram Greem Groum Sah Guruve Namah'."
     },
-    luckyColor: { hi: "तोता हरा (Parrot Green)", en: "Parrot Green" },
-    luckyNumber: "5",
-    luckyTime: { hi: "प्रातः 08:15 से 09:45", en: "08:15 AM to 09:45 AM" },
-    luckyDate: "Apr 15, 2026",
-    tagline: { hi: "बुद्धि ही आपका सबसे बड़ा अस्त्र है!", en: "Intellect is your greatest weapon!" }
+    luckyColor: { hi: "स्वर्ण पीला (Golden Yellow)", en: "Golden Yellow" },
+    luckyNumber: "3",
+    luckyTime: { hi: "प्रातः 07:30 से 09:00", en: "07:30 AM to 09:00 AM" },
+    luckyDate: "Apr 16, 2026",
+    tagline: { hi: "गुरु कृपा से ही सर्वत्र विजय है!", en: "Victory everywhere only through Guru's grace!" }
   },
 
   taurus: {
     meta: {
-      planetaryPosition: "शुक्र और बुध का मित्रता पूर्ण संबंध",
-      predictionPower: "92%",
+      planetaryPosition: "गुरु का अष्टम भाव पर प्रभाव",
+      predictionPower: "89%",
       expertNote: { 
-        hi: "धन संचय और निवेश के लिए आज का दिन अत्यंत शुभ है। आपकी मधुर वाणी आज कठिन से कठिन कार्य सिद्ध कर देगी।", 
-        en: "An extremely auspicious day for wealth accumulation and investment. Your sweet speech will accomplish even the hardest tasks today." 
+        hi: "आज रहस्यमयी विद्याओं और शोध (Research) कार्यों में आपका मन लगेगा। पैतृक संपत्ति के मामलों में प्रगति संभव है।", 
+        en: "Today your mind will be engaged in mystical sciences and research work. Progress in ancestral property matters is possible." 
       }
     },
-    ratings: { health: 4, wealth: 5, love: 5, career: 4 },
+    ratings: { health: 4, wealth: 4, love: 4, career: 4 },
     career: {
-      hi: "बैंकिंग, कला और गायन से जुड़े लोगों के लिए आज का दिन स्वर्णिम है। किसी नवीन व्यावसायिक समझौते (Agreement) पर हस्ताक्षर हो सकते हैं।",
-      en: "A golden day for those in banking, arts, and singing. A new business agreement may be signed."
+      hi: "बीमा, बैंकिंग और अनुसंधान से जुड़े लोगों के लिए दिन उत्तम है। आर्थिक निवेश से पूर्व किसी अनुभवी व्यक्ति से परामर्श अवश्य लें।",
+      en: "An excellent day for people associated with insurance, banking, and research. Must consult an experienced person before financial investment."
     },
     love: {
-      hi: "दांपत्य जीवन में अपार मधुरता रहेगी। पूर्व की सभी भ्रांतियां (Misunderstandings) आज संवाद से दूर हो जाएंगी।",
-      en: "Immense sweetness will prevail in married life. All previous misunderstandings will be cleared through dialogue today."
+      hi: "ससुराल पक्ष से शुभ समाचार प्राप्त हो सकता है। जीवनसाथी के प्रति विश्वास और पारदर्शिता बनाए रखें।",
+      en: "Good news may be received from the in-laws' side. Maintain trust and transparency towards the spouse."
     },
     health: {
-      hi: "स्वास्थ्य उत्तम रहेगा। कंठ (गले) और त्वचा का विशेष ध्यान रखें। पर्याप्त मात्रा में जल ग्रहण करें।",
-      en: "Health will be excellent. Take special care of the throat and skin. Consume adequate water."
+      hi: "उदर (पेट) और पाचन तंत्र के प्रति सजग रहें। भारी और वसायुक्त भोजन (Fatty food) से पूर्णतः परहेज करें।",
+      en: "Be alert about the stomach and digestive system. Completely avoid heavy and fatty food."
     },
     remedy: {
-      hi: "गौमाता को हरा चारा या पालक खिलाएं।",
-      en: "Feed green fodder or spinach to a cow."
+      hi: "विष्णु सहस्रनाम का पाठ करें और केले के वृक्ष में जल अर्पित करें।",
+      en: "Recite Vishnu Sahasranama and offer water to a banana tree."
     },
-    luckyColor: { hi: "चमकीला हरा (Bright Green)", en: "Bright Green" },
+    luckyColor: { hi: "श्वेत (White)", en: "White" },
     luckyNumber: "6",
-    luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
-    luckyDate: "Apr 15, 2026",
-    tagline: { hi: "वाणी की मधुरता से सर्वत्र विजय।", en: "Victory everywhere through sweetness of speech." }
+    luckyTime: { hi: "दोपहर 01:15 से 02:45", en: "01:15 PM to 02:45 PM" },
+    luckyDate: "Apr 16, 2026",
+    tagline: { hi: "धैर्य और ज्ञान से बाधाएं दूर होंगी।", en: "Obstacles will be removed through patience and knowledge." }
   },
 
   gemini: {
     meta: {
-      planetaryPosition: "राशि स्वामी बुध का पूर्ण प्रभाव",
-      predictionPower: "98%",
+      planetaryPosition: "गुरु का सप्तम भाव (साझेदारी) में गोचर",
+      predictionPower: "94%",
       expertNote: { 
-        hi: "आज आपकी राशि के स्वामी बुध अत्यंत बलवान हैं। आपकी तार्किक क्षमता और संचार कौशल आपको समाज में विशिष्ट पहचान दिलाएंगे।", 
-        en: "Your sign lord Mercury is extremely strong today. Your logical ability and communication skills will give you a unique identity in society." 
+        hi: "आज साझेदारी के कार्यों में गुरु का आशीर्वाद प्राप्त होगा। आपके निर्णय व्यापार को एक नई ऊँचाई पर ले जाएंगे।", 
+        en: "Guru's blessings will be received in partnership tasks today. Your decisions will take the business to a new height." 
       }
     },
-    ratings: { health: 4, wealth: 5, love: 4, career: 5 },
+    ratings: { health: 4, wealth: 5, love: 5, career: 5 },
     career: {
-      hi: "लेखन, पत्रकारिता और मार्केटिंग के क्षेत्र में आज आपको कोई बड़ा पुरस्कार या अनुबंध (Contract) प्राप्त हो सकता है।",
-      en: "You may receive a major award or contract in the fields of writing, journalism, and marketing today."
+      hi: "न्याय, जनसंपर्क और वाणिज्य क्षेत्र के जातकों के लिए आज का दिन 'स्वर्णिम' है। नए अनुबंध (Contracts) लाभकारी सिद्ध होंगे।",
+      en: "A 'golden' day for natives in the fields of justice, public relations, and commerce. New contracts will prove beneficial."
     },
     love: {
-      hi: "प्रियजन के साथ आज मित्रता का भाव प्रबल रहेगा। हास्य-विनोद से पारिवारिक वातावरण आनंदमय बना रहेगा।",
-      en: "A strong sense of friendship with the loved one today. Humor will keep the family atmosphere joyful."
+      hi: "दांपत्य जीवन में सुख और शांति का वातावरण रहेगा। अविवाहितों के लिए विवाह के उत्तम प्रस्ताव आ सकते हैं।",
+      en: "An atmosphere of happiness and peace will remain in married life. Excellent marriage proposals may come for the unmarried."
     },
     health: {
-      hi: "स्नायु तंत्र (Nervous System) के प्रति सजग रहें। शारीरिक विश्राम के साथ-साथ मानसिक शांति को प्राथमिकता दें।",
-      en: "Be alert about the nervous system. Prioritize mental peace along with physical rest."
+      hi: "स्वास्थ्य उत्तम रहेगा। आज आप शारीरिक रूप से चुस्त और मानसिक रूप से प्रफुल्लित अनुभव करेंगे।",
+      en: "Health will be excellent. Today you will experience yourself physically active and mentally cheerful."
     },
     remedy: {
-      hi: "भगवान गणेश को मोदक का भोग लगाएं और गणेश अथर्वशीर्ष का पाठ करें।",
-      en: "Offer Modak to Lord Ganesha and recite Ganesh Atharvashirsha."
+      hi: "भगवान विष्णु को पीले पुष्प अर्पित करें और 'ॐ नमो भगवते वासुदेवाय' का 108 बार जाप करें।",
+      en: "Offer yellow flowers to Lord Vishnu and chant 'Om Namo Bhagavate Vasudevaya' 108 times."
     },
-    luckyColor: { hi: "पन्ना हरा (Emerald Green)", en: "Emerald Green" },
+    luckyColor: { hi: "हरा (Green)", en: "Green" },
     luckyNumber: "5",
-    luckyTime: { hi: "प्रातः 10:45 से 12:15", en: "10:45 AM to 12:15 PM" },
-    luckyDate: "Apr 15, 2026",
-    tagline: { hi: "उत्कृष्ट संवाद से सफलता सुनिश्चित है।", en: "Success is assured through excellent communication." }
+    luckyTime: { hi: "प्रातः 10:30 से 12:00", en: "10:30 AM to 12:00 PM" },
+    luckyDate: "Apr 16, 2026",
+    tagline: { hi: "साझेदारी में ही वास्तविक उन्नति है।", en: "Real progress lies in partnership." }
   },
 
   cancer: {
     meta: {
-      planetaryPosition: "चंद्रमा और बुध का प्रभाव",
-      predictionPower: "86%",
+      planetaryPosition: "गुरु का षष्ठम भाव (शत्रु भाव) पर प्रभाव",
+      predictionPower: "90%",
       expertNote: { 
-        hi: "आज भावनाओं के स्थान पर तर्क और विवेक से निर्णय लें। पारिवारिक संपत्ति के मामलों में प्रगति होगी।", 
-        en: "Make decisions using logic and prudence instead of emotions today. Progress in family property matters." 
+        hi: "आज आपके ज्ञान और विवेक के सम्मुख विरोधी नतमस्तक होंगे। कानूनी मामलों में सफलता प्राप्त करने का प्रबल योग है।", 
+        en: "Today your opponents will bow down before your knowledge and prudence. Strong yoga for achieving success in legal matters." 
       }
     },
-    ratings: { health: 4, wealth: 4, love: 4, career: 4 },
+    ratings: { health: 3, wealth: 4, love: 4, career: 5 },
     career: {
-      hi: "आयात-निर्यात और दूरस्थ स्थानों से जुड़े व्यापार में लाभ के योग हैं। कार्यस्थल पर नवीन तकनीक सीखने का अवसर मिलेगा।",
-      en: "Yoga for profit in import-export and business related to distant places. Opportunity to learn new technology at work."
+      hi: "नौकरीपेशा जातकों को उनके परिश्रम का उत्कृष्ट सम्मान मिलेगा। पुराने ऋणों (Debts) से मुक्ति के मार्ग प्रशस्त होंगे।",
+      en: "Employed natives will receive excellent honor for their hard work. Pathways to freedom from old debts will be paved."
     },
     love: {
-      hi: "जीवनसाथी की भावनाओं का आदर करें। शांत रहकर सुना गया एक शब्द कई विवादों को समाप्त कर सकता है।",
-      en: "Respect the feelings of your spouse. One word heard calmly can end many disputes."
+      hi: "पारिवारिक जीवन में शांति बनाए रखने के लिए आज मौन का आश्रय लें। जीवनसाथी के प्रति सहयोगात्मक दृष्टिकोण अपनाएं।",
+      en: "Take refuge in silence today to maintain peace in family life. Adopt a cooperative attitude towards the spouse."
     },
     health: {
-      hi: "पाचन तंत्र थोड़ा संवेदनशील रह सकता है। सात्विक और सुपाच्य आहार ही ग्रहण करें।",
-      en: "The digestive system may remain a bit sensitive. Consume only pure (Sattvic) and easily digestible food."
+      hi: "उदर संबंधी व्याधियां उत्पन्न हो सकती हैं। सात्विक आहार लें और प्रातः काल का भ्रमण अवश्य करें।",
+      en: "Stomach-related ailments may arise. Take a pure (Sattvic) diet and must take a morning walk."
     },
     remedy: {
-      hi: "शिवलिंग पर जल चढ़ाएं और निर्धनों को हरी मूंग की दाल दान करें।",
-      en: "Offer water on the Shivling and donate green moong dal to the poor."
+      hi: "बृहस्पतिवार की कथा का श्रवण करें और चने की दाल का दान करें।",
+      en: "Listen to the Thursday story and donate chana dal."
     },
-    luckyColor: { hi: "श्वेत (White)", en: "White" },
+    luckyColor: { hi: "दूधिया सफेद (Milky White)", en: "Milky White" },
     luckyNumber: "2",
-    luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
-    luckyDate: "Apr 15, 2026",
-    tagline: { hi: "विवेक ही आपका रक्षक है।", en: "Prudence is your protector." }
+    luckyTime: { hi: "शाम 04:45 से 06:15", en: "04:45 PM to 06:15 PM" },
+    luckyDate: "Apr 16, 2026",
+    tagline: { hi: "ज्ञान ही आपका सबसे बड़ा सुरक्षा चक्र है।", en: "Knowledge is your greatest security circle." }
   },
 
   leo: {
     meta: {
-      planetaryPosition: "उच्च के सूर्य के साथ बुध का बुधादित्य योग स्वरूप प्रभाव",
+      planetaryPosition: "गुरु का पंचम भाव (विद्या और संतान) में गोचर",
       predictionPower: "97%",
       expertNote: { 
-        hi: "बुध और सूर्य का यह उत्कृष्ट समन्वय आपके मान-सम्मान और आय में अभूतपूर्व वृद्धि करेगा।", 
-        en: "This excellent coordination of Mercury and Sun will bring an unprecedented increase in your honor and income." 
+        hi: "विद्यार्थियों और कला क्षेत्र से जुड़े जातकों के लिए आज का दिन ऐतिहासिक है। आपकी बौद्धिक क्षमता सर्वत्र सराही जाएगी।", 
+        en: "An historic day for students and natives associated with the art field. Your intellectual capacity will be praised everywhere." 
       }
     },
-    ratings: { health: 5, wealth: 5, love: 4, career: 5 },
+    ratings: { health: 5, wealth: 5, love: 5, career: 4 },
     career: {
-      hi: "प्रशासनिक अधिकारियों और बड़े व्यापारियों के लिए दिन ऐतिहासिक है। सरकार से संबंधित सभी कार्य आज निर्विघ्न पूर्ण होंगे।",
-      en: "An historic day for administrative officers and big businessmen. All government-related tasks will be completed without obstacles today."
+      hi: "शेयर बाजार, उच्च शिक्षा और रचनात्मक कार्यों (Creative fields) में आज आपको अप्रत्याशित सफलता और लाभ प्राप्त होगा।",
+      en: "Today you will achieve unexpected success and profit in the stock market, higher education, and creative fields."
     },
     love: {
-      hi: "पारिवारिक जीवन में गरिमा और हर्ष का वातावरण रहेगा। प्रियजन आपकी सामाजिक प्रतिष्ठा से अत्यंत प्रसन्न होंगे।",
-      en: "An atmosphere of dignity and joy in family life. Loved ones will be extremely pleased with your social prestige."
+      hi: "संतान पक्ष से अत्यंत गौरवपूर्ण समाचार प्राप्त होगा। प्रेम संबंधों में आज आत्मीयता और सम्मान की वृद्धि होगी।",
+      en: "Extremely proud news will be received from the children's side. Intimacy and respect will increase in love relationships today."
     },
     health: {
-      hi: "शारीरिक और मानसिक रूप से आप स्वयं को अजेय अनुभव करेंगे। सूर्य रश्मियों (Sunlight) का सेवन करें।",
-      en: "Physically and mentally, you will experience yourself as invincible. Absorb the sun rays."
+      hi: "आप स्वयं को अत्यंत ऊर्जावान और स्वस्थ अनुभव करेंगे। अपनी ऊर्जा को ध्यान और योगाभ्यास में लगाएं।",
+      en: "You will experience yourself as extremely energetic and healthy. Channel your energy into meditation and yoga practice."
     },
     remedy: {
-      hi: "सूर्य देव को तांबे के पात्र से अर्घ्य दें और गणेश जी को लाल पुष्प अर्पित करें।",
-      en: "Offer Arghya to the Sun God from a copper vessel and offer red flowers to Lord Ganesha."
+      hi: "सूर्य देव को अर्घ्य दें और विष्णु भगवान के मंदिर में पीले पुष्प अर्पित करें।",
+      en: "Offer Arghya to the Sun God and offer yellow flowers in a Lord Vishnu temple."
     },
     luckyColor: { hi: "स्वर्ण (Golden)", en: "Golden" },
     luckyNumber: "1",
-    luckyTime: { hi: "प्रातः 07:00 से 08:30", en: "07:00 AM to 08:30 AM" },
-    luckyDate: "Apr 15, 2026",
-    tagline: { hi: "प्रसिद्धि और धन का अद्भुत योग।", en: "A wonderful yoga of fame and wealth." }
+    luckyTime: { hi: "प्रातः 07:15 से 08:45", en: "07:15 AM to 08:45 AM" },
+    luckyDate: "Apr 16, 2026",
+    tagline: { hi: "रचनात्मकता ही आपकी वास्तविक पहचान है।", en: "Creativity is your real identity." }
   },
 
   virgo: {
     meta: {
-      planetaryPosition: "राशि स्वामी बुध की प्रबल स्थिति",
-      predictionPower: "96%",
+      planetaryPosition: "गुरु का चतुर्थ भाव (सुख भाव) पर प्रभाव",
+      predictionPower: "92%",
       expertNote: { 
-        hi: "आज आपकी विश्लेषण क्षमता (Analytical Skills) अपने शिखर पर होगी। कोई भी कार्य आज आपकी दृष्टि से बच नहीं पाएगा।", 
-        en: "Your analytical skills will be at their peak today. No detail will escape your vision today." 
-      }
-    },
-    ratings: { health: 4, wealth: 5, love: 4, career: 5 },
-    career: {
-      hi: "लेखांकन (Accounting), शोध और डेटा से जुड़े जातकों के लिए आज का दिन सर्वश्रेष्ठ है। कार्यस्थल पर आपकी कुशलता की सराहना होगी।",
-      en: "The best day for natives involved in accounting, research, and data. Your efficiency will be appreciated at work."
-    },
-    love: {
-      hi: "प्रेम संबंधों में व्यावहारिकता (Practicality) का दृष्टिकोण रहेगा। भविष्य की आर्थिक योजनाओं पर गंभीरता से विचार-विमर्श होगा।",
-      en: "A practical approach will be seen in love relationships. Future financial plans will be discussed seriously."
-    },
-    health: {
-      hi: "उदर (पेट) संबंधी व्याधियों से बचें। औषधीय गुणों से युक्त पेय (Herbal Tea) का सेवन लाभप्रद रहेगा।",
-      en: "Avoid stomach-related ailments. Consuming herbal tea will be beneficial."
-    },
-    remedy: {
-      hi: "भगवान गणेश को सिंदूर अर्पित करें और गाय को हरी घास खिलाएं।",
-      en: "Offer vermilion to Lord Ganesha and feed green grass to a cow."
-    },
-    luckyColor: { hi: "गहरा हरा (Dark Green)", en: "Dark Green" },
-    luckyNumber: "5",
-    luckyTime: { hi: "दोपहर 12:00 से 01:30", en: "12:00 PM to 01:30 PM" },
-    luckyDate: "Apr 15, 2026",
-    tagline: { hi: "कुशलता ही आपकी पूंजी है।", en: "Efficiency is your capital." }
-  },
-
-  libra: {
-    meta: {
-      planetaryPosition: "बुध का सप्तम भाव पर अनुकूल प्रभाव",
-      predictionPower: "90%",
-      expertNote: { 
-        hi: "साझेदारी और सहयोग के कार्यों में आज उत्तम प्रगति होगी। स्पष्ट संवाद से सभी प्रकार की बाधाएं दूर होंगी।", 
-        en: "Excellent progress in partnership and collaborative tasks today. Clear communication will remove all obstacles." 
-      }
-    },
-    ratings: { health: 4, wealth: 4, love: 5, career: 4 },
-    career: {
-      hi: "कानूनी परामर्श, जनसंपर्क (Public Relations) और कला से जुड़े लोगों को नए और महत्वपूर्ण प्रस्ताव प्राप्त होंगे।",
-      en: "People associated with legal consulting, public relations, and arts will receive new and important proposals."
-    },
-    love: {
-      hi: "दांपत्य जीवन में अपूर्व सामंजस्य देखने को मिलेगा। जीवनसाथी के साथ कोई सुखद यात्रा संपन्न हो सकती है।",
-      en: "Unprecedented harmony will be seen in married life. A pleasant journey with the spouse may be accomplished."
-    },
-    health: {
-      hi: "स्वास्थ्य उत्तम रहेगा। मानसिक शांति हेतु प्रकृति के सान्निध्य में कुछ समय व्यतीत करें।",
-      en: "Health will be excellent. Spend some time in the proximity of nature for mental peace."
-    },
-    remedy: {
-      hi: "निर्धन बच्चों को शिक्षा सामग्री (पुस्तकें आदि) का दान करें।",
-      en: "Donate educational materials (books, etc.) to poor children."
-    },
-    luckyColor: { hi: "हल्का नीला (Light Blue)", en: "Light Blue" },
-    luckyNumber: "6",
-    luckyTime: { hi: "शाम 04:00 से 05:30", en: "04:00 PM to 05:30 PM" },
-    luckyDate: "Apr 15, 2026",
-    tagline: { hi: "सहयोग से ही विकास संभव है।", en: "Development is possible only through collaboration." }
-  },
-
-  scorpio: {
-    meta: {
-      planetaryPosition: "मंगल और बुध का षष्ठम भाव से संबंध",
-      predictionPower: "87%",
-      expertNote: { 
-        hi: "आज कूटनीति (Strategy) का उपयोग करें, उग्रता का नहीं। गुप्त शत्रुओं पर आपकी बौद्धिक क्षमता भारी पड़ेगी।", 
-        en: "Use strategy today, not aggression. Your intellectual capacity will overpower hidden enemies." 
-      }
-    },
-    ratings: { health: 3, wealth: 4, love: 3, career: 5 },
-    career: {
-      hi: "प्रतिस्पर्धात्मक (Competitive) परीक्षाओं और साक्षात्कार में विजय का दिन है। पुराने ऋणों से मुक्ति के मार्ग प्रशस्त होंगे।",
-      en: "A day of victory in competitive exams and interviews. Pathways to freedom from old debts will be paved."
-    },
-    love: {
-      hi: "संबंधों में संदेह को स्थान न दें। पारदर्शिता और सत्यनिष्ठा ही आपके रिश्ते को दृढ़ बनाएगी।",
-      en: "Do not give room to doubt in relationships. Transparency and integrity alone will make your bond strong."
-    },
-    health: {
-      hi: "त्वचा संबंधी एलर्जी या संक्रमण (Infection) से सतर्क रहें। शुद्ध और ताजे जल का सेवन करें।",
-      en: "Be alert against skin allergies or infections. Consume pure and fresh water."
-    },
-    remedy: {
-      hi: "हनुमान जी और गणेश जी का संयुक्त रूप से स्मरण करें और चमेली के तेल का दीपक जलाएं।",
-      en: "Jointly remember Lord Hanuman and Lord Ganesha and light a jasmine oil lamp."
-    },
-    luckyColor: { hi: "गहरा लाल (Dark Red)", en: "Dark Red" },
-    luckyNumber: "9",
-    luckyTime: { hi: "प्रातः 09:30 से 11:00", en: "09:30 AM to 11:00 AM" },
-    luckyDate: "Apr 15, 2026",
-    tagline: { hi: "बुद्धि और पराक्रम से विजय।", en: "Victory through intellect and valor." }
-  },
-
-  sagittarius: {
-    meta: {
-      planetaryPosition: "गुरु की कृपा और बुध का पंचम भाव में गोचर",
-      predictionPower: "94%",
-      expertNote: { 
-        hi: "आज ज्ञान, शिक्षा और रचनात्मकता का अद्भुत संगम होगा। विद्यार्थियों को उनके परिश्रम का उत्कृष्ट फल प्राप्त होगा।", 
-        en: "A wonderful confluence of knowledge, education, and creativity today. Students will reap excellent fruits of their labor." 
-      }
-    },
-    ratings: { health: 5, wealth: 4, love: 5, career: 4 },
-    career: {
-      hi: "शिक्षण, परामर्श (Consulting) और आध्यात्मिक कार्यों से जुड़े जातकों के मान-सम्मान में अपार वृद्धि होगी। नवीन विचार जन्म लेंगे।",
-      en: "Immense increase in the honor of natives associated with teaching, consulting, and spiritual work. New ideas will be born."
-    },
-    love: {
-      hi: "प्रेम संबंधों में आज आत्मीयता और आध्यात्मिक जुड़ाव का अनुभव होगा। संतान पक्ष से गर्व की अनुभूति होगी।",
-      en: "Will experience intimacy and a spiritual connection in love relationships today. Will feel proud of the children's side."
-    },
-    health: {
-      hi: "शारीरिक और मानसिक स्वास्थ्य सर्वोच्च स्तर पर रहेगा। सकारात्मक चिंतन आपकी ऊर्जा को दोगुना कर देगा।",
-      en: "Physical and mental health will be at the highest level. Positive thinking will double your energy."
-    },
-    remedy: {
-      hi: "भगवान विष्णु को पीले पुष्प अर्पित करें और 'ॐ बुधाय नमः' का जाप करें।",
-      en: "Offer yellow flowers to Lord Vishnu and chant 'Om Budhaya Namah'."
-    },
-    luckyColor: { hi: "पीला (Yellow)", en: "Yellow" },
-    luckyNumber: "3",
-    luckyTime: { hi: "दोपहर 02:00 से 03:30", en: "02:00 PM to 03:30 PM" },
-    luckyDate: "Apr 15, 2026",
-    tagline: { hi: "ज्ञान ही आपका सच्चा धन है।", en: "Knowledge is your true wealth." }
-  },
-
-  capricorn: {
-    meta: {
-      planetaryPosition: "शनि की स्थिरता और बुध का चतुर्थ भाव पर प्रभाव",
-      predictionPower: "88%",
-      expertNote: { 
-        hi: "आज कार्य और पारिवारिक जीवन के मध्य संतुलन स्थापित करना आवश्यक है। संपत्ति संबंधी दस्तावेजों का सावधानीपूर्वक अध्ययन करें।", 
-        en: "It is necessary to establish a balance between work and family life today. Carefully study property-related documents." 
+        hi: "आज पारिवारिक सुख-शांति और संपत्ति से संबंधित मामलों में वृद्धि होगी। घर का वातावरण आध्यात्मिक और आनंदमय रहेगा।", 
+        en: "Today there will be an increase in matters related to family peace and property. The home environment will remain spiritual and joyful." 
       }
     },
     ratings: { health: 4, wealth: 4, love: 4, career: 4 },
     career: {
-      hi: "निर्माण कार्यों और अचल संपत्ति (Real Estate) के व्यापार में सोच-समझकर किए गए निवेश से लाभ प्राप्त होगा।",
-      en: "Thoughtful investments in construction work and real estate business will yield profit."
+      hi: "भूमि, भवन और वाहन (Real Estate) से जुड़े व्यवसाय में आज बड़ा लाभ होने के संकेत हैं। कार्यस्थल पर धैर्य बनाए रखें।",
+      en: "Indications of major profit today in business related to land, building, and vehicles (Real Estate). Maintain patience at the workplace."
     },
     love: {
-      hi: "माता-पिता के साथ समय व्यतीत करें। पारिवारिक चर्चाओं में धैर्यपूर्वक सबकी बात सुनें, इससे सामंजस्य बढ़ेगा।",
-      en: "Spend time with your parents. Listen patiently to everyone in family discussions; this will increase harmony."
+      hi: "माता-पिता का पूर्ण सहयोग और आशीर्वाद प्राप्त होगा। जीवनसाथी के साथ घरेलू विषयों पर सार्थक चर्चा संपन्न होगी।",
+      en: "Full support and blessings of parents will be received. A meaningful discussion on domestic matters will be concluded with the spouse."
     },
     health: {
-      hi: "घुटनों और जोड़ों के स्वास्थ्य पर ध्यान दें। वात (Gas) उत्पन्न करने वाले आहार का त्याग करें।",
-      en: "Pay attention to the health of knees and joints. Renounce diets that produce Vata (Gas)."
+      hi: "हृदय और फेफड़ों के स्वास्थ्य के प्रति सजग रहें। स्वच्छ वायु में भ्रमण (Walk) आपके लिए अत्यंत लाभकारी है।",
+      en: "Be alert about the health of the heart and lungs. Walking in clean air is extremely beneficial for you."
     },
     remedy: {
-      hi: "शनि देव और गणेश जी की आराधना करें। काले श्वान को भोजन कराएं।",
-      en: "Worship Lord Saturn and Lord Ganesha. Feed a black dog."
+      hi: "हल्दी मिश्रित जल से स्नान करें और 'ॐ नमो भगवते वासुदेवाय' का स्मरण करें।",
+      en: "Bathe with water mixed with turmeric and remember 'Om Namo Bhagavate Vasudevaya'."
     },
-    luckyColor: { hi: "नीला (Blue)", en: "Blue" },
-    luckyNumber: "8",
-    luckyTime: { hi: "शाम 05:30 से 07:00", en: "05:30 PM to 07:00 PM" },
-    luckyDate: "Apr 15, 2026",
-    tagline: { hi: "धैर्यपूर्ण निर्णय से सफलता।", en: "Success through patient decisions." }
+    luckyColor: { hi: "पन्ना हरा (Emerald Green)", en: "Emerald Green" },
+    luckyNumber: "5",
+    luckyTime: { hi: "दोपहर 12:15 से 01:45", en: "12:15 PM to 01:45 PM" },
+    luckyDate: "Apr 16, 2026",
+    tagline: { hi: "घरेलू शांति ही सर्वोत्तम समृद्धि है।", en: "Domestic peace is the best prosperity." }
   },
 
-  aquarius: {
+  libra: {
     meta: {
-      planetaryPosition: "शनि का प्रभाव और बुध का तृतीय भाव (पराक्रम) में गोचर",
-      predictionPower: "91%",
+      planetaryPosition: "गुरु का तृतीय भाव (पराक्रम) में संचरण",
+      predictionPower: "90%",
       expertNote: { 
-        hi: "आज आपकी नवीन सोच और प्रभावशाली संचार शैली (Communication) समाज में नए प्रतिमान (Standards) स्थापित करेगी।", 
-        en: "Your innovative thinking and influential communication style will set new standards in society today." 
+        hi: "आज आपका साहस और संचार कौशल (Communication) आपको नई ऊंचाइयों पर ले जाएगा। छोटी किंतु महत्वपूर्ण यात्राएं संभव हैं।", 
+        en: "Today your courage and communication skills will take you to new heights. Short but important journeys are possible." 
       }
     },
     ratings: { health: 4, wealth: 4, love: 4, career: 5 },
     career: {
-      hi: "सूचना प्रौद्योगिकी, सोशल नेटवर्किंग और स्टार्टअप से जुड़े जातकों के लिए आज का दिन अत्यंत शुभ फलदायी है।",
-      en: "A highly auspicious and fruitful day for natives associated with IT, social networking, and startups."
+      hi: "लेखन, पत्रकारिता और मीडिया से जुड़े जातकों के लिए आज का दिन अत्यंत शुभ है। भाई-बहनों का सहयोग करियर में सहायक होगा।",
+      en: "A highly auspicious day for natives associated with writing, journalism, and media. Siblings' support will be helpful in career."
     },
     love: {
-      hi: "भाई-बहनों और मित्रों के साथ संबंध सुदृढ़ होंगे। प्रियजन के साथ भविष्य की योजनाओं पर गंभीर चर्चा सफल रहेगी।",
-      en: "Relations with siblings and friends will strengthen. Serious discussion on future plans with the loved one will be successful."
+      hi: "संबंधों में मधुरता लाने के लिए आज अपनी वाणी का सदुपयोग करें। प्रियजन के साथ बिताए गए क्षण स्मरणीय रहेंगे।",
+      en: "Make good use of your speech today to bring sweetness to relationships. Moments spent with the loved one will be memorable."
     },
     health: {
-      hi: "भुजाओं और कंधों में श्रम के कारण थकान हो सकती है। कार्य के बीच में विश्राम अवश्य लें।",
-      en: "Fatigue may occur in arms and shoulders due to exertion. Must take rest in between work."
+      hi: "भुजाओं और कंधों में श्रम के कारण हल्की थकान हो सकती है। योगाभ्यास से ऊर्जा को पुनः प्राप्त करें।",
+      en: "Slight fatigue may occur in arms and shoulders due to exertion. Regain energy through yoga practice."
     },
     remedy: {
-      hi: "गणेश जी को दूर्वा अर्पित करें और पक्षियों को हरी मूंग खिलाएं।",
-      en: "Offer Durva to Lord Ganesha and feed green moong to birds."
+      hi: "विष्णु मंदिर में केले का प्रसाद चढ़ाएं और इष्ट देव का ध्यान करें।",
+      en: "Offer banana Prasad in a Vishnu temple and meditate on the presiding deity."
     },
-    luckyColor: { hi: "बैंगनी (Purple)", en: "Purple" },
-    luckyNumber: "8",
-    luckyTime: { hi: "प्रातः 11:30 से 01:00", en: "11:30 AM to 01:00 PM" },
-    luckyDate: "Apr 15, 2026",
-    tagline: { hi: "नवप्रवर्तन (Innovation) ही आपकी शक्ति है।", en: "Innovation is your power." }
+    luckyColor: { hi: "हल्का गुलाबी (Light Pink)", en: "Light Pink" },
+    luckyNumber: "6",
+    luckyTime: { hi: "शाम 05:30 से 07:00", en: "05:30 PM to 07:00 PM" },
+    luckyDate: "Apr 16, 2026",
+    tagline: { hi: "सकारात्मक संवाद से सभी लक्ष्य साध्य हैं।", en: "All goals are achievable through positive communication." }
   },
 
-  pisces: {
+  scorpio: {
     meta: {
-      planetaryPosition: "गुरु की कृपा और बुध का द्वितीय भाव (धन भाव) में संचरण",
-      predictionPower: "93%",
+      planetaryPosition: "गुरु का द्वितीय भाव (धन भाव) पर प्रभाव",
+      predictionPower: "95%",
       expertNote: { 
-        hi: "आज आपकी अंतर्दृष्टि (Intuition) और तर्क का उत्तम समन्वय होगा। धन संचय के प्रबल योग निर्मित हो रहे हैं।", 
-        en: "An excellent coordination of your intuition and logic today. Strong yogas for wealth accumulation are being formed." 
+        hi: "आज धन संचय और वाक्पटुता के लिए दिन सर्वोत्तम है। आपकी वाणी से आज कई जटिल कार्य सुगमता से पूर्ण होंगे।", 
+        en: "Today is the best day for wealth accumulation and eloquence. Many complex tasks will be easily completed today by your speech." 
       }
     },
     ratings: { health: 4, wealth: 5, love: 4, career: 4 },
     career: {
-      hi: "वित्तीय सलाहकारों (Financial Advisors), ज्योतिषियों और शिक्षकों को आज अपने ज्ञान के माध्यम से आर्थिक लाभ प्राप्त होगा।",
-      en: "Financial advisors, astrologers, and teachers will attain financial benefits through their knowledge today."
+      hi: "बैंकिंग, वित्त (Finance) और अध्यापन के क्षेत्र से जुड़े लोगों को बड़ा आर्थिक लाभ होगा। पैतृक व्यवसाय में नवीनता आएगी।",
+      en: "People associated with banking, finance, and teaching fields will have major financial gains. Novelty will come to ancestral business."
     },
     love: {
-      hi: "आपकी मधुर वाणी आज पारिवारिक वातावरण को आनंदमय बना देगी। जीवनसाथी के प्रति अपने अनुराग को शब्दों में व्यक्त करें।",
-      en: "Your sweet speech will make the family atmosphere joyful today. Express your affection for your spouse in words."
+      hi: "कुटुंब (परिवार) में हर्ष और उल्लास का वातावरण रहेगा। आज आपके शब्दों से जीवनसाथी अत्यधिक प्रभावित होंगे।",
+      en: "An atmosphere of joy and jubilation will remain in the family. Today your spouse will be highly impressed by your words."
     },
     health: {
-      hi: "पैरों और नेत्रों का ध्यान रखें। शीतल पेय पदार्थों के सेवन से बचें।",
-      en: "Take care of your feet and eyes. Avoid the consumption of cold beverages."
+      hi: "मुख और कंठ के स्वास्थ्य पर विशेष ध्यान दें। अधिक उष्ण (गर्म) खाद्य पदार्थों का सेवन न करें।",
+      en: "Pay special attention to the health of mouth and throat. Do not consume excessively hot foods."
     },
     remedy: {
-      hi: "भगवान गणेश को हल्दी का तिलक लगाएं और पीले वस्त्र धारण करें।",
-      en: "Apply turmeric tilak to Lord Ganesha and wear yellow clothes."
+      hi: "पीले रंग के वस्त्र धारण करें और गुरुजनों अथवा वृद्धजनों का आशीर्वाद प्राप्त करें।",
+      en: "Wear yellow-colored clothes and seek the blessings of gurus or elders."
+    },
+    luckyColor: { hi: "गहरा लाल (Deep Red)", en: "Deep Red" },
+    luckyNumber: "9",
+    luckyTime: { hi: "प्रातः 09:30 से 11:00", en: "09:30 AM to 11:00 AM" },
+    luckyDate: "Apr 16, 2026",
+    tagline: { hi: "आपकी वाणी ही आपका वास्तविक धन है।", en: "Your speech is your real wealth." }
+  },
+
+  sagittarius: {
+    meta: {
+      planetaryPosition: "राशि स्वामी गुरु का लग्न में गोचर (अत्यंत शुभ)",
+      predictionPower: "99%",
+      expertNote: { 
+        hi: "आज आप ऊर्जा, ज्ञान और आत्मविश्वास के शिखर पर हैं। आपके व्यक्तित्व का ओज समाज में आपकी विशिष्ट पहचान बनाएगा।", 
+        en: "Today you are at the peak of energy, knowledge, and self-confidence. The luster of your personality will create your unique identity in society." 
+      }
+    },
+    ratings: { health: 5, wealth: 5, love: 5, career: 5 },
+    career: {
+      hi: "हर प्रकार के व्यवसाय और नौकरी में आज सफलता निश्चित है। कोई नया प्रोजेक्ट या उच्च पद मिलने के प्रबल योग हैं।",
+      en: "Success is certain in all types of business and jobs today. Strong yogas for getting a new project or a high position."
+    },
+    love: {
+      hi: "दांपत्य जीवन में अपूर्व सामंजस्य और प्रेम रहेगा। आप अपने साथी के लिए एक मार्गदर्शक (Guide) की भूमिका निभाएंगे।",
+      en: "Unprecedented harmony and love will remain in married life. You will play the role of a guide for your partner."
+    },
+    health: {
+      hi: "शारीरिक और मानसिक स्वास्थ्य अत्यंत उत्तम रहेगा। आज आप स्वयं को अजेय अनुभव करेंगे।",
+      en: "Physical and mental health will be extremely excellent. Today you will experience yourself as invincible."
+    },
+    remedy: {
+      hi: "विष्णु सहस्रनाम का पाठ करें और मस्तक पर केसर का तिलक धारण करें।",
+      en: "Recite Vishnu Sahasranama and wear a saffron tilak on the forehead."
+    },
+    luckyColor: { hi: "पीत वर्ण (Yellow)", en: "Yellow" },
+    luckyNumber: "3",
+    luckyTime: { hi: "दोपहर 02:00 से 03:30", en: "02:00 PM to 03:30 PM" },
+    luckyDate: "Apr 16, 2026",
+    tagline: { hi: "ज्ञान और तेज से सर्वत्र विजय प्राप्त करें।", en: "Achieve victory everywhere through knowledge and brilliance." }
+  },
+
+  capricorn: {
+    meta: {
+      planetaryPosition: "गुरु का द्वादश भाव (व्यय और मोक्ष) में गोचर",
+      predictionPower: "85%",
+      expertNote: { 
+        hi: "आज का दिन भौतिक दौड़-भाग से अधिक आध्यात्मिक चिंतन के लिए उत्तम है। दान-पुण्य के कार्यों में व्यय हो सकता है।", 
+        en: "Today is better for spiritual contemplation rather than materialistic rat race. Expenditure may occur in charitable acts." 
+      }
+    },
+    ratings: { health: 3, wealth: 3, love: 4, career: 4 },
+    career: {
+      hi: "विदेशी कंपनियों और दूरस्थ स्थानों से जुड़े व्यापार में आज लाभ के संकेत हैं। कार्यस्थल पर विवादों से स्वयं को दूर रखें।",
+      en: "Indications of profit today in business related to foreign companies and distant places. Keep yourself away from disputes at the workplace."
+    },
+    love: {
+      hi: "जीवनसाथी के साथ एकांत में कुछ समय व्यतीत करें। आध्यात्मिक विषयों पर चर्चा से संबंधों में प्रगाढ़ता आएगी।",
+      en: "Spend some time in solitude with your spouse. Discussion on spiritual topics will bring depth to the relationships."
+    },
+    health: {
+      hi: "अनिद्रा या मानसिक थकान की समस्या हो सकती है। शयन से पूर्व (Before sleeping) कुछ समय ध्यान (Meditation) अवश्य करें।",
+      en: "The problem of insomnia or mental fatigue may occur. Must meditate for some time before sleeping."
+    },
+    remedy: {
+      hi: "किसी धार्मिक स्थल पर पीले फलों का दान करें और गुरुजनों का स्मरण करें।",
+      en: "Donate yellow fruits at a religious place and remember the Gurus."
+    },
+    luckyColor: { hi: "गहरा नीला (Navy Blue)", en: "Navy Blue" },
+    luckyNumber: "8",
+    luckyTime: { hi: "शाम 06:15 से 07:45", en: "06:15 PM to 07:45 PM" },
+    luckyDate: "Apr 16, 2026",
+    tagline: { hi: "आध्यात्मिक शांति ही सर्वोच्च सुख है।", en: "Spiritual peace is the supreme happiness." }
+  },
+
+  aquarius: {
+    meta: {
+      planetaryPosition: "गुरु का एकादश भाव (लाभ भाव) में गोचर",
+      predictionPower: "93%",
+      expertNote: { 
+        hi: "आज आपकी महत्वाकांक्षाएं पूर्ण होंगी। समाज के प्रभावशाली लोगों और बड़े भाई-बहनों का पूर्ण सहयोग प्राप्त होगा।", 
+        en: "Your ambitions will be fulfilled today. Full support from influential people in society and elder siblings will be received." 
+      }
+    },
+    ratings: { health: 4, wealth: 5, love: 4, career: 5 },
+    career: {
+      hi: "आज आपकी आय के नए स्रोत (Sources of Income) निर्मित होंगे। नेटवर्किंग और जनसंपर्क से आज आपको कोई बड़ा प्रोजेक्ट मिल सकता है।",
+      en: "New sources of income will be created for you today. You may get a big project through networking and public relations today."
+    },
+    love: {
+      hi: "सामाजिक समारोहों में प्रियजन के साथ सम्मिलित होने का अवसर मिलेगा। आपके वैवाहिक जीवन में आज उत्साह और हर्ष रहेगा।",
+      en: "Opportunity to participate in social functions with the loved one. There will be enthusiasm and joy in your married life today."
+    },
+    health: {
+      hi: "स्वास्थ्य अनुकूल रहेगा। सकारात्मक ऊर्जा का संचार होगा। अपनी ऊर्जा को सही दिशा में लगाने के लिए प्रातः भ्रमण करें।",
+      en: "Health will be favorable. Positive energy will flow. Take a morning walk to channel your energy in the right direction."
+    },
+    remedy: {
+      hi: "गुरुवार का व्रत रखें और विष्णु जी के समक्ष घी का दीपक प्रज्वलित करें।",
+      en: "Observe Thursday fast and light a ghee lamp in front of Lord Vishnu."
+    },
+    luckyColor: { hi: "बैंगनी (Purple)", en: "Purple" },
+    luckyNumber: "8",
+    luckyTime: { hi: "प्रातः 11:30 से 01:00", en: "11:30 AM to 01:00 PM" },
+    luckyDate: "Apr 16, 2026",
+    tagline: { hi: "लाभ और समृद्धि आपके द्वार पर हैं।", en: "Profit and prosperity are at your door." }
+  },
+
+  pisces: {
+    meta: {
+      planetaryPosition: "राशि स्वामी गुरु का दशम भाव (कर्म भाव) पर प्रभाव",
+      predictionPower: "95%",
+      expertNote: { 
+        hi: "आज कार्यक्षेत्र में आपके ज्ञान और अनुभव की सर्वत्र वंदना होगी। करियर को एक नई और श्रेष्ठ दिशा मिलने वाली है।", 
+        en: "Your knowledge and experience will be revered everywhere at the workplace today. Career is going to get a new and superior direction." 
+      }
+    },
+    ratings: { health: 4, wealth: 4, love: 4, career: 5 },
+    career: {
+      hi: "अध्यापन, न्याय और प्रशासन के क्षेत्र से जुड़े लोगों को आज विशेष पदोन्नति (Promotion) और सम्मान प्राप्त होगा।",
+      en: "People associated with teaching, justice, and administration fields will receive special promotion and honor today."
+    },
+    love: {
+      hi: "कार्य की अधिकता के कारण समय का अभाव रह सकता है। जीवनसाथी के साथ संवाद बनाए रखें ताकि संबंधों में मिठास रहे।",
+      en: "Lack of time may occur due to an excess of work. Maintain communication with the spouse so that sweetness remains in the relationship."
+    },
+    health: {
+      hi: "रीढ़ की हड्डी और कमर के निचले हिस्से का ध्यान रखें। सही मुद्रा (Posture) में बैठकर कार्य करना आवश्यक है।",
+      en: "Take care of the spine and lower back. It is necessary to work sitting in the correct posture."
+    },
+    remedy: {
+      hi: "पीले चन्दन का तिलक लगाएं और निर्धनों को चने की दाल दान करें।",
+      en: "Apply yellow sandalwood tilak and donate chana dal to the poor."
     },
     luckyColor: { hi: "स्वर्ण पीला (Golden Yellow)", en: "Golden Yellow" },
     luckyNumber: "3",
     luckyTime: { hi: "दोपहर 03:00 से 04:30", en: "03:00 PM to 04:30 PM" },
-    luckyDate: "Apr 15, 2026",
-    tagline: { hi: "बुद्धि और अंतर्ज्ञान से समृद्धि।", en: "Prosperity through intellect and intuition." }
+    luckyDate: "Apr 16, 2026",
+    tagline: { hi: "सत्कर्म ही सर्वोच्च धर्म है।", en: "Good deeds are the supreme religion." }
   }
 };
