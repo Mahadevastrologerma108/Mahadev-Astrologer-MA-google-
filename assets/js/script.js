@@ -118,3 +118,57 @@ window.addEventListener('appinstalled', () => {
         installContainer.style.display = 'none';
     }
 });
+
+// 5. 🔱 PWA PUSH NOTIFICATION LOGIC (Firebase Messaging) ---
+
+// Ye function user se permission maangega aur token nikalega
+async function subscribeForPanchang() {
+    // Check karein ki browser messaging support karta hai ya nahi
+    if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+        console.warn('Push Messaging is not supported');
+        return;
+    }
+
+    try {
+        // 1. User se permission maangein
+        const permission = await Notification.requestPermission();
+        
+        if (permission === 'granted') {
+            console.log('🔱 Notification Permission: Granted');
+
+            // 2. Messaging initialize (Dhyan rahe 'messaging' aur 'getToken' pehle import hone chahiye)
+            // Ya agar aap CDN use kar rahe hain toh firebase.messaging() use karein
+            const messaging = firebase.messaging(); 
+
+            // 3. Token Generate karein
+            // ✅ Yahan jayegi aapki VAPID Key
+            const token = await messaging.getToken({ 
+                vapidKey: 'YAHAN_APNI_LALMBII_WALI_VAPID_KEY_PASTE_KAREIN' 
+            });
+
+            if (token) {
+                console.log('🔱 Device Token:', token);
+                // 4. Token ko Firestore mein save karein [cite: 2026-02-10]
+                saveTokenToDatabase(token);
+            }
+        } else {
+            console.warn('🔱 Permission Denied for Notifications');
+        }
+    } catch (error) {
+        console.error('🔱 Error in Subscription:', error);
+    }
+}
+
+// 6. Token ko Database mein save karne ka function
+function saveTokenToDatabase(token) {
+    const db = firebase.firestore();
+    db.collection("fcm_tokens").doc(token).set({
+        token: token,
+        subscribedAt: firebase.firestore.FieldValue.serverTimestamp(),
+        status: "active"
+    }).then(() => {
+        console.log("🔱 Token Saved to Mahadev Database!");
+    }).catch((err) => {
+        console.error("🔱 Database Error:", err);
+    });
+}
