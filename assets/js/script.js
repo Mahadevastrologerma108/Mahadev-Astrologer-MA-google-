@@ -119,56 +119,80 @@ window.addEventListener('appinstalled', () => {
     }
 });
 
-// 5. 🔱 PWA PUSH NOTIFICATION LOGIC (Firebase Messaging) ---
+// ======================================================
+// 🔱 5. PWA PUSH NOTIFICATION LOGIC (Firebase Compat)
+// ======================================================
 
-// Ye function user se permission maangega aur token nikalega
 async function subscribeForPanchang() {
-    // Check karein ki browser messaging support karta hai ya nahi
+    // 1. Check Browser Support
     if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-        console.warn('Push Messaging is not supported');
+        console.warn('🔱 Push Messaging not supported in this browser.');
         return;
     }
 
     try {
-        // 1. User se permission maangein
+        // 2. Request Permission
         const permission = await Notification.requestPermission();
         
         if (permission === 'granted') {
             console.log('🔱 Notification Permission: Granted');
 
-            // 2. Messaging initialize (Dhyan rahe 'messaging' aur 'getToken' pehle import hone chahiye)
-            // Ya agar aap CDN use kar rahe hain toh firebase.messaging() use karein
+            // 3. Get Messaging Instance (Using Compat version from index.html)
             const messaging = firebase.messaging(); 
 
-            // 3. Token Generate karein
-            // ✅ Yahan jayegi aapki VAPID Key
+            // 4. Get Token
+            // ✅ YAHAN APNI VAPID KEY PASTE KAREIN
             const token = await messaging.getToken({ 
-                vapidKey: 'YAHAN_APNI_LALMBII_WALI_VAPID_KEY_PASTE_KAREIN' 
+                vapidKey: 'YOUR_PUBLIC_VAPID_KEY_HERE' 
             });
 
             if (token) {
                 console.log('🔱 Device Token:', token);
-                // 4. Token ko Firestore mein save karein [cite: 2026-02-10]
                 saveTokenToDatabase(token);
             }
         } else {
-            console.warn('🔱 Permission Denied for Notifications');
+            console.warn('🔱 Notification Permission: Denied');
         }
     } catch (error) {
-        console.error('🔱 Error in Subscription:', error);
+        console.error('🔱 Error in Notification Subscription:', error);
     }
 }
 
-// 6. Token ko Database mein save karne ka function
+// 6. Token ko Firestore mein save karne ka function
 function saveTokenToDatabase(token) {
     const db = firebase.firestore();
+    
+    // Check if user is logged in (to link token with user)
+    const userEmail = localStorage.getItem("userEmail") || "guest";
+
     db.collection("fcm_tokens").doc(token).set({
         token: token,
-        subscribedAt: firebase.firestore.FieldValue.serverTimestamp(),
-        status: "active"
+        email: userEmail, // firebase-handler se email sync ho jayega
+        platform: 'web',
+        status: "active",
+        subscribedAt: firebase.firestore.FieldValue.serverTimestamp()
     }).then(() => {
-        console.log("🔱 Token Saved to Mahadev Database!");
+        console.log("🔱 Token synchronized with Mahadev Database!");
     }).catch((err) => {
-        console.error("🔱 Database Error:", err);
+        console.error("🔱 Database Sync Error:", err);
     });
+}
+
+// ======================================================
+// 🔱 7. AUTOMATIC TRIGGER (Smart Integration)
+// ======================================================
+
+// Jab App Install ho jaye, tab 2 second baad notification ke liye pucho
+window.addEventListener('appinstalled', () => {
+    setTimeout(() => {
+        subscribeForPanchang();
+    }, 2000);
+});
+
+// Ya agar user page par 10 second rukta hai (for repeat visitors)
+if (Notification.permission === 'default') {
+    setTimeout(() => {
+        // Aap yahan ek custom popup bhi dikha sakte hain
+        // subscribeForPanchang(); 
+    }, 10000);
 }
