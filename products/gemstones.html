@@ -6,54 +6,100 @@
     <title>Certified Gemstones | MAHADEV ASTROLOGER MA</title>
     <link rel="stylesheet" href="../assets/css/style.css"> 
     <style>
-        .category-header {
+        .product-page-header {
             text-align: center;
             padding: 40px 20px;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.6);
             border-bottom: 2px solid #ffd700;
         }
-        .product-grid {
+        .item-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            padding: 40px;
+            padding: 40px 5%;
         }
-        .item-card {
+        .gem-card {
             background: #1a1a1a;
+            border-radius: 15px;
             border: 1px solid #333;
-            padding: 20px;
-            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
             text-align: center;
+            padding-bottom: 20px;
         }
-        .item-card:hover { border-color: #ffd700; }
-        .item-price { color: #ffd700; font-weight: bold; font-size: 1.3rem; margin: 10px 0; }
-        .cert-tag { color: #00ff00; font-size: 0.8rem; text-transform: uppercase; }
+        .gem-card:hover {
+            border-color: #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+        .gem-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid #333;
+        }
+        .gem-info h3 { color: #ffd700; margin: 15px 0 5px 0; }
+        .gem-desc { color: #ccc; font-size: 0.9rem; padding: 0 15px; }
+        .gem-price { color: #fff; font-weight: bold; font-size: 1.2rem; margin: 10px 0; }
+        .cert-badge {
+            background: #004d00;
+            color: #00ff00;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .order-btn {
+            background: #ffd700;
+            color: #000;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
 
-    <section class="category-header">
-        <h1>Natural & Certified Gemstones</h1>
-        <p>Grah Shanti aur Vriddhi ke liye asli Ratna</p>
-    </section>
+    <div class="product-page-header">
+        <h1>Lab Certified Gemstones</h1>
+        <p>Authentic Ratna for Planetary Strength</p>
+        <a href="../shop.html" style="color: #ffd700; text-decoration: none;">← Back to Shop</a>
+    </div>
 
-    <div class="product-grid">
-        <div class="item-card">
-            <span class="cert-tag">✔ Lab Certified</span>
-            <img src="../assets/images/yellow-sapphire.jpg" alt="Pukhraj" style="width:100%; border-radius:8px;">
-            <h3>Yellow Sapphire (Pukhraj)</h3>
-            <p>Premium Quality - Jupiter/Guru influence</p>
-            <p class="item-price">₹4,500 / Ratti</p>
-            <a href="https://wa.me/91XXXXXXXXXX?text=I am interested in Pukhraj" class="buy-btn">Inquiry on WhatsApp</a>
+    <div class="item-grid">
+        <div class="gem-card">
+            <img src="../assets/images/yellow-sapphire.jpg" alt="Pukhraj" class="gem-img">
+            <div class="gem-info">
+                <span class="cert-badge">Premium Quality | Lab Certified</span>
+                <h3>Yellow Sapphire (Pukhraj)</h3>
+                <p class="gem-desc">Attracts wealth, health, and prosperity. Best for Guru Grah.</p>
+                <p class="gem-price">Range: ₹5,000 - ₹45,000</p>
+                <a href="https://wa.me/91XXXXXXXXXX?text=I want to buy Pukhraj" class="order-btn">Inquiry on WhatsApp</a>
+            </div>
         </div>
 
-        <div class="item-card">
-            <span class="cert-tag">✔ Natural & Untreated</span>
-            <img src="../assets/images/blue-sapphire.jpg" alt="Neelam" style="width:100%; border-radius:8px;">
-            <h3>Blue Sapphire (Neelam)</h3>
-            <p>Strictly for Saturn/Shani influence</p>
-            <p class="item-price">₹8,000 / Ratti</p>
-            <a href="https://wa.me/91XXXXXXXXXX?text=I am interested in Neelam" class="buy-btn">Inquiry on WhatsApp</a>
+        <div class="gem-card">
+            <img src="../assets/images/blue-sapphire.jpg" alt="Neelam" class="gem-img">
+            <div class="gem-info">
+                <span class="cert-badge">Natural & Untreated</span>
+                <h3>Blue Sapphire (Neelam)</h3>
+                <p class="gem-desc">Protection and fast results. Strictly for Shani Dev influence.</p>
+                <p class="gem-price">Range: ₹8,000 - ₹60,000</p>
+                <a href="https://wa.me/91XXXXXXXXXX?text=I want to buy Neelam" class="order-btn">Inquiry on WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="gem-card">
+            <img src="../assets/images/red-coral.jpg" alt="Moonga" class="gem-img">
+            <div class="gem-info">
+                <span class="cert-badge">Original Italian Coral</span>
+                <h3>Red Coral (Moonga)</h3>
+                <p class="gem-desc">Boosts energy and courage. Best for Mangal Grah.</p>
+                <p class="gem-price">Range: ₹2,000 - ₹15,000</p>
+                <a href="https://wa.me/91XXXXXXXXXX?text=I want to buy Moonga" class="order-btn">Inquiry on WhatsApp</a>
+            </div>
         </div>
     </div>
 
