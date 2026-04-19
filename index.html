@@ -328,19 +328,49 @@
     
 <div id="footer-placeholder"></div>
 
-<script src="assets/js/translations.js" defer></script>
-<script src="assets/js/layout.js" defer></script>
-<script src="assets/js/script.js" defer></script> 
-<script type="module" src="assets/js/firebase-handler.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-messaging-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
 <script>
+  // 2. Firebase Initialization (Address of your project)
+  const firebaseConfig = {
+    apiKey: "AIzaSyAgcfrzQm6wezgtU5Q5BP8wxXatmoWqYrw",
+    projectId: "mahadev-astrologer",
+    messagingSenderId: "559664802739", // ✅ Ye aapka fixed sender ID hai
+    appId: "1:559664802739:web:4285f4dc461f570cc2b9c6"
+  };
+
+  // Initialize Firebase EK baar
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+    console.log("🔱 Mahadev Firebase: Initialized");
+  }
+
+  // 3. Dual Service Worker Registration (Offline + Notifications)
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
-        .then(() => console.log('App Mode: Active 🔱'))
-        .catch(err => console.error('App Mode: Failed', err));
+    window.addEventListener('load', async () => {
+      try {
+        // A. Purana Offline PWA (sw.js)
+        await navigator.serviceWorker.register('./sw.js');
+        console.log('🔱 Mode: Offline Ready');
+
+        // B. Naya Notification SW (firebase-messaging-sw.js)
+        await navigator.serviceWorker.register('./firebase-messaging-sw.js');
+        console.log('🔱 Mode: Messaging Active');
+
+      } catch (err) {
+        console.error('🔱 SW Registration Error:', err);
+      }
     });
   }
 </script>
+
+<script src="assets/js/translations.js" defer></script>
+<script src="assets/js/layout.js" defer></script>
+<script src="assets/js/script.js" defer></script> 
+<script type="module" src="assets/js/firebase-handler.js" defer></script> ```
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
