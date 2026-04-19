@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | MAHADEV ASTROLOGER MA</title>
+    <link rel="stylesheet" href="../assets/css/style.css"> 
+    <style>
+        /* Existing theme colors apply honge, yahan product grid ka logic hai */
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .product-card {
+            background: rgba(255, 255, 255, 0.1); /* Transparent look */
+            border: 1px solid #ffd700; /* Gold border for spiritual feel */
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .price {
+            font-size: 1.2rem;
+            color: #ffd700;
+            font-weight: bold;
+        }
+        .buy-btn {
+            background: #ffd700;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>MAHADEV ASTROLOGER MA</h1>
+        <p>Premium Astro & Ayurvedic Collection</p>
+    </header>
+
+    <div class="product-container">
+        <div class="product-card">
+            <img src="../assets/images/pukhraj.jpg" alt="Pukhraj" class="product-img">
+            <h3>Natural Pukhraj (Yellow Sapphire)</h3>
+            <p>Lab Certified - For Jupiter Strength</p>
+            <p class="price">₹5,000 - ₹25,000</p>
+            <a href="https://wa.me/YOURNUMBER" class="buy-btn">Order on WhatsApp</a>
+        </div>
+
+        <div class="product-card">
+            <img src="../assets/images/rudraksh.jpg" alt="Rudraksha" class="product-img">
+            <h3>Nepal 5 Mukhi Rudraksha</h3>
+            <p>100% Authentic & Energized</p>
+            <p class="price">₹1,200</p>
+            <a href="https://wa.me/YOURNUMBER" class="buy-btn">Order on WhatsApp</a>
+        </div>
+
+        <div class="product-card">
+            <div class="badge" style="background: green; color: #fff; font-size: 10px; display: inline-block; padding: 2px 5px;">FSSAI Certified</div>
+            <img src="../assets/images/ashwagandha.jpg" alt="Ashwagandha" class="product-img">
+            <h3>Premium Ashwagandha Powder</h3>
+            <p>Organic & Pure Herbal Supplement</p>
+            <p class="price">₹450</p>
+            <a href="https://wa.me/YOURNUMBER" class="buy-btn">Order on WhatsApp</a>
+        </div>
+    </div>
+
+</body>
+</html>
