@@ -1,7 +1,7 @@
 window.translations = {
     en: {
         // ===== NAV & ZODIAC =====
-        nav_home: "Home", nav_horoscope: "Horoscope", nav_panchang: "Panchang", nav_guide: "Update", nav_book: "Book Now",nav_sound: "Sound Healing",nav_tools: "Vedic Tools",number_tool: "Numerology",
+        nav_home: "Home", nav_horoscope: "Horoscope", nav_panchang: "Panchang", nav_guide: "Update", nav_book: "Book Now",nav_sound: "Sound Healing",nav_tools: "Vedic Tools",number_tool: "Numerology",nav_shop: "Shop",
         zod_aries: "Aries", zod_taurus: "Taurus", zod_gemini: "Gemini", zod_cancer: "Cancer", zod_leo: "Leo", zod_virgo: "Virgo", zod_libra: "Libra", zod_scorpio: "Scorpio", zod_sagittarius: "Sagittarius", zod_capricorn: "Capricorn", zod_aquarius: "Aquarius", zod_pisces: "Pisces",
         finder_title: "🔱 Identify Your Zodiac (Rashi Finder)",
         finder_name_label: "By First Letter of Name:",
@@ -463,7 +463,7 @@ raag_ketu: "Lalit",
 
     hi: {
         // ===== NAV & ZODIAC (HI) =====
-        nav_home: "होम", nav_horoscope: "राशिफल", nav_panchang: "पंचांग", nav_guide: "अपडेट", nav_book: "बुक करें",nav_sound: "ध्वनि चिकित्सा",nav_tools: "वैदिक टूल्स",number_tool: "अंक ज्योतिष",
+        nav_home: "होम", nav_horoscope: "राशिफल", nav_panchang: "पंचांग", nav_guide: "अपडेट", nav_book: "बुक करें",nav_sound: "ध्वनि चिकित्सा",nav_tools: "वैदिक टूल्स",number_tool: "अंक ज्योतिष",nav_shop: "दुकान",
         zod_aries: "मेष", zod_taurus: "वृषभ", zod_gemini: "मिथुन", zod_cancer: "कर्क", zod_leo: "सिंह", zod_virgo: "कन्या", zod_libra: "तुला", zod_scorpio: "वृश्चिक", zod_sagittarius: "धनु", zod_capricorn: "मकर", zod_aquarius: "कुंभ", zod_pisces: "मीन",
         finder_title: "🔱 अपना राशि पहचानें (Rashi Finder)",
         finder_name_label: "नाम के पहले अक्षर से:", // HTML wali key se match karo
