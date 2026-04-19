@@ -143,7 +143,7 @@ async function subscribeForPanchang() {
             // 4. Get Token
             // ✅ YAHAN APNI VAPID KEY PASTE KAREIN
             const token = await messaging.getToken({ 
-                vapidKey: 'YOUR_PUBLIC_VAPID_KEY_HERE' 
+                vapidKey: 'BP4DF0BmcxCRMUu779YG5DlJdMQBwTC-w1JFOLTVyGwFp2RqY16uhIVkmuYm2V0RKI0BTKT-QTsjkialJZIWHBA' 
             });
 
             if (token) {
