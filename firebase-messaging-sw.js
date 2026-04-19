@@ -5,10 +5,13 @@ importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging-compa
 // 2. Firebase Initialize (Apna asli config yahan daalein)
 // Ye details aapko Firebase Console > Project Settings mein milengi
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    projectId: "YOUR_PROJECT_ID",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAgcfrzQm6wezgtU5Q5BP8wxXatmoWqYrw",
+  authDomain: "mahadev-astrologer.firebaseapp.com",
+  databaseURL: "https://mahadev-astrologer-default-rtdb.firebaseio.com",
+  projectId: "mahadev-astrologer",
+  storageBucket: "mahadev-astrologer.firebasestorage.app",
+  messagingSenderId: "559664802739",
+  appId: "1:559664802739:web:4285f4dc461f570cc2b9c6"
 };
 
 firebase.initializeApp(firebaseConfig);
