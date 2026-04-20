@@ -1,47 +1,3 @@
-(function injectMahadevBot() {
-    // Duplicate check: Pehle se bot hai toh dobara load na ho
-    if (document.getElementById('mahadev-bot-container')) return;
-
-    const botHTML = `
-    <div id="mahadev-bot-container" style="position:fixed; bottom:25px; right:20px; z-index:2147483647 !important; font-family:'Poppins', sans-serif; display:block !important;">
-        
-        <div id="bot-icon" onclick="toggleBot()" style="background:#f5c542; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-size:30px; transition: 0.3s; -webkit-tap-highlight-color: transparent;">
-            🔱
-        </div>
-        
-        <div id="bot-window" style="display:none; width:320px; max-width:85vw; background:#0a0a14; border:2px solid #f5c542; border-radius:15px; position:absolute; bottom:75px; right:0; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,0.8); flex-direction:column;">
-            
-            <div style="background:#f5c542; color:#000; padding:12px; font-weight:bold; text-align:center; font-size:0.9rem; letter-spacing:1px;">
-                MAHADEV AI ASSISTANT
-            </div>
-            
-            <div id="chatResponse" style="height:250px; overflow-y:auto; padding:15px; color:#ddd; font-size:0.85rem; line-height:1.6; background:rgba(255,255,255,0.03);">
-                Har Har Mahadev! 🙏 Main aapki kaise madad kar sakta hoon?
-            </div>
-            
-            <div style="padding:12px; border-top:1px solid #333; background:#0f0f1a;">
-                <textarea id="userQuestion" placeholder="Apna prashn likhein..." style="width:100%; background:#1a1a2a; color:#fff; border:1px solid #444; border-radius:8px; padding:10px; font-size:0.85rem; outline:none; resize:none; margin-bottom:8px; box-sizing:border-box;"></textarea>
-                <button onclick="processBotQuery()" style="width:100%; background:#f5c542; border:none; padding:10px; font-weight:bold; cursor:pointer; border-radius:8px; color:#000; font-size:0.8rem; text-transform:uppercase;">
-                    PUCHIYE ➔
-                </button>
-            </div>
-        </div>
-    </div>`;
-
-    document.body.insertAdjacentHTML('beforeend', botHTML);
-})();
-
-/** 🔱 Function: Open/Close Toggle */
-window.toggleBot = function() {
-    const windowDiv = document.getElementById('bot-window');
-    if (windowDiv) {
-        // Mobile compatibility ke liye current display check
-        const isHidden = windowDiv.style.display === 'none' || windowDiv.style.display === '';
-        windowDiv.style.display = isHidden ? 'flex' : 'none';
-    }
-};
-
-/** 🔱 Function: Smart Query Handler */
 window.processBotQuery = async function() {
     const questionInput = document.getElementById('userQuestion');
     const question = questionInput.value.toLowerCase().trim();
@@ -49,22 +5,95 @@ window.processBotQuery = async function() {
 
     if (!question) return;
 
-    responseArea.innerHTML = "🔱 Mahadev dhyan laga rahe hain...";
-    questionInput.value = ""; // Clear input immediately
+    responseArea.innerHTML = "🔱 Mahadev margdarshan kar rahe hain...";
+    questionInput.value = "";
 
-    // --- Level 1: Business Logic & Site Navigation ---
-    if (question.includes("buy") || question.includes("price") || question.includes("order") || question.includes("kharid")) {
-        responseArea.innerHTML = "🔱 Shubh Vichar! Aapko sahi product dilane mein main madad karta hoon... Redirecting to WhatsApp.";
-        setTimeout(() => { window.location.href = "https://wa.me/91YOUR_NUMBER?text=Pranam, mujhe order ke bare mein puchna hai."; }, 1500);
+    // --- 🔱 LEVEL 1: MASTER NAVIGATOR (38+ Pages Training) ---
+
+    // 1. ♈ 12 Rashi Logic (Direct Path)
+    const rashis = {
+        "mesh": "aries", "aries": "aries",
+        "vrishabh": "taurus", "taurus": "taurus",
+        "mithun": "gemini", "gemini": "gemini",
+        "kark": "cancer", "cancer": "cancer",
+        "singh": "leo", "leo": "leo",
+        "kanya": "virgo", "virgo": "virgo",
+        "tula": "libra", "libra": "libra",
+        "vrishchik": "scorpio", "scorpio": "scorpio",
+        "dhanu": "sagittarius", "sagittarius": "sagittarius",
+        "makar": "capricorn", "capricorn": "capricorn",
+        "kumbh": "aquarius", "aquarius": "aquarius",
+        "meen": "pisces", "pisces": "pisces"
+    };
+
+    let foundRashi = Object.keys(rashis).find(r => question.includes(r));
+    if (foundRashi) {
+        responseArea.innerHTML = `🔱 ${foundRashi.toUpperCase()} rashi ka gyan load ho raha hai...`;
+        setTimeout(() => { window.location.href = `/horoscope/${rashis[foundRashi]}.html`; }, 1500);
         return;
     }
 
+    // 2. 📅 Horoscope & Panchang
+    if (question.includes("panchang") || question.includes("muhurat") || question.includes("rahukaal")) {
+        responseArea.innerHTML = "🔱 Aaj ka Panchang aur Shubh samay yahan dekhein: <br><a href='/panchang/panchang.html'>Aaj ka Panchang ➔</a>";
+        return;
+    }
     if (question.includes("horoscope") || question.includes("rashifal")) {
-        responseArea.innerHTML = "🔱 Chaliye, aaj ka bhagyoday dekhte hain... <br><br><a href='/horoscope/horoscope.html' style='color:#f5c542; font-weight:bold;'>Rashifal Section ➔</a>";
+        responseArea.innerHTML = "🔱 Dainik rashifal yahan padhein: <br><a href='/horoscope/horoscope.html'>Horoscope Page ➔</a>";
         return;
     }
 
-    // --- Level 2: AI Logic (HuggingFace) ---
+    // 3. 📚 Latest Guides & Tools (Knowledge Base)
+    if (question.includes("kundli") || question.includes("kundali")) {
+        responseArea.innerHTML = "🔱 Kundli vishleshan ke liye hamari guide dekhein: <br><a href='/latest-guide/kundali.html'>Kundali Guide ➔</a>";
+        return;
+    }
+    if (question.includes("numerology") || question.includes("ank jyotish")) {
+        responseArea.innerHTML = "🔱 Ankon ka rahasya yahan hai: <br><a href='/latest-guide/numerology.html'>Numerology ➔</a>";
+        return;
+    }
+    if (question.includes("water") || question.includes("calculator") || question.includes("health")) {
+        responseArea.innerHTML = "🔱 Ayurvedic health calculator yahan hai: <br><a href='/latest-guide/ayurvedic-health-water-calculator.html'>Water Calculator ➔</a>";
+        return;
+    }
+    if (question.includes("grih dosh") || question.includes("dosh")) {
+        responseArea.innerHTML = "🔱 Grih dosh aur upaay yahan padhein: <br><a href='/latest-guide/grih-dosh.html'>Grih Dosh Guide ➔</a>";
+        return;
+    }
+    if (question.includes("guide") || question.includes("lekh")) {
+        responseArea.innerHTML = "🔱 Hamari saari adhyatmik guides yahan hain: <br><a href='/latest-guide/guides.html'>Knowledge Hub ➔</a>";
+        return;
+    }
+
+    // 4. 💎 Divine Products (Shop Sections)
+    if (question.includes("gemstone") || question.includes("ratna") || question.includes("pukhraj")) {
+        responseArea.innerHTML = "🔱 Certified gemstones yahan dekhein: <br><a href='/products/gemstones.html'>Gemstones ➔</a>";
+        return;
+    }
+    if (question.includes("rudraksha")) {
+        responseArea.innerHTML = "🔱 Original Rudraksha yahan hain: <br><a href='/products/rudraksha.html'>Rudraksha Store ➔</a>";
+        return;
+    }
+    if (question.includes("herbal") || question.includes("wellness") || question.includes("jadi buti")) {
+        responseArea.innerHTML = "🔱 Herbal wellness products yahan hain: <br><a href='/products/herbal-wellness.html'>Herbal Wellness ➔</a>";
+        return;
+    }
+    if (question.includes("puja kit") || question.includes("samagri")) {
+        responseArea.innerHTML = "🔱 Puja kits yahan uplabdha hain: <br><a href='/products/puja-kits.html'>Puja Kits ➔</a>";
+        return;
+    }
+    if (question.includes("shop") || question.includes("kharid") || question.includes("buy")) {
+        responseArea.innerHTML = "🔱 Hamara poora store yahan browse karein: <br><a href='/products/shop.html'>Divine Shop ➔</a>";
+        return;
+    }
+
+    // 5. 🛠️ Vedic Tools
+    if (question.includes("tool")) {
+        responseArea.innerHTML = "🔱 Hamare saare Vedic tools yahan dekhein: <br><a href='/tools/tools.html'>Vedic Tools ➔</a>";
+        return;
+    }
+
+    // --- LEVEL 2: AI BRAIN (HuggingFace) ---
     try {
         const response = await fetch("https://api-inference.huggingface.co/models/YOUR_MODEL_PATH", {
             headers: { Authorization: "Bearer YOUR_HF_TOKEN", "Content-Type": "application/json" },
@@ -76,11 +105,9 @@ window.processBotQuery = async function() {
 
         if (aiJawab && aiJawab.length > 5) {
             responseArea.innerHTML = `🔱 <b>Guru:</b> ${aiJawab}`;
-        } else {
-            throw new Error("AI Slow");
-        }
+        } else { throw new Error(); }
     } catch (e) {
-        // --- Level 3: Human Support Fallback ---
-        responseArea.innerHTML = "🔱 Is prashn ka uttar purn vishleshan mangta hai. Sidha mujhse judiye: <br><br><a href='https://wa.me/91YOUR_NUMBER?text=Pranam, mujhe " + encodeURIComponent(question) + " ke bare mein janna hai' style='background:#25D366; color:white; padding:8px 12px; border-radius:5px; text-decoration:none; display:inline-block;'>WhatsApp Par Baat Karein</a>";
+        // --- LEVEL 3: HUMAN SUPPORT (WhatsApp) ---
+        responseArea.innerHTML = "🔱 Iska sateek uttar purn vishleshan mangta hai. Sidha mujhse judiye: <br><br><a href='https://wa.me/91YOUR_NUMBER?text=Pranam, mujhe " + encodeURIComponent(question) + " ke bare mein janna hai' style='background:#25D366; color:white; padding:8px 12px; border-radius:5px; text-decoration:none; display:inline-block;'>WhatsApp Par Baat Karein</a>";
     }
 };
