@@ -1,55 +1,57 @@
-(function injectMahadevBot() {
-    // 1. Bot ka HTML Structure create karein
-    const botHTML = `
-    <div id="mahadev-bot-container" style="position:fixed; bottom:20px; right:20px; z-index:9999; font-family:'Poppins', sans-serif;">
-        <div id="bot-icon" onclick="toggleBot()" style="background:#f5c542; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow: 0 0 15px rgba(245,197,66,0.5); font-size:30px;">🔱</div>
-        
-        <div id="bot-window" style="display:none; width:300px; background:#0a0a14; border:2px solid #f5c542; border-radius:15px; position:absolute; bottom:70px; right:0; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.5);">
-            <div style="background:#f5c542; color:#000; padding:10px; font-weight:bold; text-align:center;">MAHADEV AI ASSISTANT</div>
-            <div id="chatResponse" style="height:200px; overflow-y:auto; padding:15px; color:#ddd; font-size:0.85rem; line-height:1.5; background:rgba(255,255,255,0.02);">
-                Har Har Mahadev! 🙏 Main aapki kaise madad kar sakta hoon?
-            </div>
-            <div style="padding:10px; border-top:1px solid #333;">
-                <textarea id="userQuestion" placeholder="Puchiye..." style="width:100%; background:#1a1a2a; color:#fff; border:1px solid #444; border-radius:5px; padding:8px; font-size:0.8rem; outline:none; resize:none;"></textarea>
-                <button onclick="processBotQuery()" style="width:100%; background:#f5c542; border:none; padding:8px; font-weight:bold; margin-top:5px; cursor:pointer; border-radius:5px;">SAWAAL PUCHIYE</button>
-            </div>
-        </div>
-    </div>`;
-
-    document.body.insertAdjacentHTML('beforeend', botHTML);
-})();
-
-// 🔱 Open/Close Bot
-window.toggleBot = function() {
-    const windowDiv = document.getElementById('bot-window');
-    windowDiv.style.display = windowDiv.style.display === 'none' ? 'block' : 'none';
-};
-
-// 🔱 Core Logic (Redirection & Knowledge)
-window.processBotQuery = function() {
-    const question = document.getElementById('userQuestion').value.toLowerCase();
+window.processBotQuery = async function() {
+    const questionInput = document.getElementById('userQuestion');
+    const question = questionInput.value.toLowerCase().trim();
     const responseArea = document.getElementById('chatResponse');
 
     if (!question) return;
 
-    responseArea.innerHTML = "Mahadev vishleshan kar rahe hain... 🕉️";
+    responseArea.innerHTML = "🔱 Mahadev dhyan laga rahe hain...";
+    questionInput.value = ""; // Input clear kar dein
 
-    // Intent Logic
-    setTimeout(() => {
-        if (question.includes("kharid") || question.includes("price") || question.includes("order")) {
-            responseArea.innerHTML = "🔱 Order ke liye aapko WhatsApp par bhej raha hoon...";
-            window.location.href = "https://wa.me/YOUR_NUMBER?text=Bhai, Order karna hai";
-        } 
-        else if (question.includes("rashi") || question.includes("horoscope")) {
-            responseArea.innerHTML = "🔱 Chaliye, aaj ka rashifal dekhte hain...";
-            window.location.href = "/horoscope/horoscope.html";
+    // --- LEVEL 1: SITE GUIDE & SALES (Basic Training + Business) ---
+    
+    // 🛍️ Sales & Order Redirect
+    if (question.includes("kharid") || question.includes("price") || question.includes("order") || question.includes("buy")) {
+        responseArea.innerHTML = "🔱 Shubh Vichar! Order ke liye aapko WhatsApp par bhej raha hoon...";
+        setTimeout(() => { 
+            window.location.href = "https://wa.me/YOUR_NUMBER?text=Pranam, mujhe gemstone/rudraksha order karna hai"; 
+        }, 1500);
+        return;
+    }
+
+    // 🕉️ Horoscope/Panchang Redirect
+    if (question.includes("horoscope") || question.includes("rashifal")) {
+        responseArea.innerHTML = "🔱 Aap apna dainik rashifal yahan padh sakte hain: <br><a href='/horoscope/horoscope.html' style='color:#f5c542;'>Horoscope Section ➔</a>";
+        return;
+    }
+    if (question.includes("panchang") || question.includes("rahukaal")) {
+        responseArea.innerHTML = "🔱 Shubh Muhurat aur Rahukaal ki jankari yahan dekhein: <br><a href='/panchang/panchang.html' style='color:#f5c542;'>Panchang Section ➔</a>";
+        return;
+    }
+
+    // --- LEVEL 2: HUGGINGFACE AI (Deep Astrology Knowledge) ---
+    try {
+        const response = await fetch("https://api-inference.huggingface.co/models/YOUR_MODEL_PATH", {
+            headers: { 
+                "Authorization": "Bearer YOUR_HF_TOKEN",
+                "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify({ inputs: question }),
+        });
+
+        const result = await response.json();
+        const aiResponse = result[0]?.generated_text || result.generated_text;
+
+        if (aiResponse && aiResponse.length > 5) {
+            responseArea.innerHTML = `🔱 <b>Astro AI:</b> ${aiResponse}`;
+        } else {
+            throw new Error("AI Silent");
         }
-        else if (question.includes("gemstone") || question.includes("pukhraj") || question.includes("stone")) {
-            responseArea.innerHTML = "🔱 Gems ke baare mein janne ke liye shop par chaliye...";
-            window.location.href = "/shop.html";
-        }
-        else {
-            responseArea.innerHTML = "🔱 Aapka sawal prabal hai. Sateek gyan ke liye humse WhatsApp par baat karein.";
-        }
-    }, 1500);
+
+    } catch (error) {
+        // --- LEVEL 3: DIRECT HUMAN SUPPORT (WhatsApp Connect) ---
+        // Jab bot ya AI ko samajh na aaye
+        responseArea.innerHTML = "🔱 Is prashn ka uttar purn vishleshan mangta hai. Main aapko seedha **Mahadev Astrologer MA** se jodh raha hoon... <br><br> <a href='https://wa.me/YOUR_NUMBER?text=Pranam, mujhe is baare mein janna hai: " + encodeURIComponent(question) + "' style='background:#25D366; color:white; padding:8px 12px; border-radius:5px; text-decoration:none; display:inline-block; margin-top:10px;'>WhatsApp Par Baat Karein ➔</a>";
+    }
 };
