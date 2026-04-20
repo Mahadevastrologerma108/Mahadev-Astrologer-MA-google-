@@ -1,4 +1,15 @@
-/* File Path: products/products.css */
+/* 🔱 Global Theme Lock - Black & Gold */
+:root { 
+    --gold: #f5c542; 
+    --bg: #0a0a14; 
+}
+
+body { 
+    background-color: var(--bg); 
+    color: #fff; 
+    font-family: 'Poppins', sans-serif; 
+    margin: 0; 
+}
 
 .shop-header { text-align: center; padding-top: 100px; }
 .sub-text { color: #fff; opacity: 0.8; font-size: 0.9rem; }
