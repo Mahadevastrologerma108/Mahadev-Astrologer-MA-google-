@@ -19,60 +19,31 @@
     <meta property="og:image" content="https://mahadevastrologerma.in/assets/images/logo.png">
 
     <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        .shop-header {
-            text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/images/shop-bg.jpg');
-            background-size: cover;
-            border-bottom: 3px solid #ffd700;
-        }
-        .category-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 50px 10%;
-        }
-        .category-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: 0.4s;
-            cursor: pointer;
-            background: #111;
-        }
-        .category-card:hover {
-            border-color: #ffd700;
-            transform: scale(1.03);
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
-        }
-        .category-content h2 {
-            color: #ffd700;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px #000;
-        }
-        .category-content p {
-            color: #fff;
-            font-size: 0.9rem;
-        }
-        .explore-btn {
-            margin-top: 15px;
-            padding: 8px 25px;
-            background: #ffd700;
-            color: #000;
-            font-weight: bold;
-            border-radius: 20px;
-            text-decoration: none;
-            display: inline-block;
-        }
-    </style>
+    HTML
+
+<style>
+    /* 🔱 Aapke CSS se Match karta hua Shop Grid */
+    .selection-container { max-width: 900px; margin: 130px auto 50px; padding: 20px; text-align: center; }
+    .selection-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
+
+    /* Category Card - Exactly like your Zodiac Card */
+    .category-card { 
+        background: rgba(245, 197, 66, 0.05); border: 1px solid rgba(245, 197, 66, 0.2); 
+        border-radius: 15px; padding: 35px 10px; text-align: center; transition: 0.3s; 
+        text-decoration: none; color: var(--gold); cursor: pointer; display: block;
+    }
+    .category-card:hover { 
+        background: rgba(245, 197, 66, 0.15); transform: translateY(-5px); 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.4), 0 0 15px rgba(245, 197, 66, 0.2); border-color: var(--gold);
+    }
+    
+    /* Icon/Image Style */
+    .cat-icon { font-size: 40px; display: block; margin-bottom: 15px; filter: drop-shadow(0 0 5px var(--gold)); }
+    .category-card p { margin: 0; font-family: 'Cinzel'; font-size: 16px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+
+    @media (max-width: 600px) { .selection-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+
 </head>
 <body>
     <div id="header-placeholder"></div>
@@ -82,30 +53,28 @@
         <p style="color: #fff;">100% Authentic Spiritual & Ayurvedic Products</p>
     </section>
 
-    <div class="category-container">
-        <div class="category-card" onclick="window.location.href='gemstones.html'">
-            <div class="category-content">
-                <h2>Gemstones</h2>
-                <p>Certified Pukhraj, Neelam & more</p>
-                <span class="explore-btn">Explore Collection</span>
-            </div>
-        </div>
+    <div class="selection-container">
+    <h2 class="gold-text" style="font-family: 'Cinzel'; letter-spacing: 3px;">Divine Store</h2>
+    <div class="selection-grid">
+        <a href="gemstones.html" class="category-card">
+            <span class="cat-icon">💎</span>
+            <p>Gemstones</p>
+        </a>
+        <a href="rudraksha.html" class="category-card">
+            <span class="cat-icon">📿</span>
+            <p>Rudraksha</p>
+        </a>
+        <a href="herbal-wellness.html" class="category-card">
+            <span class="cat-icon">🌿</span>
+            <p>Herbs</p>
+        </a>
+<a href="puja-kits.html" class="category-card">
+            <span class="cat-icon">🌿</span>
+            <p>Energy Balance</p>
+        </a>
 
-        <div class="category-card" onclick="window.location.href='rudraksha.html'">
-            <div class="category-content">
-                <h2>Rudraksha</h2>
-                <p>Authentic Nepal & Indonesian Beads</p>
-                <span class="explore-btn">Explore Collection</span>
-            </div>
-        </div>
-
-        <div class="category-card" onclick="window.location.href='herbal-wellness.html'">
-            <div class="category-content">
-                <h2>Herbal Wellness</h2>
-                <p>FSSAI Certified Ayurvedic Herbs</p>
-                <span class="explore-btn">Explore Collection</span>
-            </div>
-        </div>
+    </div>
+</div>
 
         <div class="category-card" onclick="window.location.href='puja-kits.html'">
             <div class="category-content">
