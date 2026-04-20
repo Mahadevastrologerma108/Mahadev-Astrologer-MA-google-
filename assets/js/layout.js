@@ -6,15 +6,15 @@
 async function loadLayout() {
     const path = window.location.pathname;
 
-   // Folder depth detection for GitHub Pages
-const isInsideFolder = path.includes('/panchang/') || 
-                       path.includes('/latest-guide/') || 
-                       path.includes('/pages/') || 
-                       path.includes('/horoscope/') ||
-                       path.includes('/masterstroke-module/') ||
-                       path.includes('/tools/');
+    // 🔱 Folder depth detection for GitHub Pages (Products folder added)
+    const isInsideFolder = path.includes('/panchang/') || 
+                           path.includes('/latest-guide/') || 
+                           path.includes('/pages/') || 
+                           path.includes('/horoscope/') ||
+                           path.includes('/masterstroke-module/') ||
+                           path.includes('/tools/') ||
+                           path.includes('/products/');                            
     const prefix = isInsideFolder ? '../' : '';
-
     try {
         const [hResp, fResp] = await Promise.all([
             fetch(prefix + 'header.html'),
@@ -28,6 +28,8 @@ const isInsideFolder = path.includes('/panchang/') ||
             initMenu(); 
             if (window.updateUI) window.updateUI(); 
             fixAllLinks(prefix); 
+        } else {
+             console.log("Files fetch nahi hui. Status:", hResp.status, fResp.status);
         }
     } catch (e) { console.error("Layout failed to load:", e); }
 }
@@ -35,8 +37,11 @@ const isInsideFolder = path.includes('/panchang/') ||
 function fixAllLinks(prefix) {
     document.querySelectorAll('#header-placeholder a, #footer-placeholder a').forEach(link => {
         const href = link.getAttribute('href');
+        // Ignore absolute links (http) and anchor links (#)
         if (href && !href.startsWith('http') && !href.startsWith('#')) {
-            link.href = prefix + href;
+            // Remove leading slash if it exists to avoid double slashes
+            let cleanHref = href.startsWith('/') ? href.substring(1) : href;
+            link.href = prefix + cleanHref;
         }
     });
 }
@@ -107,5 +112,4 @@ document.addEventListener('click', (e) => {
         });
     }
 });
-
 document.addEventListener('DOMContentLoaded', loadLayout);
