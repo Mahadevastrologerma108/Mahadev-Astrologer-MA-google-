@@ -130,3 +130,13 @@ document.addEventListener('DOMContentLoaded', loadLayout);
     // Icon ka sahi path set karo (Root se uthayega)
     link.href = '/assets/images/logo.png';
 })();
+
+// 🔱 Automatic Bot Injector (Sabhi 38 Pages ke liye ek sath)
+(function() {
+    const botScript = document.createElement('script');
+    botScript.src = '/assets/js/bot.js'; // Bot ki file ka path
+    botScript.async = true;
+    document.body.appendChild(botScript);
+    
+    console.log("🔱 Mahadev Bot Injected Globally!");
+})();
