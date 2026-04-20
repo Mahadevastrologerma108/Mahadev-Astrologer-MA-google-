@@ -113,3 +113,20 @@ document.addEventListener('click', (e) => {
     }
 });
 document.addEventListener('DOMContentLoaded', loadLayout);
+
+// 🔱 Global Favicon Injector
+(function injectFavicon() {
+    // Pehle check karo ki kahin Favicon pehle se toh nahi laga
+    let link = document.querySelector("link[rel~='icon']");
+    
+    // Agar nahi laga, toh naya banao
+    if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        link.type = 'image/png';
+        document.head.appendChild(link);
+    }
+    
+    // Icon ka sahi path set karo (Root se uthayega)
+    link.href = '/assets/images/logo.png';
+})();
