@@ -30,7 +30,7 @@ async function chatWithMahadev() {
 
     try {
         // 1. AI API Call
-        const response = await fetch("https://api-inference.huggingface.co/models/YOUR_USERNAME/mahadev-astrologer-ma-v1", {
+        const response = await fetch("https://api-inference.huggingface.co/models/mahadev-astrologer-ma-admin/mahadev-astrologer-ma-v1", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ 
