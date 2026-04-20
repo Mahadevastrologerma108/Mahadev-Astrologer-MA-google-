@@ -93,21 +93,43 @@ window.processBotQuery = async function() {
         return;
     }
 
-    // --- LEVEL 2: AI BRAIN (HuggingFace) ---
+    // --- LEVEL 2: YOUR CUSTOM AI BRAIN (mahadev-astrologer-ma-v1) ---
     try {
-        const response = await fetch("https://api-inference.huggingface.co/models/YOUR_MODEL_PATH", {
-            headers: { Authorization: "Bearer YOUR_HF_TOKEN", "Content-Type": "application/json" },
+        const response = await fetch("https://api-inference.huggingface.co/models/mahadev-astrologer-ma-admin/mahadev-astrologer-ma-v1", {
+            headers: { 
+                "Authorization": "Bearer hf_********", 
+                "Content-Type": "application/json" 
+            },
             method: "POST",
-            body: JSON.stringify({ inputs: question }),
+            body: JSON.stringify({ 
+                inputs: `Answer as Mahadev Astro Expert in Hinglish. Question: ${question}`,
+                parameters: { 
+                    max_new_tokens: 150, 
+                    temperature: 0.6,
+                    return_full_text: false 
+                }
+            }),
         });
-        const result = await response.json();
-        const aiJawab = result[0]?.generated_text || result.generated_text;
 
-        if (aiJawab && aiJawab.length > 5) {
-            responseArea.innerHTML = `🔱 <b>Guru:</b> ${aiJawab}`;
-        } else { throw new Error(); }
-    } catch (e) {
-        // --- LEVEL 3: HUMAN SUPPORT (WhatsApp) ---
+        const result = await response.json();
+        
+        // Custom Model response handling
+        let aiJawab = "";
+        if (Array.isArray(result)) {
+            aiJawab = result[0]?.generated_text || "";
+        } else {
+            aiJawab = result.generated_text || "";
+        }        
+        if (aiJawab && aiJawab.length > 3) {
+            // Cleanup: Agar model purana text repeat kare
+            aiJawab = aiJawab.replace(/Instruction:.*Question:.*Answer:/gs, "").trim();
+            responseArea.innerHTML = `🔱 <b>Astro AI:</b> ${aiJawab}`;
+        } else {
+            throw new Error("AI Empty");
+        }
+    } catch (error) {
+        
+    // --- LEVEL 3: HUMAN SUPPORT (WhatsApp) ---
         responseArea.innerHTML = "🔱 Iska sateek uttar purn vishleshan mangta hai. Sidha mujhse judiye: <br><br><a href='https://wa.me/message/VCK5OVBDCN7YK1?text=Pranam, mujhe " + encodeURIComponent(question) + " ke bare mein janna hai' style='background:#25D366; color:white; padding:8px 12px; border-radius:5px; text-decoration:none; display:inline-block;'>WhatsApp Par Baat Karein</a>";
     }
 };
