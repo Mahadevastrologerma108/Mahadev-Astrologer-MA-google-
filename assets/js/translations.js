@@ -115,7 +115,7 @@ mon_jul: "July", mon_aug: "August", mon_sep: "September", mon_oct: "October", mo
         "chaug_char": "Char", "chaug_labh": "Labh", "chaug_amrit": "Amrit", "chaug_shubh": "Shubh",
         "chaug_rog": "Rog", "chaug_kaal": "Kaal", "chaug_udveg": "Udveg",
         "bad": "Bad", "neutral": "Neutral", "good": "Good",
-        ph_time: "Time", ph_name: "Muhurat", ph_status: "Status", nav_event:"Festivals & Events", "ph_nature": "Nature",
+        ph_time: "Time", pan_name: "Muhurat", ph_status: "Status", nav_event:"Festivals & Events", "ph_nature": "Nature",
         
         // Yoga & Karana
     "yoga_01": "Vishkumbha", "yoga_02": "Priti", "yoga_03": "Ayushman", "yoga_04": "Saubhagya", "yoga_05": "Shobhana",
@@ -480,10 +480,10 @@ shop_title: "MAHADEV ASTROLOGER STORE",
         step_03_label: "03. Secure Payment:",
         step_03_desc: "Pay via UPI or Bank Transfer after selection.",
         step_04_label: "04. Fast Shipping:",
-        step_04_desc: "Get your energized product delivered in 3-5 days.",
- },
+        step_04_desc: "Get your energized product delivered in 3-5 days.",  
+},
 
-    hi: {
+   hi: {
         // ===== NAV & ZODIAC (HI) =====
         nav_home: "होम", nav_horoscope: "राशिफल", nav_panchang: "पंचांग", nav_guide: "अपडेट", nav_book: "बुक करें",nav_sound: "ध्वनि चिकित्सा",nav_tools: "वैदिक टूल्स",number_tool: "अंक ज्योतिष",nav_shop: "दुकान",
         zod_aries: "मेष", zod_taurus: "वृषभ", zod_gemini: "मिथुन", zod_cancer: "कर्क", zod_leo: "सिंह", zod_virgo: "कन्या", zod_libra: "तुला", zod_scorpio: "वृश्चिक", zod_sagittarius: "धनु", zod_capricorn: "मकर", zod_aquarius: "कुंभ", zod_pisces: "मीन",
@@ -590,7 +590,7 @@ mon_jul: "जुलाई", mon_aug: "अगस्त", mon_sep: "सितं�
         "chaug_char": "चर", "chaug_labh": "लाभ", "chaug_amrit": "अमृत", "chaug_shubh": "शुभ",
         "chaug_rog": "रोग", "chaug_kaal": "काल", "chaug_udveg": "उद्वेग",
         "bad": "अशुभ", "neutral": "सामान्य", "good": "शुभ",
-        ph_time: "समय", ph_name: "मुहूर्त", ph_status: "स्थिति", nav_event: "त्यौहार और इवेंट्स", "ph_nature": "प्रकृति",
+        ph_time: "समय", pan_name: "मुहूर्त", ph_status: "स्थिति", nav_event: "त्यौहार और इवेंट्स", "ph_nature": "प्रकृति",
 
         // Yoga & Karana
         "yoga_01": "विष्कुम्भ", "yoga_02": "प्रीति", "yoga_03": "आयुष्मान", "yoga_04": "सौभाग्य", "yoga_05": "शोभन",
@@ -956,4 +956,5 @@ raag_ketu: "ललित",
         step_03_desc: "चयन के बाद UPI या बैंक ट्रांसफर के माध्यम से भुगतान करें।",
         step_04_label: "04. तेज़ डिलीवरी:",
         step_04_desc: "3-5 दिनों में अपना सिद्ध उत्पाद प्राप्त करें।",
+            
 };
