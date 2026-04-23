@@ -214,9 +214,19 @@
 
     <div id="footer-placeholder"></div>
 
-    <script src="../assets/js/translations.js"></script>
-    <script src="../assets/js/layout.js"></script>
-    <script type="module" src="../assets/js/firebase-handler.js"></script>
+  <script src="../assets/js/common-trans.js"></script>
 
+<script src="tools-trans.js"></script>
+
+<script>
+    window.translations = {
+        en: { ...window.commonTranslations.en, ...window.pageTranslations.en },
+        hi: { ...window.commonTranslations.hi, ...window.pageTranslations.hi }
+    };
+</script>
+
+<script src="../assets/js/layout.js"></script>
+<script type="module" src="../assets/js/firebase-handler.js"></script>
+    
 </body>
 </html>
