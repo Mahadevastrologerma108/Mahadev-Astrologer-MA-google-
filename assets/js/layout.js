@@ -1,38 +1,47 @@
 /**
- * MAHADEV ASTROLOGER MA - Bulletproof Layout Engine
+ * MAHADEV ASTROLOGER MA - Smart Master Engine
+ * Logic: Index page ko direct common translations se load karta hai.
  */
 
 (function() {
-    // 1. Path detection (GitHub Pages friendly)
+    // 1. Flicker rokne ke liye turant hide karo
+    document.documentElement.style.visibility = 'hidden';
+
+    // 2. Location Detection
     const path = window.location.pathname;
-    const depth = (path.match(/\//g) || []).length;
+    // Check agar user Index page par hai (root, index.html ya khali path)
+    const isIndexPage = path.endsWith('/') || path.endsWith('index.html') || path === '' || path.endsWith('.in');
     
-    // Agar domain ke baad 1 se zyada slash hain (folder ke andar), toh ../ lagao
-    // Example: /index.html (1 slash) vs /panchang/today.html (2 slashes)
-    const prefix = (depth > 1) ? '../' : '';
+    const isInsideFolder = path.includes('/panchang/') || path.includes('/latest-guide/') || 
+                           path.includes('/pages/') || path.includes('/horoscope/') ||
+                           path.includes('/masterstroke-module/') || path.includes('/tools/') ||
+                           path.includes('/products/');
+    
+    const prefix = isInsideFolder ? '../' : '';
 
+    // 🔱 MASTER INITIALIZER
     window.initMahadevApp = async function() {
-        // Safety Fallback: Agar kuch load na ho, toh 3s baad site dikha do
-        const safety = setTimeout(() => {
-            if (document.documentElement.style.visibility === 'hidden') {
-                document.documentElement.style.visibility = 'visible';
-                console.warn("🔱 Safety Reveal Triggered");
-            }
-        }, 3000);
-
         try {
-            // Check Data: window.commonTranslations (translations.js) & window.pageTranslations (HTML)
-            if (window.commonTranslations && window.pageTranslations) {
+            // Check Data: translations.js load hui ya nahi
+            const hasCommon = !!window.commonTranslations;
+            const hasLocal = !!window.pageTranslations;
+
+            // SMART LOGIC: Agar common data hai AND (Index page hai OR local data mil gaya hai)
+            if (hasCommon && (isIndexPage || hasLocal)) {
                 
+                // Merge Logic: Index ke liye sirf common use hoga
+                const localEn = hasLocal ? window.pageTranslations.en : {};
+                const localHi = hasLocal ? window.pageTranslations.hi : {};
+
                 window.translations = {
-                    en: { ...window.commonTranslations.en, ...window.pageTranslations.en },
-                    hi: { ...window.commonTranslations.hi, ...window.pageTranslations.hi }
+                    en: { ...window.commonTranslations.en, ...localEn },
+                    hi: { ...window.commonTranslations.hi, ...localHi }
                 };
 
-                // Fetch Layout
+                // BUILD LAYOUT: Fetch Header/Footer
                 const [hResp, fResp] = await Promise.all([
-                    fetch(prefix + 'header.html').catch(() => ({ ok: false })),
-                    fetch(prefix + 'footer.html').catch(() => ({ ok: false }))
+                    fetch(prefix + 'header.html'),
+                    fetch(prefix + 'footer.html')
                 ]);
 
                 if (hResp.ok && fResp.ok) {
@@ -42,29 +51,26 @@
                     const checkBody = setInterval(() => {
                         if (document.body) {
                             clearInterval(checkBody);
-                            clearTimeout(safety);
-
+                            
+                            // Inject Header/Footer
                             const hPlace = document.getElementById('header-placeholder');
                             const fPlace = document.getElementById('footer-placeholder');
-                            
                             if(hPlace) hPlace.innerHTML = headerHTML;
                             if(fPlace) fPlace.innerHTML = footerHTML;
 
+                            // Final UI Prep
                             initMenu();
                             fixAllLinks(prefix);
                             window.updateUI();
                             
+                            // Reveal Page
                             document.documentElement.style.visibility = 'visible';
-                            console.log("🔱 MAHADEV Engine: Success");
+                            console.log("🔱 Engine: Index Layout & Translation Applied.");
                         }
-                    }, 50);
-                } else {
-                    // Agar fetch fail ho jaye (404), toh kam se kam page dikha do
-                    document.documentElement.style.visibility = 'visible';
-                    console.error("🔱 Fetch failed - Header/Footer paths might be wrong");
+                    }, 30);
                 }
             } else {
-                // Retry fast
+                // Retry if data is not ready
                 setTimeout(initMahadevApp, 50);
             }
         } catch (e) {
@@ -73,77 +79,65 @@
         }
     };
 
-    window.addEventListener('DOMContentLoaded', initMahadevApp);
-})();
-
-// --- Support Functions (Fix All Links & Menu) ---
-function fixAllLinks(prefix) {
-    document.querySelectorAll('#header-placeholder a, #footer-placeholder a').forEach(link => {
-        const href = link.getAttribute('href');
-        if (href && !href.startsWith('http') && !href.startsWith('#')) {
-            // Remove leading slash to make it relative
-            let cleanHref = href.startsWith('/') ? href.substring(1) : href;
-            link.href = prefix + cleanHref;
-        }
-    });
-}
-
-function initMenu() {
-    const menuBtn = document.getElementById('mobile-menu');
-    const drawer = document.getElementById('nav-drawer');
-    const overlay = document.getElementById('menu-overlay');
-    const closeBtn = document.getElementById('close-menu');
-    if (menuBtn && drawer) {
-        menuBtn.onclick = () => { drawer.style.right = '0'; if(overlay) overlay.style.display = 'block'; };
-        const hideMenu = () => { drawer.style.right = '-280px'; if(overlay) overlay.style.display = 'none'; };
-        if (closeBtn) closeBtn.onclick = hideMenu;
-        if (overlay) overlay.onclick = hideMenu;
+    // --- 🔱 HELPER FUNCTIONS ---
+    function fixAllLinks(p) {
+        document.querySelectorAll('#header-placeholder a, #footer-placeholder a').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                let clean = href.startsWith('/') ? href.substring(1) : href;
+                link.href = p + clean;
+            }
+        });
     }
-}
 
-window.updateUI = function() {
-    const lang = localStorage.getItem('selectedLang') || 'hi';
-    const t = window.translations;
-    if (!t || !t[lang]) return;
-
-    document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.getAttribute('data-key');
-        const val = t[lang][key];
-        if (val) {
-            if (el.tagName === 'A' && !key.includes('nav')) el.href = val;
-            else el.innerHTML = val;
+    function initMenu() {
+        const btn = document.getElementById('mobile-menu');
+        const drw = document.getElementById('nav-drawer');
+        const ovr = document.getElementById('menu-overlay');
+        if (btn && drw) {
+            btn.onclick = () => { drw.style.right = '0'; if(ovr) ovr.style.display = 'block'; };
+            const hide = () => { drw.style.right = '-280px'; if(ovr) ovr.style.display = 'none'; };
+            document.querySelectorAll('#close-menu, #menu-overlay').forEach(el => el.onclick = hide);
         }
-    });
-    
-    document.querySelectorAll('[data-placeholder-key]').forEach(el => {
-        const key = el.getAttribute('data-placeholder-key');
-        const val = t[lang][key];
-        if (val) el.placeholder = val;
-    });
-
-    const btnText = document.getElementById('lang-text');
-    if (btnText) btnText.innerText = (lang === 'hi') ? 'हिंदी / Eng' : 'Eng / हिंदी';
-};
-
-window.toggleLanguage = function() {
-    let current = localStorage.getItem('selectedLang') || 'hi';
-    localStorage.setItem('selectedLang', current === 'hi' ? 'en' : 'hi');
-    location.reload(); 
-};
-
-// --- Injectors ---
-(function() {
-    // Favicon
-    let link = document.querySelector("link[rel~='icon']");
-    if (!link) {
-        link = document.createElement('link'); link.rel = 'icon'; link.type = 'image/png';
-        document.head.appendChild(link);
     }
-    link.href = 'https://res.cloudinary.com/dya3yxgch/image/upload/v1769705192/logo_bdmvwv.png';
 
-    // Bot
-    const botScript = document.createElement('script');
-    botScript.src = '/assets/js/bot.js';
-    botScript.async = true;
-    window.addEventListener('load', () => { if(document.body) document.body.appendChild(botScript); });
+    window.updateUI = function() {
+        const lang = localStorage.getItem('selectedLang') || 'hi';
+        const t = window.translations;
+        if (!t || !t[lang]) return;
+
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const val = t[lang][el.getAttribute('data-key')];
+            if (val) {
+                if (el.tagName === 'A' && !el.getAttribute('data-key').includes('nav')) el.href = val;
+                else el.innerHTML = val;
+            }
+        });
+
+        const btnTxt = document.getElementById('lang-text');
+        if (btnTxt) btnTxt.innerText = (lang === 'hi') ? 'हिंदी / Eng' : 'Eng / हिंदी';
+    };
+
+    window.toggleLanguage = function() {
+        let curr = localStorage.getItem('selectedLang') || 'hi';
+        localStorage.setItem('selectedLang', curr === 'hi' ? 'en' : 'hi');
+        location.reload();
+    };
+
+    // Execution
+    if (document.readyState === 'loading') window.addEventListener('DOMContentLoaded', initMahadevApp);
+    else initMahadevApp();
+
+    // Auto Inject Favicon/Bot
+    window.addEventListener('load', () => {
+        let link = document.querySelector("link[rel~='icon']");
+        if (!link) { link = document.createElement('link'); link.rel = 'icon'; document.head.appendChild(link); }
+        link.href = 'https://res.cloudinary.com/dya3yxgch/image/upload/v1769705192/logo_bdmvwv.png';
+        
+        const bot = document.createElement('script');
+        bot.src = prefix + 'assets/js/bot.js';
+        bot.async = true;
+        if(document.body) document.body.appendChild(bot);
+    });
+
 })();
