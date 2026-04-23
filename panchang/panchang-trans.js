@@ -104,7 +104,7 @@ pan_disclaimer: "* This Panchang is based on Vedic mathematics. For accurate per
 
         // Essential Dynamic Panchang Data (Included for page functionality)
         "paksha_shukla": "शुक्ल पक्ष", "paksha_krishna": "कृष्ण पक्ष",
-         ph_time: "समय", pan_name: "मुहूर्त", ph_status: "स्थिति", nav_event: "त्यौहार और इवेंट्स", "ph_nature": "प्रकृति",
+         "ph_time": "समय", "pan_name": "मुहूर्त", "ph_status": "स्थिति", "nav_event": "त्यौहार और इवेंट्स", "ph_nature": "प्रकृति",
            // ===== Montn Name (HI) =====
       "mon_jan": "जनवरी", "mon_feb": "फरवरी", "mon_mar": "मार्च", "mon_apr": "अप्रैल", "mon_may": "मई", "mon_jun": "जून", "mon_jul": "जुलाई", "mon_aug": "अगस्त", "mon_sep": "सितंबर", "mon_oct": "अक्टूबर", "mon_nov": "नवंबर", "mon_dec": "दिसंबर",
         "no_events": "आज कोई त्यौहार नहीं है",
