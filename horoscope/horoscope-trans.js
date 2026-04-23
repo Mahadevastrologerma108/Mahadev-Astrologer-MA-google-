@@ -4,6 +4,8 @@ window.pageTranslations = {
         "horoscope_title": "Daily Horoscope",
         "horo_intro_desc": "The movement of celestial planets determines the direction of our lives. At Mahadev Astrologer M A's horoscope portal, we provide accurate daily analysis based on Moon Signs and planetary transits. Whether your sign is Aries or Pisces, here you can gain divine insights from Mahadev regarding your career, health, and love life.",
         "horoscope_subtitle": "Choose your zodiac and get today's guidance",
+         horo_career: "Career & Finance", horo_love: "Love & Family", horo_health: "Health & Wellness", horo_remedy: "Vedic Remedy", expert_note: "Expert Note",
+
         "finder_title": "🔱 Identify Your Zodiac (Rashi Finder)",
         "finder_name_label": "By First Letter of Name:",
         "finder_select": "Select...",
