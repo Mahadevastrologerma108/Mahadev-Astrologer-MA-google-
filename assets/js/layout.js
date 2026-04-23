@@ -5,7 +5,7 @@
 
 (function() {
     // 1. Flicker rokne ke liye Page hide karo
-    document.documentElement.style.visibility = 'hidden';
+   
 
     // 2. Folder depth detection logic
     const path = window.location.pathname;
