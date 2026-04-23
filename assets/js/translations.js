@@ -2,17 +2,13 @@ window.translations = {
     en: {
         // ===== NAV & ZODIAC =====
         nav_home: "Home", nav_horoscope: "Horoscope", nav_panchang: "Panchang", nav_guide: "Update", nav_book: "Book Now",nav_sound: "Sound Healing",nav_tools: "Vedic Tools",number_tool: "Numerology",nav_shop: "Shop",
-        zod_aries: "Aries", zod_taurus: "Taurus", zod_gemini: "Gemini", zod_cancer: "Cancer", zod_leo: "Leo", zod_virgo: "Virgo", zod_libra: "Libra", zod_scorpio: "Scorpio", zod_sagittarius: "Sagittarius", zod_capricorn: "Capricorn", zod_aquarius: "Aquarius", zod_pisces: "Pisces",
         finder_title: "🔱 Identify Your Zodiac (Rashi Finder)",
         finder_name_label: "By First Letter of Name:",
         finder_date_label: "By Date & Month of Birth:",
         finder_select: "Select...",
         finder_divider: "OR",
-        'horoscope_title': 'Daily Horoscope',
-        'horoscope_subtitle': 'Choose your zodiac and get today\'s guidance',
-        "guide_subtitle": "Ancient Wisdom for Modern Life",
+       "guide_subtitle": "Ancient Wisdom for Modern Life",
         
-        horo_career: "Career & Finance", horo_love: "Love & Family", horo_health: "Health & Wellness", horo_remedy: "Vedic Remedy", expert_note: "Expert Note",
         player_title: "Divine Anthem 🔱", player_subtitle: "Coming Soon: Healing Sounds by Parth", player_msg: "The Divine Melody is being tuned. Coming Soon! 🚩",
 
         ph_name_input: "Your Full Name", ph_wa_input: "WhatsApp Number", ph_city_input: "Birth City/Place",
