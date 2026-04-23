@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Initial Form Setup
     const serviceSelect = document.getElementById('service-select');
     if (serviceSelect) {
-        applyFormLogic(); // Set default view on load
+        applyFormLogic(); 
     }
 
     // 2. Form Submit Listener
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', handleBookingSubmit);
     }
 
-    // 3. Clean URL (Blogger ka ?m=1 hatane ke liye)
+    // 3. Clean URL
     if (window.location.search.indexOf('m=1') > -1) {
         const clean_url = window.location.protocol + "//" + window.location.host + window.location.pathname;
         window.history.replaceState({}, document.title, clean_url);
@@ -24,26 +24,22 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- 🔱 1. FORM UI CONTROLLER ---
-
 window.applyFormLogic = function() {
     const val = document.getElementById('service-select').value;
     const singleSec = document.getElementById('section-single');
     const matchSec = document.getElementById('section-matching');
     const palmNote = document.getElementById('palm-instruction');
 
-    // Reset sab kuch hide karo pehle
     if(singleSec) singleSec.style.display = 'none';
     if(matchSec) matchSec.style.display = 'none';
     if(palmNote) palmNote.style.display = 'none';
 
-    // Jo select hua hai, bas use dikhao
     if (val === 'kundli_matching') {
         if(matchSec) matchSec.style.display = 'block';
     } else if (val === 'palmistry') {
         if(singleSec) singleSec.style.display = 'block';
         if(palmNote) palmNote.style.display = 'block';
     } else {
-        // Kundli, Numerology, Combo ke liye default
         if(singleSec) singleSec.style.display = 'block';
     }
 };
@@ -69,32 +65,24 @@ window.syncContactMethod = function(method) {
 };
 
 // --- 🔱 2. SUBMISSION HANDLERS ---
-
 function handleBookingSubmit(e) {
     e.preventDefault();
     console.log("🔱 Form Validated. Processing...");
-    
-    // Agar Firebase handler connected hai, toh data wahan bhejo
     if (window.processFirebaseBooking) {
         window.processFirebaseBooking();
     } else {
-        // Fallback alert (Testing ke liye)
         const lang = localStorage.getItem('selectedLang') || 'hi';
-        const msg = lang === 'hi' ? "बुकिंग प्रोसेस हो रही है..." : "Processing booking...";
-        alert(msg);
+        alert(lang === 'hi' ? "बुकिंग प्रोसेस हो रही है..." : "Processing booking...");
     }
 }
 
 // --- 🔱 3. FEEDBACK SYSTEM ---
-
 window.selectedRating = 0;
 
-// Star Rating Click Event
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('star')) {
         const val = e.target.getAttribute('data-value');
         window.selectedRating = parseInt(val); 
-        
         document.querySelectorAll('.star').forEach(s => {
             const sVal = parseInt(s.getAttribute('data-value'));
             s.style.color = sVal <= val ? '#f5c542' : '#888';
@@ -115,12 +103,9 @@ window.submitFeedback = function() {
     }
 
     console.log("🔱 Feedback Ready:", { rating, feedbackText });
-
-    // Firebase ko data bhejna
     if (window.saveFeedbackToFirebase) {
         window.saveFeedbackToFirebase(rating, feedbackText);
     } else {
-        // Fallback UI Reset
         alert("Feedback Submitted! Thank you.");
         if(feedbackBox) feedbackBox.value = '';
         window.selectedRating = 0;
