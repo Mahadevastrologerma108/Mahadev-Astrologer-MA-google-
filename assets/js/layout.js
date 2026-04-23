@@ -1,13 +1,11 @@
 /**
- * MAHADEV ASTROLOGER MA - Safe Master Engine
- * Logic: Koi Black Screen nahi, page humesha dikhega!
+ * MAHADEV ASTROLOGER MA - Fresh & Smart Master Engine
+ * Logic: Supports all pages (bade aur chhote) & No Black Screen.
  */
 
 (function() {
     // 1. Folder Depth Detection
     const path = window.location.pathname;
-    const isIndexPage = path.endsWith('/') || path.endsWith('index.html') || path === '' || path.endsWith('.in');
-    
     const isInsideFolder = path.includes('/panchang/') || path.includes('/latest-guide/') || 
                            path.includes('/pages/') || path.includes('/horoscope/') ||
                            path.includes('/masterstroke-module/') || path.includes('/tools/') ||
@@ -22,9 +20,10 @@
             const hasCommon = !!window.commonTranslations;
             const hasLocal = !!window.pageTranslations;
 
-            if (hasCommon && (isIndexPage || hasLocal)) {
+            // SMART LOGIC: Agar common data (translations.js) mil gaya, toh aage badho
+            if (hasCommon) {
                 
-                // Merge Logic
+                // Merge Logic: Local hai toh jodo, warna sirf common use karo
                 const localEn = hasLocal ? window.pageTranslations.en : {};
                 const localHi = hasLocal ? window.pageTranslations.hi : {};
 
@@ -33,7 +32,7 @@
                     hi: { ...window.commonTranslations.hi, ...localHi }
                 };
 
-                // Fetch Layout
+                // Fetch Layout (Header/Footer)
                 const [hResp, fResp] = await Promise.all([
                     fetch(prefix + 'header.html').catch(() => ({ok: false})),
                     fetch(prefix + 'footer.html').catch(() => ({ok: false}))
@@ -43,17 +42,17 @@
                     const headerHTML = await hResp.text();
                     const footerHTML = await fResp.text();
 
+                    // Body load hone ka wait karein, phir inject karein
                     const checkBody = setInterval(() => {
                         if (document.body) {
                             clearInterval(checkBody);
                             
-                            // Inject Header/Footer
                             const hPlace = document.getElementById('header-placeholder');
                             const fPlace = document.getElementById('footer-placeholder');
-                            if(hPlace) hPlace.innerHTML = headerHTML;
-                            if(fPlace) fPlace.innerHTML = footerHTML;
+                            
+                            if (hPlace) hPlace.innerHTML = headerHTML;
+                            if (fPlace) fPlace.innerHTML = footerHTML;
 
-                            // Final UI Prep
                             initMenu();
                             fixAllLinks(prefix);
                             window.updateUI();
@@ -62,12 +61,12 @@
                         }
                     }, 30);
                 } else {
-                    // Agar header na bhi mile, toh translation apply kar do
+                    // Agar header na mile (local folder error), tab bhi translation apply karein
                     window.updateUI();
                     console.warn("🔱 Header/Footer paths not found, but Translation applied.");
                 }
             } else {
-                // Wait for data
+                // Jab tak translations.js load na ho, tab tak thoda wait karein
                 setTimeout(initMahadevApp, 50);
             }
         } catch (e) {
@@ -121,19 +120,26 @@
     };
 
     // Execution
-    if (document.readyState === 'loading') window.addEventListener('DOMContentLoaded', initMahadevApp);
-    else initMahadevApp();
+    if (document.readyState === 'loading') {
+        window.addEventListener('DOMContentLoaded', initMahadevApp);
+    } else {
+        initMahadevApp();
+    }
 
     // Auto Inject Favicon & Bot
     window.addEventListener('load', () => {
         let link = document.querySelector("link[rel~='icon']");
-        if (!link) { link = document.createElement('link'); link.rel = 'icon'; document.head.appendChild(link); }
+        if (!link) { 
+            link = document.createElement('link'); 
+            link.rel = 'icon'; 
+            document.head.appendChild(link); 
+        }
         link.href = 'https://res.cloudinary.com/dya3yxgch/image/upload/v1769705192/logo_bdmvwv.png';
         
         const bot = document.createElement('script');
         bot.src = prefix + 'assets/js/bot.js';
         bot.async = true;
-        if(document.body) document.body.appendChild(bot);
+        if (document.body) document.body.appendChild(bot);
     });
 
 })();
