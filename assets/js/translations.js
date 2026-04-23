@@ -94,49 +94,10 @@ window.commonTranslations = {
         veda_rig: "Rigveda", veda_yajur: "Yajurveda", veda_sama: "Samaveda", veda_atharva: "Atharvaveda",
         upanishad_isha: "Isha Upanishad", upanishad_kena: "Kena Upanishad", upanishad_katha: "Katha Upanishad", upanishad_prashna: "Prashna Upanishad", upanishad_mundaka: "Mundaka Upanishad", upanishad_mandukya: "Mandukya Upanishad",
 
-       // ===== PANCHANG DIRECT KEYS (EN) =====
-       "paksha_shukla": "Shukla Paksha", "paksha_krishna": "Krishna Paksha",
-        
-        // Tithis
-    "tithi_01": "Pratipada", "tithi_02": "Dwitiya", "tithi_03": "Tritiya", "tithi_04": "Chaturthi", "tithi_05": "Panchami",
-    "tithi_06": "Shashthi", "tithi_07": "Saptami", "tithi_08": "Ashtami", "tithi_09": "Navami", "tithi_10": "Dashami",
-    "tithi_11": "Ekadashi", "tithi_12": "Dwadashi", "tithi_13": "Trayodashi", "tithi_14": "Chaturdashi", "tithi_15": "Purnima", "tithi_30": "Amavasya",
-
-        // ===== Month Name & Days Name (EN) =====
-    day_sun: "Sun", day_mon: "Mon", day_tue: "Tue", day_wed: "Wed", day_thu: "Thu", day_fri: "Fri", day_sat: "Sat",
-        mon_jan: "January", mon_feb: "February", mon_mar: "March", mon_apr: "April", mon_may: "May", mon_jun: "June",
-mon_jul: "July", mon_aug: "August", mon_sep: "September", mon_oct: "October", mon_nov: "November", mon_dec: "December", no_events: "No festivals today",
-        
-        // Choghadiya
-        "chaug_char": "Char", "chaug_labh": "Labh", "chaug_amrit": "Amrit", "chaug_shubh": "Shubh",
-        "chaug_rog": "Rog", "chaug_kaal": "Kaal", "chaug_udveg": "Udveg",
-        "bad": "Bad", "neutral": "Neutral", "good": "Good",
-        ph_time: "Time", pan_name: "Muhurat", ph_status: "Status", nav_event:"Festivals & Events", "ph_nature": "Nature",
-        
-        // Yoga & Karana
-    "yoga_01": "Vishkumbha", "yoga_02": "Priti", "yoga_03": "Ayushman", "yoga_04": "Saubhagya", "yoga_05": "Shobhana",
-    "yoga_06": "Atiganda", "yoga_07": "Sukarma", "yoga_08": "Dhriti", "yoga_09": "Shoola", "yoga_10": "Ganda",
-    "yoga_11": "Vriddhi", "yoga_12": "Dhruva", "yoga_13": "Vyaghata", "yoga_14": "Harshana", "yoga_15": "Vajra",
-    "yoga_16": "Siddhi", "yoga_17": "Vyatipata", "yoga_18": "Variyana", "yoga_19": "Parigha", "yoga_20": "Shiva",
-    "yoga_21": "Siddha", "yoga_22": "Sadhya", "yoga_23": "Shubha", "yoga_24": "Shukla", "yoga_25": "Brahma",
-    "yoga_26": "Indra", "yoga_27": "Vaidhriti",
-    "karan_01": "Bava", "karan_02": "Balava", "karan_03": "Kaulava", "karan_04": "Taitila", "karan_05": "Gara", "karan_06": "Vanija", "karan_07": "Vishti", 
-    "karan_08": "Shakuni", "karan_09": "Chatushpada", "karan_10": "Naga", "karan_11": "Kimstughna",
-        
         back_home: "← Back to Home",
 
         months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-tithi: "Tithi", 
-nakshatra: "Nakshatra", 
-yoga: "Yoga", 
-karan: "Karan", 
-paksha: "Paksha",
-sunrise: "Sun Rise/Set", 
-abhijit: "Abhijit Muhurat", 
-rahukaal: "Rahu Kaal",
-ins_panchang_title: "Daily Panchang 2026",
 
-horo_intro_desc: "The movement of celestial planets determines the direction of our lives. At Mahadev Astrologer MA's horoscope portal, we provide accurate daily analysis based on Moon Signs and planetary transits. Whether your sign is Aries or Pisces, here you can gain divine insights from Mahadev regarding your career, health, and love life.",
 edu_title: "Importance of Horoscope & Vedic Astrology",
 edu_moon_h: "Influence of Moon Sign",
 edu_moon_p: "In Vedic Astrology, horoscopes are always viewed based on the 'Moon Sign' because the Moon rules our mind and emotions.",
@@ -152,26 +113,6 @@ faq_a2: "If the results don't align, your 'Mahadasha' might be more dominant. In
 faq_q3: "Which is better: Birth Chart or Palmistry?",
 faq_a3: "A birth chart is best if birth time is known; otherwise, Palmistry becomes a reliable source of guidance by the grace of Mahadev.",
 faq_footer_note: "* MAHADEV ASTROLOGER MA aims to alert you through astrological signs. We suggest taking this as guidance only.", 
-
-        // --- Panchang Page Intro ---
-pan_intro_h1: "Today's Panchang & Vedic Calculations",
-pan_intro_p: "Panchang holds special significance in Vedic Astrology. It is a precise combination of Tithi, Nakshatra, Yoga, Karana, and Var. Through this special Panchang by Mahadev Astrologer MA, you can get accurate information on daily auspicious Muhurats, Rahukaal, and Choghadiya. Our aim is to make you aware of the correct cycle of time by the grace of Mahadev, so that you can make every endeavor successful and auspicious.",
-
-// --- Panchang Knowledge Section ---
-pan_info_elements_h: "Five Elements of Panchang",
-pan_info_elements_p: "Panchang is primarily composed of five elements: Tithi, Var, Nakshatra, Yoga, and Karana. By choosing them correctly, we can achieve success in our endeavors.",
-pan_info_muhurat_h: "Choghadiya & Muhurat",
-pan_info_muhurat_p: "Knowledge of Choghadiya is essential for auspicious tasks. Amrit, Shubh, Labh, and Char are considered auspicious, while Rog, Udveg, and Kaal should be avoided.",
-pan_info_vedic_h: "Vedic Guidance",
-pan_info_vedic_p: "The positions of planets have a deep impact on our lives. Through this path of knowledge from MAHADEV ASTROLOGER MA, we can balance our future.",
-
-// --- Panchang FAQ Section ---
-pan_faq_title: "Special Information on Panchang & Muhurat (FAQ)",
-pan_q1: "Why is there a time difference according to location?",
-pan_a1: "Panchang calculations are based on Sunrise. Since Sunrise time varies in every city, there may be a few minutes' difference in Rahukaal and auspicious Muhurats. The calculations provided here are based on a standard time.",
-pan_q2: "What is the importance of Abhijit Muhurat?",
-pan_a2: "According to scriptures, Abhijit Muhurat is considered the most auspicious time of the day. Any work started during this time is successful with the blessings of Mahadev. If you cannot find a specific Muhurat, you can use this time.",
-pan_disclaimer: "* This Panchang is based on Vedic mathematics. For accurate personal Muhurats, consult MAHADEV ASTROLOGER MA.",
 
 "sound_page_title": "Naad Brahma: Divine Sound Science | MAHADEV ASTROLOGER MA",
 "sound_hero_title": "Naad Brahma & Cosmic Resonance",
@@ -224,19 +165,7 @@ pisces_resonance: "Pisces aligns with the Crown Chakra. Chanting 'Hreem' leads t
 "benefit_2": "Aligns your body vibrations with planetary energy.",  
 "benefit_3": "Spiritual peace and vibrational balance through Vedic sounds.", 
     
- // --- Quiz Section ---
-quiz_q1: "1. What is your skin and body type?",
-quiz_q1_a: "Dry/Rough (Vata)", 
-quiz_q1_b: "Sensitive/Warm (Pitta)", 
-quiz_q1_c: "Soft/Oily (Kapha)",
-quiz_q2: "2. What is your natural temperament?",
-quiz_q2_a: "Restless/Active", 
-quiz_q2_b: "Fiery/Sharp", 
-quiz_q2_c: "Calm/Stable",
-quiz_q3: "3. How does weather affect you?",
-quiz_q3_a: "Sensitive to Cold", 
-quiz_q3_b: "Sensitive to Heat", 
-quiz_q3_c: "Sensitive to Humidity",
+ 
 
 // --- Quiz Result & Form ---
         "res_title": "Dominant Dosha:",
@@ -492,7 +421,6 @@ shop_title: "MAHADEV ASTROLOGER STORE",
         'horoscope_subtitle': 'अपनी राशि चुनें और आज का परामर्श प्राप्त करें',
         "guide_subtitle": "आधुनिक जीवन के लिए प्राचीन ज्ञान",
 
-        horo_career: "करियर और वित्त", horo_love: "प्रेम और परिवार", horo_health: "स्वास्थ्य और कल्याण",horo_remedy: "वैदिक अचूक उपाय", expert_note: "विशेषज्ञ की टिप्पणी",
         player_title: "दिव्य संगीत 🔱", player_subtitle: "शीघ्र आ रहा है: पार्थ की आवाज़ में हीलिंग संगीत", player_msg: "प्रभु की कृपा से, दिव्य संगीत जल्द ही प्रकट होगा! 🚩",
 
         ph_name_input: "आपका पूरा नाम", ph_wa_input: "व्हाट्सएप नंबर", ph_city_input: "जन्म स्थान / शहर",
@@ -569,49 +497,10 @@ shop_title: "MAHADEV ASTROLOGER STORE",
         veda_rig: "ऋग्वेद", veda_yajur: "यजुर्वेद", veda_sama: "सामवेद", veda_atharva: "अथर्ववेद",
         upanishad_isha: "ईश उपनिषद", upanishad_kena: "केन उपनिषद", upanishad_katha: "कठ उपनिषद", upanishad_prashna: "प्रश्न उपनिषद", upanishad_mundaka: "मुण्डक उपनिषद", upanishad_mandukya: "माण्डूक्य उपनिषद",
 
-        // ===== PANCHANG DIRECT KEYS (HI) =====
-         "paksha_shukla": "शुक्ल पक्ष", "paksha_krishna": "कृष्ण पक्ष",
-        
-        // Tithis
-        "tithi_01": "प्रतिपदा", "tithi_02": "द्वितीया", "tithi_03": "तृतीया", "tithi_04": "चतुर्थी", "tithi_05": "पंचमी",
-        "tithi_06": "षष्ठी", "tithi_07": "सप्तमी", "tithi_08": "अष्टमी", "tithi_09": "नवमी", "tithi_10": "दशमी",
-        "tithi_11": "एकादशी", "tithi_12": "द्वादशी", "tithi_13": "त्रयोदशी", "tithi_14": "चतुर्दशी", "tithi_15": "पूर्णिमा", "tithi_30": "अमावस्या",
-
-        // ===== Montn Name (HI) =====
-        day_sun: "रवि", day_mon: "सोम", day_tue: "मंगल", day_wed: "बुध", day_thu: "गुरु", day_fri: "शुक्र", day_sat: "शनि",
-        mon_jan: "जनवरी", mon_feb: "फरवरी", mon_mar: "मार्च", mon_apr: "अप्रैल", mon_may: "मई", mon_jun: "जून",
-mon_jul: "जुलाई", mon_aug: "अगस्त", mon_sep: "सितंबर", mon_oct: "अक्टूबर", mon_nov: "नवंबर", mon_dec: "दिसंबर", no_events: "आज कोई त्यौहार नहीं है",
-        
-        // Choghadiya
-        "chaug_char": "चर", "chaug_labh": "लाभ", "chaug_amrit": "अमृत", "chaug_shubh": "शुभ",
-        "chaug_rog": "रोग", "chaug_kaal": "काल", "chaug_udveg": "उद्वेग",
-        "bad": "अशुभ", "neutral": "सामान्य", "good": "शुभ",
-        ph_time: "समय", pan_name: "मुहूर्त", ph_status: "स्थिति", nav_event: "त्यौहार और इवेंट्स", "ph_nature": "प्रकृति",
-
-        // Yoga & Karana
-        "yoga_01": "विष्कुम्भ", "yoga_02": "प्रीति", "yoga_03": "आयुष्मान", "yoga_04": "सौभाग्य", "yoga_05": "शोभन",
-        "yoga_06": "अतिगण्ड", "yoga_07": "सुकर्मा", "yoga_08": "धृति", "yoga_09": "शूल", "yoga_10": "गण्ड",
-        "yoga_11": "वृद्धि", "yoga_12": "ध्रुव", "yoga_13": "व्याघात", "yoga_14": "हर्षण", "yoga_15": "वज्र",
-        "yoga_16": "सिद्धि", "yoga_17": "व्यतिपात", "yoga_18": "वरीयान", "yoga_19": "परिघ", "yoga_20": "शिव",
-        "yoga_21": "सिद्ध", "yoga_22": "साध्य", "yoga_23": "शुभ", "yoga_24": "शुक्ल", "yoga_25": "ब्रह्म",
-        "yoga_26": "इन्द्र", "yoga_27": "वैधृति",
-        "karan_01": "बव", "karan_02": "बालव", "karan_03": "कौलव", "karan_04": "तैतिल", "karan_05": "गर",
-        "karan_06": "वणिज", "karan_07": "विष्टि", "karan_08": "शकुनि", "karan_09": "चतुष्पाद", "karan_10": "नाग", "karan_11": "किस्तुघ्न",
-       
     back_home: "← वापस जाएं",
 
         months: ["जनवरी", "फरवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"],
-tithi: "तिथि", 
-nakshatra: "नक्षत्र", 
-yoga: "योग", 
-karan: "करण", 
-paksha: "पक्ष",
-sunrise: "सूर्योदय/अस्त", 
-abhijit: "अभिजीत मुहूर्त", 
-rahukaal: "राहुकाल",
-ins_panchang_title: "दैनिक पंचांग 2026",
 
-horo_intro_desc: "आकाशीय ग्रहों की चाल हमारे जीवन की दिशा निर्धारित करती है। Mahadev Astrologer MA के इस राशिफल पोर्टल पर हम चंद्र राशि (Moon Sign) और ग्रहों के गोचर के आधार पर सटीक दैनिक विश्लेषण प्रदान करते हैं। चाहे आपकी राशि मेष हो या मीन, यहाँ आप अपने करियर, स्वास्थ्य, और प्रेम जीवन से जुड़ी महादेव की दिव्य अंतर्दृष्टि प्राप्त कर सकते हैं।",
 edu_title: "राशिफल और वैदिक ज्योतिष का महत्व",
 edu_moon_h: "चंद्र राशि का प्रभाव",
 edu_moon_p: "वैदिक ज्योतिष में राशिफल हमेशा 'चंद्र राशि' (Moon Sign) के आधार पर देखा जाता है, क्योंकि चंद्रमा हमारे मन और भावनाओं का स्वामी है।",
@@ -628,28 +517,6 @@ faq_q3: "कुंडली या हस्तरेखा: क्या बे
 faq_a3: "जन्म समय ज्ञात होने पर कुंडली श्रेष्ठ है, अन्यथा हस्तरेखा (Palmistry) महादेव के आशीर्वाद से सटीक मार्गदर्शन का जरिया बनती है।",
 faq_footer_note: "* MAHADEV ASTROLOGER MA का उद्देश्य आपको ज्योतिषीय संकेतों के माध्यम से सचेत करना है।", 
 
-        // --- Panchang Page Intro ---
-pan_intro_h1: "आज का पंचांग और वैदिक गणना",
-pan_intro_p: "वैदिक ज्योतिष में पंचांग का विशेष महत्व है। यह तिथि, नक्षत्र, योग, करण और वार का सटीक मेल है। <strong>Mahadev Astrologer MA</strong> के इस विशेष पंचांग के माध्यम से आप दैनिक शुभ मुहूर्त, राहुकाल और चौघड़िया की सटीक जानकारी प्राप्त कर सकते हैं। हमारा उद्देश्य महादेव की कृपा से आपको समय के सही चक्र से अवगत कराना है, ताकि आप अपने प्रत्येक कार्य को सफल और मंगलमय बना सकें।",
-
-// --- Panchang Knowledge Section ---
-pan_info_elements_h: "पंचांग के पांच अंग",
-pan_info_elements_p: "पंचांग मुख्य रूप से पांच तत्वों से बना है: तिथि, वार, नक्षत्र, योग और करण। इनके सही चयन से हम अपने कार्यों में सिद्धि प्राप्त कर सकते हैं।",
-pan_info_muhurat_h: "चौघड़िया और मुहूर्त",
-pan_info_muhurat_p: "शुभ कार्यों के लिए चौघड़िया का ज्ञान आवश्यक है। अमृत, शुभ, लाभ और चर को शुभ माना जाता है, जबकि रोग, उद्वेग और काल से बचना चाहिए।",
-pan_info_vedic_h: "वैदिक मार्गदर्शन",
-pan_info_vedic_p: "ग्रहों की स्थिति हमारे जीवन पर गहरा प्रभाव डालती है। <strong>MAHADEV ASTROLOGER MA</strong> के इस ज्ञान मार्ग से हम अपने भविष्य को संतुलित कर सकते हैं।",
-
-// --- Panchang FAQ Section ---
-pan_faq_title: "पंचांग और मुहूर्त संबंधी विशेष जानकारी (FAQ)",
-pan_q1: "स्थान के अनुसार समय में अंतर क्यों?",
-pan_a1: "पंचांग की गणना सूर्योदय (Sunrise) पर आधारित होती है। हर शहर में सूर्योदय का समय अलग होता है, इसलिए राहुकाल और शुभ मुहूर्त के समय में कुछ मिनटों का अंतर आ सकता है। यहाँ दी गई गणना एक मानक समय पर आधारित है।",
-pan_q2: "अभिजीत मुहूर्त का महत्व क्या है?",
-pan_a2: "शास्त्रों के अनुसार, अभिजीत मुहूर्त दिन का सबसे शुभ समय माना जाता है। इसमें शुरू किया गया कोई भी कार्य महादेव के आशीर्वाद से सफल होता है। यदि आपको कोई विशेष मुहूर्त न मिल रहा हो, तो आप इस समय का उपयोग कर सकते हैं।",
-pan_disclaimer: "* यह पंचांग वैदिक गणित पर आधारित है। सटीक व्यक्तिगत मुहूर्त के लिए <strong>MAHADEV ASTROLOGER MA</strong> से परामर्श लें।",
-"sound_page_title": "नाद ब्रह्म: दिव्य ध्वनि विज्ञान | महादेव एस्ट्रोलॉजर MA",
-"sound_hero_title": "नाद ब्रह्म और ब्रह्मांडीय प्रतिध्वनि",
-"sound_intro_para": "वैदिक विज्ञान के अनुसार, ब्रह्मांड की हर वस्तु एक विशिष्ट आवृत्ति पर कंपन करती है। हम महादेव एस्ट्रोलॉजर एमए में उसी 'परम-नाद' को आपकी कुंडली और त्रिदोष से जोड़ते हैं।",
 about_rashi_title: "प्राचीन वैदिक ज्ञान",
 naad_brahma_title: "नाद ब्रह्म प्रतिध्वनि",
 aries_desc: "मेष राशि चक्र की प्रथम राशि है, जिसका स्वामी मंगल है। अग्नि तत्व के रूप में, यह ऊर्जा, नेतृत्व और सृजन की शक्ति का प्रतीक है।",
@@ -699,19 +566,7 @@ pisces_resonance: "मीन सहस्रार चक्र के साथ
 "benefit_2": "यह आपके शरीर के स्पंदन को ग्रहों की ऊर्जा के साथ जोड़ता है।",
 "benefit_3": "वैदिक ध्वनियों के माध्यम से आत्मिक शांति और संतुलन।",
         
-// --- Quiz Section ---
-quiz_q1: "1. आपकी त्वचा और शरीर की प्रकृति कैसी है?",
-quiz_q1_a: "शुष्क/रूखी (वात)", 
-quiz_q1_b: "संवेदनशील/गर्म (पित्त)", 
-quiz_q1_c: "कोमल/तैलीय (कफ)",
-quiz_q2: "2. आपका जन्मजात स्वभाव कैसा है?",
-quiz_q2_a: "चंचल/सक्रिय", 
-quiz_q2_b: "उग्र/तेज", 
-quiz_q2_c: "शांत/स्थिर",
-quiz_q3: "3. मौसम का आप पर क्या प्रभाव पड़ता है?",
-quiz_q3_a: "अधिक शीत (ठंड) लगती है", 
-quiz_q3_b: "गर्मी सहन नहीं होती", 
-quiz_q3_c: "नमी/उमस से परेशानी",
+
 
 // --- Quiz Result & Form ---
         "res_title": "प्रमुख दोष:",
