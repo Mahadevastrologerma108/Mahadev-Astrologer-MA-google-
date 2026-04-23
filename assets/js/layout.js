@@ -1,45 +1,84 @@
 /**
- * MAHADEV ASTROLOGER MA - Master Layout Engine
- * Handles: Header/Footer, Folder Depth, Translation, & Feedback UI
+ * MAHADEV ASTROLOGER MA - Master Layout & Sequence Engine
+ * Handles: Blocking Load, Header/Footer, Translation, Stars, Favicon & Bot
  */
 
-async function loadLayout() {
+(function() {
+    // 1. Flicker rokne ke liye Page hide karo
+    document.documentElement.style.visibility = 'hidden';
+
+    // 2. Folder depth detection logic
     const path = window.location.pathname;
-
-    // 🔱 Folder depth detection for GitHub Pages (Products folder added)
-    const isInsideFolder = path.includes('/panchang/') || 
-                           path.includes('/latest-guide/') || 
-                           path.includes('/pages/') || 
-                           path.includes('/horoscope/') ||
-                           path.includes('/masterstroke-module/') ||
-                           path.includes('/tools/') ||
-                           path.includes('/products/');                            
+    const isInsideFolder = path.includes('/panchang/') || path.includes('/latest-guide/') || 
+                           path.includes('/pages/') || path.includes('/horoscope/') ||
+                           path.includes('/masterstroke-module/') || path.includes('/tools/') ||
+                           path.includes('/products/');
     const prefix = isInsideFolder ? '../' : '';
-    try {
-        const [hResp, fResp] = await Promise.all([
-            fetch(prefix + 'header.html'),
-            fetch(prefix + 'footer.html')
-        ]);
 
-        if (hResp.ok && fResp.ok) {
-            document.getElementById('header-placeholder').innerHTML = await hResp.text();
-            document.getElementById('footer-placeholder').innerHTML = await fResp.text();
+    // 🔱 MAIN INITIALIZER
+    window.initMahadevApp = async function() {
+        try {
+            // Check: Kya translation files (Common aur Page) load ho chuki hain?
+            if (window.commonTranslations && window.pageTranslations) {
+                
+                // A. MERGE DATA
+                window.translations = {
+                    en: { ...window.commonTranslations.en, ...window.pageTranslations.en },
+                    hi: { ...window.commonTranslations.hi, ...window.pageTranslations.hi }
+                };
 
-            initMenu(); 
-            if (window.updateUI) window.updateUI(); 
-            fixAllLinks(prefix); 
-        } else {
-             console.log("Files fetch nahi hui. Status:", hResp.status, fResp.status);
+                // B. LOAD LAYOUT (Header/Footer)
+                const [hResp, fResp] = await Promise.all([
+                    fetch(prefix + 'header.html'),
+                    fetch(prefix + 'footer.html')
+                ]);
+
+                if (hResp.ok && fResp.ok) {
+                    const headerHTML = await hResp.text();
+                    const footerHTML = await fResp.text();
+
+                    // C. Injections (Body ka wait karke)
+                    const checkBody = setInterval(() => {
+                        if (document.body) {
+                            clearInterval(checkBody);
+                            
+                            // HTML Inject karo
+                            const hPlace = document.getElementById('header-placeholder');
+                            const fPlace = document.getElementById('footer-placeholder');
+                            if(hPlace) hPlace.innerHTML = headerHTML;
+                            if(fPlace) fPlace.innerHTML = footerHTML;
+
+                            // UI Sync & Link Fixes
+                            initMenu();
+                            fixAllLinks(prefix);
+                            window.updateUI();
+                            
+                            // FINAL STEP: Reveal Page
+                            document.documentElement.style.visibility = 'visible';
+                            console.log("🔱 MAHADEV ASTROLOGER MA: Sequence Complete.");
+                        }
+                    }, 10);
+                }
+            } else {
+                // Retry fast (30ms) if data is missing
+                setTimeout(initMahadevApp, 30);
+            }
+        } catch (e) {
+            console.error("🔱 Boot Error:", e);
+            document.documentElement.style.visibility = 'visible';
         }
-    } catch (e) { console.error("Layout failed to load:", e); }
-}
+    };
+
+    // Trigger on DOMContentLoaded
+    window.addEventListener('DOMContentLoaded', initMahadevApp);
+})();
+
+// --- 🔱 1. HELPER FUNCTIONS ---
 
 function fixAllLinks(prefix) {
     document.querySelectorAll('#header-placeholder a, #footer-placeholder a').forEach(link => {
         const href = link.getAttribute('href');
-        // Ignore absolute links (http) and anchor links (#)
         if (href && !href.startsWith('http') && !href.startsWith('#')) {
-            // Remove leading slash if it exists to avoid double slashes
             let cleanHref = href.startsWith('/') ? href.substring(1) : href;
             link.href = prefix + cleanHref;
         }
@@ -51,7 +90,6 @@ function initMenu() {
     const drawer = document.getElementById('nav-drawer');
     const overlay = document.getElementById('menu-overlay');
     const closeBtn = document.getElementById('close-menu');
-
     if (menuBtn && drawer) {
         menuBtn.onclick = () => { 
             drawer.style.right = '0'; 
@@ -66,13 +104,13 @@ function initMenu() {
     }
 }
 
-// --- 2. TRANSLATION & UI SYNC ---
+// --- 🔱 2. TRANSLATION & UI SYNC ---
 window.updateUI = function() {
     const lang = localStorage.getItem('selectedLang') || 'hi';
     const t = window.translations;
     if (!t || !t[lang]) return;
 
-    // Translate Text & Links
+    // Text & Link Translation
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
         const val = t[lang][key];
@@ -82,7 +120,7 @@ window.updateUI = function() {
         }
     });
 
-    // 🔱 Safe Addition: Translate Placeholders (For Feedback Box)
+    // Placeholders
     document.querySelectorAll('[data-placeholder-key]').forEach(el => {
         const key = el.getAttribute('data-placeholder-key');
         const val = t[lang][key];
@@ -99,12 +137,11 @@ window.toggleLanguage = function() {
     location.reload(); 
 };
 
-// --- 🔱 3. FEEDBACK STARS LOGIC (SAFE EVENT DELEGATION) ---
+// --- 🔱 3. FEEDBACK STARS ---
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('star')) {
         const val = e.target.getAttribute('data-value');
         window.selectedRating = val; 
-
         document.querySelectorAll('.star').forEach(s => {
             const sVal = s.getAttribute('data-value');
             s.style.color = sVal <= val ? '#f5c542' : '#888';
@@ -112,31 +149,22 @@ document.addEventListener('click', (e) => {
         });
     }
 });
-document.addEventListener('DOMContentLoaded', loadLayout);
 
-// 🔱 Global Favicon Injector
+// --- 🔱 4. AUTO INJECTORS (Global) ---
+
 (function injectFavicon() {
-    // Pehle check karo ki kahin Favicon pehle se toh nahi laga
     let link = document.querySelector("link[rel~='icon']");
-    
-    // Agar nahi laga, toh naya banao
     if (!link) {
         link = document.createElement('link');
-        link.rel = 'icon';
-        link.type = 'image/png';
+        link.rel = 'icon'; link.type = 'image/png';
         document.head.appendChild(link);
     }
-    
-    // Icon ka sahi path set karo (Root se uthayega)
     link.href = '/assets/images/logo.png';
 })();
 
-// 🔱 Automatic Bot Injector (Sabhi 38 Pages ke liye ek sath)
-(function() {
+(function injectBot() {
     const botScript = document.createElement('script');
-    botScript.src = '/assets/js/bot.js'; // Bot ki file ka path
+    botScript.src = '/assets/js/bot.js';
     botScript.async = true;
     document.body.appendChild(botScript);
-    
-    console.log("🔱 Mahadev Bot Injected Globally!");
 })();
