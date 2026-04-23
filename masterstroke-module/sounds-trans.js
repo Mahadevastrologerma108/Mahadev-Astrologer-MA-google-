@@ -20,7 +20,20 @@ window.pageTranslations = {
         "benefits_title": "Spiritual Advantages",
         "benefit_1": "<strong>Enhanced Clarity:</strong> Achieve mental focus by synchronizing with planetary sound patterns.",
         "benefit_2": "<strong>Energy Regulation:</strong> Balance your Pitta, Vata, or Kapha through specific harmonic frequencies.",
-        "benefit_3": "<strong>Vedic Peace:</strong> Reconnect with your ancestral roots through the primordial sound of 'Om'."
+        "benefit_3": "<strong>Vedic Peace:</strong> Reconnect with your ancestral roots through the primordial sound of 'Om'.",
+        // --- Quiz Section ---
+quiz_q1: "1. What is your skin and body type?",
+quiz_q1_a: "Dry/Rough (Vata)", 
+quiz_q1_b: "Sensitive/Warm (Pitta)", 
+quiz_q1_c: "Soft/Oily (Kapha)",
+quiz_q2: "2. What is your natural temperament?",
+quiz_q2_a: "Restless/Active", 
+quiz_q2_b: "Fiery/Sharp", 
+quiz_q2_c: "Calm/Stable",
+quiz_q3: "3. How does weather affect you?",
+quiz_q3_a: "Sensitive to Cold", 
+quiz_q3_b: "Sensitive to Heat", 
+quiz_q3_c: "Sensitive to Humidity",
     },
     hi: {
         "sound_page_title": "नाद ब्रह्म | कॉस्मिक रेजोनेंस और वैदिक अलाइनमेंट | MAHADEV ASTROLOGER MA",
@@ -43,6 +56,19 @@ window.pageTranslations = {
         "benefits_title": "संतुलन के लाभ",
         "benefit_1": "<strong>मानसिक स्पष्टता:</strong> ग्रहों की ध्वनि तरंगों के साथ जुड़कर मानसिक एकाग्रता प्राप्त करें।",
         "benefit_2": "<strong>ऊर्जा नियमन:</strong> विशिष्ट हार्मोनिक आवृत्तियों के माध्यम से अपने वात, पित्त या कफ को संतुलित करें।",
-        "benefit_3": "<strong>वैदिक शांति:</strong> 'ओम' की मौलिक ध्वनि के माध्यम से अपनी पैतृक जड़ों से पुनः जुड़ें।"
+        "benefit_3": "<strong>वैदिक शांति:</strong> 'ओम' की मौलिक ध्वनि के माध्यम से अपनी पैतृक जड़ों से पुनः जुड़ें।",
+        // --- Quiz Section ---
+quiz_q1: "1. आपकी त्वचा और शरीर की प्रकृति कैसी है?",
+quiz_q1_a: "शुष्क/रूखी (वात)", 
+quiz_q1_b: "संवेदनशील/गर्म (पित्त)", 
+quiz_q1_c: "कोमल/तैलीय (कफ)",
+quiz_q2: "2. आपका जन्मजात स्वभाव कैसा है?",
+quiz_q2_a: "चंचल/सक्रिय", 
+quiz_q2_b: "उग्र/तेज", 
+quiz_q2_c: "शांत/स्थिर",
+quiz_q3: "3. मौसम का आप पर क्या प्रभाव पड़ता है?",
+quiz_q3_a: "अधिक शीत (ठंड) लगती है", 
+quiz_q3_b: "गर्मी सहन नहीं होती", 
+quiz_q3_c: "नमी/उमस से परेशानी",
     }
 };
