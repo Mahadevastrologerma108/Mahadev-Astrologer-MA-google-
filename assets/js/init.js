@@ -1,143 +1,132 @@
 /**
- * MAHADEV ASTROLOGER MA - Smart Master Engine
- * Logic: Index page ko direct common translations se load karta hai.
+ * MAHADEV ASTROLOGER MA - Core Application Logic
+ * Handles: Form Actions, Feedback System, and UI Interactions
  */
 
-(function() {
-    // 1. Flicker rokne ke liye turant hide karo
-    document.documentElement.style.visibility = 'hidden';
-
-    // 2. Location Detection
-    const path = window.location.pathname;
-    // Check agar user Index page par hai (root, index.html ya khali path)
-    const isIndexPage = path.endsWith('/') || path.endsWith('index.html') || path === '' || path.endsWith('.in');
-    
-    const isInsideFolder = path.includes('/panchang/') || path.includes('/latest-guide/') || 
-                           path.includes('/pages/') || path.includes('/horoscope/') ||
-                           path.includes('/masterstroke-module/') || path.includes('/tools/') ||
-                           path.includes('/products/');
-    
-    const prefix = isInsideFolder ? '../' : '';
-
-    // 🔱 MASTER INITIALIZER
-    window.initMahadevApp = async function() {
-        try {
-            // Check Data: translations.js load hui ya nahi
-            const hasCommon = !!window.commonTranslations;
-            const hasLocal = !!window.pageTranslations;
-
-            // SMART LOGIC: Agar common data hai AND (Index page hai OR local data mil gaya hai)
-            if (hasCommon && (isIndexPage || hasLocal)) {
-                
-                // Merge Logic: Index ke liye sirf common use hoga
-                const localEn = hasLocal ? window.pageTranslations.en : {};
-                const localHi = hasLocal ? window.pageTranslations.hi : {};
-
-                window.translations = {
-                    en: { ...window.commonTranslations.en, ...localEn },
-                    hi: { ...window.commonTranslations.hi, ...localHi }
-                };
-
-                // BUILD LAYOUT: Fetch Header/Footer
-                const [hResp, fResp] = await Promise.all([
-                    fetch(prefix + 'header.html'),
-                    fetch(prefix + 'footer.html')
-                ]);
-
-                if (hResp.ok && fResp.ok) {
-                    const headerHTML = await hResp.text();
-                    const footerHTML = await fResp.text();
-
-                    const checkBody = setInterval(() => {
-                        if (document.body) {
-                            clearInterval(checkBody);
-                            
-                            // Inject Header/Footer
-                            const hPlace = document.getElementById('header-placeholder');
-                            const fPlace = document.getElementById('footer-placeholder');
-                            if(hPlace) hPlace.innerHTML = headerHTML;
-                            if(fPlace) fPlace.innerHTML = footerHTML;
-
-                            // Final UI Prep
-                            initMenu();
-                            fixAllLinks(prefix);
-                            window.updateUI();
-                            
-                            // Reveal Page
-                            document.documentElement.style.visibility = 'visible';
-                            console.log("🔱 Engine: Index Layout & Translation Applied.");
-                        }
-                    }, 30);
-                }
-            } else {
-                // Retry if data is not ready
-                setTimeout(initMahadevApp, 50);
-            }
-        } catch (e) {
-            console.error("🔱 Engine Error:", e);
-            document.documentElement.style.visibility = 'visible';
-        }
-    };
-
-    // --- 🔱 HELPER FUNCTIONS ---
-    function fixAllLinks(p) {
-        document.querySelectorAll('#header-placeholder a, #footer-placeholder a').forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && !href.startsWith('http') && !href.startsWith('#')) {
-                let clean = href.startsWith('/') ? href.substring(1) : href;
-                link.href = p + clean;
-            }
-        });
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Initial Form Setup
+    const serviceSelect = document.getElementById('service-select');
+    if (serviceSelect) {
+        applyFormLogic(); // Set default view on load
     }
 
-    function initMenu() {
-        const btn = document.getElementById('mobile-menu');
-        const drw = document.getElementById('nav-drawer');
-        const ovr = document.getElementById('menu-overlay');
-        if (btn && drw) {
-            btn.onclick = () => { drw.style.right = '0'; if(ovr) ovr.style.display = 'block'; };
-            const hide = () => { drw.style.right = '-280px'; if(ovr) ovr.style.display = 'none'; };
-            document.querySelectorAll('#close-menu, #menu-overlay').forEach(el => el.onclick = hide);
-        }
+    // 2. Form Submit Listener
+    const form = document.getElementById('consultation-form');
+    if (form) {
+        form.addEventListener('submit', handleBookingSubmit);
     }
 
-    window.updateUI = function() {
+    // 3. Clean URL (Blogger ka ?m=1 hatane ke liye)
+    if (window.location.search.indexOf('m=1') > -1) {
+        const clean_url = window.location.protocol + "//" + window.location.host + window.location.pathname;
+        window.history.replaceState({}, document.title, clean_url);
+    }
+});
+
+// --- 🔱 1. FORM UI CONTROLLER ---
+
+window.applyFormLogic = function() {
+    const val = document.getElementById('service-select').value;
+    const singleSec = document.getElementById('section-single');
+    const matchSec = document.getElementById('section-matching');
+    const palmNote = document.getElementById('palm-instruction');
+
+    // Reset sab kuch hide karo pehle
+    if(singleSec) singleSec.style.display = 'none';
+    if(matchSec) matchSec.style.display = 'none';
+    if(palmNote) palmNote.style.display = 'none';
+
+    // Jo select hua hai, bas use dikhao
+    if (val === 'kundli_matching') {
+        if(matchSec) matchSec.style.display = 'block';
+    } else if (val === 'palmistry') {
+        if(singleSec) singleSec.style.display = 'block';
+        if(palmNote) palmNote.style.display = 'block';
+    } else {
+        // Kundli, Numerology, Combo ke liye default
+        if(singleSec) singleSec.style.display = 'block';
+    }
+};
+
+window.syncContactMethod = function(method) {
+    const contactInput = document.getElementById('contact-detail');
+    const emailWarn = document.getElementById('email-warning');
+    if (!contactInput) return;
+
+    if (method === 'WA') {
+        contactInput.placeholder = "WhatsApp Number";
+        contactInput.type = "tel";
+        if(emailWarn) emailWarn.style.display = 'none';
+    } else if (method === 'TG') {
+        contactInput.placeholder = "Telegram ID / Number";
+        contactInput.type = "text";
+        if(emailWarn) emailWarn.style.display = 'none';
+    } else if (method === 'EM') {
+        contactInput.placeholder = "Email Address";
+        contactInput.type = "email";
+        if(emailWarn) emailWarn.style.display = 'block';
+    }
+};
+
+// --- 🔱 2. SUBMISSION HANDLERS ---
+
+function handleBookingSubmit(e) {
+    e.preventDefault();
+    console.log("🔱 Form Validated. Processing...");
+    
+    // Agar Firebase handler connected hai, toh data wahan bhejo
+    if (window.processFirebaseBooking) {
+        window.processFirebaseBooking();
+    } else {
+        // Fallback alert (Testing ke liye)
         const lang = localStorage.getItem('selectedLang') || 'hi';
-        const t = window.translations;
-        if (!t || !t[lang]) return;
+        const msg = lang === 'hi' ? "बुकिंग प्रोसेस हो रही है..." : "Processing booking...";
+        alert(msg);
+    }
+}
 
-        document.querySelectorAll('[data-key]').forEach(el => {
-            const val = t[lang][el.getAttribute('data-key')];
-            if (val) {
-                if (el.tagName === 'A' && !el.getAttribute('data-key').includes('nav')) el.href = val;
-                else el.innerHTML = val;
-            }
-        });
+// --- 🔱 3. FEEDBACK SYSTEM ---
 
-        const btnTxt = document.getElementById('lang-text');
-        if (btnTxt) btnTxt.innerText = (lang === 'hi') ? 'हिंदी / Eng' : 'Eng / हिंदी';
-    };
+window.selectedRating = 0;
 
-    window.toggleLanguage = function() {
-        let curr = localStorage.getItem('selectedLang') || 'hi';
-        localStorage.setItem('selectedLang', curr === 'hi' ? 'en' : 'hi');
-        location.reload();
-    };
-
-    // Execution
-    if (document.readyState === 'loading') window.addEventListener('DOMContentLoaded', initMahadevApp);
-    else initMahadevApp();
-
-    // Auto Inject Favicon/Bot
-    window.addEventListener('load', () => {
-        let link = document.querySelector("link[rel~='icon']");
-        if (!link) { link = document.createElement('link'); link.rel = 'icon'; document.head.appendChild(link); }
-        link.href = 'https://res.cloudinary.com/dya3yxgch/image/upload/v1769705192/logo_bdmvwv.png';
+// Star Rating Click Event
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('star')) {
+        const val = e.target.getAttribute('data-value');
+        window.selectedRating = parseInt(val); 
         
-        const bot = document.createElement('script');
-        bot.src = prefix + 'assets/js/bot.js';
-        bot.async = true;
-        if(document.body) document.body.appendChild(bot);
-    });
+        document.querySelectorAll('.star').forEach(s => {
+            const sVal = parseInt(s.getAttribute('data-value'));
+            s.style.color = sVal <= val ? '#f5c542' : '#888';
+            s.innerText = sVal <= val ? '★' : '☆';
+        });
+    }
+});
 
-})();
+window.submitFeedback = function() {
+    const feedbackBox = document.getElementById('user-feedback');
+    const feedbackText = feedbackBox ? feedbackBox.value.trim() : "";
+    const rating = window.selectedRating || 0;
+
+    if (rating === 0) {
+        const lang = localStorage.getItem('selectedLang') || 'hi';
+        alert(lang === 'hi' ? "कृपया स्टार रेटिंग चुनें!" : "Please select a star rating!");
+        return;
+    }
+
+    console.log("🔱 Feedback Ready:", { rating, feedbackText });
+
+    // Firebase ko data bhejna
+    if (window.saveFeedbackToFirebase) {
+        window.saveFeedbackToFirebase(rating, feedbackText);
+    } else {
+        // Fallback UI Reset
+        alert("Feedback Submitted! Thank you.");
+        if(feedbackBox) feedbackBox.value = '';
+        window.selectedRating = 0;
+        document.querySelectorAll('.star').forEach(s => {
+            s.style.color = '#888';
+            s.innerText = '☆';
+        });
+    }
+};
