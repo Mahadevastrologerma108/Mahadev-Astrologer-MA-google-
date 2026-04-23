@@ -1,13 +1,10 @@
 /**
  * MAHADEV ASTROLOGER MA - Master Layout & Sequence Engine
- * Handles: Blocking Load, Header/Footer, Translation, Stars, Favicon & Bot
+ * Handles: Auto-Merge, Header/Footer, Translation, Stars, Favicon (Cloudinary) & Bot
  */
 
 (function() {
-    // 1. Flicker rokne ke liye Page hide karo
-   
-
-    // 2. Folder depth detection logic
+    // 🔱 1. Path aur Prefix Logic
     const path = window.location.pathname;
     const isInsideFolder = path.includes('/panchang/') || path.includes('/latest-guide/') || 
                            path.includes('/pages/') || path.includes('/horoscope/') ||
@@ -15,19 +12,19 @@
                            path.includes('/products/');
     const prefix = isInsideFolder ? '../' : '';
 
-    // 🔱 MAIN INITIALIZER
+    // 🔱 2. MAIN INITIALIZER
     window.initMahadevApp = async function() {
         try {
-            // Check: Kya translation files (Common aur Page) load ho chuki hain?
+            // Check: Kya translations load huye?
             if (window.commonTranslations && window.pageTranslations) {
                 
-                // A. MERGE DATA
+                // 🔄 Smart Merge
                 window.translations = {
                     en: { ...window.commonTranslations.en, ...window.pageTranslations.en },
                     hi: { ...window.commonTranslations.hi, ...window.pageTranslations.hi }
                 };
 
-                // B. LOAD LAYOUT (Header/Footer)
+                // 🏗️ LOAD LAYOUT
                 const [hResp, fResp] = await Promise.all([
                     fetch(prefix + 'header.html'),
                     fetch(prefix + 'footer.html')
@@ -37,43 +34,34 @@
                     const headerHTML = await hResp.text();
                     const footerHTML = await fResp.text();
 
-                    // C. Injections (Body ka wait karke)
                     const checkBody = setInterval(() => {
                         if (document.body) {
                             clearInterval(checkBody);
                             
-                            // HTML Inject karo
                             const hPlace = document.getElementById('header-placeholder');
                             const fPlace = document.getElementById('footer-placeholder');
                             if(hPlace) hPlace.innerHTML = headerHTML;
                             if(fPlace) fPlace.innerHTML = footerHTML;
 
-                            // UI Sync & Link Fixes
                             initMenu();
                             fixAllLinks(prefix);
                             window.updateUI();
-                            
-                            // FINAL STEP: Reveal Page
-                            document.documentElement.style.visibility = 'visible';
-                            console.log("🔱 MAHADEV ASTROLOGER MA: Sequence Complete.");
+                            console.log("🔱 MAHADEV ASTROLOGER MA: Cloudinary Logo & Data Synced.");
                         }
-                    }, 10);
+                    }, 50);
                 }
             } else {
-                // Retry fast (30ms) if data is missing
-                setTimeout(initMahadevApp, 30);
+                setTimeout(initMahadevApp, 50);
             }
         } catch (e) {
-            console.error("🔱 Boot Error:", e);
-            document.documentElement.style.visibility = 'visible';
+            console.error("🔱 Engine Error:", e);
         }
     };
 
-    // Trigger on DOMContentLoaded
     window.addEventListener('DOMContentLoaded', initMahadevApp);
 })();
 
-// --- 🔱 1. HELPER FUNCTIONS ---
+// --- 🔱 3. HELPER FUNCTIONS ---
 
 function fixAllLinks(prefix) {
     document.querySelectorAll('#header-placeholder a, #footer-placeholder a').forEach(link => {
@@ -104,23 +92,21 @@ function initMenu() {
     }
 }
 
-// --- 🔱 2. TRANSLATION & UI SYNC ---
+// --- 🔱 4. TRANSLATION ENGINE ---
 window.updateUI = function() {
     const lang = localStorage.getItem('selectedLang') || 'hi';
     const t = window.translations;
     if (!t || !t[lang]) return;
 
-    // Text & Link Translation
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
         const val = t[lang][key];
         if (val) {
-            if (el.tagName === 'A' && !key.includes('nav')) { el.href = val; } 
-            else { el.innerHTML = val; }
+            if (el.tagName === 'A' && !key.includes('nav')) el.href = val;
+            else el.innerHTML = val;
         }
     });
 
-    // Placeholders
     document.querySelectorAll('[data-placeholder-key]').forEach(el => {
         const key = el.getAttribute('data-placeholder-key');
         const val = t[lang][key];
@@ -137,34 +123,34 @@ window.toggleLanguage = function() {
     location.reload(); 
 };
 
-// --- 🔱 3. FEEDBACK STARS ---
-document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('star')) {
-        const val = e.target.getAttribute('data-value');
-        window.selectedRating = val; 
-        document.querySelectorAll('.star').forEach(s => {
-            const sVal = s.getAttribute('data-value');
-            s.style.color = sVal <= val ? '#f5c542' : '#888';
-            s.innerText = sVal <= val ? '★' : '☆';
-        });
-    }
-});
-
-// --- 🔱 4. AUTO INJECTORS (Global) ---
-
-(function injectFavicon() {
+// --- 🔱 5. AUTO INJECTORS (Logo & Bot) ---
+(function() {
+    // 🚀 Cloudinary Favicon Injector
     let link = document.querySelector("link[rel~='icon']");
     if (!link) {
         link = document.createElement('link');
-        link.rel = 'icon'; link.type = 'image/png';
+        link.rel = 'icon'; 
+        link.type = 'image/png';
         document.head.appendChild(link);
     }
-    link.href = '/assets/images/logo.png';
-})();
+    link.href = 'https://res.cloudinary.com/dya3yxgch/image/upload/v1769705192/logo_bdmvwv.png';
 
-(function injectBot() {
+    // 🚀 Bot Injection
     const botScript = document.createElement('script');
     botScript.src = '/assets/js/bot.js';
     botScript.async = true;
-    document.body.appendChild(botScript);
+    window.addEventListener('load', () => document.body.appendChild(botScript));
+
+    // Stars Event Delegation
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('star')) {
+            const val = e.target.getAttribute('data-value');
+            window.selectedRating = val; 
+            document.querySelectorAll('.star').forEach(s => {
+                const sVal = s.getAttribute('data-value');
+                s.style.color = sVal <= val ? '#f5c542' : '#888';
+                s.innerText = sVal <= val ? '★' : '☆';
+            });
+        }
+    });
 })();
