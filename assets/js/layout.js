@@ -1,23 +1,30 @@
 /**
- * MAHADEV ASTROLOGER MA - Smart Master Engine
- * Logic: Index page ko direct common translations se load karta hai.
+ * MAHADEV ASTROLOGER MA - Safe Master Engine
+ * Logic: Koi Black Screen nahi, page humesha dikhega!
  */
+
 (function() {
-    document.documentElement.style.visibility = 'hidden';
+    // 1. Folder Depth Detection
     const path = window.location.pathname;
     const isIndexPage = path.endsWith('/') || path.endsWith('index.html') || path === '' || path.endsWith('.in');
+    
     const isInsideFolder = path.includes('/panchang/') || path.includes('/latest-guide/') || 
                            path.includes('/pages/') || path.includes('/horoscope/') ||
                            path.includes('/masterstroke-module/') || path.includes('/tools/') ||
                            path.includes('/products/');
+    
     const prefix = isInsideFolder ? '../' : '';
 
+    // 🔱 MASTER INITIALIZER
     window.initMahadevApp = async function() {
         try {
+            // Check Data
             const hasCommon = !!window.commonTranslations;
             const hasLocal = !!window.pageTranslations;
 
             if (hasCommon && (isIndexPage || hasLocal)) {
+                
+                // Merge Logic
                 const localEn = hasLocal ? window.pageTranslations.en : {};
                 const localHi = hasLocal ? window.pageTranslations.hi : {};
 
@@ -26,9 +33,10 @@
                     hi: { ...window.commonTranslations.hi, ...localHi }
                 };
 
+                // Fetch Layout
                 const [hResp, fResp] = await Promise.all([
-                    fetch(prefix + 'header.html'),
-                    fetch(prefix + 'footer.html')
+                    fetch(prefix + 'header.html').catch(() => ({ok: false})),
+                    fetch(prefix + 'footer.html').catch(() => ({ok: false}))
                 ]);
 
                 if (hResp.ok && fResp.ok) {
@@ -38,28 +46,36 @@
                     const checkBody = setInterval(() => {
                         if (document.body) {
                             clearInterval(checkBody);
+                            
+                            // Inject Header/Footer
                             const hPlace = document.getElementById('header-placeholder');
                             const fPlace = document.getElementById('footer-placeholder');
                             if(hPlace) hPlace.innerHTML = headerHTML;
                             if(fPlace) fPlace.innerHTML = footerHTML;
 
+                            // Final UI Prep
                             initMenu();
                             fixAllLinks(prefix);
                             window.updateUI();
                             
-                            document.documentElement.style.visibility = 'visible';
+                            console.log("🔱 Engine: Layout & Translation Applied Successfully!");
                         }
                     }, 30);
+                } else {
+                    // Agar header na bhi mile, toh translation apply kar do
+                    window.updateUI();
+                    console.warn("🔱 Header/Footer paths not found, but Translation applied.");
                 }
             } else {
+                // Wait for data
                 setTimeout(initMahadevApp, 50);
             }
         } catch (e) {
             console.error("🔱 Engine Error:", e);
-            document.documentElement.style.visibility = 'visible';
         }
     };
 
+    // --- 🔱 HELPER FUNCTIONS ---
     function fixAllLinks(p) {
         document.querySelectorAll('#header-placeholder a, #footer-placeholder a').forEach(link => {
             const href = link.getAttribute('href');
@@ -93,6 +109,7 @@
                 else el.innerHTML = val;
             }
         });
+
         const btnTxt = document.getElementById('lang-text');
         if (btnTxt) btnTxt.innerText = (lang === 'hi') ? 'हिंदी / Eng' : 'Eng / हिंदी';
     };
@@ -103,16 +120,20 @@
         location.reload();
     };
 
+    // Execution
     if (document.readyState === 'loading') window.addEventListener('DOMContentLoaded', initMahadevApp);
     else initMahadevApp();
 
+    // Auto Inject Favicon & Bot
     window.addEventListener('load', () => {
         let link = document.querySelector("link[rel~='icon']");
         if (!link) { link = document.createElement('link'); link.rel = 'icon'; document.head.appendChild(link); }
         link.href = 'https://res.cloudinary.com/dya3yxgch/image/upload/v1769705192/logo_bdmvwv.png';
+        
         const bot = document.createElement('script');
         bot.src = prefix + 'assets/js/bot.js';
         bot.async = true;
         if(document.body) document.body.appendChild(bot);
     });
+
 })();
