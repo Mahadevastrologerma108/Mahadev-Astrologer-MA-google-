@@ -1,4 +1,4 @@
-window.translations = {
+window.commonTranslations = {
     en: {
         // ===== NAV & ZODIAC =====
         nav_home: "Home", nav_horoscope: "Horoscope", nav_panchang: "Panchang", nav_guide: "Update", nav_book: "Book Now",nav_sound: "Sound Healing",nav_tools: "Vedic Tools",number_tool: "Numerology",nav_shop: "Shop",
