@@ -199,12 +199,21 @@ function updateAuthUI(user) {
         if(mobileContainer) mobileContainer.innerHTML = loggedOutHTML;
     }
 }
-// 4. Safest Way to start Observer (HTML pura load hone ke baad hi start hoga)
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("🔱 HTML 100% Load ho gaya. Firebase Engine Start..."); 
-    // Auth Engine chalu
+// 4. Safest Way: Auto-Retry System (Timing Fix)
+function startAuthObserver() {
     onAuthStateChanged(auth, (user) => {
-        console.log("🔱 Firebase Status:", user ? "User is Here" : "No User");
-        updateAuthUI(user);
+        console.log("🔱 Firebase Status:", user ? "User In" : "User Out");
+        
+        // Agar dabba nahi mila (Header load ho raha hai), toh 200ms baad fir koshish karo
+        const dBox = document.getElementById('user-display-desktop');
+        if (!dBox) {
+            console.log("🔱 Header abhi nahi aaya, retry kar raha hoon...");
+            setTimeout(() => updateAuthUI(user), 500); // 0.5 second ka wait
+        } else {
+            updateAuthUI(user);
+        }
     });
-});
+}
+
+// DomContentLoaded par koshish shuru karo
+document.addEventListener('DOMContentLoaded', startAuthObserver);
