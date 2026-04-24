@@ -520,3 +520,8 @@ body {
         z-index: 9999 !important; /* Kisi ke piche na chupe */
     }
 }
+#user-display-desktop {
+    border: 2px solid red !important; /* Ye batayega dabba kahan hai */
+    min-width: 50px;
+    min-height: 20px;
+}
