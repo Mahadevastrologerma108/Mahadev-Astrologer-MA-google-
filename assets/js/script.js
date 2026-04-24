@@ -1,8 +1,8 @@
-// ==========================================
-// 🔱 MAHADEV ASTROLOGER MA - UI & PWA LOGIC
-// ==========================================
+// ======================================================
+// 🔱 MAHADEV ASTROLOGER MA - FRONTEND & PWA UI LOGIC
+// ======================================================
 
-// 1. Placeholder Sync (WhatsApp/Telegram/Email toggle)
+// 1. Form UI Sync (WhatsApp/Telegram/Email toggle)
 window.syncContactMethod = function(type) {
     const input = document.getElementById('contact-detail');
     const warning = document.getElementById('email-warning');
@@ -23,7 +23,7 @@ window.syncContactMethod = function(type) {
     }
 };
 
-// 2. Sections Toggle Logic
+// 2. Astrology Sections Toggle Logic
 window.applyFormLogic = function() {
     const svc = document.getElementById('service-select')?.value;
     const singleSec = document.getElementById('section-single');
@@ -33,11 +33,13 @@ window.applyFormLogic = function() {
 
     if (!svc) return;
 
+    // Reset Defaults
     if(singleSec) singleSec.style.display = 'block';
     if(matchingSec) matchingSec.style.display = 'none';
     if(palmInst) palmInst.style.display = 'none';
     if(timePlaceGroup) timePlaceGroup.style.display = 'grid';
 
+    // Custom Rules
     if (svc === 'kundli_matching') {
         if(singleSec) singleSec.style.display = 'none';
         if(matchingSec) matchingSec.style.display = 'block';
@@ -49,7 +51,7 @@ window.applyFormLogic = function() {
     }
 };
 
-// 3. PWA Install Logic
+// 3. PWA Install Button Logic
 let deferredPrompt;
 const installContainer = document.getElementById('install-container');
 const installBtn = document.getElementById('btn-install');
@@ -70,7 +72,7 @@ if (installBtn) {
     });
 }
 
-// 4. Notification Logic (Trigger Only)
+// 4. Notification Subscription Logic
 async function subscribeForPanchang() {
     if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
@@ -83,16 +85,15 @@ async function subscribeForPanchang() {
             });
 
             if (token && window.saveTokenToDatabase) {
-                // handler.js ka function call karega
+                // Ye Handler.js ke function ko call karega
                 window.saveTokenToDatabase(token);
             }
         }
     } catch (error) {
-        console.error('🔱 Notification Error:', error);
+        console.error('🔱 Push Error:', error);
     }
 }
 
 window.addEventListener('appinstalled', () => {
-    if (installContainer) installContainer.style.display = 'none';
-    setTimeout(subscribeForPanchang, 2000);
+    setTimeout(subscribeForPanchang, 3000);
 });
