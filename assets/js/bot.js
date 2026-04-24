@@ -97,7 +97,7 @@ window.processBotQuery = async function() {
     try {
         const response = await fetch("https://api-inference.huggingface.co/models/mahadev-astrologer-ma-admin/mahadev-astrologer-ma-v1", {
             headers: { 
-                "Authorization": "Bearer hf_********", 
+                "Authorization": "Bearer hf***********"
                 "Content-Type": "application/json" 
             },
             method: "POST",
