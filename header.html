@@ -36,21 +36,10 @@
             </a>
         </div>
 
-        <div style="display:flex; align-items:center; gap:12px;">
-            
-            <div id="lang-switcher" onclick="window.toggleLanguage()" style="cursor:pointer; border:1px solid var(--gold); padding:6px 12px; border-radius:4px; font-family:'Poppins'; font-size:0.8rem; color:var(--gold); transition:0.3s; user-select:none; text-align: center; background: rgba(245,197,66,0.05);">
-                <span id="lang-text">हिंदी / Eng</span>
-            </div>
-
-            <div id="auth-container">
-                <div id="user-display-desktop"> 
-                    <button onclick="window.loginWithGoogle()" style="cursor:pointer; padding:7px 15px; background:transparent; border:1px solid var(--gold); color:var(--gold); border-radius:4px; font-family:'Poppins'; font-size:0.8rem; transition:0.3s; font-weight:600;">
-                        LOGIN
-                    </button>
-                </div>
-            </div>
-
-            <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2rem; display: flex; align-items: center; margin-left:5px;">☰</div>
+        <div class="nav-actions">
+    <div id="user-display-desktop"></div>
+</div>
+        <div id="mobile-menu" style="cursor:pointer; color:var(--gold); font-size:2rem; display: flex; align-items: center; margin-left:5px;">☰</div>
         </div>
     </div>
 </header>
