@@ -68,35 +68,29 @@
     if (closeBtn) closeBtn.onclick = closeNav;
     if (overlay) overlay.onclick = closeNav;
 
-    // 🔱 Smart Trick: मोबाइल में लिंक क्लिक करते ही मेन्यू अपने आप बंद हो जाएगा
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', closeNav);
     });
 
-    // Master Language Sync
+    // 🔱 MASTER SYNC: Firebase Handler aur Header Script ko joda gaya hai
     window.toggleLanguage = function() {
         let currentLang = localStorage.getItem('selectedLang') || 'hi';
         let newLang = (currentLang === 'hi') ? 'en' : 'hi';
-        localStorage.setItem('selectedLang', newLang);
-        document.documentElement.lang = newLang;
-
-        if (typeof window.applyTranslations === 'function') window.applyTranslations();
-        if (typeof window.refreshAllUI === 'function') window.refreshAllUI();
         
-        // Result Card Refresh logic
-        if (typeof handleMagicFind === 'function') {
-            const val = document.getElementById('nameFinder')?.value || document.getElementById('monthFinder')?.value;
-            if(val) handleMagicFind(val);
+        // Firebase Handler ko call karo taaki buttons active dikhein
+        if (typeof window.changeLang === 'function') {
+            window.changeLang(newLang);
+        } else {
+            localStorage.setItem('selectedLang', newLang);
+            document.documentElement.lang = newLang;
+            if (typeof window.applyTranslations === 'function') window.applyTranslations();
         }
-
-        const langDisplay = document.getElementById('lang-text');
-        if(langDisplay) langDisplay.innerText = (newLang === 'hi') ? "हिंदी / Eng" : "Eng / हिंदी";
     };
 
-    // Scroll Effect logic
     window.addEventListener('scroll', function() {
         const header = document.getElementById('main-header');
         const logo = document.getElementById('header-logo');
+        if (!header) return;
         if (window.scrollY > 50) {
             header.style.height = '70px';
             header.style.background = 'rgba(10, 10, 20, 0.98)';
@@ -108,21 +102,13 @@
         }
     });
 
-    // Initial Load Sync
     document.addEventListener('DOMContentLoaded', () => {
-        const savedLang = localStorage.getItem('selectedLang') || 'hi';
-        if (typeof window.applyTranslations === 'function') window.applyTranslations();
-        
-        const langDisplay = document.getElementById('lang-text');
-        if(langDisplay) langDisplay.innerText = (savedLang === 'hi') ? "हिंदी / Eng" : "Eng / हिंदी";
-
-        // Active Page Highlight Fix
+        // Active Page Highlight logic
         const currentPath = window.location.pathname;
         document.querySelectorAll('.nav-link').forEach(link => {
             const linkPath = link.getAttribute('href');
-            // 🔱 Fix: सिर्फ #book वाले लिंक को छोड़कर बाकियों को हाईलाइट करे
             if (linkPath !== "/index.html#book" && currentPath.includes(linkPath.split('#')[0])) {
-                link.style.borderBottom = '1px solid var(--gold)';
+                link.style.borderBottom = '1px solid var(--gold-main)';
             }
         });
     });
