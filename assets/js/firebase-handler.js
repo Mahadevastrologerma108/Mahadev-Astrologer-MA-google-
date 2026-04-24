@@ -137,40 +137,43 @@ window.submitFeedback = async function() {
 // 1. Asali Login/Logout Functions
 window.loginWithGoogle = () => signInWithPopup(auth, provider);
 window.logoutUser = () => signOut(auth).then(() => window.location.reload());
-
-// 2. Language Switcher (Global Function)
+// 2. Language Switcher (Global Function) - FIXED for Desktop & Mobile
 window.changeLang = (lang) => {
-    // Yahan apna purana language badalne wala logic daal sakte ho
-    console.log("🔱 Language badli gayi:", lang);
-    // Button styling update
+    console.log("🔱 Language badli gayi:", lang);    
+    // Browser memory mein language save karo
+    localStorage.setItem("userLang", lang);
+    // Desktop aur Mobile dono jagah ke buttons ek sath update karo
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-    document.getElementById(`lang-${lang}`).classList.add('active');
+    document.querySelectorAll(`.lang-btn[data-lang="${lang}"]`).forEach(btn => btn.classList.add('active'));
+    // Agar tumhara pehle se koi translation function hai toh use trigger karo
+    if (typeof window.toggleLanguage === "function") {
+        window.toggleLanguage(); 
+    }
 };
-
-// 3. UI Update Logic (Alag function mein taaki delay na ho)
+// 3. UI Update Logic (Alag function mein taaki system fast rahe)
 function updateAuthUI(user) {
     const desktopContainer = document.getElementById('user-display-desktop');
     const mobileContainer = document.getElementById('user-display-mobile');
 
     console.log("🔱 UI Update Chal Raha Hai... User Box Mila?", !!desktopContainer);
-
-    // Agar containers nahi mile, toh ruk jao
+    // Agar containers HTML mein nahi mile, toh ruk jao aur error dikhao
     if (!desktopContainer && !mobileContainer) {
         console.error("🔱 ERROR: 'user-display-desktop' ID wala div HTML mein nahi hai!");
         return;
     }
-
+    // Naya HTML (id hata kar data-lang lagaya hai taaki clash na ho)
     const langSwitcherHTML = `
         <div class="lang-switcher">
-            <button onclick="changeLang('hi')" class="lang-btn" id="lang-hi">HI</button>
-            <button onclick="changeLang('en')" class="lang-btn active" id="lang-en">EN</button>
+            <button onclick="window.changeLang('hi')" class="lang-btn" data-lang="hi">HI</button>
+            <button onclick="window.changeLang('en')" class="lang-btn active" data-lang="en">EN</button>
         </div>
     `;
 
     if (user) {
         // --- LOGGED IN ---
         localStorage.setItem("userEmail", user.email);
-        const firstName = user.displayName ? user.displayName.split(' ')[0].toUpperCase() : 'DEVOTEE';
+        const firstName = user.displayName ? user.displayName.split(' ')[0].toUpperCase() : 'DEVOTEE';       
+        // Profile photo with Sunehri (Gold) Border
         const photo = user.photoURL ? `<img src="${user.photoURL}" style="width:28px; height:28px; border-radius:50%; border: 1px solid var(--gold-main); object-fit:cover;">` : '';
 
         const loggedInHTML = `
@@ -187,16 +190,19 @@ function updateAuthUI(user) {
     } else {
         // --- LOGGED OUT ---
         localStorage.removeItem("userEmail");
-        const loggedOutHTML = `${langSwitcherHTML}<button onclick="window.loginWithGoogle()" class="auth-btn-divine">🔱 LOGIN</button>`;
+        const loggedOutHTML = `
+            ${langSwitcherHTML}
+            <button onclick="window.loginWithGoogle()" class="auth-btn-divine">🔱 LOGIN</button>
+        `;
         
         if(desktopContainer) desktopContainer.innerHTML = loggedOutHTML;
         if(mobileContainer) mobileContainer.innerHTML = loggedOutHTML;
     }
 }
-// 4. Safest Way to start Observer (HTML pura load hone ke baad)
+// 4. Safest Way to start Observer (HTML pura load hone ke baad hi start hoga)
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("🔱 HTML 100% Load ho gaya. Firebase Engine Start...");
-      // Auth Engine chalu
+    console.log("🔱 HTML 100% Load ho gaya. Firebase Engine Start..."); 
+    // Auth Engine chalu
     onAuthStateChanged(auth, (user) => {
         console.log("🔱 Firebase Status:", user ? "User is Here" : "No User");
         updateAuthUI(user);
