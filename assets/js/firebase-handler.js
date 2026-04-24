@@ -1,44 +1,72 @@
-// 1. Firebase Config se zaruri instances mangwayein
-import { db, dbStudio, auth, provider } from './firebase-config.js'; 
+/**
+ * 1. AUTO-LOADER SYSTEM
+ * Iska kaam hai script.js ko har page par apne aap link karna.
+ */
+(function() {
+    const scriptPath = '/assets/js/script.js'; 
+    if (!document.querySelector(`script[src="${scriptPath}"]`)) {
+        const script = document.createElement('script');
+        script.src = scriptPath;
+        script.defer = true;
+        document.head.appendChild(script);
+        console.log("🔱 Mahadev Auto-Loader: script.js linked successfully.");
+    }
+})();
 
-// 2. Firestore ke liye zaruri tools (Appointments ke liye)
+/**
+ * 2. CORE FIREBASE IMPORTS
+ */
+import { db, auth, provider } from './firebase-config.js'; 
 import { 
-    collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit 
+    collection, addDoc, doc, setDoc, serverTimestamp, getDocs, query, orderBy, limit 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-// 3. 🆕 Auth (Login) ke liye zaruri tools
 import { 
     signInWithPopup, onAuthStateChanged, signOut 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-console.log("🔱 Mahadev Handler: Login & Appointment System Active.");
-
-// ==========================================
-// 1. CONFIGURATION (TELEGRAM BOT)
-// ==========================================
+// Telegram Configuration
 const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
 const CHAT_ID = '2032242977'; 
 
-// ==========================================
-// 2. APPOINTMENT FORM LOGIC & TELEGRAM
-// ==========================================
+console.log("🔱 Mahadev Handler: Fully Modular & Active.");
+
+/**
+ * 3. NOTIFICATION TOKEN SYNC (FOR PWA/APK)
+ */
+window.saveTokenToDatabase = async (token) => {
+    try {
+        const userEmail = localStorage.getItem("userEmail") || "guest";
+        await setDoc(doc(db, "fcm_tokens", token), {
+            token: token,
+            email: userEmail,
+            platform: 'web/pwa',
+            status: "active",
+            subscribedAt: serverTimestamp()
+        });
+        console.log("🔱 Token Synced with Firestore.");
+    } catch (err) {
+        console.error("🔱 Token Sync Error:", err);
+    }
+};
+
+/**
+ * 4. APPOINTMENT SYSTEM (WITH TELEGRAM ALERT)
+ */
 const appointmentForm = document.getElementById('consultation-form');
 if (appointmentForm) {
     appointmentForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = e.target.querySelector('button');
+        const originalText = btn.innerText;
         btn.innerText = "🔱 SENDING...";
         btn.disabled = true;
 
         try {
             const service = document.getElementById('service-select').value;
             const name = document.getElementById('user-name').value;
-            const contactMethod = document.querySelector('input[name="contact-method"]:checked').value;
             const contactDetail = document.getElementById('contact-detail').value;
-            
-            // 🔱 नया: UID चेकबॉक्स का पता लगाना
-            const wantsUID = document.getElementById('generate-uid').checked; 
-            const uidText = wantsUID ? "Haan (Yes) ✅" : "Nahi (No) ❌";
+            const contactMethod = document.querySelector('input[name="contact-method"]:checked').value;
+            const wantsUID = document.getElementById('generate-uid').checked;
 
             const subData = {
                 service, name, contact_method: contactMethod, contact_detail: contactDetail,
@@ -46,317 +74,95 @@ if (appointmentForm) {
                 timestamp: serverTimestamp()
             };
 
-            // 🔱 CORRECTED: सारा डेटा (Date, Time, Place) सही से कैप्चर करें
+            // Capture Date/Time Details based on service
             if (service === 'kundli_matching') {
                 subData.male_details = { 
                     name: document.getElementById('m-name').value, 
-                    dob: document.getElementById('m-dob').value,
-                    time: document.getElementById('m-time').value,
-                    place: document.getElementById('m-place').value
+                    dob: document.getElementById('m-dob').value, 
+                    time: document.getElementById('m-time').value, 
+                    place: document.getElementById('m-place').value 
                 };
                 subData.female_details = { 
                     name: document.getElementById('f-name').value, 
-                    dob: document.getElementById('f-dob').value,
-                    time: document.getElementById('f-time').value,
-                    place: document.getElementById('f-place').value
+                    dob: document.getElementById('f-dob').value, 
+                    time: document.getElementById('f-time').value, 
+                    place: document.getElementById('f-place').value 
                 };
             } else {
-                subData.dob = document.getElementById('single-dob').value;
+                subData.dob = document.getElementById('single-dob')?.value || "";
                 subData.time = document.getElementById('single-time')?.value || "";
                 subData.place = document.getElementById('single-place')?.value || "";
             }
 
-            // 1. Save to Firestore
+            // Save to Firestore
             await addDoc(collection(db, "appointments"), subData);
 
-            // 2. Send Telegram Notification (UID के साथ)
-            const tgMessage = `🔱 *New Appointment Request!*\n\n👤 *Name:* ${name}\n✨ *Service:* ${service.replace('_', ' ').toUpperCase()}\n📞 *Contact:* ${contactDetail} (${contactMethod})\n🔑 *UID Chahiye?:* ${uidText}`;
-            
-            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            // Send Telegram Notification
+            const tgMsg = `🔱 *New Appointment!*\n👤 *Name:* ${name}\n✨ *Service:* ${service.toUpperCase()}\n📞 *Contact:* ${contactDetail} (${contactMethod})\n🔑 *UID:* ${wantsUID ? "Yes" : "No"}`;
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: CHAT_ID, text: tgMessage, parse_mode: 'Markdown' })
+                body: JSON.stringify({ chat_id: CHAT_ID, text: tgMsg, parse_mode: 'Markdown' })
             });
 
             alert("🔱 Pranaam! Aapki request Mahadev tak pahunch gayi hai.");
             e.target.reset();
-            window.applyFormLogic(); 
-
-        } catch (err) { 
-            console.error("🔱 Form Error:", err); 
-            alert("Kshama karein, network error aaya. Kripya dobara prayas karein."); 
-        } finally { 
-            btn.innerText = "SEND REQUEST"; 
-            btn.disabled = false; 
+            if(window.applyFormLogic) window.applyFormLogic();
+        } catch (err) {
+            console.error("🔱 Form Error:", err);
+            alert("Kshama karein, network error aaya.");
+        } finally {
+            btn.innerText = originalText;
+            btn.disabled = false;
         }
     });
 }
 
-// ==========================================
-// 3. SOUND HEALING SPECIAL LOGIC
-// ==========================================
-window.handleSoundHealingSubmit = async function(event, method, dosha) {
-    event.preventDefault();
-    const form = event.target;
-    const btn = form.querySelector('button');
-    const originalBtnText = btn.innerText;
-
-    btn.innerText = "🔱 MAPPING VIBRATIONS...";
-    btn.disabled = true;
-
-    try {
-        const name = form.querySelector('input[placeholder="Full Name"]').value;
-        const contact = form.querySelector('input[type="tel"]').value;
-        const extraInfo = form.querySelector('textarea')?.value || "None";
-        
-        let specificDetails = {};
-        if (method === 'Kundali' || method === 'Numerology') {
-            specificDetails.dob = form.querySelector('input[type="date"]').value;
-            if(method === 'Kundali') {
-                specificDetails.birth_time = form.querySelector('input[type="time"]').value;
-                specificDetails.birth_place = form.querySelector('input[placeholder*="Place"]').value;
-            }
-        } else if (method === 'Palmistry') {
-            specificDetails.current_location = form.querySelector('input[placeholder*="Location"]').value;
-        }
-
-        const subData = {
-            service: "Sound Healing",
-            method: method,
-            detected_dosha: dosha,
-            name: name,
-            contact_detail: contact,
-            details: specificDetails,
-            notes: extraInfo,
-            timestamp: serverTimestamp()
-        };
-
-        await addDoc(collection(db, "appointments"), subData);
-
-        const tgMessage = `🔱 *New SOUND HEALING Request!*\n\n👤 *Name:* ${name}\n🌀 *Dosha:* ${dosha}\n🛠️ *Method:* ${method}\n📞 *Contact:* ${contact}\n📝 *Note:* ${extraInfo}`;
-
-        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: CHAT_ID, text: tgMessage, parse_mode: 'Markdown' })
-        });
-
-        const container = document.getElementById('dosha-quiz-container');
-        container.innerHTML = `
-            <div class="divine-success" style="padding: 40px; text-align: center; animation: fadeIn 1s;">
-                <div class="divine-symbol" style="font-size: 4rem; margin-bottom:20px;">🕉️</div>
-                <h2 class="gold-text">VIBRATIONAL DATA CAPTURED!</h2>
-                <p style="color: #fff; margin-top: 15px;">Mahadev ki kripa se aapki <b>Frequency Mapping</b> shuru ho gayi hai.</p>
-                <div style="background: rgba(245,197,66,0.1); padding: 20px; border-radius: 15px; margin: 25px 0; border: 1px dashed var(--gold);">
-                    <p style="font-size: 0.95rem; line-height:1.6;">Hamare experts aapke <b>${dosha}</b> dosha aur planets ke hisaab se <b>Personalized Sound Frequency</b> calculate kar rahe hain.</p>
-                </div>
-                <p style="font-size: 0.8rem; color: #888;">Aapko WhatsApp par jald hi report aur 'Healing Key' mil jayegi.</p>
-            </div>
-        `;
-        container.scrollIntoView({ behavior: 'smooth' });
-
-    } catch (err) {
-        console.error("🔱 Sound Form Error:", err);
-        alert("Kshama karein, vibrations connect nahi ho payi. Dobara koshish karein.");
-        btn.innerText = originalBtnText;
-        btn.disabled = false;
-    }
-};
-
-// ==========================================
-// 4. FEEDBACK & RATING SYSTEM
-// ==========================================
-
+/**
+ * 5. FEEDBACK & RATING SYSTEM
+ */
 window.submitFeedback = async function() {
-    const feedbackText = document.getElementById('user-feedback').value.trim();
+    const text = document.getElementById('user-feedback')?.value.trim();
     const rating = window.selectedRating || 0;
     const user = auth.currentUser;
 
-    if (!feedbackText || rating === 0) {
-        alert("🔱 कृपया रेटिंग (Rating) और अपना अनुभव दोनों साझा करें!");
-        return;
-    }
+    if (!text || rating === 0) return alert("🔱 Rating aur Experience dono zaruri hain!");
+
     try {
-        const feedbackData = {
-            text: feedbackText,
-            rating: parseInt(rating),
-            timestamp: serverTimestamp(),
-            status: "pending", 
-            userName: user ? user.displayName : "महादेव भक्त (Guest)",
+        await addDoc(collection(db, "feedbacks"), {
+            text, rating: parseInt(rating), 
+            timestamp: serverTimestamp(), 
+            status: "pending",
+            userName: user ? user.displayName : "Mahadev Bhakt",
             userPhoto: user ? user.photoURL : "assets/images/default-avatar.png",
             userId: user ? user.uid : "guest"
-        };
-
-        // Saving to Firebase
-        await addDoc(collection(db, "feedbacks"), feedbackData);
-
-        // Telegram Notification
-        const tgMessage = `🔱 *MAHADEV ASTROLOGER MA*\n\n📝 *Naya Feedback Aaya!* (Pending)\n⭐ *Rating:* ${feedbackData.rating}/5\n👤 *User:* ${feedbackData.userName}\n💬 *Message:* ${feedbackData.text}\n\n🚩 _Ise approve karne ke liye database check karein._`;
-
-        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: CHAT_ID, text: tgMessage, parse_mode: 'Markdown' })
         });
-
-        alert("🔱 धन्यवाद! आपका अनुभव महादेव के आशीर्वाद स्वरूप हमें प्राप्त हो गया है। रिव्यू के बाद यह साइट पर दिखाई देगा।");
-        
-        // Reset Form
+        alert("🔱 Dhanyawad! Review ke baad aapka feedback dikhega.");
         document.getElementById('user-feedback').value = "";
-        document.querySelectorAll('.star').forEach(s => s.style.color = '#555');
-        window.selectedRating = 0;
-
-    } catch (error) {
-        console.error("🔱 Feedback Error:", error);
-        alert("क्षमा करें, तकनीकी समस्या के कारण सेव नहीं हो पाया: " + error.message);
-    }
+    } catch (e) { console.error("🔱 Feedback Error:", e); }
 };
 
-window.fetchFeedbacks = async function() {
-    const container = document.getElementById('display-feedbacks');
-    if (!container) return;
+/**
+ * 6. AUTHENTICATION (LOGIN/LOGOUT) UI
+ */
+window.loginWithGoogle = () => signInWithPopup(auth, provider);
+window.logoutUser = () => signOut(auth).then(() => window.location.reload());
 
-    try {
-        // Loading Message
-        container.innerHTML = `<p style="color: var(--gold); text-align: center; font-style: italic; font-size: 1.1rem;">🔱 महादेव के भक्तों के अनुभव लोड हो रहे हैं...</p>`;
-
-        const feedbackRef = collection(db, "feedbacks");
-        const q = query(feedbackRef, orderBy("timestamp", "desc"), limit(20));
-        
-        const snapshot = await getDocs(q);
-        let html = "";
-
-        snapshot.forEach(doc => {
-            const data = doc.data();
-            if (data.status === "approved") {
-                const stars = "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
-                
-                // Format Date safely
-                let dateString = "";
-                if (data.timestamp) {
-                    const dateObj = new Date(data.timestamp.seconds * 1000);
-                    dateString = dateObj.toLocaleDateString('hi-IN', { day: 'numeric', month: 'long', year: 'numeric' });
-                }
-
-                // Premium Feedback Layout (Blink Issue Fixed)
-                html += `
-                    <div class="feedback-item" style="background: linear-gradient(145deg, #111, #000); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: left;">
-                        
-                        <div style="display:flex; align-items:center; justify-content: space-between; margin-bottom:15px;">
-                            <div style="display:flex; align-items:center; gap:12px;">
-                                <img src="${data.userPhoto}" onerror="this.onerror=null; this.src='assets/images/default-avatar.png';" style="width:45px; height:45px; border-radius:50%; border:2px solid var(--gold); object-fit: cover;">
-                                <div>
-                                    <span style="color:var(--gold); font-weight:bold; font-size:1.05rem; display:block;">
-                                        ${data.userName} <span style="font-size: 0.8em; color: #4CAF50;" title="Verified User">✔</span>
-                                    </span>
-                                    <span style="color: #888; font-size: 0.8rem;">${dateString}</span>
-                                </div>
-                            </div>
-                            <div style="color: #f5c542; font-size: 1.2rem; letter-spacing:2px; text-shadow: 0 0 5px rgba(245, 197, 66, 0.4);">${stars}</div>
-                        </div>
-                        <p style="font-size: 1rem; color:#ddd; margin: 0; font-style: italic; line-height: 1.6; border-left: 3px solid var(--gold); padding-left: 12px;">"${data.text}"</p>                    
-                    </div>
-                `;
-            }
-        });
-        // Ensure "var(--gold)" is working or fallback to hex
-        container.innerHTML = html || `<p style="color:#888; text-align: center; font-style: italic;">🔱 सबसे पहले अपना अनुभव साझा करें!</p>`;
-    } catch (err) {
-        console.error("🔱 Fetch Feedback Error:", err);
-        container.innerHTML = `<p style="color:red; text-align: center;">डेटा लोड करने में समस्या आई।</p>`;
-    }
-};
-// ==========================================
-// 5. LOGIN & AUTH UI LOGIC
-// ==========================================
-window.loginWithGoogle = async () => {
-    try { 
-        await signInWithPopup(auth, provider); 
-    } catch (err) { 
-        console.error("Login Error:", err); 
-        alert("Login failed. Please try again.");
-    }
-};
-
-window.logoutUser = async () => {
-    try { 
-        await signOut(auth); 
-        window.location.reload(); 
-    } catch (err) { 
-        console.error("Logout Error:", err); 
-    }
-};
-
-const updateAuthUI = (user) => {
+onAuthStateChanged(auth, (user) => {
     const dBox = document.getElementById('user-display-desktop');
-    const mBox = document.getElementById('user-display-mobile');
-
-    const uiHtml = user ? `
-        <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.05); padding:8px 15px; border-radius:50px; border:1px solid rgba(245,197,66,0.3);">
-            <img src="${user.photoURL}" style="width:32px; height:32px; border-radius:50%; border:1.5px solid var(--gold-main); object-fit:cover;">
-            <div style="text-align:left;">
-                <p style="color:var(--gold-light); font-size:0.85rem; margin:0; font-weight:600; font-family:'Poppins';">Hi, ${user.displayName.split(' ')[0]}</p>
-                <span onclick="window.logoutUser()" style="color:#ff4d4d; cursor:pointer; font-size:0.7rem; text-decoration:underline; font-weight:500;">Logout</span>
-            </div>
-        </div>` 
-    : `<button onclick="window.loginWithGoogle()" class="gold-btn" style="cursor:pointer; padding:7px 15px; background:transparent; border:1px solid var(--gold); color:var(--gold); border-radius:4px; font-family:'Poppins'; font-size:0.8rem; transition:0.3s; font-weight:600;">LOGIN</button>`;
-
-    if (dBox) dBox.innerHTML = uiHtml;
+    if (user) {
+        localStorage.setItem("userEmail", user.email);
+    } else {
+        localStorage.removeItem("userEmail");
+    }
     
-    if (mBox) {
-        mBox.innerHTML = uiHtml;
-        mBox.style.display = "flex";
-        mBox.style.justifyContent = "center";
-        mBox.style.marginTop = "15px"; 
-    }
-};
+    const uiHtml = user ? `
+        <div class="user-pill" style="display:flex; align-items:center; gap:8px;">
+            <img src="${user.photoURL}" style="width:30px; border-radius:50%;">
+            <span>Hi, ${user.displayName.split(' ')[0]}</span>
+            <span onclick="window.logoutUser()" style="color:red; cursor:pointer; font-size:0.7rem; margin-left:10px;">Logout</span>
+        </div>` : 
+        `<button onclick="window.loginWithGoogle()" class="gold-btn">LOGIN</button>`;
 
-// ==========================================
-// 6. INITIALIZATION (Smart Sync with Layout.js)
-// ==========================================
-const initGlobalAuth = () => {
-    const checkHeader = setInterval(() => {
-        const desktopTarget = document.getElementById('user-display-desktop');
-        
-        if (desktopTarget) {
-            clearInterval(checkHeader); 
-            console.log("🔱 Header Sync: Success. Activating Auth UI...");
-
-            // 👑 NAYA CODE: एडमिन सिस्टम पहचान
-            onAuthStateChanged(auth, (user) => { 
-                if (user) {
-                    localStorage.setItem("userEmail", user.email);
-                } else {
-                    localStorage.removeItem("userEmail");
-                }
-                updateAuthUI(user); 
-            });
-
-            if (typeof window.fetchFeedbacks === 'function') {
-                window.fetchFeedbacks(); 
-            }
-        }
-    }, 100); 
-
-    setTimeout(() => clearInterval(checkHeader), 5000);
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-    initGlobalAuth();
-
-    if (typeof window.applyFormLogic === 'function') {
-        window.applyFormLogic(); 
-    }
-
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('star')) {
-            const val = e.target.getAttribute('data-value');
-            window.selectedRating = val;
-            document.querySelectorAll('.star').forEach(s => {
-                s.style.color = s.getAttribute('data-value') <= val ? '#f5c542' : '#555';
-            });
-        }
-    });
-
-    console.log("🔱 MAHADEV ASTROLOGER MA: Global Handler Ready.");
+    if(dBox) dBox.innerHTML = uiHtml;
 });
