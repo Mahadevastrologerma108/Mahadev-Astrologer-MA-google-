@@ -134,18 +134,32 @@ window.submitFeedback = async function() {
 };
 
 /*6. AUTHENTICATION (LOGIN/LOGOUT) UI & ENGINE*/
-// 1. Asali Login/Logout Functions (Button inhe call karenge)
+// 1. Asali Login/Logout Functions
 window.loginWithGoogle = () => signInWithPopup(auth, provider);
 window.logoutUser = () => signOut(auth).then(() => window.location.reload());
 
-// 2. Firebase Observer (Dekhega kon aaya, kon gaya)
-onAuthStateChanged(auth, (user) => {
-    
-    // Desktop aur Mobile dono ka pata lagao
+// 2. Language Switcher (Global Function)
+window.changeLang = (lang) => {
+    // Yahan apna purana language badalne wala logic daal sakte ho
+    console.log("🔱 Language badli gayi:", lang);
+    // Button styling update
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(`lang-${lang}`).classList.add('active');
+};
+
+// 3. UI Update Logic (Alag function mein taaki delay na ho)
+function updateAuthUI(user) {
     const desktopContainer = document.getElementById('user-display-desktop');
     const mobileContainer = document.getElementById('user-display-mobile');
 
-    // Language Switcher hamesha dikhega
+    console.log("🔱 UI Update Chal Raha Hai... User Box Mila?", !!desktopContainer);
+
+    // Agar containers nahi mile, toh ruk jao
+    if (!desktopContainer && !mobileContainer) {
+        console.error("🔱 ERROR: 'user-display-desktop' ID wala div HTML mein nahi hai!");
+        return;
+    }
+
     const langSwitcherHTML = `
         <div class="lang-switcher">
             <button onclick="changeLang('hi')" class="lang-btn" id="lang-hi">HI</button>
@@ -154,11 +168,9 @@ onAuthStateChanged(auth, (user) => {
     `;
 
     if (user) {
-        // --- JAB USER LOGGED IN HAI ---// Tumhara purana logic: Email ko browser memory me save karna
+        // --- LOGGED IN ---
         localStorage.setItem("userEmail", user.email);
-
         const firstName = user.displayName ? user.displayName.split(' ')[0].toUpperCase() : 'DEVOTEE';
-        // Maine tumhari Profile Photo ko ek golden border ke sath add kar diya hai
         const photo = user.photoURL ? `<img src="${user.photoURL}" style="width:28px; height:28px; border-radius:50%; border: 1px solid var(--gold-main); object-fit:cover;">` : '';
 
         const loggedInHTML = `
@@ -168,20 +180,25 @@ onAuthStateChanged(auth, (user) => {
                 <span class="user-welcome">PRANAM, ${firstName}</span>
             </div>
             <button onclick="window.logoutUser()" class="logout-btn-minimal">LOGOUT</button>
-        `;    
+        `;
+        
         if(desktopContainer) desktopContainer.innerHTML = loggedInHTML;
         if(mobileContainer) mobileContainer.innerHTML = loggedInHTML;
-        
     } else {
-        // --- JAB USER LOGOUT HAI ---// Memory se email hatao
+        // --- LOGGED OUT ---
         localStorage.removeItem("userEmail");
-        // Naya Divine Gold Login Button
-        const loggedOutHTML = `
-            ${langSwitcherHTML}
-            <button onclick="window.loginWithGoogle()" class="auth-btn-divine">🔱 LOGIN</button>
-        `;
+        const loggedOutHTML = `${langSwitcherHTML}<button onclick="window.loginWithGoogle()" class="auth-btn-divine">🔱 LOGIN</button>`;
         
         if(desktopContainer) desktopContainer.innerHTML = loggedOutHTML;
         if(mobileContainer) mobileContainer.innerHTML = loggedOutHTML;
     }
+}
+// 4. Safest Way to start Observer (HTML pura load hone ke baad)
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("🔱 HTML 100% Load ho gaya. Firebase Engine Start...");
+      // Auth Engine chalu
+    onAuthStateChanged(auth, (user) => {
+        console.log("🔱 Firebase Status:", user ? "User is Here" : "No User");
+        updateAuthUI(user);
+    });
 });
