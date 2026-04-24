@@ -1,7 +1,4 @@
-/**
- * 1. AUTO-LOADER SYSTEM
- * Iska kaam hai script.js ko har page par apne aap link karna.
- */
+/*1. AUTO-LOADER SYSTEM * Iska kaam hai script.js ko har page par apne aap link karna.*/
 (function() {
     const scriptPath = '/assets/js/script.js'; 
     if (!document.querySelector(`script[src="${scriptPath}"]`)) {
@@ -13,9 +10,7 @@
     }
 })();
 
-/**
- * 2. CORE FIREBASE IMPORTS
- */
+/*2. CORE FIREBASE IMPORT*/
 import { db, auth, provider } from './firebase-config.js'; 
 import { 
     collection, addDoc, doc, setDoc, serverTimestamp, getDocs, query, orderBy, limit 
@@ -30,9 +25,7 @@ const CHAT_ID = '2032242977';
 
 console.log("🔱 Mahadev Handler: Fully Modular & Active.");
 
-/**
- * 3. NOTIFICATION TOKEN SYNC (FOR PWA/APK)
- */
+/*3. NOTIFICATION TOKEN SYNC (FOR PWA/APK)*/
 window.saveTokenToDatabase = async (token) => {
     try {
         const userEmail = localStorage.getItem("userEmail") || "guest";
@@ -49,9 +42,7 @@ window.saveTokenToDatabase = async (token) => {
     }
 };
 
-/**
- * 4. APPOINTMENT SYSTEM (WITH TELEGRAM ALERT)
- */
+/*4. APPOINTMENT SYSTEM (WITH TELEGRAM ALERT)*/
 const appointmentForm = document.getElementById('consultation-form');
 if (appointmentForm) {
     appointmentForm.addEventListener('submit', async (e) => {
@@ -142,27 +133,55 @@ window.submitFeedback = async function() {
     } catch (e) { console.error("🔱 Feedback Error:", e); }
 };
 
-/**
- * 6. AUTHENTICATION (LOGIN/LOGOUT) UI
- */
+/*6. AUTHENTICATION (LOGIN/LOGOUT) UI & ENGINE*/
+// 1. Asali Login/Logout Functions (Button inhe call karenge)
 window.loginWithGoogle = () => signInWithPopup(auth, provider);
 window.logoutUser = () => signOut(auth).then(() => window.location.reload());
 
+// 2. Firebase Observer (Dekhega kon aaya, kon gaya)
 onAuthStateChanged(auth, (user) => {
-    const dBox = document.getElementById('user-display-desktop');
-    if (user) {
-        localStorage.setItem("userEmail", user.email);
-    } else {
-        localStorage.removeItem("userEmail");
-    }
     
-    const uiHtml = user ? `
-        <div class="user-pill" style="display:flex; align-items:center; gap:8px;">
-            <img src="${user.photoURL}" style="width:30px; border-radius:50%;">
-            <span>Hi, ${user.displayName.split(' ')[0]}</span>
-            <span onclick="window.logoutUser()" style="color:red; cursor:pointer; font-size:0.7rem; margin-left:10px;">Logout</span>
-        </div>` : 
-        `<button onclick="window.loginWithGoogle()" class="gold-btn">LOGIN</button>`;
+    // Desktop aur Mobile dono ka pata lagao
+    const desktopContainer = document.getElementById('user-display-desktop');
+    const mobileContainer = document.getElementById('user-display-mobile');
 
-    if(dBox) dBox.innerHTML = uiHtml;
+    // Language Switcher hamesha dikhega
+    const langSwitcherHTML = `
+        <div class="lang-switcher">
+            <button onclick="changeLang('hi')" class="lang-btn" id="lang-hi">HI</button>
+            <button onclick="changeLang('en')" class="lang-btn active" id="lang-en">EN</button>
+        </div>
+    `;
+
+    if (user) {
+        // --- JAB USER LOGGED IN HAI ---// Tumhara purana logic: Email ko browser memory me save karna
+        localStorage.setItem("userEmail", user.email);
+
+        const firstName = user.displayName ? user.displayName.split(' ')[0].toUpperCase() : 'DEVOTEE';
+        // Maine tumhari Profile Photo ko ek golden border ke sath add kar diya hai
+        const photo = user.photoURL ? `<img src="${user.photoURL}" style="width:28px; height:28px; border-radius:50%; border: 1px solid var(--gold-main); object-fit:cover;">` : '';
+
+        const loggedInHTML = `
+            ${langSwitcherHTML}
+            <div style="display:flex; align-items:center; gap:6px; margin-right:10px;">
+                ${photo}
+                <span class="user-welcome">PRANAM, ${firstName}</span>
+            </div>
+            <button onclick="window.logoutUser()" class="logout-btn-minimal">LOGOUT</button>
+        `;    
+        if(desktopContainer) desktopContainer.innerHTML = loggedInHTML;
+        if(mobileContainer) mobileContainer.innerHTML = loggedInHTML;
+        
+    } else {
+        // --- JAB USER LOGOUT HAI ---// Memory se email hatao
+        localStorage.removeItem("userEmail");
+        // Naya Divine Gold Login Button
+        const loggedOutHTML = `
+            ${langSwitcherHTML}
+            <button onclick="window.loginWithGoogle()" class="auth-btn-divine">🔱 LOGIN</button>
+        `;
+        
+        if(desktopContainer) desktopContainer.innerHTML = loggedOutHTML;
+        if(mobileContainer) mobileContainer.innerHTML = loggedOutHTML;
+    }
 });
