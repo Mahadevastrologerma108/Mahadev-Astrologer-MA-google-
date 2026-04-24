@@ -1,6 +1,41 @@
-const CACHE_NAME = 'mahadev-astro-v1';
+// 🔱 MAHADEV ASTROLOGER MA - Service Worker 🔱
 
-// 🔱 यहाँ हमने Cloudinary का असली लिंक डाल दिया है
+// 1. Firebase SDKs load karna (Background Messaging ke liye)
+importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging-compat.js');
+
+// 2. Firebase Initialize (Tumhari Config ke saath)
+const firebaseConfig = {
+  apiKey: "AIzaSyAgcfrzQm6wezgtU5Q5BP8wxXatmoWqYrw",
+  authDomain: "mahadev-astrologer.firebaseapp.com",
+  databaseURL: "https://mahadev-astrologer-default-rtdb.firebaseio.com",
+  projectId: "mahadev-astrologer",
+  storageBucket: "mahadev-astrologer.firebasestorage.app",
+  messagingSenderId: "559664802739",
+  appId: "1:559664802739:web:4285f4dc461f570cc2b9c6"
+};
+
+firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
+
+// 3. Background Notification Handler
+// Jab App band ho, tab ye code notification dikhayega
+messaging.onBackgroundMessage((payload) => {
+  console.log('🔱 Background Notification Received:', payload);
+
+  const notificationTitle = payload.notification.title || "Mahadev Astrologer MA";
+  const notificationOptions = {
+    body: payload.notification.body,
+    icon: 'https://res.cloudinary.com/dya3yxgch/image/upload/f_auto,q_auto,w_150/v1769705192/logo_bdmvwv.png',
+    badge: 'https://res.cloudinary.com/dya3yxgch/image/upload/f_auto,q_auto,w_150/v1769705192/logo_bdmvwv.png',
+    data: payload.data // Click karne par URL open karne ke liye
+  };
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});
+
+// 4. Offline Caching Logic (Tumhara Purana Code)
+const CACHE_NAME = 'mahadev-astro-v1';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -11,28 +46,26 @@ const ASSETS_TO_CACHE = [
   'https://res.cloudinary.com/dya3yxgch/image/upload/f_auto,q_auto,w_150/v1769705192/logo_bdmvwv.png' 
 ];
 
-// इंस्टॉल के समय ज़रूरी फाइल्स को सेव करना (Caching)
+// Install Event
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('🔱 Pre-caching Astrology Assets...');
-      // cross-origin (Cloudinary) इमेज को कैशे करने के लिए { mode: 'no-cors' } की ज़रूरत नहीं पड़ती क्योंकि Cloudinary CORS सपोर्ट करता है।
       return cache.addAll(ASSETS_TO_CACHE);
     })
   );
 });
 
-// नेटवर्क न होने पर कैशे से फाइल दिखाना (Offline Support)
+// Fetch Event (Offline Support)
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      // अगर फाइल कैशे में है तो वही दिखाओ, वरना इंटरनेट से लाओ
       return response || fetch(event.request);
     })
   );
 });
 
-// 🔱 पुराना कैशे डिलीट करने का लॉजिक (ताकि जब आप साइट अपडेट करें, तो यूज़र को नया वर्ज़न दिखे)
+// Activate Event (Purana Cache Delete karna)
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -45,5 +78,13 @@ self.addEventListener('activate', (event) => {
         })
       );
     })
+  );
+});
+
+// 5. Notification Click Event (Jab user notification par click kare)
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  event.waitUntil(
+    clients.openWindow('/') // Click karne par website/app khulegi
   );
 });
