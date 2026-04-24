@@ -8,21 +8,16 @@ window.processBotQuery = async function() {
     responseArea.innerHTML = "🔱 Mahadev margdarshan kar rahe hain...";
     questionInput.value = "";
 
-    // --- 🔱 LEVEL 1: MASTER NAVIGATOR (38+ Pages Training) ---
+    // --- 🔱 LEVEL 1: MASTER NAVIGATOR ---
 
-    // 1. ♈ 12 Rashi Logic (Direct Path)
+    // 1. ♈ 12 Rashi Logic
     const rashis = {
-        "mesh": "aries", "aries": "aries",
-        "vrishabh": "taurus", "taurus": "taurus",
-        "mithun": "gemini", "gemini": "gemini",
-        "kark": "cancer", "cancer": "cancer",
-        "singh": "leo", "leo": "leo",
-        "kanya": "virgo", "virgo": "virgo",
-        "tula": "libra", "libra": "libra",
-        "vrishchik": "scorpio", "scorpio": "scorpio",
-        "dhanu": "sagittarius", "sagittarius": "sagittarius",
-        "makar": "capricorn", "capricorn": "capricorn",
-        "kumbh": "aquarius", "aquarius": "aquarius",
+        "mesh": "aries", "aries": "aries", "vrishabh": "taurus", "taurus": "taurus",
+        "mithun": "gemini", "gemini": "gemini", "kark": "cancer", "cancer": "cancer",
+        "singh": "leo", "leo": "leo", "kanya": "virgo", "virgo": "virgo",
+        "tula": "libra", "libra": "libra", "vrishchik": "scorpio", "scorpio": "scorpio",
+        "dhanu": "sagittarius", "sagittarius": "sagittarius", "makar": "capricorn", 
+        "capricorn": "capricorn", "kumbh": "aquarius", "aquarius": "aquarius", 
         "meen": "pisces", "pisces": "pisces"
     };
 
@@ -43,93 +38,52 @@ window.processBotQuery = async function() {
         return;
     }
 
-    // 3. 📚 Latest Guides & Tools (Knowledge Base)
+    // 3. 📚 Guides
     if (question.includes("kundli") || question.includes("kundali")) {
-        responseArea.innerHTML = "🔱 Kundli vishleshan ke liye hamari guide dekhein: <br><a href='/latest-guide/kundali.html'>Kundali Guide ➔</a>";
+        responseArea.innerHTML = "🔱 Kundli vishleshan: <br><a href='/latest-guide/kundali.html'>Kundali Guide ➔</a>";
         return;
     }
     if (question.includes("numerology") || question.includes("ank jyotish")) {
-        responseArea.innerHTML = "🔱 Ankon ka rahasya yahan hai: <br><a href='/latest-guide/numerology.html'>Numerology ➔</a>";
-        return;
-    }
-    if (question.includes("water") || question.includes("calculator") || question.includes("health")) {
-        responseArea.innerHTML = "🔱 Ayurvedic health calculator yahan hai: <br><a href='/latest-guide/ayurvedic-health-water-calculator.html'>Water Calculator ➔</a>";
-        return;
-    }
-    if (question.includes("grih dosh") || question.includes("dosh")) {
-        responseArea.innerHTML = "🔱 Grih dosh aur upaay yahan padhein: <br><a href='/latest-guide/grih-dosh.html'>Grih Dosh Guide ➔</a>";
-        return;
-    }
-    if (question.includes("guide") || question.includes("lekh")) {
-        responseArea.innerHTML = "🔱 Hamari saari adhyatmik guides yahan hain: <br><a href='/latest-guide/guides.html'>Knowledge Hub ➔</a>";
+        responseArea.innerHTML = "🔱 Ankon ka rahasya: <br><a href='/latest-guide/numerology.html'>Numerology ➔</a>";
         return;
     }
 
-    // 4. 💎 Divine Products (Shop Sections)
-    if (question.includes("gemstone") || question.includes("ratna") || question.includes("pukhraj")) {
-        responseArea.innerHTML = "🔱 Certified gemstones yahan dekhein: <br><a href='/products/gemstones.html'>Gemstones ➔</a>";
-        return;
-    }
-    if (question.includes("rudraksha")) {
-        responseArea.innerHTML = "🔱 Original Rudraksha yahan hain: <br><a href='/products/rudraksha.html'>Rudraksha Store ➔</a>";
-        return;
-    }
-    if (question.includes("herbal") || question.includes("wellness") || question.includes("jadi buti")) {
-        responseArea.innerHTML = "🔱 Herbal wellness products yahan hain: <br><a href='/products/herbal-wellness.html'>Herbal Wellness ➔</a>";
-        return;
-    }
-    if (question.includes("puja kit") || question.includes("samagri")) {
-        responseArea.innerHTML = "🔱 Puja kits yahan uplabdha hain: <br><a href='/products/puja-kits.html'>Puja Kits ➔</a>";
-        return;
-    }
-    if (question.includes("shop") || question.includes("kharid") || question.includes("buy")) {
-        responseArea.innerHTML = "🔱 Hamara poora store yahan browse karein: <br><a href='/products/shop.html'>Divine Shop ➔</a>";
+    // 4. 💎 Products
+    if (question.includes("gemstone") || question.includes("ratna") || question.includes("rudraksha")) {
+        responseArea.innerHTML = "🔱 Shuddh ratna aur rudraksha: <br><a href='/products/shop.html'>Divine Store ➔</a>";
         return;
     }
 
-    // 5. 🛠️ Vedic Tools
-    if (question.includes("tool")) {
-        responseArea.innerHTML = "🔱 Hamare saare Vedic tools yahan dekhein: <br><a href='/tools/tools.html'>Vedic Tools ➔</a>";
-        return;
-    }
-
-    // --- LEVEL 2: YOUR CUSTOM AI BRAIN (mahadev-astrologer-ma-v1) ---
+    // --- LEVEL 2: SECURE AI BRAIN (Hugging Face) ---
     try {
+        // 🔥 SUDHAR: Firebase se token mangwana (GitHub warning se bachne ke liye)
+        const secureToken = await window.getDivineKey(); 
+
+        if (!secureToken) throw new Error("Key Not Found");
+
         const response = await fetch("https://api-inference.huggingface.co/models/mahadev-astrologer-ma-admin/mahadev-astrologer-ma-v1", {
             headers: { 
-                "Authorization": "Bearer hf***********"
+                "Authorization": `Bearer ${secureToken}`, // 🔥 SUDHAR: Fixed syntax & dynamic token
                 "Content-Type": "application/json" 
             },
             method: "POST",
             body: JSON.stringify({ 
                 inputs: `Answer as Mahadev Astro Expert in Hinglish. Question: ${question}`,
-                parameters: { 
-                    max_new_tokens: 150, 
-                    temperature: 0.6,
-                    return_full_text: false 
-                }
+                parameters: { max_new_tokens: 150, temperature: 0.6, return_full_text: false }
             }),
         });
 
         const result = await response.json();
+        let aiJawab = Array.isArray(result) ? result[0]?.generated_text : result.generated_text;
         
-        // Custom Model response handling
-        let aiJawab = "";
-        if (Array.isArray(result)) {
-            aiJawab = result[0]?.generated_text || "";
-        } else {
-            aiJawab = result.generated_text || "";
-        }        
         if (aiJawab && aiJawab.length > 3) {
-            // Cleanup: Agar model purana text repeat kare
             aiJawab = aiJawab.replace(/Instruction:.*Question:.*Answer:/gs, "").trim();
             responseArea.innerHTML = `🔱 <b>Astro AI:</b> ${aiJawab}`;
         } else {
             throw new Error("AI Empty");
         }
     } catch (error) {
-        
-    // --- LEVEL 3: HUMAN SUPPORT (WhatsApp) ---
+        // --- LEVEL 3: WhatsApp Support ---
         responseArea.innerHTML = "🔱 Iska sateek uttar purn vishleshan mangta hai. Sidha mujhse judiye: <br><br><a href='https://wa.me/message/VCK5OVBDCN7YK1?text=Pranam, mujhe " + encodeURIComponent(question) + " ke bare mein janna hai' style='background:#25D366; color:white; padding:8px 12px; border-radius:5px; text-decoration:none; display:inline-block;'>WhatsApp Par Baat Karein</a>";
     }
 };
