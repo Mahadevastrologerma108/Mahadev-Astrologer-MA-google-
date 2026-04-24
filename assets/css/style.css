@@ -520,24 +520,3 @@ body {
         z-index: 9999 !important; /* Kisi ke piche na chupe */
     }
 }
-/* =========================================
-   11. MOBILE HEADER TEXT CENTER FIX
-   ========================================= */
-@media screen and (max-width: 768px) {
-    .header-container {
-        position: relative !important;
-        justify-content: center !important; /* Items ko center mein rakhne ke liye */
-    }
-
-    .nav-logo-text {
-        position: absolute !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important; /* Text ko thik center mein laane ke liye */
-        text-align: center !important;
-    }
-    
-    #mobile-menu {
-        position: absolute !important;
-        right: 0 !important; /* Hamburger menu ko right side fix karne ke liye */
-    }
-}
