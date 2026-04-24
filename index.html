@@ -257,6 +257,7 @@
             <option value="combo_analysis" data-key="opt_combo"></option>
         </select>
 
+        <label for="user-name" class="gold-text" style="font-size: 0.8rem; letter-spacing: 1px; display: block; margin-bottom: 8px;">Name</label>
         <input type="text" id="user-name" aria-label="Name" placeholder="" data-placeholder-key="ph_name" class="input-field" required>
 
         <div class="contact-box">
@@ -267,6 +268,7 @@
                 <label><input type="radio" name="contact-method" value="Email" onclick="syncContactMethod('EM')"> Email</label>
             </div>
 
+            <label for="contact-detail" class="gold-text" style="font-size: 0.8rem; letter-spacing: 1px; display: block; margin-top: 15px; margin-bottom: 8px;">Contact Details</label>
             <input type="text" id="contact-detail" aria-label="Contact" placeholder="" data-placeholder-key="ph_contact" class="input-field" required>
             <p id="email-warning" style="display:none; color: var(--gold); font-size: 0.7rem; margin-top: 5px;" data-key="email_note"></p>
 
@@ -277,32 +279,61 @@
         </div>
 
         <div id="section-single">
+            <label for="single-dob" class="gold-text" style="font-size: 0.8rem; letter-spacing: 1px; display: block; margin-bottom: 8px;">Date of Birth</label>
             <input type="date" id="single-dob" aria-label="DOB" class="input-field">
             
             <div id="time-place-group" class="grid-2">
-                <input type="time" id="single-time" aria-label="Time" class="input-field">
-                <input type="text" id="single-place" aria-label="Place" placeholder="" data-placeholder-key="ph_city" class="input-field">
+                <div>
+                    <label for="single-time" class="gold-text" style="font-size: 0.8rem; letter-spacing: 1px; display: block; margin-bottom: 8px;">Time of Birth</label>
+                    <input type="time" id="single-time" aria-label="Time" class="input-field">
+                </div>
+                <div>
+                    <label for="single-place" class="gold-text" style="font-size: 0.8rem; letter-spacing: 1px; display: block; margin-bottom: 8px;">Place of Birth</label>
+                    <input type="text" id="single-place" aria-label="Place" placeholder="" data-placeholder-key="ph_city" class="input-field">
+                </div>
             </div>
         </div>
 
         <div id="section-matching" style="display:none;">
             <div style="margin-bottom:15px; padding:15px; border:1px solid rgba(255,255,255,0.1); border-radius:15px; background: rgba(255,255,255,0.02);">
                 <h4 class="gold-text" style="margin:0 0 10px 0;" data-key="lbl_male_details"></h4>
+                
+                <label class="gold-text" style="font-size: 0.8rem; display: block; margin-bottom: 5px;">Boy Name</label>
                 <input type="text" id="m-name" aria-label="Male Name" placeholder="" data-placeholder-key="ph_name" class="input-field">
+                
+                <label class="gold-text" style="font-size: 0.8rem; display: block; margin-bottom: 5px;">Date of Birth</label>
                 <input type="date" id="m-dob" class="input-field">
+                
                 <div class="grid-2">
-                    <input type="time" id="m-time" class="input-field">
-                    <input type="text" id="m-place" placeholder="" data-placeholder-key="ph_city" class="input-field">
+                    <div>
+                        <label class="gold-text" style="font-size: 0.8rem; display: block; margin-bottom: 5px;">Time</label>
+                        <input type="time" id="m-time" class="input-field">
+                    </div>
+                    <div>
+                        <label class="gold-text" style="font-size: 0.8rem; display: block; margin-bottom: 5px;">Place</label>
+                        <input type="text" id="m-place" placeholder="" data-placeholder-key="ph_city" class="input-field">
+                    </div>
                 </div>
             </div>
             
             <div style="padding:15px; border:1px solid rgba(255,255,255,0.1); border-radius:15px; background: rgba(255,255,255,0.02);">
                 <h4 class="gold-text" style="margin:0 0 10px 0;" data-key="lbl_female_details"></h4>
+                
+                <label class="gold-text" style="font-size: 0.8rem; display: block; margin-bottom: 5px;">Girl Name</label>
                 <input type="text" id="f-name" aria-label="Female Name" placeholder="" data-placeholder-key="ph_name" class="input-field">
+                
+                <label class="gold-text" style="font-size: 0.8rem; display: block; margin-bottom: 5px;">Date of Birth</label>
                 <input type="date" id="f-dob" class="input-field">
+                
                 <div class="grid-2">
-                    <input type="time" id="f-time" class="input-field">
-                    <input type="text" id="f-place" placeholder="" data-placeholder-key="ph_city" class="input-field">
+                    <div>
+                        <label class="gold-text" style="font-size: 0.8rem; display: block; margin-bottom: 5px;">Time</label>
+                        <input type="time" id="f-time" class="input-field">
+                    </div>
+                    <div>
+                        <label class="gold-text" style="font-size: 0.8rem; display: block; margin-bottom: 5px;">Place</label>
+                        <input type="text" id="f-place" placeholder="" data-placeholder-key="ph_city" class="input-field">
+                    </div>
                 </div>
             </div>
         </div>
@@ -311,9 +342,9 @@
             <p class="gold-text" style="font-size: 0.8rem; margin: 0;" data-key="palm_note"></p>
         </div>
 
-        <button type="submit" class="gold-btn" id="submit-btn" style="margin-top:20px;" data-key="btn_invoke"></button>    </form>
-</section>
-    
+        <button type="submit" class="gold-btn" id="submit-btn" style="margin-top:20px;" data-key="btn_invoke"></button>
+    </form>
+</section>    
 <section id="trust-building-area" style="background: #000; padding: 50px 0; border-top: 1px solid #222;">
     <div class="testimonial-slider" style="text-align: center; margin-bottom: 50px;">
         <h3 class="gold-text" style="font-size: 28px;" data-key="testi_title"></h3>
