@@ -509,3 +509,14 @@ body {
     border-right: 1px solid rgba(212, 175, 55, 0.3);
     padding-right: 10px;
 }
+/* FORCE DESKTOP AUTH VISIBILITY */
+@media screen and (min-width: 769px) {
+    #user-display-desktop {
+        display: flex !important;
+        align-items: center !important;
+        gap: 15px !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 9999 !important; /* Kisi ke piche na chupe */
+    }
+}
