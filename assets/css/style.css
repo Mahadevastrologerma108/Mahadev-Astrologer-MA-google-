@@ -373,12 +373,16 @@ body {
 }
 
 /* =========================================
-   10. AUTH & LOGIN DISPLAY (Desktop vs Mobile)
+   10. AUTH & LOGIN DISPLAY (PREMIUM UPGRADE)
    ========================================= */
 
 /* Desktop Layout */
 @media screen and (min-width: 769px) {
-    #user-display-desktop { display: block !important; }
+    #user-display-desktop { 
+        display: flex !important; 
+        align-items: center; 
+        gap: 15px; 
+    }
     #user-display-mobile { display: none !important; }
 }
 
@@ -387,30 +391,121 @@ body {
     #user-display-desktop { display: none !important; }
     
     #user-display-mobile { 
-        display: flex !important; /* Block ki jagah flex karein */
+        display: flex !important; 
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 15px;
         width: 100%;
         margin-top: 25px;
-        padding: 15px 0;
-        border-top: 1px solid rgba(212, 175, 55, 0.2); /* Sunehri line Divider */
-        min-height: 50px; /* Taaki space reserve rahe */
+        padding: 20px 0;
+        border-top: 1px solid rgba(212, 175, 55, 0.2); 
+        min-height: 50px; 
+    }
+    
+    /* Mobile me buttons ek line me (row) dikhane ke liye */
+    .mobile-auth-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
     }
 }
 
-/* Common Button Style */
-#user-display-desktop button, 
-#user-display-mobile button {
+/* --- 1. Capsule Language Switcher --- */
+.lang-switcher {
+    display: flex;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 3px;
+    border-radius: 50px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
+}
+
+.lang-btn {
+    padding: 6px 14px;
+    border: none;
+    background: transparent;
+    color: #888;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
     cursor: pointer;
-    padding: 10px 25px; /* Thoda bada padding */
-    background: rgba(212, 175, 55, 0.05); /* Halka gold tint */
-    border: 1px solid var(--gold-main);
-    color: var(--gold-main);
-    border-radius: 4px;
-    font-family: 'Poppins';
-    font-size: 0.9rem;
-    transition: 0.3s;
-    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.4s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.lang-btn.active {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold-main));
+    color: #000;
+    box-shadow: 0 0 10px var(--gold-glow);
+}
+
+/* --- 2. The Royal Gold Login Button --- */
+.auth-btn-divine {
+    position: relative;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728);
+    border: none;
+    border-radius: 5px;
+    color: #000 !important;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.4s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.auth-btn-divine::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: rgba(255,255,255,0.2);
+    transform: rotate(45deg);
+    transition: 0.6s;
+    pointer-events: none;
+}
+
+.auth-btn-divine:hover::after {
+    left: 100%;
+}
+
+.auth-btn-divine:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--gold-main);
+}
+
+/* --- 3. Minimal Logout Button --- */
+.logout-btn-minimal {
+    background: transparent;
+    border: 1px dashed var(--gold-main);
+    color: var(--gold-light);
+    padding: 6px 12px;
+    font-size: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s;
+    letter-spacing: 2px;
+}
+
+.logout-btn-minimal:hover {
+    opacity: 1;
+    background: rgba(212, 175, 55, 0.1);
+    border-style: solid;
+}
+
+/* User Name Welcome Text */
+.user-welcome {
+    font-size: 0.8rem;
+    color: var(--gold-light);
+    font-family: 'Cinzel';
+    margin-right: 5px;
+    border-right: 1px solid rgba(212, 175, 55, 0.3);
+    padding-right: 10px;
 }
