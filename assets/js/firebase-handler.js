@@ -84,28 +84,43 @@ if (appointmentForm) {
 
             await addDoc(collection(db, "appointments"), subData);
 
-            // ✅ Naya Telegram Message Formatting
+            // ✅ Naya 100% Safe Telegram Message Formatting (HTML)
             const tgMsg = `
-🔱 *NEW APPOINTMENT RECEIVED* 🔱
---------------------------------
-👤 *Name:* ${name}
-✨ *Service:* ${service.toUpperCase()}
-📞 *Contact:* ${contactDetail}
-📡 *Method:* ${contactMethod}
-🔑 *UID Requested:* ${wantsUID ? "YES" : "NO"}
-📅 *Time:* ${new Date().toLocaleString('en-IN')}
---------------------------------
-Check Firebase Console for full details.`;
+🔱 <b>NEW APPOINTMENT RECEIVED</b> 🔱
+➖➖➖➖➖➖➖➖➖➖➖➖
+👤 <b>Name:</b> ${name}
+✨ <b>Service:</b> ${service.toUpperCase().replace('_', ' ')}
+📞 <b>Contact:</b> ${contactDetail}
+📡 <b>Method:</b> ${contactMethod}
+🔑 <b>UID Requested:</b> ${wantsUID ? "YES" : "NO"}
+📅 <b>Time:</b> ${new Date().toLocaleString('en-IN')}
+➖➖➖➖➖➖➖➖➖➖➖➖
+Check Firebase Console for full details.`.trim();
 
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: CHAT_ID, text: tgMsg, parse_mode: 'Markdown' })
-            });
+            // Telegram API Call with Error Checking
+            try {
+                const tgResponse = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        chat_id: CHAT_ID, 
+                        text: tgMsg, 
+                        parse_mode: 'HTML' // 👈 Markdown ki jagah HTML, ab kabhi nahi atkega
+                    })
+                });
+                
+                const tgData = await tgResponse.json();
+                if (!tgData.ok) {
+                    console.error("🔱 Telegram Rejection:", tgData.description);
+                }
+            } catch (tgErr) {
+                console.error("🔱 Telegram Fetch Error:", tgErr);
+            }
 
             alert("🔱 Pranaam! Aapki request Mahadev tak pahunch gayi hai.");
-            e.target.reset(); // ✅ Fixed here
+            e.target.reset(); 
             if(window.applyFormLogic) window.applyFormLogic();
+        
         } catch (err) {
             console.error("🔱 Form Error:", err);
             alert("Kshama karein, network error aaya.");
