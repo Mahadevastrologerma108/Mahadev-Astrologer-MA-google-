@@ -16,9 +16,12 @@
 import { 
     db, auth, provider, remoteConfig, fetchAndActivate, getString 
 } from './firebase-config.js'; 
+
+// 👇 BAAKI SAB SAME HAI, BAS IS BRACKET MEIN 5 NAYE SHABD JODE HAIN
 import { 
-    collection, addDoc, doc, setDoc, serverTimestamp 
+    collection, addDoc, doc, setDoc, serverTimestamp, getDocs, query, orderBy, limit, where 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
 import { 
     signInWithPopup, onAuthStateChanged, signOut 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
