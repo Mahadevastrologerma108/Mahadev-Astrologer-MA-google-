@@ -139,11 +139,15 @@ if (appointmentForm) {
 }
 
 /* 5. FEEDBACK & RATING SYSTEM */
+
+// 1. Naya feedback Firebase bhejne ke liye
 window.submitFeedback = async function() {
     const text = document.getElementById('user-feedback')?.value.trim();
     const rating = window.selectedRating || 0;
     const user = auth.currentUser;
-    if (!text || rating === 0) return alert("🔱 Rating aur Experience dono zaruri hain!");
+    
+    if (!text || rating === 0) return alert("🔱 Rating (Stars) aur Experience dono zaruri hain!");
+    
     try {
         await addDoc(collection(db, "feedbacks"), {
             text, rating: parseInt(rating), 
@@ -158,6 +162,57 @@ window.submitFeedback = async function() {
     } catch (e) { console.error("🔱 Feedback Error:", e); }
 };
 
+// 2. Approved feedback ko wapas website par dikhane ke liye
+window.loadTestimonials = async function() {
+    const testimonialContainer = document.getElementById('display-feedbacks'); 
+    if (!testimonialContainer) return; 
+
+    try {
+        const q = query(
+            collection(db, "feedbacks"),
+            where("status", "==", "approved"),
+            orderBy("timestamp", "desc"),
+            limit(10)
+        );
+
+        const querySnapshot = await getDocs(q);
+        let html = "";
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const stars = "⭐".repeat(data.rating || 5); 
+            
+            html += `
+            <div class="testimonial-card" style="background: var(--card-bg); padding: 20px; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: 20px; backdrop-filter: blur(10px); text-align: left;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
+                    <img src="${data.userPhoto || '/assets/images/default-avatar.png'}" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--gold-main); object-fit: cover;">
+                    <div>
+                        <h4 style="color: var(--gold-main); margin: 0; font-family: 'Cinzel', serif;">${data.userName || 'Mahadev Bhakt'}</h4>
+                        <div style="font-size: 0.85rem; margin-top: 3px;">${stars}</div>
+                    </div>
+                </div>
+                <p style="color: #fff; font-size: 0.95rem; font-style: italic; line-height: 1.5;">"${data.text}"</p>
+            </div>
+            `;
+        });
+
+        if (html === "") {
+            testimonialContainer.innerHTML = "<p style='text-align:center; color:#888;'>Abhi reviews load ho rahe hain ya koi naya review nahi hai.</p>";
+        } else {
+            testimonialContainer.innerHTML = html;
+        }
+
+    } catch (error) {
+        console.error("🔱 Testimonial Fetch Error:", error);
+    }
+};
+
+// 3. Page load hote hi apne aap feedback khinchne ke liye
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof loadTestimonials === 'function') {
+        loadTestimonials();
+    }
+});
 /* 6. AUTHENTICATION UI & ENGINE */
 window.loginWithGoogle = () => signInWithPopup(auth, provider);
 window.logoutUser = () => signOut(auth).then(() => window.location.reload());
