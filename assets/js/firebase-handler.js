@@ -1,4 +1,6 @@
-/*1. AUTO-LOADER SYSTEM */
+/* 🔱 MAHADEV HANDLER - MASTER VERSION (SECURE & MODULAR) */
+
+/* 1. AUTO-LOADER SYSTEM */
 (function() {
     const scriptPath = '/assets/js/script.js'; 
     if (!document.querySelector(`script[src="${scriptPath}"]`)) {
@@ -10,22 +12,41 @@
     }
 })();
 
-/*2. CORE FIREBASE IMPORT*/
-import { db, auth, provider } from './firebase-config.js'; 
+/* 2. CORE FIREBASE IMPORT */
 import { 
-    collection, addDoc, doc, setDoc, serverTimestamp, getDocs, query, orderBy, limit 
+    db, auth, provider, remoteConfig, fetchAndActivate, getString 
+} from './firebase-config.js'; 
+import { 
+    collection, addDoc, doc, setDoc, serverTimestamp 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { 
     signInWithPopup, onAuthStateChanged, signOut 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// Telegram Configuration
-const BOT_TOKEN = '8409366336:AAEYCE58wm7ir7-aSUlz4IZepO2zIzaUJS4'; 
-const CHAT_ID = '2032242977'; 
+// Cache variables for keys
+let cachedKeys = { hf: null, tg: null, cid: null };
+
+/**
+ * 🔐 SECURE KEY FETCH ENGINE
+ * Remote Config se keys lene ke liye
+ */
+async function getSecureKeys() {
+    if (cachedKeys.hf && cachedKeys.tg) return cachedKeys;
+    try {
+        await fetchAndActivate(remoteConfig);
+        cachedKeys.hf = getString(remoteConfig, 'HF_API_KEY');
+        cachedKeys.tg = getString(remoteConfig, 'TG_BOT_TOKEN');
+        cachedKeys.cid = getString(remoteConfig, 'TG_CHAT_ID');
+        return cachedKeys;
+    } catch (err) {
+        console.error("🔱 Security Error: Key fetch failed", err);
+        return null;
+    }
+}
 
 console.log("🔱 Mahadev Handler: Fully Modular & Active.");
 
-/*3. NOTIFICATION TOKEN SYNC*/
+/* 3. NOTIFICATION TOKEN SYNC */
 window.saveTokenToDatabase = async (token) => {
     try {
         const userEmail = localStorage.getItem("userEmail") || "guest";
@@ -40,7 +61,7 @@ window.saveTokenToDatabase = async (token) => {
     } catch (err) { console.error("🔱 Token Sync Error:", err); }
 };
 
-/*4. APPOINTMENT SYSTEM (WITH TELEGRAM ALERT)*/
+/* 4. APPOINTMENT SYSTEM (SECURE TELEGRAM ALERT) */
 const appointmentForm = document.getElementById('consultation-form');
 if (appointmentForm) {
     appointmentForm.addEventListener('submit', async (e) => {
@@ -51,6 +72,9 @@ if (appointmentForm) {
         btn.disabled = true;
 
         try {
+            // 🔒 Fetch Secure Keys First
+            const keys = await getSecureKeys();
+
             const service = document.getElementById('service-select').value;
             const name = document.getElementById('user-name').value;
             const contactDetail = document.getElementById('contact-detail').value;
@@ -63,6 +87,7 @@ if (appointmentForm) {
                 timestamp: serverTimestamp()
             };
 
+            // Details for Kundli Matching or Single
             if (service === 'kundli_matching') {
                 subData.male_details = { 
                     name: document.getElementById('m-name').value, 
@@ -82,39 +107,18 @@ if (appointmentForm) {
                 subData.place = document.getElementById('single-place')?.value || "";
             }
 
+            // Save to Firestore
             await addDoc(collection(db, "appointments"), subData);
 
-            // ✅ Naya 100% Safe Telegram Message Formatting (HTML)
-            const tgMsg = `
-🔱 <b>NEW APPOINTMENT RECEIVED</b> 🔱
-➖➖➖➖➖➖➖➖➖➖➖➖
-👤 <b>Name:</b> ${name}
-✨ <b>Service:</b> ${service.toUpperCase().replace('_', ' ')}
-📞 <b>Contact:</b> ${contactDetail}
-📡 <b>Method:</b> ${contactMethod}
-🔑 <b>UID Requested:</b> ${wantsUID ? "YES" : "NO"}
-📅 <b>Time:</b> ${new Date().toLocaleString('en-IN')}
-➖➖➖➖➖➖➖➖➖➖➖➖
-Check Firebase Console for full details.`.trim();
-
-            // Telegram API Call with Error Checking
-            try {
-                const tgResponse = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            // 🔱 Telegram Notification Logic
+            if (keys && keys.tg && keys.cid) {
+                const tgMsg = `🔱 <b>NEW APPOINTMENT</b> 🔱\n👤 <b>Name:</b> ${name}\n✨ <b>Service:</b> ${service.toUpperCase()}\n📞 <b>Contact:</b> ${contactDetail}\n📡 <b>Method:</b> ${contactMethod}\n🔑 <b>UID:</b> ${wantsUID ? "YES" : "NO"}\n📅 <b>Time:</b> ${new Date().toLocaleString()}`.trim();
+                
+                await fetch(`https://api.telegram.org/bot${keys.tg}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        chat_id: CHAT_ID, 
-                        text: tgMsg, 
-                        parse_mode: 'HTML' // 👈 Markdown ki jagah HTML, ab kabhi nahi atkega
-                    })
+                    body: JSON.stringify({ chat_id: keys.cid, text: tgMsg, parse_mode: 'HTML' })
                 });
-                
-                const tgData = await tgResponse.json();
-                if (!tgData.ok) {
-                    console.error("🔱 Telegram Rejection:", tgData.description);
-                }
-            } catch (tgErr) {
-                console.error("🔱 Telegram Fetch Error:", tgErr);
             }
 
             alert("🔱 Pranaam! Aapki request Mahadev tak pahunch gayi hai.");
@@ -131,9 +135,7 @@ Check Firebase Console for full details.`.trim();
     });
 }
 
-/**
- * 5. FEEDBACK & RATING SYSTEM
- */
+/* 5. FEEDBACK & RATING SYSTEM */
 window.submitFeedback = async function() {
     const text = document.getElementById('user-feedback')?.value.trim();
     const rating = window.selectedRating || 0;
@@ -145,7 +147,7 @@ window.submitFeedback = async function() {
             timestamp: serverTimestamp(), 
             status: "pending",
             userName: user ? user.displayName : "Mahadev Bhakt",
-            userPhoto: user ? user.photoURL : "assets/images/default-avatar.png",
+            userPhoto: user ? user.photoURL : "/assets/images/default-avatar.png",
             userId: user ? user.uid : "guest"
         });
         alert("🔱 Dhanyawad! Review ke baad aapka feedback dikhega.");
@@ -153,7 +155,7 @@ window.submitFeedback = async function() {
     } catch (e) { console.error("🔱 Feedback Error:", e); }
 };
 
-/*6. AUTHENTICATION UI & ENGINE*/
+/* 6. AUTHENTICATION UI & ENGINE */
 window.loginWithGoogle = () => signInWithPopup(auth, provider);
 window.logoutUser = () => signOut(auth).then(() => window.location.reload());
 
@@ -163,30 +165,24 @@ window.changeLang = (lang) => {
     document.querySelectorAll(`.lang-btn[data-lang="${lang}"]`).forEach(btn => btn.classList.add('active'));
     if (typeof window.toggleLanguage === "function") window.toggleLanguage(); 
 };
+
 function updateAuthUI(user) {
     const desktopContainer = document.getElementById('user-display-desktop');
     const mobileContainer = document.getElementById('user-display-mobile');
-   if (!desktopContainer && !mobileContainer) {
-        setTimeout(() => updateAuthUI(user), 300); // Jab tak dabba na mile, pratiksha karega
+    if (!desktopContainer && !mobileContainer) {
+        setTimeout(() => updateAuthUI(user), 300);
         return;
     }
-    const langSwitcherHTML = `
-        <div class="lang-switcher">
-            <button onclick="window.changeLang('hi')" class="lang-btn" data-lang="hi">HI</button>
-            <button onclick="window.changeLang('en')" class="lang-btn active" data-lang="en">EN</button>
-        </div>`;
+    const langSwitcherHTML = `<div class="lang-switcher">
+        <button onclick="window.changeLang('hi')" class="lang-btn" data-lang="hi">HI</button>
+        <button onclick="window.changeLang('en')" class="lang-btn active" data-lang="en">EN</button>
+    </div>`;
 
     if (user) {
         localStorage.setItem("userEmail", user.email);
         const firstName = user.displayName ? user.displayName.split(' ')[0].toUpperCase() : 'DEVOTEE';       
         const photo = user.photoURL ? `<img src="${user.photoURL}" style="width:28px; height:28px; border-radius:50%; border: 1px solid var(--gold-main); object-fit:cover;">` : '';
-        const loggedInHTML = `
-            ${langSwitcherHTML}
-            <div style="display:flex; align-items:center; gap:6px; margin-right:10px;">
-                ${photo}
-                <span class="user-welcome">PRANAM, ${firstName}</span>
-            </div>
-            <button onclick="window.logoutUser()" class="logout-btn-minimal">LOGOUT</button>`;
+        const loggedInHTML = `${langSwitcherHTML}<div style="display:flex; align-items:center; gap:6px; margin-right:10px;">${photo}<span class="user-welcome">PRANAM, ${firstName}</span></div><button onclick="window.logoutUser()" class="logout-btn-minimal">LOGOUT</button>`;
         if(desktopContainer) desktopContainer.innerHTML = loggedInHTML;
         if(mobileContainer) mobileContainer.innerHTML = loggedInHTML;
     } else {
@@ -199,12 +195,7 @@ function updateAuthUI(user) {
 
 function startAuthObserver() {
     onAuthStateChanged(auth, (user) => {
-        const dBox = document.getElementById('user-display-desktop');
-        if (!dBox) {
-            setTimeout(() => updateAuthUI(user), 500);
-        } else {
-            updateAuthUI(user);
-        }
+        updateAuthUI(user);
     });
 }
 document.addEventListener('DOMContentLoaded', startAuthObserver);
