@@ -1,4 +1,4 @@
-/*1. AUTO-LOADER SYSTEM * Iska kaam hai script.js ko har page par apne aap link karna.*/
+/*1. AUTO-LOADER SYSTEM */
 (function() {
     const scriptPath = '/assets/js/script.js'; 
     if (!document.querySelector(`script[src="${scriptPath}"]`)) {
@@ -25,7 +25,7 @@ const CHAT_ID = '2032242977';
 
 console.log("🔱 Mahadev Handler: Fully Modular & Active.");
 
-/*3. NOTIFICATION TOKEN SYNC (FOR PWA/APK)*/
+/*3. NOTIFICATION TOKEN SYNC*/
 window.saveTokenToDatabase = async (token) => {
     try {
         const userEmail = localStorage.getItem("userEmail") || "guest";
@@ -37,9 +37,7 @@ window.saveTokenToDatabase = async (token) => {
             subscribedAt: serverTimestamp()
         });
         console.log("🔱 Token Synced with Firestore.");
-    } catch (err) {
-        console.error("🔱 Token Sync Error:", err);
-    }
+    } catch (err) { console.error("🔱 Token Sync Error:", err); }
 };
 
 /*4. APPOINTMENT SYSTEM (WITH TELEGRAM ALERT)*/
@@ -65,7 +63,6 @@ if (appointmentForm) {
                 timestamp: serverTimestamp()
             };
 
-            // Capture Date/Time Details based on service
             if (service === 'kundli_matching') {
                 subData.male_details = { 
                     name: document.getElementById('m-name').value, 
@@ -85,10 +82,10 @@ if (appointmentForm) {
                 subData.place = document.getElementById('single-place')?.value || "";
             }
 
-            // Save to Firestore
             await addDoc(collection(db, "appointments"), subData);
-// ✅ 1. Purana Notification block delete karke ye dalo:
-const tgMsg = `
+
+            // ✅ Naya Telegram Message Formatting
+            const tgMsg = `
 🔱 *NEW APPOINTMENT RECEIVED* 🔱
 --------------------------------
 👤 *Name:* ${name}
@@ -98,21 +95,16 @@ const tgMsg = `
 🔑 *UID Requested:* ${wantsUID ? "YES" : "NO"}
 📅 *Time:* ${new Date().toLocaleString('en-IN')}
 --------------------------------
-Check Firebase Console for full details.
-`;
+Check Firebase Console for full details.`;
 
-fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-        chat_id: CHAT_ID, 
-        text: tgMsg, 
-        parse_mode: 'Markdown' 
-    })
-});
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: CHAT_ID, text: tgMsg, parse_mode: 'Markdown' })
+            });
 
-alert("🔱 Pranaam! Aapki request Mahadev tak pahunch gayi hai.");
-// ... (reset code.target.reset);
+            alert("🔱 Pranaam! Aapki request Mahadev tak pahunch gayi hai.");
+            e.target.reset(); // ✅ Fixed here
             if(window.applyFormLogic) window.applyFormLogic();
         } catch (err) {
             console.error("🔱 Form Error:", err);
@@ -131,9 +123,7 @@ window.submitFeedback = async function() {
     const text = document.getElementById('user-feedback')?.value.trim();
     const rating = window.selectedRating || 0;
     const user = auth.currentUser;
-
     if (!text || rating === 0) return alert("🔱 Rating aur Experience dono zaruri hain!");
-
     try {
         await addDoc(collection(db, "feedbacks"), {
             text, rating: parseInt(rating), 
@@ -148,87 +138,58 @@ window.submitFeedback = async function() {
     } catch (e) { console.error("🔱 Feedback Error:", e); }
 };
 
-/*6. AUTHENTICATION (LOGIN/LOGOUT) UI & ENGINE*/
-// 1. Asali Login/Logout Functions
+/*6. AUTHENTICATION UI & ENGINE*/
 window.loginWithGoogle = () => signInWithPopup(auth, provider);
 window.logoutUser = () => signOut(auth).then(() => window.location.reload());
-// 2. Language Switcher (Global Function) - FIXED for Desktop & Mobile
+
 window.changeLang = (lang) => {
-    console.log("🔱 Language badli gayi:", lang);    
-    // Browser memory mein language save karo
     localStorage.setItem("userLang", lang);
-    // Desktop aur Mobile dono jagah ke buttons ek sath update karo
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll(`.lang-btn[data-lang="${lang}"]`).forEach(btn => btn.classList.add('active'));
-    // Agar tumhara pehle se koi translation function hai toh use trigger karo
-    if (typeof window.toggleLanguage === "function") {
-        window.toggleLanguage(); 
-    }
+    if (typeof window.toggleLanguage === "function") window.toggleLanguage(); 
 };
-// 3. UI Update Logic (Alag function mein taaki system fast rahe)
 function updateAuthUI(user) {
     const desktopContainer = document.getElementById('user-display-desktop');
     const mobileContainer = document.getElementById('user-display-mobile');
-
-    console.log("🔱 UI Update Chal Raha Hai... User Box Mila?", !!desktopContainer);
-    // Agar containers HTML mein nahi mile, toh ruk jao aur error dikhao
-    if (!desktopContainer && !mobileContainer) {
-        console.error("🔱 ERROR: 'user-display-desktop' ID wala div HTML mein nahi hai!");
+   if (!desktopContainer && !mobileContainer) {
+        setTimeout(() => updateAuthUI(user), 300); // Jab tak dabba na mile, pratiksha karega
         return;
     }
-    // Naya HTML (id hata kar data-lang lagaya hai taaki clash na ho)
     const langSwitcherHTML = `
         <div class="lang-switcher">
             <button onclick="window.changeLang('hi')" class="lang-btn" data-lang="hi">HI</button>
             <button onclick="window.changeLang('en')" class="lang-btn active" data-lang="en">EN</button>
-        </div>
-    `;
+        </div>`;
 
     if (user) {
-        // --- LOGGED IN ---
         localStorage.setItem("userEmail", user.email);
         const firstName = user.displayName ? user.displayName.split(' ')[0].toUpperCase() : 'DEVOTEE';       
-        // Profile photo with Sunehri (Gold) Border
         const photo = user.photoURL ? `<img src="${user.photoURL}" style="width:28px; height:28px; border-radius:50%; border: 1px solid var(--gold-main); object-fit:cover;">` : '';
-
         const loggedInHTML = `
             ${langSwitcherHTML}
             <div style="display:flex; align-items:center; gap:6px; margin-right:10px;">
                 ${photo}
                 <span class="user-welcome">PRANAM, ${firstName}</span>
             </div>
-            <button onclick="window.logoutUser()" class="logout-btn-minimal">LOGOUT</button>
-        `;
-        
+            <button onclick="window.logoutUser()" class="logout-btn-minimal">LOGOUT</button>`;
         if(desktopContainer) desktopContainer.innerHTML = loggedInHTML;
         if(mobileContainer) mobileContainer.innerHTML = loggedInHTML;
     } else {
-        // --- LOGGED OUT ---
         localStorage.removeItem("userEmail");
-        const loggedOutHTML = `
-            ${langSwitcherHTML}
-            <button onclick="window.loginWithGoogle()" class="auth-btn-divine">🔱 LOGIN</button>
-        `;
-        
+        const loggedOutHTML = `${langSwitcherHTML}<button onclick="window.loginWithGoogle()" class="auth-btn-divine">🔱 LOGIN</button>`;
         if(desktopContainer) desktopContainer.innerHTML = loggedOutHTML;
         if(mobileContainer) mobileContainer.innerHTML = loggedOutHTML;
     }
 }
-// 4. Safest Way: Auto-Retry System (Timing Fix)
+
 function startAuthObserver() {
     onAuthStateChanged(auth, (user) => {
-        console.log("🔱 Firebase Status:", user ? "User In" : "User Out");
-        
-        // Agar dabba nahi mila (Header load ho raha hai), toh 200ms baad fir koshish karo
         const dBox = document.getElementById('user-display-desktop');
         if (!dBox) {
-            console.log("🔱 Header abhi nahi aaya, retry kar raha hoon...");
-            setTimeout(() => updateAuthUI(user), 500); // 0.5 second ka wait
+            setTimeout(() => updateAuthUI(user), 500);
         } else {
             updateAuthUI(user);
         }
     });
 }
-
-// DomContentLoaded par koshish shuru karo
 document.addEventListener('DOMContentLoaded', startAuthObserver);
