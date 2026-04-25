@@ -87,17 +87,32 @@ if (appointmentForm) {
 
             // Save to Firestore
             await addDoc(collection(db, "appointments"), subData);
+// ✅ 1. Purana Notification block delete karke ye dalo:
+const tgMsg = `
+🔱 *NEW APPOINTMENT RECEIVED* 🔱
+--------------------------------
+👤 *Name:* ${name}
+✨ *Service:* ${service.toUpperCase()}
+📞 *Contact:* ${contactDetail}
+📡 *Method:* ${contactMethod}
+🔑 *UID Requested:* ${wantsUID ? "YES" : "NO"}
+📅 *Time:* ${new Date().toLocaleString('en-IN')}
+--------------------------------
+Check Firebase Console for full details.
+`;
 
-            // Send Telegram Notification
-            const tgMsg = `🔱 *New Appointment!*\n👤 *Name:* ${name}\n✨ *Service:* ${service.toUpperCase()}\n📞 *Contact:* ${contactDetail} (${contactMethod})\n🔑 *UID:* ${wantsUID ? "Yes" : "No"}`;
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: CHAT_ID, text: tgMsg, parse_mode: 'Markdown' })
-            });
+fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 
+        chat_id: CHAT_ID, 
+        text: tgMsg, 
+        parse_mode: 'Markdown' 
+    })
+});
 
-            alert("🔱 Pranaam! Aapki request Mahadev tak pahunch gayi hai.");
-            e.target.reset();
+alert("🔱 Pranaam! Aapki request Mahadev tak pahunch gayi hai.");
+// ... (reset code.target.reset);
             if(window.applyFormLogic) window.applyFormLogic();
         } catch (err) {
             console.error("🔱 Form Error:", err);
