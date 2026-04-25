@@ -520,3 +520,138 @@ body {
         z-index: 9999 !important; /* Kisi ke piche na chupe */
     }
 }
+/* =========================================
+   🔱 DIVINE FLOATING BOT CSS
+   ========================================= */
+#divine-bot-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+}
+
+#floating-bot-btn {
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, var(--dark-bg), #1a1a2e);
+    border: 2px solid var(--gold-main);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    transition: 0.3s;
+}
+
+#floating-bot-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+}
+
+.bot-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#divine-chat-window {
+    position: absolute;
+    bottom: 85px;
+    right: 0;
+    width: 320px;
+    height: 450px;
+    background: rgba(10, 10, 20, 0.95);
+    border: 1px solid var(--gold-main);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+#divine-chat-window.hidden {
+    display: none;
+}
+
+.chat-header {
+    background: linear-gradient(to right, #aa891c, #d4af37);
+    color: #000;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+}
+
+.close-chat {
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.chat-body {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bot-msg, .user-msg {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.bot-msg {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--gold-light);
+    border-left: 2px solid var(--gold-main);
+    align-self: flex-start;
+}
+
+.user-msg {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    align-self: flex-end;
+    border-right: 2px solid #fff;
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    background: #05050a;
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.chat-input-area button {
+    background: transparent;
+    border: none;
+    color: var(--gold-main);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    #divine-chat-window {
+        width: 300px;
+        right: -10px; /* Thoda adjust kiya screen ke hisaab se */
+    }
+}
