@@ -162,7 +162,7 @@ window.submitFeedback = async function() {
             rating: parseInt(rating), 
             timestamp: serverTimestamp(), 
             status: "pending",
-            userName: user ? user.displayName : "Mahadev Bhakt",
+           userName: (user && user.email === "mannumani108@gmail.com") ? "MAHADEV ASTROLOGER MA" : (user ? user.displayName : "Mahadev Bhakt"),
             userPhoto: user ? user.photoURL : "assets/images/default-avatar.png", // ✅ Tumhari file yahan use hogi
             userId: user ? user.uid : "guest"
         });
