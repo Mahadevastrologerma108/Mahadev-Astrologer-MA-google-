@@ -143,3 +143,37 @@
     });
 
 })();
+/* ==========================================
+   🔱 DIVINE BOT AUTO-INJECTOR 🔱
+   ========================================== */
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Check karo ki us page par bot pehle se toh nahi hai
+    if (document.getElementById("divine-bot-container")) return;
+
+    // 2. Bot ka poora HTML Design
+    const botHTML = `
+    <div id="divine-bot-container">
+        <div id="divine-chat-window" class="hidden">
+            <div class="chat-header">
+                <span class="chat-title">🔱 Mahadev Bot</span>
+                <span class="close-chat" onclick="toggleDivineBot()">✕</span>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="bot-msg">Pranaam! Main Mahadev Astrologer MA ka sahayak hoon. Kya main aapko Horoscope dikhaun ya aapka koi prashna hai?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Apna prashna likhein..." onkeypress="handleBotEnter(event)">
+                <button onclick="sendBotMessage()">➤</button>
+            </div>
+        </div>
+
+        <div id="floating-bot-btn" onclick="toggleDivineBot()">
+            <img src="https://res.cloudinary.com/dya3yxgch/image/upload/f_auto,q_auto,w_150/v1769705192/logo_bdmvwv.png" alt="Bot" class="bot-icon">
+        </div>
+    </div>
+    `;
+
+    // 3. Page ke aakhir mein (</body> se theek pehle) ise jod do
+    document.body.insertAdjacentHTML('beforeend', botHTML);
+    console.log("🔱 Divine Bot sabhi pages par active ho gaya hai!");
+});
