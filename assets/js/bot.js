@@ -1,3 +1,5 @@
+/* 🔱 MAHADEV BOT - MASTER NAVIGATION & AI ENGINE */
+
 window.processBotQuery = async function() {
     const questionInput = document.getElementById('userQuestion');
     const question = questionInput.value.toLowerCase().trim();
@@ -8,14 +10,12 @@ window.processBotQuery = async function() {
     responseArea.innerHTML = "🔱 Mahadev margdarshan kar rahe hain...";
     questionInput.value = "";
 
-    // --- 🔱 LEVEL 1: MASTER NAVIGATOR (Naya Smart Redirect) ---
-    
-    // Yahan humne wo saare keywords aur links dal diye hain
+    // --- 🔱 LEVEL 1: MASTER NAVIGATOR (Har page ki jankari yahan hai) ---
     const smartAction = getSmartRedirect(question);
 
     if (smartAction) {
         responseArea.innerHTML = `🔱 ${smartAction.msg}`;
-        // 1.5 second ka intezaar taaki user message padh le, phir redirect
+        // 1.5 second delay taaki user message padh sake
         setTimeout(() => { 
             window.location.href = smartAction.url; 
         }, 1500);
@@ -54,11 +54,11 @@ window.processBotQuery = async function() {
     }
 };
 
-// 🚩 YAHAN MASTER MAP WALA FUNCTION RAKHEIN
+/* 🚩 MASTER MAP: Isme har page ka keyword map kiya gaya hai */
 function getSmartRedirect(query) {
     query = query.toLowerCase();
 
-    // 🌟 1. 12 RASHI LOGIC
+    // 🌟 1. 12 RASHIYON KE PAGES
     if (/(mesh|aries)/.test(query)) return { url: "/horoscope/aries.html", msg: "♈ Mesh (Aries) rashi ka gyan load ho raha hai..." };
     if (/(vrishabha|taurus)/.test(query)) return { url: "/horoscope/taurus.html", msg: "♉ Vrishabha (Taurus) rashi ka gyan load ho raha hai..." };
     if (/(mithun|gemini)/.test(query)) return { url: "/horoscope/gemini.html", msg: "♊ Mithun (Gemini) rashi ka gyan load ho raha hai..." };
@@ -66,37 +66,38 @@ function getSmartRedirect(query) {
     if (/(simha|singh|leo)/.test(query)) return { url: "/horoscope/leo.html", msg: "♌ Simha (Leo) rashi ka gyan load ho raha hai..." };
     if (/(kanya|virgo)/.test(query)) return { url: "/horoscope/virgo.html", msg: "♍ Kanya (Virgo) rashi ka gyan load ho raha hai..." };
     if (/(tula|libra)/.test(query)) return { url: "/horoscope/libra.html", msg: "♎ Tula (Libra) rashi ka gyan load ho raha hai..." };
-    if (/(vrishchik|scorpio)/.test(query)) return { url: "/horoscope/scorpio.html", msg: "Scorpio rashi ka gyan load ho raha hai..." };
+    if (/(vrishchik|scorpio)/.test(query)) return { url: "/horoscope/scorpio.html", msg: "♏ Scorpio rashi ka gyan load ho raha hai..." };
     if (/(dhanu|sagittarius)/.test(query)) return { url: "/horoscope/sagittarius.html", msg: "♐ Dhanu rashi ka gyan load ho raha hai..." };
     if (/(makar|capricorn)/.test(query)) return { url: "/horoscope/capricorn.html", msg: "♑ Makar rashi ka gyan load ho raha hai..." };
     if (/(kumbh|aquarius)/.test(query)) return { url: "/horoscope/aquarius.html", msg: "♒ Kumbh rashi ka gyan load ho raha hai..." };
     if (/(meen|pisces)/.test(query)) return { url: "/horoscope/pisces.html", msg: "♓ Meen rashi ka gyan load ho raha hai..." };
 
-    // 🔮 2. HOROSCOPE & PANCHANG
-    if (/(panchang|calendar|tithi|chaughadia|muhurat|rahukal)/.test(query)) return { url: "/panchang/panchang.html", msg: "🌞 Aaj ka Panchang aur Shubh Muhurat dekhein." };
+    // 🔮 2. HOROSCOPE & PANCHANG (Calendar logic yahan hai)
+    if (/(panchang|calendar|tithi|chaughadia|muhurat|rahukal|din)/.test(query)) return { url: "/panchang/panchang.html", msg: "🌞 Aaj ka Panchang aur Shubh Muhurat dekhein." };
     if (/(rashifal|horoscope|rashi|zodiac)/.test(query)) return { url: "/horoscope/horoscope.html", msg: "🔮 Sabhi rashiyon ka aaj ka rashifal dekhein." };
 
     // 📜 3. FORMS & CONSULTATION
-    if (/(book|appointment|form|baat karni|dikha)/.test(query)) return { url: "/index.html#book", msg: "📜 Paramarsh (Consultation) ke liye ye form bharein." };
+    if (/(book|appointment|form|baat karni|dikha|paramarsh)/.test(query)) return { url: "/index.html#book", msg: "📜 Paramarsh (Consultation) ke liye ye form bharein." };
 
     // 💎 4. STORE & PRODUCTS
-    if (/(gem|gemstone|ratna|stone|pukhraj)/.test(query)) return { url: "/products/gemstones.html", msg: "💎 Asli aur abhimantrit Ratna dekhein." };
+    if (/(gem|gemstone|ratna|stone|pukhraj|neelam|moti)/.test(query)) return { url: "/products/gemstones.html", msg: "💎 Asli aur abhimantrit Ratna dekhein." };
     if (/(rudraksh|mala)/.test(query)) return { url: "/products/rudraksha.html", msg: "📿 Siddha Rudraksha yahan uplabdh hain." };
-    if (/(store|shop|buy|kharid)/.test(query)) return { url: "/products/shop.html", msg: "🛍️ Divine Astro Store mein aapka swagat hai." };
+    if (/(herb|jadi booti|wellness)/.test(query)) return { url: "/products/herbal-wellness.html", msg: "🌿 Vedic Herbs aur Wellness products." };
+    if (/(puja|kit|samagri)/.test(query)) return { url: "/products/puja-kits.html", msg: "🪔 Shuddh Puja Kits aur Samagri." };
+    if (/(store|shop|buy|kharid|dukan)/.test(query)) return { url: "/products/shop.html", msg: "🛍️ Divine Astro Store mein aapka swagat hai." };
 
-    // 📚 5. GUIDES & MODULES
+    // 📚 5. GUIDES & TOOLS
     if (/(water|pani|jal|hydration)/.test(query)) return { url: "/latest-guide/ayurvedic-health-water-calculator.html", msg: "💧 Ayurvedic Water Calculator." };
-    if (/(sound|healing|music|vibration)/.test(query)) return { url: "/masterstroke-module/sound-healing.html", msg: "🎵 Sound Healing ki duniya mein chaliye." };
+    if (/(sound|healing|music|vibration|frequency)/.test(query)) return { url: "/masterstroke-module/sound-healing.html", msg: "🎵 Sound Healing ki duniya mein chaliye." };
     if (/(numerology|ank jyotish|lucky number)/.test(query)) return { url: "/latest-guide/numerology.html", msg: "🔢 Numerology ka rahasya samjhein." };
-    if (/(guide|article|post|lekh|blog|latest)/.test(query)) return { url: "/latest-guide/guides.html", msg: "📚 Hamare navinatam lekh yahan padhein." };
+    if (/(grih dosh|upay|shanti)/.test(query)) return { url: "/latest-guide/grih-dosh.html", msg: "🪐 Grih Dosh aur unke upay." };
+    if (/(guide|article|post|lekh|blog)/.test(query)) return { url: "/latest-guide/guides.html", msg: "📚 Hamare navinatam lekh padhein." };
+    if (/(tool|calculator|yantra)/.test(query)) return { url: "/tools/tools.html", msg: "⚙️ Sabhi Astrological Tools yahan hain." };
 
-    // ℹ️ 6. LEGAL & ABOUT PAGES (Ise zaroor rakhein)
-    if (/(about|bare me|who are|parichay|kaun ho)/.test(query)) return { url: "/pages/about.html", msg: "🔱 Mahadev Astrologer MA ke bare mein yahan jaaniye." };
-    if (/(contact|sampark|phone|whatsapp|email|call|madad|help)/.test(query)) return { url: "/pages/contact.html", msg: "📞 Humse sampark karne ki sabhi jankari yahan hai." };
-    if (/(privacy)/.test(query)) return { url: "/pages/privacy.html", msg: "🔒 Hamari Privacy Policy padhein." };
-    if (/(term|condition|niyam|shartein)/.test(query)) return { url: "/pages/terms.html", msg: "📝 Terms and Conditions yahan uplabdh hain." };
-    if (/(disclaimer)/.test(query)) return { url: "/pages/disclaimer.html", msg: "⚠️ Hamara Disclaimer dhyan se padhein." };
-    if (/(home|main|wapas|shuru|start|piche)/.test(query)) return { url: "/index.html", msg: "🏠 Mukhya prishth (Home) par chalte hain." };
+    // ℹ️ 6. LEGAL & ABOUT
+    if (/(about|bare me|kaun ho|parichay)/.test(query)) return { url: "/pages/about.html", msg: "🔱 Mahadev Astrologer MA ke bare mein jaaniye." };
+    if (/(contact|sampark|phone|whatsapp|email|help|madad)/.test(query)) return { url: "/pages/contact.html", msg: "📞 Humse sampark karne ki jankari yahan hai." };
+    if (/(home|main|wapas|shuru)/.test(query)) return { url: "/index.html", msg: "🏠 Mukhya prishth (Home) par chalte hain." };
 
     return null; 
 }
