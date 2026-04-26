@@ -445,21 +445,26 @@
         <img src="https://res.cloudinary.com/dya3yxgch/image/upload/f_auto,q_auto,w_150/v1769705192/logo_bdmvwv.png" alt="Bot" class="bot-icon">
     </div>
 </div>
-    <script>
-// Stars ko click aur sunehra karne ka logic
+   <script>
 document.addEventListener('DOMContentLoaded', () => {
     const stars = document.querySelectorAll('.star');
-    
+    window.selectedRating = 0; // Shuruat mein zero taaki warning kaam kare
+
     stars.forEach(star => {
         star.addEventListener('click', function() {
-            // Rating save karo
-            let value = this.getAttribute('data-value');
-            window.selectedRating = parseInt(value); 
-            
-            // Stars ko Gold karo
-            stars.forEach(s => s.style.color = '#888'); 
+            let value = parseInt(this.getAttribute('data-value'));
+            window.selectedRating = value;
+
+            // Sabko pehle khali aur grey karo
+            stars.forEach(s => {
+                s.style.color = '#888';
+                s.innerText = '☆'; 
+            });
+
+            // Jitne select kiye unko filled aur gold karo
             for(let i = 0; i < value; i++) {
-                stars[i].style.color = '#d4af37'; 
+                stars[i].style.color = '#f5c542'; 
+                stars[i].innerText = '★'; 
             }
         });
     });
