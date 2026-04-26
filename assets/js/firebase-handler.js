@@ -1,6 +1,8 @@
 /* 🔱 MAHADEV HANDLER - MASTER VERSION (SECURE & MODULAR) */
 
-/* 1. AUTO-LOADER SYSTEM */
+/* ==========================================
+   1. AUTO-LOADER SYSTEM
+   ========================================== */
 (function() {
     const scriptPath = '/assets/js/script.js'; 
     if (!document.querySelector(`script[src="${scriptPath}"]`)) {
@@ -12,12 +14,13 @@
     }
 })();
 
-/* 2. CORE FIREBASE IMPORT */
+/* ==========================================
+   2. CORE FIREBASE IMPORT & SECURITY KEYS
+   ========================================== */
 import { 
     db, auth, provider, remoteConfig, fetchAndActivate, getString 
 } from './firebase-config.js'; 
 
-// 👇 BAAKI SAB SAME HAI, BAS IS BRACKET MEIN 5 NAYE SHABD JODE HAIN
 import { 
     collection, addDoc, doc, setDoc, serverTimestamp, getDocs, query, orderBy, limit, where 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -31,7 +34,6 @@ let cachedKeys = { hf: null, tg: null, cid: null };
 
 /**
  * 🔐 SECURE KEY FETCH ENGINE
- * Remote Config se keys lene ke liye
  */
 async function getSecureKeys() {
     if (cachedKeys.hf && cachedKeys.tg) return cachedKeys;
@@ -49,7 +51,9 @@ async function getSecureKeys() {
 
 console.log("🔱 Mahadev Handler: Fully Modular & Active.");
 
-/* 3. NOTIFICATION TOKEN SYNC */
+/* ==========================================
+   3. NOTIFICATION TOKEN SYNC
+   ========================================== */
 window.saveTokenToDatabase = async (token) => {
     try {
         const userEmail = localStorage.getItem("userEmail") || "guest";
@@ -61,10 +65,14 @@ window.saveTokenToDatabase = async (token) => {
             subscribedAt: serverTimestamp()
         });
         console.log("🔱 Token Synced with Firestore.");
-    } catch (err) { console.error("🔱 Token Sync Error:", err); }
+    } catch (err) { 
+        console.error("🔱 Token Sync Error:", err); 
+    }
 };
 
-/* 4. APPOINTMENT SYSTEM (SECURE TELEGRAM ALERT) */
+/* ==========================================
+   4. APPOINTMENT SYSTEM (TELEGRAM ALERT)
+   ========================================== */
 const appointmentForm = document.getElementById('consultation-form');
 if (appointmentForm) {
     appointmentForm.addEventListener('submit', async (e) => {
@@ -138,7 +146,9 @@ if (appointmentForm) {
     });
 }
 
-/* 5. FEEDBACK & RATING SYSTEM */
+/* ==========================================
+   5. FEEDBACK & RATING SYSTEM
+   ========================================== */
 
 // A. Feedback Bhejne ka Engine (With Star Warning)
 window.submitFeedback = async function() {
@@ -146,7 +156,7 @@ window.submitFeedback = async function() {
     const rating = window.selectedRating || 0;
     const user = auth.currentUser;
 
-    // 🚩 Star Warning: Bina star ke aage nahi badhne dega
+    // 🚩 Star Warning
     if (rating === 0) {
         alert("🔱 Pranaam! Kripya submit karne se pehle Star (⭐) dekar rating chunein.");
         return;
@@ -162,8 +172,9 @@ window.submitFeedback = async function() {
             rating: parseInt(rating), 
             timestamp: serverTimestamp(), 
             status: "pending",
-           userName: (user && user.email === "mannumani108@gmail.com") ? "MAHADEV ASTROLOGER MA" : (user ? user.displayName : "Mahadev Bhakt"),
-            userPhoto: user ? user.photoURL : "assets/images/default-avatar.png", // ✅ Tumhari file yahan use hogi
+            // 🚩 ADMIN CHECK FOR FEEDBACK
+            userName: (user && user.email === "mannumani108@gmail.com") ? "MAHADEV ASTROLOGER MA" : (user ? user.displayName : "Mahadev Bhakt"),
+            userPhoto: user ? user.photoURL : "assets/images/default-avatar.png",
             userId: user ? user.uid : "guest"
         });
 
@@ -225,7 +236,10 @@ window.loadTestimonials = async function() {
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof loadTestimonials === 'function') loadTestimonials();
 });
-/* 6. AUTHENTICATION UI & ENGINE */
+
+/* ==========================================
+   6. AUTHENTICATION UI & ENGINE
+   ========================================== */
 window.loginWithGoogle = () => signInWithPopup(auth, provider);
 window.logoutUser = () => signOut(auth).then(() => window.location.reload());
 
@@ -239,20 +253,38 @@ window.changeLang = (lang) => {
 function updateAuthUI(user) {
     const desktopContainer = document.getElementById('user-display-desktop');
     const mobileContainer = document.getElementById('user-display-mobile');
+    
     if (!desktopContainer && !mobileContainer) {
         setTimeout(() => updateAuthUI(user), 300);
         return;
     }
+    
+    const currentLang = localStorage.getItem('selectedLang') || 'en';
     const langSwitcherHTML = `<div class="lang-switcher">
-        <button onclick="window.changeLang('hi')" class="lang-btn" data-lang="hi">HI</button>
-        <button onclick="window.changeLang('en')" class="lang-btn active" data-lang="en">EN</button>
+        <button onclick="window.changeLang('hi')" class="lang-btn ${currentLang === 'hi' ? 'active' : ''}" data-lang="hi">HI</button>
+        <button onclick="window.changeLang('en')" class="lang-btn ${currentLang === 'en' ? 'active' : ''}" data-lang="en">EN</button>
     </div>`;
 
     if (user) {
         localStorage.setItem("userEmail", user.email);
-        const firstName = user.displayName ? user.displayName.split(' ')[0].toUpperCase() : 'DEVOTEE';       
+        
+        // 🚩 ADMIN CHECK LOGIC FOR UI
+        const isAdmin = user.email === "mannumani108@gmail.com";
+        const displayDisplayName = isAdmin 
+            ? "MAHADEV ASTROLOGER MA" 
+            : (user.displayName ? user.displayName.split(' ')[0].toUpperCase() : 'DEVOTEE');
+            
         const photo = user.photoURL ? `<img src="${user.photoURL}" style="width:28px; height:28px; border-radius:50%; border: 1px solid var(--gold-main); object-fit:cover;">` : '';
-        const loggedInHTML = `${langSwitcherHTML}<div style="display:flex; align-items:center; gap:6px; margin-right:10px;">${photo}<span class="user-welcome">PRANAM, ${firstName}</span></div><button onclick="window.logoutUser()" class="logout-btn-minimal">LOGOUT</button>`;
+        
+        const loggedInHTML = `
+            ${langSwitcherHTML}
+            <div style="display:flex; align-items:center; gap:6px; margin-right:10px;">
+                ${photo}
+                <span class="user-welcome">PRANAM, ${displayDisplayName}</span>
+            </div>
+            <button onclick="window.logoutUser()" class="logout-btn-minimal">LOGOUT</button>
+        `;
+        
         if(desktopContainer) desktopContainer.innerHTML = loggedInHTML;
         if(mobileContainer) mobileContainer.innerHTML = loggedInHTML;
     } else {
