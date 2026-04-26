@@ -140,32 +140,53 @@ if (appointmentForm) {
 
 /* 5. FEEDBACK & RATING SYSTEM */
 
-// 1. Naya feedback Firebase bhejne ke liye
+// A. Feedback Bhejne ka Engine (With Star Warning)
 window.submitFeedback = async function() {
     const text = document.getElementById('user-feedback')?.value.trim();
     const rating = window.selectedRating || 0;
     const user = auth.currentUser;
-    
-    if (!text || rating === 0) return alert("🔱 Rating (Stars) aur Experience dono zaruri hain!");
-    
+
+    // 🚩 Star Warning: Bina star ke aage nahi badhne dega
+    if (rating === 0) {
+        alert("🔱 Pranaam! Kripya submit karne se pehle Star (⭐) dekar rating chunein.");
+        return;
+    }
+    if (!text) {
+        alert("🔱 Kripya apna anubhav (feedback) box mein likhein.");
+        return;
+    }
+
     try {
         await addDoc(collection(db, "feedbacks"), {
-            text, rating: parseInt(rating), 
+            text, 
+            rating: parseInt(rating), 
             timestamp: serverTimestamp(), 
             status: "pending",
             userName: user ? user.displayName : "Mahadev Bhakt",
-            userPhoto: user ? user.photoURL : "/assets/images/default-avatar.png",
+            userPhoto: user ? user.photoURL : "assets/images/default-avatar.png", // ✅ Tumhari file yahan use hogi
             userId: user ? user.uid : "guest"
         });
-        alert("🔱 Dhanyawad! Review ke baad aapka feedback dikhega.");
+
+        alert("🔱 Dhanyawad! Aapka feedback safaltapurvak bhej diya gaya hai. Approve hone ke baad yeh site par dikhega.");
+        
+        // Form Reset
         document.getElementById('user-feedback').value = "";
-    } catch (e) { console.error("🔱 Feedback Error:", e); }
+        window.selectedRating = 0;
+        document.querySelectorAll('.star').forEach(s => { 
+            s.style.color = '#888'; 
+            s.innerText = '☆'; 
+        });
+
+    } catch (e) { 
+        console.error("🔱 Feedback Error:", e);
+        alert("Kshama karein, network error aaya.");
+    }
 };
 
-// 2. Approved feedback ko wapas website par dikhane ke liye
+// B. Approved Feedback Load karne ka Engine
 window.loadTestimonials = async function() {
     const testimonialContainer = document.getElementById('display-feedbacks'); 
-    if (!testimonialContainer) return; 
+    if (!testimonialContainer) return;
 
     try {
         const q = query(
@@ -181,37 +202,28 @@ window.loadTestimonials = async function() {
         querySnapshot.forEach((doc) => {
             const data = doc.data();
             const stars = "⭐".repeat(data.rating || 5); 
-            
             html += `
-            <div class="testimonial-card" style="background: var(--card-bg); padding: 20px; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: 20px; backdrop-filter: blur(10px); text-align: left;">
+            <div class="testimonial-card" style="background: var(--card-bg, rgba(255,255,255,0.03)); padding: 20px; border-radius: 15px; border: 1px solid var(--gold); margin-bottom: 20px; text-align: left;">
                 <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
-                    <img src="${data.userPhoto || '/assets/images/default-avatar.png'}" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--gold-main); object-fit: cover;">
+                    <img src="${data.userPhoto}" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover;">
                     <div>
-                        <h4 style="color: var(--gold-main); margin: 0; font-family: 'Cinzel', serif;">${data.userName || 'Mahadev Bhakt'}</h4>
-                        <div style="font-size: 0.85rem; margin-top: 3px;">${stars}</div>
+                        <h4 style="color: var(--gold); margin: 0; font-family: 'Cinzel', serif;">${data.userName}</h4>
+                        <div style="font-size: 0.85rem;">${stars}</div>
                     </div>
                 </div>
-                <p style="color: #fff; font-size: 0.95rem; font-style: italic; line-height: 1.5;">"${data.text}"</p>
-            </div>
-            `;
+                <p style="color: #fff; font-size: 0.95rem; font-style: italic;">"${data.text}"</p>
+            </div>`;
         });
 
-        if (html === "") {
-            testimonialContainer.innerHTML = "<p style='text-align:center; color:#888;'>Abhi reviews load ho rahe hain ya koi naya review nahi hai.</p>";
-        } else {
-            testimonialContainer.innerHTML = html;
-        }
-
+        testimonialContainer.innerHTML = html || "<p style='color:#888; text-align:center;'>Pehle anubhav likhne wale bhakt banein!</p>";
     } catch (error) {
         console.error("🔱 Testimonial Fetch Error:", error);
     }
 };
 
-// 3. Page load hote hi apne aap feedback khinchne ke liye
+// C. Auto-start Loading
 document.addEventListener('DOMContentLoaded', () => {
-    if (typeof loadTestimonials === 'function') {
-        loadTestimonials();
-    }
+    if (typeof loadTestimonials === 'function') loadTestimonials();
 });
 /* 6. AUTHENTICATION UI & ENGINE */
 window.loginWithGoogle = () => signInWithPopup(auth, provider);
