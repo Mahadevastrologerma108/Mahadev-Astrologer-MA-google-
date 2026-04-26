@@ -1,4 +1,4 @@
-/* 🔱 MAHADEV HANDLER - MASTER VERSION (SECURE & MODULAR) */
+/* 🔱 MAHADEV HANDLER - MASTER VERSION (SECURE, MODULAR & ADMIN READY) */
 
 /* ==========================================
    1. AUTO-LOADER SYSTEM
@@ -21,8 +21,9 @@ import {
     db, auth, provider, remoteConfig, fetchAndActivate, getString 
 } from './firebase-config.js'; 
 
+// 🚩 Yahan maine 'updateDoc' jod diya hai jo reply save karne ke kaam aayega
 import { 
-    collection, addDoc, doc, setDoc, serverTimestamp, getDocs, query, orderBy, limit, where 
+    collection, addDoc, doc, setDoc, updateDoc, serverTimestamp, getDocs, query, orderBy, limit, where 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 import { 
@@ -83,7 +84,6 @@ if (appointmentForm) {
         btn.disabled = true;
 
         try {
-            // 🔒 Fetch Secure Keys First
             const keys = await getSecureKeys();
 
             const service = document.getElementById('service-select').value;
@@ -98,7 +98,6 @@ if (appointmentForm) {
                 timestamp: serverTimestamp()
             };
 
-            // Details for Kundli Matching or Single
             if (service === 'kundli_matching') {
                 subData.male_details = { 
                     name: document.getElementById('m-name').value, 
@@ -118,10 +117,8 @@ if (appointmentForm) {
                 subData.place = document.getElementById('single-place')?.value || "";
             }
 
-            // Save to Firestore
             await addDoc(collection(db, "appointments"), subData);
 
-            // 🔱 Telegram Notification Logic
             if (keys && keys.tg && keys.cid) {
                 const tgMsg = `🔱 <b>NEW APPOINTMENT</b> 🔱\n👤 <b>Name:</b> ${name}\n✨ <b>Service:</b> ${service.toUpperCase()}\n📞 <b>Contact:</b> ${contactDetail}\n📡 <b>Method:</b> ${contactMethod}\n🔑 <b>UID:</b> ${wantsUID ? "YES" : "NO"}\n📅 <b>Time:</b> ${new Date().toLocaleString()}`.trim();
                 
@@ -138,7 +135,7 @@ if (appointmentForm) {
         
         } catch (err) {
             console.error("🔱 Form Error:", err);
-            alert("Kshama karein, network error aaya.");
+            alert("Network error aaya hai, kripya puna prayas karein.");
         } finally {
             btn.innerText = originalText;
             btn.disabled = false;
@@ -147,16 +144,15 @@ if (appointmentForm) {
 }
 
 /* ==========================================
-   5. FEEDBACK & RATING SYSTEM
+   5. FEEDBACK, RATING & ADMIN REPLY SYSTEM
    ========================================== */
 
-// A. Feedback Bhejne ka Engine (With Star Warning)
+// A. Feedback Bhejne ka Engine
 window.submitFeedback = async function() {
     const text = document.getElementById('user-feedback')?.value.trim();
     const rating = window.selectedRating || 0;
     const user = auth.currentUser;
 
-    // 🚩 Star Warning
     if (rating === 0) {
         alert("🔱 Pranaam! Kripya submit karne se pehle Star (⭐) dekar rating chunein.");
         return;
@@ -172,7 +168,6 @@ window.submitFeedback = async function() {
             rating: parseInt(rating), 
             timestamp: serverTimestamp(), 
             status: "pending",
-            // 🚩 ADMIN CHECK FOR FEEDBACK
             userName: (user && user.email === "mannumani108@gmail.com") ? "MAHADEV ASTROLOGER MA" : (user ? user.displayName : "Mahadev Bhakt"),
             userPhoto: user ? user.photoURL : "assets/images/default-avatar.png",
             userId: user ? user.uid : "guest"
@@ -180,7 +175,6 @@ window.submitFeedback = async function() {
 
         alert("🔱 Dhanyawad! Aapka feedback safaltapurvak bhej diya gaya hai. Approve hone ke baad yeh site par dikhega.");
         
-        // Form Reset
         document.getElementById('user-feedback').value = "";
         window.selectedRating = 0;
         document.querySelectorAll('.star').forEach(s => { 
@@ -190,14 +184,18 @@ window.submitFeedback = async function() {
 
     } catch (e) { 
         console.error("🔱 Feedback Error:", e);
-        alert("Kshama karein, network error aaya.");
+        alert("Network error aaya hai.");
     }
 };
 
-// B. Approved Feedback Load karne ka Engine
+// B. Feedback Load aur Admin Reply Dikhane ka Engine
 window.loadTestimonials = async function() {
     const testimonialContainer = document.getElementById('display-feedbacks'); 
     if (!testimonialContainer) return;
+
+    // 🚩 CHECK: Kya aap login hain?
+    const user = auth.currentUser;
+    const isAdmin = user && user.email === "mannumani108@gmail.com";
 
     try {
         const q = query(
@@ -210,9 +208,29 @@ window.loadTestimonials = async function() {
         const querySnapshot = await getDocs(q);
         let html = "";
 
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
+        querySnapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+            const feedbackId = docSnap.id; // Is ID se hum reply link karenge
             const stars = "⭐".repeat(data.rating || 5); 
+
+            // 1. Agar Admin ne reply diya hai toh ye dikhega (Sabko dikhega)
+            const officialReplyHTML = data.adminReply ? `
+                <div style="margin-top: 15px; padding: 12px; border-left: 3px solid var(--gold); background: rgba(245, 197, 66, 0.05); border-radius: 5px;">
+                    <strong style="color: var(--gold); font-size: 0.85rem; font-family: 'Cinzel', serif;">🔱 MAHADEV ASTROLOGER MA:</strong>
+                    <p style="margin: 5px 0 0; color: #ddd; font-size: 0.9rem; font-style: normal;">${data.adminReply}</p>
+                </div>
+            ` : "";
+
+            // 2. Reply Likhne ka Dabba (Kewal Admin ko dikhega)
+            const adminReplyTools = isAdmin ? `
+                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #444;">
+                    <textarea id="reply-input-${feedbackId}" placeholder="Bhakt ko uttar dein..." style="width: 100%; background: #000; color: #fff; border: 1px solid var(--gold); border-radius: 5px; padding: 8px; font-size: 0.85rem; font-family: inherit;">${data.adminReply || ''}</textarea>
+                    <button onclick="window.submitAdminReply('${feedbackId}')" style="background: var(--gold); color: #000; border: none; padding: 6px 12px; font-size: 0.75rem; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 8px;">
+                        ${data.adminReply ? 'UPDATE REPLY' : 'SEND REPLY'}
+                    </button>
+                </div>
+            ` : "";
+
             html += `
             <div class="testimonial-card" style="background: var(--card-bg, rgba(255,255,255,0.03)); padding: 20px; border-radius: 15px; border: 1px solid var(--gold); margin-bottom: 20px; text-align: left;">
                 <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
@@ -223,6 +241,8 @@ window.loadTestimonials = async function() {
                     </div>
                 </div>
                 <p style="color: #fff; font-size: 0.95rem; font-style: italic;">"${data.text}"</p>
+                ${officialReplyHTML}
+                ${adminReplyTools}
             </div>`;
         });
 
@@ -232,7 +252,30 @@ window.loadTestimonials = async function() {
     }
 };
 
-// C. Auto-start Loading
+// C. Admin Reply Firebase Bhejne ka Engine
+window.submitAdminReply = async function(feedbackId) {
+    const replyText = document.getElementById(`reply-input-${feedbackId}`).value.trim();
+    
+    if (!replyText) {
+        alert("🔱 Kripya uttar (reply) box mein kuch likhein.");
+        return;
+    }
+
+    try {
+        const docRef = doc(db, "feedbacks", feedbackId);
+        await updateDoc(docRef, {
+            adminReply: replyText,
+            repliedAt: serverTimestamp()
+        });
+
+        alert("🔱 Aapka uttar safaltapurvak site par jod diya gaya hai!");
+        window.loadTestimonials(); // Page bina reload kiye naya data dikhayega
+    } catch (e) {
+        console.error("🔱 Admin Reply Error:", e);
+        alert("Network error aaya hai.");
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof loadTestimonials === 'function') loadTestimonials();
 });
@@ -287,6 +330,11 @@ function updateAuthUI(user) {
         
         if(desktopContainer) desktopContainer.innerHTML = loggedInHTML;
         if(mobileContainer) mobileContainer.innerHTML = loggedInHTML;
+        
+        // 🚩 Admin hone par reviews dobara load karo taaki reply dabba dikh jaye
+        if (isAdmin && typeof window.loadTestimonials === 'function') {
+             window.loadTestimonials();
+        }
     } else {
         localStorage.removeItem("userEmail");
         const loggedOutHTML = `${langSwitcherHTML}<button onclick="window.loginWithGoogle()" class="auth-btn-divine">🔱 LOGIN</button>`;
