@@ -51,28 +51,33 @@ window.applyFormLogic = function() {
     }
 };
 
-// 3. PWA Install Button Logic
-let deferredPrompt;
+// ======================================================
+// 3. PWA Install Button Logic (Error Fixed)
+// ======================================================
+// 🚩 NOTE: deferredPrompt ek hi baar declare hona chahiye
+let deferredPromptInstall = null; 
 const installContainer = document.getElementById('install-container');
 const installBtn = document.getElementById('btn-install');
 
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
-    deferredPrompt = e;
+    deferredPromptInstall = e;
     if (installContainer) installContainer.style.display = 'block';
 });
 
 if (installBtn) {
     installBtn.addEventListener('click', async () => {
-        if (!deferredPrompt) return;
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        deferredPrompt = null;
+        if (!deferredPromptInstall) return;
+        deferredPromptInstall.prompt();
+        const { outcome } = await deferredPromptInstall.userChoice;
+        deferredPromptInstall = null;
         if (installContainer) installContainer.style.display = 'none';
     });
 }
 
+// ======================================================
 // 4. Notification Subscription Logic
+// ======================================================
 async function subscribeForPanchang() {
     if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
@@ -98,98 +103,48 @@ window.addEventListener('appinstalled', () => {
     setTimeout(subscribeForPanchang, 3000);
 });
 
-// Bot Window Open/Close
+// ======================================================
+// 5. Bot Window Toggle Logic
+// ======================================================
 window.toggleDivineBot = function() {
     const chatWindow = document.getElementById('divine-chat-window');
-    chatWindow.classList.toggle('hidden');
+    if (chatWindow) {
+        chatWindow.classList.toggle('hidden');
+    }
 };
 
 // Enter dabane par message send karna
 window.handleBotEnter = function(e) {
     if (e.key === 'Enter') {
-        sendBotMessage();
-    }
-};
-
-// Main Logic Function
-window.sendBotMessage = async function() {
-    const inputField = document.getElementById('chat-input');
-    const message = inputField.value.trim();
-    if (!message) return;
-
-    // 1. User ka message screen par dikhao
-    addChatMessage(message, 'user-msg');
-    inputField.value = '';
-
-    const lowerMsg = message.toLowerCase();
-    const chatBody = document.getElementById('chat-body');
-
-    // --- 🔱 LOGIC 1: SMART ROUTING (Website Pages) ---
-    if (lowerMsg.includes('horoscope') || lowerMsg.includes('rashifal')) {
-        addChatMessage("Bilkul! Main aapko Horoscope page par le jaa raha hoon...", 'bot-msg');
-        setTimeout(() => {
-            window.location.href = '/horoscope/horoscope.html';
-        }, 1500);
-        return;
-    } 
-    else if (lowerMsg.includes('panchang')) {
-        addChatMessage("Pratiksha karein, Panchang page khul raha hai...", 'bot-msg');
-        setTimeout(() => {
-            window.location.href = '/panchang/panchang.html';
-        }, 1500);
-        return;
-    }
-    else if (lowerMsg.includes('book') || lowerMsg.includes('appointment')) {
-        addChatMessage("Aap hamare Home page se Appointment book kar sakte hain. Wahan le jaa raha hoon...", 'bot-msg');
-        setTimeout(() => {
-            window.location.href = '/index.html#book';
-        }, 1500);
-        return;
-    }
-
-    // --- 🔱 LOGIC 2: HUGGING FACE API (Aapka Feed Kiya Hua Data) ---
-    // Agar simple navigation nahi hai, to Hugging Face se pucho
-    addChatMessage("Gyan kosh se jankari nikal raha hoon...", 'bot-msg');
-
-    try {
-        // 🔥 YAHAN APNA HUGGING FACE MODEL URL AUR TOKEN DALEIN
-        const HF_API_URL = "https://api-inference.huggingface.co/models/AAPKA_MODEL_NAME";
-        const HF_TOKEN = "Bearer hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
-
-        const response = await fetch(HF_API_URL, {
-            method: "POST",
-            headers: {
-                "Authorization": HF_TOKEN,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ inputs: message })
-        });
-
-        const result = await response.json();
-
-        // Hugging Face ke result ko chat mein dikhana
-        // Note: Aapke model ke hisaab se result ka format alag ho sakta hai (e.g., result[0].generated_text)
-        if (result && result[0] && result[0].generated_text) {
-            let aiText = result[0].generated_text.replace(message, '').trim(); // User ka prashna dobara na aaye
-            addChatMessage(aiText, 'bot-msg');
-        } else {
-            addChatMessage("Kshama karein, is samay main iska uttar nahi de paa raha hoon. Kripya Guruji se sampark karein.", 'bot-msg');
+        // Yeh 'sendBotMessage' function ab tumhare naye 'bot.js' se ayega
+        if(typeof window.processBotQuery === 'function'){
+            window.processBotQuery();
+        } else if (typeof window.sendBotMessage === 'function') {
+            window.sendBotMessage();
         }
-
-    } catch (error) {
-        console.error("Hugging Face Error:", error);
-        addChatMessage("Network mein kuch kathinai hai. Kripya thodi der baad prayas karein.", 'bot-msg');
     }
 };
 
-// Message add karne ka helper function
-function addChatMessage(text, className) {
-    const chatBody = document.getElementById('chat-body');
+// Helper function: Message add karne ke liye
+window.addChatMessage = function(text, className) {
+    const chatBody = document.getElementById('chat-body') || document.getElementById('chatResponse');
+    if(!chatBody) return;
+
     const msgDiv = document.createElement('div');
     msgDiv.className = className;
-    msgDiv.innerText = text;
+    
+    // Agar AI message hai (bold text ke sath)
+    if(text.includes('<b>')) {
+        msgDiv.innerHTML = text;
+    } else {
+        msgDiv.innerText = text;
+    }
+    
     chatBody.appendChild(msgDiv);
     
     // Auto-scroll to bottom
     chatBody.scrollTop = chatBody.scrollHeight;
-}
+};
+
+// 🚩 NOTE: Purana 'sendBotMessage' aur Hugging Face ka nakli logic yahan se hata diya gaya hai.
+// Ab saara AI aur Navigation kaam tumhare naye PRO 'bot.js' se hoga.
