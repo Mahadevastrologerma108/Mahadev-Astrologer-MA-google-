@@ -5,7 +5,7 @@
 
 const BotConfig = {
     // 🚩 Aapka naya Cloudflare Middle-man URL
-    modelUrl: "https://mahadev-astro-bot.mannumani108.workers.dev/",
+    modelUrl: "https://mahadev-astro-bot.mannumani108.workers.dev",
     whatsappLink: "https://wa.me/message/VCK5OVBDCN7YK1",
     redirectDelay: 1500 
 };
