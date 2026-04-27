@@ -1,6 +1,5 @@
 /* ====================================================================
-    🔱 MAHADEV ASTROLOGER MA - ULTRA PRO BOT (v3.0)
-    Architecture: CORS-Optimized API + Secure Token Bridge + Auto-Hinglish
+    🔱 MAHADEV ASTROLOGER MA - ULTRA PRO (v3.2 Fix)
    ==================================================================== */
 
 const BotConfig = {
@@ -9,7 +8,6 @@ const BotConfig = {
     redirectDelay: 1500 
 };
 
-/* 🚩 MASTER MAP: Instant Navigation System */
 const RouteMap = [
     { pattern: /(mesh|aries)/, url: "/horoscope/aries.html", msg: "♈ Mesh (Aries) rashi ka rashifal." },
     { pattern: /(vrishabha|taurus)/, url: "/horoscope/taurus.html", msg: "♉ Vrishabha (Taurus) rashi ka rashifal." },
@@ -43,7 +41,6 @@ const RouteMap = [
     { pattern: /(home|main|start|piche)/, url: "/index.html", msg: "🏠 Home page par chalte hain." }
 ];
 
-/* 🛠️ HELPER: Smart Navigation Engine */
 function getSmartRedirect(query) {
     for (let route of RouteMap) {
         if (route.exclude && query.includes(route.exclude)) continue;
@@ -52,20 +49,18 @@ function getSmartRedirect(query) {
     return null;
 }
 
-/* 🚀 MAIN ENGINE: Query Processor */
 window.processBotQuery = async function() {
     const inputEl = document.getElementById('userQuestion') || document.getElementById('chat-input');
     const outputEl = document.getElementById('chatResponse') || document.getElementById('chat-body');
     
     if (!inputEl) return;
-    
     const query = inputEl.value.toLowerCase().trim();
     if (!query) return;
 
     if (outputEl) outputEl.innerHTML = "🔱 Mahadev margdarshan kar rahe hain...";
     inputEl.value = "";
 
-    // --- PHASE 1: ROUTING (Instant Navigation) ---
+    // --- PHASE 1: ROUTING (Ab ye pehle chalega) ---
     const smartAction = getSmartRedirect(query);
     if (smartAction) {
         if (outputEl) outputEl.innerHTML = `🔱 ${smartAction.msg}`;
@@ -73,31 +68,19 @@ window.processBotQuery = async function() {
         return;
     }
 
-// --- PHASE 2: AI INFERENCE (CORS BYPASS PATCH) ---
+    // --- PHASE 2: AI INFERENCE ---
     try {
-        // Model Public hai, isliye Token ki ab zarurat nahi hai
-        
         const response = await fetch(BotConfig.modelUrl, {
             method: "POST",
-            // 🚩 Header ko 'text/plain' rakhne se CORS preflight trigger nahi hota
-            headers: { 
-                "Content-Type": "text/plain" 
-            },
-            // Hum data ko stringify karke bhej rahe hain
+            headers: { "Content-Type": "text/plain" },
             body: JSON.stringify({ 
                 inputs: `### Instruction: Tum Mahadev Astrologer MA ho. Tumhare paas jo gyan hai usse user ko Hinglish mein samjhao. ### Question: ${query} ### Response:`,
-                parameters: { 
-                    max_new_tokens: 250, 
-                    temperature: 0.7,
-                    return_full_text: false
-                }
+                parameters: { max_new_tokens: 250, temperature: 0.7, return_full_text: false }
             })
         });
 
-        // Response ko JSON mein badalna
         const result = await response.json();
 
-        // Model Loading/Cold Start Handling
         if (result.error && result.error.includes("loading")) {
             if (outputEl) outputEl.innerHTML = "🔱 Mahadev Bot abhi gyan jaagrit kar rahe hain... Kripya 20-30 seconds mein dobara poochein.";
             return;
@@ -113,12 +96,7 @@ window.processBotQuery = async function() {
         }
 
     } catch (error) {
-        // ... (Aapka catch block ekdum sahi hai, use waisa hi rehne dein)
-
-    // --- PHASE 3: FALLBACK (WhatsApp Redirect) ---
-    } catch (error) {
         console.error("🔱 Bot System Error:", error.message);
-        
         const fallbackMsg = `Pranam, mujhe "${query}" ke bare mein janna hai`;
         const waLink = `${BotConfig.whatsappLink}?text=${encodeURIComponent(fallbackMsg)}`;
         
