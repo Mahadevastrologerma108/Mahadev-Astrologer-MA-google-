@@ -80,8 +80,8 @@ window.processBotQuery = async function() {
             throw new Error("Takniki samasya: Divine Key engine nahi mila.");
         }
         
-        const secureToken = await window.getDivineKey(); 
-        if (!secureToken) throw new Error("API Key uplabdh nahi hai.");
+       // const secureToken = await window.getDivineKey(); 
+       // if (!secureToken) throw new Error("API Key uplabdh nahi hai.");
 
         // Optimized Fetch with 'mode: cors'
 // 🚩 BINA TOKEN WALA FETCH (Public Model Ke Liye)
