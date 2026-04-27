@@ -84,15 +84,15 @@ window.processBotQuery = async function() {
         if (!secureToken) throw new Error("API Key uplabdh nahi hai.");
 
         // Optimized Fetch with 'mode: cors'
-        const response = await fetch(BotConfig.modelUrl, {
+const response = await fetch(BotConfig.modelUrl, {
             method: "POST",
-            mode: "cors", // Yeh CORS policy blocks ko rokega
+            // mode: "cors", // Ise hata dein ya comment out kar dein
             headers: { 
                 "Authorization": `Bearer ${secureToken}`, 
                 "Content-Type": "application/json" 
             },
             body: JSON.stringify({ 
-                inputs: `### Instruction: Tum Mahadev Astrologer MA ho. Tumhare paas jo gyan hai usse user ko Hinglish (Hindi + English mix) mein samjhao. ### Question: ${query} ### Response:`,
+                inputs: `### Instruction: Tum Mahadev Astrologer MA ho. Tumhare paas jo gyan hai usse user ko Hinglish mein samjhao. ### Question: ${query} ### Response:`,
                 parameters: { 
                     max_new_tokens: 250, 
                     temperature: 0.7, 
@@ -100,7 +100,6 @@ window.processBotQuery = async function() {
                 }
             })
         });
-
         const result = await response.json();
 
         // Loading/Cold Start Handling
