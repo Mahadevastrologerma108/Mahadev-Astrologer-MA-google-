@@ -1,6 +1,6 @@
 /* ====================================================================
-    🔱 MAHADEV BOT - PRO VERSION (v2.1)
-    Upgrade: Llama-3 Fine-Tuned Model Integration
+    🔱 MAHADEV ASTROLOGER MA - ULTRA PRO BOT (v3.0)
+    Architecture: CORS-Optimized API + Secure Token Bridge + Auto-Hinglish
    ==================================================================== */
 
 const BotConfig = {
@@ -9,8 +9,8 @@ const BotConfig = {
     redirectDelay: 1500 
 };
 
+/* 🚩 MASTER MAP: Instant Navigation System */
 const RouteMap = [
-    // ... (Aapka purana RouteMap ekdum sahi hai, use waisa hi rehne dein)
     { pattern: /(mesh|aries)/, url: "/horoscope/aries.html", msg: "♈ Mesh (Aries) rashi ka rashifal." },
     { pattern: /(vrishabha|taurus)/, url: "/horoscope/taurus.html", msg: "♉ Vrishabha (Taurus) rashi ka rashifal." },
     { pattern: /(mithun|gemini)/, url: "/horoscope/gemini.html", msg: "♊ Mithun (Gemini) rashi ka rashifal." },
@@ -43,6 +43,7 @@ const RouteMap = [
     { pattern: /(home|main|start|piche)/, url: "/index.html", msg: "🏠 Home page par chalte hain." }
 ];
 
+/* 🛠️ HELPER: Smart Navigation Engine */
 function getSmartRedirect(query) {
     for (let route of RouteMap) {
         if (route.exclude && query.includes(route.exclude)) continue;
@@ -51,6 +52,7 @@ function getSmartRedirect(query) {
     return null;
 }
 
+/* 🚀 MAIN ENGINE: Query Processor */
 window.processBotQuery = async function() {
     const inputEl = document.getElementById('userQuestion') || document.getElementById('chat-input');
     const outputEl = document.getElementById('chatResponse') || document.getElementById('chat-body');
@@ -71,22 +73,28 @@ window.processBotQuery = async function() {
         return;
     }
 
-    // --- PHASE 2: AI INFERENCE (Hugging Face + Llama-3 Fine-tuned) ---
+    // --- PHASE 2: AI INFERENCE (Hugging Face API + CORS Optimizations) ---
     try {
+        // Secure Token Fetch from firebase-handler.js
+        if (typeof window.getDivineKey !== 'function') {
+            throw new Error("Takniki samasya: Divine Key engine nahi mila.");
+        }
+        
         const secureToken = await window.getDivineKey(); 
-        if (!secureToken) throw new Error("API Key Missing");
+        if (!secureToken) throw new Error("API Key uplabdh nahi hai.");
 
+        // Optimized Fetch with 'mode: cors'
         const response = await fetch(BotConfig.modelUrl, {
             method: "POST",
+            mode: "cors", // Yeh CORS policy blocks ko rokega
             headers: { 
                 "Authorization": `Bearer ${secureToken}`, 
                 "Content-Type": "application/json" 
             },
             body: JSON.stringify({ 
-                // Naya Prompt Format jo aapne Colab mein train kiya hai
                 inputs: `### Instruction: Tum Mahadev Astrologer MA ho. Tumhare paas jo gyan hai usse user ko Hinglish (Hindi + English mix) mein samjhao. ### Question: ${query} ### Response:`,
                 parameters: { 
-                    max_new_tokens: 200, 
+                    max_new_tokens: 250, 
                     temperature: 0.7, 
                     return_full_text: false 
                 }
@@ -95,22 +103,23 @@ window.processBotQuery = async function() {
 
         const result = await response.json();
 
-        // Model Loading Handling (Cold Start)
+        // Loading/Cold Start Handling
         if (result.error && result.error.includes("loading")) {
-            if (outputEl) outputEl.innerHTML = "🔱 Mahadev Bot abhi gyan jaagrit kar rahe hain (Model Loading)... Kripya 15 seconds baad dobara poochein.";
+            if (outputEl) outputEl.innerHTML = "🔱 Mahadev Bot abhi gyan jaagrit kar rahe hain... Kripya 20 seconds baad dobara prashn poochein.";
             return;
         }
 
         let aiText = Array.isArray(result) ? result[0]?.generated_text : result.generated_text;
         
         if (aiText && aiText.trim().length > 0) {
-            // Sirf asli response nikalna
+            // Asli uttar filter karna
             aiText = aiText.split("### Response:").pop().trim();
             if (outputEl) outputEl.innerHTML = `🔱 <b>MA Bot:</b> ${aiText}`;
         } else {
-            throw new Error("Empty AI Response");
+            throw new Error("AI ne khali uttar diya.");
         }
 
+    // --- PHASE 3: FALLBACK (WhatsApp Redirect) ---
     } catch (error) {
         console.error("🔱 Bot System Error:", error.message);
         
