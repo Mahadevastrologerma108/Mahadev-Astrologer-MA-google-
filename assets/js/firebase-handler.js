@@ -349,3 +349,22 @@ function startAuthObserver() {
     });
 }
 document.addEventListener('DOMContentLoaded', startAuthObserver);
+
+/* 🔐 MAHADEV BOT BRIDGE (v2.1) */
+window.getDivineKey = async function() {
+    console.log("🔱 DivineKey Engine: Fetching secure token...");
+    try {
+        // Hum getSecureKeys function ko call kar rahe hain jo handler mein pehle se hai
+        const keys = await getSecureKeys(); 
+        
+        if (keys && keys.hf) {
+            console.log("🔱 DivineKey Engine: Token retrieved successfully.");
+            return keys.hf; 
+        } else {
+            throw new Error("Token missing in Remote Config");
+        }
+    } catch (err) {
+        console.error("🔱 DivineKey Engine Error:", err.message);
+        return null;
+    }
+};
