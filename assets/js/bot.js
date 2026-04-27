@@ -84,7 +84,7 @@ window.processBotQuery = async function() {
             },
             body: JSON.stringify({ 
                 // Naya Prompt Format jo aapne Colab mein train kiya hai
-                inputs: `### Instruction: Tum Mahadev Astrologer MA ho. ### Question: ${query} ### Response:`,
+                inputs: `### Instruction: Tum Mahadev Astrologer MA ho. Tumhare paas jo gyan hai usse user ko Hinglish (Hindi + English mix) mein samjhao. ### Question: ${query} ### Response:`,
                 parameters: { 
                     max_new_tokens: 200, 
                     temperature: 0.7, 
