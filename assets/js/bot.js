@@ -73,50 +73,47 @@ window.processBotQuery = async function() {
         return;
     }
 
-    // --- PHASE 2: AI INFERENCE (Hugging Face API + CORS Optimizations) ---
+// --- PHASE 2: AI INFERENCE (CORS BYPASS PATCH) ---
     try {
-        // Secure Token Fetch from firebase-handler.js
-        if (typeof window.getDivineKey !== 'function') {
-            throw new Error("Takniki samasya: Divine Key engine nahi mila.");
-        }
+        // Model Public hai, isliye Token ki ab zarurat nahi hai
         
-       // const secureToken = await window.getDivineKey(); 
-       // if (!secureToken) throw new Error("API Key uplabdh nahi hai.");
-
-        // Optimized Fetch with 'mode: cors'
-// 🚩 BINA TOKEN WALA FETCH (Public Model Ke Liye)
         const response = await fetch(BotConfig.modelUrl, {
             method: "POST",
-            // Humne Authorization line puri tarah hata di hai
+            // 🚩 Header ko 'text/plain' rakhne se CORS preflight trigger nahi hota
             headers: { 
-                "Content-Type": "application/json" 
+                "Content-Type": "text/plain" 
             },
+            // Hum data ko stringify karke bhej rahe hain
             body: JSON.stringify({ 
                 inputs: `### Instruction: Tum Mahadev Astrologer MA ho. Tumhare paas jo gyan hai usse user ko Hinglish mein samjhao. ### Question: ${query} ### Response:`,
                 parameters: { 
                     max_new_tokens: 250, 
-                    temperature: 0.7, 
-                    return_full_text: false 
+                    temperature: 0.7,
+                    return_full_text: false
                 }
             })
         });
+
+        // Response ko JSON mein badalna
         const result = await response.json();
 
-        // Loading/Cold Start Handling
+        // Model Loading/Cold Start Handling
         if (result.error && result.error.includes("loading")) {
-            if (outputEl) outputEl.innerHTML = "🔱 Mahadev Bot abhi gyan jaagrit kar rahe hain... Kripya 20 seconds baad dobara prashn poochein.";
+            if (outputEl) outputEl.innerHTML = "🔱 Mahadev Bot abhi gyan jaagrit kar rahe hain... Kripya 20-30 seconds mein dobara poochein.";
             return;
         }
 
         let aiText = Array.isArray(result) ? result[0]?.generated_text : result.generated_text;
         
         if (aiText && aiText.trim().length > 0) {
-            // Asli uttar filter karna
             aiText = aiText.split("### Response:").pop().trim();
             if (outputEl) outputEl.innerHTML = `🔱 <b>MA Bot:</b> ${aiText}`;
         } else {
-            throw new Error("AI ne khali uttar diya.");
+            throw new Error("Empty Response");
         }
+
+    } catch (error) {
+        // ... (Aapka catch block ekdum sahi hai, use waisa hi rehne dein)
 
     // --- PHASE 3: FALLBACK (WhatsApp Redirect) ---
     } catch (error) {
