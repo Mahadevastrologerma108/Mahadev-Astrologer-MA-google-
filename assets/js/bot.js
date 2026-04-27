@@ -84,11 +84,11 @@ window.processBotQuery = async function() {
         if (!secureToken) throw new Error("API Key uplabdh nahi hai.");
 
         // Optimized Fetch with 'mode: cors'
-const response = await fetch(BotConfig.modelUrl, {
+// 🚩 BINA TOKEN WALA FETCH (Public Model Ke Liye)
+        const response = await fetch(BotConfig.modelUrl, {
             method: "POST",
-            // mode: "cors", // Ise hata dein ya comment out kar dein
+            // Humne Authorization line puri tarah hata di hai
             headers: { 
-                "Authorization": `Bearer ${secureToken}`, 
                 "Content-Type": "application/json" 
             },
             body: JSON.stringify({ 
