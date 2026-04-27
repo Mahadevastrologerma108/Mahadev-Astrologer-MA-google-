@@ -1,10 +1,11 @@
 /* ====================================================================
-    🔱 MAHADEV ASTROLOGER MA - ULTRA PRO BOT (Final v3.3)
-    Architecture: CORS Bypass + Security Bridge + Auto-Hinglish
+    🔱 MAHADEV ASTROLOGER MA - ULTRA PRO BOT (Final v4.0)
+    Architecture: Cloudflare Worker Proxy + Routing + Auto-Hinglish
    ==================================================================== */
 
 const BotConfig = {
-    modelUrl: "https://api-inference.huggingface.co/models/mahadev-astrologer-ma-admin/mahadev-astrologer-ma-v1",
+    // 🚩 Aapka naya Cloudflare Middle-man URL
+    modelUrl: "https://mahadev-astro-bot.mannumani108.workers.dev/",
     whatsappLink: "https://wa.me/message/VCK5OVBDCN7YK1",
     redirectDelay: 1500 
 };
@@ -73,16 +74,12 @@ window.processBotQuery = async function() {
         return;
     }
 
-    // --- PHASE 2: AI INFERENCE (Hugging Face Gold Patch + Security Bridge) ---
+    // --- PHASE 2: AI INFERENCE (Via Cloudflare Proxy) ---
     try {
-        // Firebase Handler se Token lana (CORS aur Security ke liye zaroori)
-        const secureToken = await window.getDivineKey(); 
-
         const response = await fetch(BotConfig.modelUrl, {
             method: "POST",
             headers: { 
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${secureToken}` 
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({ 
                 inputs: `### Instruction: Tum Mahadev Astrologer MA ho. Tumhare paas jo gyan hai usse user ko Hinglish mein samjhao. ### Question: ${query} ### Response:`,
@@ -94,20 +91,17 @@ window.processBotQuery = async function() {
             })
         });
 
-        // Response Check (Agar 503 error aaye ya koi aur dikkat ho)
-        if (!response.ok) {
-            const errData = await response.json();
-            if (response.status === 503 || (errData.error && errData.error.includes("loading"))) {
-                if (outputEl) outputEl.innerHTML = "🔱 Mahadev Bot abhi gyan jaagrit kar rahe hain... Kripya 20 seconds mein dobara poochein.";
-                return;
-            }
-            throw new Error(errData.error || "Network Error");
+        const result = await response.json();
+
+        // 503 ya Loading Handling
+        if (!response.ok || (result.error && result.error.includes("loading"))) {
+            if (outputEl) outputEl.innerHTML = "🔱 Mahadev Bot abhi gyan jaagrit kar rahe hain... Kripya 20 seconds mein dobara poochein.";
+            return;
         }
 
-        const result = await response.json();
         let aiText = Array.isArray(result) ? result[0]?.generated_text : result.generated_text;
         
-        // Asli uttar ko filter karna
+        // Final Output Cleaning
         if (aiText && aiText.trim().length > 0) {
             aiText = aiText.split("### Response:").pop().trim();
             if (outputEl) outputEl.innerHTML = `🔱 <b>MA Bot:</b> ${aiText}`;
@@ -119,13 +113,11 @@ window.processBotQuery = async function() {
     } catch (error) {
         console.error("🔱 Bot System Error:", error.message);
         
-        // Agar catch block mein loading error aaye
         if (error.message.includes("loading") || error.message.includes("503")) {
             if (outputEl) outputEl.innerHTML = "🔱 Mahadev Bot abhi gyan jaagrit kar rahe hain... Kripya 20 seconds mein dobara poochein.";
             return;
         }
 
-        // WhatsApp Fallback Button
         const fallbackMsg = `Pranam, mujhe "${query}" ke bare mein janna hai`;
         const waLink = `${BotConfig.whatsappLink}?text=${encodeURIComponent(fallbackMsg)}`;
         
