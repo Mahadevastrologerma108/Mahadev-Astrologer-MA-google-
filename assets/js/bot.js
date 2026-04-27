@@ -1,5 +1,6 @@
 /* ====================================================================
-    🔱 MAHADEV ASTROLOGER MA - ULTRA PRO (v3.2 Fix)
+    🔱 MAHADEV ASTROLOGER MA - ULTRA PRO BOT (Final v3.3)
+    Architecture: CORS Bypass + Security Bridge + Auto-Hinglish
    ==================================================================== */
 
 const BotConfig = {
@@ -8,6 +9,7 @@ const BotConfig = {
     redirectDelay: 1500 
 };
 
+/* 🚩 MASTER MAP: Instant Navigation System */
 const RouteMap = [
     { pattern: /(mesh|aries)/, url: "/horoscope/aries.html", msg: "♈ Mesh (Aries) rashi ka rashifal." },
     { pattern: /(vrishabha|taurus)/, url: "/horoscope/taurus.html", msg: "♉ Vrishabha (Taurus) rashi ka rashifal." },
@@ -41,6 +43,7 @@ const RouteMap = [
     { pattern: /(home|main|start|piche)/, url: "/index.html", msg: "🏠 Home page par chalte hain." }
 ];
 
+/* 🛠️ HELPER: Smart Navigation Engine */
 function getSmartRedirect(query) {
     for (let route of RouteMap) {
         if (route.exclude && query.includes(route.exclude)) continue;
@@ -49,18 +52,20 @@ function getSmartRedirect(query) {
     return null;
 }
 
+/* 🚀 MAIN ENGINE: Query Processor */
 window.processBotQuery = async function() {
     const inputEl = document.getElementById('userQuestion') || document.getElementById('chat-input');
     const outputEl = document.getElementById('chatResponse') || document.getElementById('chat-body');
     
     if (!inputEl) return;
+    
     const query = inputEl.value.toLowerCase().trim();
     if (!query) return;
 
     if (outputEl) outputEl.innerHTML = "🔱 Mahadev margdarshan kar rahe hain...";
     inputEl.value = "";
 
-    // --- PHASE 1: ROUTING (Ab ye pehle chalega) ---
+    // --- PHASE 1: ROUTING (Instant Navigation) ---
     const smartAction = getSmartRedirect(query);
     if (smartAction) {
         if (outputEl) outputEl.innerHTML = `🔱 ${smartAction.msg}`;
@@ -68,26 +73,41 @@ window.processBotQuery = async function() {
         return;
     }
 
-    // --- PHASE 2: AI INFERENCE ---
+    // --- PHASE 2: AI INFERENCE (Hugging Face Gold Patch + Security Bridge) ---
     try {
+        // Firebase Handler se Token lana (CORS aur Security ke liye zaroori)
+        const secureToken = await window.getDivineKey(); 
+
         const response = await fetch(BotConfig.modelUrl, {
             method: "POST",
-            headers: { "Content-Type": "text/plain" },
+            headers: { 
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${secureToken}` 
+            },
             body: JSON.stringify({ 
                 inputs: `### Instruction: Tum Mahadev Astrologer MA ho. Tumhare paas jo gyan hai usse user ko Hinglish mein samjhao. ### Question: ${query} ### Response:`,
-                parameters: { max_new_tokens: 250, temperature: 0.7, return_full_text: false }
+                parameters: { 
+                    max_new_tokens: 250, 
+                    temperature: 0.7,
+                    return_full_text: false
+                }
             })
         });
 
-        const result = await response.json();
-
-        if (result.error && result.error.includes("loading")) {
-            if (outputEl) outputEl.innerHTML = "🔱 Mahadev Bot abhi gyan jaagrit kar rahe hain... Kripya 20-30 seconds mein dobara poochein.";
-            return;
+        // Response Check (Agar 503 error aaye ya koi aur dikkat ho)
+        if (!response.ok) {
+            const errData = await response.json();
+            if (response.status === 503 || (errData.error && errData.error.includes("loading"))) {
+                if (outputEl) outputEl.innerHTML = "🔱 Mahadev Bot abhi gyan jaagrit kar rahe hain... Kripya 20 seconds mein dobara poochein.";
+                return;
+            }
+            throw new Error(errData.error || "Network Error");
         }
 
+        const result = await response.json();
         let aiText = Array.isArray(result) ? result[0]?.generated_text : result.generated_text;
         
+        // Asli uttar ko filter karna
         if (aiText && aiText.trim().length > 0) {
             aiText = aiText.split("### Response:").pop().trim();
             if (outputEl) outputEl.innerHTML = `🔱 <b>MA Bot:</b> ${aiText}`;
@@ -95,8 +115,17 @@ window.processBotQuery = async function() {
             throw new Error("Empty Response");
         }
 
+    // --- PHASE 3: ERROR HANDLING & WHATSAPP FALLBACK ---
     } catch (error) {
         console.error("🔱 Bot System Error:", error.message);
+        
+        // Agar catch block mein loading error aaye
+        if (error.message.includes("loading") || error.message.includes("503")) {
+            if (outputEl) outputEl.innerHTML = "🔱 Mahadev Bot abhi gyan jaagrit kar rahe hain... Kripya 20 seconds mein dobara poochein.";
+            return;
+        }
+
+        // WhatsApp Fallback Button
         const fallbackMsg = `Pranam, mujhe "${query}" ke bare mein janna hai`;
         const waLink = `${BotConfig.whatsappLink}?text=${encodeURIComponent(fallbackMsg)}`;
         
