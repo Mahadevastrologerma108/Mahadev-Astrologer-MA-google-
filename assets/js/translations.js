@@ -40,6 +40,7 @@ window.commonTranslations = {
         ins_horo_title: "Daily Horoscope", ins_horo_desc: "Discover what the stars have in store for you today.",
         nav_articles: "Divine Articles", articles_desc: "A collection of Vedic stories and spiritual wisdom.",
         ins_panchang_desc: "Check tithi, nakshatra, and auspicious timings for your day",
+        ins_panchang_title: "Today's Pannchang",
 
 
         btn_view: "VIEW DETAILS →", btn_read: "READ NOW →", btn_explore: "EXPLORE", btn_invoke: "Start Consultation", btn_send: "Submit",
@@ -447,6 +448,7 @@ shop_title: "MAHADEV ASTROLOGER STORE",
         ins_horo_title: "आज का राशिफल", ins_horo_desc: "अपनी राशि के अनुसार जानें कैसा रहेगा आपका आज का दिन।",
         nav_articles: "दिव्य लेख संग्रह", articles_desc: "पौराणिक कथाएं और आध्यात्मिक ज्ञान का भंडार।",
         ins_panchang_desc: "आज की तिथि, नक्षत्र और शुभ मुहूर्त जानें",
+        ins_panchang_title: "आज का पंचांग",
 
 
         btn_view: "विवरण देखें →", btn_read: "अभी पढ़ें →", btn_explore: "खोजें", btn_invoke: "परामर्श आरंभ करें", btn_send: "भेजें",
