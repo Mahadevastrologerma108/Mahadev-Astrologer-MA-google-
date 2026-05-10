@@ -1,4 +1,4 @@
-// 🔱 PANCHANG HANDLER - LIFETIME MASTER VERSION (NO TOUCH REQUIRED)
+// 🔱 PANCHANG HANDLER - LIFETIME MASTER VERSION (UPDATED WITH STATIC TRANSLATOR)
 let currentYear = 2026;
 let currentMonth = new Date().getMonth();
 let selectedDay = new Date().getDate();
@@ -6,10 +6,28 @@ let currentChaugMode = 'day';
 
 const getLang = () => localStorage.getItem('selectedLang') || 'hi';
 
+// 🔱 NEW: Static Text Translator Engine (For H1, H2, H3, H4, P tags)
+const updateStaticText = (lang) => {
+    // Check both pageTranslations and translations just to be safe
+    const translations = window.pageTranslations?.[lang] || window.translations?.[lang];
+    if (!translations) return;
+
+    const elements = document.querySelectorAll('[data-key]');
+    elements.forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (translations[key]) {
+            el.innerHTML = translations[key]; // innerHTML allows <strong> tags
+        }
+    });
+};
+
 // 1. Initialize Panchang
 const initPanchang = async () => {
     const lang = getLang();
     const mStr = String(currentMonth + 1).padStart(2, '0');
+    
+    // ➔ NEW: Pehle static HTML (headings/paragraphs) ko translate karega
+    updateStaticText(lang); 
     
     await loadMonthlyFile(currentYear, currentMonth);
     
@@ -82,7 +100,7 @@ const renderChaugTable = (chaugData, lang) => {
     const tbody = document.getElementById('chaug-body');
     if (!tbody || !chaugData) return;
     
-    const trans = window.translations[lang];
+    const trans = window.translations?.[lang] || window.pageTranslations?.[lang];
 
     tbody.innerHTML = Object.entries(chaugData).map(([time, name]) => {
         // Time format check (t0652 -> 06:52)
@@ -98,7 +116,7 @@ const renderChaugTable = (chaugData, lang) => {
         if(badList.includes(name)) natureKey = "bad";
         else if(neutralList.includes(name)) natureKey = "neutral";
 
-        const natureText = trans[natureKey] || natureKey;
+        const natureText = trans?.[natureKey] || natureKey;
         const colorClass = natureKey === 'bad' ? 'text-danger' : (natureKey === 'good' ? 'gold-text' : '');
 
         return `<tr>
@@ -116,7 +134,7 @@ const renderEvents = (mStr, lang) => {
     list.innerHTML = '';
 
     const events = window.YEARLY_EVENTS_2026 || {};
-    const trans = window.translations[lang];
+    const trans = window.translations?.[lang] || window.pageTranslations?.[lang] || {};
 
     const monthlyEvents = Object.entries(events).filter(([date]) => {
         return date.startsWith(`${currentYear}-${mStr}`);
@@ -138,10 +156,13 @@ const renderEvents = (mStr, lang) => {
         div.className = 'service-card';
         div.style = "text-align: center; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(245, 197, 66, 0.2);";
         
+        // Added fallback logic so it doesn't crash if 'months' array is missing
+        const monthName = trans.months ? trans.months[currentMonth] : '--';
+
         div.innerHTML = `
             <div class="gold-text cinzel" style="font-size: 1.4rem; font-weight: bold;">${d}</div>
-            <div style="font-size: 0.7rem; color: #aaa; margin-bottom: 5px;">${trans.months[currentMonth]}</div>
-            <div style="font-size: 0.85rem; color: white; font-weight: 600;">${names[lang]}</div>
+            <div style="font-size: 0.7rem; color: #aaa; margin-bottom: 5px;">${monthName}</div>
+            <div style="font-size: 0.85rem; color: white; font-weight: 600;">${names[lang] || names['en'] || ''}</div>
         `;
         list.appendChild(div);
     });
@@ -175,8 +196,8 @@ const renderCalendar = (lang) => {
         grid.appendChild(dayEl);
     }
     
-    const trans = window.translations[lang];
-    if(trans?.months[currentMonth]) {
+    const trans = window.translations?.[lang] || window.pageTranslations?.[lang];
+    if(trans?.months?.[currentMonth]) {
         document.getElementById('monthDisplay').innerText = `${trans.months[currentMonth]} ${currentYear}`;
     }
 };
