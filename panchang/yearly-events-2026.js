@@ -58,7 +58,7 @@ window.YEARLY_EVENTS_2026 = {
     "2026-03-29": { en: "Kamada Ekadashi Fast", hi: "कामदा एकादशी व्रत", desc_en: "First Ekadashi of the Hindu year.", desc_hi: "रवि-कामदा एकादशी व्रत" },
     "2026-03-31": { en: "Mahavir Jayanti", hi: "महावीर जयंती-जैन", desc_en: "Important day for Jain community.", desc_hi: "मंगल-रेवती के सूर्य, महावीर जयंती-जैन" },
 
-   // --- APRIL 2026 (MAHADEV ASTROLOGER MA MASTER DATA) ---
+   // --- APRIL 2026 ---
     "2026-04-01": { en: "Purnima Vrat", hi: "पूर्णिमा व्रत", desc_en: "Fasting day for Purnima.", desc_hi: "बुध-व्रत की पूर्णिमा" },
     "2026-04-02": { en: "Chaitra Purnima, Hanuman Jayanti", hi: "चैत्र पूर्णिमा, हनुमान प्राकट्योत्सव", desc_en: "Chaitra Purnima for bathing-donation, Birth anniversary of Lord Hanuman.", desc_hi: "गुरु-स्नान-दान की चैत्र पूर्णिमा, हनुमान प्राकट्योत्सव" },
     "2026-04-05": { en: "Sankashti Ganesh Chaturthi Vrat", hi: "संकष्टी गणेश चतुर्थी व्रत", desc_en: "Fasting day dedicated to Lord Ganesha.", desc_hi: "रवि-संकष्टी गणेश चतुर्थी व्रत" },
@@ -77,10 +77,23 @@ window.YEARLY_EVENTS_2026 = {
     "2026-04-27": { en: "Mohini Ekadashi Vrat", hi: "मोहिनी एकादशी व्रत", desc_en: "Mohini Ekadashi fast and entry of Sun in Bharani Nakshatra.", desc_hi: "सोम-मोहिनी एकादशी व्रत, भरणी के सूर्य" },
     "2026-04-29": { en: "Pradosh Vrat", hi: "प्रदोष व्रत", desc_en: "Fasting day dedicated to Lord Shiva.", desc_hi: "बुध-प्रदोष व्रत" },
     "2026-04-30": { en: "Narasimha Chaturdashi Vrat", hi: "श्रीनृसिंह चतुर्दशी व्रत", desc_en: "Fasting day for Lord Narasimha, the 4th avatar of Vishnu.", desc_hi: "गुरु-श्रीनृसिंह चतुर्दशी व्रत" },
-    // --- MAY ---
-    "2026-05-01": { en: "Buddha Purnima, Labour Day", hi: "बुद्ध जयंती, श्रमिक दिवस", desc_en: "Lord Buddha's birth and enlightenment.", desc_hi: "शुक्र-बुद्ध जयंती, श्रमिक दिवस" },
-    "2026-05-16": { en: "Vat Savitri Vrat, Shani Jayanti", hi: "वटसावित्री व्रत, शनिदेव प्राक.", desc_en: "Birth of Lord Shani and Vat Savitri puja.", desc_hi: "शनि-स्नान-दान श्राद्ध की अमावस्या, वटसावित्री व्रत, शनिदेव प्राकट्योत्सव" },
-    "2026-05-26": { en: "Ganga Dussehra", hi: "गंगादशहरा", desc_en: "Descent of River Ganga on Earth.", desc_hi: "मंगल-गंगादशहरा, श्रीरामेश्वर प्रतिष्ठा दिवस" },
+    // --- MAY 2026 ---
+    "2026-05-01": { en: "Buddha Purnima, Labour Day", hi: "बुद्ध जयंती, श्रमिक दिवस", desc_en: "Lord Buddha's birth and enlightenment. Labour Day.", desc_hi: "शुक्र-बुद्ध जयंती, श्रमिक दिवस" },
+    "2026-05-05": { en: "Sankashti Ganesh Chaturthi", hi: "सं. गणेश चतुर्थी व्रत", desc_en: "Fasting day dedicated to Lord Ganesha.", desc_hi: "मंगल-सं. गणेश चतुर्थी व्रत" },
+    "2026-05-10": { en: "Sheetla Ashtami Vrat", hi: "श्रीशीतलाष्टमी व्रत", desc_en: "Fasting day dedicated to Goddess Sheetla.", desc_hi: "रवि-श्रीशीतलाष्टमी व्रत" },
+    "2026-05-11": { en: "Sun enters Krittika Nak.", hi: "कृत्तिका के सूर्य", desc_en: "Sun transits into Krittika Nakshatra.", desc_hi: "सोम-कृत्तिका के सूर्य" },
+    "2026-05-13": { en: "Achala Ekadashi Vrat", hi: "अचला एकादशी व्रत", desc_en: "Fasting day dedicated to Lord Vishnu.", desc_hi: "बुध-अचला एकादशी व्रत" },
+    "2026-05-14": { en: "Pradosh Vrat, Vrishabha Sankranti", hi: "प्रदोष व्रत, वृष संक्रांति", desc_en: "Pradosh fast for Lord Shiva, Sun enters Taurus, and Vat Savitri fasting begins.", desc_hi: "गुरु-प्रदोष व्रत, वृष संक्रांति, वटसावित्री व्रतारम्भ" },
+    "2026-05-15": { en: "Masik Shivaratri", hi: "मास शिवरात्रि व्रत", desc_en: "Monthly fasting day dedicated to Lord Shiva.", desc_hi: "शुक्र-मास शिवरात्रि व्रत" },
+    "2026-05-16": { en: "Vat Savitri Vrat, Shani Jayanti", hi: "वटसावित्री व्रत, शनिदेव प्राक.", desc_en: "Birth of Lord Shani, Amavasya Shradh, and Vat Savitri puja.", desc_hi: "शनि-स्नान-दान श्राद्ध की अमावस्या, वटसावित्री व्रत, शनिदेव प्राकट्योत्सव" },
+    "2026-05-18": { en: "Chandra Darshan", hi: "चन्द्रदर्शन", desc_en: "First sighting of the moon after Amavasya.", desc_hi: "सोम-चन्द्रदर्शन" },
+    "2026-05-20": { en: "Vinayaki Ganesh Chaturthi", hi: "वैना. गणेश चतुर्थी व्रत", desc_en: "Fasting day for Lord Ganesha.", desc_hi: "बुध-वैना. गणेश चतुर्थी व्रत" },
+    "2026-05-25": { en: "Sun enters Rohini Nak.", hi: "रोहिणी के सूर्य", desc_en: "Sun transits into Rohini Nakshatra, bringing intense heat (Nautapa).", desc_hi: "सोम-रोहिणी के सूर्य" },
+    "2026-05-26": { en: "Ganga Dussehra, Shri Rameshwar Pratishtha", hi: "गंगादशहरा, श्रीरामेश्वर प्रति.", desc_en: "Descent of River Ganga on Earth and establishment of Shri Rameshwaram.", desc_hi: "मंगल-गंगादशहरा, श्रीरामेश्वर प्रतिष्ठा दिवस" },
+    "2026-05-27": { en: "Purushottami Ekadashi Vrat", hi: "पुरुषोत्तमी एकादशी व्रत", desc_en: "Ekadashi fasting day.", desc_hi: "बुध-पुरुषोत्तमी एकादशी व्रत" },
+    "2026-05-28": { en: "Pradosh Vrat", hi: "प्रदोष व्रत", desc_en: "Fasting day dedicated to Lord Shiva.", desc_hi: "गुरु-प्रदोष व्रत" },
+    "2026-05-30": { en: "Purnima Vrat", hi: "पूर्णिमा व्रत", desc_en: "Full moon fasting day.", desc_hi: "शनि-व्रत की पूर्णिमा" },
+    "2026-05-31": { en: "Purushottami Purnima", hi: "पुरुषोत्तमी पूर्णिमा (स्नान-दान)", desc_en: "Full moon day for holy bath and charity.", desc_hi: "रवि-स्नान-दान की पुरुषोत्तमी पूर्णिमा" },
 
     // --- AUGUST ---
     "2026-08-15": { en: "Independence Day, Hariyali Teej", hi: "स्वतन्त्रता दिवस, हरियाली तीज व्रत", desc_en: "National independence and Hariyali Teej festival.", desc_hi: "शनि-स्वतन्त्रता दिवस, हरियाली तीज व्रत" },
