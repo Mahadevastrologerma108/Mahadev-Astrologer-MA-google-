@@ -7,15 +7,18 @@ import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/fir
  * LocalStorage se language uthakar page content update karta hai
  */
 function applyVastuLanguage(lang) {
+    // Check karna ki translation file load hui hai ya nahi
+    if (typeof vastuTranslations === 'undefined') return;
+
     const data = vastuTranslations[lang];
     if (!data) return;
 
     document.querySelectorAll('[data-key]').forEach(element => {
         const key = element.getAttribute('data-key');
         if (data[key]) {
-            // Agar input/textarea hai toh placeholder badlo, warna text
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.setAttribute('placeholder', data[key]);
+            // Dropdown options ke liye .text, baaki sab (H1, P, Label, Button) ke liye .innerText
+            if (element.tagName === 'OPTION') {
+                element.text = data[key];
             } else {
                 element.innerText = data[key];
             }
@@ -88,14 +91,15 @@ document.getElementById('vastuConsultForm').addEventListener('submit', async fun
         // Step B: Telegram par instant alert bhejein
         await notifyViaTelegram(formData);
 
-        // Step C: WhatsApp API Trigger (User ki choice ke liye optional)
+        // Step C: WhatsApp API Trigger 
+        // DHYAN DEIN: Apna asli number yahan update karein (bina + ke)
         const waMessage = `🔱 *Vastu Audit Request* 🔱%0A*Name:* ${formData.name}%0A*Issue:* ${formData.issue}`;
-        const waUrl = `https://wa.me/91YOUR_NUMBER?text=${waMessage}`; // Apna number yahan bhi thik kar lein
+        const waUrl = `https://wa.me/91YOUR_NUMBER?text=${waMessage}`; 
 
         // Success UI
         statusDiv.innerHTML = `<span style="color: #28a745">Pranaam! Details Saved & Notified Successfully. 🔱</span>`;
         
-        // Final Action: Form reset aur 1.5 sec baad WhatsApp redirect (optional)
+        // Final Action: Form reset aur 1.5 sec baad WhatsApp redirect
         this.reset();
         setTimeout(() => {
             window.open(waUrl, '_blank');
@@ -112,7 +116,7 @@ document.getElementById('vastuConsultForm').addEventListener('submit', async fun
     }
 });
 
-// Initialization
+// Initialization: Page load hote hi language set karna
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('selectedLanguage') || 'hi';
     applyVastuLanguage(savedLang);
