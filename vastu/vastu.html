@@ -33,11 +33,43 @@
         </div>
     </section>
 
-    <section class="vastu-cta">
-        <h2 data-key="vastu_cta_title">Ready to Balance Your Space?</h2>
-        <a href="../contact.html" class="premium-btn" data-key="vastu_btn_book">BOOK CONSULTATION 🔱</a>
-    </section>
+    <section class="vastu-form-container">
+    <h2 data-key="form_title">Vastu Audit Request</h2>
+    <form id="vastuConsultForm">
+        <div class="input-group">
+            <input type="text" id="userName" required placeholder=" ">
+            <label data-key="label_name">Full Name</label>
+        </div>
+        
+        <div class="input-group">
+            <select id="propertyType" required>
+                <option value="" disabled selected data-key="opt_select">Property Type</option>
+                <option value="Residential" data-key="opt_res">Residential (Home)</option>
+                <option value="Commercial" data-key="opt_com">Commercial (Office/Shop)</option>
+                <option value="Industrial" data-key="opt_ind">Industrial (Factory)</option>
+            </select>
+        </div>
 
+        <div class="input-group">
+            <select id="facing" required>
+                <option value="" disabled selected data-key="opt_facing">Main Entrance Facing</option>
+                <option value="North">North</option>
+                <option value="South">South</option>
+                <option value="East">East</option>
+                <option value="West">West</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <textarea id="issue" rows="4" required placeholder=" "></textarea>
+            <label data-key="label_issue">Main problems you are facing?</label>
+        </div>
+
+        <button type="submit" class="premium-btn" data-key="btn_submit">SUBMIT DETAILS 🔱</button>
+    </form>
+        <div id="formStatus" style="text-align:center; margin-top:15px; font-family:'Poppins';"></div>
+</section>
+    
     <script data-cfasync="false" src="vastu-trans.js"></script>
     <script data-cfasync="false" src="vastu.js"></script>
 </body>
