@@ -9,7 +9,16 @@ const vastuTranslations = {
         vastu_card3_title: "Placement Guidance",
         vastu_card3_desc: "Scientific placement of kitchen, toilets, and mirrors for positive energy flow.",
         vastu_cta_title: "Ready to Balance Your Space?",
-        vastu_btn_book: "BOOK CONSULTATION 🔱"
+        vastu_btn_book: "BOOK CONSULTATION 🔱",
+        form_title: "Vastu Audit Request",
+        label_name: "Full Name",
+        opt_select: "Property Type",
+        opt_res: "Residential (Home)",
+        opt_com: "Commercial (Office)",
+        opt_ind: "Industrial (Factory)",
+        opt_facing: "Main Entrance Facing",
+        label_issue: "Main problems you are facing?",
+        btn_submit: "SUBMIT DETAILS 🔱",
     },
     hi: {
         vastu_title: "वास्तु शास्त्र परामर्श",
@@ -21,6 +30,15 @@ const vastuTranslations = {
         vastu_card3_title: "वस्तु दिशा मार्गदर्शन",
         vastu_card3_desc: "सकारात्मक ऊर्जा के लिए रसोई, शौचालय और दर्पण की सही वैज्ञानिक दिशा।",
         vastu_cta_title: "क्या आप अपना स्थान संतुलित करने के लिए तैयार हैं?",
-        vastu_btn_book: "परामर्श बुक करें 🔱"
+        vastu_btn_book: "परामर्श बुक करें 🔱",
+        form_title: "वास्तु ऑडिट अनुरोध",
+        label_name: "पूरा नाम",
+        opt_select: "संपत्ति का प्रकार",
+        opt_res: "आवासीय (घर)",
+        opt_com: "व्यावसायिक (ऑफिस/दुकान)",
+        opt_ind: "औद्योगिक (फैक्ट्री)",
+        opt_facing: "मुख्य प्रवेश द्वार की दिशा",
+        label_issue: "आप मुख्य रूप से किन समस्याओं का सामना कर रहे हैं?",
+        btn_submit: "विवरण जमा करें 🔱"
     }
 };
