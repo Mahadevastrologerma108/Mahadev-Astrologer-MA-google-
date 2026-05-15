@@ -1,0 +1,6 @@
+# Purane Blogger articles ko home page par redirect karne ke liye
+/202* /  301
+/p/* /  301
+
+# .html wale pages ko bina extension wale URL par bhejne ke liye
+/*.html  /:splat  301
