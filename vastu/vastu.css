@@ -56,7 +56,10 @@ body {
     padding: 60px;
 }
 
+/* ✅ Yahan duplicate hataya, background aur cursor add kiya */
 .premium-btn {
+    background: transparent; 
+    cursor: pointer;         
     border: 2px solid var(--gold);
     color: var(--gold);
     padding: 12px 30px;
@@ -66,10 +69,12 @@ body {
     transition: 0.3s;
 }
 
+/* ✅ Hover effect wapas add kiya */
 .premium-btn:hover {
     background: var(--gold);
     color: #000;
 }
+
 .vastu-form-container {
     max-width: 600px;
     margin: 40px auto;
@@ -91,7 +96,9 @@ body {
     margin-bottom: 30px;
 }
 
+/* ✅ box-sizing: border-box add kiya overflow rokne ke liye */
 .input-group input, .input-group select, .input-group textarea {
+    box-sizing: border-box; 
     width: 100%;
     padding: 10px;
     background: transparent;
