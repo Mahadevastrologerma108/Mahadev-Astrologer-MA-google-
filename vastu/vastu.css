@@ -4,11 +4,20 @@
     --card-bg: rgba(20, 20, 20, 0.9);
 }
 
+/* 🔱 Body overwrite ko fix kiya taaki main style.css ka header/footer block na ho */
 body {
     background-color: var(--dark);
     color: #fff;
     margin: 0;
     font-family: 'Poppins', sans-serif;
+}
+
+/* 🔱 Header ke liye safe space jodi taaki nav menu ke niche content dab na jaye */
+main {
+    display: block;
+    min-height: 70vh;
+    padding-top: 20px; /* Agar navbar fixed hai toh isko 80px tak badha sakte hain */
+    box-sizing: border-box;
 }
 
 .vastu-hero {
@@ -56,7 +65,6 @@ body {
     padding: 60px;
 }
 
-/* ✅ Yahan duplicate hataya, background aur cursor add kiya */
 .premium-btn {
     background: transparent; 
     cursor: pointer;         
@@ -69,7 +77,6 @@ body {
     transition: 0.3s;
 }
 
-/* ✅ Hover effect wapas add kiya */
 .premium-btn:hover {
     background: var(--gold);
     color: #000;
@@ -96,7 +103,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* ✅ box-sizing: border-box add kiya overflow rokne ke liye */
 .input-group input, .input-group select, .input-group textarea {
     box-sizing: border-box; 
     width: 100%;
