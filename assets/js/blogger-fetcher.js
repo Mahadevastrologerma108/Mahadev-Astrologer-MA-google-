@@ -32,13 +32,12 @@ window.renderBloggerPosts = function(data) {
 
     entries.forEach((post, index) => {
         const title = post.title.$t;
-        const postId = post.id.$t.split('post-')[1]; 
         
         // Title se SEO-friendly slug generate karna
         const slug = createSlug(title); 
         
-        // Naya URL structure jisme Topic aur ID dono hain
-        const internalLink = `article.html?topic=${slug}&id=${postId}`;
+        // ✅ Naya 100% Clean URL structure (Bina kisi ID ke)
+        const internalLink = `article.html?title=${slug}`;
         
         let imgUrl = post.media$thumbnail ? post.media$thumbnail.url.replace('s72-c', 's1600') : '';
         let contentBody = post.content ? post.content.$t : (post.summary ? post.summary.$t : "");
