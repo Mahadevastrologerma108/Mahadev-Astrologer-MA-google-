@@ -4,25 +4,30 @@
     --card-bg: rgba(20, 20, 20, 0.9);
 }
 
-/* 🔱 Body overwrite ko fix kiya taaki main style.css ka header/footer block na ho */
+/* 🔱 Body rules aligned with main layout framework */
 body {
     background-color: var(--dark);
     color: #fff;
     margin: 0;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Keeps footer pinned to bottom if content is short */
 }
 
-/* 🔱 Header ke liye safe space jodi taaki nav menu ke niche content dab na jaye */
+/* 🔱 Fixed Header and Footer placeholders spacing allocation */
 main {
     display: block;
-    min-height: 70vh;
-    padding-top: 20px; /* Agar navbar fixed hai toh isko 80px tak badha sakte hain */
+    flex: 1 0 auto; /* Pushes the footer cleanly to the bottom */
+    padding-top: 100px; /* ✅ TOP SPACE: Stops navigation menu from overlapping content */
+    padding-bottom: 80px; /* ✅ BOTTOM SPACE: Professional breathing gap before footer */
     box-sizing: border-box;
 }
 
 .vastu-hero {
     text-align: center;
-    padding: 80px 20px;
+    padding: 60px 20px;
     border-bottom: 2px solid var(--gold);
 }
 
