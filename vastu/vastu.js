@@ -12,8 +12,6 @@ import {
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-
-
 /* =========================================================
    🔱 1. LANGUAGE ENGINE
 ========================================================= */
@@ -42,9 +40,6 @@ function applyVastuLanguage(lang = 'hi') {
         }
     });
 }
-
-
-
 /* =========================================================
    🔱 2. GLOBAL TRANSLATION CONNECTOR
 ========================================================= */
@@ -63,9 +58,6 @@ window.updateContent = function(lang) {
 
     applyVastuLanguage(lang);
 };
-
-
-
 /* =========================================================
    🔱 3. INPUT SANITIZER
 ========================================================= */
@@ -79,9 +71,6 @@ function sanitizeInput(value) {
         .replace(/[{}]/g, '')
         .trim();
 }
-
-
-
 /* =========================================================
    🔱 4. TELEGRAM ENGINE
 ========================================================= */
@@ -114,8 +103,7 @@ ${formData.issue}
 
 📅 ${new Date().toLocaleString('en-IN')}`;
 
-
-        const telegramURL =
+       const telegramURL =
             `https://api.telegram.org/bot${token}/sendMessage`;
 
         await fetch(telegramURL, {
@@ -134,9 +122,6 @@ ${formData.issue}
         console.error('Telegram Error:', error);
     }
 }
-
-
-
 /* =========================================================
    🔱 5. FORM SUBMISSION ENGINE
 ========================================================= */
@@ -157,7 +142,6 @@ function initializeVastuForm() {
         const statusDiv =
             document.getElementById('formStatus');
 
-
         /* ==========================
            BUTTON LOADING
         ========================== */
@@ -166,12 +150,10 @@ function initializeVastuForm() {
         submitBtn.innerHTML = 'Submitting... 🔱';
         submitBtn.style.opacity = '0.7';
 
-
         statusDiv.innerHTML =
             `<span style="color: var(--gold)">
                 Connecting to Mahadev Server...
             </span>`;
-
 
         /* ==========================
            SANITIZED FORM DATA
@@ -195,8 +177,6 @@ function initializeVastuForm() {
                 document.getElementById('issue').value
             )
         };
-
-
         /* ==========================
            VALIDATION
         ========================== */
@@ -234,13 +214,11 @@ function initializeVastuForm() {
                 }
             );
 
-
             /* ==========================
                TELEGRAM NOTIFICATION
             ========================== */
 
             await notifyViaTelegram(formData);
-
 
             /* ==========================
                WHATSAPP REDIRECT
@@ -264,7 +242,6 @@ ${formData.issue}`
             const whatsappURL =
                 `https://wa.me/91YOUR_NUMBER?text=${whatsappMessage}`;
 
-
             /* ==========================
                SUCCESS UI
             ========================== */
@@ -276,7 +253,6 @@ ${formData.issue}`
 
 
             form.reset();
-
 
             // ✅ Sahi Flow: Timeout ke sath hi status aur button reset hoga taaki double submit na ho
             setTimeout(() => {
@@ -300,9 +276,6 @@ ${formData.issue}`
 
     });
 }
-
-
-
 /* =========================================================
    🔱 6. BUTTON RESET
 ========================================================= */
@@ -315,9 +288,6 @@ function resetButton(button) {
 
     button.innerHTML = 'SUBMIT DETAILS 🔱';
 }
-
-
-
 /* =========================================================
    🔱 7. PAGE INITIALIZER
 ========================================================= */
@@ -330,13 +300,9 @@ function initializeVastuPage() {
 
     applyVastuLanguage(savedLang);
 
-
     // Initialize form
     initializeVastuForm();
 }
-
-
-
 /* =========================================================
    🔱 8. SAFE STARTUP
 ========================================================= */
