@@ -6,7 +6,10 @@ import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/fir
  * 1. Language Translation Logic
  */
 function applyVastuLanguage(lang) {
-    if (typeof vastuTranslations === 'undefined') return;
+    if (typeof vastuTranslations === 'undefined') {
+        console.warn("Vastu translations data sheet missing!");
+        return;
+    }
 
     const data = vastuTranslations[lang];
     if (!data) return;
@@ -23,14 +26,21 @@ function applyVastuLanguage(lang) {
     });
 }
 
-// 🔱 ISKO GLOBAL BANAYA: Taaki main translations.js isko call kar sake
+// 🔱 Global Window Connectors (For layout navigation sync)
 window.updateVastuLanguage = function(lang) {
     applyVastuLanguage(lang);
 };
 
-// Agar aapki site ka main switcher 'updateContent' khojta hai, toh uske sath bhi attach kiya
-if (!window.updateContent) {
+// Global overrides checking
+if (typeof window.updateContent === 'undefined' || !window.updateContent) {
     window.updateContent = function(lang) {
+        applyVastuLanguage(lang);
+    };
+} else {
+    // Agar pehle se bana hai toh original ko block kiye bina hook karna
+    const originalUpdate = window.updateContent;
+    window.updateContent = function(lang) {
+        originalUpdate(lang);
         applyVastuLanguage(lang);
     };
 }
@@ -43,6 +53,11 @@ async function notifyViaTelegram(formData) {
         await fetchAndActivate(remoteConfig);
         const token = getString(remoteConfig, 'TELEGRAM_BOT_TOKEN');
         const chatId = getString(remoteConfig, 'TELEGRAM_CHAT_ID');
+
+        if (!token || !chatId) {
+            console.error("Secure Keys fetch failed from Remote Config!");
+            return;
+        }
 
         const text = `🔱 *New Vastu Inquiry* 🔱\n\n` +
                      `👤 *Name:* ${formData.name}\n` +
@@ -90,17 +105,19 @@ if (vastuForm) {
         };
 
         try {
+            // Step A: Firebase Firestore submission
             await addDoc(collection(db, "vastu_consultations"), {
                 ...formData,
                 timestamp: serverTimestamp(),
                 source: "Vastu_Page_Form"
             });
 
+            // Step B: Remote telegram signaling
             await notifyViaTelegram(formData);
 
-            // 🔱 YAHA APNA NUMBER DALNA MAT BHOOLNA BHAI
+            // Step C: WhatsApp sync injection
             const waMessage = `🔱 *Vastu Audit Request* 🔱%0A*Name:* ${formData.name}%0A*Issue:* ${formData.issue}`;
-            const waUrl = `https://wa.me/91YOUR_NUMBER?text=${waMessage}`; 
+            const waUrl = `https://wa.me/91YOUR_NUMBER?text=${waMessage}`; // Yahan real number map karein
 
             statusDiv.innerHTML = `<span style="color: #28a745">Pranaam! Details Saved & Notified Successfully. 🔱</span>`;
             
@@ -122,16 +139,16 @@ if (vastuForm) {
 }
 
 /**
- * 4. Initialization Logic (Module safe execution)
+ * 4. Safe Initialization Engine
  */
-function init() {
+function initVastuPage() {
     const savedLang = localStorage.getItem('selectedLanguage') || 'hi';
     applyVastuLanguage(savedLang);
 }
 
-// Module script hamesha DOM ready hone ke baad chalti hai, isliye seedha call safe hai
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+// 🔱 Windows load loop verification to prevent layout injection blocks
+if (document.readyState === 'complete') {
+    initVastuPage();
 } else {
-    init();
+    window.addEventListener('load', initVastuPage);
 }
