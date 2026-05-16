@@ -1,154 +1,344 @@
-// 🔱 Firebase & Config Imports
-import { db, remoteConfig, fetchAndActivate, getString } from '../assets/js/firebase-config.js'; 
-import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+// 🔱 Firebase Imports
+import {
+    db,
+    remoteConfig,
+    fetchAndActivate,
+    getString
+} from '../assets/js/firebase-config.js';
 
-/**
- * 1. Language Translation Logic
- */
-function applyVastuLanguage(lang) {
+import {
+    collection,
+    addDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+
+
+/* =========================================================
+   🔱 1. LANGUAGE ENGINE
+========================================================= */
+
+function applyVastuLanguage(lang = 'hi') {
+
     if (typeof vastuTranslations === 'undefined') {
-        console.warn("Vastu translations data sheet missing!");
+        console.warn('Vastu translations missing!');
         return;
     }
 
-    const data = vastuTranslations[lang];
-    if (!data) return;
+    const langData = vastuTranslations[lang];
+
+    if (!langData) return;
 
     document.querySelectorAll('[data-key]').forEach(element => {
-        const key = element.getAttribute('data-key');
-        if (data[key]) {
-            if (element.tagName === 'OPTION') {
-                element.text = data[key];
-            } else {
-                element.innerText = data[key];
-            }
+
+        const key = element.dataset.key;
+
+        if (!langData[key]) return;
+
+        if (element.tagName === 'OPTION') {
+            element.text = langData[key];
+        } else {
+            element.textContent = langData[key];
         }
     });
 }
 
-// 🔱 Global Window Connectors (For layout navigation sync)
-window.updateVastuLanguage = function(lang) {
+
+
+/* =========================================================
+   🔱 2. GLOBAL TRANSLATION CONNECTOR
+========================================================= */
+
+window.updateVastuLanguage = applyVastuLanguage;
+
+
+// Layout.js compatibility
+const previousUpdateContent = window.updateContent;
+
+window.updateContent = function(lang) {
+
+    if (typeof previousUpdateContent === 'function') {
+        previousUpdateContent(lang);
+    }
+
     applyVastuLanguage(lang);
 };
 
-// Global overrides checking
-if (typeof window.updateContent === 'undefined' || !window.updateContent) {
-    window.updateContent = function(lang) {
-        applyVastuLanguage(lang);
-    };
-} else {
-    // Agar pehle se bana hai toh original ko block kiye bina hook karna
-    const originalUpdate = window.updateContent;
-    window.updateContent = function(lang) {
-        originalUpdate(lang);
-        applyVastuLanguage(lang);
-    };
+
+
+/* =========================================================
+   🔱 3. INPUT SANITIZER
+========================================================= */
+
+function sanitizeInput(value) {
+
+    if (!value) return '';
+
+    return value
+        .replace(/<[^>]*>?/gm, '')
+        .replace(/[{}]/g, '')
+        .trim();
 }
 
-/**
- * 2. Telegram Notification Engine
- */
+
+
+/* =========================================================
+   🔱 4. TELEGRAM ENGINE
+========================================================= */
+
 async function notifyViaTelegram(formData) {
+
     try {
+
         await fetchAndActivate(remoteConfig);
+
         const token = getString(remoteConfig, 'TELEGRAM_BOT_TOKEN');
         const chatId = getString(remoteConfig, 'TELEGRAM_CHAT_ID');
 
         if (!token || !chatId) {
-            console.error("Secure Keys fetch failed from Remote Config!");
+            console.warn('Telegram credentials missing!');
             return;
         }
 
-        const text = `🔱 *New Vastu Inquiry* 🔱\n\n` +
-                     `👤 *Name:* ${formData.name}\n` +
-                     `🏠 *Property:* ${formData.propertyType}\n` +
-                     `🧭 *Facing:* ${formData.facing}\n` +
-                     `❗ *Issue:* ${formData.issue}\n\n` +
-                     `📅 *Timestamp:* ${new Date().toLocaleString('en-IN')}`;
+        const message =
+`🔱 New Vastu Inquiry 🔱
 
-        const url = `https://api.telegram.org/bot${token}/sendMessage`;
-        
-        await fetch(url, {
+👤 Name: ${formData.name}
+
+🏠 Property: ${formData.propertyType}
+
+🧭 Facing: ${formData.facing}
+
+❗ Issue:
+${formData.issue}
+
+📅 ${new Date().toLocaleString('en-IN')}`;
+
+
+        const telegramURL =
+            `https://api.telegram.org/bot${token}/sendMessage`;
+
+        await fetch(telegramURL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
                 chat_id: chatId,
-                text: text,
-                parse_mode: 'Markdown'
+                text: message
             })
         });
-    } catch (err) {
-        console.error("Telegram Automation Failed:", err);
+
+    } catch (error) {
+
+        console.error('Telegram Error:', error);
     }
 }
 
-/**
- * 3. Main Form Submission Logic
- */
-const vastuForm = document.getElementById('vastuConsultForm');
-if (vastuForm) {
-    vastuForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
 
-        const statusDiv = document.getElementById('formStatus');
-        const submitBtn = this.querySelector('button[type="submit"]');
-        
+
+/* =========================================================
+   🔱 5. FORM SUBMISSION ENGINE
+========================================================= */
+
+function initializeVastuForm() {
+
+    const form = document.getElementById('vastuConsultForm');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async function(event) {
+
+        event.preventDefault();
+
+        const submitBtn =
+            form.querySelector('button[type="submit"]');
+
+        const statusDiv =
+            document.getElementById('formStatus');
+
+
+        /* ==========================
+           BUTTON LOADING
+        ========================== */
+
         submitBtn.disabled = true;
-        submitBtn.style.opacity = "0.5";
-        statusDiv.innerHTML = `<span style="color: var(--gold)">Connecting to Mahadev's Server... 🔱</span>`;
+        submitBtn.innerHTML = 'Submitting... 🔱';
+        submitBtn.style.opacity = '0.7';
+
+
+        statusDiv.innerHTML =
+            `<span style="color: var(--gold)">
+                Connecting to Mahadev Server...
+            </span>`;
+
+
+        /* ==========================
+           SANITIZED FORM DATA
+        ========================== */
 
         const formData = {
-            name: document.getElementById('userName').value,
-            propertyType: document.getElementById('propertyType').value,
-            facing: document.getElementById('facing').value,
-            issue: document.getElementById('issue').value,
+
+            name: sanitizeInput(
+                document.getElementById('userName').value
+            ),
+
+            propertyType: sanitizeInput(
+                document.getElementById('propertyType').value
+            ),
+
+            facing: sanitizeInput(
+                document.getElementById('facing').value
+            ),
+
+            issue: sanitizeInput(
+                document.getElementById('issue').value
+            )
         };
 
-        try {
-            // Step A: Firebase Firestore submission
-            await addDoc(collection(db, "vastu_consultations"), {
-                ...formData,
-                timestamp: serverTimestamp(),
-                source: "Vastu_Page_Form"
-            });
 
-            // Step B: Remote telegram signaling
+        /* ==========================
+           VALIDATION
+        ========================== */
+
+        if (
+            !formData.name ||
+            !formData.propertyType ||
+            !formData.facing ||
+            !formData.issue
+        ) {
+
+            statusDiv.innerHTML =
+                `<span style="color:#ff4444">
+                    Please fill all fields properly.
+                </span>`;
+
+            resetButton(submitBtn);
+
+            return;
+        }
+
+
+        try {
+
+            /* ==========================
+               FIRESTORE SAVE
+            ========================== */
+
+            await addDoc(
+                collection(db, 'vastu_consultations'),
+                {
+                    ...formData,
+                    source: 'Vastu_Page_Form',
+                    timestamp: serverTimestamp()
+                }
+            );
+
+
+            /* ==========================
+               TELEGRAM NOTIFICATION
+            ========================== */
+
             await notifyViaTelegram(formData);
 
-            // Step C: WhatsApp sync injection
-            const waMessage = `🔱 *Vastu Audit Request* 🔱%0A*Name:* ${formData.name}%0A*Issue:* ${formData.issue}`;
-            const waUrl = `https://wa.me/91YOUR_NUMBER?text=${waMessage}`; // Yahan real number map karein
 
-            statusDiv.innerHTML = `<span style="color: #28a745">Pranaam! Details Saved & Notified Successfully. 🔱</span>`;
-            
-            this.reset();
+            /* ==========================
+               WHATSAPP REDIRECT
+            ========================== */
+
+            const whatsappMessage = encodeURIComponent(
+`🔱 Vastu Audit Request 🔱
+
+Name: ${formData.name}
+
+Property: ${formData.propertyType}
+
+Facing: ${formData.facing}
+
+Issue:
+${formData.issue}`
+            );
+
+
+            // 🔱 YAHA REAL NUMBER MAP KAREIN BHAI (Jaise 919876543210)
+            const whatsappURL =
+                `https://wa.me/91YOUR_NUMBER?text=${whatsappMessage}`;
+
+
+            /* ==========================
+               SUCCESS UI
+            ========================== */
+
+            statusDiv.innerHTML =
+                `<span style="color:#28a745">
+                    Pranaam! Details submitted successfully 🔱
+                </span>`;
+
+
+            form.reset();
+
+
+            // ✅ Sahi Flow: Timeout ke sath hi status aur button reset hoga taaki double submit na ho
             setTimeout(() => {
-                window.open(waUrl, '_blank');
+                window.open(whatsappURL, '_blank');
                 statusDiv.innerHTML = "";
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = "1";
-            }, 1500);
+                resetButton(submitBtn);
+            }, 1200);
 
         } catch (error) {
-            console.error("Form Submission Error:", error);
-            statusDiv.innerHTML = `<span style="color: #ff4444">Submission Failed. Please check internet connection.</span>`;
-            submitBtn.disabled = false;
-            submitBtn.style.opacity = "1";
+
+            console.error('Form Submission Error:', error);
+
+            statusDiv.innerHTML =
+                `<span style="color:#ff4444">
+                    Submission failed. Please try again.
+                </span>`;
+                
+            // Failure case me instantly reset hoga button
+            resetButton(submitBtn);
         }
+
     });
 }
 
-/**
- * 4. Safe Initialization Engine
- */
-function initVastuPage() {
-    const savedLang = localStorage.getItem('selectedLanguage') || 'hi';
-    applyVastuLanguage(savedLang);
+
+
+/* =========================================================
+   🔱 6. BUTTON RESET
+========================================================= */
+
+function resetButton(button) {
+
+    button.disabled = false;
+
+    button.style.opacity = '1';
+
+    button.innerHTML = 'SUBMIT DETAILS 🔱';
 }
 
-// 🔱 Windows load loop verification to prevent layout injection blocks
-if (document.readyState === 'complete') {
-    initVastuPage();
-} else {
-    window.addEventListener('load', initVastuPage);
+
+
+/* =========================================================
+   🔱 7. PAGE INITIALIZER
+========================================================= */
+
+function initializeVastuPage() {
+
+    // Apply saved language
+    const savedLang =
+        localStorage.getItem('selectedLanguage') || 'hi';
+
+    applyVastuLanguage(savedLang);
+
+
+    // Initialize form
+    initializeVastuForm();
 }
+
+
+
+/* =========================================================
+   🔱 8. SAFE STARTUP
+========================================================= */
+
+window.addEventListener('load', initializeVastuPage);
