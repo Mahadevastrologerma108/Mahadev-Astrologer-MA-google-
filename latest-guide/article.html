@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953"
-     crossorigin="anonymous"></script>
-    <title id="dynamic-title">Sacred Guide | Mahadev Astrologer</title>
-    <meta name="description" id="dynamic-desc" content="Read divine astrological wisdom and guides on Mahadev Astrologer.">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>
+    
+    <title id="dynamic-title">Sacred Guide | Mahadev Astrologer MA</title>
+    <meta name="description" id="dynamic-desc" content="Read divine astrological wisdom and guides on Mahadev Astrologer MA.">
+    
     <link id="canonical-link" rel="canonical" href="https://www.mahadevastrologerma.in/latest-guide/article">
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     
+    <script src="../assets/js/translations.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    
     <script>
-        // Canonical Logic - Google ko batayega ki har ID ek alag article hai
+        // ✅ Canonical Logic Updated for 'title' instead of 'id'
         (function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const articleId = urlParams.get('id');
-            if (articleId) {
-                const finalUrl = "https://www.mahadevastrologerma.in/latest-guide/article.html?id=" + articleId;
+            const articleTitle = urlParams.get('title');
+            if (articleTitle) {
+                // Clean URL format without .html
+                const finalUrl = "https://www.mahadevastrologerma.in/latest-guide/article?title=" + articleTitle;
                 document.getElementById('canonical-link').setAttribute('href', finalUrl);
             }
         })();
@@ -26,31 +31,32 @@
 
     <style>
         .article-view-container { padding: 120px 20px; max-width: 800px; margin: auto; min-height: 80vh; }
-        #article-full-content { line-height: 1.8; color: #ccc; font-size: 1.1rem; }
-        #article-full-content h1, #article-full-content h2 { font-family: 'Cinzel'; color: var(--gold-main); margin-top: 30px; }
-        #article-full-content img { max-width: 100%; border-radius: 10px; margin: 20px 0; border: 1px solid rgba(197, 160, 89, 0.3); }
-        .back-link { color: var(--gold-main); text-decoration: none; font-family: 'Cinzel'; display: inline-block; margin-bottom: 20px; }
+        #article-content { line-height: 1.8; color: #ccc; font-size: 1.1rem; }
+        #article-content h1, #article-content h2 { font-family: 'Cinzel'; color: var(--gold); margin-top: 30px; }
+        #article-image { max-width: 100%; border-radius: 10px; margin: 20px 0; border: 1px solid rgba(212, 175, 55, 0.3); display: none; }
+        .back-link { color: var(--gold); text-decoration: none; font-family: 'Cinzel'; display: inline-block; margin-bottom: 20px; font-weight: bold; }
     </style>
 </head>
-<body style="background: #0a0a14; color: white;">
+<body style="background: var(--dark); color: white;">
     <div id="header-placeholder"></div>
 
     <div class="article-view-container">
-        <a href="guides.html" class="back-link">← Back to Guides</a>
+        <a href="/latest-guide/guides" class="back-link">← Back to Guides</a>
+        
         <div id="article-display">
-            <h1 id="post-title" style="font-family: 'Cinzel'; color: var(--gold);">Loading...</h1>
-            <div id="article-full-content">
-                <p>Wisdom is being gathered from the temples, please wait...🔱</p>
+            <h1 id="article-title" style="font-family: 'Cinzel'; color: var(--gold);">Loading...</h1>
+            <img id="article-image" src="" alt="Article Banner">
+            
+            <div id="article-content">
+                <p>Wisdom is being gathered from the temples, please wait... 🔱</p>
             </div>
         </div>
     </div>
 
     <div id="footer-placeholder"></div>
 
-    <script src="../assets/js/translations.js"></script>
-    <script src="../assets/js/layout.js"></script>
     <script src="../assets/js/nav-handler.js"></script>
     <script src="../assets/js/article-viewer.js"></script> 
-<script type="module" src="../assets/js/firebase-handler.js"></script>
+    <script type="module" src="../assets/js/firebase-handler.js"></script>
 </body>
 </html>
