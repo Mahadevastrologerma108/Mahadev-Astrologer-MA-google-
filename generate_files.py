@@ -54,7 +54,8 @@ if not os.path.exists(target_dir):
 # Generator loop
 for r in rashis:
     file_path = os.path.join(target_dir, r + ".html")
-    current_canonical = f"{base_url}{r}.html"
+    # ✅ FIX: Canonical se .html hata diya (Clean URL format)
+    current_canonical = f"{base_url}{r}"
     details = rashi_details[r]
     
     # Pre-calculate values
@@ -68,17 +69,24 @@ for r in rashis:
     gem = details['gem']
     mantra = details['mantra']
 
-    # F-String template (Yahan braces ka koi issue nahi hoga)
+    # F-String template
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{page_title} राशि का आज का राशिफल। महादेव एस्ट्रोलॉजर MA पर जानें आज का करियर, प्रेम, स्वास्थ्य और अचूक वैदिक उपाय।">
+    
     <link rel="canonical" href="{current_canonical}">
     {adsense_snippet}
+    
     <title>{page_title} | Daily Horoscope 2026 | MAHADEV ASTROLOGER MA</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script src="/assets/js/translations.js"></script>
+    <script src="/horoscope/horoscope-trans.js"></script> 
+    <script src="/assets/js/layout.js"></script>
+    
     <link rel="stylesheet" href="/assets/css/style.css">
     <style>
         .horo-card {{ max-width: 800px; margin: 120px auto 50px; padding: 30px; background: rgba(245,197,66,0.05); border: 1px solid #f5c542; border-radius: 20px; text-align: center; }}
@@ -163,8 +171,6 @@ for r in rashis:
     <script src="/horoscope/horoscope-data.js"></script>
     <script src="/assets/js/horoscope-handler.js"></script>
     <script type="module" src="/assets/js/firebase-handler.js"></script>    
-    <script src="/assets/js/translations.js"></script>
-    <script src="/assets/js/layout.js"></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {{
