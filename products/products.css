@@ -47,3 +47,29 @@ body {
 .highlight-step { color: var(--gold); font-weight: bold; }
 
 @media (max-width: 600px) { .selection-container { margin-top: 80px; } }
+
+/* 🔱 Premium Buttons for Store (Theme Matched) */
+.premium-btn, .order-btn {
+    background: linear-gradient(135deg, #d4af37, var(--gold));
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.premium-btn:hover, .order-btn:hover {
+    background: linear-gradient(135deg, var(--gold), #ffeb99);
+    box-shadow: 0 6px 15px rgba(245, 197, 66, 0.4);
+    transform: translateY(-3px);
+}
