@@ -14,7 +14,7 @@ window.pageTranslations = {
 "rahukaal": "Rahu Kaal",
 "ph_time": "Time",
 "pan_name": "Muhurat",
-"ph_nature": "Nature"
+"ph_nature": "Nature",
         "day_sun": "Sun",
         "day_mon": "Mon",
         "day_tue": "Tue",
@@ -48,7 +48,7 @@ window.pageTranslations = {
         "tithi_01": "Pratipada", "tithi_02": "Dwitiya", "tithi_03": "Tritiya", "tithi_04": "Chaturthi", "tithi_05": "Panchami", "tithi_06": "Shashthi", "tithi_07": "Saptami", "tithi_08": "Ashtami", "tithi_09": "Navami", "tithi_10": "Dashami", "tithi_11": "Ekadashi", "tithi_12": "Dwadashi", "tithi_13": "Trayodashi", "tithi_14": "Chaturdashi", "tithi_15": "Purnima", "tithi_30": "Amavasya",
           // Yoga & Karana
         "yoga_01": "Vishkumbha", "yoga_02": "Priti", "yoga_03": "Ayushman", "yoga_04": "Saubhagya", "yoga_05": "Shobhana", "yoga_06": "Atiganda", "yoga_07": "Sukarma", "yoga_08": "Dhriti", "yoga_09": "Shoola", "yoga_10": "Ganda", "yoga_11": "Vriddhi", "yoga_12": "Dhruva", "yoga_13": "Vyaghata", "yoga_14": "Harshana", "yoga_15": "Vajra", "yoga_16": "Siddhi", "yoga_17": "Vyatipata", "yoga_18": "Variyana", "yoga_19": "Parigha", "yoga_20": "Shiva", "yoga_21": "Siddha", "yoga_22": "Sadhya", "yoga_23": "Shubha", "yoga_24": "Shukla", "yoga_25": "Brahma", "yoga_26": "Indra", "yoga_27": "Vaidhriti",
-        "karan_01": "Bava", "karan_02": "Balava", "karan_03": "Kaulava", "karan_04": "Taitila", "karan_05": "Gara", "karan_06": "Vanija", "karan_07": "Vishti", "karan_08": "Shakuni", "karan_09": "Chatushpada", "karan_10": "Naga", "karan_11": "Kimstughna"
+        "karan_01": "Bava", "karan_02": "Balava", "karan_03": "Kaulava", "karan_04": "Taitila", "karan_05": "Gara", "karan_06": "Vanija", "karan_07": "Vishti", "karan_08": "Shakuni", "karan_09": "Chatushpada", "karan_10": "Naga", "karan_11": "Kimstughna",
         "ph_time": "Time", "pan_name": "Muhurat", "ph_status": "Status", "nav_event":"Festivals & Events", "ph_nature": "Nature",
     // --- Panchang Knowledge Section ---
 "pan_info_elements_h": "Five Elements of Panchang",
@@ -133,3 +133,94 @@ window.pageTranslations = {
 
   }
 };
+// =====================================================================
+// MASTER TRANSLATION CORE ENGINE (Handles All Formats)
+// =====================================================================
+function updateAllTranslations() {
+    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    document.documentElement.lang = lang;
+
+    const elements = document.querySelectorAll('[data-key]');
+
+    elements.forEach(el => {
+        const key = el.getAttribute('data-key');
+        let translatedText = null;
+
+        // स्ट्रक्चर ए: मिनी ट्रांसलेशन (pageTranslations)
+        if (window.pageTranslations && window.pageTranslations[lang] && window.pageTranslations[lang][key]) {
+            translatedText = window.pageTranslations[lang][key];
+        }
+
+        // स्ट्रक्चर बी: ई-कॉमर्स प्रोडक्ट्स ऑब्जेक्ट (productsTranslation)
+        if (!translatedText && window.productsTranslation) {
+            let pageKey = document.body.getAttribute('data-page');
+            
+            if (!pageKey) {
+                const path = window.location.pathname;
+                if (path.includes('gemstones')) pageKey = 'gemstones';
+                else if (path.includes('herbal')) pageKey = 'herbal';
+                else if (path.includes('puja')) pageKey = 'puja';
+                else if (path.includes('rudraksha')) pageKey = 'rudraksha';
+                else pageKey = 'shop';
+            }
+            
+            if (window.productsTranslation[pageKey] && 
+                window.productsTranslation[pageKey][key] && 
+                window.productsTranslation[pageKey][key][lang]) {
+                translatedText = window.productsTranslation[pageKey][key][lang];
+            }
+        }
+
+        // स्ट्रक्चर सी: मुख्य डिक्शनरी ऑब्जेक्ट (commonTranslations)
+        if (!translatedText && window.commonTranslations && window.commonTranslations[lang] && window.commonTranslations[lang][key]) {
+            translatedText = window.commonTranslations[lang][key];
+        }
+
+        // टेक्स्ट रेंडरिंग
+        if (translatedText) {
+            if (el.tagName === "INPUT" && el.type === "submit") {
+                if (el.value !== translatedText) el.value = translatedText;
+            } else if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+                if (el.placeholder !== translatedText) el.placeholder = translatedText;
+            } else {
+                if (el.innerHTML !== translatedText) el.innerHTML = translatedText;
+            }
+        }
+    });
+
+    // ब्राउज़र टैब टाइटल सिंक लॉजिक
+    if (window.productsTranslation) {
+        let pKey = document.body.getAttribute('data-page') || 'shop';
+        const titleKeyMapping = {
+            'herbal': 'herb_page_title',
+            'puja': 'puja_page_title',
+            'rudraksha': 'rudra_page_title',
+            'gemstones': 'gem_title'
+        };
+        if (titleKeyMapping[pKey]) {
+            const specKey = titleKeyMapping[pKey];
+            if (window.productsTranslation[pKey] && window.productsTranslation[pKey][specKey] && window.productsTranslation[pKey][specKey][lang]) {
+                document.title = window.productsTranslation[pKey][specKey][lang];
+            }
+        }
+    }
+}
+
+// 🚀 लाइव रेंडरिंग के लिए "म्यूटेशन ऑब्जर्वर" (पंचांग जैसे डायनामिक डेटा के लिए अचूक लाइफ-सेवर)
+const translationObserver = new MutationObserver(() => {
+    // ऑब्जर्वर को थोड़ी देर रोकें ताकि लूप न बने
+    translationObserver.disconnect();
+    updateAllTranslations();
+    // दोबारा चालू करें
+    const targetNode = document.body || document.documentElement;
+    translationObserver.observe(targetNode, { childList: true, subtree: true, characterData: true });
+});
+
+// DOM रेडी और लाइव ऑब्जर्वेशन एक्टिवेशन
+document.addEventListener("DOMContentLoaded", () => {
+    updateAllTranslations();
+    const targetNode = document.body || document.documentElement;
+    translationObserver.observe(targetNode, { childList: true, subtree: true, characterData: true });
+});
+
+window.updateAllTranslations = updateAllTranslations;
