@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Path detection logic: Checks if we are in a subfolder
     const path = window.location.pathname;
-    const isSub = path.includes('/panchang/') || path.includes('/latest-guide/') || path.includes('/pages/');
+    const isSub = path.includes('/panchang/') || path.includes('/latest-guide/') || path.includes('/pages/') || path.includes('/products/') || path.includes('/vastu/');
     const up = isSub ? "../" : "";
 
     // 1. Menu Links Configuration
