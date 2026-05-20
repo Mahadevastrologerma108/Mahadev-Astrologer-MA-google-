@@ -281,10 +281,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================
-   6. AUTHENTICATION UI & ENGINE
+   6. AUTHENTICATION UI & ENGINE (WITH GLOBAL ADMIN BROADCAST)
    ========================================== */
 window.loginWithGoogle = () => signInWithPopup(auth, provider);
-window.logoutUser = () => signOut(auth).then(() => window.location.reload());
+window.logoutUser = () => signOut(auth).then(() => {
+    localStorage.removeItem('isAdmin'); // Ensure admin state is wiped on logout
+    window.location.reload();
+});
 
 window.changeLang = (lang) => {
     localStorage.setItem("userLang", lang);
@@ -311,8 +314,18 @@ function updateAuthUI(user) {
     if (user) {
         localStorage.setItem("userEmail", user.email);
         
-        // 🚩 ADMIN CHECK LOGIC FOR UI
+        // 🚩 ADMIN CHECK LOGIC FOR UI & GLOBAL AUTHORITY
         const isAdmin = user.email === "mannumani108@gmail.com";
+        
+        if (isAdmin) {
+            localStorage.setItem('isAdmin', 'true');
+            // Broadcast the signal to the entire site (caught by products-handler.js)
+            window.dispatchEvent(new CustomEvent('adminLoggedIn'));
+            console.log("🔱 Admin Privileges Activated and Broadcasted.");
+        } else {
+            localStorage.removeItem('isAdmin');
+        }
+
         const displayDisplayName = isAdmin 
             ? "MAHADEV ASTROLOGER MA" 
             : (user.displayName ? user.displayName.split(' ')[0].toUpperCase() : 'DEVOTEE');
@@ -337,6 +350,7 @@ function updateAuthUI(user) {
         }
     } else {
         localStorage.removeItem("userEmail");
+        localStorage.removeItem('isAdmin');
         const loggedOutHTML = `${langSwitcherHTML}<button onclick="window.loginWithGoogle()" class="auth-btn-divine">🔱 LOGIN</button>`;
         if(desktopContainer) desktopContainer.innerHTML = loggedOutHTML;
         if(mobileContainer) mobileContainer.innerHTML = loggedOutHTML;
