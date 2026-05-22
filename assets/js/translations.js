@@ -811,3 +811,96 @@ raag_ketu: "ललित",
         step_04_desc: "3-5 दिनों में अपना सिद्ध उत्पाद प्राप्त करें।",
    }
 };
+
+/**
+ * 🔱 MAHADEV ASTROLOGER MA - TRANSLATION ENGINE (V-MAX)
+ * Architecture: 2 Levels (Common + Dynamic Folder Translation)
+ */
+(function() {
+    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    document.documentElement.lang = lang;
+
+    // 🧠 1. SMART MERGER: मास्टर डिक्शनरी बनाने का फंक्शन
+    function getMasterDictionary(currentLang) {
+        let dict = Object.assign({}, window.commonTranslations?.[currentLang] || {});
+        
+        // यह लूप स्वयं ही आपके फोल्डर-लेवल डिक्शनरी (जैसे productsTranslation) को खोज लेगा
+        for (let key in window) {
+            if (key !== 'commonTranslations' && key.includes('Translation') && typeof window[key] === 'object') {
+                if (window[key][currentLang]) {
+                    Object.assign(dict, window[key][currentLang]);
+                }
+            }
+        }
+        return dict;
+    }
+    
+    // 🛡️ 2. PRE-PAINT INTERCEPTOR (FOUC / Text Flashing को रोकने हेतु)
+    if (lang !== 'hi') {
+        const observer = new MutationObserver((mutations) => {
+            const dict = getMasterDictionary(lang);
+            
+            mutations.forEach(mutation => {
+                mutation.addedNodes.forEach(node => {
+                    if (node.nodeType === 1) { 
+                        // स्वयं टैग को जांचें
+                        if (node.hasAttribute('data-key')) {
+                            const text = dict[node.getAttribute('data-key')];
+                            if (text) node.innerHTML = text;
+                        }
+                        // बच्चों (children) को जांचें
+                        if (node.querySelectorAll) {
+                            node.querySelectorAll('[data-key]').forEach(child => {
+                                const text = dict[child.getAttribute('data-key')];
+                                if (text) child.innerHTML = text;
+                            });
+                        }
+                    }
+                });
+            });
+        });
+        
+        // HTML रेंडर होने से पूर्व ही शब्दों को बदल दें
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+    }
+    
+    // ⚙️ 3. MANUAL SWITCHER (बटन क्लिक के लिए ग्लोबल फंक्शन)
+    window.updateAllTranslations = function() {
+        const currentLang = localStorage.getItem('selectedLanguage') || 'hi';
+        document.documentElement.lang = currentLang;
+
+        const masterDictionary = getMasterDictionary(currentLang);
+
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            const translatedText = masterDictionary[key];
+
+            if (translatedText) {
+                if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+                    if (el.type === "submit" || el.type === "button") {
+                        if (el.value !== translatedText) el.value = translatedText;
+                    } else {
+                        if (el.placeholder !== translatedText) el.placeholder = translatedText;
+                    }
+                } else {
+                    if (el.innerHTML !== translatedText) el.innerHTML = translatedText;
+                }
+            }
+        });
+
+        // Title Sync
+        let pageKey = document.body.getAttribute('data-page');
+        const titleKeys = { 
+            'herbal': 'herb_page_title', 
+            'puja': 'puja_page_title', 
+            'rudraksha': 'rudra_page_title', 
+            'gemstones': 'gem_title', 
+            'shop': 'shop_title', 
+            'panchang': 'ins_panchang_title' 
+        };
+        
+        if (pageKey && titleKeys[pageKey] && masterDictionary[titleKeys[pageKey]]) {
+            document.title = masterDictionary[titleKeys[pageKey]];
+        }
+    };
+})();
