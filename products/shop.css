@@ -2,10 +2,16 @@
    MAHADEV ASTROLOGER MA - DIVINE STORE CSS
    ========================================= */
 
-/* Store Header (Top margin is handled by global .p-container 110px) */
+/* Store Header - Padding added to prevent hiding behind the fixed navbar */
+.store-header {
+    padding-top: 30px; 
+    text-align: center;
+}
+
 .store-header h1 {
-    margin-bottom: 20px;
-    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 2.8rem;
 }
 
 /* Intro Section */
@@ -15,13 +21,14 @@
     line-height: 1.8;
     color: #ccc;
     font-family: 'Poppins', sans-serif;
+    text-align: center;
 }
 
 .store-intro p {
     margin-bottom: 15px;
 }
 
-/* Product Grid - (Aligned with global .card-section vibe) */
+/* Product Grid */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -30,9 +37,9 @@
 }
 
 .product-card {
-    background: rgba(255, 255, 255, 0.03); /* Matched with global .service-card */
-    border: 1px solid rgba(245, 197, 66, 0.15); /* Matched with global border */
-    border-radius: 15px; /* Matched with global radius */
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(245, 197, 66, 0.15); 
+    border-radius: 15px; 
     padding: 25px;
     text-align: center;
     display: flex;
@@ -48,13 +55,13 @@
 }
 
 .product-icon {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 15px;
 }
 
 .product-title {
     color: #f5c542;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-bottom: 15px;
 }
 
@@ -63,15 +70,15 @@
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 20px;
-    flex-grow: 1; /* Isse button hamesha card ke neeche ek line mein rahenge */
+    flex-grow: 1;
 }
 
-/* Buy Button - (Matched with global .tab-btn 50px radius style) */
+/* Buy Button */
 .buy-btn {
     background: transparent;
     border: 1px solid #f5c542;
     color: #f5c542;
-    padding: 8px 25px;
+    padding: 10px 25px;
     border-radius: 50px; 
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
@@ -86,13 +93,18 @@
     color: #111;
 }
 
-/* SEO Info Sections & FAQs - (Matched with global .choghadiya-section) */
+/* SEO Info Sections & FAQs */
 .info-section, .faq-container {
     background: rgba(255, 255, 255, 0.02);
     border-radius: 20px;
     padding: 30px;
     border: 1px solid rgba(245, 197, 66, 0.1);
     margin-bottom: 40px;
+}
+
+.info-section h2, .faq-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
 .info-grid {
@@ -113,24 +125,32 @@
     color: #f5c542;
     margin-top: 0;
     margin-bottom: 10px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 .info-box p {
     color: #aaa;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
 }
 
 /* Founder Message */
 .astrologer-note {
-    padding: 30px;
+    padding: 35px;
     background: rgba(245, 197, 66, 0.05);
     border: 1px solid rgba(245, 197, 66, 0.2);
     border-radius: 20px;
     text-align: center;
     margin-bottom: 40px;
+}
+
+.astrologer-note p {
+    color: #ccc;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    font-style: italic;
+    margin: 0;
 }
 
 /* Custom FAQ Details */
@@ -188,15 +208,22 @@ details.faq-item[open] summary.faq-question::after {
     background: rgba(255, 50, 50, 0.05);
     border-left: 5px solid #f5c542;
     border-radius: 12px;
-    margin-bottom: 10px; /* .p-container already handles 40px bottom margin */
+    margin-bottom: 10px;
 }
 
 .disclaimer-title {
     color: #f5c542;
     margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.disclaimer-box p {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
 }
