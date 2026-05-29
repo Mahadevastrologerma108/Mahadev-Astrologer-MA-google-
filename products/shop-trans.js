@@ -1,4 +1,4 @@
-const shopTranslations = {
+window.pageTranslations = {
     en: {
         "store_title": "Divine Store | Sacred Items Center",
         "store_intro_h1": "Pure and Authentic Vedic Products",
@@ -88,9 +88,3 @@ const shopTranslations = {
         "disc_text": "इस वेबसाइट पर उपलब्ध <strong>हर्बल उत्पाद</strong> केवल सामान्य स्वास्थ्य, कल्याण (wellness) और प्राकृतिक जीवनशैली का समर्थन करने के उद्देश्य से हैं। <strong>हम किसी भी बीमारी, रोग या स्वास्थ्य समस्या का पूर्ण (100%) उपचार, निदान या चिकित्सा (medical treatment) करने का कोई दावा नहीं करते हैं।</strong> यदि आपको कोई स्वास्थ्य संबंधी समस्या है, तो कृपया इन उत्पादों का उपयोग करने से पूर्व किसी योग्य और लाइसेंस प्राप्त चिकित्सक (Doctor/Medical Professional) से परामर्श अवश्य लें।"
     }
 };
-
-// Global translations object me merge karne ke liye
-if (typeof translations !== 'undefined') {
-    Object.assign(translations.en, shopTranslations.en);
-    Object.assign(translations.hi, shopTranslations.hi);
-}
