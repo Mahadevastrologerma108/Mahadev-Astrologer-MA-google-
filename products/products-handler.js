@@ -1,24 +1,27 @@
 // ==========================================
-// MAHADEV ASTROLOGER MA - SMART STOCK ENGINE
+// MAHADEV ASTROLOGER MA - SMART STORE ENGINE
 // ==========================================
 
-import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // Database initialize karein
 const db = getFirestore();
 
-// 1. Main Function: Products ko scan karna aur Stock UI lagana
+// 1. Main Function: Products ko scan karna aur Stock/Enquiry lagana
 const initProductsEngine = () => {
-    // Sabhi product cards ko dhundhein
     const productCards = document.querySelectorAll('.product-card');
+    
+    // Check karein ki Admin login hai ya nahi
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
     productCards.forEach(card => {
-        // Product ka Unique ID 'data-key' se nikalna (jaise: prod_gemstones)
         const titleEl = card.querySelector('.product-title');
         if (!titleEl) return;
-        const productId = titleEl.getAttribute('data-key'); 
+        
+        const productName = titleEl.innerText; // Jaise: "Gemstones (रत्न)"
+        const productId = titleEl.getAttribute('data-key'); // Jaise: "prod_gemstones"
 
-        // Stock dikhane ke liye naya Badge banana
+        // Stock dikhane ke liye Badge banana
         let stockBadge = card.querySelector('.stock-badge');
         if (!stockBadge) {
             stockBadge = document.createElement('div');
@@ -27,7 +30,6 @@ const initProductsEngine = () => {
             stockBadge.style.fontSize = "0.9rem";
             stockBadge.style.fontWeight = "600";
             
-            // Buy Button ke theek upar lagana
             const buyBtn = card.querySelector('.buy-btn');
             if (buyBtn) {
                 card.insertBefore(stockBadge, buyBtn);
@@ -35,8 +37,7 @@ const initProductsEngine = () => {
         }
 
         // 2. Admin Controls: Agar Admin login hai, toh Edit button dikhayein
-        // (Yahan hum man rahe hain ki firebase-handler ne window.isAdmin = true set kiya hai)
-        if (window.isAdmin === true) {
+        if (isAdmin) {
             let editBtn = card.querySelector('.admin-edit-btn');
             if (!editBtn) {
                 editBtn = document.createElement('button');
@@ -46,18 +47,51 @@ const initProductsEngine = () => {
                 editBtn.style.width = "100%";
                 editBtn.style.fontSize = "0.85rem";
                 
-                // Click karne par Stock Update ka prompt aayega
                 editBtn.onclick = () => updateStockPrompt(productId);
                 card.appendChild(editBtn);
             }
         }
 
-        // 3. Real-time Firebase Listener
-        listenToStockChanges(productId, stockBadge, card.querySelector('.buy-btn'));
+        // 3. Enquiry Button Logic (Sabhi users ke liye)
+        const buyBtn = card.querySelector('.buy-btn');
+        if (buyBtn) {
+            // Default link click ko rok kar apna Enquiry system chalana
+            buyBtn.onclick = (e) => {
+                e.preventDefault(); 
+                sendEnquiryToWhatsApp(productName, buyBtn);
+            };
+        }
+
+        // 4. Real-time Firebase Listener start karna
+        listenToStockChanges(productId, stockBadge, buyBtn);
     });
 };
 
-// 4. Firebase se Real-time Stock padhna (Read)
+// 5. Enquiry Bhejne ka System (WhatsApp)
+const sendEnquiryToWhatsApp = (productName, btnEl) => {
+    // Grahak se jankari lena
+    const userName = prompt("पूछताछ के लिए अपना नाम लिखें (Enter your name):");
+    if (!userName) return; // Yadi cancel kar diya
+
+    const userContact = prompt("अपना संपर्क नंबर लिखें (WhatsApp/Phone):");
+    if (!userContact) return;
+
+    // ⚠️ YAHAN APNA ASLI WHATSAPP NUMBER DALEIN (Country code ke sath, bina + lagaye)
+    const adminWhatsApp = "919999999999"; 
+
+    // Sandesh (Message) tayar karna
+    const message = `🔱 *NEW STORE ENQUIRY* 🔱\n\n📦 *Product:* ${productName}\n👤 *Name:* ${userName}\n📞 *Contact:* ${userContact}\n\nPranaam! Mujhe is utpad (product) ke vishay mein jankari chahiye.`;
+    
+    // WhatsApp ka URL banana
+    const waURL = `https://wa.me/${adminWhatsApp}?text=${encodeURIComponent(message)}`;
+
+    // Naye tab mein WhatsApp kholna
+    window.open(waURL, '_blank');
+    
+    alert("🔱 प्रणाम! आपकी जानकारी तैयार है, कृपया WhatsApp पर 'Send' दबाएं।");
+};
+
+// 6. Firebase se Real-time Stock padhna
 const listenToStockChanges = (productId, badgeEl, btnEl) => {
     const docRef = doc(db, "store_inventory", productId);
     
@@ -66,48 +100,44 @@ const listenToStockChanges = (productId, badgeEl, btnEl) => {
             const stockCount = docSnap.data().stock;
             updateStockUI(stockCount, badgeEl, btnEl);
         } else {
-            // Agar database mein data nahi hai, toh default 'In Stock' manenge
+            // Yadi database mein koi data nahi hai, toh stock ko full manenge
             updateStockUI(99, badgeEl, btnEl);
         }
     });
 };
 
-// 5. Stock ke anusar UI ka Rang aur Text badalna
+// 7. Stock ke anusar Button aur Text badalna
 const updateStockUI = (stock, badgeEl, btnEl) => {
     if (stock > 5) {
-        // Paryapt (Sufficient) Stock
         badgeEl.innerHTML = `<span style="color: #4CAF50;">✅ In Stock (उपलब्ध है)</span>`;
         if (btnEl) {
             btnEl.style.pointerEvents = "auto";
             btnEl.style.opacity = "1";
-            btnEl.innerText = "View Collection";
+            btnEl.innerText = "Enquire Now";
         }
     } 
     else if (stock > 0 && stock <= 5) {
-        // Kam Stock (Low Stock Alert)
         badgeEl.innerHTML = `<span style="color: #f5c542;">⚠️ Only ${stock} left! (जल्द खरीदें)</span>`;
         if (btnEl) {
             btnEl.style.pointerEvents = "auto";
             btnEl.style.opacity = "1";
-            btnEl.innerText = "View Collection";
+            btnEl.innerText = "Enquire Now";
         }
     } 
     else if (stock <= 0) {
-        // Out of Stock
         badgeEl.innerHTML = `<span style="color: #F44336;">❌ Out of Stock (स्टॉक समाप्त)</span>`;
         if (btnEl) {
-            btnEl.style.pointerEvents = "none"; // Button kaam nahi karega
-            btnEl.style.opacity = "0.4"; // Button dhundhla ho jayega
+            btnEl.style.pointerEvents = "none";
+            btnEl.style.opacity = "0.4";
             btnEl.innerText = "Out of Stock";
         }
     }
 };
 
-// 6. Admin dwara Stock Update karne ka Prompt (Write)
+// 8. Admin dwara Stock Update karne ka Prompt
 const updateStockPrompt = async (productId) => {
     const newStock = prompt(`Please enter new stock quantity for "${productId}":\n(Type 0 for Out of Stock)`);
     
-    // Yadi Admin ne number dala hai
     if (newStock !== null && !isNaN(newStock) && newStock.trim() !== "") {
         const stockNumber = parseInt(newStock, 10);
         
@@ -120,18 +150,16 @@ const updateStockPrompt = async (productId) => {
             alert("✅ Stock updated successfully in Firebase!");
         } catch (error) {
             console.error("Stock Update Error:", error);
-            alert("❌ Error: Aapko Admin rights nahi hain ya Firebase rules block kar rahe hain.");
+            alert("❌ Error: Aapko Admin adhikar (rights) nahi hain ya Firebase rok raha hai.");
         }
     }
 };
 
-// Jab Page poori tarah Load ho jaye tab Engine Start karein
+// Page load hone par aur Admin login hone par Engine chalana
 window.addEventListener('load', () => {
-    // Firebase Auth ko apna samay lene ke liye thoda ruk (delay) kar chalayenge
     setTimeout(initProductsEngine, 1000); 
 });
 
-// Yadi aapka firebase-handler.js login ke baad koi event bhejta hai:
-window.addEventListener('adminStatusReady', () => {
+window.addEventListener('adminLoggedIn', () => {
     initProductsEngine();
 });
