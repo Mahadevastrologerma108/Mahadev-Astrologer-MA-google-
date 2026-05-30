@@ -1,9 +1,42 @@
 window.dailyHoroscope = {
-  lastUpdated: "2026-05-30T06:00:00Z",
+  lastUpdated: "2026-05-31T06:00:00Z",
   source: "MAHADEV ASTROLOGER MA - Divine Wisdom Lab",
   methodology: "Vedic Planetary Transits & Lunar Sign Shift Analysis",
 
   aries: {
+    meta: {
+      planetaryPosition: "चंद्रमा का द्वितीय धन भाव में संचरण",
+      predictionPower: "93%",
+      expertNote: { 
+        hi: "धन संचय के प्रयासों में आज बड़ी सफलता मिलेगी। आपकी वाणी का आकर्षण लोगों को प्रभावित कर आपके कार्य सिद्ध करेगा।", 
+        en: "Great success in wealth accumulation efforts today. The magnetism of your speech will impress people and accomplish your tasks." 
+      }
+    },
+    ratings: { health: 4, wealth: 5, love: 4, career: 4 },
+    career: {
+      hi: "आर्थिक मामलों में लाभ निश्चित है। पारिवारिक व्यवसाय से जुड़े जातकों को आज विशेष लाभ प्राप्त होगा।",
+      en: "Profit in financial matters is certain. Natives in family businesses will earn special profits today."
+    },
+    love: {
+      hi: "कुटुंब के साथ समय बिताने का सुअवसर मिलेगा। घर में किसी मांगलिक कार्य की रूपरेखा बन सकती है।",
+      en: "An opportunity to spend time with extended family. Plans for an auspicious event at home may be formed."
+    },
+    health: {
+      hi: "गले और स्वरयंत्र का ध्यान रखें। वाणी में मधुरता बनाए रखें।",
+      en: "Take care of the throat and vocal cords. Maintain sweetness in your speech."
+    },
+    remedy: {
+      hi: "गुरुजनों का सम्मान करें और पीले चंदन का तिलक लगाएं।",
+      en: "Respect your teachers/elders and apply yellow sandalwood tilak."
+    },
+    luckyColor: { hi: "हल्का पीला (Pale Yellow)", en: "Pale Yellow" },
+    luckyNumber: "3",
+    luckyTime: { hi: "प्रातः 09:30 से 11:00", en: "09:30 AM to 11:00 AM" },
+    luckyDate: "May 31, 2026",
+    tagline: { hi: "वाणी की मधुरता धन और सम्मान लाती है।", en: "Sweetness of speech brings wealth and respect." }
+  },
+
+  taurus: {
     meta: {
       planetaryPosition: "चंद्रमा का आपकी अपनी राशि (लग्न) में गोचर",
       predictionPower: "98%",
@@ -32,11 +65,11 @@ window.dailyHoroscope = {
     luckyColor: { hi: "लाल (Red)", en: "Red" },
     luckyNumber: "9",
     luckyTime: { hi: "प्रातः 07:00 से 08:30", en: "07:00 AM to 08:30 AM" },
-    luckyDate: "May 30, 2026",
+    luckyDate: "May 31, 2026",
     tagline: { hi: "आत्मविश्वास ही विजय का प्रथम सोपान है।", en: "Self-confidence is the first step to victory." }
   },
 
-  taurus: {
+  gemini: {
     meta: {
       planetaryPosition: "चंद्रमा का द्वादश व्यय भाव में संचरण",
       predictionPower: "85%",
@@ -65,11 +98,11 @@ window.dailyHoroscope = {
     luckyColor: { hi: "सफेद (White)", en: "White" },
     luckyNumber: "6",
     luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
-    luckyDate: "May 30, 2026",
+    luckyDate: "May 31, 2026",
     tagline: { hi: "शांत मन ही समस्याओं का उत्तम समाधान है।", en: "A peaceful mind is the best solution to problems." }
   },
 
-  gemini: {
+  cancer: {
     meta: {
       planetaryPosition: "चंद्रमा का एकादश लाभ भाव में गोचर",
       predictionPower: "96%",
@@ -98,11 +131,11 @@ window.dailyHoroscope = {
     luckyColor: { hi: "हल्का हरा (Light Green)", en: "Light Green" },
     luckyNumber: "5",
     luckyTime: { hi: "प्रातः 10:00 से 11:30", en: "10:00 AM to 11:30 AM" },
-    luckyDate: "May 30, 2026",
+    luckyDate: "May 31, 2026",
     tagline: { hi: "सकारात्मक संपर्क ही उन्नति का आधार हैं।", en: "Positive contacts are the foundation of progress." }
   },
 
-  cancer: {
+  leo: {
     meta: {
       planetaryPosition: "चंद्रमा का दशम कर्म भाव में गोचर",
       predictionPower: "95%",
@@ -131,11 +164,11 @@ window.dailyHoroscope = {
     luckyColor: { hi: "रजत (Silver)", en: "Silver" },
     luckyNumber: "2",
     luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
-    luckyDate: "May 30, 2026",
+    luckyDate: "May 31, 2026",
     tagline: { hi: "कर्म ही मनुष्य की वास्तविक पहचान है।", en: "Karma is the real identity of a human." }
   },
 
-  leo: {
+  virgo: {
     meta: {
       planetaryPosition: "चंद्रमा का नवम भाग्य भाव में आगमन",
       predictionPower: "97%",
@@ -164,11 +197,11 @@ window.dailyHoroscope = {
     luckyColor: { hi: "स्वर्णिम (Golden)", en: "Golden" },
     luckyNumber: "1",
     luckyTime: { hi: "प्रातः 09:00 से 10:30", en: "09:00 AM to 10:30 AM" },
-    luckyDate: "May 30, 2026",
+    luckyDate: "May 31, 2026",
     tagline: { hi: "धर्म और बुद्धि का संगम भाग्य को प्रशस्त करता है।", en: "The confluence of righteousness and intellect clears the way for destiny." }
   },
 
-  virgo: {
+  libra: {
     meta: {
       planetaryPosition: "चंद्रमा का अष्टम भाव में गोचर",
       predictionPower: "86%",
@@ -179,7 +212,7 @@ window.dailyHoroscope = {
     },
     ratings: { health: 3, wealth: 3, love: 4, career: 3 },
     career: {
-      hi: "शोध कार्यों से जुड़े लोगों को सिद्धि प्राप्त होगी। किसी नए व्यापारिक समझौते (Deal) पर हस्ताक्षर करने से बचें।",
+      hi: "शोध कार्यों से जुड़े लोगों को सिद्धि प्राप्त होगी। किसी नए व्यापारिक अनुबंध (Deal) पर हस्ताक्षर करने से बचें।",
       en: "People associated with research works will attain success. Avoid signing any new business deals."
     },
     love: {
@@ -197,11 +230,11 @@ window.dailyHoroscope = {
     luckyColor: { hi: "हरा (Green)", en: "Green" },
     luckyNumber: "5",
     luckyTime: { hi: "शाम 04:00 से 05:30", en: "04:00 PM to 05:30 PM" },
-    luckyDate: "May 30, 2026",
+    luckyDate: "May 31, 2026",
     tagline: { hi: "सावधानी और मौन सबसे बड़े रक्षक हैं।", en: "Precaution and silence are the greatest protectors." }
   },
 
-  libra: {
+  scorpio: {
     meta: {
       planetaryPosition: "चंद्रमा का सप्तम जाया भाव में गोचर",
       predictionPower: "94%",
@@ -212,7 +245,7 @@ window.dailyHoroscope = {
     },
     ratings: { health: 4, wealth: 4, love: 5, career: 4 },
     career: {
-      hi: "व्यापार में नए समझौते अंतिम रूप ले सकते हैं। सहकर्मियों और साझेदारों का पूर्ण समर्थन प्राप्त होगा।",
+      hi: "व्यापार में नए अनुबंध अंतिम रूप ले सकते हैं। सहकर्मियों और साझेदारों का पूर्ण समर्थन प्राप्त होगा।",
       en: "New agreements in business may take their final shape. Full support from colleagues and partners will be received."
     },
     love: {
@@ -230,11 +263,11 @@ window.dailyHoroscope = {
     luckyColor: { hi: "गुलाबी (Pink)", en: "Pink" },
     luckyNumber: "6",
     luckyTime: { hi: "दोपहर 12:00 से 01:30", en: "12:00 PM to 01:30 PM" },
-    luckyDate: "May 30, 2026",
+    luckyDate: "May 31, 2026",
     tagline: { hi: "परस्पर प्रेम और विश्वास ही संबंधों की आत्मा है।", en: "Mutual love and trust are the soul of relationships." }
   },
 
-  scorpio: {
+  sagittarius: {
     meta: {
       planetaryPosition: "चंद्रमा का षष्ठम शत्रु भाव में गोचर",
       predictionPower: "91%",
@@ -263,11 +296,11 @@ window.dailyHoroscope = {
     luckyColor: { hi: "मैरून (Maroon)", en: "Maroon" },
     luckyNumber: "9",
     luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
-    luckyDate: "May 30, 2026",
+    luckyDate: "May 31, 2026",
     tagline: { hi: "अनुशासन और धैर्य से ही विजय प्राप्त होती है।", en: "Victory is achieved only through discipline and patience." }
   },
 
-  sagittarius: {
+  capricorn: {
     meta: {
       planetaryPosition: "चंद्रमा का पंचम त्रिकोण भाव में प्रवेश",
       predictionPower: "96%",
@@ -296,11 +329,11 @@ window.dailyHoroscope = {
     luckyColor: { hi: "पीला (Yellow)", en: "Yellow" },
     luckyNumber: "3",
     luckyTime: { hi: "प्रातः 11:30 से 01:00", en: "11:30 AM to 01:00 PM" },
-    luckyDate: "May 30, 2026",
+    luckyDate: "May 31, 2026",
     tagline: { hi: "ज्ञान ही सफलता का अचूक मार्ग है।", en: "Knowledge is the infallible path to success." }
   },
 
-  capricorn: {
+  aquarius: {
     meta: {
       planetaryPosition: "चंद्रमा का चतुर्थ सुख भाव में संचरण",
       predictionPower: "92%",
@@ -329,11 +362,11 @@ window.dailyHoroscope = {
     luckyColor: { hi: "नीला (Blue)", en: "Blue" },
     luckyNumber: "8",
     luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
-    luckyDate: "May 30, 2026",
+    luckyDate: "May 31, 2026",
     tagline: { hi: "पारिवारिक सुख ही जीवन की वास्तविक संपत्ति है।", en: "Family happiness is the real wealth of life." }
   },
 
-  aquarius: {
+  pisces: {
     meta: {
       planetaryPosition: "चंद्रमा का तृतीय पराक्रम भाव में गोचर",
       predictionPower: "96%",
@@ -344,7 +377,7 @@ window.dailyHoroscope = {
     },
     ratings: { health: 5, wealth: 4, love: 4, career: 5 },
     career: {
-      hi: "प्रकाशन, मीडिया और विपणन (Marketing) क्षेत्र के जातकों को विशेष सफलता प्राप्त होगी।",
+      hi: "प्रकाशन, संचार माध्यम (Media) और विपणन (Marketing) क्षेत्र के जातकों को विशेष सफलता प्राप्त होगी।",
       en: "Natives in publishing, media, and marketing sectors will achieve special success."
     },
     love: {
@@ -362,40 +395,7 @@ window.dailyHoroscope = {
     luckyColor: { hi: "काला (Black)", en: "Black" },
     luckyNumber: "8",
     luckyTime: { hi: "प्रातः 07:30 से 09:00", en: "07:30 AM to 09:00 AM" },
-    luckyDate: "May 30, 2026",
+    luckyDate: "May 31, 2026",
     tagline: { hi: "साहस और संवाद सफलता के दो प्रमुख स्तंभ हैं।", en: "Courage and communication are the two main pillars of success." }
-  },
-
-  pisces: {
-    meta: {
-      planetaryPosition: "चंद्रमा का द्वितीय धन भाव में संचरण",
-      predictionPower: "93%",
-      expertNote: { 
-        hi: "धन संचय के प्रयासों में आज बड़ी सफलता मिलेगी। आपकी वाणी का आकर्षण लोगों को प्रभावित कर आपके कार्य सिद्ध करेगा।", 
-        en: "Great success in wealth accumulation efforts today. The magnetism of your speech will impress people and accomplish your tasks." 
-      }
-    },
-    ratings: { health: 4, wealth: 5, love: 4, career: 4 },
-    career: {
-      hi: "आर्थिक मामलों में लाभ निश्चित है। पारिवारिक व्यवसाय से जुड़े जातकों को आज विशेष मुनाफा प्राप्त होगा।",
-      en: "Profit in financial matters is certain. Natives in family businesses will earn special profits today."
-    },
-    love: {
-      hi: "कुटुंब के साथ समय बिताने का सुअवसर मिलेगा। घर में किसी मांगलिक कार्य की रूपरेखा बन सकती है।",
-      en: "An opportunity to spend time with extended family. Plans for an auspicious event at home may be formed."
-    },
-    health: {
-      hi: "गले और स्वरयंत्र का ध्यान रखें। वाणी में मधुरता बनाए रखें।",
-      en: "Take care of the throat and vocal cords. Maintain sweetness in your speech."
-    },
-    remedy: {
-      hi: "गुरुजनों का सम्मान करें और पीले चंदन का तिलक लगाएं।",
-      en: "Respect your teachers/elders and apply yellow sandalwood tilak."
-    },
-    luckyColor: { hi: "हल्का पीला (Pale Yellow)", en: "Pale Yellow" },
-    luckyNumber: "3",
-    luckyTime: { hi: "प्रातः 09:30 से 11:00", en: "09:30 AM to 11:00 AM" },
-    luckyDate: "May 30, 2026",
-    tagline: { hi: "वाणी की मधुरता धन और सम्मान लाती है।", en: "Sweetness of speech brings wealth and respect." }
   }
 };
