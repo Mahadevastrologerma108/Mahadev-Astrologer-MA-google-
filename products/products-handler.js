@@ -3,6 +3,8 @@
 // ==========================================
 
 import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+// 🚩 NAYA JOD: Telegram Bot Keys ke liye config import kar rahe hain
+import { remoteConfig, fetchAndActivate, getString } from "../assets/js/firebase-config.js"; 
 
 // Database initialize karein
 const db = getFirestore();
@@ -18,8 +20,8 @@ const initProductsEngine = () => {
         const titleEl = card.querySelector('.product-title');
         if (!titleEl) return;
         
-        const productName = titleEl.innerText; // Jaise: "Gemstones (रत्न)"
-        const productId = titleEl.getAttribute('data-key'); // Jaise: "prod_gemstones"
+        const productName = titleEl.innerText; 
+        const productId = titleEl.getAttribute('data-key'); 
 
         // Stock dikhane ke liye Badge banana
         let stockBadge = card.querySelector('.stock-badge');
@@ -52,13 +54,12 @@ const initProductsEngine = () => {
             }
         }
 
-        // 3. Enquiry Button Logic (Sabhi users ke liye)
+        // 3. Enquiry Button Logic (Custom Modal kholna)
         const buyBtn = card.querySelector('.buy-btn');
         if (buyBtn) {
-            // Default link click ko rok kar apna Enquiry system chalana
             buyBtn.onclick = (e) => {
                 e.preventDefault(); 
-                sendEnquiryToWhatsApp(productName, buyBtn);
+                openEnquiryModal(productName); 
             };
         }
 
@@ -67,31 +68,95 @@ const initProductsEngine = () => {
     });
 };
 
-// 5. Enquiry Bhejne ka System (WhatsApp)
-const sendEnquiryToWhatsApp = (productName, btnEl) => {
-    // Grahak se jankari lena
-    const userName = prompt("पूछताछ के लिए अपना नाम लिखें (Enter your name):");
-    if (!userName) return; // Yadi cancel kar diya
+// 5. Custom Enquiry Modal (WhatsApp & Telegram Choice)
+const openEnquiryModal = (productName) => {
+    const existingModal = document.getElementById('enquiry-modal');
+    if (existingModal) existingModal.remove();
 
-    const userContact = prompt("अपना संपर्क नंबर लिखें (WhatsApp/Phone):");
-    if (!userContact) return;
-
-    // ⚠️ YAHAN APNA ASLI WHATSAPP NUMBER DALEIN (Country code ke sath, bina + lagaye)
-    const adminWhatsApp = "919999999999"; 
-
-    // Sandesh (Message) tayar karna
-    const message = `🔱 *NEW STORE ENQUIRY* 🔱\n\n📦 *Product:* ${productName}\n👤 *Name:* ${userName}\n📞 *Contact:* ${userContact}\n\nPranaam! Mujhe is utpad (product) ke vishay mein jankari chahiye.`;
+    const modal = document.createElement('div');
+    modal.id = 'enquiry-modal';
+    modal.style.cssText = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:flex; justify-content:center; align-items:center; z-index:9999; padding:20px;";
     
-    // WhatsApp ka URL banana
-    const waURL = `https://wa.me/${adminWhatsApp}?text=${encodeURIComponent(message)}`;
-
-    // Naye tab mein WhatsApp kholna
-    window.open(waURL, '_blank');
+    const content = document.createElement('div');
+    content.style.cssText = "background:#111; border: 1px solid var(--gold); padding:25px; border-radius:15px; width:100%; max-width:400px; text-align:center; position:relative;";
     
-    alert("🔱 प्रणाम! आपकी जानकारी तैयार है, कृपया WhatsApp पर 'Send' दबाएं।");
+    content.innerHTML = `
+        <button onclick="document.getElementById('enquiry-modal').remove()" style="position:absolute; top:10px; right:15px; background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer;">&times;</button>
+        <h3 style="color:var(--gold); font-family:'Cinzel', serif; margin-bottom:15px;">Enquire Now</h3>
+        <p style="color:#ccc; font-size:0.9rem; margin-bottom:15px;">Product: <strong>${productName}</strong></p>
+        
+        <input type="text" id="enq-name" placeholder="आपका नाम (Your Name)" style="width:100%; padding:10px; margin-bottom:15px; border-radius:5px; border:1px solid #444; background:#222; color:#fff;">
+        <input type="text" id="enq-phone" placeholder="संपर्क नंबर (Contact Number)" style="width:100%; padding:10px; margin-bottom:20px; border-radius:5px; border:1px solid #444; background:#222; color:#fff;">
+        
+        <p style="color:#aaa; font-size:0.85rem; margin-bottom:10px;">पूछताछ कहाँ भेजना चाहते हैं?</p>
+        
+        <div style="display:flex; gap:10px; justify-content:center;">
+            <button id="btn-wa" style="flex:1; background:#25D366; color:#fff; border:none; padding:10px; border-radius:5px; font-weight:bold; cursor:pointer;">🟢 WhatsApp</button>
+            <button id="btn-tg" style="flex:1; background:#0088cc; color:#fff; border:none; padding:10px; border-radius:5px; font-weight:bold; cursor:pointer;">🔵 Telegram</button>
+        </div>
+    `;
+    
+    modal.appendChild(content);
+    document.body.appendChild(modal);
+
+    document.getElementById('btn-wa').onclick = () => sendEnquiry(productName, 'whatsapp');
+    document.getElementById('btn-tg').onclick = () => sendEnquiry(productName, 'telegram');
 };
 
-// 6. Firebase se Real-time Stock padhna
+// 6. Platform ke anusar Message bhejna (Secure API Logic)
+const sendEnquiry = async (productName, platform) => {
+    const name = document.getElementById('enq-name').value.trim();
+    const phone = document.getElementById('enq-phone').value.trim();
+
+    if (!name || !phone) {
+        alert("प्रणाम! कृपया अपना नाम और संपर्क नंबर अवश्य भरें।");
+        return;
+    }
+
+    if (platform === 'whatsapp') {
+        // 🚩 Aapka diya gaya WhatsApp Link yahan upyog ho raha hai
+        const messageText = `🔱 NEW STORE ENQUIRY 🔱\n\n📦 Product: ${productName}\n👤 Name: ${name}\n📞 Contact: ${phone}`;
+        const waURL = `https://wa.me/message/VCK5OVBDCN7YK1?text=${encodeURIComponent(messageText)}`;
+        window.open(waURL, '_blank');
+        document.getElementById('enquiry-modal').remove();
+    } 
+    else if (platform === 'telegram') {
+        const tgBtn = document.getElementById('btn-tg');
+        const originalText = tgBtn.innerText;
+        tgBtn.innerText = "⏳ Sending...";
+        tgBtn.disabled = true;
+
+        const tgMessage = `🔱 <b>NEW STORE ENQUIRY</b> 🔱\n📦 <b>Product:</b> ${productName}\n👤 <b>Name:</b> ${name}\n📞 <b>Contact:</b> ${phone}\n📅 <b>Time:</b> ${new Date().toLocaleString()}`;
+
+        try {
+            // Firebase Remote Config se Token nikalna
+            await fetchAndActivate(remoteConfig);
+            const tgToken = getString(remoteConfig, 'TG_BOT_TOKEN');
+            const chatId = getString(remoteConfig, 'TG_CHAT_ID');
+
+            if (tgToken && chatId) {
+                // Background mein Telegram Bot ko call lagana
+                await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: chatId, text: tgMessage, parse_mode: 'HTML' })
+                });
+                
+                alert("🔱 प्रणाम! आपकी पूछताछ (Enquiry) महादेव एस्ट्रोलॉजर तक पहुँच गई है। हम शीघ्र ही संपर्क करेंगे।");
+                document.getElementById('enquiry-modal').remove();
+            } else {
+                throw new Error("Missing Telegram Keys in Remote Config");
+            }
+        } catch(e) {
+            console.error("TG Send Error:", e);
+            alert("❌ नेटवर्क एरर! कृपया WhatsApp का उपयोग करें।");
+            tgBtn.innerText = originalText;
+            tgBtn.disabled = false;
+        }
+    }
+};
+
+// 7. Firebase se Real-time Stock padhna
 const listenToStockChanges = (productId, badgeEl, btnEl) => {
     const docRef = doc(db, "store_inventory", productId);
     
@@ -100,13 +165,12 @@ const listenToStockChanges = (productId, badgeEl, btnEl) => {
             const stockCount = docSnap.data().stock;
             updateStockUI(stockCount, badgeEl, btnEl);
         } else {
-            // Yadi database mein koi data nahi hai, toh stock ko full manenge
             updateStockUI(99, badgeEl, btnEl);
         }
     });
 };
 
-// 7. Stock ke anusar Button aur Text badalna
+// 8. Stock ke anusar Button aur Text badalna
 const updateStockUI = (stock, badgeEl, btnEl) => {
     if (stock > 5) {
         badgeEl.innerHTML = `<span style="color: #4CAF50;">✅ In Stock (उपलब्ध है)</span>`;
@@ -134,7 +198,7 @@ const updateStockUI = (stock, badgeEl, btnEl) => {
     }
 };
 
-// 8. Admin dwara Stock Update karne ka Prompt
+// 9. Admin dwara Stock Update karne ka Prompt
 const updateStockPrompt = async (productId) => {
     const newStock = prompt(`Please enter new stock quantity for "${productId}":\n(Type 0 for Out of Stock)`);
     
@@ -150,7 +214,7 @@ const updateStockPrompt = async (productId) => {
             alert("✅ Stock updated successfully in Firebase!");
         } catch (error) {
             console.error("Stock Update Error:", error);
-            alert("❌ Error: Aapko Admin adhikar (rights) nahi hain ya Firebase rok raha hai.");
+            alert("❌ Error: Aapko Admin adhikar (rights) नहीं हैं या Firebase रोक रहा है।");
         }
     }
 };
