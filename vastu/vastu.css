@@ -1,167 +1,195 @@
+/* =========================================================
+   🔱 VASTU PAGE STYLES (Premium Dark & Gold Theme)
+========================================================= */
 :root {
-    --gold: #d4af37;
-    --dark: #000000;
-    --card-bg: rgba(20, 20, 20, 0.9);
+    --gold: #f5c542;
+    --dark-bg: #06060c;
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --border-glow: rgba(245, 197, 66, 0.2);
 }
 
-/* 🔱 Layout Framework Controls */
-body {
-    background-color: var(--dark);
+.vastu-page {
+    background-color: var(--dark-bg);
     color: #fff;
-    margin: 0;
-    padding: 0;
     font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    padding-top: 100px; /* Header ke niche space */
+    padding-bottom: 60px;
 }
 
-main {
-    display: block;
-    flex: 1 0 auto;
-    padding-top: 100px; /* Header overlap protection */
-    padding-bottom: 80px; /* Footer spacing allocation */
-    box-sizing: border-box;
+.cinzel {
+    font-family: 'Cinzel', serif;
 }
 
+.gold-text {
+    color: var(--gold);
+}
+
+/* --- Hero Section --- */
 .vastu-hero {
     text-align: center;
-    padding: 60px 20px;
-    border-bottom: 2px solid var(--gold);
+    max-width: 800px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
 }
 
 .vastu-hero h1 {
     font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
     color: var(--gold);
-    font-size: 2.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
 }
 
+.vastu-hero p {
+    font-size: 1.1rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* --- Service Cards Grid --- */
 .vastu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
 }
 
 .vastu-card {
     background: var(--card-bg);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    border: 1px solid var(--border-glow);
+    border-radius: 15px;
     padding: 30px;
-    text-align: center;
-    border-radius: 10px;
-    transition: 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .vastu-card:hover {
-    border-color: var(--gold);
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(245, 197, 66, 0.15);
+    border-color: var(--gold);
 }
 
 .vastu-card h3 {
     font-family: 'Cinzel', serif;
     color: var(--gold);
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed var(--border-glow);
+    padding-bottom: 10px;
 }
 
+.vastu-card p {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* --- Form Container --- */
 .vastu-form-container {
     max-width: 600px;
-    margin: 40px auto;
+    margin: 60px auto;
     padding: 40px;
-    background: var(--card-bg);
-    border: 1px solid var(--gold);
-    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    border: 1px solid var(--border-glow);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
 }
 
 .vastu-form-container h2 {
     font-family: 'Cinzel', serif;
     color: var(--gold);
     text-align: center;
+    font-size: 2rem;
     margin-bottom: 30px;
 }
 
+/* --- Form Inputs --- */
 .input-group {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
-.input-group input, .input-group select, .input-group textarea {
-    box-sizing: border-box; 
+.input-group input,
+.input-group select,
+.input-group textarea {
     width: 100%;
-    padding: 10px;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.5);
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glow);
+    border-radius: 8px;
     color: #fff;
-    outline: none;
     font-family: 'Poppins', sans-serif;
-    transition: border-color 0.3s ease;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
 }
 
-/* ✅ Sahi Jagah: Label ki properties ko root se uthakar yahan dala */
-.input-group label {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    color: rgba(212, 175, 55, 0.7);
-    transition: 0.3s ease;
-    pointer-events: none;
+.input-group select {
+    appearance: none;
+    cursor: pointer;
 }
 
-/* Floating Label Animation */
-.input-group input:focus ~ label, 
-.input-group input:not(:placeholder-shown) ~ label,
-.input-group textarea:focus ~ label,
-.input-group textarea:not(:placeholder-shown) ~ label {
-    top: -18px;
-    font-size: 12px;
-    color: var(--gold);
+.input-group select option {
+    background: var(--dark-bg);
+    color: #fff;
 }
 
 .input-group input:focus,
-.input-group textarea:focus,
-.input-group select:focus {
-    border-bottom: 2px solid var(--gold);
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: var(--gold);
 }
 
+.input-group label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: #888;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+/* Floating Label Animation */
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:not(:placeholder-shown) ~ label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.8rem;
+    background: var(--dark-bg);
+    padding: 0 5px;
+    color: var(--gold);
+}
+
+/* --- Premium Button --- */
 .premium-btn {
     width: 100%;
-    padding: 14px;
-    border: 2px solid var(--gold);
-    background: transparent;
-    color: var(--gold);
-    cursor: pointer;
+    padding: 15px;
+    background: var(--gold);
+    color: #000;
+    border: none;
+    border-radius: 50px;
     font-family: 'Cinzel', serif;
-    transition: 0.3s ease;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
 }
 
 .premium-btn:hover {
-    background: var(--gold);
-    color: #000;
+    background: #e6b83c;
+    transform: scale(1.02);
+    box-shadow: 0 5px 20px rgba(245, 197, 66, 0.4);
 }
 
-#formStatus {
-    text-align: center;
-    margin-top: 15px;
-}
-
-select {
-    cursor: pointer;
-}
-
-select option {
-    background: #111;
-    color: #fff;
-}
-
-/* Mobile Responsive Loop */
+/* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
-    .vastu-form-container {
-        margin: 20px;
-        padding: 25px;
-    }
-
-    .vastu-grid {
-        grid-template-columns: 1fr;
-    }
+    .vastu-hero h1 { font-size: 2.2rem; }
+    .vastu-form-container { padding: 25px; margin: 30px 15px; }
 }
