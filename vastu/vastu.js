@@ -1,63 +1,22 @@
-// =========================================================
-// 🔱 Firebase Imports
-// =========================================================
-import {
-    db,
-    remoteConfig,
-    fetchAndActivate,
-    getString
+// ==========================================
+// MAHADEV ASTROLOGER MA - VASTU ENGINE
+// ==========================================
+
+import { 
+    db, 
+    remoteConfig, 
+    fetchAndActivate, 
+    getString 
 } from '../assets/js/firebase-config.js';
 
-import {
-    collection,
-    addDoc,
-    serverTimestamp
+import { 
+    collection, 
+    addDoc, 
+    serverTimestamp 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-
 /* =========================================================
-   🔱 1. LANGUAGE ENGINE (100% Bug-Free)
-========================================================= */
-function applyVastuLanguage(lang = 'hi') {
-    // ES6 Modules के टकराव से बचने के लिए window ऑब्जेक्ट का उपयोग
-    if (!window.vastuTranslations) {
-        console.warn('Vastu translations missing! Make sure vastu-trans.js is loaded before vastu.js');
-        return;
-    }
-
-    const langData = window.vastuTranslations[lang];
-    if (!langData) return;
-
-    document.querySelectorAll('[data-key]').forEach(element => {
-        const key = element.dataset.key;
-        if (!langData[key]) return;
-
-        if (element.tagName === 'OPTION') {
-            element.text = langData[key];
-        } else {
-            element.textContent = langData[key];
-        }
-    });
-}
-
-
-/* =========================================================
-   🔱 2. GLOBAL TRANSLATION CONNECTOR
-========================================================= */
-window.updateVastuLanguage = applyVastuLanguage;
-
-// Layout.js compatibility: Ensure global toggle button works
-const previousUpdateContent = window.updateContent;
-window.updateContent = function(lang) {
-    if (typeof previousUpdateContent === 'function') {
-        previousUpdateContent(lang);
-    }
-    applyVastuLanguage(lang);
-};
-
-
-/* =========================================================
-   🔱 3. INPUT SANITIZER
+   🔱 1. INPUT SANITIZER
 ========================================================= */
 function sanitizeInput(value) {
     if (!value) return '';
@@ -67,9 +26,8 @@ function sanitizeInput(value) {
         .trim();
 }
 
-
 /* =========================================================
-   🔱 4. TELEGRAM ENGINE
+   🔱 2. TELEGRAM ENGINE
 ========================================================= */
 async function notifyViaTelegram(formData) {
     try {
@@ -99,13 +57,8 @@ ${formData.issue}
 
         await fetch(telegramURL, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                chat_id: chatId,
-                text: message
-            })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: chatId, text: message })
         });
 
     } catch (error) {
@@ -113,9 +66,8 @@ ${formData.issue}
     }
 }
 
-
 /* =========================================================
-   🔱 5. FORM SUBMISSION ENGINE
+   🔱 3. FORM SUBMISSION ENGINE
 ========================================================= */
 function initializeVastuForm() {
     const form = document.getElementById('vastuConsultForm');
@@ -179,7 +131,7 @@ ${formData.issue}`
             );
 
             // ⚠️ ATTENTION: यहाँ अपना वास्तविक WhatsApp नंबर (Country Code के साथ) डालें 
-            const whatsappURL = `https://wa.me/message/VCK5OVBDCN7YK1?text=${whatsappMessage}`;
+            const whatsappURL = `https://wa.me/91YOUR_NUMBER?text=${whatsappMessage}`;
 
             /* --- SUCCESS UI --- */
             statusDiv.innerHTML = 
@@ -189,7 +141,7 @@ ${formData.issue}`
 
             form.reset();
 
-            // Timeout के साथ Status और Button Reset ताकि Double Submit न हो
+            // Timeout के साथ Status और Button Reset
             setTimeout(() => {
                 window.open(whatsappURL, '_blank');
                 statusDiv.innerHTML = "";
@@ -207,9 +159,8 @@ ${formData.issue}`
     });
 }
 
-
 /* =========================================================
-   🔱 6. BUTTON RESET UTILITY
+   🔱 4. BUTTON RESET UTILITY
 ========================================================= */
 function resetButton(button) {
     button.disabled = false;
@@ -217,21 +168,7 @@ function resetButton(button) {
     button.innerHTML = 'SUBMIT DETAILS 🔱';
 }
 
-
 /* =========================================================
-   🔱 7. PAGE INITIALIZER
+   🔱 5. SAFE STARTUP
 ========================================================= */
-function initializeVastuPage() {
-    // Apply saved language from local storage (default to Hindi)
-    const savedLang = localStorage.getItem('selectedLanguage') || 'hi';
-    applyVastuLanguage(savedLang);
-
-    // Initialize the form event listeners
-    initializeVastuForm();
-}
-
-
-/* =========================================================
-   🔱 8. SAFE STARTUP
-========================================================= */
-window.addEventListener('load', initializeVastuPage);
+window.addEventListener('load', initializeVastuForm);
