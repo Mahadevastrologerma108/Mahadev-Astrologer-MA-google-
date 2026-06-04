@@ -1,36 +1,96 @@
 const vastuTranslations = {
     en: {
+        seo_title: "16-Zone Vastu Consultant | MAHADEV ASTROLOGER MA",
         vastu_title: "Vastu Shastra Consultation",
         vastu_subtitle: "Align your home and workspace with cosmic energies. We specialize in scientific spatial energy balancing without demolition.",
+        
         vastu_card1_title: "16-Zone Energy Analysis",
-        vastu_card1_desc: "In-depth analysis of 16 Vastu zones to identify imbalances affecting career and health.",
+        vastu_card1_desc: "According to Vedic Vastu, every building is divided into 16 energy zones. Our precise analysis measures each direction of your home to identify and harmonize energy imbalances affecting your health, wealth, and family peace.",
+        
         vastu_card2_title: "No-Demolition Remedies",
-        vastu_card2_desc: "Structural balancing using metal tapes, color therapy, and earth salts.",
-        vastu_card3_title: "Placement Guidance",
-        vastu_card3_desc: "Scientific placement of kitchen, toilets, and mirrors for positive energy flow.",
-        vastu_cta_title: "Ready to Balance Your Space?",
-        vastu_btn_book: "BOOK CONSULTATION 🔱",
+        vastu_card2_desc: "Resolve Vastu defects without any demolition! We use modern and Vedic remedies, including metal tapes, specific earth salts, and color therapy, to balance elements and direct positive energy flow.",
+        
+        vastu_card3_title: "Structural Placement Fixes",
+        vastu_card3_desc: "Proper management of core shapes and placements. We guide the exact placement of the kitchen (Fire element), toilets (Water element), and mirrors to prevent unnecessary conflicts and financial losses.",
+        
+        vastu_auth_title: "Vastu Expertise of MAHADEV ASTROLOGER MA",
+        vastu_auth_desc: "Our objective is not merely to point out defects, but to provide practical solutions. By utilizing 16-zone elemental balancing and modern Vastu methods, we optimize your space to ensure the circulation of positive energy. Our authentic approach is highly beneficial for residential, commercial, and industrial spaces in Munger and beyond.",
+        
+        vastu_edu_title: "Importance of Vastu Shastra & Panchatattva",
+        edu_zone_h: "16 Directions and Energy",
+        edu_zone_p: "In Vedic Vastu, a building is divided into 16 energy zones. Each direction has a specific influence that controls your business, health, and prosperity.",
+        
+        edu_remedy_h: "Modern No-Demolition Remedies",
+        edu_remedy_p: "In ancient times, demolition was common for Vastu corrections. However, our precise method ensures perfect balance without any structural changes by utilizing metal tapes, colors, and compatible elements.",
+        
+        edu_flow_h: "Panchatattva Balance",
+        edu_flow_p: "Water, Fire, Earth, Air, and Space—the proper direction of these five elements is true Vastu. The incorrect placement of the kitchen (Fire) and toilets (Water) is the root of all major imbalances.",
+        
+        vastu_proc_title: "Our Vastu Audit Process",
+        proc_s1_title: "1. Submit Details",
+        proc_s1_desc: "Fill out the form below and explicitly mention your primary challenges.",
+        proc_s2_title: "2. Map and Direction",
+        proc_s2_desc: "Evaluation of your property's floor plan and exact compass degree.",
+        proc_s3_title: "3. Remedies and Balance",
+        proc_s3_desc: "Applying a 16-zone grid and balancing energy using non-destructive remedies (e.g., metal tapes).",
+        
         form_title: "Vastu Audit Request",
         label_name: "Full Name",
         opt_select: "Property Type",
         opt_res: "Residential (Home)",
-        opt_com: "Commercial (Office)",
+        opt_com: "Commercial (Office/Shop)",
         opt_ind: "Industrial (Factory)",
         opt_facing: "Main Entrance Facing",
         label_issue: "Main problems you are facing?",
         btn_submit: "SUBMIT DETAILS 🔱",
+        
+        vastu_faq_title: "Vastu Shastra Consultation FAQ",
+        vastu_q1: "Can Vastu defects be corrected without demolition?",
+        vastu_a1: "Yes, absolutely! According to the principles of Panchatattva balance and spatial energy, by using appropriate metals (metal tapes) or colors in the right direction, energy can be completely balanced without any demolition.",
+        vastu_q2: "What is the biggest Vastu defect in a house?",
+        vastu_a2: "Having a toilet or kitchen in the Ishan Kon (North-East), or a main entrance or pit in the Nairutya Kon (South-West) are considered the most harmful Vastu defects, which obstruct progress and stability.",
+        vastu_q3: "What preparation do I need for a Vastu audit?",
+        vastu_a3: "You only need to have a clear floor plan of your building and the exact compass degree of the main entrance ready. This allows us to apply the 16-zone grid and conduct an accurate analysis.",
+        vastu_q4: "How do Metal Tapes and Salts work?",
+        vastu_a4: "Metal Tapes are used to block imbalanced elements in various directions (e.g., having a fire element in a water zone). Additionally, special salts absorb negative energy and purify the environment.",
+        vastu_q5: "What is the impact of placing a Mirror in the wrong location?",
+        vastu_a5: "A mirror represents the water element and space. Placing it in the South or West directions imbalances the fire and earth elements, leading to business losses and adverse health effects."
     },
     hi: {
+        seo_title: "16-ज़ोन वास्तु परामर्श | MAHADEV ASTROLOGER MA",
         vastu_title: "वास्तु शास्त्र परामर्श",
         vastu_subtitle: "अपने घर और कार्यस्थल को ब्रह्मांडीय ऊर्जा के साथ संरेखित करें। हम बिना तोड़-फोड़ के वैज्ञानिक ऊर्जा संतुलन के विशेषज्ञ हैं।",
+        
         vastu_card1_title: "16-ज़ोन ऊर्जा विश्लेषण",
-        vastu_card1_desc: "करियर और स्वास्थ्य को प्रभावित करने वाले दोषों के लिए 16 वास्तु ज़ोन का गहन विश्लेषण।",
+        vastu_card1_desc: "वैदिक वास्तु के अनुसार, किसी भी भवन को 16 ऊर्जा क्षेत्रों में विभाजित किया जाता है। हमारा सटीक विश्लेषण आपके घर की प्रत्येक दिशा को मापता है। इस विधि से हम उन ऊर्जा असंतुलनों को पहचानते हैं जो आपके स्वास्थ्य, धन और पारिवारिक शांति को बाधित कर रहे हैं।",
+        
         vastu_card2_title: "बिना तोड़-फोड़ के उपाय",
-        vastu_card2_desc: "धातु के टेप और अर्थ साल्ट के माध्यम से आधुनिक वास्तु उपचार।",
-        vastu_card3_title: "वस्तु दिशा मार्गदर्शन",
-        vastu_card3_desc: "सकारात्मक ऊर्जा के लिए रसोई, शौचालय और दर्पण की सही वैज्ञानिक दिशा।",
-        vastu_cta_title: "क्या आप अपना स्थान संतुलित करने के लिए तैयार हैं?",
-        vastu_btn_book: "परामर्श बुक करें 🔱",
+        vastu_card2_desc: "बिना किसी तोड़-फोड़ के वास्तु दोष का निवारण! हम आधुनिक और वैदिक उपायों का प्रयोग करते हैं। इसमें तत्वों को संतुलित करने के लिए मेटल टेप, विशेष प्रकार के साल्ट (नमक), और रंग चिकित्सा का उपयोग होता है, जो ऊर्जा प्रवाह को सकारात्मक दिशा प्रदान करते हैं।",
+        
+        vastu_card3_title: "संरचनात्मक सुधार",
+        vastu_card3_desc: "घर के मुख्य आकार और स्थान का उचित प्रबंधन। हम रसोई (अग्नि तत्व), शौचालय (जल तत्व), और दर्पण के सटीक स्थान निर्धारण में सहायता करते हैं, जिससे जीवन में अनावश्यक क्लेश और धन की हानि रुकती है।",
+        
+        vastu_auth_title: "MAHADEV ASTROLOGER MA की वास्तु विशेषज्ञता",
+        vastu_auth_desc: "हमारा उद्देश्य केवल दोष बताना नहीं, बल्कि व्यावहारिक समाधान देना है। हम 16-ज़ोन तत्व संतुलन और आधुनिक वास्तु विधि का उपयोग करके, आपके स्थान को इस प्रकार अनुकूलित करते हैं कि वहां सकारात्मक ऊर्जा का संचार हो। हमारा प्रामाणिक दृष्टिकोण आपके निवास और व्यापारिक स्थान दोनों के लिए लाभकारी है। मुंगेर एवं अन्य क्षेत्रों के लिए यह विशेष रूप से फलदायी है।",
+        
+        vastu_edu_title: "वास्तु शास्त्र और पंचतत्व का महत्व",
+        edu_zone_h: "16 दिशाएं और ऊर्जा",
+        edu_zone_p: "वैदिक वास्तु में भवन को 16 ऊर्जा क्षेत्रों में विभाजित किया जाता है। प्रत्येक दिशा का अपना एक निश्चित प्रभाव होता है जो आपके व्यवसाय, स्वास्थ्य और समृद्धि को नियंत्रित करता है।",
+        
+        edu_remedy_h: "आधुनिक बिना तोड़-फोड़ के उपाय",
+        edu_remedy_p: "प्राचीन काल में वास्तु दोष निवारण के लिए तोड़-फोड़ आम थी। परंतु हमारी सटीक विधि से मेटल टेप, रंगों और अनुकूल तत्वों द्वारा बिना तोड़-फोड़ के पूर्ण संतुलन किया जाता है।",
+        
+        edu_flow_h: "पंचतत्व संतुलन",
+        edu_flow_p: "जल, अग्नि, पृथ्वी, वायु और आकाश—इन पंचतत्वों का उचित दिशा में होना ही असली वास्तु है। रसोई (अग्नि) और शौचालय (जल) का अनुचित स्थान ही सभी समस्याओं का मूल बनता है।",
+        
+        vastu_proc_title: "हमारी वास्तु ऑडिट प्रक्रिया",
+        proc_s1_title: "1. विवरण प्रस्तुत करें",
+        proc_s1_desc: "नीचे दिए गए फॉर्म को भरें और अपनी मुख्य समस्याओं का स्पष्ट उल्लेख करें।",
+        proc_s2_title: "2. मानचित्र और दिशानिर्देश",
+        proc_s2_desc: "आपके स्थान का नक्शा (फ़्लोर प्लान) और सटीक कंपास डिग्री का आकलन।",
+        proc_s3_title: "3. उपाय और संतुलन",
+        proc_s3_desc: "16-ज़ोन ग्रिड लगाकर, बिना तोड़-फोड़ के उपाय (मेटल टेप आदि) द्वारा ऊर्जा संतुलन।",
+        
         form_title: "वास्तु ऑडिट अनुरोध",
         label_name: "पूरा नाम",
         opt_select: "संपत्ति का प्रकार",
@@ -39,6 +99,18 @@ const vastuTranslations = {
         opt_ind: "औद्योगिक (फैक्ट्री)",
         opt_facing: "मुख्य प्रवेश द्वार की दिशा",
         label_issue: "आप मुख्य रूप से किन समस्याओं का सामना कर रहे हैं?",
-        btn_submit: "विवरण जमा करें 🔱"
+        btn_submit: "विवरण जमा करें 🔱",
+        
+        vastu_faq_title: "वास्तु शास्त्र परामर्श FAQ",
+        vastu_q1: "क्या बिना तोड़-फोड़ के वास्तु दोष ठीक हो सकता है?",
+        vastu_a1: "हाँ, बिल्कुल! पंचतत्व संतुलन और ऊर्जा सिद्धांत के अनुसार, सही दिशा में उचित धातु (मेटल टेप) या रंगों का उपयोग करके, ऊर्जा को बिना किसी तोड़-फोड़ के पूर्ण रूप से संतुलित किया जा सकता है।",
+        vastu_q2: "घर में सबसे बड़ा वास्तु दोष क्या होता है?",
+        vastu_a2: "घर के ईशान कोण (उत्तर-पूर्व) में शौचालय या रसोई का होना, और नैऋत्य कोण (दक्षिण-पश्चिम) में मुख्य द्वार या गड्ढा होना सबसे हानिकारक वास्तु दोष माना जाता है, जो उन्नति को बाधित करता है।",
+        vastu_q3: "वास्तु ऑडिट के लिए मुझे क्या तैयारी करनी होगी?",
+        vastu_a3: "आपको केवल अपने भवन का एक साफ़ नक्शा (फ़्लोर प्लान) और मुख्य द्वार की सटीक कंपास डिग्री तैयार रखनी होगी। इससे हम 16-ज़ोन ग्रिड लगाकर सटीक विश्लेषण कर सकते हैं।",
+        vastu_q4: "मेटल टेप और साल्ट कैसे कार्य करते हैं?",
+        vastu_a4: "विभिन्न दिशाओं में असंतुलित तत्वों (जैसे जल क्षेत्र में अग्नि का होना) को रोकने (ब्लॉक करने) के लिए मेटल टेप का प्रयोग होता है। साथ ही, विशेष साल्ट (नमक) नकारात्मक ऊर्जा को सोख कर वातावरण को शुद्ध करते हैं।",
+        vastu_q5: "दर्पण (Mirror) का गलत स्थान क्या प्रभाव डालता है?",
+        vastu_a5: "दर्पण जल तत्व और आकाश का प्रतिनिधित्व करता है। इसे दक्षिण या पश्चिम दिशा में लगाने से अग्नि और पृथ्वी तत्व असंतुलित हो जाते हैं, जिससे व्यापार में हानि और स्वास्थ्य पर प्रतिकूल प्रभाव पड़ता है।"
     }
 };
