@@ -33,10 +33,11 @@
         #result-section { display: none; margin-top: 40px; padding: 30px; background: linear-gradient(145deg, #111, #06060c); border: 2px dashed var(--gold); border-radius: 15px; text-align: center; animation: fadeIn 1s; }
         .score-circle { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: bold; color: var(--gold); margin: 0 auto 20px; box-shadow: 0 0 20px rgba(245, 197, 66, 0.3); font-family: 'Cinzel'; }
 
+        /* 🔱 Premium Upsell Box UI */
         .vastu-alignment-box { margin-top: 25px; padding: 25px; background: linear-gradient(145deg, rgba(245, 197, 66, 0.08), rgba(0,0,0,0.8)); border: 1px solid rgba(245,197,66,0.3); border-radius: 12px; text-align: left; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .vastu-alignment-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
-        .align-btn { display: inline-block; padding: 10px 25px; background: transparent; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-weight: bold; font-family: 'Cinzel'; border-radius: 50px; font-size: 0.9rem; transition: 0.3s; margin-top: 15px; }
-        .align-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 15px rgba(245,197,66,0.4); }
+        .align-btn { display: inline-block; padding: 12px 30px; background: var(--gold); border: 1px solid var(--gold); color: #111; text-decoration: none; font-weight: bold; font-family: 'Cinzel'; border-radius: 50px; font-size: 1rem; transition: 0.3s; margin-top: 20px; box-shadow: 0 5px 15px rgba(245,197,66,0.2); }
+        .align-btn:hover { background: transparent; color: var(--gold); box-shadow: 0 0 20px rgba(245,197,66,0.5); }
 
         .master-article { max-width: 850px; margin: 0 auto 80px; padding: 0 20px; line-height: 1.8; color: #ccc; font-size: 1.05rem; }
         .master-article h2 { font-family: 'Cinzel'; color: var(--gold); font-size: 2rem; margin: 50px 0 20px; border-bottom: 1px solid rgba(245, 197, 66, 0.2); padding-bottom: 10px; }
@@ -98,16 +99,18 @@
             <h3 id="doshLevel" style="color: #fff; margin-bottom: 15px; font-size: 1.2rem;"></h3>
             <p id="doshRemedy" style="color: #ccc; font-size: 0.95rem; line-height: 1.6; text-align: left; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px; border-left: 3px solid var(--gold);"></p>
 
+            <!-- 🔱 Professional Upsell Box -->
             <div class="vastu-alignment-box" id="vastuActionBox" style="display: none;">
-                <h4 style="color: var(--gold); font-family: 'Cinzel'; margin: 0 0 10px 0; font-size: 1.2rem;" data-key="gd_vastu_box_title">✨ Vastu Correction (वास्तु उपाय) क्यों ज़रूरी है?</h4>
+                <h4 style="color: var(--gold); font-family: 'Cinzel'; margin: 0 0 10px 0; font-size: 1.2rem;" data-key="gd_vastu_box_title">⚠️ क्या आपको प्रोफेशनल वास्तु मदद की आवश्यकता है?</h4>
                 <p style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin: 0 0 10px 0;" data-key="gd_vastu_box_p1">
-                    जब घर की दिशाएं और पंचतत्व असंतुलित हो जाते हैं, तो इसे <strong>'Geopathic Stress'</strong> कहा जाता है। यह तनाव सीधे आपकी आर्थिक वृद्धि और स्वास्थ्य को अवरुद्ध करता है।
+                    आपके घर में <strong>'Geopathic Stress'</strong> का स्तर अधिक है, जो सीधे आपकी आर्थिक वृद्धि और मानसिक शांति को अवरुद्ध कर रहा है। इंटरनेट से पढ़कर अधूरे उपाय (DIY Vastu) करने से ऊर्जा विपरीत (Reverse) प्रभाव भी डाल सकती है।
                 </p>
-                <p style="color: #fff; font-size: 0.95rem; line-height: 1.6; margin: 0 0 10px 0; font-style: italic;" data-key="gd_vastu_box_p2">
-                    "बिना तोड़-फोड़ के केवल ऊर्जा (Energy) और दिशाओं को अलाइन करके घर को एक 'सकारात्मक चुंबक' (Positive Magnet) बनाया जा सकता है।"
+                <p style="color: #fff; font-size: 0.95rem; line-height: 1.6; margin: 0 0 15px 0; font-style: italic;" data-key="gd_vastu_box_p2">
+                    "MAHADEV ASTROLOGER M.A. द्वारा 16-ज़ोन का वैज्ञानिक विश्लेषण करवाएं और बिना किसी तोड़-फोड़ के (No-Demolition) घर की ऊर्जा को अलाइन करें।"
                 </p>
                 <div style="text-align: center;">
-                    <a href="../index.html#book" class="align-btn" data-key="gd_btn_book">Book Vastu Consultation ➔</a>
+                    <!-- ✅ Clean URL Redirect to Vastu Form -->
+                    <a href="../vastu/vastu#vastuConsultForm" class="align-btn" data-key="gd_btn_book">Book Professional Vastu Audit ➔</a>
                 </div>
             </div>
         </div>
@@ -117,12 +120,12 @@
         <h2 style="text-align: center; border: none; font-size: 2.5rem; margin-top: 20px;" data-key="gd_art_title">गृह दोष: विज्ञान, ब्रह्मांडीय ऊर्जा और वैदिक समाधान</h2>
         <p style="text-align: center; color: var(--gold); font-style: italic; margin-bottom: 40px;" data-key="gd_art_quote">"जहाँ ऊर्जा का संतुलन है, वहीं महादेव का वास है।"</p>
 
-        <p data-key="gd_art_p1">हमारा घर केवल ईंट और पत्थर का ढांचा नहीं है; यह एक जीवंत इकाई (Living Entity) है। ब्रह्मांड की समस्त ऊर्जा हमारे निवास स्थान से होकर गुजरती है। जब यह ऊर्जा सकारात्मक होती है, तो घर में सुख, शांति और समृद्धि का वास होता है। परंतु जब इस ऊर्जा का प्रवाह बाधित होता है, तो उसे वैदिक ज्योतिष में <strong>'गृह दोष' (Grih Dosh)</strong> कहा जाता है।</p>
+        <p data-key="gd_art_p1">हमारा घर केवल ईंट और पत्थर का ढांचा नहीं है; यह एक जीवंत इकाई (Living Entity) है। ब्रह्मांड की समस्त ऊर्जा हमारे निवास स्थान से होकर गुजरती है। जब यह ऊर्जा सकारात्मक होती है, तो घर में सुख, शांति और समृद्धि का वास होता है। परंतु जब इस ऊर्जा का प्रवाह बाधित होता है, तो उसे वैदिक ज्योतिष में <strong>'गृह दोष' (Grih Dosh)</strong> कहा जाता है。</p>
 
         <p data-key="gd_art_p2"><strong>MAHADEV ASTROLOGER M.A.</strong> के इस शोध पत्र में हम यह समझेंगे कि गृह दोष केवल एक प्राचीन मान्यता नहीं है, बल्कि इसके पीछे गहरा विज्ञान (Science) छिपा है।</p>
 
         <h2 data-key="gd_art_h1">वैज्ञानिक दृष्टिकोण: जियोपैथिक स्ट्रेस (Geopathic Stress)</h2>
-        <p data-key="gd_art_p3">आधुनिक विज्ञान जिसे 'Geopathic Stress' कहता है, हमारे प्राचीन ऋषियों ने उसे सहस्रों वर्ष पूर्व 'वास्तु दोष' के रूप में पहचान लिया था। पृथ्वी के गर्भ में निरंतर चुंबकीय (Magnetic) और विद्युतीय (Electric) तरंगें बहती रहती हैं। जब घर का निर्माण पृथ्वी की इन प्राकृतिक चुंबकीय रेखाओं के विरुद्ध किया जाता है, तो घर के भीतर एक प्रकार का तनाव उत्पन्न होता है।</p>
+        <p data-key="gd_art_p3">आधुनिक विज्ञान जिसे 'Geopathic Stress' कहता है, हमारे प्राचीन ऋषियों ने उसे सहस्रों वर्ष पूर्व 'वास्तु दोष' के रूप में पहचान लिया था। पृथ्वी के गर्भ में निरंतर चुंबकीय (Magnetic) और विद्युतीय (Electric) तरंगें बहती रहती हैं। जब घर का निर्माण पृथ्वी की इन प्राकृतिक चुंबकीय रेखाओं के विरुद्ध किया जाता है, तो घर के भीतर एक प्रकार का तनाव उत्पन्न होता है。</p>
         
         <ul>
             <li data-key="gd_art_li1_1"><strong>फ्रीक्वेंसी का असंतुलन:</strong> मानव शरीर 7.83 Hz (Schumann Resonance) पर सर्वोत्तम कार्य करता है। नकारात्मक ऊर्जा वाले घर में यह फ्रीक्वेंसी बिगड़ जाती है, जिससे अकारण थकान और क्रोध उत्पन्न होता है।</li>
@@ -176,7 +179,21 @@
             let answered = 0;
 
             let currentLang = localStorage.getItem('selectedLang') || 'hi';
-            let t = translations[currentLang] || translations['hi'];
+            // Fallback for translations if not loaded yet
+            let t = (window.pageTranslations && window.pageTranslations[currentLang]) || (window.translations && window.translations[currentLang]);
+            
+            // Temporary static fallback if translations are completely missing during click
+            if (!t) {
+                t = {
+                    gd_alert: "कृपया सभी 4 प्रश्नों के उत्तर दें।",
+                    gd_lvl_good: "🟢 उत्तम ऊर्जा (0-20%)",
+                    gd_rem_good: "आपके घर में सकारात्मक ऊर्जा का वास है। इसे बनाए रखने के लिए नित्य संध्याकाल में कर्पूर जलाएं।",
+                    gd_lvl_mid: "🟡 मध्यम दोष (Geopathic Stress: 21-60%)",
+                    gd_rem_mid: "आपके घर की कुछ दिशाओं में ऊर्जा अवरुद्ध है। समुद्री नमक के जल से पोंछा लगाएं और ईशान कोण को साफ़ रखें।",
+                    gd_lvl_bad: "🔴 गंभीर वास्तु दोष (High Stress: 61-100%)",
+                    gd_rem_bad: "घर में नकारात्मक ऊर्जा का स्तर बहुत अधिक है। यह स्वास्थ्य और धन दोनों के लिए हानिकारक है। ध्वनि ऊर्जा (Sound Healing) का प्रयोग करें और विशेषज्ञ से परामर्श लें।"
+                };
+            }
 
             for (let i = 1; i <= 4; i++) {
                 const q = form.querySelector(`input[name="q${i}"]:checked`);
@@ -226,6 +243,36 @@
 
             resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
+    </script>
+
+    <!-- 🔱 Inline Translation Logic Setup -->
+    <script>
+        const getLang = () => localStorage.getItem('selectedLang') || 'hi';
+
+        const updateScannerText = () => {
+            const lang = getLang();
+            const translations = window.pageTranslations?.[lang] || window.translations?.[lang];
+            
+            if (!translations) return;
+
+            const elements = document.querySelectorAll('[data-key]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[key]) {
+                    el.innerHTML = translations[key]; 
+                }
+            });
+        };
+
+        window.addEventListener('load', () => {
+            setTimeout(updateScannerText, 200);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('#langToggle') || e.target.closest('.lang-switch')) {
+                setTimeout(updateScannerText, 100);
+            }
+        });
     </script>
 </body>
 </html>
