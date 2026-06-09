@@ -3,24 +3,24 @@ window.pageTranslations = {
         "gem_title": "Certified Gemstones | Astrological Remedies",
         "gem_intro_h1": "Source of Cosmic Energy: Navratna",
         "gem_intro_p1": "Gemstones hold a highly significant place in Astrology. They are not merely ornaments, but act as receivers that absorb cosmic rays and planetary energies. <strong>MAHADEV ASTROLOGER MA</strong> provides you with completely pure, natural, and lab-certified gemstones.",
-        "gem_intro_p2": "Wearing the appropriate gemstone according to your birth chart reduces the effect of negative planets, balances the chakras, and infuses positive energy, happiness, and peace into your life.",
+        "gem_intro_p2": "Wearing the appropriate gemstone according to your birth chart helps balance adverse planetary effects and infuses positive energy and spiritual peace into your life.",
         
         "ratna_ruby": "Ruby (Manikya)",
-        "desc_ruby": "<strong>Ruling Planet: Sun</strong><br>Wearing Ruby enhances self-confidence, leadership qualities, and prestige. It is helpful in maintaining excellent health and energy.",
+        "desc_ruby": "<strong>Ruling Planet: Sun</strong><br>Wearing Ruby enhances self-confidence, positive energy, and leadership qualities. It is considered helpful in supporting vitality.",
         "ratna_pearl": "Pearl (Moti)",
-        "desc_pearl": "<strong>Ruling Planet: Moon</strong><br>Pearl provides peace to the mind and removes mental stress. It is the best gemstone for balancing emotions.",
+        "desc_pearl": "<strong>Ruling Planet: Moon</strong><br>Pearl is highly beneficial in providing peace to the mind and managing mental stress. It is an excellent gemstone for balancing emotions.",
         "ratna_coral": "Red Coral (Moonga)",
-        "desc_coral": "<strong>Ruling Planet: Mars</strong><br>Coral increases courage, energy, and physical strength. It is highly beneficial in resolving land and debt-related issues.",
+        "desc_coral": "<strong>Ruling Planet: Mars</strong><br>Coral increases courage, energy, and determination. Astrologically, it is considered beneficial in making land and debt-related matters favorable.",
         "ratna_emerald": "Emerald (Panna)",
-        "desc_emerald": "<strong>Ruling Planet: Mercury</strong><br>Emerald is the significator of intellect, memory, and success in business. It is worn to sharpen speech and communication skills.",
+        "desc_emerald": "<strong>Ruling Planet: Mercury</strong><br>Emerald is the significator of intellect, memory, and logical ability. It is worn with the aim of improving speech and communication skills.",
         "ratna_pukhraj": "Yellow Sapphire (Pukhraj)",
-        "desc_pukhraj": "<strong>Ruling Planet: Jupiter</strong><br>Yellow Sapphire is a symbol of knowledge, good fortune, and marital bliss. It opens the doors to financial prosperity and spiritual progress.",
+        "desc_pukhraj": "<strong>Ruling Planet: Jupiter</strong><br>Yellow Sapphire is a symbol of knowledge, good fortune, and spiritual progress. It is helpful in paving the way for financial stability and marital bliss.",
         "ratna_diamond": "Diamond / Opal",
-        "desc_diamond": "<strong>Ruling Planet: Venus</strong><br>This gemstone grants beauty, attraction, material comforts, and success in the field of arts. Best for obtaining the grace of Venus.",
+        "desc_diamond": "<strong>Ruling Planet: Venus</strong><br>This gemstone provides favorability in the fields of beauty, art, and creativity. Best for obtaining the grace of Venus and sweetness in life.",
         "ratna_neelam": "Blue Sapphire (Neelam)",
-        "desc_neelam": "<strong>Ruling Planet: Saturn</strong><br>Blue Sapphire is an extremely intense and powerful gemstone. It provides discipline, justice, and rapid success in the workspace.",
+        "desc_neelam": "<strong>Ruling Planet: Saturn</strong><br>Blue Sapphire is an extremely powerful gemstone. It is considered helpful in attracting discipline, justice, and opportunities for success in the workspace.",
         "ratna_gomed": "Hessonite (Gomed)",
-        "desc_gomed": "<strong>Ruling Planet: Rahu</strong><br>Hessonite is worn to pacify the ill effects of Rahu and to overcome sudden obstacles.",
+        "desc_gomed": "<strong>Ruling Planet: Rahu</strong><br>Hessonite is worn under astrological guidance to balance the ill effects of Rahu and protect from sudden obstacles in life.",
         
         "btn_enquire": "Enquire Now",
         
@@ -39,30 +39,33 @@ window.pageTranslations = {
         "faq_q2": "Do you send the gemstone studded in a Ring?",
         "faq_a2": "Yes, upon special request and according to the customer's ring size, we get the gemstone studded in Gold, Silver, or Ashtadhatu, and send it fully energized.",
         "faq_q3": "When does a gemstone start showing its effect?",
-        "faq_a3": "The effect of a gemstone depends on its type. Gemstones like Blue Sapphire show very quick results, while other gemstones may take 30 to 45 days to connect with cosmic energy."
+        "faq_a3": "The effect of a gemstone depends on its type. Gemstones like Blue Sapphire show very quick results, while other gemstones may take 30 to 45 days to connect with cosmic energy.",
+
+        "disc_title": "⚠️ Legal Disclaimer",
+        "disc_text": "The <strong>Gemstones and astrological consultations</strong> available on this website are based purely on Vedic beliefs and spiritual wellness. <strong>We do not claim that any gemstone guarantees 100% overnight financial gain, miracles, or a complete cure for any health issue.</strong> Astrology and gemology are matters of personal belief and are not substitutes for medical or legal science."
     },
     hi: {
         "gem_title": "Certified Gemstones | प्रामाणिक ज्योतिषीय रत्न",
         "gem_intro_h1": "ब्रह्मांडीय ऊर्जा का स्रोत: नव रत्न",
         "gem_intro_p1": "ज्योतिष शास्त्र में रत्नों का अत्यंत महत्वपूर्ण स्थान है। रत्न केवल आभूषण नहीं हैं, बल्कि ये ब्रह्मांडीय किरणों (Cosmic Rays) और ग्रहों की ऊर्जा को ग्रहण करने वाले यंत्र के रूप में कार्य करते हैं। <strong>MAHADEV ASTROLOGER MA</strong> आपको पूर्ण रूप से शुद्ध, प्राकृतिक और प्रयोगशाला द्वारा प्रमाणित (Lab Certified) रत्न उपलब्ध कराता है।",
-        "gem_intro_p2": "जन्म कुंडली के अनुसार उचित रत्न धारण करने से नकारात्मक ग्रहों का प्रभाव कम होता है, चक्र संतुलित होते हैं, और जीवन में सकारात्मक ऊर्जा (Positive Energy), सुख और शांति का संचार होता है।",
+        "gem_intro_p2": "जन्म कुंडली के अनुसार उचित रत्न धारण करने से ग्रहों के प्रतिकूल प्रभावों को संतुलित करने में सहायता मिलती है, और जीवन में सकारात्मक ऊर्जा (Positive Energy) व आध्यात्मिक शांति का संचार होता है।",
         
         "ratna_ruby": "Ruby (माणिक्य)",
-        "desc_ruby": "<strong>स्वामी ग्रह: सूर्य (Sun)</strong><br>माणिक्य धारण करने से आत्मविश्वास, नेतृत्व क्षमता और मान-सम्मान में वृद्धि होती है। यह स्वास्थ्य और ऊर्जा को उत्तम बनाए रखने में सहायक है।",
+        "desc_ruby": "<strong>स्वामी ग्रह: सूर्य (Sun)</strong><br>माणिक्य धारण करने से आत्मविश्वास, सकारात्मक ऊर्जा और नेतृत्व क्षमता का विकास होता है। यह जीवन शक्ति को उत्तम बनाए रखने में सहायक माना गया है।",
         "ratna_pearl": "Pearl (मोती)",
-        "desc_pearl": "<strong>स्वामी ग्रह: चंद्र (Moon)</strong><br>मोती मन को शांति प्रदान करता है और मानसिक तनाव (Stress) को दूर करता है। यह भावनाओं को संतुलित करने के लिए सर्वोत्तम रत्न है।",
+        "desc_pearl": "<strong>स्वामी ग्रह: चंद्र (Moon)</strong><br>मोती मन को शांति प्रदान करने और मानसिक तनाव (Stress) को प्रबंधित करने में अत्यंत सहायक है। यह भावनाओं को संतुलित करने के लिए उत्तम रत्न है।",
         "ratna_coral": "Red Coral (मूंगा)",
-        "desc_coral": "<strong>स्वामी ग्रह: मंगल (Mars)</strong><br>मूंगा साहस, ऊर्जा और शारीरिक बल में वृद्धि करता है। भूमि और ऋण (Debt) संबंधी समस्याओं के समाधान में यह अत्यंत लाभकारी है।",
+        "desc_coral": "<strong>स्वामी ग्रह: मंगल (Mars)</strong><br>मूंगा साहस, ऊर्जा और दृढ़ संकल्प में वृद्धि करता है। ज्योतिष के अनुसार यह भूमि और ऋण (Debt) संबंधी मामलों को अनुकूल बनाने में लाभकारी है।",
         "ratna_emerald": "Emerald (पन्ना)",
-        "desc_emerald": "<strong>स्वामी ग्रह: बुध (Mercury)</strong><br>पन्ना बुद्धि, स्मरण शक्ति और व्यापार में सफलता का कारक है। वाणी (Speech) और संचार कौशल को प्रखर करने के लिए इसे धारण किया जाता है।",
+        "desc_emerald": "<strong>स्वामी ग्रह: बुध (Mercury)</strong><br>पन्ना बुद्धि, स्मरण शक्ति और तार्किक क्षमता का कारक है। वाणी (Speech) और संचार कौशल को बेहतर करने के उद्देश्य से इसे धारण किया जाता है।",
         "ratna_pukhraj": "Yellow Sapphire (पुखराज)",
-        "desc_pukhraj": "<strong>स्वामी ग्रह: गुरु (Jupiter)</strong><br>पुखराज ज्ञान, सौभाग्य, और वैवाहिक सुख का प्रतीक है। यह आर्थिक समृद्धि और आध्यात्मिक उन्नति के द्वार खोलता है।",
+        "desc_pukhraj": "<strong>स्वामी ग्रह: गुरु (Jupiter)</strong><br>पुखराज ज्ञान, सौभाग्य, और आध्यात्मिक प्रगति का प्रतीक है। यह जीवन में आर्थिक स्थिरता और वैवाहिक सुख के मार्ग को प्रशस्त करने में सहायक है।",
         "ratna_diamond": "Diamond / Opal (हीरा/ओपल)",
-        "desc_diamond": "<strong>स्वामी ग्रह: शुक्र (Venus)</strong><br>यह रत्न सौंदर्य, आकर्षण, भौतिक सुख और कला के क्षेत्र में सफलता प्रदान करता है। शुक्र की कृपा प्राप्ति के लिए यह सर्वोत्तम है।",
+        "desc_diamond": "<strong>स्वामी ग्रह: शुक्र (Venus)</strong><br>यह रत्न सौंदर्य, कला और रचनात्मकता के क्षेत्र में अनुकूलता प्रदान करता है। शुक्र की कृपा प्राप्ति और जीवन में मधुरता के लिए यह सर्वोत्तम है।",
         "ratna_neelam": "Blue Sapphire (नीलम)",
-        "desc_neelam": "<strong>स्वामी ग्रह: शनि (Saturn)</strong><br>नीलम एक अत्यंत तीव्र और शक्तिशाली रत्न है। यह अनुशासन, न्याय और कार्यक्षेत्र में तीव्र सफलता (Success) प्रदान करता है।",
+        "desc_neelam": "<strong>स्वामी ग्रह: शनि (Saturn)</strong><br>नीलम एक अत्यंत शक्तिशाली रत्न है। यह अनुशासन, न्याय और कार्यक्षेत्र में सफलता के अवसरों को अपनी ओर आकर्षित करने में सहायक माना गया है।",
         "ratna_gomed": "Hessonite (गोमेद)",
-        "desc_gomed": "<strong>स्वामी ग्रह: राहु (Rahu)</strong><br>राहु के दुष्प्रभावों को शांत करने और अचानक आने वाली बाधाओं को दूर करने के लिए गोमेद धारण किया जाता है।",
+        "desc_gomed": "<strong>स्वामी ग्रह: राहु (Rahu)</strong><br>राहु के दुष्प्रभावों को संतुलित करने और जीवन में आने वाली अचानक बाधाओं से बचाव हेतु ज्योतिषीय मार्गदर्शन में गोमेद धारण किया जाता है।",
         
         "btn_enquire": "Enquire Now / पूछताछ करें",
         
@@ -78,9 +81,12 @@ window.pageTranslations = {
         "faq_title": "रत्नों से संबंधित सामान्य प्रश्न (FAQ)",
         "faq_q1": "क्या आपके सभी रत्न प्रयोगशाला द्वारा प्रमाणित (Lab Certified) हैं?",
         "faq_a1": "जी हाँ, पूर्ण रूप से। हम प्रामाणिकता के साथ कोई समझौता नहीं करते। आपको रत्न के साथ प्रतिष्ठित प्रयोगशाला का मूल प्रमाण पत्र (Original Certificate) प्रदान किया जाता है।",
-        "faq_q2": "क्या आप रत्न को अंगूठी (Ring) में जड़वा कर भेजते हैं?",
+        "faq_q2": "क्या आप रत्न को अंगूठी (Ring) में जड़वा कर भेजते हैं?",
         "faq_a2": "हाँ, ग्राहकों के विशेष अनुरोध और उंगली के माप (Ring Size) के अनुसार, हम रत्न को स्वर्ण, रजत या अष्टधातु में निर्मित करवा कर और उसे सिद्ध (Energize) करके भेजते हैं।",
         "faq_q3": "रत्न अपना प्रभाव दिखाना कब आरंभ करता है?",
-        "faq_a3": "रत्न का प्रभाव उसके प्रकार पर निर्भर करता है। नीलम जैसे रत्न अत्यंत शीघ्र प्रभाव दिखाते हैं, जबकि अन्य रत्नों को ब्रह्मांडीय ऊर्जा से जुड़ने में 30 से 45 दिन का समय लग सकता है।"
+        "faq_a3": "रत्न का प्रभाव उसके प्रकार पर निर्भर करता है। नीलम जैसे रत्न अत्यंत शीघ्र प्रभाव दिखाते हैं, जबकि अन्य रत्नों को ब्रह्मांडीय ऊर्जा से जुड़ने में 30 से 45 दिन का समय लग सकता है।",
+
+        "disc_title": "⚠️ वैधानिक सूचना (Legal Disclaimer)",
+        "disc_text": "इस वेबसाइट पर उपलब्ध <strong>रत्न (Gemstones) और ज्योतिषीय परामर्श</strong> पूर्णतः वैदिक मान्यताओं और आध्यात्मिक कल्याण पर आधारित हैं। <strong>हम किसी भी रत्न के माध्यम से 100% रातों-रात वित्तीय लाभ, चमत्कार या किसी स्वास्थ्य समस्या के पूर्ण उपचार का दावा नहीं करते हैं।</strong> ज्योतिष और रत्न विज्ञान व्यक्तिगत विश्वास का विषय है तथा यह चिकित्सा या कानूनी विज्ञान का विकल्प नहीं है।"
     }
 };
