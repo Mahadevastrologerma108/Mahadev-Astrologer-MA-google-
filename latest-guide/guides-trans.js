@@ -2,8 +2,8 @@ window.pageTranslations = {
     en: {
         "guide_title": "Latest Divine Guide",
         "guide_subtitle": "Ancient Wisdom for Modern Life",
-        "btn_view_more": "VIEW MORE GUIDES 🔱"
-      
+        "btn_view_more": "VIEW MORE GUIDES 🔱",
+       
         "ab_title": "🔱 Ayushman Bhava",
         "ab_desc": "Accurately measure your daily water and energy (steps) requirements according to Ayurveda and Sound Science.",
         "ab_q1": "1. Your Height (in cm)",
@@ -23,7 +23,7 @@ window.pageTranslations = {
         "ab_art_h1": "Accurate Water Intake Science",
         "ab_art_p2": "Ayurveda clearly states that a person's water requirement depends on their weight. Generally, 33 ml of water is needed per 1 kg of weight. Proper water intake keeps your nadis (nerves) pure, making the effect of 'Naad Yoga' (Sound Healing) faster on the body.",
         "ab_art_h2": "Daily Steps & Walking",
-        "ab_art_p3": "Both modern science and ancient Ayurveda confirm that regular walking is like nectar for the heart and digestive system. Walking during Brahma Muhurta provides pure oxygen to the brain, destroying mental stress and negative energy. Based on your Body Mass Index (BMI), you must walk 7,000 to 10,000 steps daily."
+        "ab_art_p3": "Both modern science and ancient Ayurveda confirm that regular walking is like nectar for the heart and digestive system. Walking during Brahma Muhurta provides pure oxygen to the brain, destroying mental stress and negative energy. Based on your Body Mass Index (BMI), you must walk 7,000 to 10,000 steps daily.",
     
         "gd_title": "🔱 Grih Dosh Scanner",
         "gd_desc": "Scientifically test your home's energy based on Vedic Vastu and Cosmic Energy.",
@@ -55,7 +55,7 @@ window.pageTranslations = {
         "gd_vastu_box_title": "✨ Why is Vastu Correction essential?",
         "gd_vastu_box_p1": "When the directions and five elements of a house become imbalanced, it creates 'Geopathic Stress'. This stress directly blocks your financial growth and health.",
         "gd_vastu_box_p2": "\"By simply aligning the energy and directions without any demolition, a house can be turned into a 'Positive Magnet'.\"",
-        "gd_btn_book": "Book Vastu Consultation ➔",
+        "gd_btn_book": "BOOK VASTU CONSULTATION ➔",
         "gd_art_title": "Grih Dosh: Science, Cosmic Energy & Vedic Solutions",
         "gd_art_quote": "\"Where energy is balanced, there resides Mahadev.\"",
         "gd_art_p1": "Our home is not just a structure of bricks and stones; it is a living entity. The cosmic energy of the universe flows through our dwelling. When this energy is positive, happiness, peace, and prosperity reside in the house. But when the flow of this energy is obstructed, it is called 'Grih Dosh' in Vedic Astrology.",
@@ -85,7 +85,7 @@ window.pageTranslations = {
         "gd_art_sh3": "3. Fire of Camphor and Clove",
         "gd_art_p9": "The chemical reaction that occurs when camphor burns purifies the air. Light camphor and cloves every evening and move it throughout the house.",
         "gd_art_sh4": "4. Installation of Rudraksha",
-        "gd_art_p10": "Installing a five-faced (Panchmukhi) Rudraksha at the main door acts as an energy shield, preventing external negative energy from entering the house."
+        "gd_art_p10": "Installing a five-faced (Panchmukhi) Rudraksha at the main door acts as an energy shield, preventing external negative energy from entering the house.",
     
         "k_title": "Free Janam Kundli | MAHADEV ASTROLOGER MA",
         "k_main_heading": "🔱 Janam Kundli (Kundli Engine)",
@@ -105,7 +105,7 @@ window.pageTranslations = {
         "k_faq_a1": "Yes. <b>MAHADEV ASTROLOGER MA</b> utilizes an advanced API server that calculates planetary positions based on absolute astrological mathematics.",
         "k_faq_q2": "2. Does this tool detect Mangal Dosha?",
         "k_faq_a2": "Absolutely. Our system provides a clear indication of Mangal Dosha, helping you in marriage matchmaking and future planning.",
-        "k_art_alert": "<strong>Special Consultation:</strong> Contact <strong>MAHADEV ASTROLOGER MA</strong> for a full horoscope analysis and precise remedies."
+        "k_art_alert": "<strong>Special Consultation:</strong> Contact <strong>MAHADEV ASTROLOGER MA</strong> for a full horoscope analysis and precise remedies.",
     
         "ln_title": "🔱 Advanced Numerology",
         "ln_desc": "Know your Moolank, Bhagyank, Friendly/Enemy Numbers, and Cosmic Beej Mantra.",
@@ -138,10 +138,10 @@ window.pageTranslations = {
         "ln_art_c9": "Number 9 (Mars)",
         "ln_art_alert": "<strong>Special Consultation:</strong> Get your personalized Numerology Report from <strong>MAHADEV ASTROLOGER MA</strong> for Name Correction and detailed number analysis."
     },
-hi: {
+    hi: {
         "guide_title": "नवीनतम दिव्य मार्गदर्शन",
         "guide_subtitle": "आधुनिक जीवन के लिए प्राचीन ज्ञान",
-        "btn_view_more": "और मार्गदर्शन देखें 🔱"
+        "btn_view_more": "और मार्गदर्शन देखें 🔱",
     
         "ab_title": "🔱 आयुष्मान भव:",
         "ab_desc": "आयुर्वेद और नाद विज्ञान के अनुसार अपनी शारीरिक प्रकृति, दैनिक जल (Water) और ऊर्जा (Steps) का सटीक मापन करें।",
@@ -162,7 +162,7 @@ hi: {
         "ab_art_h1": "सटीक जल पान (Water Intake Science)",
         "ab_art_p2": "आयुर्वेद का स्पष्ट निर्देश है कि प्रत्येक व्यक्ति की जल की आवश्यकता उसके भार (Weight) पर निर्भर करती है। सामान्य रूप से, प्रत्येक 1 किलोग्राम भार के लिए 33 मिली-लीटर जल की आवश्यकता होती है। यदि आप उचित मात्रा में जल ग्रहण करते हैं, तो आपकी नाड़ियाँ शुद्ध रहती हैं और 'नाद योग' (Sound Healing) का प्रभाव शरीर पर शीघ्र होता है।",
         "ab_art_h2": "दैनिक पद-यात्रा (Daily Steps & Walking)",
-        "ab_art_p3": "आधुनिक विज्ञान और प्राचीन आयुर्वेद दोनों यह प्रमाणित करते हैं कि नियमित पद-यात्रा (चलना) हृदय और पाचन तंत्र के लिए अमृत के समान है। ब्रह्म मुहूर्त में की गई पद-यात्रा से मस्तिष्क को शुद्ध प्राणवायु (Oxygen) प्राप्त होती है, जिससे मानसिक तनाव और नकारात्मक ऊर्जा का नाश होता है। अपने शारीरिक सूचकांक (BMI) के आधार पर 7,000 से 10,000 कदम प्रतिदिन अवश्य चलना चाहिए।"
+        "ab_art_p3": "आधुनिक विज्ञान और प्राचीन आयुर्वेद दोनों यह प्रमाणित करते हैं कि नियमित पद-यात्रा (चलना) हृदय और पाचन तंत्र के लिए अमृत के समान है। ब्रह्म मुहूर्त में की गई पद-यात्रा से मस्तिष्क को शुद्ध प्राणवायु (Oxygen) प्राप्त होती है, जिससे मानसिक तनाव और नकारात्मक ऊर्जा का नाश होता है। अपने शारीरिक सूचकांक (BMI) के आधार पर 7,000 से 10,000 कदम प्रतिदिन अवश्य चलना चाहिए।",
    
         "gd_title": "🔱 गृह दोष स्कैनर",
         "gd_desc": "वैदिक वास्तु और ब्रह्मांडीय ऊर्जा (Cosmic Energy) के आधार पर अपने घर का वैज्ञानिक परीक्षण करें।",
@@ -194,7 +194,7 @@ hi: {
         "gd_vastu_box_title": "✨ Vastu Correction (वास्तु उपाय) क्यों ज़रूरी है?",
         "gd_vastu_box_p1": "जब घर की दिशाएं और पंचतत्व असंतुलित हो जाते हैं, तो इसे <strong>'Geopathic Stress'</strong> कहा जाता है। यह तनाव सीधे आपकी आर्थिक वृद्धि और स्वास्थ्य को अवरुद्ध करता है।",
         "gd_vastu_box_p2": "\"बिना तोड़-फोड़ के केवल ऊर्जा (Energy) और दिशाओं को अलाइन करके घर को एक 'सकारात्मक चुंबक' (Positive Magnet) बनाया जा सकता है।\"",
-        "gd_btn_book": "Book Vastu Consultation ➔",
+        "gd_btn_book": "वास्तु परामर्श बुक करें ➔",
         "gd_art_title": "गृह दोष: विज्ञान, ब्रह्मांडीय ऊर्जा और वैदिक समाधान",
         "gd_art_quote": "\"जहाँ ऊर्जा का संतुलन है, वहीं महादेव का वास है।\"",
         "gd_art_p1": "हमारा घर केवल ईंट और पत्थर का ढांचा नहीं है; यह एक जीवंत इकाई (Living Entity) है। ब्रह्मांड की समस्त ऊर्जा हमारे निवास स्थान से होकर गुजरती है। जब यह ऊर्जा सकारात्मक होती है, तो घर में सुख, शांति और समृद्धि का वास होता है। परंतु जब इस ऊर्जा का प्रवाह बाधित होता है, तो उसे वैदिक ज्योतिष में <strong>'गृह दोष' (Grih Dosh)</strong> कहा जाता है।",
@@ -224,7 +224,7 @@ hi: {
         "gd_art_sh3": "3. कर्पूर और लौंग की अग्नि",
         "gd_art_p9": "कर्पूर (Camphor) जलने पर जो रासायनिक प्रतिक्रिया (Chemical Reaction) होती है, वह वायु को शुद्ध करती है। नित्य संध्याकाल में कर्पूर और लौंग प्रज्वलित कर पूरे घर में घुमाएं।",
         "gd_art_sh4": "4. रुद्राक्ष की स्थापना",
-        "gd_art_p10": "पंचमुखी रुद्राक्ष को घर के मुख्य द्वार पर स्थापित करने से यह एक सुरक्षा कवच (Energy Shield) का कार्य करता है, जो बाहरी नकारात्मक ऊर्जा को घर में प्रवेश करने से रोकता है।"
+        "gd_art_p10": "पंचमुखी रुद्राक्ष को घर के मुख्य द्वार पर स्थापित करने से यह एक सुरक्षा कवच (Energy Shield) का कार्य करता है, जो बाहरी नकारात्मक ऊर्जा को घर में प्रवेश करने से रोकता है。",
     
         "k_title": "फ्री जन्म कुण्डली | MAHADEV ASTROLOGER MA",
         "k_main_heading": "🔱 जन्म कुण्डली (Kundli Engine)",
@@ -244,7 +244,7 @@ hi: {
         "k_faq_a1": "हाँ। <b>MAHADEV ASTROLOGER MA</b> एक उन्नत API सर्वर का उपयोग करता है जो पूर्ण ज्योतिषीय गणित के आधार पर ग्रहों की स्थिति की गणना करता है।",
         "k_faq_q2": "2. क्या यह उपकरण मंगल दोष का संकेत देता है?",
         "k_faq_a2": "अवश्य। हमारा सिस्टम मंगल दोष का स्पष्ट संकेत प्रदान करता है, जो विवाह मिलान और भविष्य की योजना में आपकी सहायता करता है।",
-        "k_art_alert": "<strong>विशेष परामर्श:</strong> संपूर्ण कुण्डली विश्लेषण और सटीक उपाय जानने के लिए <strong>MAHADEV ASTROLOGER MA</strong> से संपर्क करें।"
+        "k_art_alert": "<strong>विशेष परामर्श:</strong> संपूर्ण कुण्डली विश्लेषण और सटीक उपाय जानने के लिए <strong>MAHADEV ASTROLOGER MA</strong> से संपर्क करें।",
   
         "ln_title": "🔱 अंक ज्योतिष कैलकुलेटर",
         "ln_desc": "अपना मूलांक, भाग्यांक, शुभ/अशुभ अंक (Friendly & Enemy Numbers) और बीज मंत्र जानें।",
