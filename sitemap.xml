@@ -7,7 +7,7 @@
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://www.mahadevastrologerma.in/shop</loc>
+    <loc>https://www.mahadevastrologerma.in/products/shop</loc>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -75,12 +75,12 @@
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.mahadevastrologerma.in/products/herbal-wellness</loc>
+    <loc>https://www.mahadevastrologerma.in/products/herbal</loc>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.mahadevastrologerma.in/products/puja-kits</loc>
+    <loc>https://www.mahadevastrologerma.in/products/puja</loc>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
