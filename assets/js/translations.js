@@ -33,6 +33,9 @@ window.commonTranslations = {
         // Divine Bot
         "bot_welcome": "Pranaam! I am Mahadev Astrologer MA's assistant. How can I help you with your Horoscope or queries?",
         "ph_bot_input": "Type your question...",
+        
+        "ins_swapna_title": "Swapna Fal (Dream Meaning)",
+        "ins_swapna_desc": "Decode the hidden cosmic messages of your dreams according to Vedic Swapna Shastra.",
 
         ph_name_input: "Your Full Name", ph_wa_input: "WhatsApp Number", ph_city_input: "Birth City/Place",
         ph_m_name_input: "Male Name", ph_f_name_input: "Female Name", btn_submit: "Invoke Divine Guidance",
@@ -466,6 +469,9 @@ shop_title: "MAHADEV ASTROLOGER STORE",
         "nav_vastu": "वास्तु शास्त्र परामर्श",
         "idx_vastu_desc_en": "16-जोन ऊर्जा विश्लेषण और बिना तोड़-फोड़ के आधुनिक वैदिक उपायों से अपने स्थान को मंगलमय बनाएं।",
         "btn_learn_more": "परामर्श बुक करें ➔",
+
+       "ins_swapna_title": "वैदिक स्वप्न फल",
+        "ins_swapna_desc": "स्वप्न शास्त्र के अनुसार अपने सपनों में छिपे रहस्यमयी ब्रह्मांडीय संकेतों और उनके उपायों को जानें।",
 
         // Divine Bot
         "bot_welcome": "प्रणाम! मैं महादेव एस्ट्रोलॉजर MA का सहायक हूँ। क्या मैं आपको राशिफल दिखाऊँ या आपका कोई प्रश्न है?",
