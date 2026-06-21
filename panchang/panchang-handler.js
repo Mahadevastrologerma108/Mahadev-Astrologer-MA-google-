@@ -212,3 +212,19 @@ window.changeMonth = (dir) => {
 window.addEventListener('load', () => {
     setTimeout(initPanchang, 200);
 });
+// 8. 🔱 DYNAMIC TRANSLATION TRIGGER (Language Switcher)
+document.addEventListener('click', (e) => {
+    // Check if the clicked element is the language toggle button
+    if (e.target.closest('#langToggle') || e.target.closest('.lang-switch')) {
+        setTimeout(() => {
+            const newLang = getLang();
+            const mStr = String(currentMonth + 1).padStart(2, '0');
+            
+            // Re-run all translation and rendering functions with the new language
+            updateStaticText(newLang);
+            updatePanchangData(newLang);
+            renderCalendar(newLang);
+            renderEvents(mStr, newLang);
+        }, 100); // 100ms delay ensures localStorage is updated first
+    }
+});
