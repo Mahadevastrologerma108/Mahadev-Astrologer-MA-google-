@@ -817,14 +817,15 @@ raag_ketu: "ललित",
  * Architecture: 2 Levels (Common + Dynamic Folder Translation)
  */
 (function() {
-    const lang = localStorage.getItem('selectedLanguage') || 'hi';
+    // ⚠️ FIXED: Changed 'selectedLanguage' to 'selectedLang' and default to 'en' for AdSense safety
+    const lang = localStorage.getItem('selectedLang') || 'en';
     document.documentElement.lang = lang;
 
     // 🧠 1. SMART MERGER: मास्टर डिक्शनरी बनाने का फंक्शन
     function getMasterDictionary(currentLang) {
         let dict = Object.assign({}, window.commonTranslations?.[currentLang] || {});
         
-        // यह लूप स्वयं ही आपके फोल्डर-लेवल डिक्शनरी (जैसे productsTranslation) को खोज लेगा
+        // यह लूप स्वयं ही आपके फोल्डर-लेवल डिक्शनरी को खोज लेगा
         for (let key in window) {
             if (key !== 'commonTranslations' && key.includes('Translation') && typeof window[key] === 'object') {
                 if (window[key][currentLang]) {
@@ -836,7 +837,8 @@ raag_ketu: "ललित",
     }
     
     // 🛡️ 2. PRE-PAINT INTERCEPTOR (FOUC / Text Flashing को रोकने हेतु)
-    if (lang !== 'hi') {
+    // अगर यूज़र ने 'hi' चुना है, तभी यह ऑब्जर्वर चलेगा
+    if (lang === 'hi') {
         const observer = new MutationObserver((mutations) => {
             const dict = getMasterDictionary(lang);
             
@@ -866,7 +868,8 @@ raag_ketu: "ललित",
     
     // ⚙️ 3. MANUAL SWITCHER (बटन क्लिक के लिए ग्लोबल फंक्शन)
     window.updateAllTranslations = function() {
-        const currentLang = localStorage.getItem('selectedLanguage') || 'hi';
+        // ⚠️ FIXED: Changed 'selectedLanguage' to 'selectedLang'
+        const currentLang = localStorage.getItem('selectedLang') || 'en';
         document.documentElement.lang = currentLang;
 
         const masterDictionary = getMasterDictionary(currentLang);
@@ -896,7 +899,9 @@ raag_ketu: "ललित",
             'rudraksha': 'rudra_page_title', 
             'gemstones': 'gem_title', 
             'shop': 'shop_title', 
-            'panchang': 'ins_panchang_title' 
+            'panchang': 'ins_panchang_title',
+            'about': 'title_about',
+            'contact': 'contact_page_title'
         };
         
         if (pageKey && titleKeys[pageKey] && masterDictionary[titleKeys[pageKey]]) {
