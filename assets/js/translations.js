@@ -8,6 +8,9 @@ window.commonTranslations = {
         finder_select: "Select...",
         finder_divider: "OR",
        "guide_subtitle": "Ancient Wisdom for Modern Life",
+       "hero_mantra": "Nada, Health, and Time — The Triad of Shiva",
+       "hero_tagline": "\"Melody, Health, and Stars — All by the grace of Mahadev\"",
+       "hero_desc": "Welcome to Mahadev Astrologer MA. Get expert Vedic Astrology, Ayurveda remedies, and spiritual healing. Discover your destiny with us.",
         
         player_title: "Divine Anthem 🔱", player_subtitle: "Coming Soon: Healing Sounds by Parth", player_msg: "The Divine Melody is being tuned. Coming Soon! 🚩",
 
@@ -17,6 +20,19 @@ window.commonTranslations = {
         "trust_privacy": "🛡️ <strong>100% Privacy:</strong> Your personal data and birth details are handled with utmost confidentiality.",
         "trust_connect": "💬 <strong>Direct Connection:</strong> Connect with us via WhatsApp, Telegram, or Email as per your comfort.",
         "trust_transparent": "📋 <strong>Transparent Process:</strong> No hidden fees. What you see is what you pay.",
+
+        // Unlock Divine Secrets Section
+        "unlock_title": "Unlock the Divine Secrets",
+        "unlock_sub": "Infinite wisdom of Mahadev's creations",
+        "store_title": "Divine Astro Store",
+        "store_desc_en": "Authentic Lab-certified Gemstones, Nepal Rudraksha, and FSSAI approved Vedic Herbs. Every product is energized.",
+        "btn_explore_store": "Explore Store ➔",
+        "nav_vastu": "Vastu Shastra Consultation",
+        "idx_vastu_desc_en": "Transform your space with 16-Zone Energy Balancing and modern No-Demolition Vedic Remedies.",
+        "btn_learn_more": "REQUEST AUDIT ➔",
+        // Divine Bot
+        "bot_welcome": "Pranaam! I am Mahadev Astrologer MA's assistant. How can I help you with your Horoscope or queries?",
+        "ph_bot_input": "Type your question...",
 
         ph_name_input: "Your Full Name", ph_wa_input: "WhatsApp Number", ph_city_input: "Birth City/Place",
         ph_m_name_input: "Male Name", ph_f_name_input: "Female Name", btn_submit: "Invoke Divine Guidance",
@@ -428,6 +444,9 @@ shop_title: "MAHADEV ASTROLOGER STORE",
         'horoscope_title': 'दैनिक राशिफल',
         'horoscope_subtitle': 'अपनी राशि चुनें और आज का परामर्श प्राप्त करें',
         "guide_subtitle": "आधुनिक जीवन के लिए प्राचीन ज्ञान",
+        "hero_mantra": "॥ नाद: स्वास्थ्यं च कालश्च, त्रयी शिवस्वरूपिणी ॥",
+        "hero_tagline": "\"सुर, सेहत और सितारे — सब महादेव के सहारे\"",
+        "hero_desc": "महादेव एस्ट्रोलॉजर MA में आपका स्वागत है। वैदिक ज्योतिष, आयुर्वेद और नाद उपचार के माध्यम से अपने भविष्य और ऊर्जा को सही दिशा दें।",
 
         player_title: "दिव्य संगीत 🔱", player_subtitle: "शीघ्र आ रहा है: पार्थ की आवाज़ में हीलिंग संगीत", player_msg: "प्रभु की कृपा से, दिव्य संगीत जल्द ही प्रकट होगा! 🚩",
 
@@ -437,6 +456,20 @@ shop_title: "MAHADEV ASTROLOGER STORE",
         "trust_privacy": "🛡️ <strong>100% गोपनीयता:</strong> आपके व्यक्तिगत विवरण और डेटा को पूरी तरह सुरक्षित और गुप्त रखा जाता है।",
         "trust_connect": "💬 <strong>सीधा संपर्क:</strong> अपनी सुविधा के अनुसार WhatsApp, Telegram या Email के ज़रिए हमसे जुड़ें।",
         "trust_transparent": "📋 <strong>पारदर्शी प्रक्रिया:</strong> कोई छिपा हुआ शुल्क नहीं। हम पूरी पारदर्शिता में विश्वास रखते हैं।",
+
+       // Unlock Divine Secrets Section
+        "unlock_title": "दिव्य रहस्यों को जानें",
+        "unlock_sub": "महादेव की रचनाओं का अनंत ज्ञान",
+        "store_title": "अभिमंत्रित स्टोर (Astro Store)",
+        "store_desc_en": "असली लैब-प्रमाणित रत्न, रुद्राक्ष और सरकारी मानकों (FSSAI) वाली जड़ी-बूटियाँ। सभी सामग्री/उत्पाद वैदिक रीति से अभिमंत्रित किये गए हैं।",
+        "btn_explore_store": "स्टोर देखें ➔",
+        "nav_vastu": "वास्तु शास्त्र परामर्श",
+        "idx_vastu_desc_en": "16-जोन ऊर्जा विश्लेषण और बिना तोड़-फोड़ के आधुनिक वैदिक उपायों से अपने स्थान को मंगलमय बनाएं।",
+        "btn_learn_more": "परामर्श बुक करें ➔",
+
+        // Divine Bot
+        "bot_welcome": "प्रणाम! मैं महादेव एस्ट्रोलॉजर MA का सहायक हूँ। क्या मैं आपको राशिफल दिखाऊँ या आपका कोई प्रश्न है?",
+        "ph_bot_input": "अपना प्रश्न यहाँ लिखें...",
 
         ph_name_input: "आपका पूरा नाम", ph_wa_input: "व्हाट्सएप नंबर", ph_city_input: "जन्म स्थान / शहर",
         ph_m_name_input: "पुरुष का नाम", ph_f_name_input: "महिला का नाम", btn_submit: "दैवीय मार्गदर्शन प्राप्त करें", 
