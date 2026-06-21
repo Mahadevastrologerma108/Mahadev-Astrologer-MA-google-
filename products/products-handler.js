@@ -3,17 +3,13 @@
 // ==========================================
 
 import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-// 🚩 NAYA JOD: Telegram Bot Keys ke liye config import kar rahe hain
 import { remoteConfig, fetchAndActivate, getString } from "../assets/js/firebase-config.js"; 
 
-// Database initialize karein
 const db = getFirestore();
 
-// 1. Main Function: Products ko scan karna aur Stock/Enquiry lagana
+// 1. Main Function
 const initProductsEngine = () => {
     const productCards = document.querySelectorAll('.product-card');
-    
-    // Check karein ki Admin login hai ya nahi
     const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
     productCards.forEach(card => {
@@ -23,7 +19,7 @@ const initProductsEngine = () => {
         const productName = titleEl.innerText; 
         const productId = titleEl.getAttribute('data-key'); 
 
-        // Stock dikhane ke liye Badge banana
+        // Stock Badge
         let stockBadge = card.querySelector('.stock-badge');
         if (!stockBadge) {
             stockBadge = document.createElement('div');
@@ -38,7 +34,7 @@ const initProductsEngine = () => {
             }
         }
 
-        // 2. Admin Controls: Agar Admin login hai, toh Edit button dikhayein
+        // 2. Admin Controls
         if (isAdmin) {
             let editBtn = card.querySelector('.admin-edit-btn');
             if (!editBtn) {
@@ -54,7 +50,7 @@ const initProductsEngine = () => {
             }
         }
 
-        // 3. Enquiry Button Logic (Custom Modal kholna)
+        // 3. Enquiry Button Logic
         const buyBtn = card.querySelector('.buy-btn');
         if (buyBtn) {
             buyBtn.onclick = (e) => {
@@ -63,12 +59,12 @@ const initProductsEngine = () => {
             };
         }
 
-        // 4. Real-time Firebase Listener start karna
+        // 4. Real-time Firebase Listener
         listenToStockChanges(productId, stockBadge, buyBtn);
     });
 };
 
-// 5. Custom Enquiry Modal (WhatsApp & Telegram Choice)
+// 5. Custom Enquiry Modal (V-MAX Compliant)
 const openEnquiryModal = (productName) => {
     const existingModal = document.getElementById('enquiry-modal');
     if (existingModal) existingModal.remove();
@@ -80,15 +76,16 @@ const openEnquiryModal = (productName) => {
     const content = document.createElement('div');
     content.style.cssText = "background:#111; border: 1px solid var(--gold); padding:25px; border-radius:15px; width:100%; max-width:400px; text-align:center; position:relative;";
     
+    // 🚩 V-MAX data-keys added for translation
     content.innerHTML = `
         <button onclick="document.getElementById('enquiry-modal').remove()" style="position:absolute; top:10px; right:15px; background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer;">&times;</button>
-        <h3 style="color:var(--gold); font-family:'Cinzel', serif; margin-bottom:15px;">Enquire Now</h3>
-        <p style="color:#ccc; font-size:0.9rem; margin-bottom:15px;">Product: <strong>${productName}</strong></p>
+        <h3 style="color:var(--gold); font-family:'Cinzel', serif; margin-bottom:15px;" data-key="enq_title">Enquire Now</h3>
+        <p style="color:#ccc; font-size:0.9rem; margin-bottom:15px;"><span data-key="enq_prod_lbl">Product:</span> <strong>${productName}</strong></p>
         
-        <input type="text" id="enq-name" placeholder="आपका नाम (Your Name)" style="width:100%; padding:10px; margin-bottom:15px; border-radius:5px; border:1px solid #444; background:#222; color:#fff;">
-        <input type="text" id="enq-phone" placeholder="संपर्क नंबर (Contact Number)" style="width:100%; padding:10px; margin-bottom:20px; border-radius:5px; border:1px solid #444; background:#222; color:#fff;">
+        <input type="text" id="enq-name" data-key="ph_name" placeholder="Your Name" style="width:100%; padding:10px; margin-bottom:15px; border-radius:5px; border:1px solid #444; background:#222; color:#fff;">
+        <input type="text" id="enq-phone" data-key="ph_phone" placeholder="Contact Number" style="width:100%; padding:10px; margin-bottom:20px; border-radius:5px; border:1px solid #444; background:#222; color:#fff;">
         
-        <p style="color:#aaa; font-size:0.85rem; margin-bottom:10px;">पूछताछ कहाँ भेजना चाहते हैं?</p>
+        <p style="color:#aaa; font-size:0.85rem; margin-bottom:10px;" data-key="enq_where_lbl">Where do you want to send the enquiry?</p>
         
         <div style="display:flex; gap:10px; justify-content:center;">
             <button id="btn-wa" style="flex:1; background:#25D366; color:#fff; border:none; padding:10px; border-radius:5px; font-weight:bold; cursor:pointer;">🟢 WhatsApp</button>
@@ -109,12 +106,11 @@ const sendEnquiry = async (productName, platform) => {
     const phone = document.getElementById('enq-phone').value.trim();
 
     if (!name || !phone) {
-        alert("प्रणाम! कृपया अपना नाम और संपर्क नंबर अवश्य भरें।");
+        alert("Please fill your Name and Contact Number.");
         return;
     }
 
     if (platform === 'whatsapp') {
-        // 🚩 Aapka diya gaya WhatsApp Link yahan upyog ho raha hai
         const messageText = `🔱 NEW STORE ENQUIRY 🔱\n\n📦 Product: ${productName}\n👤 Name: ${name}\n📞 Contact: ${phone}`;
         const waURL = `https://wa.me/message/VCK5OVBDCN7YK1?text=${encodeURIComponent(messageText)}`;
         window.open(waURL, '_blank');
@@ -129,27 +125,25 @@ const sendEnquiry = async (productName, platform) => {
         const tgMessage = `🔱 <b>NEW STORE ENQUIRY</b> 🔱\n📦 <b>Product:</b> ${productName}\n👤 <b>Name:</b> ${name}\n📞 <b>Contact:</b> ${phone}\n📅 <b>Time:</b> ${new Date().toLocaleString()}`;
 
         try {
-            // Firebase Remote Config se Token nikalna
             await fetchAndActivate(remoteConfig);
             const tgToken = getString(remoteConfig, 'TG_BOT_TOKEN');
             const chatId = getString(remoteConfig, 'TG_CHAT_ID');
 
             if (tgToken && chatId) {
-                // Background mein Telegram Bot ko call lagana
                 await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ chat_id: chatId, text: tgMessage, parse_mode: 'HTML' })
                 });
                 
-                alert("🔱 प्रणाम! आपकी पूछताछ (Enquiry) महादेव एस्ट्रोलॉजर तक पहुँच गई है। हम शीघ्र ही संपर्क करेंगे।");
+                alert("🔱 Enquiry Sent! Mahadev Astrologer MA will contact you shortly.");
                 document.getElementById('enquiry-modal').remove();
             } else {
                 throw new Error("Missing Telegram Keys in Remote Config");
             }
         } catch(e) {
             console.error("TG Send Error:", e);
-            alert("❌ नेटवर्क एरर! कृपया WhatsApp का उपयोग करें।");
+            alert("❌ Network Error! Please use WhatsApp.");
             tgBtn.innerText = originalText;
             tgBtn.disabled = false;
         }
@@ -170,35 +164,36 @@ const listenToStockChanges = (productId, badgeEl, btnEl) => {
     });
 };
 
-// 8. Stock ke anusar Button aur Text badalna
+// 8. Stock ke anusar Button aur Text badalna (V-MAX Compliant)
 const updateStockUI = (stock, badgeEl, btnEl) => {
+    // 🚩 V-MAX data-keys added inside the badge innerHTML
     if (stock > 5) {
-        badgeEl.innerHTML = `<span style="color: #4CAF50;">✅ In Stock (उपलब्ध है)</span>`;
+        badgeEl.innerHTML = `<span style="color: #4CAF50;" data-key="stock_in">✅ In Stock</span>`;
         if (btnEl) {
             btnEl.style.pointerEvents = "auto";
             btnEl.style.opacity = "1";
-            btnEl.innerText = "Enquire Now";
+            btnEl.innerHTML = `<span data-key="btn_enquire">Enquire Now</span>`;
         }
     } 
     else if (stock > 0 && stock <= 5) {
-        badgeEl.innerHTML = `<span style="color: #f5c542;">⚠️ Only ${stock} left! (जल्द खरीदें)</span>`;
+        badgeEl.innerHTML = `<span style="color: #f5c542;"><span data-key="stock_low">⚠️ Only</span> ${stock} <span data-key="stock_left">left!</span></span>`;
         if (btnEl) {
             btnEl.style.pointerEvents = "auto";
             btnEl.style.opacity = "1";
-            btnEl.innerText = "Enquire Now";
+            btnEl.innerHTML = `<span data-key="btn_enquire">Enquire Now</span>`;
         }
     } 
     else if (stock <= 0) {
-        badgeEl.innerHTML = `<span style="color: #F44336;">❌ Out of Stock (स्टॉक समाप्त)</span>`;
+        badgeEl.innerHTML = `<span style="color: #F44336;" data-key="stock_out">❌ Out of Stock</span>`;
         if (btnEl) {
             btnEl.style.pointerEvents = "none";
             btnEl.style.opacity = "0.4";
-            btnEl.innerText = "Out of Stock";
+            btnEl.innerHTML = `<span data-key="btn_out_stock">Out of Stock</span>`;
         }
     }
 };
 
-// 9. Admin dwara Stock Update karne ka Prompt
+// 9. Admin dwara Stock Update
 const updateStockPrompt = async (productId) => {
     const newStock = prompt(`Please enter new stock quantity for "${productId}":\n(Type 0 for Out of Stock)`);
     
@@ -211,15 +206,14 @@ const updateStockPrompt = async (productId) => {
                 lastUpdated: new Date().toISOString()
             }, { merge: true });
             
-            alert("✅ Stock updated successfully in Firebase!");
+            alert("✅ Stock updated successfully!");
         } catch (error) {
             console.error("Stock Update Error:", error);
-            alert("❌ Error: Aapko Admin adhikar (rights) नहीं हैं या Firebase रोक रहा है।");
+            alert("❌ Error: You lack Admin rights or Firebase denied permission.");
         }
     }
 };
 
-// Page load hone par aur Admin login hone par Engine chalana
 window.addEventListener('load', () => {
     setTimeout(initProductsEngine, 1000); 
 });
