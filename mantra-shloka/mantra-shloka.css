@@ -1,0 +1,55 @@
+/* ==========================================
+   MAHADEV ASTROLOGER MA - MANTRA CSS
+   ========================================== */
+
+.mantra-category { 
+    margin-top: 50px; 
+}
+
+.category-title {
+    font-family: 'Cinzel', serif; 
+    color: var(--gold); 
+    font-size: 1.8rem; 
+    border-bottom: 2px solid rgba(245,197,66,0.2); 
+    padding-bottom: 10px; 
+    margin-bottom: 25px; 
+    text-shadow: 0 0 10px rgba(245, 197, 66, 0.2);
+}
+
+.mantra-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.6));
+    border: 1px solid rgba(245, 197, 66, 0.15);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 25px;
+    transition: 0.3s ease;
+}
+
+.mantra-card:hover {
+    border-color: rgba(245, 197, 66, 0.5);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.chant-text {
+    font-size: 1.2rem;
+    color: #fff;
+    line-height: 1.8;
+    font-style: italic;
+    background: rgba(0,0,0,0.3);
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid var(--gold);
+    margin: 15px 0;
+    font-weight: 300;
+}
+
+.meaning-text {
+    font-size: 0.95rem;
+    color: #bbb;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .chant-text { font-size: 1.05rem; }
+    .category-title { font-size: 1.4rem; }
+}
