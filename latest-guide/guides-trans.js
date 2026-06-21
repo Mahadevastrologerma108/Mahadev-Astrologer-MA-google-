@@ -105,6 +105,8 @@ window.pageTranslations = {
         "k_faq_a1": "Yes. <b>MAHADEV ASTROLOGER MA</b> utilizes an advanced API server that calculates planetary positions based on absolute astrological mathematics.",
         "k_faq_q2": "2. Does this tool detect Mangal Dosha?",
         "k_faq_a2": "Absolutely. Our system provides a clear indication of Mangal Dosha, helping you in marriage matchmaking and future planning.",
+        "k_faq_q3": "3. How do I take an appointment for detailed Kundli analysis (Premium Consultation)?",
+        "k_faq_a3": "To get a deep analysis of your horoscope and get accurate solutions, click on the 'Book Premium Consultation' button above. This will take you to our main form page, where you can send us your details by choosing a secure contact option (WhatsApp, Telegram, or Email) according to your convenience."
         "k_art_alert": "<strong>Special Consultation:</strong> Contact <strong>MAHADEV ASTROLOGER MA</strong> for a full horoscope analysis and precise remedies.",
     
         "ln_title": "🔱 Advanced Numerology",
@@ -244,6 +246,8 @@ window.pageTranslations = {
         "k_faq_a1": "हाँ। <b>MAHADEV ASTROLOGER MA</b> एक उन्नत API सर्वर का उपयोग करता है जो पूर्ण ज्योतिषीय गणित के आधार पर ग्रहों की स्थिति की गणना करता है।",
         "k_faq_q2": "2. क्या यह उपकरण मंगल दोष का संकेत देता है?",
         "k_faq_a2": "अवश्य। हमारा सिस्टम मंगल दोष का स्पष्ट संकेत प्रदान करता है, जो विवाह मिलान और भविष्य की योजना में आपकी सहायता करता है।",
+        "k_faq_q3": "3. विस्तृत कुण्डली विश्लेषण (प्रीमियम परामर्श) के लिए अपॉइंटमेंट कैसे लें?",
+        "k_faq_a3": "अपनी कुण्डली का गहन विश्लेषण और सटीक उपाय प्राप्त करने के लिए ऊपर दिए गए 'Book Premium Consultation' बटन पर क्लिक करें। यह आपको हमारे मुख्य फॉर्म पेज पर ले जाएगा, जहाँ आप अपनी सुविधा के अनुसार सुरक्षित संपर्क विकल्प (WhatsApp, Telegram, या Email) चुनकर हमें अपनी डिटेल्स भेज सकते हैं।"
         "k_art_alert": "<strong>विशेष परामर्श:</strong> संपूर्ण कुण्डली विश्लेषण और सटीक उपाय जानने के लिए <strong>MAHADEV ASTROLOGER MA</strong> से संपर्क करें।",
   
         "ln_title": "🔱 अंक ज्योतिष कैलकुलेटर",
