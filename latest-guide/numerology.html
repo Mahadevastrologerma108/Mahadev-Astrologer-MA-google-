@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="ln_title">अंक ज्योतिष कैलकुलेटर | MAHADEV ASTROLOGER MA</title>
-    <meta name="description" content="MAHADEV ASTROLOGER MA के एडवांस टूल से अपना मूलांक, भाग्यांक, शुभ-अशुभ अंक (Lucky & Enemy Numbers) और नवग्रह बीज मंत्र जानें।">
+    <title data-key="ln_title">Numerology Calculator | MAHADEV ASTROLOGER MA</title>
+    <meta name="description" content="Discover your Root Number, Destiny Number, Lucky & Enemy Numbers, and Navagraha Beej Mantra with the advanced tool by MAHADEV ASTROLOGER MA.">
     
     <link rel="canonical" href="https://www.mahadevastrologerma.in/latest-guide/numerology">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>
@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <script src="../assets/js/translations.js"></script>
-    <script src="guides-trans.js"></script>    
+    <script src="guides-trans.js"></script>   
     <script src="../assets/js/layout.js"></script>
     <link rel="stylesheet" href="../assets/css/style.css">
 
@@ -59,76 +59,76 @@
     <div id="header-placeholder"></div>
 
     <main class="calc-container" id="calculator-section">
-        <h1 class="gold-text" style="font-family: 'Cinzel'; text-align: center; font-size: 2.2rem; margin-bottom: 10px;" data-key="ln_title">🔱 अंक ज्योतिष कैलकुलेटर</h1>
-        <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 0.95rem;" data-key="ln_desc">अपना मूलांक, भाग्यांक, शुभ/अशुभ अंक (Friendly & Enemy Numbers) और बीज मंत्र जानें।</p>
+        <h1 class="gold-text" style="font-family: 'Cinzel'; text-align: center; font-size: 2.2rem; margin-bottom: 10px;" data-key="ln_title">🔱 Numerology Calculator</h1>
+        <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 0.95rem;" data-key="ln_desc">Know your Moolank, Bhagyank, Friendly & Enemy Numbers, and Beej Mantra.</p>
 
         <form id="numerologyForm" onsubmit="event.preventDefault(); calculateNumbers();">
             <div class="input-group">
-                <label for="userName" data-key="ln_q1">1. आपका पूरा नाम (Full Name)</label>
+                <label for="userName" data-key="ln_q1">1. Your Full Name</label>
                 <input type="text" id="userName" placeholder="e.g. Rahul Kumar" required>
             </div>
             <div class="input-group">
-                <label for="userDOB" data-key="ln_q2">2. जन्म तिथि (Date of Birth)</label>
+                <label for="userDOB" data-key="ln_q2">2. Date of Birth</label>
                 <input type="date" id="userDOB" required>
             </div>
-            <button type="submit" class="calc-btn" data-key="ln_btn">अंक जानें ➔</button>
+            <button type="submit" class="calc-btn" data-key="ln_btn">Get Numbers ➔</button>
         </form>
 
         <div id="result-section">
-            <h2 class="gold-text" style="font-family: 'Cinzel'; font-size: 1.5rem; margin-top: 0;" data-key="ln_res_title">ब्रह्मांडीय ऊर्जा रिपोर्ट</h2>
+            <h2 class="gold-text" style="font-family: 'Cinzel'; font-size: 1.5rem; margin-top: 0;" data-key="ln_res_title">Cosmic Energy Report</h2>
             
             <div class="number-circles">
-                <div class="num-circle"><span data-key="ln_moolank">मूलांक</span><strong id="moolankRes">-</strong></div>
-                <div class="num-circle"><span data-key="ln_bhagyank">भाग्यांक</span><strong id="bhagyankRes">-</strong></div>
-                <div class="num-circle"><span data-key="ln_namank">नामांक</span><strong id="namankRes">-</strong></div>
+                <div class="num-circle"><span data-key="ln_moolank">Root No.</span><strong id="moolankRes">-</strong></div>
+                <div class="num-circle"><span data-key="ln_bhagyank">Destiny No.</span><strong id="bhagyankRes">-</strong></div>
+                <div class="num-circle"><span data-key="ln_namank">Name No.</span><strong id="namankRes">-</strong></div>
             </div>
 
             <div class="number-match-box">
                 <div>
-                    <span style="color: #aaa; font-size: 0.85rem; display: block;" data-key="ln_lucky_lbl">✅ शुभ अंक (Lucky Numbers)</span>
+                    <span style="color: #aaa; font-size: 0.85rem; display: block;" data-key="ln_lucky_lbl">✅ Lucky Numbers</span>
                     <span class="badge-lucky" id="luckyNumRes">-</span>
                 </div>
                 <div style="width: 1px; background: #333;"></div>
                 <div>
-                    <span style="color: #aaa; font-size: 0.85rem; display: block;" data-key="ln_avoid_lbl">❌ शत्रु अंक (Avoid Numbers)</span>
+                    <span style="color: #aaa; font-size: 0.85rem; display: block;" data-key="ln_avoid_lbl">❌ Avoid Numbers</span>
                     <span class="badge-avoid" id="avoidNumRes">-</span>
                 </div>
             </div>
 
             <div class="remedy-box">
-                <h3 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.2rem; margin-top: 0;"><span data-key="ln_lord_lbl">🔱 स्वामी ग्रह: </span><span id="planetRes"></span></h3>
+                <h3 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.2rem; margin-top: 0;"><span data-key="ln_lord_lbl">🔱 Ruling Planet: </span><span id="planetRes"></span></h3>
                 <p id="natureRes" style="color: #fff; font-size: 0.95rem; margin-bottom: 15px;"></p>
                 
-                <p style="margin: 5px 0;"><strong data-key="ln_color_lbl">शुभ रंग:</strong> <span id="colorRes" style="color: var(--gold);"></span></p>
-                <p style="margin: 5px 0;"><strong data-key="ln_day_lbl">शुभ दिन:</strong> <span id="dayRes" style="color: var(--gold);"></span></p>
-                <p style="margin: 15px 0 0; padding-top: 10px; border-top: 1px dashed rgba(245,197,66,0.3); font-size: 1.1rem; color: #fff;"><strong data-key="ln_mantra_lbl">📿 सिद्ध बीज मंत्र:</strong> <br><span id="mantraRes" style="color: var(--gold); font-family: 'Cinzel'; font-weight: bold; letter-spacing: 1px;"></span></p>
+                <p style="margin: 5px 0;"><strong data-key="ln_color_lbl">Lucky Color:</strong> <span id="colorRes" style="color: var(--gold);"></span></p>
+                <p style="margin: 5px 0;"><strong data-key="ln_day_lbl">Lucky Day:</strong> <span id="dayRes" style="color: var(--gold);"></span></p>
+                <p style="margin: 15px 0 0; padding-top: 10px; border-top: 1px dashed rgba(245,197,66,0.3); font-size: 1.1rem; color: #fff;"><strong data-key="ln_mantra_lbl">📿 Proven Beej Mantra:</strong> <br><span id="mantraRes" style="color: var(--gold); font-family: 'Cinzel'; font-weight: bold; letter-spacing: 1px;"></span></p>
             </div>
         </div>
     </main>
 
     <article class="master-article">
-        <h2 style="text-align: center; border: none; font-size: 2.2rem; margin-top: 20px;" data-key="ln_art_title">अंक ज्योतिष: मित्र, शत्रु अंक और नवग्रह मंत्र</h2>
-        <p style="text-align: center; color: var(--gold); font-style: italic; margin-bottom: 40px;" data-key="ln_art_quote">"प्रत्येक अंक एक ग्रह का प्रतिनिधित्व करता है, और प्रत्येक ग्रह एक मंत्र से नियंत्रित होता है।"</p>
+        <h2 style="text-align: center; border: none; font-size: 2.2rem; margin-top: 20px;" data-key="ln_art_title">Numerology: Friendly, Enemy Numbers & Navagraha Mantras</h2>
+        <p style="text-align: center; color: var(--gold); font-style: italic; margin-bottom: 40px;" data-key="ln_art_quote">"Every number represents a planet, and every planet is governed by a mantra."</p>
 
-        <p data-key="ln_art_p1">हमारे जीवन में कुछ तारीखें या मोबाइल नंबर हमारे लिए बहुत भाग्यशाली साबित होते हैं, जबकि कुछ नंबर हमें हमेशा नुकसान पहुँचाते हैं। इसका कारण है मित्र और शत्रु अंकों का ब्रह्मांडीय विज्ञान। <strong>MAHADEV ASTROLOGER M.A.</strong> के अनुसार, यदि आप कोई नया कार्य आरंभ कर रहे हैं, तो हमेशा अपने 'शुभ अंकों' का ही चयन करें।</p>
+        <p data-key="ln_art_p1">In our lives, certain dates or mobile numbers prove to be very lucky for us, while some numbers always cause harm. The reason behind this is the cosmic science of friendly and enemy numbers. According to <strong>MAHADEV ASTROLOGER M.A.</strong>, if you are starting a new task, always choose your 'Lucky Numbers'.</p>
 
-        <h2 data-key="ln_art_h1">1 से 9 अंकों के स्वामी ग्रह और उनके वैदिक बीज मंत्र</h2>
-        <p data-key="ln_art_p2">यदि आपका मूलांक या भाग्यांक कमज़ोर है, या जीवन में संघर्ष अधिक है, तो अपने अंक के स्वामी ग्रह (Lord Planet) के <strong>बीज मंत्र</strong> का नित्य 108 बार जाप करना सबसे अचूक उपाय है। यहाँ 1 से 9 अंकों के स्वामी और उनके सिद्ध मंत्र दिए गए हैं:</p>
+        <h2 data-key="ln_art_h1">Ruling Planets of Numbers 1 to 9 and their Vedic Beej Mantras</h2>
+        <p data-key="ln_art_p2">If your Root or Destiny number is weak, or there is too much struggle in life, chanting the Beej Mantra of your number's Lord Planet 108 times daily is the most infallible remedy. Here are the lords of numbers 1 to 9 and their proven mantras:</p>
 
         <div class="mantra-grid">
-            <div class="mantra-card"><h4 data-key="ln_art_c1">अंक 1 (सूर्य)</h4><p>ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः</p></div>
-            <div class="mantra-card"><h4 data-key="ln_art_c2">अंक 2 (चंद्रमा)</h4><p>ॐ श्रां श्रीं श्रौं सः चन्द्रमसे नमः</p></div>
-            <div class="mantra-card"><h4 data-key="ln_art_c3">अंक 3 (गुरु)</h4><p>ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः</p></div>
-            <div class="mantra-card"><h4 data-key="ln_art_c4">अंक 4 (राहु)</h4><p>ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः</p></div>
-            <div class="mantra-card"><h4 data-key="ln_art_c5">अंक 5 (बुध)</h4><p>ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः</p></div>
-            <div class="mantra-card"><h4 data-key="ln_art_c6">अंक 6 (शुक्र)</h4><p>ॐ द्रां द्रीं द्रौं सः शुक्राय नमः</p></div>
-            <div class="mantra-card"><h4 data-key="ln_art_c7">अंक 7 (केतु)</h4><p>ॐ स्रां स्रीं स्रौं सः केतवे नमः</p></div>
-            <div class="mantra-card"><h4 data-key="ln_art_c8">अंक 8 (शनि)</h4><p>ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः</p></div>
-            <div class="mantra-card"><h4 data-key="ln_art_c9">अंक 9 (मंगल)</h4><p>ॐ क्रां क्रीं क्रौं सः भौमाय नमः</p></div>
+            <div class="mantra-card"><h4 data-key="ln_art_c1">Number 1 (Sun)</h4><p>Om Hram Hreem Hroum Sah Suryaya Namah</p></div>
+            <div class="mantra-card"><h4 data-key="ln_art_c2">Number 2 (Moon)</h4><p>Om Shram Shreem Shroum Sah Chandramase Namah</p></div>
+            <div class="mantra-card"><h4 data-key="ln_art_c3">Number 3 (Jupiter)</h4><p>Om Gram Greem Groum Sah Gurave Namah</p></div>
+            <div class="mantra-card"><h4 data-key="ln_art_c4">Number 4 (Rahu)</h4><p>Om Bhram Bhreem Bhroum Sah Rahave Namah</p></div>
+            <div class="mantra-card"><h4 data-key="ln_art_c5">Number 5 (Mercury)</h4><p>Om Bram Breem Broum Sah Budhaya Namah</p></div>
+            <div class="mantra-card"><h4 data-key="ln_art_c6">Number 6 (Venus)</h4><p>Om Dram Dreem Droum Sah Shukraya Namah</p></div>
+            <div class="mantra-card"><h4 data-key="ln_art_c7">Number 7 (Ketu)</h4><p>Om Sram Sreem Sroum Sah Ketave Namah</p></div>
+            <div class="mantra-card"><h4 data-key="ln_art_c8">Number 8 (Saturn)</h4><p>Om Pram Preem Proum Sah Shanaishcharaya Namah</p></div>
+            <div class="mantra-card"><h4 data-key="ln_art_c9">Number 9 (Mars)</h4><p>Om Kram Kreem Kroum Sah Bhaumaya Namah</p></div>
         </div>
 
         <div style="background: rgba(245, 197, 66, 0.05); border-left: 4px solid var(--gold); padding: 20px; margin: 40px 0; border-radius: 0 10px 10px 0;">
-            <p style="margin: 0; color: #fff;" data-key="ln_art_alert"><strong>विशेष परामर्श:</strong> नाम की स्पेलिंग (Name Correction) और अंकों के महा-विश्लेषण के लिए <strong>MAHADEV ASTROLOGER MA</strong> से अपनी व्यक्तिगत न्यूमरोलॉजी रिपोर्ट प्राप्त करें।</p>
+            <p style="margin: 0; color: #fff;" data-key="ln_art_alert"><strong>Expert Advice:</strong> For Name Correction and a grand analysis of numbers, get your personalized numerology report from <strong>MAHADEV ASTROLOGER MA</strong>.</p>
         </div>
 
     </article>
@@ -140,7 +140,7 @@
     <script>
         const chaldeanMap = { 'a':1, 'i':1, 'j':1, 'q':1, 'y':1, 'b':2, 'k':2, 'r':2, 'c':3, 'g':3, 'l':3, 's':3, 'd':4, 'm':4, 't':4, 'e':5, 'h':5, 'n':5, 'x':5, 'u':6, 'v':6, 'w':6, 'o':7, 'z':7, 'f':8, 'p':8 };
 
-        // 🔱 Bilingual JS Data (स्मार्ट तरीका!)
+        // 🔱 Bilingual JS Data
         const numberData = {
             1: { 
                 hi: { p: "सूर्य", c: "नारंगी, पीला", d: "रविवार, सोमवार", n: "आप जन्मजात लीडर हैं। सूर्य के प्रभाव से आपमें स्वाभिमान और प्रशासनिक क्षमता है।" },
@@ -170,7 +170,7 @@
             6: { 
                 hi: { p: "शुक्र", c: "सफेद, गुलाबी", d: "शुक्रवार, मंगलवार", n: "सौंदर्य, प्रेम और विलासिता आपको आकर्षित करती है। शुक्र आपको कलात्मक बनाता है।" },
                 en: { p: "Venus", c: "White, Pink", d: "Friday, Tuesday", n: "Beauty, love, and luxury attract you. Venus makes you highly artistic and charming." },
-                lucky: "5, 6, 8", avoid: "3", mantra: "ॐ द्रां द्रीं द्रौं सः शुक्राय नमः" 
+                lucky: "5, 6, 8", avoid: "3", mantra: "ॐ द्रां د्रीं द्रौं सः शुक्राय नमः" 
             },
             7: { 
                 hi: { p: "केतु", c: "हल्का पीला, सफेद", d: "रविवार, सोमवार", n: "आप एक गहरे विचारक और खोजी हैं। आध्यात्म और रहस्य में आपकी गहरी रुचि है।" },
@@ -215,15 +215,14 @@
 
             const data = numberData[finalMoolank];
             
-            // 🔱 Lang Fetcher for Dynamic JS Data
-            let currentLang = localStorage.getItem('selectedLang') || 'hi';
-            let langData = data[currentLang] || data['hi'];
+            // 🔱 Changed Default to 'en' for AdSense Crawler
+            let currentLang = localStorage.getItem('selectedLang') || 'en';
+            let langData = data[currentLang] || data['en'];
             
             document.getElementById('luckyNumRes').innerText = data.lucky;
             document.getElementById('avoidNumRes').innerText = data.avoid;
-            document.getElementById('mantraRes').innerText = data.mantra; // Mantra is Universal (Sanskrit)
+            document.getElementById('mantraRes').innerText = data.mantra; 
             
-            // Bilingual Dynamic Inserts
             document.getElementById('planetRes').innerText = langData.p;
             document.getElementById('natureRes').innerText = langData.n;
             document.getElementById('colorRes').innerText = langData.c;
@@ -233,6 +232,36 @@
             resultSection.style.display = 'block';
             resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
+    </script>
+
+    <!-- 🔱 Inline Translation Logic Setup -->
+    <script>
+        const getLang = () => localStorage.getItem('selectedLang') || 'en';
+
+        const updateNumerologyText = () => {
+            const lang = getLang();
+            const translations = window.pageTranslations?.[lang] || window.translations?.[lang];
+            
+            if (!translations) return;
+
+            const elements = document.querySelectorAll('[data-key]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[key]) {
+                    el.innerHTML = translations[key]; 
+                }
+            });
+        };
+
+        window.addEventListener('load', () => {
+            setTimeout(updateNumerologyText, 200);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('#langToggle') || e.target.closest('.lang-switch')) {
+                setTimeout(updateNumerologyText, 100);
+            }
+        });
     </script>
 </body>
 </html>
