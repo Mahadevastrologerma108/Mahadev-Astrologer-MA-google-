@@ -11,6 +11,13 @@ window.commonTranslations = {
         
         player_title: "Divine Anthem 🔱", player_subtitle: "Coming Soon: Healing Sounds by Parth", player_msg: "The Divine Melody is being tuned. Coming Soon! 🚩",
 
+        // Trust Building Section (User Benefits)
+        "trust_title": "Why Trust Mahadev Astrologer?",
+        "trust_pdf": "✨ <strong>Free PDF Reports:</strong> Get your complete consultation report in PDF format at no extra cost.",
+        "trust_privacy": "🛡️ <strong>100% Privacy:</strong> Your personal data and birth details are handled with utmost confidentiality.",
+        "trust_connect": "💬 <strong>Direct Connection:</strong> Connect with us via WhatsApp, Telegram, or Email as per your comfort.",
+        "trust_transparent": "📋 <strong>Transparent Process:</strong> No hidden fees. What you see is what you pay.",
+
         ph_name_input: "Your Full Name", ph_wa_input: "WhatsApp Number", ph_city_input: "Birth City/Place",
         ph_m_name_input: "Male Name", ph_f_name_input: "Female Name", btn_submit: "Invoke Divine Guidance",
         rel_label: "Information for?", rel_self: "Self", rel_father: "Father", rel_mother: "Mother", rel_spouse: "Spouse", rel_child: "Child", rel_other: "Other / Friend",
@@ -423,6 +430,13 @@ shop_title: "MAHADEV ASTROLOGER STORE",
         "guide_subtitle": "आधुनिक जीवन के लिए प्राचीन ज्ञान",
 
         player_title: "दिव्य संगीत 🔱", player_subtitle: "शीघ्र आ रहा है: पार्थ की आवाज़ में हीलिंग संगीत", player_msg: "प्रभु की कृपा से, दिव्य संगीत जल्द ही प्रकट होगा! 🚩",
+
+       // Trust Building Section (User Benefits)
+        "trust_title": "हम पर भरोसा क्यों करें?",
+        "trust_pdf": "✨ <strong>फ्री PDF रिपोर्ट्स:</strong> बिना किसी अतिरिक्त शुल्क के अपनी विस्तृत परामर्श रिपोर्ट PDF में प्राप्त करें।",
+        "trust_privacy": "🛡️ <strong>100% गोपनीयता:</strong> आपके व्यक्तिगत विवरण और डेटा को पूरी तरह सुरक्षित और गुप्त रखा जाता है।",
+        "trust_connect": "💬 <strong>सीधा संपर्क:</strong> अपनी सुविधा के अनुसार WhatsApp, Telegram या Email के ज़रिए हमसे जुड़ें।",
+        "trust_transparent": "📋 <strong>पारदर्शी प्रक्रिया:</strong> कोई छिपा हुआ शुल्क नहीं। हम पूरी पारदर्शिता में विश्वास रखते हैं।",
 
         ph_name_input: "आपका पूरा नाम", ph_wa_input: "व्हाट्सएप नंबर", ph_city_input: "जन्म स्थान / शहर",
         ph_m_name_input: "पुरुष का नाम", ph_f_name_input: "महिला का नाम", btn_submit: "दैवीय मार्गदर्शन प्राप्त करें", 
