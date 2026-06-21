@@ -212,7 +212,7 @@ window.changeMonth = (dir) => {
 window.addEventListener('load', () => {
     setTimeout(initPanchang, 200);
 });
-// 8. 🔱 DYNAMIC TRANSLATION TRIGGER (Language Switcher)
+// 8. 🔱 DYNAMIC DATA TRIGGER ONLY (HTML translation is handled globally by V-MAX)
 document.addEventListener('click', (e) => {
     // Check if the clicked element is the language toggle button
     if (e.target.closest('#langToggle') || e.target.closest('.lang-switch')) {
@@ -220,11 +220,13 @@ document.addEventListener('click', (e) => {
             const newLang = getLang();
             const mStr = String(currentMonth + 1).padStart(2, '0');
             
-            // Re-run all translation and rendering functions with the new language
-            updateStaticText(newLang);
-            updatePanchangData(newLang);
-            renderCalendar(newLang);
-            renderEvents(mStr, newLang);
+            // ❌ updateStaticText(newLang) यहाँ से हटा दिया गया है
+            
+            // ✅ सिर्फ तुम्हारी JS वाली डायनामिक चीज़ों को नई भाषा में रीलोड करो
+            if (typeof updatePanchangData === 'function') updatePanchangData(newLang);
+            if (typeof renderCalendar === 'function') renderCalendar(newLang);
+            if (typeof renderEvents === 'function') renderEvents(mStr, newLang);
+            
         }, 100); // 100ms delay ensures localStorage is updated first
     }
 });
