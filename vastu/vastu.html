@@ -223,36 +223,5 @@
     <script type="module" src="../assets/js/firebase-handler.js"></script>
     <script type="module" src="vastu.js"></script>
     
-    <!-- 🔱 Inline Translation Logic (Exact Shop Style) -->
-    <script>
-        const getLang = () => localStorage.getItem('selectedLang') || 'hi';
-
-        const updateVastuText = () => {
-            const lang = getLang();
-            const translations = window.pageTranslations?.[lang] || window.translations?.[lang];
-            
-            if (!translations) return;
-
-            const elements = document.querySelectorAll('[data-key]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (translations[key]) {
-                    el.innerHTML = translations[key]; 
-                }
-            });
-        };
-
-        // Jab page load ho tab translate karo
-        window.addEventListener('load', () => {
-            setTimeout(updateVastuText, 200);
-        });
-
-        // Agar website mein language toggle button ka click pakadna ho 
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('#langToggle') || e.target.closest('.lang-switch')) {
-                setTimeout(updateVastuText, 100);
-            }
-        });
-    </script>
 </body>
 </html>
