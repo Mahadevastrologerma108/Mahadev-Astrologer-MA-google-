@@ -171,5 +171,20 @@
     <changefreq>yearly</changefreq>
     <priority>0.50</priority>
   </url>
+  <url>
+    <loc>https://www.mahadevastrologerma.in/swapna-fal/swapna-fal</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.mahadevastrologerma.in/mantra-shloka/mantra-shloka</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.mahadevastrologerma.in/latest-guide/kundali</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
 
 </urlset>
