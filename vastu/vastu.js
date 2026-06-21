@@ -142,11 +142,11 @@ ${formData.issue}`
             form.reset();
 
             // Timeout के साथ Status और Button Reset
-            setTimeout(() => {
-                window.open(whatsappURL, '_blank');
-                statusDiv.innerHTML = "";
-                resetButton(submitBtn);
-            }, 1200);
+setTimeout(() => {
+    window.location.href = whatsappURL; 
+    statusDiv.innerHTML = "";
+    resetButton(submitBtn);
+}, 1200);
 
         } catch (error) {
             console.error('Form Submission Error:', error);
