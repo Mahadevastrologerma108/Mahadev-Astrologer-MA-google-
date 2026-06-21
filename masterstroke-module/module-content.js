@@ -190,3 +190,42 @@ window.handleFinalSubmit = function(event, method, dosha) {
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(loadTable, 500);
 });
+
+// 7. 🔱 MASTER TRANSLATION ENGINE & TRIGGER
+const updateStaticText = (lang) => {
+    const translations = window.pageTranslations?.[lang] || window.translations?.[lang];
+    if (!translations) return;
+
+    const elements = document.querySelectorAll('[data-key]');
+    elements.forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (translations[key]) {
+            el.innerHTML = translations[key]; 
+        }
+    });
+};
+
+// जब यूज़र भाषा बदलेगा, तब यह ट्रिगर चलेगा
+document.addEventListener('click', (e) => {
+    if (e.target.closest('#langToggle') || e.target.closest('.lang-switch')) {
+        setTimeout(() => {
+            const newLang = localStorage.getItem('selectedLang') || 'en';
+            
+            // 1. HTML के सारे data-key अपडेट करेगा
+            updateStaticText(newLang);
+            
+            // 2. तुम्हारी JS वाली टेबल को नई भाषा में दोबारा लोड करेगा
+            loadTable();
+            
+        }, 100);
+    }
+});
+
+// पेज लोड होने पर भी दोनों को सेट करेगा (तुम्हारे पुराने DOMContentLoaded की जगह इसे यूज़ करो)
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const lang = localStorage.getItem('selectedLang') || 'en';
+        updateStaticText(lang);
+        loadTable();
+    }, 200);
+});
