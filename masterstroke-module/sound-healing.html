@@ -137,35 +137,5 @@
 
 <script src="module-content.js?v=3"></script>
 <script type="module" src="../assets/js/firebase-handler.js?v=3"></script>
-
-<!-- 🔱 Inline Translation Logic Setup -->
-<script>
-    const getLang = () => localStorage.getItem('selectedLang') || 'en';
-
-    const updateSoundText = () => {
-        const lang = getLang();
-        const translations = window.pageTranslations?.[lang] || window.translations?.[lang];
-        
-        if (!translations) return;
-
-        const elements = document.querySelectorAll('[data-key]');
-        elements.forEach(el => {
-            const key = el.getAttribute('data-key');
-            if (translations[key]) {
-                el.innerHTML = translations[key]; 
-            }
-        });
-    };
-
-    window.addEventListener('load', () => {
-        setTimeout(updateSoundText, 200);
-    });
-
-    document.addEventListener('click', (e) => {
-        if (e.target.closest('#langToggle') || e.target.closest('.lang-switch')) {
-            setTimeout(updateSoundText, 100);
-        }
-    });
-</script>
 </body>
 </html>
