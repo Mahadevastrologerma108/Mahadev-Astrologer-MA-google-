@@ -9,7 +9,8 @@
     const isInsideFolder = path.includes('/panchang/') || path.includes('/latest-guide/') || 
                            path.includes('/pages/') || path.includes('/horoscope/') ||
                            path.includes('/masterstroke-module/') || path.includes('/tools/') ||
-                           path.includes('/products/') || path.includes('/vastu/') ||  path.includes('/swapna-fal/');
+                           path.includes('/products/') || path.includes('/vastu/') ||  path.includes('/swapna-fal/') || 
+                           path.includes('/mantra-shloka/');
     
     const prefix = isInsideFolder ? '../' : '';
 
