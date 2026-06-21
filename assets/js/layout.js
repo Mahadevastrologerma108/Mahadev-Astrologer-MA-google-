@@ -1,6 +1,6 @@
 /**
  * MAHADEV ASTROLOGER MA - Fresh & Smart Master Engine
- * Logic: Supports all pages (bade aur chhote) & No Black Screen.
+ * Logic: Supports all pages, No Black Screen, Auto-Bot Injection.
  */
 
 (function() {
@@ -8,68 +8,64 @@
     const path = window.location.pathname;
     const isInsideFolder = path.includes('/panchang/') || path.includes('/latest-guide/') || 
                            path.includes('/pages/') || path.includes('/horoscope/') ||
-                           path.includes('/masterstroke-module/') || path.includes('/tools/') ||
-                           path.includes('/products/') || path.includes('/vastu/') ||  path.includes('/swapna-fal/') || 
-                           path.includes('/mantra-shloka/');
+                           path.includes('/masterstroke-module/') || path.includes('/tools/') || 
+                           path.includes('/products/') || path.includes('/vastu/') ||  
+                           path.includes('/swapna-fal/') || path.includes('/mantra-shloka/');
     
     const prefix = isInsideFolder ? '../' : '';
+    let retryCount = 0; // Infinite loop se bachne ke liye
 
     // 🔱 MASTER INITIALIZER
     window.initMahadevApp = async function() {
         try {
-            // Check Data
             const hasCommon = !!window.commonTranslations;
             const hasLocal = !!window.pageTranslations;
 
-            // SMART LOGIC: Agar common data (translations.js) mil gaya, toh aage badho
-            if (hasCommon) {
-                
-                // Merge Logic: Local hai toh jodo, warna sirf common use karo
-                const localEn = hasLocal ? window.pageTranslations.en : {};
-                const localHi = hasLocal ? window.pageTranslations.hi : {};
+            // SMART LOGIC: Wait for translations (Max 2 seconds/40 retries)
+            if (!hasCommon) {
+                if (retryCount < 40) {
+                    retryCount++;
+                    setTimeout(initMahadevApp, 50);
+                    return;
+                } else {
+                    console.warn("🔱 Translation load timeout. Proceeding with layout only.");
+                }
+            }
 
+            // Merge Logic
+            const localEn = hasLocal ? window.pageTranslations.en : {};
+            const localHi = hasLocal ? window.pageTranslations.hi : {};
+
+            if (hasCommon) {
                 window.translations = {
                     en: { ...window.commonTranslations.en, ...localEn },
                     hi: { ...window.commonTranslations.hi, ...localHi }
                 };
-
-                // Fetch Layout (Header/Footer)
-                const [hResp, fResp] = await Promise.all([
-                    fetch(prefix + 'header.html').catch(() => ({ok: false})),
-                    fetch(prefix + 'footer.html').catch(() => ({ok: false}))
-                ]);
-
-                if (hResp.ok && fResp.ok) {
-                    const headerHTML = await hResp.text();
-                    const footerHTML = await fResp.text();
-
-                    // Body load hone ka wait karein, phir inject karein
-                    const checkBody = setInterval(() => {
-                        if (document.body) {
-                            clearInterval(checkBody);
-                            
-                            const hPlace = document.getElementById('header-placeholder');
-                            const fPlace = document.getElementById('footer-placeholder');
-                            
-                            if (hPlace) hPlace.innerHTML = headerHTML;
-                            if (fPlace) fPlace.innerHTML = footerHTML;
-
-                            initMenu();
-                            fixAllLinks(prefix);
-                            window.updateUI();
-                            
-                            console.log("🔱 Engine: Layout & Translation Applied Successfully!");
-                        }
-                    }, 30);
-                } else {
-                    // Agar header na mile (local folder error), tab bhi translation apply karein
-                    window.updateUI();
-                    console.warn("🔱 Header/Footer paths not found, but Translation applied.");
-                }
-            } else {
-                // Jab tak translations.js load na ho, tab tak thoda wait karein
-                setTimeout(initMahadevApp, 50);
             }
+
+            // Fetch Layout (Header/Footer)
+            const [hResp, fResp] = await Promise.all([
+                fetch(prefix + 'header.html').catch(() => ({ok: false})),
+                fetch(prefix + 'footer.html').catch(() => ({ok: false}))
+            ]);
+
+            if (hResp.ok && fResp.ok) {
+                const headerHTML = await hResp.text();
+                const footerHTML = await fResp.text();
+
+                const hPlace = document.getElementById('header-placeholder');
+                const fPlace = document.getElementById('footer-placeholder');
+                
+                if (hPlace) hPlace.innerHTML = headerHTML;
+                if (fPlace) fPlace.innerHTML = footerHTML;
+
+                initMenu();
+                fixAllLinks(prefix);
+                window.updateUI(); // Header update
+            }
+
+            console.log("🔱 Engine: Layout & Translation Applied Successfully!");
+
         } catch (e) {
             console.error("🔱 Engine Error:", e);
         }
@@ -110,6 +106,14 @@
             }
         });
 
+        // Placeholder translation ke liye
+        document.querySelectorAll('[data-placeholder-key]').forEach(el => {
+            const val = t[lang][el.getAttribute('data-placeholder-key')];
+            if (val) {
+                el.placeholder = val;
+            }
+        });
+
         const btnTxt = document.getElementById('lang-text');
         if (btnTxt) btnTxt.innerText = (lang === 'hi') ? 'हिंदी / Eng' : 'Eng / हिंदी';
     };
@@ -120,15 +124,9 @@
         location.reload();
     };
 
-    // Execution
-    if (document.readyState === 'loading') {
-        window.addEventListener('DOMContentLoaded', initMahadevApp);
-    } else {
-        initMahadevApp();
-    }
-
-    // Auto Inject Favicon & Bot
-    window.addEventListener('load', () => {
+    // --- 🔱 BOT INJECTOR & FAVICON (Runs after DOM is ready) ---
+    function injectBotAndFavicon() {
+        // Favicon
         let link = document.querySelector("link[rel~='icon']");
         if (!link) { 
             link = document.createElement('link'); 
@@ -136,45 +134,49 @@
             document.head.appendChild(link); 
         }
         link.href = 'https://res.cloudinary.com/dya3yxgch/image/upload/v1769705192/logo_bdmvwv.png';
-        
-        const bot = document.createElement('script');
-        bot.src = prefix + 'assets/js/bot.js';
-        bot.async = true;
-        if (document.body) document.body.appendChild(bot);
-    });
+
+        // Divine Bot HTML (with data-key for AdSense safety)
+        if (!document.getElementById("divine-bot-container")) {
+            const botHTML = `
+            <div id="divine-bot-container">
+                <div id="divine-chat-window" class="hidden">
+                    <div class="chat-header">
+                        <span class="chat-title">🔱 Mahadev Bot</span>
+                        <span class="close-chat" onclick="toggleDivineBot()">✕</span>
+                    </div>
+                    <div class="chat-body" id="chat-body">
+                        <div class="bot-msg" data-key="bot_welcome">Pranaam! I am Mahadev Astrologer MA's assistant. How can I help you with your Horoscope or queries?</div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="Type your question..." data-placeholder-key="ph_bot_input" onkeypress="handleBotEnter(event)">
+                        <button onclick="sendBotMessage()">➤</button>
+                    </div>
+                </div>
+                <div id="floating-bot-btn" onclick="toggleDivineBot()">
+                    <img src="https://res.cloudinary.com/dya3yxgch/image/upload/f_auto,q_auto,w_150/v1769705192/logo_bdmvwv.png" alt="Bot" class="bot-icon">
+                </div>
+            </div>`;
+            document.body.insertAdjacentHTML('beforeend', botHTML);
+            
+            // Bot JS Script load karna
+            const botScript = document.createElement('script');
+            botScript.src = prefix + 'assets/js/bot.js';
+            botScript.async = true;
+            document.body.appendChild(botScript);
+            
+            // Translate the newly injected bot
+            window.updateUI();
+            console.log("🔱 Divine Bot Injected Successfully!");
+        }
+    }
+
+    // Execution
+    if (document.readyState === 'loading') {
+        window.addEventListener('DOMContentLoaded', () => {
+            initMahadevApp().then(injectBotAndFavicon);
+        });
+    } else {
+        initMahadevApp().then(injectBotAndFavicon);
+    }
 
 })();
-/* ==========================================
-   🔱 DIVINE BOT AUTO-INJECTOR 🔱
-   ========================================== */
-document.addEventListener("DOMContentLoaded", function() {
-    // 1. Check karo ki us page par bot pehle se toh nahi hai
-    if (document.getElementById("divine-bot-container")) return;
-
-    // 2. Bot ka poora HTML Design
-    const botHTML = `
-    <div id="divine-bot-container">
-        <div id="divine-chat-window" class="hidden">
-            <div class="chat-header">
-                <span class="chat-title">🔱 Mahadev Bot</span>
-                <span class="close-chat" onclick="toggleDivineBot()">✕</span>
-            </div>
-            <div class="chat-body" id="chat-body">
-                <div class="bot-msg">Pranaam! Main Mahadev Astrologer MA ka sahayak hoon. Kya main aapko Horoscope dikhaun ya aapka koi prashna hai?</div>
-            </div>
-            <div class="chat-input-area">
-                <input type="text" id="chat-input" placeholder="Apna prashna likhein..." onkeypress="handleBotEnter(event)">
-                <button onclick="sendBotMessage()">➤</button>
-            </div>
-        </div>
-
-        <div id="floating-bot-btn" onclick="toggleDivineBot()">
-            <img src="https://res.cloudinary.com/dya3yxgch/image/upload/f_auto,q_auto,w_150/v1769705192/logo_bdmvwv.png" alt="Bot" class="bot-icon">
-        </div>
-    </div>
-    `;
-
-    // 3. Page ke aakhir mein (</body> se theek pehle) ise jod do
-    document.body.insertAdjacentHTML('beforeend', botHTML);
-    console.log("🔱 Divine Bot sabhi pages par active ho gaya hai!");
-});
