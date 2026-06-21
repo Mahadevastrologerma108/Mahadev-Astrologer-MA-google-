@@ -40,6 +40,27 @@ window.swapnaTranslations = {
         "rem_2_desc": "Chant \"Om Namah Shivaya\" or the Mahamrityunjay Mantra 11 times. Mahadev is the conqueror of time and fear.",
         "rem_3_title": "3. Morning Donation (Daan)",
         "rem_3_desc": "The next morning, donate white items (like milk, rice, or sugar) to a temple or a needy person to pacify the moon (ruler of mind and sleep).",
+        "cat_people": "👥 Ancestors & People",
+        "dream_ancestors": "Seeing Deceased Relatives (Pitra)",
+        "mean_ancestors": "Seeing ancestors in a dream usually means they are blessing you or asking for prayers (Shanti). If they appear happy, good news is coming. If they look sad or are asking for food, you should perform Pitru Tarpan or donate food in their name.",
+        "dream_crying": "Seeing Yourself or Someone Crying",
+        "mean_crying": "Contrary to real life, crying loudly in a dream is an auspicious sign in Swapna Shastra. It signifies that your real-life sorrows and stress are ending, and a period of happiness and peace is about to begin.",
+        "dream_marriage": "Seeing a Marriage Ceremony",
+        "mean_marriage": "Seeing someone else's marriage indicates upcoming celebrations. However, seeing your own marriage is often considered a warning regarding health issues or upcoming obstacles. It is advised to chant the Mahamrityunjay Mantra.",
+        
+        "cat_birds": "🐘 Birds & More Animals",
+        "dream_elephant": "Seeing an Elephant (Gajraj)",
+        "mean_elephant": "The elephant is the vehicle of Lord Indra and associated with Goddess Lakshmi. Seeing an elephant riding or standing is a strong indicator of huge financial gains, a promotion, or acquiring new property.",
+        "dream_dog": "Seeing a Dog",
+        "mean_dog": "A dog represents Lord Bhairav. A friendly dog means you will meet an old loyal friend or receive protection. A barking or biting dog is a warning of betrayal by someone close or an impending dispute.",
+        "dream_owl": "Seeing an Owl (Ullu)",
+        "mean_owl": "The owl is Goddess Lakshmi's vehicle. It indicates sudden financial gain, but it also warns that the money must be handled carefully and ethically, otherwise, it may bring sorrow.",
+        
+        "cat_wealth": "💰 Wealth & Objects",
+        "dream_gold": "Seeing Gold or Jewelry",
+        "mean_gold": "Finding gold in a dream can indicate an upcoming auspicious event or marriage in the family, but it can also signify unexpected heavy expenses. Losing gold in a dream is a warning to be careful with your investments.",
+        "dream_coins": "Hearing Coins Jingle",
+        "mean_coins": "Hearing the sound of metal coins jingling is a warning of financial loss or an upcoming financial crunch. However, seeing paper money or currency notes is considered a sign of profit.",
         
         "disc_text_swapna": "The <strong>Dream interpretations (Swapna Fal)</strong> provided on this website are based purely on ancient Vedic literature and mythological beliefs. They are meant for spiritual and educational purposes only. Do not make major life, financial, or medical decisions based solely on dreams."
     },
@@ -81,6 +102,27 @@ window.swapnaTranslations = {
         "rem_2_desc": "शांत बैठकर 11 बार 'ॐ नमः शिवाय' या महामृत्युंजय मंत्र का जप करें। महादेव काल और भय के नाशक हैं।",
         "rem_3_title": "3. प्रातः काल दान (Daan)",
         "rem_3_desc": "अगली सुबह चंद्र देव (जो मन और निद्रा के स्वामी हैं) को शांत करने के लिए किसी मंदिर या जरूरतमंद को सफेद वस्तुएं (जैसे दूध, चावल या चीनी) दान करें।",
+        "cat_people": "👥 पितृ (पूर्वज) और व्यक्ति",
+        "dream_ancestors": "मृत रिश्तेदारों (पितरों) को देखना",
+        "mean_ancestors": "सपने में पूर्वजों को देखने का अर्थ है कि वे आपको आशीर्वाद दे रहे हैं या शांति (प्रार्थना) की मांग कर रहे हैं। यदि वे खुश दिखें, तो शुभ समाचार आने वाला है। यदि वे उदास हैं या भोजन मांग रहे हैं, तो उनके नाम पर पितृ तर्पण या अन्न दान अवश्य करें।",
+        "dream_crying": "स्वयं को या किसी और को रोते हुए देखना",
+        "mean_crying": "असल जीवन के विपरीत, सपने में जोर-जोर से रोना स्वप्न शास्त्र में एक शुभ संकेत है। इसका अर्थ है कि आपके वास्तविक जीवन के दुःख और तनाव समाप्त हो रहे हैं, और सुख-शांति का समय शुरू होने वाला है।",
+        "dream_marriage": "विवाह (शादी) समारोह देखना",
+        "mean_marriage": "किसी और का विवाह देखना घर में आने वाले उत्सवों को दर्शाता है। हालाँकि, सपने में स्वयं की शादी देखना स्वास्थ्य संबंधी समस्याओं या आने वाली बाधाओं की चेतावनी माना जाता है। ऐसे में महामृत्युंजय मंत्र का जप करना चाहिए।",
+        
+        "cat_birds": "🐘 हाथी, पक्षी और अन्य जीव",
+        "dream_elephant": "हाथी (गजराज) देखना",
+        "mean_elephant": "हाथी देवराज इंद्र का वाहन है और माता लक्ष्मी से जुड़ा है। सपने में हाथी देखना या उसकी सवारी करना भारी धन लाभ, नौकरी में पदोन्नति (Promotion) या नई संपत्ति प्राप्त करने का बहुत ही शुभ संकेत है।",
+        "dream_dog": "कुत्ता देखना",
+        "mean_dog": "कुत्ता भगवान भैरव का प्रतीक है। सपने में एक शांत कुत्ता देखना पुराने वफादार मित्र से मिलने या सुरक्षा का संकेत है। लेकिन भौंकता या काटता हुआ कुत्ता किसी करीबी द्वारा धोखा देने या विवाद होने की चेतावनी है।",
+        "dream_owl": "उल्लू देखना",
+        "mean_owl": "उल्लू माता लक्ष्मी का वाहन है। यह अचानक धन लाभ (Sudden Wealth) का संकेत देता है, लेकिन यह इस बात की भी चेतावनी है कि धन का उपयोग बहुत सावधानी और नैतिकता से किया जाना चाहिए, अन्यथा यह दुःख का कारण बन सकता है।",
+        
+        "cat_wealth": "💰 धन और वस्तुएं",
+        "dream_gold": "सोना (स्वर्ण) या आभूषण देखना",
+        "mean_gold": "सपने में सोना मिलना परिवार में किसी शुभ कार्य या विवाह का संकेत हो सकता है, लेकिन यह अचानक होने वाले भारी खर्च को भी दर्शाता है। सपने में सोना खोना अपने निवेश और पैसों के प्रति सावधान रहने की चेतावनी है।",
+        "dream_coins": "सिक्कों की खनक सुनना",
+        "mean_coins": "धातु के सिक्कों की खनक सुनना या उन्हें देखना आर्थिक हानि (Financial Loss) या आने वाले आर्थिक संकट की चेतावनी है। इसके विपरीत, कागज़ के नोट (Currency notes) देखना लाभ का संकेत माना जाता है।",
         
         "disc_text_swapna": "इस वेबसाइट पर उपलब्ध <strong>स्वप्न फल विचार</strong> पूर्णतः प्राचीन वैदिक साहित्य और पौराणिक मान्यताओं पर आधारित हैं। यह केवल आध्यात्मिक और शैक्षिक उद्देश्यों के लिए हैं। केवल सपनों के आधार पर अपने जीवन, वित्त या चिकित्सा से जुड़े बड़े निर्णय न लें।"
     }
