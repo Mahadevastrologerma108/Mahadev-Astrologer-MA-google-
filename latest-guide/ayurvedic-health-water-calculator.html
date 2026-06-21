@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-key="ab_title">Ayushman Bhava: Ayurvedic Health & Water Calculator | MAHADEV ASTROLOGER MA</title>
-    <meta name="description" content="MAHADEV ASTROLOGER MA के 'आयुष्मान भव:' टूल से अपने शरीर की दैनिक जल (Water) और पद-यात्रा (Steps) की आवश्यकता जानें। पूर्णतः वैदिक दिनचर्या।">
+    <meta name="description" content="Calculate your daily water intake and step count based on your body profile using the Ayushman Bhava tool by MAHADEV ASTROLOGER MA. Complete Vedic daily routine.">
     
     <link rel="canonical" href="https://www.mahadevastrologerma.in/latest-guide/ayurvedic-health-water-calculator">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3541428040051953" crossorigin="anonymous"></script>
@@ -50,50 +50,50 @@
     <div id="header-placeholder"></div>
 
     <main class="calc-container" id="calculator-section">
-        <h1 class="gold-text" style="font-family: 'Cinzel'; text-align: center; font-size: 2.2rem; margin-bottom: 10px;" data-key="ab_title">🔱 आयुष्मान भव:</h1>
-        <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 0.95rem;" data-key="ab_desc">आयुर्वेद और नाद विज्ञान के अनुसार अपनी शारीरिक प्रकृति, दैनिक जल (Water) और ऊर्जा (Steps) का सटीक मापन करें।</p>
+        <h1 class="gold-text" style="font-family: 'Cinzel'; text-align: center; font-size: 2.2rem; margin-bottom: 10px;" data-key="ab_title">🔱 Ayushman Bhava</h1>
+        <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 0.95rem;" data-key="ab_desc">Accurately measure your physical constitution, daily water intake, and energy (steps) requirement according to Ayurveda and Naad Science.</p>
 
         <form id="healthForm" onsubmit="event.preventDefault(); calculateHealth();">
             <div class="input-group">
-                <label for="userHeight" data-key="ab_q1">1. आपकी ऊंचाई / Height (cm में)</label>
-                <input type="number" id="userHeight" placeholder="उदाहरण: 170" required>
+                <label for="userHeight" data-key="ab_q1">1. Your Height (in cm)</label>
+                <input type="number" id="userHeight" placeholder="Example: 170" required>
             </div>
             <div class="input-group">
-                <label for="userWeight" data-key="ab_q2">2. आपका भार / Weight (kg में)</label>
-                <input type="number" id="userWeight" placeholder="उदाहरण: 70" required>
+                <label for="userWeight" data-key="ab_q2">2. Your Weight (in kg)</label>
+                <input type="number" id="userWeight" placeholder="Example: 70" required>
             </div>
-            <button type="submit" class="calc-btn" data-key="ab_btn">स्वास्थ्य जाँच ➔</button>
+            <button type="submit" class="calc-btn" data-key="ab_btn">Check Health ➔</button>
         </form>
 
         <div id="result-section">
-            <h2 class="gold-text" style="font-family: 'Cinzel'; font-size: 1.6rem; margin-top: 0;" data-key="ab_res_title">आपकी दैनिक आवश्यकता</h2>
+            <h2 class="gold-text" style="font-family: 'Cinzel'; font-size: 1.6rem; margin-top: 0;" data-key="ab_res_title">Your Daily Requirement</h2>
             
             <div class="health-circles">
-                <div class="h-circle"><span data-key="ab_lbl_water">जल (Water)</span><strong id="waterRes">-</strong><span>Liters</span></div>
-                <div class="h-circle"><span data-key="ab_lbl_steps">पद-यात्रा</span><strong id="stepsRes">-</strong><span>Steps</span></div>
-                <div class="h-circle"><span data-key="ab_lbl_bmi">शारीरिक सूचकांक</span><strong id="bmiRes">-</strong><span id="bmiStatus" style="color:#fff; margin-top:5px; font-size: 0.75rem; font-weight: bold;">-</span></div>
+                <div class="h-circle"><span data-key="ab_lbl_water">Water</span><strong id="waterRes">-</strong><span>Liters</span></div>
+                <div class="h-circle"><span data-key="ab_lbl_steps">Daily Steps</span><strong id="stepsRes">-</strong><span>Steps</span></div>
+                <div class="h-circle"><span data-key="ab_lbl_bmi">Body Mass Index</span><strong id="bmiRes">-</strong><span id="bmiStatus" style="color:#fff; margin-top:5px; font-size: 0.75rem; font-weight: bold;">-</span></div>
             </div>
 
             <div class="remedy-box">
-                <h3 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.3rem; margin-top: 0;" data-key="ab_rem_title">🌿 वैदिक दिनचर्या सूत्र:</h3>
-                <p style="color: #fff; font-size: 0.95rem; margin-bottom: 12px; line-height: 1.7;" data-key="ab_rem_p1">• <strong>उषापान:</strong> प्रातःकाल उठते ही बिना कुल्ला किए तांबे के पात्र का गुनगुना जल ग्रहण करें। यह उदर (पेट) के सभी रोगों का नाश करता है。</p>
-                <p style="color: #fff; font-size: 0.95rem; margin-bottom: 12px; line-height: 1.7;" data-key="ab_rem_p2">• <strong>जल ग्रहण विधि:</strong> जल सदैव बैठकर और घूंट-घूंट (Sip by Sip) पिएं। खड़े होकर जल पीने से घुटनों और जोड़ों के रोग उत्पन्न होते हैं।</p>
-                <p style="color: #fff; font-size: 0.95rem; margin-bottom: 0; line-height: 1.7;" data-key="ab_rem_p3">• <strong>भोजन और जल:</strong> भोजन के तुरंत पश्चात जल ग्रहण करना विष (Poison) के समान है। भोजन के एक घंटे पश्चात ही जल ग्रहण करें।</p>
+                <h3 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.3rem; margin-top: 0;" data-key="ab_rem_title">🌿 Vedic Daily Routine Formula:</h3>
+                <p style="color: #fff; font-size: 0.95rem; margin-bottom: 12px; line-height: 1.7;" data-key="ab_rem_p1">• <strong>Ushapan:</strong> Drink lukewarm water from a copper vessel immediately upon waking up, without rinsing your mouth. This destroys all abdominal diseases.</p>
+                <p style="color: #fff; font-size: 0.95rem; margin-bottom: 12px; line-height: 1.7;" data-key="ab_rem_p2">• <strong>Drinking Method:</strong> Always sit down and drink water sip by sip. Drinking water while standing leads to knee and joint problems.</p>
+                <p style="color: #fff; font-size: 0.95rem; margin-bottom: 0; line-height: 1.7;" data-key="ab_rem_p3">• <strong>Food and Water:</strong> Consuming water immediately after meals is akin to consuming poison. Drink water only an hour after your meal.</p>
             </div>
         </div>
     </main>
 
     <article class="master-article">
-        <h2 style="text-align: center; border: none; font-size: 2.2rem; margin-top: 20px;" data-key="ab_art_title">आयुर्वेद और स्वास्थ्य: जल एवं पद-यात्रा का ब्रह्मांडीय महत्व</h2>
-        <p style="text-align: center; color: var(--gold); font-style: italic; margin-bottom: 40px;" data-key="ab_art_quote">"पहला सुख निरोगी काया।"</p>
+        <h2 style="text-align: center; border: none; font-size: 2.2rem; margin-top: 20px;" data-key="ab_art_title">Ayurveda and Health: The Cosmic Significance of Water and Walking</h2>
+        <p style="text-align: center; color: var(--gold); font-style: italic; margin-bottom: 40px;" data-key="ab_art_quote">"A healthy body is the greatest wealth."</p>
 
-        <p data-key="ab_art_p1">स्वास्थ्य ही मनुष्य का सबसे बड़ा धन है। <strong>MAHADEV ASTROLOGER M.A.</strong> के अनुसार, हमारा भौतिक शरीर पंच तत्वों (अग्नि, जल, वायु, पृथ्वी, आकाश) से निर्मित है। इन सभी में 'जल' तत्व का संतुलन अत्यंत आवश्यक है क्योंकि हमारे शरीर का लगभग 70 प्रतिशत भाग जल ही है। जब हमारे शरीर में जल और वायु का संतुलन बिगड़ता है, तब त्रिदोष (वात, पित्त, कफ) उत्पन्न होते हैं।</p>
+        <p data-key="ab_art_p1">Health is a person's greatest wealth. According to <strong>MAHADEV ASTROLOGER M.A.</strong>, our physical body is made up of five elements (fire, water, air, earth, space). Among these, balancing the 'water' element is extremely crucial because about 70 percent of our body is water. When the balance of water and air in our body is disturbed, the Tridoshas (Vata, Pitta, Kapha) are generated.</p>
 
-        <h3 style="color: var(--gold); font-family: 'Cinzel';" data-key="ab_art_h1">सटीक जल पान (Water Intake Science)</h3>
-        <p data-key="ab_art_p2">आयुर्वेद का स्पष्ट निर्देश है कि प्रत्येक व्यक्ति की जल की आवश्यकता उसके भार (Weight) पर निर्भर करती है। सामान्य रूप से, प्रत्येक 1 किलोग्राम भार के लिए 33 मिली-लीटर जल की आवश्यकता होती है। यदि आप उचित मात्रा में जल ग्रहण करते हैं, तो आपकी नाड़ियाँ शुद्ध रहती हैं और 'नाद योग' (Sound Healing) का प्रभाव शरीर पर शीघ्र होता है।</p>
+        <h3 style="color: var(--gold); font-family: 'Cinzel';" data-key="ab_art_h1">Accurate Water Intake Science</h3>
+        <p data-key="ab_art_p2">Ayurveda clearly instructs that every individual's water requirement depends on their body weight. Generally, 33 ml of water is required for every 1 kg of body weight. If you consume water in the right quantity, your energy channels (Nadis) remain pure, and the effect of 'Naad Yoga' (Sound Healing) on the body is accelerated.</p>
 
-        <h3 style="color: var(--gold); font-family: 'Cinzel';" data-key="ab_art_h2">दैनिक पद-यात्रा (Daily Steps & Walking)</h3>
-        <p data-key="ab_art_p3">आधुनिक विज्ञान और प्राचीन आयुर्वेद दोनों यह प्रमाणित करते हैं कि नियमित पद-यात्रा (चलना) हृदय और पाचन तंत्र के लिए अमृत के समान है। ब्रह्म मुहूर्त में की गई पद-यात्रा से मस्तिष्क को शुद्ध प्राणवायु (Oxygen) प्राप्त होती है, जिससे मानसिक तनाव और नकारात्मक ऊर्जा का नाश होता है। अपने शारीरिक सूचकांक (BMI) के आधार पर 7,000 से 10,000 कदम प्रतिदिन अवश्य चलना चाहिए।</p>
+        <h3 style="color: var(--gold); font-family: 'Cinzel';" data-key="ab_art_h2">Daily Steps & Walking</h3>
+        <p data-key="ab_art_p3">Both modern science and ancient Ayurveda certify that a regular walk is like nectar for the heart and digestive system. Walking during the Brahma Muhurta (early morning) provides pure oxygen to the brain, which destroys mental stress and negative energy. Based on your Body Mass Index (BMI), you must walk 7,000 to 10,000 steps every day.</p>
     </article>
 
     <div id="footer-placeholder"></div>
@@ -136,8 +136,8 @@
                 steps = "12,000";
             }
 
-            // 🔱 Smart Language Fetcher for Result
-            let currentLang = localStorage.getItem('selectedLang') || 'hi';
+            // 🔱 Smart Language Fetcher for Result (Changed default to 'en' for AdSense bot)
+            let currentLang = localStorage.getItem('selectedLang') || 'en';
             let finalStatus = bmiData[statusKey][currentLang];
 
             document.getElementById('waterRes').innerText = waterLiters;
