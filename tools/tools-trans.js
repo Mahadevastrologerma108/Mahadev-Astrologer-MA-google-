@@ -19,7 +19,10 @@ window.pageTranslations = {
         "btn_find_num": "Find Number ➔",
         "tool_health": "Ayushman Bhava",
         "tool_health_desc": "Know your daily water and step requirements based on your height and weight according to Ayurveda.",
-        "btn_check_health": "Check Health ➔"
+        "btn_check_health": "Check Health ➔",
+        "tool_vastu": "Vastu Shastra",
+        "tool_vastu_desc": "Our goal is not just to point out defects, but to provide practical solutions. Using 16-zone elemental balancing, we optimize your space.",
+        "btn_vastu_scan": "Defect Analysis ➔"
     },
     hi: {
         "tools_main_title": "वैदिक टूल सेंटर",
@@ -41,6 +44,9 @@ window.pageTranslations = {
         "btn_find_num": "अंक जानें ➔",
         "tool_health": "आयुष्मान भव:",
         "tool_health_desc": "आयुर्वेद के अनुसार अपने शारीरिक भार और ऊंचाई से दैनिक जल (Water) और पद-यात्रा (Steps) की सटीक आवश्यकता जानें।",
-        "btn_check_health": "स्वास्थ्य जाँच ➔"
+        "btn_check_health": "स्वास्थ्य जाँच ➔",
+        "tool_vastu": "वास्तु शास्त्र",
+        "tool_vastu_desc": "हमारा लक्ष्य केवल दोष बताना नहीं, बल्कि व्यावहारिक समाधान देना है। 16-जोन तत्व संतुलन का उपयोग करके हम आपके स्थान को अनुकूल बनाते हैं।",
+        "btn_vastu_scan": "दोष विश्लेषण ➔"
     }
 };
