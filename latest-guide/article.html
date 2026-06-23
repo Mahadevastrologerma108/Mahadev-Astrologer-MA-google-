@@ -31,13 +31,83 @@
 
     <style>
         .article-view-container { padding: 120px 20px; max-width: 800px; margin: auto; min-height: 80vh; }
-        #article-content { line-height: 1.8; color: #ccc; font-size: 1.1rem; }
-        #article-content h1, #article-content h2 { font-family: 'Cinzel'; color: var(--gold); margin-top: 30px; }
-        #article-image { max-width: 100%; border-radius: 10px; margin: 20px 0; border: 1px solid rgba(212, 175, 55, 0.3); display: none; }
-        .back-link { color: var(--gold); text-decoration: none; font-family: 'Cinzel'; display: inline-block; margin-bottom: 20px; font-weight: bold; }
+        
+        .back-link { color: #f5c542; text-decoration: none; font-family: 'Cinzel'; display: inline-block; margin-bottom: 20px; font-weight: bold; border: 1px solid #f5c542; padding: 8px 20px; border-radius: 20px; transition: 0.3s; }
+        .back-link:hover { background: #f5c542; color: #000; }
+
+        #article-title { font-family: 'Cinzel', serif; color: #f5c542; font-size: 2.2rem; line-height: 1.4; border-bottom: 2px solid rgba(245, 197, 66, 0.2); padding-bottom: 15px; margin-bottom: 20px; }
+        
+        #article-image { max-width: 100%; border-radius: 10px; margin: 20px 0; border: 1px solid rgba(212, 175, 55, 0.3); display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        
+        /* 🔱 Blogger Format Killer & Premium Stylist 🔱 */
+        #article-content { 
+            line-height: 1.9; 
+            color: #d1d1d1; 
+            font-size: 1.1rem; 
+            font-family: 'Poppins', sans-serif;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(245, 197, 66, 0.1);
+        }
+
+        /* Force Remove Blogger's Inline Backgrounds and Colors */
+        #article-content * {
+            background-color: transparent !important;
+            color: inherit !important;
+        }
+
+        /* Headings (H1, H2, H3) styling */
+        #article-content h1, #article-content h2, #article-content h3 { 
+            font-family: 'Cinzel', serif !important; 
+            color: #f5c542 !important; 
+            margin-top: 40px; 
+            margin-bottom: 15px;
+        }
+
+        /* Bold text (Strong) */
+        #article-content b, #article-content strong {
+            color: #fff !important;
+            font-weight: 600;
+        }
+
+        /* Images inside Blogger Post */
+        #article-content img {
+            max-width: 100% !important;
+            height: auto !important;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Lists */
+        #article-content ul, #article-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        #article-content li {
+            margin-bottom: 10px;
+        }
+
+        /* Blockquotes / Quotes */
+        #article-content blockquote {
+            border-left: 4px solid #f5c542 !important;
+            padding: 15px 20px;
+            font-style: italic;
+            color: #bbb !important;
+            margin: 20px 0;
+            background: rgba(245, 197, 66, 0.05) !important;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        /* Links inside article */
+        #article-content a {
+            color: #f5c542 !important;
+            text-decoration: underline;
+        }
     </style>
 </head>
-<body style="background: var(--dark); color: white;">
+<body style="background: #0a0a14; color: white;">
     <div id="header-placeholder"></div>
 
     <div class="article-view-container">
