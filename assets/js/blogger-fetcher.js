@@ -33,11 +33,14 @@ window.renderBloggerPosts = function(data) {
     entries.forEach((post, index) => {
         const title = post.title.$t;
         
-        // Title se SEO-friendly slug generate karna
+        // Blogger post ki asali Numeric ID nikalna
+        const postId = post.id.$t.split('post-')[1]; 
+        
+        // SEO-friendly slug generate karna
         const slug = createSlug(title); 
         
-        // ✅ Naya 100% Clean URL structure (Bina kisi ID ke)
-        const internalLink = `article.html?title=${slug}`;
+        // ✅ Hybrid URL: ID (API ke liye) aur Title (SEO ke liye) dono
+        const internalLink = `article.html?id=${postId}&title=${slug}`;
         
         let imgUrl = post.media$thumbnail ? post.media$thumbnail.url.replace('s72-c', 's1600') : '';
         let contentBody = post.content ? post.content.$t : (post.summary ? post.summary.$t : "");
