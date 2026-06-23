@@ -37,7 +37,7 @@ window.commonTranslations = {
         "ins_swapna_title": "Swapna Fal (Dream Meaning)",
         "ins_swapna_desc": "Decode the hidden cosmic messages of your dreams according to Vedic Swapna Shastra.",
         "ins_mantra_title": "Vedic Mantras",
-        "ins_mantra_desc": "Daily chants for peace and spiritual grace.",
+        "ins_mantra_desc": " For peace and spiritual grace chant daily these shiddh mantras.",
         "btn_read": "Read Now",
 
         ph_name_input: "Your Full Name", ph_wa_input: "WhatsApp Number", ph_city_input: "Birth City/Place",
