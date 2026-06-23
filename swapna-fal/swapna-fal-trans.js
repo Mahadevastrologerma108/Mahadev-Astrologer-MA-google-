@@ -62,7 +62,11 @@ window.swapnaTranslations = {
         "dream_coins": "Hearing Coins Jingle",
         "mean_coins": "Hearing the sound of metal coins jingling is a warning of financial loss or an upcoming financial crunch. However, seeing paper money or currency notes is considered a sign of profit.",
         
-        "disc_text_swapna": "The <strong>Dream interpretations (Swapna Fal)</strong> provided on this website are based purely on ancient Vedic literature and mythological beliefs. They are meant for spiritual and educational purposes only. Do not make major life, financial, or medical decisions based solely on dreams."
+        "disc_text_swapna": "The <strong>Dream interpretations (Swapna Fal)</strong> provided on this website are based purely on ancient Vedic literature and mythological beliefs. They are meant for spiritual and educational purposes only. Do not make major life, financial, or medical decisions based solely on dreams.",
+        
+        "swapna_feedback_title": "Want More Dream Meanings?",
+        "swapna_feedback_desc": "This is a curated list of the most common dreams. If you want us to expand this library with 100+ Vedic dream interpretations, let us know! Your feedback helps us serve you better.",
+        "swapna_feedback_btn": "Give Feedback / Request Dreams ➔"
     },
     
     hi: {
@@ -124,6 +128,10 @@ window.swapnaTranslations = {
         "dream_coins": "सिक्कों की खनक सुनना",
         "mean_coins": "धातु के सिक्कों की खनक सुनना या उन्हें देखना आर्थिक हानि (Financial Loss) या आने वाले आर्थिक संकट की चेतावनी है। इसके विपरीत, कागज़ के नोट (Currency notes) देखना लाभ का संकेत माना जाता है।",
         
-        "disc_text_swapna": "इस वेबसाइट पर उपलब्ध <strong>स्वप्न फल विचार</strong> पूर्णतः प्राचीन वैदिक साहित्य और पौराणिक मान्यताओं पर आधारित हैं। यह केवल आध्यात्मिक और शैक्षिक उद्देश्यों के लिए हैं। केवल सपनों के आधार पर अपने जीवन, वित्त या चिकित्सा से जुड़े बड़े निर्णय न लें।"
+        "disc_text_swapna": "इस वेबसाइट पर उपलब्ध <strong>स्वप्न फल विचार</strong> पूर्णतः प्राचीन वैदिक साहित्य और पौराणिक मान्यताओं पर आधारित हैं। यह केवल आध्यात्मिक और शैक्षिक उद्देश्यों के लिए हैं। केवल सपनों के आधार पर अपने जीवन, वित्त या चिकित्सा से जुड़े बड़े निर्णय न लें।",
+
+        "swapna_feedback_title": "क्या आप और सपनों के अर्थ जानना चाहते हैं?",
+        "swapna_feedback_desc": "यह सबसे आम सपनों की एक सूची है। यदि आप चाहते हैं कि हम 100+ वैदिक स्वप्न फलों के साथ इस पृष्ठ का विस्तार करें, तो हमें अवश्य सूचित करें! आपके सुझाव हमारे लिए अत्यंत महत्वपूर्ण हैं।",
+        "swapna_feedback_btn": "सुझाव दें / अपना सपना पूछें ➔"
     }
 };
