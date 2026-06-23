@@ -108,6 +108,12 @@ window.pageTranslations = {
         "k_faq_q3": "3. How do I take an appointment for detailed Kundli analysis (Premium Consultation)?",
         "k_faq_a3": "To get a deep analysis of your horoscope and get accurate solutions, click on the 'Book Premium Consultation' button above. This will take you to our main form page, where you can send us your details by choosing a secure contact option (WhatsApp, Telegram, or Email) according to your convenience."
         "k_art_alert": "<strong>Special Consultation:</strong> Contact <strong>MAHADEV ASTROLOGER MA</strong> for a full horoscope analysis and precise remedies.",
+        "k_premium_title": "🔱 Premium Kundli & PDF Report",
+        "k_premium_desc": "For complete information on Dasha, Transit results, Kaal Sarp/Manglik Dosh and accurate remedies, consult our experts. See what you get in your Premium PDF:",
+        "k_feat_1": "<b>12+ Advanced Charts:</b> D1 (Lagna), Navamsha (D9), Dashamsha (D10), Saptamsha (D7), Chalit, Chandra, Hora & more.",
+        "k_feat_2": "<b>Deep Calculations:</b> Avkadha Chakra, Planet Positions, Vimshottari Dasha, and Yogini Dasha charts.",
+        "k_feat_3": "<b>Prediction Page:</b> Detailed life predictions with personalized Vedic remedies.",
+        "k_feat_4": "<b>Custom Action Links:</b> Direct links tailored strictly to your cosmic needs and ongoing doshas.",
     
         "ln_title": "🔱 Advanced Numerology",
         "ln_desc": "Know your Moolank, Bhagyank, Friendly/Enemy Numbers, and Cosmic Beej Mantra.",
@@ -249,6 +255,12 @@ window.pageTranslations = {
         "k_faq_q3": "3. विस्तृत कुण्डली विश्लेषण (प्रीमियम परामर्श) के लिए अपॉइंटमेंट कैसे लें?",
         "k_faq_a3": "अपनी कुण्डली का गहन विश्लेषण और सटीक उपाय प्राप्त करने के लिए ऊपर दिए गए 'Book Premium Consultation' बटन पर क्लिक करें। यह आपको हमारे मुख्य फॉर्म पेज पर ले जाएगा, जहाँ आप अपनी सुविधा के अनुसार सुरक्षित संपर्क विकल्प (WhatsApp, Telegram, या Email) चुनकर हमें अपनी डिटेल्स भेज सकते हैं।"
         "k_art_alert": "<strong>विशेष परामर्श:</strong> संपूर्ण कुण्डली विश्लेषण और सटीक उपाय जानने के लिए <strong>MAHADEV ASTROLOGER MA</strong> से संपर्क करें।",
+        "k_premium_title": "🔱 प्रीमियम कुण्डली और PDF रिपोर्ट",
+        "k_premium_desc": "महादशा, गोचर फल, काल सर्प/मांगलिक दोष और सटीक उपायों की पूरी जानकारी के लिए हमारे विशेषज्ञों से परामर्श लें। आपकी प्रीमियम PDF में आपको यह सब मिलेगा:",
+        "k_feat_1": "<b>12+ एडवांस चार्ट्स:</b> D1 (लग्न), नवमांश (D9), दशमांश (D10), सप्तमांश (D7), चलित, चंद्र, होरा और अन्य महत्वपूर्ण चार्ट।",
+        "k_feat_2": "<b>सटीक गणनाएं:</b> अवखड़ा चक्र, ग्रहों की स्थिति, विंशोत्तरी दशा और योगिनी दशा चार्ट।",
+        "k_feat_3": "<b>प्रेडिक्शन पेज:</b> आपके जीवन की विस्तृत भविष्यवाणी और व्यक्तिगत वैदिक उपाय।",
+        "k_feat_4": "<b>कस्टम एक्शन लिंक्स:</b> आपकी ग्रहीय आवश्यकता और दोषों के अनुसार काम आने वाले महत्वपूर्ण डायरेक्ट लिंक्स।",    
   
         "ln_title": "🔱 अंक ज्योतिष कैलकुलेटर",
         "ln_desc": "अपना मूलांक, भाग्यांक, शुभ/अशुभ अंक (Friendly & Enemy Numbers) और बीज मंत्र जानें।",
