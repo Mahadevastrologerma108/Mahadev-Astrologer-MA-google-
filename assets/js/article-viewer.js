@@ -10,8 +10,12 @@ function loadSingleArticle() {
     const postId = urlParams.get('id');
 
     if (!postId) {
-        const contentDiv = document.getElementById('article-full-content');
-        if(contentDiv) contentDiv.innerHTML = "<p style='text-align:center; color:var(--gold);'>Post not found. 🚩</p>";
+        // HTML ki sahi IDs ka istemal
+        const titleEl = document.getElementById('article-title');
+        const contentDiv = document.getElementById('article-content');
+        
+        if(titleEl) titleEl.innerHTML = "Post Not Found 🚩";
+        if(contentDiv) contentDiv.innerHTML = "<p style='text-align:center; color:var(--gold);'>The requested wisdom could not be found or the link is broken.</p>";
         return;
     }
 
@@ -24,11 +28,11 @@ window.renderFullPost = function(data) {
     if(!data.entry) return;
     
     // Update Browser Tab Title
-    document.title = `${data.entry.title.$t} | Mahadev Astrologer`;
+    document.title = `${data.entry.title.$t} | Mahadev Astrologer MA`;
     
-    // Fill Content
-    const titleEl = document.getElementById('post-title');
-    const contentEl = document.getElementById('article-full-content');
+    // Fill Content (HTML File ke correct IDs ke sath)
+    const titleEl = document.getElementById('article-title');
+    const contentEl = document.getElementById('article-content');
     
     if(titleEl) titleEl.innerText = data.entry.title.$t;
     if(contentEl) contentEl.innerHTML = data.entry.content.$t;
