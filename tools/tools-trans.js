@@ -22,7 +22,16 @@ window.pageTranslations = {
         "btn_check_health": "Check Health ➔",
         "tool_vastu": "Vastu Shastra",
         "tool_vastu_desc": "Our goal is not just to point out defects, but to provide practical solutions. Using 16-zone elemental balancing, we optimize your space.",
-        "btn_vastu_scan": "Defect Analysis ➔"
+        "btn_vastu_scan": "Defect Analysis ➔",
+        "seo_h2": "The Significance of Vedic Sciences & Our Tools",
+        "seo_p1": "In Sanatan Dharma, Astrology and Ayurveda are considered the foundation of a happy and balanced life. These digital Vedic tools by MAHADEV ASTROLOGER MA are a unique blend of ancient mathematical formulas and modern science. Whether it is understanding the movement of planets through a Birth Chart (Kundli) or checking the balance of the body's biological energy through the Tridosha test, our tools provide you with accurate and scientific analysis. Our goal is to connect you with Cosmic Energies and give your destiny the right direction.",
+        "faq_heading": "Frequently Asked Questions (FAQs)",
+        "faq_q1": "Q. Are all these tools by MAHADEV ASTROLOGER MA completely free?",
+        "faq_a1": "Answer: Yes, all primary Vedic tools available on our website, such as Kundli generation, Zodiac identification, and Tridosha testing, are 100% free. Charges apply only for specialized and personal Premium Consultations.",
+        "faq_q2": "Q. What is the main difference between Kundli and Tridosha Test?",
+        "faq_a2": "Answer: A birth Kundli is a cosmic map of the position of planets and constellations at the time of your birth, reflecting your destiny and karma. On the other hand, the Tridosha test scientifically analyzes the physical and Ayurvedic health of your body.",
+        "faq_q3": "Q. Is my personal data entered into these tools secure?",
+        "faq_a3": "Answer: 100% secure. We fully respect your privacy. The date, time, or place of birth entered by you is used purely for machine calculation and is never shared with any third party."
     },
     hi: {
         "tools_main_title": "वैदिक टूल सेंटर",
@@ -47,6 +56,15 @@ window.pageTranslations = {
         "btn_check_health": "स्वास्थ्य जाँच ➔",
         "tool_vastu": "वास्तु शास्त्र",
         "tool_vastu_desc": "हमारा लक्ष्य केवल दोष बताना नहीं, बल्कि व्यावहारिक समाधान देना है। 16-जोन तत्व संतुलन का उपयोग करके हम आपके स्थान को अनुकूल बनाते हैं।",
-        "btn_vastu_scan": "दोष विश्लेषण ➔"
+        "btn_vastu_scan": "दोष विश्लेषण ➔",
+        "seo_h2": "वैदिक विज्ञान और हमारे उपकरणों का महत्व",
+        "seo_p1": "सनातन धर्म में ज्योतिष और आयुर्वेद को सुखी और संतुलित जीवन का आधार माना गया है। <strong>MAHADEV ASTROLOGER MA</strong> के ये डिजिटल वैदिक उपकरण प्राचीन गणितीय सूत्रों और आधुनिक विज्ञान का एक अनूठा संगम हैं। चाहे वह जन्म कुण्डली (Kundli) के माध्यम से ग्रहों की गति को समझना हो या त्रिदोष परीक्षण के माध्यम से शरीर की जैविक ऊर्जा के संतुलन की जांच करना हो, हमारे उपकरण आपको सटीक और वैज्ञानिक विश्लेषण प्रदान करते हैं। हमारा लक्ष्य आपको ब्रह्मांडीय ऊर्जाओं (Cosmic Energies) से जोड़ना और आपके भाग्य को सही दिशा देना है।",
+        "faq_heading": "सामान्य प्रश्न (FAQs)",
+        "faq_q1": "प्र. क्या MAHADEV ASTROLOGER MA के सभी उपकरण पूरी तरह से निःशुल्क हैं?",
+        "faq_a1": "उत्तर: हाँ, हमारी वेबसाइट पर उपलब्ध सभी प्राथमिक वैदिक उपकरण, जैसे कुण्डली निर्माण, राशि पहचान और त्रिदोष परीक्षण, 100% निःशुल्क हैं। शुल्क केवल विशेष और व्यक्तिगत प्रीमियम परामर्श (Premium Consultations) के लिए लागू होते हैं।",
+        "faq_q2": "प्र. कुण्डली और त्रिदोष परीक्षण के बीच मुख्य अंतर क्या है?",
+        "faq_a2": "उत्तर: जन्म कुण्डली आपके जन्म के समय ग्रहों और नक्षत्रों की स्थिति का एक ब्रह्मांडीय मानचित्र (Cosmic Map) है, जो आपके भाग्य और कर्मों को दर्शाता है। दूसरी ओर, त्रिदोष परीक्षण आपके शरीर के शारीरिक और आयुर्वेदिक स्वास्थ्य का वैज्ञानिक रूप से विश्लेषण करता है।",
+        "faq_q3": "प्र. क्या इन उपकरणों में दर्ज मेरा व्यक्तिगत डेटा सुरक्षित है?",
+        "faq_a3": "उत्तर: 100% सुरक्षित। हम आपकी गोपनीयता का पूर्ण सम्मान करते हैं। आपके द्वारा दर्ज की गई जन्म तिथि, समय या स्थान का उपयोग केवल मशीन गणना के लिए किया जाता है और इसे कभी भी किसी तीसरे पक्ष के साथ साझा नहीं किया जाता है।"
     }
 };
