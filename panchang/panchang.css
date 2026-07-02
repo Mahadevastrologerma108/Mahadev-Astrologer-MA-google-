@@ -20,4 +20,36 @@
 .event-list-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
 .event-card { background: rgba(255,255,255,0.04); border-left: 4px solid #f5c542; padding: 15px; border-radius: 0 10px 10px 0; display: flex; align-items: center; gap: 15px; }
 .event-date-number { font-size: 1.2rem; font-weight: bold; color: #f5c542; }
-@media (max-width: 600px) { .card-section { grid-template-columns: repeat(2, 1fr); } }
+
+/* Mobile Screen Adjustments */
+@media (max-width: 600px) { 
+    /* Existing card section fix */
+    .card-section { 
+        grid-template-columns: repeat(2, 1fr); 
+    } 
+
+    /* Container ki padding kam karna */
+    .p-container {
+        padding: 15px 5px; 
+    }
+    .calendar-wrapper {
+        padding: 15px 5px; 
+    }
+
+    /* Grid aur Headers dono ka gap ek saman 3px karna taaki alignment sahi rahe */
+    .calendar-grid, 
+    .calendar-day-headers {
+        gap: 3px !important; 
+    }
+
+    /* Box ke andar ka text aur padding adjust karna */
+    .calendar-day {
+        padding: 8px 1px; 
+        font-size: 11.5px; 
+    }
+
+    /* Upar ke dino ke naam (Sun, Mon) ka font size bhi chhota karna */
+    .calendar-day-headers div {
+        font-size: 11.5px;
+    }
+}
