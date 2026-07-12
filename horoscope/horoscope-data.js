@@ -1,401 +1,401 @@
 window.dailyHoroscope = {
-  lastUpdated: "2026-07-12T06:00:00Z",
+  lastUpdated: "2026-07-13T06:00:00Z",
   source: "MAHADEV ASTROLOGER MA - Divine Wisdom Lab",
   methodology: "Vedic Astrology Planetary Transits & Daily Lunar Sign Shift Analysis",
 
   aries: {
     meta: {
-      planetaryPosition: "चंद्रमा का अष्टम आयु भाव में गोचर",
-      predictionPower: "88%",
-      expertNote: { 
-        hi: "आज का वैदिक राशिफल अप्रत्याशित परिवर्तनों का संकेत देता है। स्वास्थ्य के प्रति विशेष सतर्कता बरतना अनिवार्य है तथा गहन आत्ममंथन करना लाभकारी सिद्ध होगा।", 
-        en: "Today's Vedic horoscope indicates unexpected changes. Remaining specially alert about health is mandatory, and deep introspection will prove beneficial." 
-      }
-    },
-    ratings: { health: 3, wealth: 3, love: 3, career: 3 },
-    career: {
-      hi: "कार्यक्षेत्र में कोई भी नवीन निर्णय लेने से बचें। शोध कार्यों (Research) से जुड़े जातकों को आज विशेष सफलता प्राप्त होगी।",
-      en: "Avoid making any new decisions in the workspace. Natives connected with research fields will attain special success today."
-    },
-    love: {
-      hi: "पारिवारिक जीवन में शांति बनाए रखें। वाद-विवाद से सर्वथा दूर रहना ही आपके लिए हितकर सिद्ध होगा।",
-      en: "Maintain peace in your family life. Staying completely away from arguments will prove beneficial for you."
-    },
-    health: {
-      hi: "शारीरिक थकान और मानसिक तनाव की संभावना है। ईश्वर का ध्यान और योग आपको असीम शांति प्रदान करेगा।",
-      en: "There is a possibility of physical fatigue and mental stress. Meditation on the divine and yoga will provide you boundless peace."
-    },
-    remedy: {
-      hi: "हनुमान चालीसा का श्रद्धापूर्वक पाठ करें।",
-      en: "Recite Hanuman Chalisa with deep devotion."
-    },
-    luckyColor: { hi: "लाल (Red)", en: "Red" },
-    luckyNumber: "9",
-    luckyTime: { hi: "शाम 04:00 से 05:30", en: "04:00 PM to 05:30 PM" },
-    luckyDate: "July 12, 2026",
-    tagline: { hi: "धैर्य और सतर्कता संकटों के उत्तम निवारक हैं।", en: "Patience and vigilance are the best preventers of crises." }
-  },
-
-  taurus: {
-    meta: {
-      planetaryPosition: "चंद्रमा का सप्तम जाया भाव में गोचर",
-      predictionPower: "94%",
-      expertNote: { 
-        hi: "आज का राशिफल दांपत्य जीवन और व्यावसायिक साझेदारी में उत्तम मधुरता का सूचक है। सफल जनसंपर्क से आपकी सामाजिक प्रतिष्ठा में अभूतपूर्व वृद्धि सुनिश्चित है।", 
-        en: "Today's horoscope indicates excellent sweetness in married life and business partnerships. Phenomenal growth in your social prestige through successful public relations is assured." 
-      }
-    },
-    ratings: { health: 4, wealth: 4, love: 5, career: 4 },
-    career: {
-      hi: "नवीन व्यावसायिक अनुबंध (Business Deals) आज अंतिम रूप ले सकते हैं। कार्यस्थल पर सहकर्मियों का पूर्ण सकारात्मक सहयोग प्राप्त होगा।",
-      en: "New business deals may take their final shape today. Full positive support from colleagues at the workplace will be received."
-    },
-    love: {
-      hi: "जीवनसाथी के साथ संबंध अत्यंत मधुर रहेंगे। अविवाहित जातकों को विवाह के उत्तम प्रस्ताव प्राप्त होने की प्रबल संभावना है।",
-      en: "Relations with the spouse will be highly sweet. There is a strong probability of receiving excellent marriage proposals for unmarried natives."
-    },
-    health: {
-      hi: "आपका मन सदैव प्रसन्न और शांत रहेगा। शारीरिक स्वास्थ्य के दृष्टिकोण से आज का दिन अत्यंत अनुकूल है।",
-      en: "Your mind will always remain happy and peaceful. Today is highly favorable from the perspective of physical health."
-    },
-    remedy: {
-      hi: "माता लक्ष्मी की आराधना करें और सुगन्धित पुष्प अर्पित करें।",
-      en: "Worship Goddess Lakshmi and offer fragrant flowers."
-    },
-    luckyColor: { hi: "श्वेत (White)", en: "White" },
-    luckyNumber: "6",
-    luckyTime: { hi: "दोपहर 12:00 से 01:30", en: "12:00 PM to 01:30 PM" },
-    luckyDate: "July 12, 2026",
-    tagline: { hi: "परस्पर प्रेम और विश्वास ही संबंधों का आधार है।", en: "Mutual love and trust are the foundation of relationships." }
-  },
-
-  gemini: {
-    meta: {
-      planetaryPosition: "चंद्रमा का षष्ठम रिपु भाव में संचरण",
+      planetaryPosition: "चंद्रमा का नवम धर्म भाव में गोचर",
       predictionPower: "92%",
       expertNote: { 
-        hi: "आज का दैनिक राशिफल आपके कठिन परिश्रम और सुनिश्चित सफलता का सूचक है। विरोधियों पर आपकी विजय निश्चित है तथा लंबे समय से रुके हुए कार्य पूर्ण होंगे।", 
-        en: "Today's daily horoscope highlights your hard work and guaranteed success. Victory over opponents is certain, and long-pending tasks will be accomplished." 
-      }
-    },
-    ratings: { health: 4, wealth: 4, love: 3, career: 5 },
-    career: {
-      hi: "प्रतियोगी परीक्षाओं की तैयारी कर रहे छात्रों के लिए आज का दिन उत्कृष्ट है। आपके निरंतर प्रयास करियर में पूर्ण सफलता प्रदान करेंगे।",
-      en: "An excellent day for students preparing for competitive exams. Your continuous efforts will yield complete success in your career."
-    },
-    love: {
-      hi: "पारिवारिक मतभेदों से सर्वथा बचने का प्रयास करें। जीवनसाथी की भावनाओं के प्रति संवेदनशील रहना आपके लिए उत्तम रहेगा।",
-      en: "Try to completely avoid family differences. Being sensitive toward your spouse's feelings will be best for you."
-    },
-    health: {
-      hi: "आपकी रोग प्रतिरोधक क्षमता (Immunity) अत्यंत मजबूत होगी, परंतु सर्वोत्तम स्वास्थ्य हेतु दिनचर्या में अनुशासन बनाए रखना अनिवार्य है।",
-      en: "Your immunity will be extremely strong, but maintaining discipline in your daily routine is mandatory for optimal health."
-    },
-    remedy: {
-      hi: "विघ्नहर्ता गणेश जी को दूर्वा अर्पित करें।",
-      en: "Offer Durva grass to Lord Ganesha, the remover of obstacles."
-    },
-    luckyColor: { hi: "हरा (Green)", en: "Green" },
-    luckyNumber: "5",
-    luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
-    luckyDate: "July 12, 2026",
-    tagline: { hi: "अनुशासन और धैर्य से ही विजय प्राप्त होती है।", en: "Victory is achieved only through discipline and patience." }
-  },
-
-  cancer: {
-    meta: {
-      planetaryPosition: "चंद्रमा का पंचम त्रिकोण भाव में गोचर",
-      predictionPower: "95%",
-      expertNote: { 
-        hi: "आज की ज्योतिषीय भविष्यवाणी के अनुसार आपकी रचनात्मकता और ज्ञान के क्षेत्र में विशेष वृद्धि होगी। संतान पक्ष से कोई अत्यंत शुभ समाचार प्राप्त होने की प्रबल संभावना है।", 
-        en: "According to today's astrology prediction, your creativity and knowledge will experience a special boost. There is a strong possibility of receiving highly auspicious news from your children." 
-      }
-    },
-    ratings: { health: 4, wealth: 4, love: 5, career: 4 },
-    career: {
-      hi: "शिक्षा, कला और तकनीकी क्षेत्र से जुड़े पेशेवरों को अपनी अद्वितीय प्रतिभा प्रदर्शित करने का श्रेष्ठ अवसर प्राप्त होगा।",
-      en: "Professionals associated with education, arts, and technology will get a superior opportunity to showcase their unique talent."
-    },
-    love: {
-      hi: "प्रेम संबंधों में एक नवीन ऊर्जा का संचार होगा। परिवार और बच्चों के साथ आप अत्यंत आनंददायक समय व्यतीत करेंगे।",
-      en: "A fresh energy will flow in love relationships. You will spend an extremely joyful time with family and children."
-    },
-    health: {
-      hi: "स्वास्थ्य उत्तम रहेगा। अपनी शारीरिक ऊर्जा को उच्च स्तर पर बनाए रखने के लिए केवल सात्विक आहार ही ग्रहण करें।",
-      en: "Health will be excellent. Consume only a pure sattvic diet to maintain your physical energy at a high level."
-    },
-    remedy: {
-      hi: "भगवान शिव का पवित्र जल से अभिषेक करें।",
-      en: "Perform abhishekam of Lord Shiva with holy water."
-    },
-    luckyColor: { hi: "श्वेत (White)", en: "White" },
-    luckyNumber: "2",
-    luckyTime: { hi: "प्रातः 11:30 से 01:00", en: "11:30 AM to 01:00 PM" },
-    luckyDate: "July 12, 2026",
-    tagline: { hi: "ज्ञान ही सफलता का अचूक मार्ग है।", en: "Knowledge is the infallible path to success." }
-  },
-
-  leo: {
-    meta: {
-      planetaryPosition: "चंद्रमा का चतुर्थ सुख भाव में संचरण",
-      predictionPower: "90%",
-      expertNote: { 
-        hi: "आज का सटीक राशिफल घरेलू शांति और भौतिक सुख-सुविधाओं पर ध्यान केंद्रित करने का सुझाव देता है। माता के स्नेह और आशीर्वाद से महत्वपूर्ण कार्य सिद्ध होंगे।", 
-        en: "Today's accurate horoscope suggests focusing on domestic peace and materialistic comforts. Important tasks will be accomplished with your mother's affection and blessings." 
-      }
-    },
-    ratings: { health: 4, wealth: 4, love: 4, career: 4 },
-    career: {
-      hi: "भूमि, वाहन और वास्तुकला (Architecture) से जुड़े व्यवसायियों को अत्यधिक धन लाभ होगा। अचल संपत्ति में किए गए निवेश लाभदायक सिद्ध होंगे।",
-      en: "Businessmen linked with land, vehicles, and architecture will attain immense financial profit. Investments made in real estate will prove beneficial."
-    },
-    love: {
-      hi: "आपके घरेलू जीवन में पूर्ण शांति रहेगी। घर के कार्यों में जीवनसाथी का सक्रिय सहयोग आपको अत्यधिक प्रसन्नता प्रदान करेगा।",
-      en: "There will be complete peace in your domestic life. The active support of your spouse in household chores will provide you immense joy."
-    },
-    health: {
-      hi: "आप असीम मानसिक शांति का अनुभव करेंगे। श्वास सम्बन्धी सर्वोत्तम स्वास्थ्य के लिए नियमित प्राणायाम का अभ्यास अवश्य करें।",
-      en: "You will experience boundless mental peace. Must practice regular pranayama for the best respiratory health."
-    },
-    remedy: {
-      hi: "सूर्य देव को तांबे के पात्र से अर्घ्य दें।",
-      en: "Offer Arghya to the Sun God using a copper vessel."
-    },
-    luckyColor: { hi: "स्वर्णिम (Golden)", en: "Golden" },
-    luckyNumber: "1",
-    luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
-    luckyDate: "July 12, 2026",
-    tagline: { hi: "पारिवारिक सुख ही जीवन की वास्तविक संपत्ति है।", en: "Family happiness is the real wealth of life." }
-  },
-
-  virgo: {
-    meta: {
-      planetaryPosition: "चंद्रमा का तृतीय पराक्रम भाव में गोचर",
-      predictionPower: "96%",
-      expertNote: { 
-        hi: "आज आपका पराक्रम और संचार कौशल उत्कृष्ट स्तर पर रहेगा। दैनिक ज्योतिषीय गणना के अनुसार आज की गई छोटी व्यावसायिक यात्राएं अत्यंत लाभकारी सिद्ध होंगी।", 
-        en: "Your courage and communication skills will be at an outstanding level today. According to daily astrological calculations, short business trips will prove highly beneficial." 
-      }
-    },
-    ratings: { health: 5, wealth: 4, love: 4, career: 5 },
-    career: {
-      hi: "प्रकाशन, संचार माध्यम (Media) और विपणन (Marketing) क्षेत्र से जुड़े जातकों को उनके करियर में विशेष और त्वरित सफलता प्राप्त होगी।",
-      en: "Natives associated with publishing, media, and marketing sectors will achieve special and swift success in their careers."
-    },
-    love: {
-      hi: "छोटे भाई-बहनों का पूर्ण सकारात्मक सहयोग मिलेगा। स्पष्ट संवाद से किसी पुरानी भ्रांति या मतभेद का पूर्णतः निवारण होगा।",
-      en: "Full positive support from younger siblings will be received. Clear dialogue will completely resolve any old illusion or difference of opinion."
-    },
-    health: {
-      hi: "आपकी ऊर्जा का स्तर अत्यधिक ऊंचा रहेगा। शारीरिक फिटनेस बनाए रखने के लिए व्यायाम पर विशेष ध्यान दें।",
-      en: "Your energy levels will be exceptionally high. Pay special attention to exercises to maintain physical fitness."
-    },
-    remedy: {
-      hi: "भगवान विष्णु की स्तुति करें।",
-      en: "Offer praises to Lord Vishnu."
-    },
-    luckyColor: { hi: "हरा (Green)", en: "Green" },
-    luckyNumber: "5",
-    luckyTime: { hi: "प्रातः 07:30 से 09:00", en: "07:30 AM to 09:00 AM" },
-    luckyDate: "July 12, 2026",
-    tagline: { hi: "साहस और संवाद सफलता के दो प्रमुख स्तंभ हैं।", en: "Courage and communication are the two main pillars of success." }
-  },
-
-  libra: {
-    meta: {
-      planetaryPosition: "चंद्रमा का द्वितीय धन भाव में संचरण",
-      predictionPower: "93%",
-      expertNote: { 
-        hi: "धन संचय के प्रयासों में आज आपको बड़ी सफलता मिलेगी। आपकी वाणी का आकर्षण लोगों को गहरे स्तर पर प्रभावित कर आपके सभी महत्वपूर्ण कार्य सिद्ध करेगा।", 
-        en: "You will achieve massive success in wealth accumulation efforts today. The deep magnetism of your speech will profoundly impress people and accomplish all your important tasks." 
-      }
-    },
-    ratings: { health: 4, wealth: 5, love: 4, career: 4 },
-    career: {
-      hi: "आर्थिक मामलों में अप्रत्याशित लाभ सुनिश्चित है। पारिवारिक व्यवसाय से जुड़े जातकों को आज विशेष धन लाभ प्राप्त होगा।",
-      en: "Unexpected profit in financial matters is guaranteed. Natives associated with family businesses will receive special monetary gains today."
-    },
-    love: {
-      hi: "अपने कुटुंब के साथ समय बिताने का उत्तम सुअवसर मिलेगा। घर में किसी बड़े मांगलिक कार्य की रूपरेखा तैयार की जा सकती है।",
-      en: "You will get an excellent opportunity to spend time with your extended family. The blueprint for a major auspicious event at home can be prepared."
-    },
-    health: {
-      hi: "अपने गले और स्वरयंत्र का विशेष ध्यान रखें। संवाद में मधुरता बनाए रखना आपके मानसिक और शारीरिक स्वास्थ्य के लिए अनुकूल रहेगा।",
-      en: "Take special care of your throat and vocal cords. Maintaining sweetness in your communication will be favorable for your mental and physical health."
-    },
-    remedy: {
-      hi: "माता दुर्गा की वंदना करें।",
-      en: "Pray to Goddess Durga."
-    },
-    luckyColor: { hi: "श्वेत (White)", en: "White" },
-    luckyNumber: "6",
-    luckyTime: { hi: "प्रातः 09:30 से 11:00", en: "09:30 AM to 11:00 AM" },
-    luckyDate: "July 12, 2026",
-    tagline: { hi: "वाणी की मधुरता धन और सम्मान लाती है।", en: "Sweetness of speech brings wealth and respect." }
-  },
-
-  scorpio: {
-    meta: {
-      planetaryPosition: "चंद्रमा का आपकी अपनी राशि (लग्न) में प्रवेश",
-      predictionPower: "98%",
-      expertNote: { 
-        hi: "आज का दैनिक राशिफल ऊर्जा और आत्मविश्वास में अभूतपूर्व वृद्धि को दर्शाता है। नवीन व्यावसायिक कार्यों का आरंभ करने के लिए यह दिन सर्वश्रेष्ठ माना गया है।", 
-        en: "Today's daily horoscope reflects an unprecedented growth in energy and self-confidence. This day is considered the absolute best for initiating new professional ventures." 
-      }
-    },
-    ratings: { health: 5, wealth: 4, love: 5, career: 5 },
-    career: {
-      hi: "कार्यस्थल पर आपकी उपस्थिति अत्यधिक प्रभावकारी रहेगी। आपके दृढ़ संकल्प और असाधारण नेतृत्व क्षमता की सर्वत्र प्रशंसा की जाएगी।",
-      en: "Your presence at the workplace will be highly impactful. Your strong determination and extraordinary leadership skills will be universally praised."
-    },
-    love: {
-      hi: "जीवनसाथी के साथ आपकी आत्मीयता में अपार वृद्धि होगी। आपके व्यक्तित्व का निर्मल आकर्षण अन्य लोगों को गहराई से प्रभावित करेगा।",
-      en: "Intimacy with your spouse will increase immensely. The pure attraction of your personality will deeply influence other people."
-    },
-    health: {
-      hi: "आपका आरोग्य अत्यंत उत्तम रहेगा। अपनी मानसिक और शारीरिक स्फूर्ति को लंबे समय तक बनाए रखने के लिए प्रातः काल योग का अभ्यास अवश्य करें।",
-      en: "Your health will be exceptionally excellent. To maintain your mental and physical agility for a long time, must practice morning yoga."
-    },
-    remedy: {
-      hi: "बजरंग बाण का श्रद्धापूर्वक पाठ करें।",
-      en: "Recite Bajrang Baan with deep devotion."
-    },
-    luckyColor: { hi: "लाल (Red)", en: "Red" },
-    luckyNumber: "9",
-    luckyTime: { hi: "प्रातः 07:00 से 08:30", en: "07:00 AM to 08:30 AM" },
-    luckyDate: "July 12, 2026",
-    tagline: { hi: "आत्मविश्वास ही विजय का प्रथम सोपान है।", en: "Self-confidence is the first step to victory." }
-  },
-
-  sagittarius: {
-    meta: {
-      planetaryPosition: "चंद्रमा का द्वादश व्यय भाव में संचरण",
-      predictionPower: "85%",
-      expertNote: { 
-        hi: "आज का दिन गहन आत्ममंथन और एकांत का है। धन के व्यय में आकस्मिक वृद्धि की संभावना है, अतः कठोर आर्थिक नियंत्रण रखना अत्यंत आवश्यक है।", 
-        en: "Today is a day for profound introspection and solitude. There is a possibility of a sudden increase in financial expenditure, hence strict economic control is highly essential." 
-      }
-    },
-    ratings: { health: 3, wealth: 3, love: 4, career: 3 },
-    career: {
-      hi: "विदेशी कार्यों या दूरस्थ स्थानों से जुड़े व्यापार में लाभ प्राप्ति की प्रबल संभावना है। कार्यक्षेत्र में किसी भी प्रकार के व्यर्थ विवादों से सर्वथा दूर रहें।",
-      en: "There is a strong possibility of obtaining profit in trade related to foreign works or distant places. Stay completely away from any kind of useless disputes in the workspace."
-    },
-    love: {
-      hi: "आज आपको एकांत की आवश्यकता अनुभव हो सकती है। अपने जीवनसाथी के साथ शांत वातावरण में गुणात्मक समय व्यतीत करें।",
-      en: "You might experience a need for solitude today. Spend qualitative time in a peaceful environment with your spouse."
-    },
-    health: {
-      hi: "श शारीरिक थकान और पैरों में कष्ट की पूर्ण संभावना है। असीम मानसिक शांति के लिए निद्रा से पूर्व ध्यान (Meditation) का अभ्यास अवश्य करें।",
-      en: "There is a full possibility of physical fatigue and distress in the legs. For boundless mental peace, must practice meditation before sleeping."
-    },
-    remedy: {
-      hi: "निर्धनों को अन्न का दान करें।",
-      en: "Donate grains to the impoverished."
-    },
-    luckyColor: { hi: "पीला (Yellow)", en: "Yellow" },
-    luckyNumber: "3",
-    luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
-    luckyDate: "July 12, 2026",
-    tagline: { hi: "शांत मन ही समस्याओं का उत्तम समाधान है।", en: "A peaceful mind is the best solution to problems." }
-  },
-
-  capricorn: {
-    meta: {
-      planetaryPosition: "चंद्रमा का एकादश लाभ भाव में गोचर",
-      predictionPower: "97%",
-      expertNote: { 
-        hi: "आज आपकी सभी महत्वाकांक्षाएं पूर्ण होने की दिशा में तीव्रता से अग्रसर होंगी। वैदिक ज्योतिष के अनुसार धन लाभ और आय के नवीन स्रोत खुलने के प्रबल योग हैं।", 
-        en: "All your ambitions will rapidly progress toward fulfillment today. According to Vedic astrology, there are extremely strong yogas for financial gains and the opening of new income sources." 
-      }
-    },
-    ratings: { health: 4, wealth: 5, love: 4, career: 5 },
-    career: {
-      hi: "व्यावसायिक संपर्कों (Professional Networking) से आपको उत्तम लाभ प्राप्त होगा। किसी महत्वपूर्ण प्रकल्प (Project) को तुरंत स्वीकृति मिल सकती है।",
-      en: "You will attain excellent benefits from professional networking. An important project may receive immediate approval."
-    },
-    love: {
-      hi: "मित्रों के साथ बिताया गया समय अत्यंत सुखद रहेगा। आपके दांपत्य जीवन में अपार प्रेम और आपसी सहयोग में अभूतपूर्व वृद्धि होगी।",
-      en: "The time spent with friends will be highly pleasant. There will be an unprecedented growth in immense love and mutual cooperation in your married life."
-    },
-    health: {
-      hi: "स्वास्थ्य उत्तम है। आप पूरे दिन सकारात्मक ऊर्जा, उल्लास और उत्साह से परिपूर्ण रहेंगे।",
-      en: "Health is excellent. You will be full of positive energy, joy, and enthusiasm throughout the entire day."
-    },
-    remedy: {
-      hi: "शनि देव की आराधना करें।",
-      en: "Worship Lord Shani."
-    },
-    luckyColor: { hi: "नीला (Blue)", en: "Blue" },
-    luckyNumber: "8",
-    luckyTime: { hi: "प्रातः 10:00 से 11:30", en: "10:00 AM to 11:30 AM" },
-    luckyDate: "July 12, 2026",
-    tagline: { hi: "सकारात्मक संपर्क ही उन्नति का आधार हैं।", en: "Positive contacts are the foundation of progress." }
-  },
-
-  aquarius: {
-    meta: {
-      planetaryPosition: "चंद्रमा का दशम कर्म भाव में आगमन",
-      predictionPower: "95%",
-      expertNote: { 
-        hi: "करियर राशिफल के अनुसार कार्यक्षेत्र में आपके कुशल प्रबंधन की सर्वत्र प्रशंसा होगी। कोई बड़ा दायित्व या सम्मान प्राप्त होने के उत्तम योग निर्मित हो रहे हैं।", 
-        en: "According to the career horoscope, your efficient management will be universally praised at the workplace. Excellent yogas for receiving a major responsibility or honor are being formed." 
+        hi: "आज का राशिफल भाग्योदय का स्पष्ट संकेत देता है। धर्म और आध्यात्म के प्रति आपकी रुचि में अभूतपूर्व वृद्धि होगी।", 
+        en: "Today's horoscope clearly indicates the rise of fortune. Your interest in religion and spirituality will experience an unprecedented increase." 
       }
     },
     ratings: { health: 4, wealth: 4, love: 4, career: 5 },
     career: {
-      hi: "शासकीय कार्यों और व्यापारिक क्षेत्र में आपको ऐतिहासिक सफलता प्राप्त होगी। आपके व्यावसायिक निर्णय अत्यंत सटीक और प्रभावकारी सिद्ध होंगे।",
-      en: "You will achieve historic success in administrative works and the business sector. Your professional decisions will prove to be highly accurate and effective."
+      hi: "कार्यक्षेत्र में आपके नवीन विचारों की सर्वत्र प्रशंसा होगी। लंबित परियोजनाएं पुनः सुचारु रूप से आरंभ होंगी।",
+      en: "Your innovative ideas will be universally praised at the workplace. Pending projects will smoothly restart."
     },
     love: {
-      hi: "कार्य की अत्यधिक व्यस्तता के कारण आप परिवार को अल्प समय दे पाएंगे, परंतु आपके जीवनसाथी का दृष्टिकोण पूर्णतः सहयोगात्मक रहेगा।",
-      en: "Due to extreme work busyness, you will be able to give little time to your family, but your spouse's attitude will remain completely cooperative."
+      hi: "पारिवारिक जीवन अत्यंत आनंदमय रहेगा। जीवनसाथी का पूर्ण सहयोग आपकी प्रसन्नता में वृद्धि करेगा।",
+      en: "Family life will be highly joyful. Full support from your spouse will enhance your happiness."
     },
     health: {
-      hi: "अत्यधिक कार्यभार के कारण शारीरिक थकान अनुभव हो सकती है। अपनी पीठ (Spine) के स्वास्थ्य का विशेष रूप से ध्यान रखें।",
-      en: "Physical fatigue may be experienced due to an excessive workload. Pay special attention to the health of your spine."
+      hi: "शारीरिक ऊर्जा उत्कृष्ट रहेगी। मानसिक शांति हेतु ध्यान का नियमित अभ्यास अवश्य करें।",
+      en: "Physical energy will be excellent. Must practice regular meditation for mental peace."
     },
     remedy: {
-      hi: "शिवलिंग पर पवित्र जल अर्पित करें।",
-      en: "Offer holy water on the Shivling."
+      hi: "भगवान शिव की उपासना करें और पवित्र जल अर्पित करें।",
+      en: "Worship Lord Shiva and offer holy water."
+    },
+    luckyColor: { hi: "पीला (Yellow)", en: "Yellow" },
+    luckyNumber: "1",
+    luckyTime: { hi: "प्रातः 08:00 से 09:30", en: "08:00 AM to 09:30 AM" },
+    luckyDate: "July 13, 2026",
+    tagline: { hi: "धर्म और कर्म का संतुलन ही श्रेष्ठ जीवन है।", en: "The balance of righteousness and karma is the best life." }
+  },
+
+  taurus: {
+    meta: {
+      planetaryPosition: "चंद्रमा का अष्टम रहस्य भाव में संचरण",
+      predictionPower: "85%",
+      expertNote: { 
+        hi: "आज अप्रत्याशित घटनाक्रम दृष्टिगोचर हो सकते हैं। स्वास्थ्य और वाहन के प्रयोग में अत्यधिक सावधानी बरतना अनिवार्य है।", 
+        en: "Unexpected events may become visible today. Exercising extreme caution regarding health and vehicle usage is mandatory." 
+      }
+    },
+    ratings: { health: 3, wealth: 3, love: 3, career: 3 },
+    career: {
+      hi: "व्यापार में कोई भी जोखिम लेने से सर्वथा बचें। कार्यस्थल पर गुप्त शत्रुओं से पूर्णतः सतर्क रहें।",
+      en: "Strictly avoid taking any risks in business. Stay completely alert against hidden enemies at the workplace."
+    },
+    love: {
+      hi: "संवादहीनता से संबंधों में दूरी उत्पन्न हो सकती है। अपनी वाणी पर कठोर संयम रखना ही उत्तम होगा।",
+      en: "Lack of communication might create distance in relationships. Keeping strict restraint on your speech will be best."
+    },
+    health: {
+      hi: "उदर संबंधी कष्ट उत्पन्न हो सकता है। अपने खान-पान में सात्विकता और शुद्धता बनाए रखें।",
+      en: "Stomach-related distress may arise. Maintain purity and a sattvic nature in your diet."
+    },
+    remedy: {
+      hi: "हनुमान जी को सिंदूर और लाल पुष्प अर्पित करें।",
+      en: "Offer vermilion and red flowers to Lord Hanuman."
+    },
+    luckyColor: { hi: "भूरा (Brown)", en: "Brown" },
+    luckyNumber: "4",
+    luckyTime: { hi: "शाम 05:30 से 07:00", en: "05:30 PM to 07:00 PM" },
+    luckyDate: "July 13, 2026",
+    tagline: { hi: "सतर्कता और संयम ही सर्वोत्तम रक्षा प्रणाली है।", en: "Vigilance and restraint are the best defense mechanisms." }
+  },
+
+  gemini: {
+    meta: {
+      planetaryPosition: "चंद्रमा का सप्तम जाया भाव में गोचर",
+      predictionPower: "95%",
+      expertNote: { 
+        hi: "आज का दिन दांपत्य और व्यावसायिक साझेदारी के लिए अत्यंत शुभ है। सफल जनसंपर्क से आपको विशेष लाभ प्राप्त होगा।", 
+        en: "Today is highly auspicious for married and business partnerships. You will obtain special benefits through successful public relations." 
+      }
+    },
+    ratings: { health: 4, wealth: 5, love: 5, career: 4 },
+    career: {
+      hi: "व्यापारिक यात्राएं सफल सिद्ध होंगी। नवीन समझौते (Agreements) पूर्णतः आपके पक्ष में होंगे।",
+      en: "Business travels will prove successful. New agreements will be completely in your favor."
+    },
+    love: {
+      hi: "जीवनसाथी के साथ संबंध अत्यंत मधुर रहेंगे। अविवाहित जातकों के लिए विवाह के प्रस्ताव स्वीकृत हो सकते हैं।",
+      en: "Relations with the spouse will be highly sweet. Marriage proposals for unmarried natives may get accepted."
+    },
+    health: {
+      hi: "आपका स्वास्थ्य उत्तम रहेगा, परंतु मानसिक शांति के लिए अत्यधिक कार्यभार से स्वयं को दूर रखें।",
+      en: "Your health will be excellent, but distance yourself from excessive workload for mental peace."
+    },
+    remedy: {
+      hi: "श्री विष्णु सहस्रनाम का श्रद्धापूर्वक पाठ करें।",
+      en: "Recite Sri Vishnu Sahasranama with devotion."
+    },
+    luckyColor: { hi: "हल्का नीला (Light Blue)", en: "Light Blue" },
+    luckyNumber: "3",
+    luckyTime: { hi: "दोपहर 12:30 से 02:00", en: "12:30 PM to 02:00 PM" },
+    luckyDate: "July 13, 2026",
+    tagline: { hi: "सहयोग और सामंजस्य से बड़ी से बड़ी बाधा पार होती है।", en: "Even the greatest obstacle is crossed with cooperation and harmony." }
+  },
+
+  cancer: {
+    meta: {
+      planetaryPosition: "चंद्रमा का षष्ठम रिपु भाव में आगमन",
+      predictionPower: "91%",
+      expertNote: { 
+        hi: "आज आपके साहस और पराक्रम से विरोधियों का शमन होगा। प्रतियोगी परीक्षाओं में सफलता सुनिश्चित है।", 
+        en: "Today, your courage and valor will pacify opponents. Success in competitive exams is assured." 
+      }
+    },
+    ratings: { health: 4, wealth: 4, love: 3, career: 5 },
+    career: {
+      hi: "ऋण संबंधी मामले आपके पक्ष में सुलझेंगे। कार्यस्थल पर आपकी असाधारण कार्यक्षमता की सराहना होगी।",
+      en: "Debt-related matters will be resolved in your favor. Your extraordinary efficiency will be appreciated at the workplace."
+    },
+    love: {
+      hi: "पारिवारिक सदस्यों के साथ वैचारिक मतभेद उत्पन्न हो सकते हैं, अतः पूर्ण धैर्य धारण करना आवश्यक है।",
+      en: "Ideological differences may arise with family members, hence maintaining complete patience is necessary."
+    },
+    health: {
+      hi: "आपकी रोग प्रतिरोधक क्षमता उत्कृष्ट रहेगी। अपने नेत्रों के स्वास्थ्य का विशेष ध्यान रखें।",
+      en: "Your immunity will be excellent. Take special care of the health of your eyes."
+    },
+    remedy: {
+      hi: "गौमाता को हरा चारा और गुड़ खिलाएं।",
+      en: "Feed green grass and jaggery to a cow."
+    },
+    luckyColor: { hi: "सफेद (White)", en: "White" },
+    luckyNumber: "2",
+    luckyTime: { hi: "प्रातः 10:00 से 11:30", en: "10:00 AM to 11:30 AM" },
+    luckyDate: "July 13, 2026",
+    tagline: { hi: "पराक्रम और धैर्य से विजय सुनिश्चित होती है।", en: "Victory is assured through valor and patience." }
+  },
+
+  leo: {
+    meta: {
+      planetaryPosition: "चंद्रमा का पंचम विद्या भाव में गोचर",
+      predictionPower: "96%",
+      expertNote: { 
+        hi: "बौद्धिक कार्यों में संलग्न जातकों को आज अभूतपूर्व सफलता प्राप्त होगी। आपकी निर्णय क्षमता अत्यंत प्रखर और अचूक रहेगी।", 
+        en: "Natives engaged in intellectual works will achieve phenomenal success today. Your decision-making ability will be highly sharp and flawless." 
+      }
+    },
+    ratings: { health: 4, wealth: 4, love: 5, career: 5 },
+    career: {
+      hi: "कला, शिक्षा और तकनीकी क्षेत्र में धन लाभ के प्रबल योग हैं। पदोन्नति का मार्ग पूर्णतः प्रशस्त होगा।",
+      en: "There are strong yogas for financial gains in arts, education, and tech sectors. The path to promotion will be completely cleared."
+    },
+    love: {
+      hi: "संतान पक्ष से अत्यंत सुखद समाचार प्राप्त होगा। आपके प्रेम संबंधों में प्रगाढ़ता और पवित्रता आएगी।",
+      en: "Highly pleasant news will be received from the children's side. Intensity and purity will come into your love relationships."
+    },
+    health: {
+      hi: "हृदय और रक्तचाप के रोगी विशेष सतर्कता बरतें। नियमित प्राणायाम आपके लिए अत्यधिक लाभप्रद रहेगा।",
+      en: "Heart and blood pressure patients should maintain special vigilance. Regular pranayama will be highly beneficial for you."
+    },
+    remedy: {
+      hi: "आदित्य हृदय स्तोत्र का पाठ करें।",
+      en: "Recite Aditya Hridaya Stotra."
+    },
+    luckyColor: { hi: "नारंगी (Orange)", en: "Orange" },
+    luckyNumber: "1",
+    luckyTime: { hi: "प्रातः 07:30 से 09:00", en: "07:30 AM to 09:00 AM" },
+    luckyDate: "July 13, 2026",
+    tagline: { hi: "बुद्धि और विद्या मनुष्य के सच्चे आभूषण हैं।", en: "Intellect and knowledge are the true ornaments of a human." }
+  },
+
+  virgo: {
+    meta: {
+      planetaryPosition: "चंद्रमा का चतुर्थ सुख भाव में संचरण",
+      predictionPower: "94%",
+      expertNote: { 
+        hi: "आज घरेलू सुख-सुविधाओं में अपार वृद्धि होगी। माता के स्वास्थ्य में सुधार और उनका पवित्र आशीर्वाद प्राप्त होगा।", 
+        en: "Today, domestic comforts will increase immensely. Improvement in mother's health and her holy blessings will be received." 
+      }
+    },
+    ratings: { health: 4, wealth: 5, love: 4, career: 4 },
+    career: {
+      hi: "अचल संपत्ति (Real Estate) और वाहन के क्रय-विक्रय से प्रचुर धन लाभ संभव है। व्यवसाय में स्थिरता आएगी।",
+      en: "Abundant financial gain is possible from the sale-purchase of real estate and vehicles. Stability will come in business."
+    },
+    love: {
+      hi: "पारिवारिक वातावरण अत्यंत शांत और सुखद रहेगा। स्वजनों के साथ उत्तम समय व्यतीत करने का सुअवसर मिलेगा।",
+      en: "The family atmosphere will be extremely peaceful and pleasant. You will get an excellent opportunity to spend time with kinsmen."
+    },
+    health: {
+      hi: "वक्ष स्थल (Chest) से संबंधित विकारों के प्रति सचेत रहें। शीतल पेय पदार्थों के सेवन से सर्वथा बचें।",
+      en: "Be alert towards disorders related to the chest area. Strictly avoid the consumption of cold beverages."
+    },
+    remedy: {
+      hi: "शिवलिंग पर कच्चा दुग्ध और बिल्वपत्र अर्पित करें।",
+      en: "Offer raw milk and Bel leaves on the Shivling."
+    },
+    luckyColor: { hi: "हरा (Green)", en: "Green" },
+    luckyNumber: "5",
+    luckyTime: { hi: "दोपहर 03:00 से 04:30", en: "03:00 PM to 04:30 PM" },
+    luckyDate: "July 13, 2026",
+    tagline: { hi: "पारिवारिक शांति ही मानसिक समृद्धि का मूल है।", en: "Family peace is the root of mental prosperity." }
+  },
+
+  libra: {
+    meta: {
+      planetaryPosition: "चंद्रमा का तृतीय पराक्रम भाव में गोचर",
+      predictionPower: "95%",
+      expertNote: { 
+        hi: "आज आपका आत्मविश्वास और उत्साह चरम पर होगा। संचार माध्यमों से कोई अत्यंत महत्वपूर्ण सूचना प्राप्त होगी।", 
+        en: "Your self-confidence and enthusiasm will be at their peak today. Extremely important information will be received through communication mediums." 
+      }
+    },
+    ratings: { health: 4, wealth: 4, love: 4, career: 5 },
+    career: {
+      hi: "लघु व्यावसायिक यात्राएं धनदायक सिद्ध होंगी। कार्यस्थल पर आपके नवीन विचार उच्चाधिकारियों को गहराई से प्रभावित करेंगे।",
+      en: "Short business trips will prove wealth-giving. Your novel ideas will deeply impress senior officials at the workplace."
+    },
+    love: {
+      hi: "छोटे भाई-बहनों का पूर्ण सहयोग प्राप्त होगा। पारिवारिक संबंधों में असीम स्नेह की वृद्धि होगी।",
+      en: "Full support from younger siblings will be received. Boundless affection will increase in family relations."
+    },
+    health: {
+      hi: "शारीरिक स्फूर्ति बनी रहेगी। अपनी फिटनेस के लिए कंधों और भुजाओं के व्यायाम पर विशेष ध्यान केंद्रित करें।",
+      en: "Physical agility will remain. Focus special attention on exercises for shoulders and arms for your fitness."
+    },
+    remedy: {
+      hi: "माता सरस्वती की वंदना करें और श्वेत पुष्प अर्पित करें।",
+      en: "Pray to Goddess Saraswati and offer white flowers."
+    },
+    luckyColor: { hi: "गुलाबी (Pink)", en: "Pink" },
+    luckyNumber: "6",
+    luckyTime: { hi: "प्रातः 09:30 से 11:00", en: "09:30 AM to 11:00 AM" },
+    luckyDate: "July 13, 2026",
+    tagline: { hi: "उत्साह और संचार सफलता के मार्ग को सुगम बनाते हैं।", en: "Enthusiasm and communication smoothen the path to success." }
+  },
+
+  scorpio: {
+    meta: {
+      planetaryPosition: "चंद्रमा का द्वितीय धन भाव में गोचर",
+      predictionPower: "93%",
+      expertNote: { 
+        hi: "आज का दिन धन संचय और आर्थिक योजनाओं के लिए अत्यंत शुभ है। आपकी वाणी में अद्भुत और प्रबल आकर्षण रहेगा।", 
+        en: "Today is highly auspicious for wealth accumulation and financial planning. There will be a wonderful and strong attraction in your speech." 
+      }
+    },
+    ratings: { health: 4, wealth: 5, love: 4, career: 4 },
+    career: {
+      hi: "पैतृक संपत्ति से लाभ के प्रबल योग निर्मित हो रहे हैं। निवेशित धन का उत्तम प्रतिफल प्राप्त होना निश्चित है।",
+      en: "Strong yogas of profit from ancestral property are forming. Receiving excellent returns on invested money is certain."
+    },
+    love: {
+      hi: "कुटुंब के सदस्यों के साथ किसी बड़े मांगलिक कार्य में सम्मिलित होने का सुअवसर प्राप्त होगा।",
+      en: "An excellent opportunity to participate in a major auspicious event with extended family members will be obtained."
+    },
+    health: {
+      hi: "मुख और दांतों के स्वास्थ्य का विशेष रूप से ध्यान रखें। उत्तम आरोग्य हेतु केवल सात्विक आहार ही ग्रहण करें।",
+      en: "Take special care of the health of your mouth and teeth. Consume only a pure sattvic diet for excellent health."
+    },
+    remedy: {
+      hi: "पीपल के वृक्ष में जल अर्पित करें और दीप प्रज्वलित करें।",
+      en: "Offer water to the Peepal tree and light a lamp."
+    },
+    luckyColor: { hi: "रक्त वर्ण (Blood Red)", en: "Blood Red" },
+    luckyNumber: "9",
+    luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
+    luckyDate: "July 13, 2026",
+    tagline: { hi: "वाणी का संयम और मधुरता अमूल्य धन है।", en: "Restraint and sweetness of speech is invaluable wealth." }
+  },
+
+  sagittarius: {
+    meta: {
+      planetaryPosition: "चंद्रमा का आपकी अपनी राशि (लग्न) में प्रवेश",
+      predictionPower: "98%",
+      expertNote: { 
+        hi: "आज आपकी ऊर्जा और आकर्षण शक्ति में अपार वृद्धि होगी। सभी लंबित कार्य तीव्र गति से निर्विघ्न पूर्ण होंगे।", 
+        en: "Your energy and magnetic power will increase immensely today. All pending tasks will be completed without obstacles at a rapid pace." 
+      }
+    },
+    ratings: { health: 5, wealth: 4, love: 5, career: 5 },
+    career: {
+      hi: "नवीन व्यावसायिक योजनाओं का शुभारंभ करने के लिए आज का दिन सर्वश्रेष्ठ है। आपकी नेतृत्व क्षमता की सर्वत्र सराहना होगी।",
+      en: "Today is the absolute best day to launch new business plans. Your leadership ability will be universally appreciated."
+    },
+    love: {
+      hi: "दांपत्य जीवन में नवयौवन और असीम प्रेम का संचार होगा। आपका निर्मल व्यक्तित्व सबको गहराई से आकर्षित करेगा।",
+      en: "Rejuvenation and boundless love will flow in married life. Your pure personality will attract everyone deeply."
+    },
+    health: {
+      hi: "स्वास्थ्य अत्यंत उत्तम रहेगा। शारीरिक और मानसिक संतुलन बनाए रखने हेतु प्रातः काल योग अवश्य करें।",
+      en: "Health will be exceptionally excellent. Must do morning yoga to maintain physical and mental balance."
+    },
+    remedy: {
+      hi: "गुरुजनों का आशीर्वाद ग्रहण करें और मस्तक पर पीला चंदन लगाएं।",
+      en: "Receive blessings from elders/teachers and apply yellow sandalwood on your forehead."
+    },
+    luckyColor: { hi: "स्वर्णिम पीला (Golden Yellow)", en: "Golden Yellow" },
+    luckyNumber: "3",
+    luckyTime: { hi: "प्रातः 06:30 से 08:00", en: "06:30 AM to 08:00 AM" },
+    luckyDate: "July 13, 2026",
+    tagline: { hi: "सकारात्मक ऊर्जा ही श्रेष्ठ कर्मों की जननी है।", en: "Positive energy is the mother of excellent deeds." }
+  },
+
+  capricorn: {
+    meta: {
+      planetaryPosition: "चंद्रमा का द्वादश व्यय भाव में संचरण",
+      predictionPower: "86%",
+      expertNote: { 
+        hi: "आज अकारण धन व्यय की प्रबल संभावना है। एकांतवास और आध्यात्मिक ध्यान आपके लिए अत्यंत लाभकारी सिद्ध होंगे।", 
+        en: "There is a strong possibility of uncaused financial expenditure today. Solitude and spiritual meditation will prove highly beneficial for you." 
+      }
+    },
+    ratings: { health: 3, wealth: 3, love: 4, career: 3 },
+    career: {
+      hi: "विदेशी संपर्कों या दूरस्थ स्थानों से लाभ प्राप्त होगा, परंतु किसी भी नवीन आर्थिक निवेश से सर्वथा दूर रहें।",
+      en: "Profits will be obtained from foreign contacts or distant places, but stay completely away from any new financial investment."
+    },
+    love: {
+      hi: "पारिवारिक जीवन में शांति बनाए रखने हेतु मौन धारण करना ही आपके लिए सबसे उत्तम विकल्प है।",
+      en: "Maintaining silence is the absolute best alternative for you to preserve peace in family life."
+    },
+    health: {
+      hi: "अनिद्रा और नेत्रों में कष्ट की संभावना है। शयन कक्ष का वातावरण अत्यंत शांत और पवित्र रखें।",
+      en: "Possibility of insomnia and distress in the eyes. Keep the bedroom environment extremely peaceful and pure."
+    },
+    remedy: {
+      hi: "शनि चालीसा का पाठ करें और निर्धनों को अन्न का दान दें।",
+      en: "Recite Shani Chalisa and donate grains to the impoverished."
+    },
+    luckyColor: { hi: "गहरा नीला (Dark Blue)", en: "Dark Blue" },
+    luckyNumber: "8",
+    luckyTime: { hi: "शाम 04:30 से 06:00", en: "04:30 PM to 06:00 PM" },
+    luckyDate: "July 13, 2026",
+    tagline: { hi: "मौन और एकांत आत्मा के सच्चे मार्गदर्शक हैं।", en: "Silence and solitude are the true guides of the soul." }
+  },
+
+  aquarius: {
+    meta: {
+      planetaryPosition: "चंद्रमा का एकादश लाभ भाव में गोचर",
+      predictionPower: "97%",
+      expertNote: { 
+        hi: "आज आपकी सभी महत्वाकांक्षाएं पूर्ण होने के उत्कृष्ट योग हैं। आय के नवीन और स्थायी स्रोत स्वतः उत्पन्न होंगे।", 
+        en: "There are excellent yogas for all your ambitions to be fulfilled today. New and permanent sources of income will automatically generate." 
+      }
+    },
+    ratings: { health: 5, wealth: 5, love: 4, career: 5 },
+    career: {
+      hi: "वरिष्ठ अधिकारियों और मित्रों के पूर्ण सहयोग से कार्यक्षेत्र में आपको अभूतपूर्व सफलता प्राप्त होगी।",
+      en: "With the full cooperation of senior officials and friends, you will achieve phenomenal success in the workspace."
+    },
+    love: {
+      hi: "सामाजिक समारोहों में आपकी प्रतिष्ठा में वृद्धि होगी। दांपत्य जीवन में अपार स्नेह और सहकार प्राप्त होगा।",
+      en: "Your prestige will increase in social gatherings. Immense affection and cooperation will be received in married life."
+    },
+    health: {
+      hi: "शारीरिक ऊर्जा उत्कृष्ट स्तर पर रहेगी। आपका मन पूरे दिन अत्यंत प्रसन्न और सकारात्मक रहेगा।",
+      en: "Physical energy will be at an outstanding level. Your mind will remain extremely happy and positive throughout the day."
+    },
+    remedy: {
+      hi: "भगवान शिव का रुद्राभिषेक संपन्न करें।",
+      en: "Perform Rudrabhishek of Lord Shiva."
     },
     luckyColor: { hi: "रजत (Silver)", en: "Silver" },
-    luckyNumber: "2",
-    luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
-    luckyDate: "July 12, 2026",
-    tagline: { hi: "कर्म ही मनुष्य की वास्तविक पहचान है।", en: "Karma is the real identity of a human." }
+    luckyNumber: "4",
+    luckyTime: { hi: "प्रातः 11:00 से 12:30", en: "11:00 AM to 12:30 PM" },
+    luckyDate: "July 13, 2026",
+    tagline: { hi: "सच्चे मित्र और शुभचिंतक ही वास्तविक लाभ हैं।", en: "True friends and well-wishers are the real profit." }
   },
 
   pisces: {
     meta: {
-      planetaryPosition: "चंद्रमा का नवम भाग्य भाव में गोचर",
-      predictionPower: "97%",
+      planetaryPosition: "चंद्रमा का दशम कर्म भाव में संचरण",
+      predictionPower: "96%",
       expertNote: { 
-        hi: "आज आपके भाग्य का तारा अत्यंत प्रबल है। दैनिक भविष्यवाणियों के अनुसार धार्मिक कार्यों और उच्च शिक्षा के क्षेत्र में विशिष्ट सफलता प्राप्त होगी।", 
-        en: "The star of your luck is exceedingly strong today. According to daily predictions, you will attain distinct success in religious activities and the field of higher education." 
+        hi: "आपके कर्म और प्रयासों का आज सर्वोत्तम फल प्राप्त होगा। समाज में आपके मान-सम्मान की असीम वृद्धि होगी।", 
+        en: "The best fruits of your karma and efforts will be obtained today. Boundless increase in your honor and respect in society will occur." 
       }
     },
-    ratings: { health: 5, wealth: 4, love: 5, career: 4 },
+    ratings: { health: 4, wealth: 4, love: 4, career: 5 },
     career: {
-      hi: "शिक्षा और न्याय क्षेत्र से जुड़े पेशेवरों के लिए आज का दिन उन्नति का परिचायक है। गुरु का मार्गदर्शन आपके करियर में चमत्कारी सिद्ध होगा।",
-      en: "Today is indicative of progress for professionals connected to the education and justice sectors. A mentor's guidance will prove miraculous in your career."
+      hi: "राज्य पक्ष (Government) से संबंधित सभी कार्य निर्विघ्न पूर्ण होंगे। कार्यस्थल पर पदोन्नति के स्पष्ट संकेत हैं।",
+      en: "All tasks related to the state/government will be completed without obstacles. There are clear signs of promotion at the workplace."
     },
     love: {
-      hi: "जीवनसाथी के साथ किसी पवित्र तीर्थ स्थल के दर्शन की सुखद योजना बन सकती है। आपके संबंधों में पूर्ण पवित्रता का वास होगा।",
-      en: "A pleasant plan to visit a holy pilgrimage site with your spouse may be formed. Complete purity will reside in your relationships."
+      hi: "कार्य की अत्यधिक व्यस्तता के मध्य भी परिवार का पूर्ण सहयोगात्मक दृष्टिकोण आपको आंतरिक शक्ति प्रदान करेगा।",
+      en: "Even amidst extreme work busyness, the full cooperative attitude of the family will provide you inner strength."
     },
     health: {
-      hi: "आप स्वयं को शारीरिक और मानसिक रूप से पूर्णतः स्वस्थ अनुभव करेंगे। गहन बौद्धिक शांति के लिए ध्यान (Meditation) अवश्य करें।",
-      en: "You will feel yourself completely healthy physically and mentally. Must perform meditation for profound intellectual peace."
+      hi: "निरंतर कार्य के दबाव से पीठ और कटि (Lower back) में पीड़ा उत्पन्न हो सकती है। विश्राम हेतु समय अवश्य निकालें।",
+      en: "Due to constant work pressure, pain in the back and lower back may arise. Must take out time for rest."
     },
     remedy: {
-      hi: "श्री विष्णु सहस्रनाम का नियमित पाठ करें।",
-      en: "Recite Sri Vishnu Sahasranama regularly."
+      hi: "श्री सूक्त का पाठ करें और माता लक्ष्मी की आराधना करें।",
+      en: "Recite Sri Suktam and worship Goddess Lakshmi."
     },
-    luckyColor: { hi: "हल्का पीला (Pale Yellow)", en: "Pale Yellow" },
-    luckyNumber: "3",
-    luckyTime: { hi: "प्रातः 09:00 से 10:30", en: "09:00 AM to 10:30 AM" },
-    luckyDate: "July 12, 2026",
-    tagline: { hi: "धर्म और बुद्धि का संगम भाग्य को प्रशस्त करता है।", en: "The confluence of righteousness and intellect clears the way for destiny." }
+    luckyColor: { hi: "पीला (Yellow)", en: "Yellow" },
+    luckyNumber: "7",
+    luckyTime: { hi: "दोपहर 02:00 से 03:30", en: "02:00 PM to 03:30 PM" },
+    luckyDate: "July 13, 2026",
+    tagline: { hi: "श्रेष्ठ कर्म ही मनुष्य को महानता के शिखर पर ले जाते हैं।", en: "Excellent karma alone takes a human to the peak of greatness." }
   }
 };
