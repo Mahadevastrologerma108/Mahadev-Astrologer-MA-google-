@@ -1,15 +1,48 @@
 window.dailyHoroscope = {
-  lastUpdated: "2026-07-23T06:00:00Z",
+  lastUpdated: "2026-07-24T06:00:00Z",
   source: "MAHADEV ASTROLOGER MA - Divine Wisdom Lab",
   methodology: "Vedic Astrology Planetary Transits & Daily Lunar Sign Shift Analysis",
 
   aries: {
     meta: {
+      planetaryPosition: "चंद्रमा का सप्तम जाया भाव में गोचर",
+      predictionPower: "96%",
+      expertNote: { 
+        hi: "आज चंद्रमा का सप्तम भाव में गोचर दांपत्य जीवन और व्यावसायिक साझेदारी के लिए अत्यंत शुभ है। सफल जनसंपर्क से आपकी सामाजिक प्रतिष्ठा में अभूतपूर्व वृद्धि होगी।", 
+        en: "Today's transit of the Moon in the seventh house is highly auspicious for married life and business partnerships. Successful public relations will phenomenally boost your social prestige." 
+      }
+    },
+    ratings: { health: 5, wealth: 4, love: 5, career: 4 },
+    career: {
+      hi: "नवीन व्यावसायिक अनुबंध आज अंतिम रूप ले सकते हैं। कार्यस्थल पर उच्चाधिकारियों एवं सहकर्मियों का पूर्ण सकारात्मक सहयोग प्राप्त होगा।",
+      en: "New business deals may take their final shape today. Full positive support from senior officials and colleagues at the workplace will be received."
+    },
+    love: {
+      hi: "जीवनसाथी के साथ आपके संबंध अत्यंत मधुर और आत्मीय रहेंगे। अविवाहित जातकों के लिए विवाह के उत्तम प्रस्ताव प्राप्त होने की प्रबल संभावना है।",
+      en: "Your relations with your spouse will remain extremely sweet and intimate. There is a strong probability of receiving excellent marriage proposals for unmarried natives."
+    },
+    health: {
+      hi: "आपका मन सदैव प्रसन्न और शांत रहेगा। शारीरिक और मानसिक स्वास्थ्य के दृष्टिकोण से आज का दिन अत्यंत अनुकूल और श्रेष्ठ है।",
+      en: "Your mind will always remain happy and peaceful. Today is highly favorable and excellent from the perspective of physical and mental health."
+    },
+    remedy: {
+      hi: "माता लक्ष्मी की आराधना करें और उन्हें सुगन्धित पुष्प अर्पित करें। यह पावन उपाय आपके जीवन में सुख और समृद्धि का संचार करेगा।",
+      en: "Worship Goddess Lakshmi and offer fragrant flowers to Her. This holy remedy will infuse happiness and prosperity into your life."
+    },
+    luckyColor: { hi: "श्वेत (White)", en: "White" },
+    luckyNumber: "6",
+    luckyTime: { hi: "प्रातः 10:00 से 11:30", en: "10:00 AM to 11:30 AM" },
+    luckyDate: "July 24, 2026",
+    tagline: { hi: "सकारात्मक संपर्क और सहयोग ही सफलता के वास्तविक आधार हैं।", en: "Positive contacts and cooperation are the true foundations of success." }
+  },
+
+  taurus: {
+    meta: {
       planetaryPosition: "चंद्रमा का षष्ठम रिपु भाव में गोचर",
       predictionPower: "95%",
       expertNote: { 
-        hi: "आज का वैदिक राशिफल आपके असीम साहस और धैर्य में अपार वृद्धि का संकेत देता है। कार्यस्थल पर आपके निरंतर प्रयास पूर्णतः सफल होंगे और विरोधियों का शमन होगा।", 
-        en: "Today's Vedic horoscope indicates an immense increase in your boundless courage and patience. Your continuous efforts at the workplace will be completely successful and opponents will be pacified." 
+        hi: "आज का वैदिक राशिफल आपके असीम साहस और धैर्य में अपार वृद्धि का स्पष्ट संकेत देता है। कार्यस्थल पर आपके निरंतर प्रयास पूर्णतः सफल होंगे और विरोधियों का शमन होगा।", 
+        en: "Today's Vedic horoscope clearly indicates an immense increase in your boundless courage and patience. Your continuous efforts at the workplace will be completely successful and opponents will be pacified." 
       }
     },
     ratings: { health: 4, wealth: 4, love: 4, career: 5 },
@@ -26,17 +59,17 @@ window.dailyHoroscope = {
       en: "Your immunity will remain extremely strong and you will feel yourself disease-free. Must practice regular meditation and yoga for optimal health."
     },
     remedy: {
-      hi: "भगवान हनुमान की वंदना करें और उन्हें श्रद्धापूर्वक लाल पुष्प अर्पित करें। यह पावन कृत्य आपके सभी विघ्न दूर कर आपको विजय प्रदान करेगा।",
-      en: "Pray to Lord Hanuman and offer red flowers to Him with devotion. This holy act will remove all your obstacles and grant you victory."
+      hi: "भगवान हनुमान की वंदना करें और उन्हें श्रद्धापूर्वक लाल पुष्प अर्पित करें। यह पावन कृत्य आपके सभी विघ्न दूर कर आपको परम विजय प्रदान करेगा।",
+      en: "Pray to Lord Hanuman and offer red flowers to Him with devotion. This holy act will remove all your obstacles and grant you supreme victory."
     },
     luckyColor: { hi: "लाल (Red)", en: "Red" },
     luckyNumber: "9",
-    luckyTime: { hi: "प्रातः 09:00 से 10:30", en: "09:00 AM to 10:30 AM" },
-    luckyDate: "July 23, 2026",
+    luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
+    luckyDate: "July 24, 2026",
     tagline: { hi: "साहस और धैर्य ही सफलता के अमोघ अस्त्र हैं।", en: "Courage and patience are the unfailing weapons of success." }
   },
 
-  taurus: {
+  gemini: {
     meta: {
       planetaryPosition: "चंद्रमा का पंचम विद्या भाव में गोचर",
       predictionPower: "96%",
@@ -59,17 +92,17 @@ window.dailyHoroscope = {
       en: "Mentally and physically, you will remain extremely balanced, calm, and completely healthy. Consume only a sattvic diet to maintain your positive energy."
     },
     remedy: {
-      hi: "माता सरस्वती की आराधना करें और उन्हें श्वेत पुष्प अर्पित करें। इससे आपके ज्ञान और विवेक में असीम वृद्धि होगी।",
-      en: "Worship Goddess Saraswati and offer white flowers to Her. This will cause a boundless increase in your knowledge and wisdom."
+      hi: "माता सरस्वती की आराधना करें और उन्हें श्वेत पुष्प अर्पित करें। इससे आपके ज्ञान और विवेक में असीम वृद्धि होगी तथा कार्य सिद्ध होंगे।",
+      en: "Worship Goddess Saraswati and offer white flowers to Her. This will cause a boundless increase in your knowledge and wisdom and accomplish tasks."
     },
-    luckyColor: { hi: "श्वेत (White)", en: "White" },
-    luckyNumber: "6",
-    luckyTime: { hi: "दोपहर 12:30 से 02:00", en: "12:30 PM to 02:00 PM" },
-    luckyDate: "July 23, 2026",
+    luckyColor: { hi: "हरा (Green)", en: "Green" },
+    luckyNumber: "5",
+    luckyTime: { hi: "प्रातः 08:30 से 10:00", en: "08:30 AM to 10:00 AM" },
+    luckyDate: "July 24, 2026",
     tagline: { hi: "ज्ञान और विवेक ही मनुष्य की सबसे बड़ी शक्ति हैं।", en: "Knowledge and wisdom are the greatest power of a human." }
   },
 
-  gemini: {
+  cancer: {
     meta: {
       planetaryPosition: "चंद्रमा का चतुर्थ सुख भाव में गोचर",
       predictionPower: "95%",
@@ -95,14 +128,14 @@ window.dailyHoroscope = {
       hi: "भगवान शिव का पवित्र जल से अभिषेक करें और बिल्वपत्र अर्पित करें। यह शुभ कृत्य आपके जीवन में स्थायी सुख और अपार समृद्धि लाएगा।",
       en: "Perform abhishekam of Lord Shiva with holy water and offer Bel leaves. This auspicious act will bring permanent happiness and immense prosperity to your life."
     },
-    luckyColor: { hi: "हरा (Green)", en: "Green" },
-    luckyNumber: "5",
-    luckyTime: { hi: "प्रातः 07:30 से 09:00", en: "07:30 AM to 09:00 AM" },
-    luckyDate: "July 23, 2026",
+    luckyColor: { hi: "श्वेत (White)", en: "White" },
+    luckyNumber: "2",
+    luckyTime: { hi: "दोपहर 03:00 से 04:30", en: "03:00 PM to 04:30 PM" },
+    luckyDate: "July 24, 2026",
     tagline: { hi: "पारिवारिक सुख और शांति ही जीवन की वास्तविक समृद्धि है।", en: "Family happiness and peace are the real prosperity of life." }
   },
 
-  cancer: {
+  leo: {
     meta: {
       planetaryPosition: "चंद्रमा का तृतीय पराक्रम भाव में गोचर",
       predictionPower: "96%",
@@ -128,14 +161,14 @@ window.dailyHoroscope = {
       hi: "भगवान गणेश की आराधना करें और उन्हें दूर्वा अर्पित करें। इससे आपके पराक्रम और सामाजिक सम्मान में अभूतपूर्व वृद्धि होगी।",
       en: "Worship Lord Ganesha and offer Durva grass to Him. This will cause an unprecedented increase in your valor and social honor."
     },
-    luckyColor: { hi: "श्वेत (White)", en: "White" },
-    luckyNumber: "2",
-    luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
-    luckyDate: "July 23, 2026",
+    luckyColor: { hi: "गुलाबी (Pink)", en: "Pink" },
+    luckyNumber: "3",
+    luckyTime: { hi: "प्रातः 11:00 से 12:30", en: "11:00 AM to 12:30 PM" },
+    luckyDate: "July 24, 2026",
     tagline: { hi: "पराक्रम और संवाद कौशल ही सफलता के वास्तविक मार्गदर्शक हैं।", en: "Valor and communication skills are the true guides to success." }
   },
 
-  leo: {
+  virgo: {
     meta: {
       planetaryPosition: "चंद्रमा का द्वितीय धन भाव में गोचर",
       predictionPower: "98%",
@@ -161,14 +194,14 @@ window.dailyHoroscope = {
       hi: "सूर्य देव को तांबे के पात्र से अर्घ्य दें और आदित्य हृदय स्तोत्र का पाठ करें। यह पवित्र कृत्य आपकी आर्थिक स्थिति को अत्यंत सुदृढ़ और स्थायी करेगा।",
       en: "Offer Arghya to the Sun God from a copper vessel and recite Aditya Hridaya Stotra. This holy act will make your financial condition extremely strong and permanent."
     },
-    luckyColor: { hi: "स्वर्णिम (Golden)", en: "Golden" },
-    luckyNumber: "1",
-    luckyTime: { hi: "प्रातः 10:00 से 11:30", en: "10:00 AM to 11:30 AM" },
-    luckyDate: "July 23, 2026",
+    luckyColor: { hi: "हरा (Green)", en: "Green" },
+    luckyNumber: "5",
+    luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
+    luckyDate: "July 24, 2026",
     tagline: { hi: "मधुर वाणी और संयम ही मनुष्य की सबसे बड़ी संपत्ति है।", en: "Sweet speech and restraint are the greatest wealth of a human." }
   },
 
-  virgo: {
+  libra: {
     meta: {
       planetaryPosition: "चंद्रमा का आपकी अपनी राशि (लग्न) में प्रवेश",
       predictionPower: "98%",
@@ -194,14 +227,14 @@ window.dailyHoroscope = {
       hi: "भगवान विष्णु की आराधना करें और उन्हें पीले पुष्प अर्पित करें। यह उपाय आपको आंतरिक शांति और असीम आत्मबल प्रदान करेगा।",
       en: "Worship Lord Vishnu and offer yellow flowers to Him. This remedy will provide you internal peace and boundless self-strength."
     },
-    luckyColor: { hi: "हरा (Green)", en: "Green" },
-    luckyNumber: "5",
-    luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
-    luckyDate: "July 23, 2026",
+    luckyColor: { hi: "श्वेत (White)", en: "White" },
+    luckyNumber: "6",
+    luckyTime: { hi: "प्रातः 07:00 से 08:30", en: "07:00 AM to 08:30 AM" },
+    luckyDate: "July 24, 2026",
     tagline: { hi: "आत्मविश्वास और सकारात्मक ऊर्जा से विजय पूर्णतः निश्चित है।", en: "Victory is completely certain with self-confidence and positive energy." }
   },
 
-  libra: {
+  scorpio: {
     meta: {
       planetaryPosition: "चंद्रमा का द्वादश व्यय भाव में संचरण",
       predictionPower: "85%",
@@ -212,12 +245,12 @@ window.dailyHoroscope = {
     },
     ratings: { health: 3, wealth: 3, love: 4, career: 3 },
     career: {
-      hi: "विदेशी कार्यों या दूरस्थ स्थानों से जुड़े व्यापार में धन लाभ की पूर्ण संभावना दृष्टिगोचर हो रही है। कार्यक्षेत्र में किसी भी प्रकार के नवीन निवेश से सर्वथा दूर रहें।",
-      en: "A full possibility of financial gain in trade related to foreign works or distant places is visible. Strictly stay away from any kind of new investment in the workspace."
+      hi: "विदेशी कार्यों या दूरस्थ स्थानों से जुड़े व्यापार में धन लाभ की पूर्ण संभावना दृष्टिगोचर हो रही है। कार्यक्षेत्र में किसी भी प्रकार के नवीन निवेश से सर्वथा और पूर्ण रूप से दूर रहें।",
+      en: "A full possibility of financial gain in trade related to foreign works or distant places is visible. Strictly and completely stay away from any kind of new investment in the workspace."
     },
     love: {
-      hi: "दांपत्य जीवन में पूर्ण शांति बनाए रखने के लिए मौन और संयम धारण करना ही सर्वोत्तम है। एकांत में आध्यात्मिक समय व्यतीत करना आपके संबंधों के लिए हितकर रहेगा।",
-      en: "Observing silence and restraint is the absolute best way to maintain complete peace in married life. Spending spiritual time in solitude will be beneficial for your relationships."
+      hi: "दांपत्य जीवन में पूर्ण शांति बनाए रखने के लिए मौन और संयम धारण करना ही सर्वोत्तम है। एकांत में आध्यात्मिक समय व्यतीत करना आपके संबंधों के लिए अत्यंत हितकर रहेगा।",
+      en: "Observing silence and restraint is the absolute best way to maintain complete peace in married life. Spending spiritual time in solitude will be highly beneficial for your relationships."
     },
     health: {
       hi: "अनिद्रा और नेत्रों में कष्ट की संभावना उत्पन्न हो सकती है। उत्तम निद्रा के लिए शयन कक्ष का वातावरण अत्यंत शांत रखें और ध्यान अवश्य करें।",
@@ -227,14 +260,14 @@ window.dailyHoroscope = {
       hi: "निर्धनों को श्वेत वस्त्र और अन्न का दान करें। इस पवित्र उपाय से आपके व्यय पर नियंत्रण स्थापित होगा और परम शांति मिलेगी।",
       en: "Donate white clothes and grains to the impoverished. This holy remedy will establish control over your expenses and grant supreme peace."
     },
-    luckyColor: { hi: "गुलाबी (Pink)", en: "Pink" },
-    luckyNumber: "6",
-    luckyTime: { hi: "प्रातः 08:30 से 10:00", en: "08:30 AM to 10:00 AM" },
-    luckyDate: "July 23, 2026",
+    luckyColor: { hi: "रक्त वर्ण (Blood Red)", en: "Blood Red" },
+    luckyNumber: "9",
+    luckyTime: { hi: "दोपहर 02:00 से 03:30", en: "02:00 PM to 03:30 PM" },
+    luckyDate: "July 24, 2026",
     tagline: { hi: "मौन और आध्यात्मिक चिंतन आत्मा के सबसे सच्चे रक्षक हैं।", en: "Silence and spiritual contemplation are the truest protectors of the soul." }
   },
 
-  scorpio: {
+  sagittarius: {
     meta: {
       planetaryPosition: "चंद्रमा का एकादश लाभ भाव में गोचर",
       predictionPower: "97%",
@@ -260,14 +293,14 @@ window.dailyHoroscope = {
       hi: "बजरंग बाण का श्रद्धापूर्वक पाठ करें। यह शुभ कार्य आपके जीवन में स्थायी धन, समृद्धि और सफलता लाएगा।",
       en: "Recite Bajrang Baan with devotion. This auspicious act will bring permanent wealth, prosperity, and success in your life."
     },
-    luckyColor: { hi: "रक्त वर्ण (Blood Red)", en: "Blood Red" },
-    luckyNumber: "9",
-    luckyTime: { hi: "शाम 04:00 से 05:30", en: "04:00 PM to 05:30 PM" },
-    luckyDate: "July 23, 2026",
+    luckyColor: { hi: "पीला (Yellow)", en: "Yellow" },
+    luckyNumber: "3",
+    luckyTime: { hi: "प्रातः 09:30 से 11:00", en: "09:30 AM to 11:00 AM" },
+    luckyDate: "July 24, 2026",
     tagline: { hi: "सकारात्मक संपर्क और दृढ़ संकल्प ही वास्तविक सफलता का आधार हैं।", en: "Positive contacts and firm determination are the foundation of true success." }
   },
 
-  sagittarius: {
+  capricorn: {
     meta: {
       planetaryPosition: "चंद्रमा का दशम कर्म भाव में संचरण",
       predictionPower: "96%",
@@ -293,14 +326,14 @@ window.dailyHoroscope = {
       hi: "गुरुजनों का आशीर्वाद ग्रहण करें और श्री रामचरितमानस का पाठ करें। इससे आपके कार्यक्षेत्र की सभी बाधाएं पूर्णतः नष्ट हो जाएंगी।",
       en: "Receive the blessings of elders/teachers and recite Sri Ramcharitmanas. This will completely destroy all obstacles in your workspace."
     },
-    luckyColor: { hi: "पीला (Yellow)", en: "Yellow" },
-    luckyNumber: "3",
-    luckyTime: { hi: "प्रातः 11:30 से 01:00", en: "11:30 AM to 01:00 PM" },
-    luckyDate: "July 23, 2026",
+    luckyColor: { hi: "गहरा नीला (Dark Blue)", en: "Dark Blue" },
+    luckyNumber: "8",
+    luckyTime: { hi: "दोपहर 04:30 से 06:00", en: "04:30 PM to 06:00 PM" },
+    luckyDate: "July 24, 2026",
     tagline: { hi: "कर्म और दृढ़ संकल्प ही सफलता के वास्तविक और अचूक अस्त्र हैं।", en: "Karma and firm determination are the true and infallible weapons of success." }
   },
 
-  capricorn: {
+  aquarius: {
     meta: {
       planetaryPosition: "चंद्रमा का नवम धर्म भाव में गोचर",
       predictionPower: "95%",
@@ -326,14 +359,14 @@ window.dailyHoroscope = {
       hi: "शनि देव की आराधना करें और निर्धनों को काले वस्त्र का दान करें। यह शुभ कार्य आपके भाग्य के सभी मार्ग पूर्णतः प्रशस्त कर देगा।",
       en: "Worship Lord Shani and donate black clothes to the impoverished. This auspicious act will completely clear all the paths of your destiny."
     },
-    luckyColor: { hi: "गहरा नीला (Dark Blue)", en: "Dark Blue" },
-    luckyNumber: "8",
-    luckyTime: { hi: "दोपहर 03:00 से 04:30", en: "03:00 PM to 04:30 PM" },
-    luckyDate: "July 23, 2026",
+    luckyColor: { hi: "नीला (Blue)", en: "Blue" },
+    luckyNumber: "4",
+    luckyTime: { hi: "प्रातः 11:30 से 01:00", en: "11:30 AM to 01:00 PM" },
+    luckyDate: "July 24, 2026",
     tagline: { hi: "धर्म और भाग्य का पवित्र संगम संपूर्ण जीवन को प्रकाशित करता है।", en: "The holy confluence of righteousness and destiny illuminates the entire life." }
   },
 
-  aquarius: {
+  pisces: {
     meta: {
       planetaryPosition: "चंद्रमा का अष्टम रहस्य भाव में संचरण",
       predictionPower: "86%",
@@ -359,43 +392,10 @@ window.dailyHoroscope = {
       hi: "भगवान शिव का पवित्र जल से अभिषेक करें और महामृत्युंजय मंत्र का निरंतर जप करें। इससे आपके जीवन की सभी बाधाएं दूर होंगी।",
       en: "Perform abhishekam of Lord Shiva with holy water and continuously chant the Mahamrityunjaya Mantra. This will remove all obstacles from your life."
     },
-    luckyColor: { hi: "नीला (Blue)", en: "Blue" },
-    luckyNumber: "4",
-    luckyTime: { hi: "प्रातः 08:00 से 09:30", en: "08:00 AM to 09:30 AM" },
-    luckyDate: "July 23, 2026",
-    tagline: { hi: "सतर्कता और मानसिक संयम से हर बाधा को सहजता से पार किया जा सकता है।", en: "Every obstacle can be easily crossed with vigilance and mental restraint." }
-  },
-
-  pisces: {
-    meta: {
-      planetaryPosition: "चंद्रमा का सप्तम जाया भाव में गोचर",
-      predictionPower: "96%",
-      expertNote: { 
-        hi: "आज का दिन दांपत्य जीवन और व्यावसायिक साझेदारी के लिए अत्यंत शुभ, फलदायी और श्रेष्ठ है। आपके व्यक्तित्व का ओजस्वी और निर्मल आकर्षण अन्य लोगों को गहराई से प्रभावित करेगा।", 
-        en: "Today is highly auspicious, fruitful, and excellent for married life and business partnerships. The radiant and pure attraction of your personality will deeply influence other people." 
-      }
-    },
-    ratings: { health: 4, wealth: 5, love: 5, career: 4 },
-    career: {
-      hi: "व्यावसायिक साझेदारी में आपको भारी मात्रा में धन लाभ होने के अत्यंत स्पष्ट संकेत प्राप्त हो रहे हैं। नए व्यापारिक अनुबंध पूर्ण रूप से अंतिम रूप ले सकते हैं।",
-      en: "Extremely clear signs of you receiving a heavy amount of monetary gain in business partnerships are being received. New business contracts may take their final shape completely."
-    },
-    love: {
-      hi: "दांपत्य जीवन में अद्वितीय प्रेम, उत्कृष्ट सामंजस्य और पूर्ण विश्वास स्थापित होगा। अपने जीवनसाथी की भावनाओं का सम्मान करना आपके संबंधों को अत्यंत प्रगाढ़ करेगा।",
-      en: "Unique love, excellent harmony, and complete trust will be established in married life. Respecting your spouse's feelings will make your relationship extremely intense."
-    },
-    health: {
-      hi: "आप शारीरिक और मानसिक दोनों रूपों में अत्यंत स्वस्थ, संतुलित और ऊर्जावान रहेंगे। नियमित जल का सेवन और प्रातः कालीन भ्रमण आपके लिए अत्यंत लाभप्रद सिद्ध होगा।",
-      en: "You will remain highly healthy, balanced, and energetic in both physical and mental forms. Regular water intake and morning walks will prove highly beneficial for you."
-    },
-    remedy: {
-      hi: "श्री विष्णु सहस्रनाम का नियमित पाठ करें और भगवान को पीले पुष्प अर्पित करें। यह उत्तम उपाय आपकी सभी मनोकामनाएं पूर्ण करेगा।",
-      en: "Recite Sri Vishnu Sahasranama regularly and offer yellow flowers to the Lord. This excellent remedy will fulfill all your desires."
-    },
     luckyColor: { hi: "हल्का पीला (Pale Yellow)", en: "Pale Yellow" },
     luckyNumber: "7",
-    luckyTime: { hi: "दोपहर 02:00 से 03:30", en: "02:00 PM to 03:30 PM" },
-    luckyDate: "July 23, 2026",
-    tagline: { hi: "प्रेम और आपसी सहयोग ही मनुष्य के जीवन की सबसे बड़ी संपत्ति है।", en: "Love and mutual cooperation are the greatest wealth of a human's life." }
+    luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
+    luckyDate: "July 24, 2026",
+    tagline: { hi: "सतर्कता और मानसिक संयम से हर बाधा को सहजता से पार किया जा सकता है।", en: "Every obstacle can be easily crossed with vigilance and mental restraint." }
   }
 };
