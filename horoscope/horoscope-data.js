@@ -1,54 +1,87 @@
 window.dailyHoroscope = {
-  lastUpdated: "2026-08-13T06:00:00Z",
+  lastUpdated: "2026-08-14T06:00:00Z",
   source: "MAHADEV ASTROLOGER MA - Divine Wisdom Lab",
   methodology: "Vedic Astrology Planetary Transits & Daily Lunar Sign Shift Analysis",
 
   aries: {
     meta: {
-      planetaryPosition: "चंद्रमा का सप्तम जाया भाव में शुभ और मंगलकारी गोचर",
-      predictionPower: "97%",
+      planetaryPosition: "चंद्रमा का अष्टम भाव में गहन अनुसंधान और आध्यात्मिक गोचर",
+      predictionPower: "96%",
       expertNote: { 
-        hi: "आज का दिन आपके दांपत्य जीवन और व्यावसायिक साझेदारी के लिए अत्यंत श्रेष्ठ तथा फलदायी है। आपके व्यक्तित्व का ओजस्वी आकर्षण और सकारात्मक दृष्टिकोण सभी को गहराई से प्रभावित करेगा।", 
-        en: "Today is an extremely excellent and fruitful day for your married life and business partnerships. The radiant attraction of your personality and positive attitude will deeply influence everyone." 
+        hi: "आज का ज्योतिषीय विश्लेषण आपके जीवन में गहन आध्यात्मिक चिंतन और आकस्मिक धन प्राप्ति का स्पष्ट संकेत देता है। आपकी प्रखर बुद्धि और सुविचारित निर्णय आपको प्रत्येक बाधा पर पूर्ण विजय दिलाएंगे।", 
+        en: "Today's astrological analysis gives a clear indication of profound spiritual contemplation and sudden wealth acquisition in your life. Your sharp intellect and well-considered decisions will grant you complete victory over every obstacle." 
       }
     },
-    ratings: { health: 5, wealth: 5, love: 5, career: 4 },
+    ratings: { health: 4, wealth: 5, love: 4, career: 5 },
     career: {
-      hi: "नवीन व्यापारिक अनुबंधों और साझेदारियों से आपको आज भारी मात्रा में आर्थिक लाभ प्राप्त होगा। कार्यस्थल पर आपकी उत्कृष्ट निर्णय क्षमता और नेतृत्व की सर्वत्र सराहना की जाएगी।",
-      en: "You will receive heavy financial gains from new business contracts and partnerships today. Your excellent decision-making ability and leadership will be praised everywhere at the workplace."
+      hi: "शोध, तकनीकी और अन्वेषण से जुड़े जातकों को आज कार्यक्षेत्र में अभूतपूर्व सफलता प्राप्त होगी। पूर्व में किए गए किसी निवेश से अचानक भारी मात्रा में आर्थिक लाभ होने के अत्यंत प्रबल योग हैं।",
+      en: "Natives associated with research, technology, and exploration will achieve unprecedented success in the workspace today. There are extremely strong yogas for sudden heavy financial gain from an investment made in the past."
     },
     love: {
-      hi: "जीवनसाथी के साथ आपका सामंजस्य और आपसी समर्पण आज अत्यंत मधुर तथा आनंदमय रहेगा। परिवार के सदस्यों के साथ किसी शुभ समारोह अथवा मांगलिक कार्य की रूपरेखा तैयार हो सकती है।",
-      en: "Your harmony and mutual dedication with your spouse will remain extremely sweet and joyful today. An outline of an auspicious ceremony or holy task with family members may be prepared."
+      hi: "जीवनसाथी के साथ आपका वैचारिक सामंजस्य अत्यंत मधुर, गहरा और पूर्णतः शांतिपूर्ण रहेगा। परिवार के सदस्यों के साथ किसी आध्यात्मिक विषय पर अत्यंत सुखद और ज्ञानवर्धक चर्चा हो सकती है।",
+      en: "Your ideological harmony with your spouse will remain extremely sweet, deep, and completely peaceful. A highly pleasant and enlightening discussion on a spiritual topic may happen with family members."
     },
     health: {
-      hi: "आपकी शारीरिक ऊर्जा और मानसिक स्फूर्ति आज संपूर्ण दिन अत्यंत उच्च स्तर पर रहेगी। उत्तम आरोग्य को निरंतर बनाए रखने के लिए प्रातःकालीन भ्रमण और योग का अभ्यास अवश्य करें।",
-      en: "Your physical energy and mental agility will remain at an extremely high level throughout the day today. Must take a morning walk and practice yoga to maintain excellent health continuously."
+      hi: "आपकी शारीरिक ऊर्जा और आंतरिक स्फूर्ति आज संपूर्ण दिन अत्यंत उत्कृष्ट स्तर पर रहेगी। मानसिक शांति और उत्तम आरोग्य के लिए नियमित ध्यान तथा योग का अभ्यास निरंतर अवश्य करें।",
+      en: "Your physical energy and internal agility will remain at an extremely outstanding level throughout the day today. For mental peace and excellent health, you must continuously practice regular meditation and yoga."
     },
     remedy: {
-      hi: "भगवान सूर्य नारायण को तांबे के पात्र से जल अर्पित करें और आदित्य हृदय स्तोत्र का भक्तिभाव से पाठ करें। यह पवित्र उपाय आपके जीवन में स्थायी समृद्धि और असीम यश लाएगा।",
-      en: "Offer water to Lord Surya Narayan from a copper vessel and devoutly recite the Aditya Hridaya Stotra. This sacred remedy will bring permanent prosperity and boundless fame to your life."
+      hi: "भगवान शिव का पवित्र गंगाजल से अभिषेक करें और महामृत्युंजय मंत्र का श्रद्धापूर्वक जप करें। यह पवित्र उपाय आपके जीवन में स्थायी सुख, परम शांति और असीम समृद्धि लाएगा।",
+      en: "Perform Abhishekam of Lord Shiva with holy Gangajal and devoutly chant the Mahamrityunjaya Mantra. This sacred remedy will bring permanent happiness, supreme peace, and boundless prosperity into your life."
     },
     luckyColor: { hi: "लाल (Red)", en: "Red" },
     luckyNumber: "9",
-    luckyTime: { hi: "प्रातः 08:30 से 10:00", en: "08:30 AM to 10:00 AM" },
-    luckyDate: "August 13, 2026",
-    tagline: { hi: "सकारात्मक दृष्टिकोण और दृढ़ संकल्प ही सफलता का मूल आधार हैं।", en: "A positive attitude and firm determination are the fundamental basis of success." }
+    luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
+    luckyDate: "August 14, 2026",
+    tagline: { hi: "गहन चिंतन और आध्यात्मिक ऊर्जा ही सफलता का सर्वोच्च मार्ग है।", en: "Profound contemplation and spiritual energy are the supreme path to success." }
   },
 
   taurus: {
     meta: {
+      planetaryPosition: "चंद्रमा का सप्तम जाया भाव में शुभ और मंगलकारी गोचर",
+      predictionPower: "97%",
+      expertNote: { 
+        hi: "आज चंद्रमा का सप्तम भाव में संचरण आपके दांपत्य जीवन और व्यावसायिक साझेदारी के लिए अत्यंत मंगलकारी है। आपका सकारात्मक दृष्टिकोण और मधुर व्यवहार समाज में आपकी प्रतिष्ठा को सर्वोच्च शिखर पर ले जाएगा।", 
+        en: "Today, the transit of the Moon in the seventh house is highly auspicious for your married life and business partnerships. Your positive attitude and sweet behavior will take your prestige in society to the highest peak." 
+      }
+    },
+    ratings: { health: 5, wealth: 5, love: 5, career: 4 },
+    career: {
+      hi: "नवीन व्यापारिक अनुबंधों और साझेदारियों से आपको आज भारी मात्रा में आर्थिक लाभ प्राप्त होगा। कार्यस्थल पर आपकी उत्कृष्ट निर्णय क्षमता और नेतृत्व की उच्च अधिकारियों द्वारा सर्वत्र सराहना की जाएगी।",
+      en: "You will receive heavy financial gains from new business contracts and partnerships today. Your excellent decision-making ability and leadership will be praised everywhere at the workplace by higher officials."
+    },
+    love: {
+      hi: "दांपत्य संबंधों में अद्वितीय मधुरता, गहरा विश्वास और अटूट प्रेम स्थापित होगा। जीवनसाथी के साथ व्यतीत किया गया समय आपके मन को असीम आनंद, शांति और संतुष्टि प्रदान करेगा।",
+      en: "Unique sweetness, deep trust, and unbreakable love will be established in marital relations. The time spent with your spouse will provide immense joy, peace, and satisfaction to your mind."
+    },
+    health: {
+      hi: "उत्तम निद्रा और मानसिक शांति के कारण आप स्वयं को अत्यंत स्फूर्तिवान और ऊर्जावान अनुभव करेंगे। स्वास्थ्य को पूर्णतः अनुकूल बनाए रखने के लिए केवल सात्विक तथा सुपाच्य आहार ही ग्रहण करें।",
+      en: "Due to excellent sleep and mental peace, you will experience yourself as highly agile and energetic. Consume only a sattvic and easily digestible diet to keep your health completely favorable."
+    },
+    remedy: {
+      hi: "माता महालक्ष्मी जी की आराधना करें और उन्हें श्वेत पुष्प तथा कमल गट्टा अर्पित करें। यह शुभ कृत्य आपके जीवन में अपार धन, सुख और स्थायी समृद्धि का मार्ग प्रशस्त करेगा।",
+      en: "Worship Goddess Mahalakshmi Ji and offer white flowers and lotus seeds to Her. This auspicious act will pave the way for immense wealth, happiness, and permanent prosperity in your life."
+    },
+    luckyColor: { hi: "श्वेत (White)", en: "White" },
+    luckyNumber: "6",
+    luckyTime: { hi: "प्रातः 10:30 से 12:00", en: "10:30 AM to 12:00 PM" },
+    luckyDate: "August 14, 2026",
+    tagline: { hi: "सामंजस्य और सकारात्मक सहयोग ही जीवन की वास्तविक संपत्ति है।", en: "Harmony and positive cooperation are the real wealth of life." }
+  },
+
+  gemini: {
+    meta: {
       planetaryPosition: "चंद्रमा का षष्ठम भाव में पराक्रमी और विजयी संचरण",
       predictionPower: "96%",
       expertNote: { 
-        hi: "आज आपका असीम साहस, परिश्रम और उत्तम धैर्य आपके सभी विरोधियों पर आपको पूर्ण विजय दिलाएगा। आपकी कार्यशैली और बौद्धिक स्पष्टता आपको प्रत्येक क्षेत्र में अग्रणी बनाएगी।", 
-        en: "Today your boundless courage, hard work, and excellent patience will grant you complete victory over all your opponents. Your work style and intellectual clarity will keep you ahead in every field." 
+        hi: "आज आपका असीम साहस, परिश्रम और उत्तम धैर्य आपके सभी विरोधियों पर आपको पूर्ण विजय दिलाएगा। आपकी कार्यशैली और बौद्धिक स्पष्टता आपको प्रत्येक शैक्षिक तथा व्यावसायिक क्षेत्र में अग्रणी बनाएगी।", 
+        en: "Today your boundless courage, hard work, and excellent patience will grant you complete victory over all your opponents. Your work style and intellectual clarity will keep you ahead in every educational and professional field." 
       }
     },
     ratings: { health: 5, wealth: 4, love: 5, career: 5 },
     career: {
-      hi: "कार्यक्षेत्र में आपकी सूक्ष्म विश्लेषण क्षमता और समर्पण की वरिष्ठ अधिकारियों द्वारा सर्वत्र प्रशंसा होगी। किसी पुरानी योजना या पूर्व के निवेश से आपको आज श्रेष्ठ आर्थिक प्रतिफल प्राप्त होगा।",
-      en: "Your subtle analytical ability and dedication in the workspace will be praised everywhere by senior officials. You will receive a superior financial return today from an old plan or past investment."
+      hi: "कार्यक्षेत्र में आपकी सूक्ष्म विश्लेषण क्षमता और समर्पण की वरिष्ठ अधिकारियों द्वारा सर्वत्र प्रशंसा होगी। किसी पुरानी योजना या पूर्व के निवेश से आपको आज श्रेष्ठ आर्थिक प्रतिफल अवश्य प्राप्त होगा।",
+      en: "Your subtle analytical ability and dedication in the workspace will be praised everywhere by senior officials. You will certainly receive a superior financial return today from an old plan or past investment."
     },
     love: {
       hi: "परिवार के सदस्यों के साथ प्रेम, आदर और पूर्ण सहयोग का अत्यंत सुंदर वातावरण बना रहेगा। जीवनसाथी के विचारों का सम्मान करना आपके दांपत्य संबंधों को अत्यधिक मधुर और प्रगाढ़ बनाएगा।",
@@ -59,17 +92,17 @@ window.dailyHoroscope = {
       en: "Your immunity will remain extremely strong, and you will be energetic and healthy throughout the day. Must include regular Pranayama and meditation in your daily routine for excellent health."
     },
     remedy: {
-      hi: "माता महालक्ष्मी जी की आराधना करें और उन्हें श्वेत पुष्प तथा कमल गट्टा अर्पित करें। यह शुभ कृत्य आपके जीवन में अपार धन, सुख और स्थायी समृद्धि का मार्ग प्रशस्त करेगा।",
-      en: "Worship Goddess Mahalakshmi Ji and offer white flowers and lotus seeds to Her. This auspicious act will pave the way for immense wealth, happiness, and permanent prosperity in your life."
+      hi: "भगवान श्री गणेश की वंदना करें और उन्हें मोदक तथा हरी दूर्वा अर्पित करें। इस पवित्र उपाय से आपके सभी कार्यों की बाधाएं समाप्त होंगी और उत्तम सफलता प्राप्त होगी।",
+      en: "Pray to Lord Shri Ganesha and offer Modak and green Durva grass to Him. This sacred remedy will eliminate obstacles from all your tasks and grant excellent success."
     },
-    luckyColor: { hi: "श्वेत (White)", en: "White" },
-    luckyNumber: "6",
-    luckyTime: { hi: "प्रातः 10:30 से 12:00", en: "10:30 AM to 12:00 PM" },
-    luckyDate: "August 13, 2026",
+    luckyColor: { hi: "हरा (Green)", en: "Green" },
+    luckyNumber: "5",
+    luckyTime: { hi: "प्रातः 09:00 से 10:30", en: "09:00 AM to 10:30 AM" },
+    luckyDate: "August 14, 2026",
     tagline: { hi: "साहस और उत्तम संयम ही विजय के सबसे बड़े अस्त्र हैं।", en: "Courage and excellent restraint are the greatest weapons of victory." }
   },
 
-  gemini: {
+  cancer: {
     meta: {
       planetaryPosition: "चंद्रमा का पंचम विद्या, बुद्धि और रचनात्मक भाव में गोचर",
       predictionPower: "95%",
@@ -80,8 +113,8 @@ window.dailyHoroscope = {
     },
     ratings: { health: 4, wealth: 5, love: 5, career: 4 },
     career: {
-      hi: "शिक्षा, साहित्य और परामर्श क्षेत्र से जुड़े जातकों को आज अभूतपूर्व सफलता तथा श्रेष्ठ धन लाभ प्राप्त होगा। आपके नवीन विचारों से कार्यक्षेत्र में अत्यंत सकारात्मक और लाभदायक परिवर्तन आएंगे।",
-      en: "Natives associated with education, literature, and consultancy fields will achieve unprecedented success and superior financial gain today. Your innovative ideas will bring highly positive and profitable changes to the workspace."
+      hi: "शिक्षा, साहित्य, कला और परामर्श क्षेत्र से जुड़े जातकों को आज अभूतपूर्व सफलता तथा श्रेष्ठ धन लाभ प्राप्त होगा। आपके नवीन विचारों से कार्यक्षेत्र में अत्यंत सकारात्मक और लाभदायक परिवर्तन आएंगे।",
+      en: "Natives associated with education, literature, art, and consultancy fields will achieve unprecedented success and superior financial gain today. Your innovative ideas will bring highly positive and profitable changes to the workspace."
     },
     love: {
       hi: "संतान पक्ष से कोई अत्यंत शुभ और उत्साहवर्धक समाचार प्राप्त होने की प्रबल संभावना है। प्रेम संबंधों में आत्मीयता, प्रगाढ़ता और अटूट विश्वास निरंतर तथा सुदृढ़ बना रहेगा।",
@@ -92,17 +125,17 @@ window.dailyHoroscope = {
       en: "Your mental cheerfulness and physical health will remain at a high level throughout the day today. Spending some time close to nature will further increase your internal agility."
     },
     remedy: {
-      hi: "भगवान श्री गणेश की वंदना करें और उन्हें मोदक तथा हरी दूर्वा अर्पित करें। इस पवित्र उपाय से आपके सभी कार्यों की बाधाएं समाप्त होंगी और उत्तम सफलता प्राप्त होगी।",
-      en: "Pray to Lord Shri Ganesha and offer Modak and green Durva grass to Him. This sacred remedy will eliminate obstacles from all your tasks and grant excellent success."
+      hi: "भगवान शिव का जल और बिल्वपत्र से अभिषेक करें तथा ओम नमः शिवाय का निरंतर जप करें। यह उपाय आपकी सभी मनोकामनाएं पूर्ण करेगा और जीवन में स्थायी सुख लाएगा।",
+      en: "Perform Abhishekam of Lord Shiva with water and Bel leaves and continuously chant Om Namah Shivaya. This remedy will fulfill all your wishes and bring permanent happiness in life."
     },
-    luckyColor: { hi: "हरा (Green)", en: "Green" },
-    luckyNumber: "5",
+    luckyColor: { hi: "श्वेत (White)", en: "White" },
+    luckyNumber: "2",
     luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
-    luckyDate: "August 13, 2026",
+    luckyDate: "August 14, 2026",
     tagline: { hi: "रचनात्मक विचार और वैचारिक स्पष्टता जीवन का सबसे बड़ा धन है।", en: "Creative thoughts and ideological clarity are the greatest wealth of life." }
   },
 
-  cancer: {
+  leo: {
     meta: {
       planetaryPosition: "चंद्रमा का चतुर्थ सुख, माता और संपत्ति भाव में मंगलकारी गोचर",
       predictionPower: "98%",
@@ -117,25 +150,25 @@ window.dailyHoroscope = {
       en: "You will receive heavy financial gains today in works related to real estate, land, and financial investments. Your work style will be appreciated at the workplace and new paths for promotion will be paved."
     },
     love: {
-      hi: "घर-परिवार का वातावरण अत्यंत सुखद, शांत और पूर्णतः सकारात्मक बना रहेगा। माता-पिता का पवित्र आशीर्वाद और जीवनसाथी का असीम प्रेम आपके हृदय को आनंदित करेगा।",
-      en: "The atmosphere of the family will remain highly pleasant, peaceful, and completely positive. The sacred blessings of parents and the boundless love of your spouse will delight your heart."
+      hi: "घर-परिवार का वातावरण अत्यंत सुखद, शांत और पूर्णतः सकारात्मक बना रहेगा। माता-पिता का पवित्र आशीर्वाद और जीवनसाथी का असीम प्रेम आपके हृदय को अत्यंत आनंदित करेगा।",
+      en: "The atmosphere of the family will remain highly pleasant, peaceful, and completely positive. The sacred blessings of parents and the boundless love of your spouse will highly delight your heart."
     },
     health: {
-      hi: "उत्तम निद्रा और मानसिक शांति के कारण आप स्वयं को अत्यंत स्फूर्तिवान और ऊर्जावान अनुभव करेंगे। स्वास्थ्य को पूर्णतः अनुकूल बनाए रखने के लिए केवल सात्विक तथा सुपाच्य आहार ही ग्रहण करें।",
-      en: "Due to excellent sleep and mental peace, you will experience yourself as highly agile and energetic. Consume only a sattvic and easily digestible diet to keep your health completely favorable."
+      hi: "मानसिक शांति और शारीरिक आरोग्य का अद्भुत संतुलन आज आपको संपूर्ण दिन अत्यंत स्फूर्तिवान बनाए रखेगा। अपनी आंतरिक प्रसन्नता को बनाए रखने के लिए प्रातःकालीन भ्रमण अवश्य करें।",
+      en: "A wonderful balance of mental peace and physical health will keep you extremely energetic throughout the day today. Must take a morning walk to maintain your internal happiness."
     },
     remedy: {
-      hi: "भगवान शिव का पवित्र गंगाजल और दुग्ध से अभिषेक करें तथा महामृत्युंजय मंत्र का जप करें। यह शुभ कृत्य आपके जीवन में स्थायी सुख, शांति और असीम समृद्धि लाएगा।",
-      en: "Perform Abhishekam of Lord Shiva with holy Gangajal and milk and chant the Mahamrityunjaya Mantra. This auspicious act will bring permanent happiness, peace, and boundless prosperity to your life."
+      hi: "आदित्य हृदय स्तोत्र का भक्तिभाव से पाठ करें और सूर्य नारायण को अर्घ्य दें। यह उत्तम उपाय आपके भाग्य के सभी मार्गों को पूर्णतः प्रशस्त कर देगा।",
+      en: "Devoutly recite the Aditya Hridaya Stotra and offer Arghya to Surya Narayan. This excellent remedy will completely clear all the paths of your destiny."
     },
-    luckyColor: { hi: "श्वेत (White)", en: "White" },
-    luckyNumber: "2",
-    luckyTime: { hi: "प्रातः 09:00 से 10:30", en: "09:00 AM to 10:30 AM" },
-    luckyDate: "August 13, 2026",
+    luckyColor: { hi: "स्वर्णिम (Golden)", en: "Golden" },
+    luckyNumber: "1",
+    luckyTime: { hi: "प्रातः 08:00 से 09:30", en: "08:00 AM to 09:30 AM" },
+    luckyDate: "August 14, 2026",
     tagline: { hi: "आंतरिक शांति और सकारात्मक कर्म ही विजय का वास्तविक आधार हैं।", en: "Inner peace and positive action are the true foundation of victory." }
   },
 
-  leo: {
+  virgo: {
     meta: {
       planetaryPosition: "चंद्रमा का तृतीय पराक्रम भाव में साहसी और ऊर्जावान गोचर",
       predictionPower: "94%",
@@ -154,21 +187,21 @@ window.dailyHoroscope = {
       en: "Your time with family members and younger siblings will be spent very joyfully and peacefully. With the full support of your spouse, immense sweetness will increase in your married life."
     },
     health: {
-      hi: "आपका शारीरिक और मानसिक स्वास्थ्य आज अत्यंत उत्कृष्ट अवस्था में रहेगा। अपनी सकारात्मक ऊर्जा को उच्च स्तर पर बनाए रखने के लिए प्रातःकाल योग और ध्यान का अभ्यास अवश्य करें।",
-      en: "Your physical and mental health will remain in an extremely excellent state today. Must practice morning yoga and meditation to maintain your positive energy at a high level."
+      hi: "आपका शारीरिक और मानसिक स्वास्थ्य आज अत्यंत उत्कृष्ट अवस्था में रहेगा। अपनी सकारात्मक ऊर्जा को उच्च स्तर पर बनाए रखने के लिए प्रातःकाल योग और ध्यान का अभ्यास निरंतर करें।",
+      en: "Your physical and mental health will remain in an extremely excellent state today. Practice morning yoga and meditation continuously to maintain your positive energy at a high level."
     },
     remedy: {
-      hi: "आदित्य हृदय स्तोत्र का भक्तिभाव से पाठ करें और निर्धन लोगों को अन्न दान करें। यह उत्तम उपाय आपके भाग्य के सभी मार्गों को पूर्णतः प्रशस्त कर देगा।",
-      en: "Devoutly recite the Aditya Hridaya Stotra and donate grains to poor people. This excellent remedy will completely clear all the paths of your destiny."
+      hi: "गाय को हरी घास अथवा पालक खिलाएं और श्री विष्णु सहस्रनाम का पाठ करें। यह शुभ कार्य आपके जीवन से सभी विघ्नों को दूर कर अपार सुख व समृद्धि लाएगा।",
+      en: "Feed green grass or spinach to a cow and recite Shri Vishnu Sahasranama. This auspicious act will remove all obstacles from your life and bring immense happiness and prosperity."
     },
-    luckyColor: { hi: "स्वर्णिम (Golden)", en: "Golden" },
-    luckyNumber: "1",
+    luckyColor: { hi: "हरा (Green)", en: "Green" },
+    luckyNumber: "5",
     luckyTime: { hi: "शाम 04:30 से 06:00", en: "04:30 PM to 06:00 PM" },
-    luckyDate: "August 13, 2026",
-    tagline: { hi: "असीम साहस और परोपकार ही जीवन की परम संपत्ति हैं।", en: "Boundless courage and philanthropy are the supreme wealth of life." }
+    luckyDate: "August 14, 2026",
+    tagline: { hi: "असीम साहस और स्पष्ट संवाद ही जीवन की परम संपत्ति हैं।", en: "Boundless courage and clear communication are the supreme wealth of life." }
   },
 
-  virgo: {
+  libra: {
     meta: {
       planetaryPosition: "चंद्रमा का द्वितीय धन, कुटुंब और वाणी भाव में शुभ संचरण",
       predictionPower: "97%",
@@ -191,17 +224,17 @@ window.dailyHoroscope = {
       en: "Health related to the throat, mouth, and speech will be excellent, and you will remain mentally very happy. Always consume a sattvic and balanced diet for excellent health and longevity."
     },
     remedy: {
-      hi: "गाय को हरी घास अथवा पालक खिलाएं और श्री विष्णु सहस्रनाम का पाठ करें। यह शुभ कार्य आपके जीवन से सभी विघ्नों को दूर कर अपार सुख व समृद्धि लाएगा।",
-      en: "Feed green grass or spinach to a cow and recite Shri Vishnu Sahasranama. This auspicious act will remove all obstacles from your life and bring immense happiness and prosperity."
+      hi: "माता लक्ष्मी जी की आराधना करें तथा किसी मंदिर में सुगंधित श्वेत पुष्प और इत्र अर्पित करें। यह पवित्र उपाय आपके जीवन में स्थायी समृद्धि, सामंजस्य और ज्ञान लाएगा।",
+      en: "Worship Goddess Lakshmi Ji and offer fragrant white flowers and perfume in a temple. This sacred remedy will bring permanent prosperity, harmony, and knowledge to your life."
     },
-    luckyColor: { hi: "हरा (Green)", en: "Green" },
-    luckyNumber: "5",
+    luckyColor: { hi: "गुलाबी (Pink)", en: "Pink" },
+    luckyNumber: "6",
     luckyTime: { hi: "प्रातः 11:00 से 12:30", en: "11:00 AM to 12:30 PM" },
-    luckyDate: "August 13, 2026",
-    tagline: { hi: "सकारात्मक संवाद और अटूट संकल्प ही सफलता के सर्वोच्च अस्त्र हैं।", en: "Positive communication and unwavering resolve are the supreme weapons of success." }
+    luckyDate: "August 14, 2026",
+    tagline: { hi: "सकारात्मक संवाद और मधुर वाणी ही सफलता के सर्वोच्च अस्त्र हैं।", en: "Positive communication and sweet speech are the supreme weapons of success." }
   },
 
-  libra: {
+  scorpio: {
     meta: {
       planetaryPosition: "चंद्रमा का आपकी अपनी राशि (लग्न) में गौरवशाली गोचर",
       predictionPower: "98%",
@@ -224,17 +257,17 @@ window.dailyHoroscope = {
       en: "Your physical health and mental brilliance will remain in an extremely excellent and balanced state throughout the day today. Must practice morning yoga and Pranayama to maintain your energy at a high level."
     },
     remedy: {
-      hi: "माता लक्ष्मी जी की आराधना करें तथा किसी मंदिर में सुगंधित श्वेत पुष्प और इत्र अर्पित करें। यह पवित्र उपाय आपके जीवन में स्थायी समृद्धि, सामंजस्य और ज्ञान लाएगा।",
-      en: "Worship Goddess Lakshmi Ji and offer fragrant white flowers and perfume in a temple. This sacred remedy will bring permanent prosperity, harmony, and knowledge to your life."
+      hi: "भगवान श्री हनुमान जी की वंदना करें और उन्हें सिंदूर तथा चमेली का तेल अर्पित करें। यह शुभ कृत्य आपकी सामाजिक प्रतिष्ठा और आर्थिक स्थिति में अभूतपूर्व वृद्धि करेगा।",
+      en: "Pray to Lord Shri Hanuman Ji and offer vermilion and jasmine oil to Him. This auspicious act will cause an unprecedented increase in your social prestige and financial condition."
     },
-    luckyColor: { hi: "गुलाबी (Pink)", en: "Pink" },
-    luckyNumber: "6",
+    luckyColor: { hi: "रक्त वर्ण (Blood Red)", en: "Blood Red" },
+    luckyNumber: "9",
     luckyTime: { hi: "दोपहर 02:00 से 03:30", en: "02:00 PM to 03:30 PM" },
-    luckyDate: "August 13, 2026",
+    luckyDate: "August 14, 2026",
     tagline: { hi: "कर्मनिष्ठा और ओजस्वी नेतृत्व जीवन को सदैव प्रकाशित करते हैं।", en: "Devotion to work and radiant leadership always illuminate life." }
   },
 
-  scorpio: {
+  sagittarius: {
     meta: {
       planetaryPosition: "चंद्रमा का द्वादश भाव में आध्यात्मिक और चिंतनशील संचरण",
       predictionPower: "96%",
@@ -257,17 +290,17 @@ window.dailyHoroscope = {
       en: "Keep your bedroom environment completely clean, peaceful, and spiritual for excellent sleep and mental peace. Regular meditation and yoga will cause a boundless increase in your immunity."
     },
     remedy: {
-      hi: "भगवान श्री हनुमान जी की वंदना करें और उन्हें सिंदूर तथा चमेली का तेल अर्पित करें। यह शुभ कृत्य आपकी सामाजिक प्रतिष्ठा और आर्थिक स्थिति में अभूतपूर्व वृद्धि करेगा।",
-      en: "Pray to Lord Shri Hanuman Ji and offer vermilion and jasmine oil to Him. This auspicious act will cause an unprecedented increase in your social prestige and financial condition."
+      hi: "भगवान श्री विष्णु की आराधना करें और उन्हें पीले वस्त्र अथवा हल्दी की गांठ अर्पित करें। यह शुभ कृत्य आपके भाग्य, विद्या और ऐश्वर्य में स्थायी वृद्धि करेगा।",
+      en: "Worship Lord Shri Vishnu and offer yellow clothes or turmeric root to Him. This auspicious act will bring a permanent increase in your fortune, knowledge, and wealth."
     },
-    luckyColor: { hi: "रक्त वर्ण (Blood Red)", en: "Blood Red" },
-    luckyNumber: "9",
+    luckyColor: { hi: "पीला (Yellow)", en: "Yellow" },
+    luckyNumber: "3",
     luckyTime: { hi: "प्रातः 08:30 से 10:00", en: "08:30 AM to 10:00 AM" },
-    luckyDate: "August 13, 2026",
+    luckyDate: "August 14, 2026",
     tagline: { hi: "धर्म और धैर्य का संगम ही सफलता का मार्ग प्रशस्त करता है।", en: "The confluence of righteousness and patience paves the way to success." }
   },
 
-  sagittarius: {
+  capricorn: {
     meta: {
       planetaryPosition: "चंद्रमा का एकादश लाभ भाव में शुभ और फलदायी प्रवेश",
       predictionPower: "95%",
@@ -290,17 +323,17 @@ window.dailyHoroscope = {
       en: "Your physical agility and mental cheerfulness will remain at an extremely outstanding level throughout the day today. Practice physical exercise continuously to channel your energy in the right direction."
     },
     remedy: {
-      hi: "भगवान श्री विष्णु की आराधना करें और उन्हें पीले वस्त्र अथवा हल्दी की गांठ अर्पित करें। यह शुभ कृत्य आपके भाग्य, विद्या और ऐश्वर्य में स्थायी वृद्धि करेगा।",
-      en: "Worship Lord Shri Vishnu and offer yellow clothes or turmeric root to Him. This auspicious act will bring a permanent increase in your fortune, knowledge, and wealth."
+      hi: "शनि चालीसा का श्रद्धापूर्वक पाठ करें और निर्धन व्यक्तियों को काला तिल अथवा कंबल दान करें। यह उत्तम उपाय आपकी आर्थिक स्थिति को अत्यंत सुदृढ़ और स्थायी बना देगा।",
+      en: "Recite Shani Chalisa with devotion and donate black sesame seeds or blankets to poor persons. This excellent remedy will make your financial condition extremely strong and permanent."
     },
-    luckyColor: { hi: "पीला (Yellow)", en: "Yellow" },
-    luckyNumber: "3",
+    luckyColor: { hi: "गहरा नीला (Dark Blue)", en: "Dark Blue" },
+    luckyNumber: "8",
     luckyTime: { hi: "शाम 04:00 से 05:30", en: "04:00 PM to 05:30 PM" },
-    luckyDate: "August 13, 2026",
+    luckyDate: "August 14, 2026",
     tagline: { hi: "संतुलन और आंतरिक ऊर्जा ही जीवन की वास्तविक संपत्ति है।", en: "Balance and internal energy are the real wealth of life." }
   },
 
-  capricorn: {
+  aquarius: {
     meta: {
       planetaryPosition: "चंद्रमा का दशम कर्म भाव में शुभ और फलदायी संचरण",
       predictionPower: "96%",
@@ -323,17 +356,17 @@ window.dailyHoroscope = {
       en: "Your health will remain completely favorable to you, and you will experience yourself as energetic and disease-free throughout the day. Absorb the first rays of the Sun for mental peace and excellent vitality."
     },
     remedy: {
-      hi: "शनि चालीसा का श्रद्धापूर्वक पाठ करें और निर्धन व्यक्तियों को काला तिल अथवा कंबल दान करें। यह उत्तम उपाय आपकी आर्थिक स्थिति को अत्यंत सुदृढ़ और स्थायी बना देगा।",
-      en: "Recite Shani Chalisa with devotion and donate black sesame seeds or blankets to poor persons. This excellent remedy will make your financial condition extremely strong and permanent."
+      hi: "भगवान शिव का जल और बिल्वपत्र से अभिषेक करें तथा ओम नमः शिवाय मंत्र का निरंतर जप करें। यह उपाय आपकी सभी मनोकामनाएं पूर्ण करेगा और जीवन में स्थायी सुख व शांति लाएगा।",
+      en: "Perform Abhishekam of Lord Shiva with water and Bel leaves and continuously chant the Om Namah Shivaya mantra. This remedy will fulfill all your wishes and bring permanent happiness and peace in life."
     },
-    luckyColor: { hi: "गहरा नीला (Dark Blue)", en: "Dark Blue" },
-    luckyNumber: "8",
+    luckyColor: { hi: "नीला (Blue)", en: "Blue" },
+    luckyNumber: "4",
     luckyTime: { hi: "प्रातः 10:00 से 11:30", en: "10:00 AM to 11:30 AM" },
-    luckyDate: "August 13, 2026",
-    tagline: { hi: "साहस और आपसी सहयोग ही जीवन को वास्तव में सार्थक बनाते हैं।", en: "Courage and mutual cooperation truly make life meaningful." }
+    luckyDate: "August 14, 2026",
+    tagline: { hi: "सच्ची लगन और आपसी सहयोग ही जीवन को वास्तव में सार्थक बनाते हैं।", en: "True dedication and mutual cooperation truly make life meaningful." }
   },
 
-  aquarius: {
+  pisces: {
     meta: {
       planetaryPosition: "चंद्रमा का नवम भाग्य और धर्म भाव में मंगलकारी गोचर",
       predictionPower: "97%",
@@ -356,46 +389,13 @@ window.dailyHoroscope = {
       en: "Your immunity will remain extremely strong, and you will experience yourself as fully energetic and healthy. Consume a sattvic diet and practice regular Pranayama for mental peace and agility."
     },
     remedy: {
-      hi: "भगवान शिव का जल और बिल्वपत्र से अभिषेक करें तथा ओम नमः शिवाय मंत्र का निरंतर जप करें। यह उपाय आपकी सभी मनोकामनाएं पूर्ण करेगा और जीवन में स्थायी सुख व शांति लाएगा।",
-      en: "Perform Abhishekam of Lord Shiva with water and Bel leaves and continuously chant the Om Namah Shivaya mantra. This remedy will fulfill all your wishes and bring permanent happiness and peace in life."
-    },
-    luckyColor: { hi: "नीला (Blue)", en: "Blue" },
-    luckyNumber: "4",
-    luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
-    luckyDate: "August 13, 2026",
-    tagline: { hi: "ज्ञान, धैर्य और पराक्रम सफलता के सर्वोच्च मार्ग हैं।", en: "Knowledge, patience, and valor are the supreme paths to success." }
-  },
-
-  pisces: {
-    meta: {
-      planetaryPosition: "चंद्रमा का अष्टम भाव में आध्यात्मिक और रहस्यमयी गोचर",
-      predictionPower: "96%",
-      expertNote: { 
-        hi: "आज का दिन आपके जीवन में नवऊर्जा, गहन आत्मबल और सभी पुरानी बाधाओं के पूर्ण अंत का संदेश लेकर आया है। आपकी स्पष्ट वैचारिक दृष्टि और सकारात्मक ऊर्जा आपको समाज में विशिष्ट सम्मान दिलाएगी।", 
-        en: "Today brings a message of new energy, profound self-strength, and the complete end of all old obstacles in your life. Your clear ideological vision and positive energy will earn you special honor in society." 
-      }
-    },
-    ratings: { health: 5, wealth: 5, love: 5, career: 5 },
-    career: {
-      hi: "कार्यक्षेत्र में आपकी विश्लेषणात्मक क्षमता और कार्य के प्रति समर्पण की वरिष्ठ अधिकारियों द्वारा सर्वत्र प्रशंसा होगी। आर्थिक स्थिति में उत्तम सुधार होगा और पूर्व के निवेशों से श्रेष्ठ लाभ प्राप्त होगा।",
-      en: "Your analytical ability and dedication to work in the workspace will be praised everywhere by senior officials. There will be an excellent improvement in your financial condition, and superior gains will be received from past investments."
-    },
-    love: {
-      hi: "परिवार के सदस्यों के साथ प्रेम, सम्मान और पूर्ण सहयोग का अत्यंत सुंदर तथा सुखद वातावरण बना रहेगा। जीवनसाथी के विचारों का आदर करना आपके दांपत्य संबंधों को अत्यधिक प्रगाढ़ बनाएगा।",
-      en: "An extremely beautiful and pleasant atmosphere of love, respect, and full cooperation will prevail with family members. Respecting the thoughts of your spouse will make your marital relationship extremely deep."
-    },
-    health: {
-      hi: "आपका शारीरिक स्वास्थ्य उत्तम रहेगा और आपकी आंतरिक रोग प्रतिरोधक शक्ति में निरंतर वृद्धि होगी। मानसिक शांति और प्रसन्नता को बनाए रखने के लिए प्रकृति के समीप कुछ समय अवश्य व्यतीत करें।",
-      en: "Your physical health will remain excellent, and there will be a continuous increase in your internal immunity. Must spend some time close to nature to maintain mental peace and happiness."
-    },
-    remedy: {
       hi: "किसी मंदिर अथवा आध्यात्मिक केंद्र में पीले वस्त्र, फल अथवा अन्न का दान श्रद्धापूर्वक करें। इस पवित्र उपाय से आपके जीवन में स्थायी धन, परम शांति और असीम शक्ति का संचार होगा।",
       en: "Devoutly donate yellow clothes, fruits, or grains to a temple or spiritual center. This sacred remedy will infuse permanent wealth, supreme peace, and boundless power into your life."
     },
     luckyColor: { hi: "हल्का पीला (Pale Yellow)", en: "Pale Yellow" },
     luckyNumber: "7",
-    luckyTime: { hi: "दोपहर 01:00 से 02:30", en: "01:00 PM to 02:30 PM" },
-    luckyDate: "August 13, 2026",
-    tagline: { hi: "बौद्धिक स्पष्टता और संयम ही जीवन की सबसे बड़ी संपत्ति है।", en: "Intellectual clarity and restraint are the greatest wealth of life." }
+    luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
+    luckyDate: "August 14, 2026",
+    tagline: { hi: "ज्ञान, धैर्य और पराक्रम सफलता के सर्वोच्च मार्ग हैं।", en: "Knowledge, patience, and valor are the supreme paths to success." }
   }
 };
