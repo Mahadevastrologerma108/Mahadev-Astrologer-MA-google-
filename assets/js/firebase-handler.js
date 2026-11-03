@@ -120,7 +120,14 @@ if (appointmentForm) {
             await addDoc(collection(db, "appointments"), subData);
 
             if (keys && keys.tg && keys.cid) {
-                const tgMsg = `🔱 <b>NEW APPOINTMENT</b> 🔱\n👤 <b>Name:</b> ${name}\n✨ <b>Service:</b> ${service.toUpperCase()}\n📞 <b>Contact:</b> ${contactDetail}\n📡 <b>Method:</b> ${contactMethod}\n🔑 <b>UID:</b> ${wantsUID ? "YES" : "NO"}\n📅 <b>Time:</b> ${new Date().toLocaleString()}`.trim();
+                let tgMsg = `🔱 <b>NEW APPOINTMENT</b> 🔱\n👤 <b>Name:</b> ${name}\n✨ <b>Service:</b> ${service.toUpperCase()}\n📞 <b>Contact:</b> ${contactDetail}\n📡 <b>Method:</b> ${contactMethod}\n🔑 <b>UID:</b> ${wantsUID ? "YES" : "NO"}`;
+
+                if (service === 'kundli_matching') {
+                    tgMsg += `\n\n👦 <b>BOY:</b> ${subData.male_details.name}\n📅 <b>DOB:</b> ${subData.male_details.dob}\n🕛 <b>Time:</b> ${subData.male_details.time}\n📍 <b>Place:</b> ${subData.male_details.place}`;
+                    tgMsg += `\n\n👧 <b>GIRL:</b> ${subData.female_details.name}\n📅 <b>DOB:</b> ${subData.female_details.dob}\n🕛 <b>Time:</b> ${subData.female_details.time}\n📍 <b>Place:</b> ${subData.female_details.place}`;
+                } else {
+                    tgMsg += `\n📅 <b>DOB:</b> ${subData.dob}\n🕛 <b>Time:</b> ${subData.time}\n📍 <b>Place:</b> ${subData.place}`;
+                }
                 
                 await fetch(`https://api.telegram.org/bot${keys.tg}/sendMessage`, {
                     method: 'POST',
