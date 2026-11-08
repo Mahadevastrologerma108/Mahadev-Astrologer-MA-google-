@@ -1,15 +1,48 @@
 window.dailyHoroscope = {
-  lastUpdated: "2026-11-04T06:00:00Z",
+  lastUpdated: "2026-11-09T06:00:00Z",
   source: "MAHADEV ASTROLOGER MA - Divine Wisdom Lab",
   methodology: "Vedic Astrology Planetary Transits & Daily Lunar Sign Shift Analysis",
 
   aries: {
     meta: {
+      planetaryPosition: "चंद्रमा का षष्ठम रिपु भाव में पराक्रमी प्रवेश",
+      predictionPower: "96%",
+      expertNote: { 
+        hi: "आपके असीम साहस और धैर्य से आज सभी विरोधी स्वतः परास्त होंगे। विजयश्री आपके मार्ग को पूर्णतः प्रशस्त करेगी।", 
+        en: "With your boundless courage and patience, all opponents will automatically be defeated today. Victory will completely pave your path." 
+      }
+    },
+    ratings: { health: 4, wealth: 4, love: 3, career: 5 },
+    career: {
+      hi: "सेवा क्षेत्र (Service sector) और प्रतियोगी परीक्षाओं के लिए दिन अत्यंत श्रेष्ठ है। कार्यस्थल पर आपका वर्चस्व और सम्मान स्थापित होगा।",
+      en: "The day is extremely excellent for the service sector and competitive exams. Your dominance and honor will be established at the workplace."
+    },
+    love: {
+      hi: "पारिवारिक विवादों से स्वयं को पूर्णतः दूर रखें। शांतिपूर्ण संवाद से संबंधों में पुनः आत्मीयता और विश्वास उत्पन्न होगा।",
+      en: "Keep yourself completely away from family disputes. Intimacy and trust will be regenerated in relationships through peaceful communication."
+    },
+    health: {
+      hi: "शारीरिक बल को बनाए रखने हेतु सात्विक आहार की अत्यंत आवश्यकता है। ऋतु परिवर्तन से उत्पन्न होने वाले विकारों से रक्षा करें।",
+      en: "A sattvic diet is highly needed to maintain physical strength. Protect against disorders arising from seasonal changes."
+    },
+    remedy: {
+      hi: "बजरंग बाण का पूर्ण श्रद्धा से पाठ करें और लाल पुष्प अर्पित करें।",
+      en: "Recite the Bajrang Baan with full devotion and offer red flowers."
+    },
+    luckyColor: { hi: "रक्त वर्ण (Blood Red)", en: "Blood Red" },
+    luckyNumber: "9",
+    luckyTime: { hi: "प्रातः 08:00 से 09:30", en: "08:00 AM to 09:30 AM" },
+    luckyDate: "November 9, 2026",
+    tagline: { hi: "अनुशासन और निरंतर परिश्रम से प्रत्येक बाधा को पार किया जा सकता है।", en: "Every obstacle can be overcome with discipline and continuous hard work." }
+  },
+
+  taurus: {
+    meta: {
       planetaryPosition: "चंद्रमा का पंचम विद्या और रचनात्मक भाव में शुभ गोचर",
       predictionPower: "98%",
       expertNote: { 
-        hi: "आज आपकी बौद्धिक क्षमता और रचनात्मक ऊर्जा सर्वोच्च स्तर पर रहेगी। नवीन ज्ञानार्जन हेतु यह दिन अत्यंत मंगलकारी है।", 
-        en: "Today your intellectual capacity and creative energy will be at their highest level. This day is highly auspicious for acquiring new knowledge." 
+        hi: "आज आपकी बौद्धिक क्षमता और रचनात्मक ऊर्जा सर्वोच्च स्तर पर रहेगी। ज्ञान और शिक्षा के क्षेत्र में शुभ समाचार प्राप्त होंगे।", 
+        en: "Today your intellectual capacity and creative energy will be at their highest level. Auspicious news will be received in the field of knowledge and education." 
       }
     },
     ratings: { health: 5, wealth: 4, love: 5, career: 5 },
@@ -26,17 +59,17 @@ window.dailyHoroscope = {
       en: "Mental agility and physical energy will be extremely excellent. Spending time in meditation and study will bring boundless peace."
     },
     remedy: {
-      hi: "भगवान सूर्य नारायण को अर्घ्य दें और आदित्य हृदय स्तोत्र का पाठ करें।",
-      en: "Offer Arghya to Lord Surya Narayan and recite the Aditya Hridaya Stotra."
+      hi: "माता सरस्वती की वंदना करें और उन्हें श्वेत पुष्प अर्पित करें।",
+      en: "Pray to Mother Saraswati and offer white flowers to Her."
     },
-    luckyColor: { hi: "लाल (Red)", en: "Red" },
-    luckyNumber: "9",
-    luckyTime: { hi: "प्रातः 08:00 से 09:30", en: "08:00 AM to 09:30 AM" },
-    luckyDate: "November 4, 2026",
+    luckyColor: { hi: "श्वेत (White)", en: "White" },
+    luckyNumber: "6",
+    luckyTime: { hi: "दोपहर 03:00 से 04:30", en: "03:00 PM to 04:30 PM" },
+    luckyDate: "November 9, 2026",
     tagline: { hi: "बौद्धिक स्पष्टता और रचनात्मकता ही जीवन का वास्तविक धन है।", en: "Intellectual clarity and creativity are the real wealth of life." }
   },
 
-  taurus: {
+  gemini: {
     meta: {
       planetaryPosition: "चंद्रमा का चतुर्थ सुख और माता भाव में मंगलकारी संचरण",
       predictionPower: "96%",
@@ -59,17 +92,17 @@ window.dailyHoroscope = {
       en: "Your health will remain completely favorable to you. Make adequate rest an essential part of your routine for physical and mental health."
     },
     remedy: {
-      hi: "माता लक्ष्मी की वंदना करें और उन्हें श्वेत पुष्प अर्पित करें।",
-      en: "Pray to Goddess Lakshmi and offer white flowers to Her."
+      hi: "भगवान शिव का जलाभिषेक करें और उन्हें ग्यारह बिल्वपत्र अर्पित करें।",
+      en: "Perform Jalabhishek of Lord Shiva and offer eleven Bilva leaves to Him."
     },
-    luckyColor: { hi: "श्वेत (White)", en: "White" },
-    luckyNumber: "6",
-    luckyTime: { hi: "दोपहर 03:00 से 04:30", en: "03:00 PM to 04:30 PM" },
-    luckyDate: "November 4, 2026",
+    luckyColor: { hi: "हरा (Green)", en: "Green" },
+    luckyNumber: "5",
+    luckyTime: { hi: "प्रातः 10:30 से 12:00", en: "10:30 AM to 12:00 PM" },
+    luckyDate: "November 9, 2026",
     tagline: { hi: "पारिवारिक सामंजस्य और अचल संपत्ति ही वास्तविक सुख का आधार हैं।", en: "Family harmony and real estate are the foundation of true happiness." }
   },
 
-  gemini: {
+  cancer: {
     meta: {
       planetaryPosition: "चंद्रमा का तृतीय पराक्रम और भ्रातृ भाव में ऊर्जावान गोचर",
       predictionPower: "97%",
@@ -95,14 +128,14 @@ window.dailyHoroscope = {
       hi: "भगवान श्री गणेश को दूर्वा अर्पित करें और ॐ गं गणपतये नमः का जप करें।",
       en: "Offer Durva to Lord Shri Ganesha and chant Om Gam Ganapataye Namah."
     },
-    luckyColor: { hi: "हरा (Green)", en: "Green" },
-    luckyNumber: "5",
-    luckyTime: { hi: "प्रातः 10:30 से 12:00", en: "10:30 AM to 12:00 PM" },
-    luckyDate: "November 4, 2026",
+    luckyColor: { hi: "रजत (Silver)", en: "Silver" },
+    luckyNumber: "2",
+    luckyTime: { hi: "प्रातः 09:30 से 11:00", en: "09:30 AM to 11:00 AM" },
+    luckyDate: "November 9, 2026",
     tagline: { hi: "उत्तम संवाद और असीम साहस ही विजय के प्रमुख अस्त्र हैं।", en: "Excellent communication and boundless courage are the main weapons of victory." }
   },
 
-  cancer: {
+  leo: {
     meta: {
       planetaryPosition: "चंद्रमा का द्वितीय धन और कुटुंब भाव में शुभ गोचर",
       predictionPower: "98%",
@@ -125,17 +158,17 @@ window.dailyHoroscope = {
       en: "Take special care of the health of the throat and eyes. Consume only a sattvic and easily digestible diet for excellent health."
     },
     remedy: {
-      hi: "भगवान शिव का जलाभिषेक करें और चंद्र देव का स्मरण करें।",
-      en: "Perform Jalabhishek of Lord Shiva and remember the Moon God."
+      hi: "भगवान सूर्य नारायण को अर्घ्य दें और आदित्य हृदय स्तोत्र का पाठ करें।",
+      en: "Offer Arghya to Lord Surya Narayan and recite the Aditya Hridaya Stotra."
     },
-    luckyColor: { hi: "रजत (Silver)", en: "Silver" },
-    luckyNumber: "2",
-    luckyTime: { hi: "प्रातः 09:30 से 11:00", en: "09:30 AM to 11:00 AM" },
-    luckyDate: "November 4, 2026",
+    luckyColor: { hi: "स्वर्णिम (Golden)", en: "Golden" },
+    luckyNumber: "1",
+    luckyTime: { hi: "दोपहर 12:00 से 01:30", en: "12:00 PM to 01:30 PM" },
+    luckyDate: "November 9, 2026",
     tagline: { hi: "मधुर वाणी और वैचारिक स्पष्टता ही धन प्राप्ति के सर्वोच्च साधन हैं।", en: "Sweet speech and ideological clarity are the supreme means of acquiring wealth." }
   },
 
-  leo: {
+  virgo: {
     meta: {
       planetaryPosition: "चंद्रमा का आपकी अपनी राशि (लग्न) में ओजस्वी प्रवेश",
       predictionPower: "98%",
@@ -158,17 +191,17 @@ window.dailyHoroscope = {
       en: "You will experience yourself completely energetic, agile, and mentally alert. Must practice Pranayama in the morning."
     },
     remedy: {
-      hi: "भगवान सूर्य नारायण को कुमकुम मिश्रित जल से अर्घ्य दें।",
-      en: "Offer Arghya with kumkum-mixed water to Lord Surya Narayan."
+      hi: "माता लक्ष्मी की वंदना करें और उन्हें श्वेत पुष्प अर्पित करें।",
+      en: "Pray to Goddess Lakshmi and offer white flowers to Her."
     },
-    luckyColor: { hi: "स्वर्णिम (Golden)", en: "Golden" },
-    luckyNumber: "1",
-    luckyTime: { hi: "दोपहर 12:00 से 01:30", en: "12:00 PM to 01:30 PM" },
-    luckyDate: "November 4, 2026",
+    luckyColor: { hi: "हल्का हरा (Light Green)", en: "Light Green" },
+    luckyNumber: "5",
+    luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
+    luckyDate: "November 9, 2026",
     tagline: { hi: "आत्मविश्वास और सकारात्मक आचरण ही सफलता के प्रबल आधार हैं।", en: "Self-confidence and positive conduct are the strong foundation of success." }
   },
 
-  virgo: {
+  libra: {
     meta: {
       planetaryPosition: "चंद्रमा का द्वादश व्यय भाव में आध्यात्मिक गोचर",
       predictionPower: "91%",
@@ -191,17 +224,17 @@ window.dailyHoroscope = {
       en: "Take refuge in yoga and meditation for mental peace and inner strength. Mild fatigue may be experienced due to incomplete sleep."
     },
     remedy: {
-      hi: "माता सरस्वती की वंदना करें और उन्हें श्वेत पुष्प अर्पित करें।",
-      en: "Pray to Mother Saraswati and offer white flowers to Her."
+      hi: "श्री सूक्त का पाठ करें और सुगंधित इत्र का प्रयोग करें।",
+      en: "Recite Shree Sukta and use fragrant perfume."
     },
-    luckyColor: { hi: "हल्का हरा (Light Green)", en: "Light Green" },
-    luckyNumber: "5",
-    luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
-    luckyDate: "November 4, 2026",
+    luckyColor: { hi: "गुलाबी (Pink)", en: "Pink" },
+    luckyNumber: "6",
+    luckyTime: { hi: "प्रातः 10:00 से 11:30", en: "10:00 AM to 11:30 AM" },
+    luckyDate: "November 9, 2026",
     tagline: { hi: "आंतरिक शांति ही जीवन का सबसे अमूल्य कोष है।", en: "Inner peace is the most invaluable treasury of life." }
   },
 
-  libra: {
+  scorpio: {
     meta: {
       planetaryPosition: "चंद्रमा का एकादश लाभ भाव में अत्यंत शुभ गोचर",
       predictionPower: "98%",
@@ -224,17 +257,17 @@ window.dailyHoroscope = {
       en: "You will experience yourself completely energetic and cheerful. Your health will remain extremely excellent and agile."
     },
     remedy: {
-      hi: "श्री सूक्त का पाठ करें और सुगंधित इत्र का प्रयोग करें।",
-      en: "Recite Shree Sukta and use fragrant perfume."
+      hi: "श्री हनुमान जी की स्तुति करें और उन्हें मिष्ठान्न अर्पित करें।",
+      en: "Praise Shri Hanuman Ji and offer sweets to Him."
     },
-    luckyColor: { hi: "गुलाबी (Pink)", en: "Pink" },
-    luckyNumber: "6",
-    luckyTime: { hi: "प्रातः 10:00 से 11:30", en: "10:00 AM to 11:30 AM" },
-    luckyDate: "November 4, 2026",
+    luckyColor: { hi: "रक्त वर्ण (Blood Red)", en: "Blood Red" },
+    luckyNumber: "9",
+    luckyTime: { hi: "प्रातः 07:00 से 08:30", en: "07:00 AM to 08:30 AM" },
+    luckyDate: "November 9, 2026",
     tagline: { hi: "श्रेष्ठ महत्वाकांक्षाएं और शुभ कर्म जीवन को ऊंचाइयों तक ले जाते हैं।", en: "Superior ambitions and auspicious deeds take life to the heights." }
   },
 
-  scorpio: {
+  sagittarius: {
     meta: {
       planetaryPosition: "चंद्रमा का दशम कर्म भाव में गौरवशाली संचरण",
       predictionPower: "97%",
@@ -257,17 +290,17 @@ window.dailyHoroscope = {
       en: "Must take out time for physical rest amidst the excess of work. Your health will remain completely favorable to you."
     },
     remedy: {
-      hi: "बजरंग बाण का पूर्ण श्रद्धा से पाठ करें और लाल पुष्प अर्पित करें।",
-      en: "Recite the Bajrang Baan with full devotion and offer red flowers."
+      hi: "भगवान श्री विष्णु को पीले पुष्प अर्पित करें और नारायण स्तोत्र का पाठ करें।",
+      en: "Offer yellow flowers to Lord Shri Vishnu and recite the Narayan Stotra."
     },
-    luckyColor: { hi: "रक्त वर्ण (Blood Red)", en: "Blood Red" },
-    luckyNumber: "9",
-    luckyTime: { hi: "प्रातः 07:00 से 08:30", en: "07:00 AM to 08:30 AM" },
-    luckyDate: "November 4, 2026",
+    luckyColor: { hi: "पीला (Yellow)", en: "Yellow" },
+    luckyNumber: "3",
+    luckyTime: { hi: "दोपहर 01:00 से 02:30", en: "01:00 PM to 02:30 PM" },
+    luckyDate: "November 9, 2026",
     tagline: { hi: "कर्मनिष्ठा और श्रेष्ठ नेतृत्व जीवन को सदैव प्रकाशित करते हैं।", en: "Devotion to work and superior leadership always illuminate life." }
   },
 
-  sagittarius: {
+  capricorn: {
     meta: {
       planetaryPosition: "चंद्रमा का नवम भाग्य और धर्म भाव में मंगलकारी गोचर",
       predictionPower: "95%",
@@ -290,17 +323,17 @@ window.dailyHoroscope = {
       en: "Your immunity will remain extremely strong with a sattvic diet and positive thoughts. The mind will remain completely calm."
     },
     remedy: {
-      hi: "भगवान श्री विष्णु को पीले पुष्प अर्पित करें और नारायण स्तोत्र का पाठ करें।",
-      en: "Offer yellow flowers to Lord Shri Vishnu and recite the Narayan Stotra."
+      hi: "शनिदेव की आराधना करें और तिल के तेल का दीपक प्रज्वलित करें।",
+      en: "Worship Lord Shani and light a sesame oil lamp."
     },
-    luckyColor: { hi: "पीला (Yellow)", en: "Yellow" },
-    luckyNumber: "3",
-    luckyTime: { hi: "दोपहर 01:00 से 02:30", en: "01:00 PM to 02:30 PM" },
-    luckyDate: "November 4, 2026",
+    luckyColor: { hi: "नीला (Blue)", en: "Blue" },
+    luckyNumber: "8",
+    luckyTime: { hi: "शाम 04:00 से 05:30", en: "04:00 PM to 05:30 PM" },
+    luckyDate: "November 9, 2026",
     tagline: { hi: "धर्म का आचरण ही श्रेष्ठ भाग्य का निर्माता है।", en: "The practice of righteousness is the creator of excellent destiny." }
   },
 
-  capricorn: {
+  aquarius: {
     meta: {
       planetaryPosition: "चंद्रमा का अष्टम भाव में शोधपरक संचरण",
       predictionPower: "90%",
@@ -323,17 +356,17 @@ window.dailyHoroscope = {
       en: "Be mindful of abdominal disorders. The practice of meditation is highly essential for mental peace. Take easily digestible food."
     },
     remedy: {
-      hi: "शनिदेव की आराधना करें और तिल के तेल का दीपक प्रज्वलित करें।",
-      en: "Worship Lord Shani and light a sesame oil lamp."
+      hi: "शिव पंचाक्षर मंत्र (ॐ नमः शिवाय) का निरंतर जप करें।",
+      en: "Continuously chant the Shiva Panchakshara Mantra (Om Namah Shivaya)."
     },
-    luckyColor: { hi: "नीला (Blue)", en: "Blue" },
-    luckyNumber: "8",
-    luckyTime: { hi: "शाम 04:00 से 05:30", en: "04:00 PM to 05:30 PM" },
-    luckyDate: "November 4, 2026",
+    luckyColor: { hi: "गहरा नीला (Dark Blue)", en: "Dark Blue" },
+    luckyNumber: "4",
+    luckyTime: { hi: "प्रातः 11:30 से 01:00", en: "11:30 AM to 01:00 PM" },
+    luckyDate: "November 9, 2026",
     tagline: { hi: "संयम और धैर्य ही सभी संकटों का अचूक निवारण करते हैं।", en: "Restraint and patience are the unfailing resolution to all crises." }
   },
 
-  aquarius: {
+  pisces: {
     meta: {
       planetaryPosition: "चंद्रमा का सप्तम जाया भाव में शुभ और फलदायी गोचर",
       predictionPower: "97%",
@@ -356,46 +389,13 @@ window.dailyHoroscope = {
       en: "Your health will be extremely excellent due to mental happiness and joy. Spending time in the proximity of nature will provide agility."
     },
     remedy: {
-      hi: "शिव पंचाक्षर मंत्र (ॐ नमः शिवाय) का निरंतर जप करें।",
-      en: "Continuously chant the Shiva Panchakshara Mantra (Om Namah Shivaya)."
-    },
-    luckyColor: { hi: "गहरा नीला (Dark Blue)", en: "Dark Blue" },
-    luckyNumber: "4",
-    luckyTime: { hi: "प्रातः 11:30 से 01:00", en: "11:30 AM to 01:00 PM" },
-    luckyDate: "November 4, 2026",
-    tagline: { hi: "आपसी विश्वास और सहयोग ही श्रेष्ठ संबंधों की नींव हैं।", en: "Mutual trust and cooperation are the foundation of superior relationships." }
-  },
-
-  pisces: {
-    meta: {
-      planetaryPosition: "चंद्रमा का षष्ठम रिपु भाव में पराक्रमी प्रवेश",
-      predictionPower: "96%",
-      expertNote: { 
-        hi: "आपके असीम साहस और धैर्य से आज सभी विरोधी स्वतः परास्त होंगे। विजयश्री आपके मार्ग को पूर्णतः प्रशस्त करेगी।", 
-        en: "With your boundless courage and patience, all opponents will automatically be defeated today. Victory will completely pave your path." 
-      }
-    },
-    ratings: { health: 4, wealth: 4, love: 3, career: 5 },
-    career: {
-      hi: "सेवा क्षेत्र (Service sector) और प्रतियोगी परीक्षाओं के लिए दिन अत्यंत श्रेष्ठ है। कार्यस्थल पर आपका वर्चस्व और सम्मान स्थापित होगा।",
-      en: "The day is extremely excellent for the service sector and competitive exams. Your dominance and honor will be established at the workplace."
-    },
-    love: {
-      hi: "पारिवारिक विवादों से स्वयं को पूर्णतः दूर रखें। शांतिपूर्ण संवाद से संबंधों में पुनः आत्मीयता और विश्वास उत्पन्न होगा।",
-      en: "Keep yourself completely away from family disputes. Intimacy and trust will be regenerated in relationships through peaceful communication."
-    },
-    health: {
-      hi: "शारीरिक बल को बनाए रखने हेतु सात्विक आहार की अत्यंत आवश्यकता है। ऋतु परिवर्तन से उत्पन्न होने वाले विकारों से रक्षा करें।",
-      en: "A sattvic diet is highly needed to maintain physical strength. Protect against disorders arising from seasonal changes."
-    },
-    remedy: {
       hi: "गुरुजनों का आशीर्वाद प्राप्त करें और गुरु मंत्र का जप करें।",
       en: "Seek the blessings of elders/teachers and chant the Guru mantra."
     },
     luckyColor: { hi: "हल्का पीला (Pale Yellow)", en: "Pale Yellow" },
     luckyNumber: "7",
     luckyTime: { hi: "दोपहर 02:00 से 03:30", en: "02:00 PM to 03:30 PM" },
-    luckyDate: "November 4, 2026",
-    tagline: { hi: "अनुशासन और निरंतर परिश्रम से प्रत्येक बाधा को पार किया जा सकता है।", en: "Every obstacle can be overcome with discipline and continuous hard work." }
+    luckyDate: "November 9, 2026",
+    tagline: { hi: "आपसी विश्वास और सहयोग ही श्रेष्ठ संबंधों की नींव हैं।", en: "Mutual trust and cooperation are the foundation of superior relationships." }
   }
 };
