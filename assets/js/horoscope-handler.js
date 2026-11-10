@@ -104,7 +104,7 @@ function loadHoroscope(rashiKey) {
     if (rashiTitle) {
         const names = {
             aries: { hi: "मेष", en: "Aries" }, taurus: { hi: "वृषभ", en: "Taurus" },
-            gemini: { hi: "मिथुन", en: "Gemini" }, cancer: { कर्क: "कर्क", en: "Cancer" },
+            gemini: { hi: "मिथुन", en: "Gemini" }, cancer: { hi: "कर्क", en: "Cancer" },
             leo: { hi: "सिंह", en: "Leo" }, virgo: { hi: "कन्या", en: "Virgo" },
             libra: { hi: "तुला", en: "Libra" }, scorpio: { hi: "वृश्चिक", en: "Scorpio" },
             sagittarius: { hi: "धनु", en: "Sagittarius" }, capricorn: { hi: "मकर", en: "Capricorn" },
