@@ -33,8 +33,8 @@ async function notifyViaTelegram(formData) {
     try {
         await fetchAndActivate(remoteConfig);
 
-        const token = getString(remoteConfig, 'TELEGRAM_BOT_TOKEN');
-        const chatId = getString(remoteConfig, 'TELEGRAM_CHAT_ID');
+        const token = getString(remoteConfig, 'TG_BOT_TOKEN);
+        const chatId = getString(remoteConfig, 'TG_CHAT_ID);
 
         if (!token || !chatId) {
             console.warn('Telegram credentials missing in Remote Config!');
