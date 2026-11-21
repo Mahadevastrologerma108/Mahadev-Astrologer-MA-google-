@@ -50,6 +50,13 @@
         .mantra-card h4 { color: var(--gold); font-family: 'Cinzel'; margin: 0 0 10px; font-size: 1.2rem; }
         .mantra-card p { color: #fff; font-size: 0.95rem; margin: 0; }
 
+        /* Loshu Grid Styles */
+        .loshu-container { margin-top: 30px; text-align: center; }
+        .loshu-grid { display: grid; grid-template-columns: repeat(3, 70px); grid-gap: 8px; justify-content: center; margin: 15px auto; }
+        .loshu-box { width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; background: rgba(245, 197, 66, 0.05); border: 2px solid rgba(245, 197, 66, 0.5); font-size: 1.5rem; font-weight: bold; font-family: 'Cinzel'; color: #fff; border-radius: 8px; transition: 0.3s; }
+        .loshu-box:hover { background: rgba(245, 197, 66, 0.2); border-color: var(--gold); }
+        .loshu-box.empty { color: #444; border-style: dashed; }
+
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 600px) { .calc-container { margin-top: 100px; padding: 20px; } .number-circles { gap: 15px; } .number-match-box { flex-direction: column; gap: 15px; text-align: center; } }
     </style>
@@ -92,6 +99,25 @@
                 <div>
                     <span style="color: #aaa; font-size: 0.85rem; display: block;" data-key="ln_avoid_lbl">❌ Avoid Numbers</span>
                     <span class="badge-avoid" id="avoidNumRes">-</span>
+                </div>
+            </div>
+
+            <!-- Loshu Grid HTML -->
+            <div class="loshu-container">
+                <h3 style="color: var(--gold); font-family: 'Cinzel'; font-size: 1.2rem; margin-bottom: 10px;" data-key="ln_loshu_title">Loshu Grid</h3>
+                <div class="loshu-grid">
+                    <!-- Row 1 -->
+                    <div class="loshu-box" id="loshu-4"></div>
+                    <div class="loshu-box" id="loshu-9"></div>
+                    <div class="loshu-box" id="loshu-2"></div>
+                    <!-- Row 2 -->
+                    <div class="loshu-box" id="loshu-3"></div>
+                    <div class="loshu-box" id="loshu-5"></div>
+                    <div class="loshu-box" id="loshu-7"></div>
+                    <!-- Row 3 -->
+                    <div class="loshu-box" id="loshu-8"></div>
+                    <div class="loshu-box" id="loshu-1"></div>
+                    <div class="loshu-box" id="loshu-6"></div>
                 </div>
             </div>
 
@@ -215,7 +241,6 @@
 
             const data = numberData[finalMoolank];
             
-            // 🔱 Changed Default to 'en' for AdSense Crawler
             let currentLang = localStorage.getItem('selectedLang') || 'en';
             let langData = data[currentLang] || data['en'];
             
@@ -227,6 +252,29 @@
             document.getElementById('natureRes').innerText = langData.n;
             document.getElementById('colorRes').innerText = langData.c;
             document.getElementById('dayRes').innerText = langData.d;
+
+            // --- LOSHU GRID LOGIC ---
+            const loshuMap = { 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '' };
+            const dobDigits = dob.replace(/-/g, '').split('');
+            const allDigits = [...dobDigits, String(finalMoolank), String(finalBhagyank)];
+
+            allDigits.forEach(digit => {
+                if (digit !== '0' && loshuMap[digit] !== undefined) {
+                    loshuMap[digit] += digit; 
+                }
+            });
+
+            for (let i = 1; i <= 9; i++) {
+                const box = document.getElementById(`loshu-${i}`);
+                if (loshuMap[i]) {
+                    box.innerText = loshuMap[i];
+                    box.classList.remove('empty');
+                } else {
+                    box.innerText = '-';
+                    box.classList.add('empty');
+                }
+            }
+            // --- END LOSHU GRID LOGIC ---
 
             const resultSection = document.getElementById('result-section');
             resultSection.style.display = 'block';
