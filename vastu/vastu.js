@@ -27,21 +27,14 @@ function sanitizeInput(value) {
 }
 
 /* =========================================================
-   🔱 2. TELEGRAM ENGINE
+   🔱 2. TELEGRAM ENGINE (SECURE WEBHOOK)
 ========================================================= */
 async function notifyViaTelegram(formData) {
     try {
-        await fetchAndActivate(remoteConfig);
+        // ⚠️ Google Apps Script se copy kiya hua Web App URL yahan daalein
+        const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyooRxDxM7msjTpQEc8w5aS-0FWYCsxIlIxkMxJuKhlryex4j6037U5FRNm0bJ-wbkRbw/exec";
 
-        const token = getString(remoteConfig, 'TG_BOT_TOKEN);
-        const chatId = getString(remoteConfig, 'TG_CHAT_ID);
-
-        if (!token || !chatId) {
-            console.warn('Telegram credentials missing in Remote Config!');
-            return;
-        }
-
-        const message = 
+        const messageText = 
 `🔱 New Vastu Inquiry 🔱
 
 👤 Name: ${formData.name}
@@ -53,16 +46,17 @@ ${formData.issue}
 
 📅 ${new Date().toLocaleString('en-IN')}`;
 
-        const telegramURL = `https://api.telegram.org/bot${token}/sendMessage`;
-
-        await fetch(telegramURL, {
+        await fetch(WEBHOOK_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: chatId, text: message })
+            mode: 'no-cors', // CORS error se bachne ke liye
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message: messageText })
         });
 
     } catch (error) {
-        console.error('Telegram Error:', error);
+        console.error('Webhook Error:', error);
     }
 }
 
