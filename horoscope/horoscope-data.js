@@ -1,401 +1,401 @@
 window.dailyHoroscope = {
-  lastUpdated: "2026-11-25T06:00:00Z",
+  lastUpdated: "2026-11-26T06:00:00Z",
   source: "MAHADEV ASTROLOGER MA - Divine Wisdom Lab",
   methodology: "Vedic Astrology Planetary Transits & Daily Lunar Sign Shift Analysis",
 
   aries: {
     meta: {
-      planetaryPosition: "चंद्रमा का चतुर्थ सुख और माता भाव में मंगलकारी संचरण",
+      planetaryPosition: "चंद्रमा का तृतीय पराक्रम भाव में मिथुन राशि में गोचर",
       predictionPower: "96%",
       expertNote: { 
-        hi: "आज का दिन अचल संपत्ति और घरेलू शांति से जुड़े कार्यों में पूर्ण सफलता का सूचक है। आपका धैर्य सर्वत्र लाभ प्रदान करेगा।", 
-        en: "Today is an indicator of complete success in works related to real estate and domestic peace. Your patience will provide benefits everywhere." 
-      }
-    },
-    ratings: { health: 5, wealth: 4, love: 5, career: 4 },
-    career: {
-      hi: "भूमि, भवन और वाहन से संबंधित व्यवसाय में श्रेष्ठ आर्थिक लाभ प्राप्त होगा। कार्यस्थल पर आपको पूर्ण स्थिरता का अनुभव होगा।",
-      en: "Excellent financial benefits will be obtained in businesses related to land, building, and vehicles. You will experience complete stability at the workplace."
-    },
-    love: {
-      hi: "माता के पूर्ण आशीर्वाद से मन में असीम शांति का संचार होगा। परिवार में उत्सव और आनंद का मंगलमय वातावरण निर्मित होगा।",
-      en: "Boundless peace will flow in the mind with the full blessings of the mother. An auspicious atmosphere of celebration and joy will be created in the family."
-    },
-    health: {
-      hi: "आपका स्वास्थ्य पूर्णतः आपके अनुकूल रहेगा। शारीरिक और मानसिक आरोग्य हेतु पर्याप्त विश्राम को अपनी दिनचर्या का आवश्यक अंग बनाएं।",
-      en: "Your health will remain completely favorable to you. Make adequate rest an essential part of your routine for physical and mental health."
-    },
-    remedy: {
-      hi: "भगवान शिव का जलाभिषेक करें और उन्हें ग्यारह बिल्वपत्र अर्पित करें।",
-      en: "Perform Jalabhishek of Lord Shiva and offer eleven Bilva leaves to Him."
-    },
-    luckyColor: { hi: "लाल (Red)", en: "Red" },
-    luckyNumber: "9",
-    luckyTime: { hi: "दोपहर 03:00 से 04:30", en: "03:00 PM to 04:30 PM" },
-    luckyDate: "November 25, 2026",
-    tagline: { hi: "पारिवारिक सामंजस्य और अचल संपत्ति ही वास्तविक सुख का आधार हैं।", en: "Family harmony and real estate are the foundation of true happiness." }
-  },
-
-  taurus: {
-    meta: {
-      planetaryPosition: "चंद्रमा का तृतीय पराक्रम और भ्रातृ भाव में ऊर्जावान गोचर",
-      predictionPower: "97%",
-      expertNote: { 
-        hi: "आपके असीम पराक्रम और उत्तम संवाद कौशल से आज सभी कार्य सफलतापूर्वक सिद्ध होंगे। आपके निर्णय सकारात्मक प्रभाव डालेंगे।", 
-        en: "With your boundless courage and excellent communication skills, all tasks will be successfully accomplished today. Your decisions will make a positive impact." 
+        hi: "चंद्रमा का तृतीय भाव (पराक्रम) में गोचर आपके आत्मबल और साहस में अपार वृद्धि करेगा। आज आपके द्वारा किए गए सभी उत्कृष्ट प्रयास पूर्णतः फलीभूत होंगे। संचार कौशल से सफलता के नवीन मार्ग प्रशस्त होंगे।", 
+        en: "The transit of the Moon in the third house of valor will immensely increase your self-confidence and courage. All the excellent efforts made by you today will definitely bear fruit. New paths to success will be paved through your enhanced communication skills." 
       }
     },
     ratings: { health: 5, wealth: 4, love: 4, career: 5 },
     career: {
-      hi: "विपणन और संचार क्षेत्र से जुड़े जातकों को आज विशेष ख्याति मिलेगी। नवीन संपर्क आपके लिए अत्यंत लाभकारी सिद्ध होंगे।",
-      en: "Natives associated with marketing and communication will receive special fame today. New contacts will prove extremely beneficial for you."
+      hi: "कार्यक्षेत्र में सहकर्मियों और उच्चाधिकारियों का पूर्ण सहयोग प्राप्त होगा। यदि आप किसी नवीन परियोजना का शुभारंभ करना चाहते हैं, तो यह समय अत्यंत अनुकूल है। आपकी बौद्धिक क्षमता से आपको सर्वत्र सम्मान मिलेगा।",
+      en: "Full support of colleagues and higher officials will be obtained in the workplace. If you wish to launch a new project, this time is highly favorable for you. You will receive universal respect due to your exceptional intellectual capacity."
     },
     love: {
-      hi: "भ्राता-भगिनी का पूर्ण स्नेह और सहयोग प्राप्त होगा। प्रियजनों के साथ मधुर संवाद से आपके संबंधों में प्रगाढ़ता आएगी।",
-      en: "Full affection and cooperation of siblings will be received. Sweet communication with loved ones will bring depth to your relationships."
+      hi: "भ्राता और भगिनी के साथ आपके संबंध अत्यंत प्रगाढ़ और स्नेहपूर्ण बनेंगे। दांपत्य जीवन में अपार आत्मीयता और वैचारिक सामंजस्य स्थापित होगा। परिजनों के साथ मधुर संवाद से मन पूर्णतः प्रसन्न रहेगा।",
+      en: "Your relations with brothers and sisters will become highly profound and affectionate. Immense intimacy and ideological harmony will be established in married life. The mind will remain completely joyful through sweet dialogues with family members."
     },
     health: {
-      hi: "शारीरिक बल और उत्साह अत्यंत उच्च स्तर पर रहेगा। अपनी अपार ऊर्जा को आज किसी सकारात्मक और रचनात्मक दिशा में लगाएं।",
-      en: "Physical strength and enthusiasm will be at an extremely high level. Direct your immense energy into some positive and creative direction today."
+      hi: "आपका शारीरिक और मानसिक स्वास्थ्य पूर्णतः उत्तम अवस्था में रहेगा। अपनी असीम ऊर्जा को सकारात्मक दिशा में संरेखित करने हेतु योगाभ्यास अवश्य करें। ऋतु परिवर्तन के प्रति थोड़ी सजगता बनाए रखना आपके लिए श्रेष्ठ रहेगा।",
+      en: "Your physical and mental health will remain in a completely excellent state. You must practice yoga to align your boundless energy in a positive direction. It will be superior for you to maintain slight vigilance regarding seasonal changes."
     },
     remedy: {
-      hi: "माता लक्ष्मी की वंदना करें और उन्हें कमल पुष्प अर्पित करें।",
-      en: "Pray to Goddess Lakshmi and offer lotus flowers to Her."
+      hi: "भगवान श्री गणेश की आराधना करें और उन्हें मोदक तथा दूर्वा अर्पित करें।",
+      en: "Worship Lord Shri Ganesha and offer Modak and Durva grass to Him."
+    },
+    luckyColor: { hi: "लाल (Red)", en: "Red" },
+    luckyNumber: "9",
+    luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
+    luckyDate: "November 26, 2026",
+    tagline: { hi: "अडिग आत्मविश्वास और मधुर संवाद ही सर्वोच्च सफलता की कुंजी हैं।", en: "Unwavering self-confidence and sweet communication are the keys to supreme success." }
+  },
+
+  taurus: {
+    meta: {
+      planetaryPosition: "चंद्रमा का द्वितीय धन भाव में संचार",
+      predictionPower: "97%",
+      expertNote: { 
+        hi: "द्वितीय धन भाव में चंद्रमा का शुभ गोचर आपकी आर्थिक स्थिति को अत्यंत सुदृढ़ करेगा। पैतृक संपत्ति अथवा पूर्व निवेश से उत्कृष्ट लाभ प्राप्ति के प्रबल योग निर्मित हो रहे हैं। आपकी मधुर वाणी आज सबको आकर्षित करेगी।", 
+        en: "The auspicious transit of the Moon in the second house of wealth will highly strengthen your financial position. Strong yogas for excellent profit from ancestral property or past investments are being formed. Your sweet speech will attract everyone today." 
+      }
+    },
+    ratings: { health: 4, wealth: 5, love: 4, career: 4 },
+    career: {
+      hi: "व्यावसायिक क्षेत्र में कोई अत्यंत महत्वपूर्ण और लाभकारी अनुबंध आज संपन्न हो सकता है। आर्थिक निवेश संबंधी निर्णयों में आपको अभूतपूर्व सफलता प्राप्त होगी। आपके संचित धन में निरंतर वृद्धि होना सुनिश्चित है।",
+      en: "A highly important and profitable contract may be concluded in the business sector today. You will achieve unprecedented success in decisions regarding financial investments. Continuous growth in your accumulated wealth is absolutely certain."
+    },
+    love: {
+      hi: "कुटुंब के सदस्यों के साथ आप अत्यंत उल्लासपूर्ण और सुखद समय व्यतीत करेंगे। किसी मांगलिक आयोजन की रूपरेखा तैयार करने हेतु यह दिवस अति उत्तम है। पारिवारिक एकता और स्नेह से आपको असीम मानसिक शांति प्राप्त होगी।",
+      en: "You will spend a highly joyful and pleasant time with your extended family members. This day is exceptionally excellent for preparing the outline of an auspicious event. You will attain boundless mental peace from family unity and affection."
+    },
+    health: {
+      hi: "उत्तम स्वास्थ्य हेतु आपको सात्विक और सुपाच्य आहार ही ग्रहण करना चाहिए। मुख और कंठ से संबंधित किसी भी विकार के प्रति पूर्ण सजग रहें। शारीरिक ऊर्जा बनाए रखने के लिए पर्याप्त जल का सेवन अवश्य करें।",
+      en: "For excellent health, you should consume only a sattvic and easily digestible diet. Remain fully vigilant regarding any disorder related to the mouth and throat. Ensure consumption of adequate water to maintain physical energy."
+    },
+    remedy: {
+      hi: "माता लक्ष्मी की वंदना करें और उन्हें कमल का पुष्प तथा इत्र अर्पित करें।",
+      en: "Pray to Goddess Lakshmi and offer a lotus flower and perfume to Her."
     },
     luckyColor: { hi: "श्वेत (White)", en: "White" },
     luckyNumber: "6",
-    luckyTime: { hi: "प्रातः 10:30 से 12:00", en: "10:30 AM to 12:00 PM" },
-    luckyDate: "November 25, 2026",
-    tagline: { hi: "उत्तम संवाद और असीम साहस ही विजय के प्रमुख अस्त्र हैं।", en: "Excellent communication and boundless courage are the main weapons of victory." }
+    luckyTime: { hi: "प्रातः 10:00 से 11:30", en: "10:00 AM to 11:30 AM" },
+    luckyDate: "November 26, 2026",
+    tagline: { hi: "धन का सदुपयोग और पारिवारिक एकता ही वास्तविक सुख का आधार है।", en: "Proper utilization of wealth and family unity is the foundation of true happiness." }
   },
 
   gemini: {
     meta: {
-      planetaryPosition: "चंद्रमा का द्वितीय धन और कुटुंब भाव में शुभ गोचर",
+      planetaryPosition: "चंद्रमा का आपकी अपनी राशि (लग्न) में ओजस्वी प्रवेश",
       predictionPower: "98%",
       expertNote: { 
-        hi: "आज धन संचय और पारिवारिक सुख-समृद्धि के अत्यंत शुभ योग हैं। आपकी मधुर वाणी सभी कार्यों को सरलता से सिद्ध करेगी।", 
-        en: "Today there are highly auspicious yogas for wealth accumulation and family prosperity. Your sweet speech will accomplish all tasks easily." 
+        hi: "आपकी अपनी राशि अर्थात लग्न में चंद्रमा का प्रवेश आपके व्यक्तित्व को अत्यंत कांतिमान और ओजस्वी बनाएगा। आज आपके आत्मविश्वास और बौद्धिक क्षमता में अभूतपूर्व वृद्धि होगी। नवीन कार्यों के शुभारंभ के लिए यह दिवस सर्वोत्तम है।", 
+        en: "The entry of the Moon into your own zodiac sign (Lagna) will make your personality extremely radiant and vigorous. Today there will be an unprecedented increase in your self-confidence and intellectual capacity. This day is best for launching new endeavors." 
       }
     },
-    ratings: { health: 4, wealth: 5, love: 5, career: 4 },
+    ratings: { health: 5, wealth: 4, love: 5, career: 5 },
     career: {
-      hi: "आर्थिक निवेश से आपको अभूतपूर्व लाभ प्राप्त होगा। पैतृक व्यवसाय में किए गए सकारात्मक परिवर्तन अत्यंत लाभकारी सिद्ध होंगे।",
-      en: "You will achieve unprecedented profit from financial investment. Positive changes made in the ancestral business will prove highly beneficial."
+      hi: "रचनात्मक और कलात्मक कार्यों में आपको सर्वोत्कृष्ट परिणाम और ख्याति प्राप्त होगी। कार्यस्थल पर आपके नवीन और सकारात्मक विचारों का पूर्ण सम्मान किया जाएगा। व्यावसायिक यात्राएं आपके लिए अत्यंत सफल सिद्ध होंगी।",
+      en: "You will achieve the most outstanding results and fame in creative and artistic works. Your innovative and positive ideas will be fully respected at the workplace. Business travels will prove to be highly successful for you."
     },
     love: {
-      hi: "कुटुंब में किसी मांगलिक आयोजन की रूपरेखा तैयार हो सकती है। परिजनों के साथ आपका सामंजस्य अत्यंत मधुर और शांतिपूर्ण रहेगा।",
-      en: "The outline of an auspicious event may be prepared in the extended family. Your harmony with family members will remain extremely sweet and peaceful."
+      hi: "जीवनसाथी के साथ आपके संबंधों में अपार मधुरता और प्रगाढ़ता का संचार होगा। अविवाहित जातकों को सर्वगुण संपन्न जीवनसाथी का प्रस्ताव प्राप्त हो सकता है। प्रेम संबंधों में पूर्ण पारदर्शी और निष्ठावान आचरण रखें।",
+      en: "Immense sweetness and profundity will flow into your relationships with your spouse. Unmarried natives may receive a proposal for a virtuous life partner. Maintain completely transparent and loyal conduct in romantic relationships."
     },
     health: {
-      hi: "कंठ और नेत्रों के स्वास्थ्य का विशेष ध्यान रखें। उत्तम आरोग्य के लिए सात्विक और सुपाच्य आहार ही ग्रहण करें।",
-      en: "Take special care of the health of the throat and eyes. Consume only a sattvic and easily digestible diet for excellent health."
+      hi: "आप शारीरिक रूप से पूर्णतः स्फूर्तिवान और मानसिक रूप से उल्लासपूर्ण अनुभव करेंगे। उत्तम आरोग्य को स्थिर रखने हेतु प्रातःकाल भ्रमण को अपनी दिनचर्या में सम्मिलित करें। प्रकृति का सानिध्य आपको नवजीवन प्रदान करेगा।",
+      en: "You will experience yourself as physically fully agile and mentally joyful. Include a morning walk in your daily routine to stabilize excellent health. The proximity to nature will provide you with new vitality."
     },
     remedy: {
-      hi: "भगवान श्री गणेश को दूर्वा अर्पित करें और ॐ गं गणपतये नमः का जप करें।",
-      en: "Offer Durva to Lord Shri Ganesha and chant Om Gam Ganapataye Namah."
+      hi: "भगवान श्री विष्णु की आराधना करें और ॐ नमो भगवते वासुदेवाय का जप करें।",
+      en: "Worship Lord Shri Vishnu and chant Om Namo Bhagavate Vasudevaya."
     },
     luckyColor: { hi: "हरा (Green)", en: "Green" },
     luckyNumber: "5",
-    luckyTime: { hi: "प्रातः 09:30 से 11:00", en: "09:30 AM to 11:00 AM" },
-    luckyDate: "November 25, 2026",
-    tagline: { hi: "मधुर वाणी और वैचारिक स्पष्टता ही धन प्राप्ति के सर्वोच्च साधन हैं।", en: "Sweet speech and ideological clarity are the supreme means of acquiring wealth." }
+    luckyTime: { hi: "प्रातः 08:30 से 10:00", en: "08:30 AM to 10:00 AM" },
+    luckyDate: "November 26, 2026",
+    tagline: { hi: "सकारात्मक विचार और उत्कृष्ट कर्म ही उज्ज्वल भविष्य का निर्माण करते हैं।", en: "Positive thoughts and excellent deeds create a bright future." }
   },
 
   cancer: {
     meta: {
-      planetaryPosition: "चंद्रमा का आपकी अपनी राशि (लग्न) में ओजस्वी प्रवेश",
-      predictionPower: "98%",
+      planetaryPosition: "चंद्रमा का द्वादश व्यय भाव में आध्यात्मिक गोचर",
+      predictionPower: "92%",
       expertNote: { 
-        hi: "आज आपका व्यक्तित्व अत्यंत ओजस्वी और प्रभावशाली रहेगा। नवीन कार्यों के शुभारंभ हेतु यह दिन सर्वथा अनुकूल और मंगलकारी है।", 
-        en: "Today your personality will be extremely radiant and influential. This day is absolutely favorable and auspicious for launching new tasks." 
+        hi: "द्वादश व्यय भाव में चंद्रमा का गोचर आपको आध्यात्मिक चिंतन और आत्ममंथन की ओर प्रेरित करेगा। आज आपको अनावश्यक आर्थिक व्यय पर पूर्ण नियंत्रण स्थापित करना होगा। एकांतवास आपको असीम मानसिक शांति प्रदान करेगा।", 
+        en: "The transit of the Moon in the twelfth house of expenditure will inspire you towards spiritual contemplation and introspection. Today you must establish complete control over unnecessary financial expenses. Solitude will provide you with boundless mental peace." 
       }
     },
-    ratings: { health: 5, wealth: 4, love: 5, career: 5 },
+    ratings: { health: 3, wealth: 3, love: 4, career: 4 },
     career: {
-      hi: "आपकी कुशल नेतृत्व क्षमता कार्यस्थल पर चमत्कारिक परिणाम लाएगी। पदोन्नति और नवीन दायित्व प्राप्त होने के प्रबल योग निर्मित हो रहे हैं।",
-      en: "Your efficient leadership ability will bring miraculous results at the workplace. Strong yogas for promotion and receiving new responsibilities are being formed."
+      hi: "दूरस्थ क्षेत्रों अथवा विदेशी संस्थाओं से संबंधित कार्यों में आपको विशेष लाभ प्राप्त होने की संभावना है। किसी भी नवीन आर्थिक निवेश से पूर्व अत्यंत सतर्कता बरतें। वरिष्ठ जनों से गहन विचार-विमर्श करना सर्वथा उचित रहेगा।",
+      en: "You are likely to attain special benefits in works related to remote areas or foreign institutions. Exercise extreme caution before making any new financial investments. It will be entirely appropriate to consult deeply with seniors."
     },
     love: {
-      hi: "आपका सकारात्मक दृष्टिकोण दांपत्य जीवन में अपार स्नेह और आत्मीयता का संचार करेगा। प्रियजनों का पूर्ण समर्थन प्राप्त होगा।",
-      en: "Your positive attitude will infuse immense affection and intimacy in married life. Full support of loved ones will be received."
+      hi: "दांपत्य जीवन में उत्पन्न होने वाले किसी भी वैचारिक मतभेद को मधुर संवाद द्वारा सुलझाएं। परिवार के सदस्यों की भावनाओं और विचारों का पूर्ण सम्मान करें। धैर्य और संयम से ही संबंधों में पुनः प्रगाढ़ता आएगी।",
+      en: "Resolve any ideological differences arising in married life through sweet dialogue. Fully respect the feelings and thoughts of family members. Profundity in relationships will return only through patience and self-restraint."
     },
     health: {
-      hi: "आप स्वयं को पूर्णतः ऊर्जावान, स्फूर्तिवान और मानसिक रूप से सतर्क अनुभव करेंगे। प्रातःकाल प्राणायाम का अभ्यास अवश्य करें।",
-      en: "You will experience yourself completely energetic, agile, and mentally alert. Must practice Pranayama in the morning."
+      hi: "निद्रा पूर्ण न होने के कारण आपको हल्की शारीरिक थकान और मानसिक तनाव का अनुभव हो सकता है। आंतरिक शांति और ऊर्जा संचय हेतु ध्यान और योग का आश्रय लें। सात्विक जीवनशैली अपनाना आपके लिए अत्यंत लाभकारी होगा।",
+      en: "You may experience mild physical fatigue and mental stress due to incomplete sleep. Take refuge in meditation and yoga for inner peace and energy conservation. Adopting a sattvic lifestyle will be highly beneficial for you."
     },
     remedy: {
-      hi: "भगवान शिव का जलाभिषेक करें और चंद्र देव का स्मरण करें।",
-      en: "Perform Jalabhishek of Lord Shiva and remember the Moon God."
+      hi: "भगवान शिव का रुद्राभिषेक करें और उन्हें श्वेत चंदन अर्पित करें।",
+      en: "Perform Rudrabhishek of Lord Shiva and offer white sandalwood to Him."
     },
     luckyColor: { hi: "रजत (Silver)", en: "Silver" },
     luckyNumber: "2",
-    luckyTime: { hi: "दोपहर 12:00 से 01:30", en: "12:00 PM to 01:30 PM" },
-    luckyDate: "November 25, 2026",
-    tagline: { hi: "आत्मविश्वास और सकारात्मक आचरण ही सफलता के प्रबल आधार हैं।", en: "Self-confidence and positive conduct are the strong foundation of success." }
+    luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
+    luckyDate: "November 26, 2026",
+    tagline: { hi: "धैर्य, संयम और ईश्वरीय भक्ति ही प्रत्येक संकट का अचूक समाधान हैं।", en: "Patience, restraint, and devotion to God are the unfailing solutions to every crisis." }
   },
 
   leo: {
     meta: {
-      planetaryPosition: "चंद्रमा का द्वादश व्यय भाव में आध्यात्मिक गोचर",
-      predictionPower: "91%",
+      planetaryPosition: "चंद्रमा का एकादश लाभ भाव में मंगलकारी गोचर",
+      predictionPower: "96%",
       expertNote: { 
-        hi: "आज का दिन आध्यात्मिक आत्ममंथन और एकांत चिंतन के लिए अत्यंत उपयुक्त है। अनावश्यक व्यय पर पूर्ण नियंत्रण रखना आवश्यक है।", 
-        en: "Today is highly suitable for spiritual introspection and solitary contemplation. It is necessary to maintain complete control over unnecessary expenses." 
-      }
-    },
-    ratings: { health: 3, wealth: 3, love: 4, career: 4 },
-    career: {
-      hi: "दूरस्थ क्षेत्रों और विदेशी संस्थाओं से संबंधित कार्यों में लाभ के योग हैं। आर्थिक मामलों और निवेश में पूर्ण सावधानी तथा सतर्कता बरतें।",
-      en: "There are yogas for profit in works related to remote areas and foreign institutions. Exercise complete caution and vigilance in financial matters and investments."
-    },
-    love: {
-      hi: "जीवनसाथी के साथ एकांत में समय व्यतीत करने से वैचारिक सामंजस्य स्थापित होगा। पारिवारिक विवादों से स्वयं को दूर रखें।",
-      en: "Ideological harmony will be established by spending time in solitude with the spouse. Keep yourself away from family disputes."
-    },
-    health: {
-      hi: "मानसिक शांति और आंतरिक बल हेतु योग तथा ध्यान का आश्रय लें। निद्रा पूर्ण न होने के कारण हल्की थकान का अनुभव हो सकता है।",
-      en: "Take refuge in yoga and meditation for mental peace and inner strength. Mild fatigue may be experienced due to incomplete sleep."
-    },
-    remedy: {
-      hi: "भगवान सूर्य नारायण को अर्घ्य दें और आदित्य हृदय स्तोत्र का पाठ करें।",
-      en: "Offer Arghya to Lord Surya Narayan and recite the Aditya Hridaya Stotra."
-    },
-    luckyColor: { hi: "स्वर्णिम (Golden)", en: "Golden" },
-    luckyNumber: "1",
-    luckyTime: { hi: "शाम 05:00 से 06:30", en: "05:00 PM to 06:30 PM" },
-    luckyDate: "November 25, 2026",
-    tagline: { hi: "आंतरिक शांति ही जीवन का सबसे अमूल्य कोष है।", en: "Inner peace is the most invaluable treasury of life." }
-  },
-
-  virgo: {
-    meta: {
-      planetaryPosition: "चंद्रमा का एकादश लाभ भाव में अत्यंत शुभ गोचर",
-      predictionPower: "98%",
-      expertNote: { 
-        hi: "आय के नवीन स्रोत प्राप्त होंगे। आज आपकी सभी चिरकालिक महत्वाकांक्षाएं पूर्ण होने के प्रबल योग हैं।", 
-        en: "New sources of income will be obtained. There are strong yogas for all your long-standing ambitions to be fulfilled today." 
-      }
-    },
-    ratings: { health: 5, wealth: 5, love: 5, career: 5 },
-    career: {
-      hi: "मित्रों और वरिष्ठ अधिकारियों का पूर्ण सहयोग प्राप्त होगा। कार्यक्षेत्र में आपकी सफलता पूर्णतः सुनिश्चित और गौरवशाली है।",
-      en: "Full support of friends and senior officials will be obtained. Your success in the workspace is completely certain and glorious."
-    },
-    love: {
-      hi: "सामाजिक समारोहों में भाग लेने से आपका सम्मान बढ़ेगा। परिजनों और मित्रों के साथ अपार उल्लास का वातावरण रहेगा।",
-      en: "Your honor will increase by participating in social gatherings. There will be an atmosphere of immense joy with family members and friends."
-    },
-    health: {
-      hi: "आप स्वयं को पूर्णतः ऊर्जावान और प्रफुल्लित अनुभव करेंगे। आपका आरोग्य अत्यंत उत्तम और स्फूर्तिदायक रहेगा।",
-      en: "You will experience yourself completely energetic and cheerful. Your health will remain extremely excellent and agile."
-    },
-    remedy: {
-      hi: "माता सरस्वती की वंदना करें और उन्हें श्वेत पुष्प अर्पित करें।",
-      en: "Pray to Mother Saraswati and offer white flowers to Her."
-    },
-    luckyColor: { hi: "हल्का हरा (Light Green)", en: "Light Green" },
-    luckyNumber: "5",
-    luckyTime: { hi: "प्रातः 10:00 से 11:30", en: "10:00 AM to 11:30 AM" },
-    luckyDate: "November 25, 2026",
-    tagline: { hi: "श्रेष्ठ महत्वाकांक्षाएं और शुभ कर्म जीवन को ऊंचाइयों तक ले जाते हैं।", en: "Superior ambitions and auspicious deeds take life to the heights." }
-  },
-
-  libra: {
-    meta: {
-      planetaryPosition: "चंद्रमा का दशम कर्म भाव में गौरवशाली संचरण",
-      predictionPower: "97%",
-      expertNote: { 
-        hi: "कार्यक्षेत्र में आज आपको अपार मान-सम्मान और सामाजिक प्रतिष्ठा प्राप्त होगी। आपका कर्मठ स्वभाव सभी को सकारात्मक रूप से प्रेरित करेगा।", 
-        en: "Today you will receive immense honor and social prestige in the workspace. Your diligent nature will positively inspire everyone." 
+        hi: "एकादश लाभ भाव में चंद्रमा का मंगलकारी गोचर आय के अनेक नवीन स्रोत उत्पन्न करेगा। आपके अग्रज (बड़े भाई-बहन) का सानिध्य और मार्गदर्शन आपके लिए अत्यंत लाभकारी सिद्ध होगा। आज आपकी सभी चिरकालिक महत्वाकांक्षाएं पूर्ण होंगी।", 
+        en: "The auspicious transit of the Moon in the eleventh house of profit will generate many new sources of income. The company and guidance of your elder siblings will prove highly beneficial for you. Today all your long-standing ambitions will be fulfilled." 
       }
     },
     ratings: { health: 4, wealth: 5, love: 4, career: 5 },
     career: {
-      hi: "आपकी प्रशासनिक क्षमता और प्रबंधन कौशल की सर्वत्र प्रशंसा होगी। नवीन व्यावसायिक परियोजनाओं का शुभारंभ करने के लिए यह उत्तम समय है।",
-      en: "Your administrative capacity and management skills will be praised everywhere. This is an excellent time to launch new business projects."
+      hi: "पूर्व में किए गए आर्थिक निवेश आज आपको सर्वोत्कृष्ट फल और धन प्रदान करेंगे। कार्यक्षेत्र में आपके उच्चाधिकारी आपकी कार्यकुशलता से पूर्णतः प्रसन्न रहेंगे। रुके हुए धन की प्राप्ति शीघ्र ही सुनिश्चित होने के प्रबल योग हैं।",
+      en: "Financial investments made in the past will provide you with the most outstanding results and wealth today. Your higher officials at the workplace will be completely pleased with your efficiency. There are strong yogas ensuring the quick recovery of pending wealth."
     },
     love: {
-      hi: "वरिष्ठजनों के मार्गदर्शन से पारिवारिक जीवन में असीम शांति स्थापित होगी। दांपत्य संबंधों में आदर और समर्पण की भावना बढ़ेगी।",
-      en: "Boundless peace will be established in family life with the guidance of elders. The feeling of respect and dedication will increase in marital relations."
+      hi: "मित्रों और आत्मीय जनों के साथ उल्लासपूर्ण समय व्यतीत करने का सुअवसर प्राप्त होगा। किसी बड़े सामाजिक समारोह में भाग लेने से समाज में आपकी प्रतिष्ठा बढ़ेगी। दांपत्य जीवन में प्रेम, सम्मान और समर्पण की भावना में वृद्धि होगी।",
+      en: "You will get a wonderful opportunity to spend joyful time with friends and loved ones. Participating in a grand social event will enhance your prestige in society. The feeling of love, respect, and dedication will increase in married life."
     },
     health: {
-      hi: "कार्य की अधिकता के मध्य शारीरिक विश्राम हेतु भी समय अवश्य निकालें। आपका स्वास्थ्य पूर्णतः आपके अनुकूल रहेगा।",
-      en: "Must take out time for physical rest amidst the excess of work. Your health will remain completely favorable to you."
+      hi: "आपका आरोग्य अत्यंत उत्तम रहेगा और आप पूर्णतः ऊर्जावान बने रहेंगे। अपनी इस असीम सकारात्मक ऊर्जा का उपयोग रचनात्मक कार्यों और समाज सेवा में अवश्य करें। उत्तम स्वास्थ्य हेतु सूर्योदय से पूर्व जागरण श्रेष्ठ है।",
+      en: "Your health will remain exceptionally excellent, and you will stay completely energetic. You must utilize this boundless positive energy in creative works and social service. Waking up before sunrise is superior for excellent health."
     },
     remedy: {
-      hi: "श्री सूक्त का पाठ करें और सुगंधित इत्र का प्रयोग करें।",
-      en: "Recite Shree Sukta and use fragrant perfume."
+      hi: "भगवान सूर्य नारायण को तांबे के पात्र से अर्घ्य दें और आदित्य हृदय स्तोत्र का पाठ करें।",
+      en: "Offer Arghya to Lord Surya Narayan using a copper vessel and recite the Aditya Hridaya Stotra."
     },
-    luckyColor: { hi: "गुलाबी (Pink)", en: "Pink" },
-    luckyNumber: "6",
+    luckyColor: { hi: "स्वर्णिम (Golden)", en: "Golden" },
+    luckyNumber: "1",
     luckyTime: { hi: "प्रातः 07:00 से 08:30", en: "07:00 AM to 08:30 AM" },
-    luckyDate: "November 25, 2026",
-    tagline: { hi: "कर्मनिष्ठा और श्रेष्ठ नेतृत्व जीवन को सदैव प्रकाशित करते हैं।", en: "Devotion to work and superior leadership always illuminate life." }
+    luckyDate: "November 26, 2026",
+    tagline: { hi: "श्रेष्ठ लक्ष्य और निरंतर परिश्रम ही व्यक्ति को सर्वोच्च शिखर तक ले जाते हैं।", en: "Superior goals and continuous hard work take a person to the highest peak." }
   },
 
-  scorpio: {
+  virgo: {
     meta: {
-      planetaryPosition: "चंद्रमा का नवम भाग्य और धर्म भाव में मंगलकारी गोचर",
-      predictionPower: "95%",
-      expertNote: { 
-        hi: "ईश्वरीय कृपा से आज भाग्य का पूर्ण सहयोग प्राप्त होगा। आध्यात्मिक और धर्म के कार्यों में आपकी रुचि अत्यंत बढ़ेगी।", 
-        en: "By divine grace, full support of destiny will be received today. Your interest in spiritual and religious activities will increase immensely." 
-      }
-    },
-    ratings: { health: 4, wealth: 4, love: 5, career: 4 },
-    career: {
-      hi: "रुके हुए कार्यों में तीव्र गति आएगी। उच्च शिक्षा और लंबी यात्राओं से आपको उत्कृष्ट आर्थिक लाभ प्राप्त होगा।",
-      en: "Pending tasks will gain rapid momentum. You will obtain excellent financial profit from higher education and long travels."
-    },
-    love: {
-      hi: "परिवार के साथ किसी तीर्थ यात्रा की रूपरेखा बन सकती है। दांपत्य जीवन में अपार आध्यात्मिक सामंजस्य और प्रेम रहेगा।",
-      en: "The outline of a pilgrimage with the family can be formed. There will be immense spiritual harmony and love in married life."
-    },
-    health: {
-      hi: "सात्विक आहार और सकारात्मक विचारों से आपकी रोग प्रतिरोधक क्षमता अत्यंत मजबूत रहेगी। मन पूर्णतः शांत रहेगा।",
-      en: "Your immunity will remain extremely strong with a sattvic diet and positive thoughts. The mind will remain completely calm."
-    },
-    remedy: {
-      hi: "बजरंग बाण का पूर्ण श्रद्धा से पाठ करें और लाल पुष्प अर्पित करें।",
-      en: "Recite the Bajrang Baan with full devotion and offer red flowers."
-    },
-    luckyColor: { hi: "रक्त वर्ण (Blood Red)", en: "Blood Red" },
-    luckyNumber: "9",
-    luckyTime: { hi: "दोपहर 01:00 से 02:30", en: "01:00 PM to 02:30 PM" },
-    luckyDate: "November 25, 2026",
-    tagline: { hi: "धर्म का आचरण ही श्रेष्ठ भाग्य का निर्माता है।", en: "The practice of righteousness is the creator of excellent destiny." }
-  },
-
-  sagittarius: {
-    meta: {
-      planetaryPosition: "चंद्रमा का अष्टम भाव में शोधपरक संचरण",
-      predictionPower: "90%",
-      expertNote: { 
-        hi: "आज स्वास्थ्य और आर्थिक मामलों में सतर्कता अत्यंत आवश्यक है। गहन शोध एवं अध्ययन के लिए यह दिन सर्वथा उत्तम है।", 
-        en: "Caution is highly essential in health and financial matters today. This day is absolutely excellent for deep research and study." 
-      }
-    },
-    ratings: { health: 3, wealth: 3, love: 4, career: 4 },
-    career: {
-      hi: "नवीन आर्थिक निवेश से पूर्व विचार अवश्य करें। विज्ञान और गूढ़ विद्याओं से जुड़े जातकों को विशेष ख्याति प्राप्त होगी।",
-      en: "Must contemplate before new financial investments. Natives associated with science and occult sciences will receive special fame."
-    },
-    love: {
-      hi: "अपनी वाणी पर नियंत्रण रखें ताकि किसी प्रकार के विवाद की स्थिति उत्पन्न न हो। मौन ही सर्वोच्च उपाय है।",
-      en: "Control your speech so that no situation of dispute arises. Silence is the supreme remedy."
-    },
-    health: {
-      hi: "उदर संबंधी विकारों के प्रति सजग रहें। मानसिक शांति हेतु ध्यान का अभ्यास अत्यंत आवश्यक है। सुपाच्य आहार लें।",
-      en: "Be mindful of abdominal disorders. The practice of meditation is highly essential for mental peace. Take easily digestible food."
-    },
-    remedy: {
-      hi: "भगवान श्री विष्णु को पीले पुष्प अर्पित करें और नारायण स्तोत्र का पाठ करें।",
-      en: "Offer yellow flowers to Lord Shri Vishnu and recite the Narayan Stotra."
-    },
-    luckyColor: { hi: "पीला (Yellow)", en: "Yellow" },
-    luckyNumber: "3",
-    luckyTime: { hi: "शाम 04:00 से 05:30", en: "04:00 PM to 05:30 PM" },
-    luckyDate: "November 25, 2026",
-    tagline: { hi: "संयम और धैर्य ही सभी संकटों का अचूक निवारण करते हैं।", en: "Restraint and patience are the unfailing resolution to all crises." }
-  },
-
-  capricorn: {
-    meta: {
-      planetaryPosition: "चंद्रमा का सप्तम जाया भाव में शुभ और फलदायी गोचर",
-      predictionPower: "97%",
-      expertNote: { 
-        hi: "आज का दिन व्यावसायिक साझेदारी और दांपत्य जीवन के लिए अत्यंत मंगलकारी है। आपका सकारात्मक रवैया सफलता का मार्ग प्रशस्त करेगा।", 
-        en: "Today is highly auspicious for professional partnership and married life. Your positive attitude will pave the path to success." 
-      }
-    },
-    ratings: { health: 5, wealth: 4, love: 5, career: 4 },
-    career: {
-      hi: "नवीन व्यापारिक अनुबंधों और साझेदारियों से उत्कृष्ट आर्थिक लाभ होगा। कार्यक्षेत्र में सहकर्मियों का पूर्ण समर्थन प्राप्त होगा।",
-      en: "Excellent financial benefits will be obtained from new business contracts and partnerships. Full support of colleagues will be received at the workplace."
-    },
-    love: {
-      hi: "जीवनसाथी के साथ सामंजस्य और विश्वास में अपार वृद्धि होगी। अविवाहित जातकों को विवाह के उत्तम प्रस्ताव प्राप्त हो सकते हैं।",
-      en: "Harmony and trust with the spouse will increase immensely. Unmarried natives may receive excellent marriage proposals."
-    },
-    health: {
-      hi: "मानसिक प्रसन्नता और उल्लास के कारण आपका स्वास्थ्य अत्यंत उत्तम रहेगा। प्रकृति के सानिध्य में समय व्यतीत करने से स्फूर्ति मिलेगी।",
-      en: "Your health will be extremely excellent due to mental happiness and joy. Spending time in the proximity of nature will provide agility."
-    },
-    remedy: {
-      hi: "शनिदेव की आराधना करें और तिल के तेल का दीपक प्रज्वलित करें।",
-      en: "Worship Lord Shani and light a sesame oil lamp."
-    },
-    luckyColor: { hi: "नीला (Blue)", en: "Blue" },
-    luckyNumber: "8",
-    luckyTime: { hi: "प्रातः 11:30 से 01:00", en: "11:30 AM to 01:00 PM" },
-    luckyDate: "November 25, 2026",
-    tagline: { hi: "आपसी विश्वास और सहयोग ही श्रेष्ठ संबंधों की नींव हैं।", en: "Mutual trust and cooperation are the foundation of superior relationships." }
-  },
-
-  aquarius: {
-    meta: {
-      planetaryPosition: "चंद्रमा का षष्ठम रिपु भाव में पराक्रमी प्रवेश",
-      predictionPower: "96%",
-      expertNote: { 
-        hi: "आपके असीम साहस और धैर्य से आज सभी विरोधी स्वतः परास्त होंगे। विजयश्री आपके मार्ग को पूर्णतः प्रशस्त करेगी।", 
-        en: "With your boundless courage and patience, all opponents will automatically be defeated today. Victory will completely pave your path." 
-      }
-    },
-    ratings: { health: 4, wealth: 4, love: 3, career: 5 },
-    career: {
-      hi: "सेवा क्षेत्र (Service sector) और प्रतियोगी परीक्षाओं के लिए दिन अत्यंत श्रेष्ठ है। कार्यस्थल पर आपका वर्चस्व और सम्मान स्थापित होगा।",
-      en: "The day is extremely excellent for the service sector and competitive exams. Your dominance and honor will be established at the workplace."
-    },
-    love: {
-      hi: "पारिवारिक विवादों से स्वयं को पूर्णतः दूर रखें। शांतिपूर्ण संवाद से संबंधों में पुनः आत्मीयता और विश्वास उत्पन्न होगा।",
-      en: "Keep yourself completely away from family disputes. Intimacy and trust will be regenerated in relationships through peaceful communication."
-    },
-    health: {
-      hi: "शारीरिक बल को बनाए रखने हेतु सात्विक आहार की अत्यंत आवश्यकता है। ऋतु परिवर्तन से उत्पन्न होने वाले विकारों से रक्षा करें।",
-      en: "A sattvic diet is highly needed to maintain physical strength. Protect against disorders arising from seasonal changes."
-    },
-    remedy: {
-      hi: "शिव पंचाक्षर मंत्र (ॐ नमः शिवाय) का निरंतर जप करें।",
-      en: "Continuously chant the Shiva Panchakshara Mantra (Om Namah Shivaya)."
-    },
-    luckyColor: { hi: "गहरा नीला (Dark Blue)", en: "Dark Blue" },
-    luckyNumber: "4",
-    luckyTime: { hi: "दोपहर 02:00 से 03:30", en: "02:00 PM to 03:30 PM" },
-    luckyDate: "November 25, 2026",
-    tagline: { hi: "अनुशासन और निरंतर परिश्रम से प्रत्येक बाधा को पार किया जा सकता है।", en: "Every obstacle can be overcome with discipline and continuous hard work." }
-  },
-
-  pisces: {
-    meta: {
-      planetaryPosition: "चंद्रमा का पंचम विद्या और रचनात्मक भाव में शुभ गोचर",
+      planetaryPosition: "चंद्रमा का दशम कर्म भाव में ऊर्जावान प्रवेश",
       predictionPower: "98%",
       expertNote: { 
-        hi: "आज आपकी बौद्धिक क्षमता और रचनात्मक ऊर्जा सर्वोच्च स्तर पर रहेगी। ज्ञान और शिक्षा के क्षेत्र में शुभ समाचार प्राप्त होंगे।", 
-        en: "Today your intellectual capacity and creative energy will be at their highest level. Auspicious news will be received in the field of knowledge and education." 
+        hi: "दशम कर्म भाव में चंद्रमा का ओजस्वी संचरण कार्यक्षेत्र में आपको अपार मान-सम्मान और गौरव प्रदान करेगा। आपके कर्मठ स्वभाव और अद्वितीय कार्यशैली की सर्वत्र प्रशंसा होगी। आज का दिन महान सफलताओं का सूचक है।", 
+        en: "The vigorous transit of the Moon in the tenth house of karma will provide you with immense honor and glory in the workplace. Your diligent nature and unique working style will be universally praised. Today is an indicator of great successes." 
       }
     },
     ratings: { health: 5, wealth: 4, love: 5, career: 5 },
     career: {
-      hi: "आपके नवीन विचारों की कार्यस्थल पर सर्वत्र प्रशंसा होगी। ज्ञान और अनुभव के समन्वय से आज सफलता सुनिश्चित है।",
-      en: "Your innovative ideas will be universally praised at the workplace. Success is certain today through the coordination of knowledge and experience."
+      hi: "नौकरीपेशा जातकों को पदोन्नति अथवा नवीन और महत्वपूर्ण दायित्व प्राप्त होने के प्रबल योग निर्मित हो रहे हैं। व्यावसायिक दृष्टिकोण से नई परियोजनाओं का शुभारंभ करने हेतु यह समय अत्यंत शुभ, अनुकूल और फलदायी है।",
+      en: "Strong yogas are being formed for employed natives to receive a promotion or new and important responsibilities. From a business perspective, this time is highly auspicious, favorable, and fruitful for launching new projects."
     },
     love: {
-      hi: "संतान पक्ष से कोई आनंददायक समाचार प्राप्त होगा। दांपत्य जीवन में अपार प्रेम, सामंजस्य और उल्लास बना रहेगा।",
-      en: "Some joyful news will be received from the children's side. Immense love, harmony, and joy will remain in married life."
+      hi: "परिवार के वयोवृद्ध सदस्यों का पूर्ण आशीर्वाद और अमूल्य मार्गदर्शन आपको प्राप्त होगा। जीवनसाथी के साथ आपका वैचारिक सामंजस्य अत्यंत मधुर रहेगा। आपके गृहस्थ जीवन में सुख, शांति और समृद्धि का निरंतर विस्तार होगा।",
+      en: "You will receive the full blessings and invaluable guidance of the elderly family members. Your ideological harmony with your spouse will remain extremely sweet. Happiness, peace, and prosperity will continuously expand in your domestic life."
     },
     health: {
-      hi: "मानसिक स्फूर्ति और शारीरिक ऊर्जा अत्यंत उत्तम रहेगी। ध्यान और अध्ययन में समय व्यतीत करने से असीम शांति मिलेगी।",
-      en: "Mental agility and physical energy will be extremely excellent. Spending time in meditation and study will bring boundless peace."
+      hi: "कार्य की अत्यधिक व्यस्तता के मध्य भी आपका शारीरिक स्वास्थ्य पूर्णतः आपके अनुकूल रहेगा। फिर भी, मानसिक विश्राम हेतु कुछ समय एकांत में अथवा प्रकृति के सानिध्य में अवश्य व्यतीत करें। सात्विक आहार आपके लिए औषधि समान है।",
+      en: "Even amidst the extreme busyness of work, your physical health will remain completely favorable to you. Nevertheless, for mental rest, you must spend some time in solitude or close to nature. A sattvic diet is like medicine for you."
     },
     remedy: {
-      hi: "गुरुजनों का आशीर्वाद प्राप्त करें और गुरु मंत्र का जप करें।",
-      en: "Seek the blessings of elders/teachers and chant the Guru mantra."
+      hi: "गौमाता को हरा चारा खिलाएं और श्री विष्णु सहस्रनाम का पाठ करें।",
+      en: "Feed green fodder to the mother cow and recite the Shri Vishnu Sahasranama."
+    },
+    luckyColor: { hi: "हल्का हरा (Light Green)", en: "Light Green" },
+    luckyNumber: "5",
+    luckyTime: { hi: "दोपहर 12:00 से 01:30", en: "12:00 PM to 01:30 PM" },
+    luckyDate: "November 26, 2026",
+    tagline: { hi: "कर्म के प्रति पूर्ण निष्ठा और समर्पण ही आपके उज्ज्वल भाग्य का निर्माण करते हैं।", en: "Complete devotion and dedication to duty construct your bright destiny." }
+  },
+
+  libra: {
+    meta: {
+      planetaryPosition: "चंद्रमा का नवम भाग्य भाव में शुभ संचरण",
+      predictionPower: "95%",
+      expertNote: { 
+        hi: "नवम भाग्य भाव में चंद्रमा का शुभ गोचर ईश्वरीय कृपा से आपके सफलता के सभी मार्ग प्रशस्त करेगा। धर्म, आध्यात्म और उच्च दर्शन की ओर आपकी रुचि में अत्यंत वृद्धि होगी। भाग्य का आपको पूर्ण और अप्रत्याशित सहयोग प्राप्त होगा।", 
+        en: "The auspicious transit of the Moon in the ninth house of destiny will pave all your paths to success through divine grace. Your interest towards religion, spirituality, and higher philosophy will increase immensely. You will receive the full and unexpected support of destiny." 
+      }
+    },
+    ratings: { health: 4, wealth: 5, love: 4, career: 4 },
+    career: {
+      hi: "लंबी यात्राओं और उच्च शिक्षा से संबंधित कार्यों में आपको अभूतपूर्व सफलता और लाभ प्राप्त होगा। यदि आप किसी नवीन विद्या अथवा अनुसंधान का अध्ययन कर रहे हैं, तो उसमें आपको श्रेष्ठ और गौरवशाली परिणाम मिलेंगे।",
+      en: "You will achieve unprecedented success and profit in works related to long journeys and higher education. If you are studying any new discipline or research, you will get superior and glorious results in it."
+    },
+    love: {
+      hi: "पिता अथवा गुरुतुल्य व्यक्तियों के साथ आपके संबंध अत्यंत मजबूत और आत्मीय बनेंगे। परिवार के सदस्यों के साथ किसी पवित्र तीर्थ स्थल की यात्रा की मंगलमय योजना बन सकती है। पारिवारिक सामंजस्य आपको उल्लास प्रदान करेगा।",
+      en: "Your relationships with your father or father-like figures will become highly strong and intimate. An auspicious plan for a pilgrimage to a holy site with family members can be formed. Family harmony will provide you with joy."
+    },
+    health: {
+      hi: "आपका मन पूर्णतः शांत, प्रसन्न और ईश्वरीय शक्ति की भक्ति में लीन रहेगा। उत्तम शारीरिक और मानसिक आरोग्य हेतु नियमित रूप से केवल सात्विक आहार ही ग्रहण करें। ध्यान का अभ्यास आपकी चेतना को जागृत करेगा।",
+      en: "Your mind will remain completely calm, happy, and absorbed in devotion to the divine power. For excellent physical and mental health, regularly consume only a sattvic diet. The practice of meditation will awaken your consciousness."
+    },
+    remedy: {
+      hi: "श्री सूक्त का पाठ करें और इष्ट देव को श्वेत पुष्प अर्पित करें।",
+      en: "Recite Shree Sukta and offer white flowers to your presiding deity."
+    },
+    luckyColor: { hi: "गुलाबी (Pink)", en: "Pink" },
+    luckyNumber: "6",
+    luckyTime: { hi: "प्रातः 09:30 से 11:00", en: "09:30 AM to 11:00 AM" },
+    luckyDate: "November 26, 2026",
+    tagline: { hi: "धर्म का मार्ग और ईश्वरीय आस्था ही जीवन में सर्वोच्च शांति प्रदान करते हैं।", en: "The path of righteousness and divine faith provide supreme peace in life." }
+  },
+
+  scorpio: {
+    meta: {
+      planetaryPosition: "चंद्रमा का अष्टम भाव में शोधपरक गोचर",
+      predictionPower: "90%",
+      expertNote: { 
+        hi: "अष्टम भाव में चंद्रमा का गोचर गहन शोध और आत्म-निरीक्षण के लिए अत्यंत उपयुक्त है। आज आपको प्रत्येक कार्य और निर्णय में अत्यंत सतर्कता और संयम बरतने की आवश्यकता है। किसी भी महत्वपूर्ण कार्य में तनिक भी जल्दबाजी न करें।", 
+        en: "The transit of the Moon in the eighth house is highly suitable for deep research and self-introspection. Today you need to exercise extreme caution and restraint in every action and decision. Do not show the slightest haste in any important task." 
+      }
+    },
+    ratings: { health: 3, wealth: 3, love: 4, career: 4 },
+    career: {
+      hi: "कार्यस्थल पर किसी भी प्रकार के अनावश्यक विवाद अथवा गुप्त विरोधियों से स्वयं को पूर्णतः दूर रखें। गूढ़ विद्याओं, विज्ञान और अनुसंधान से जुड़े जातकों को आज विशेष ख्याति, सफलता और आर्थिक लाभ प्राप्त होगा।",
+      en: "Keep yourself completely away from any kind of unnecessary disputes or hidden opponents at the workplace. Natives associated with occult sciences, science, and research will attain special fame, success, and financial gain today."
+    },
+    love: {
+      hi: "अपनी वाणी पर पूर्ण नियंत्रण रखें ताकि परिजनों के साथ कोई वैचारिक मतभेद उत्पन्न न हो। जीवनसाथी के स्वास्थ्य और उनकी आंतरिक भावनाओं का विशेष ध्यान रखना आज आपके लिए अत्यंत आवश्यक और श्रेयस्कर है।",
+      en: "Maintain complete control over your speech so that no ideological differences arise with family members. Taking special care of your spouse's health and their inner feelings is highly essential and preferable for you today."
+    },
+    health: {
+      hi: "उदर अथवा पाचन तंत्र से संबंधित कोई विकार उत्पन्न हो सकता है, अतः सतर्क रहें। उत्तम स्वास्थ्य हेतु केवल सुपाच्य और सात्विक आहार ही लें तथा शारीरिक विश्राम को सर्वोच्च प्राथमिकता दें। प्राणायाम से मानसिक बल प्राप्त होगा।",
+      en: "Any disorder related to the stomach or digestive system may arise, hence remain vigilant. For excellent health, consume only easily digestible and sattvic food, and give supreme priority to physical rest. Pranayama will provide mental strength."
+    },
+    remedy: {
+      hi: "श्री हनुमान चालीसा का पाठ करें और मस्तक पर लाल चंदन का तिलक धारण करें।",
+      en: "Recite Shri Hanuman Chalisa and wear a tilak of red sandalwood on your forehead."
+    },
+    luckyColor: { hi: "रक्त वर्ण (Blood Red)", en: "Blood Red" },
+    luckyNumber: "9",
+    luckyTime: { hi: "दोपहर 03:00 से 04:30", en: "03:00 PM to 04:30 PM" },
+    luckyDate: "November 26, 2026",
+    tagline: { hi: "असीम धैर्य और आत्म-संयम ही मनुष्य की सबसे बड़ी और अजेय शक्ति हैं।", en: "Boundless patience and self-restraint are the greatest and invincible strengths of a human being." }
+  },
+
+  sagittarius: {
+    meta: {
+      planetaryPosition: "चंद्रमा का सप्तम जाया भाव में शुभ और फलदायी गोचर",
+      predictionPower: "97%",
+      expertNote: { 
+        hi: "सप्तम जाया भाव में चंद्रमा का मंगलकारी प्रवेश दांपत्य जीवन और व्यावसायिक साझेदारियों के लिए अत्यंत शुभ है। आपका सकारात्मक दृष्टिकोण और मधुर व्यवहार आज सफलता के नवीन और गौरवशाली द्वार खोलेगा।", 
+        en: "The auspicious entry of the Moon into the seventh house of spouse is extremely favorable for married life and professional partnerships. Your positive attitude and sweet behavior will open new and glorious doors of success today." 
+      }
+    },
+    ratings: { health: 4, wealth: 5, love: 5, career: 4 },
+    career: {
+      hi: "व्यापारिक साझेदारी में किए गए कार्यों से आपको सर्वोत्कृष्ट आर्थिक लाभ प्राप्त होगा। यदि आप किसी नवीन व्यावसायिक अनुबंध पर हस्ताक्षर करना चाहते हैं, तो यह दिवस आपके लिए सर्वथा अनुकूल और मंगलमय है।",
+      en: "You will achieve outstanding financial benefits from works done in commercial partnerships. If you wish to sign any new business contract, this day is entirely favorable and auspicious for you."
+    },
+    love: {
+      hi: "जीवनसाथी का पूर्ण और समर्पित सहयोग आपको प्राप्त होगा जिससे संबंधों में अपार आत्मीयता आएगी। अविवाहित जातकों को विवाह के अत्यंत सुयोग्य और श्रेष्ठ प्रस्ताव प्राप्त हो सकते हैं। प्रेम संबंधों में विश्वास की विजय होगी।",
+      en: "You will receive the full and dedicated support of your spouse, bringing immense intimacy to relationships. Unmarried natives may receive highly suitable and excellent marriage proposals. Trust will triumph in romantic relationships."
+    },
+    health: {
+      hi: "मानसिक प्रसन्नता और आंतरिक उल्लास के कारण आपका शारीरिक स्वास्थ्य दिनभर अत्यंत उत्तम रहेगा। सकारात्मक ऊर्जा का संचार आपको पूर्णतः स्फूर्तिवान, उत्साही और कार्यक्षम बनाए रखेगा। प्रकृति दर्शन से मन प्रफुल्लित रहेगा।",
+      en: "Due to mental happiness and inner joy, your physical health will remain extremely excellent throughout the day. The flow of positive energy will keep you completely agile, enthusiastic, and efficient. Nature observation will keep the mind cheerful."
+    },
+    remedy: {
+      hi: "भगवान श्री हरि विष्णु को पीत पुष्प अर्पित करें और नारायण कवच का पाठ करें।",
+      en: "Offer yellow flowers to Lord Shri Hari Vishnu and recite the Narayan Kavach."
+    },
+    luckyColor: { hi: "पीला (Yellow)", en: "Yellow" },
+    luckyNumber: "3",
+    luckyTime: { hi: "प्रातः 08:00 से 09:30", en: "08:00 AM to 09:30 AM" },
+    luckyDate: "November 26, 2026",
+    tagline: { hi: "पारस्परिक सहयोग और अटूट विश्वास ही श्रेष्ठ संबंधों की सच्ची नींव हैं।", en: "Mutual cooperation and unbreakable trust are the true foundation of superior relationships." }
+  },
+
+  capricorn: {
+    meta: {
+      planetaryPosition: "चंद्रमा का षष्ठम रिपु भाव में प्रवेश",
+      predictionPower: "96%",
+      expertNote: { 
+        hi: "षष्ठम भाव में चंद्रमा का संचार आपके साहस और पराक्रम में असीम वृद्धि करेगा जिससे आपके सभी विरोधी स्वतः ही परास्त हो जाएंगे। प्रतियोगी परीक्षाओं की तैयारी कर रहे विद्यार्थियों हेतु यह दिन अत्यंत फलदायी और शुभ है।", 
+        en: "The transit of the Moon in the sixth house will boundlessly increase your courage and valor, due to which all your opponents will automatically be defeated. This day is highly fruitful and auspicious for students preparing for competitive exams." 
+      }
+    },
+    ratings: { health: 4, wealth: 4, love: 3, career: 5 },
+    career: {
+      hi: "कार्यस्थल पर आपके अद्वितीय कौशल और निरंतर परिश्रम के कारण आपका वर्चस्व स्थापित होगा। यदि कोई पुराना कानूनी विवाद अथवा बाधा लंबित है, तो उसमें आपको निश्चित रूप से सफलता और गौरवशाली विजय प्राप्त होगी।",
+      en: "Your dominance will be established at the workplace due to your unique skills and continuous hard work. If any old legal dispute or obstacle is pending, you will definitely achieve success and a glorious victory in it."
+    },
+    love: {
+      hi: "मातृ पक्ष (ननिहाल) से कोई अत्यंत शुभ और आनंददायक समाचार प्राप्त होने की प्रबल संभावना है। पारिवारिक वातावरण को शांत, सुखद और सौहार्दपूर्ण बनाए रखने हेतु केवल मधुर संवाद और धैर्य का आश्रय लें।",
+      en: "There is a strong possibility of receiving some highly auspicious and joyful news from the maternal side. Take refuge only in sweet dialogue and patience to keep the family atmosphere calm, pleasant, and harmonious."
+    },
+    health: {
+      hi: "उत्तम स्वास्थ्य बनाए रखने हेतु अपनी रोग प्रतिरोधक क्षमता को सुदृढ़ करने पर विशेष ध्यान दें। नियमित व्यायाम और प्राणायाम को अपनी दिनचर्या का अनिवार्य अंग बनाएं। ऋतुचर्या का पालन करना आपके लिए उत्तम रहेगा।",
+      en: "Pay special attention to strengthening your immunity to maintain excellent health. Make regular exercise and pranayama an essential part of your daily routine. Following the seasonal regimen will be excellent for you."
+    },
+    remedy: {
+      hi: "शनिदेव के समक्ष सरसों के तेल का दीपक प्रज्वलित करें और शनि स्तोत्र का पाठ करें।",
+      en: "Light a mustard oil lamp before Lord Shani and recite the Shani Stotra."
+    },
+    luckyColor: { hi: "नीला (Blue)", en: "Blue" },
+    luckyNumber: "8",
+    luckyTime: { hi: "दोपहर 04:30 से 06:00", en: "04:30 PM to 06:00 PM" },
+    luckyDate: "November 26, 2026",
+    tagline: { hi: "निरंतर परिश्रम और कठोर अनुशासन ही मनुष्य को सदैव विजयी बनाते हैं।", en: "Continuous hard work and strict discipline always make a human being victorious." }
+  },
+
+  aquarius: {
+    meta: {
+      planetaryPosition: "चंद्रमा का पंचम विद्या और संतान भाव में शुभ संचार",
+      predictionPower: "97%",
+      expertNote: { 
+        hi: "पंचम विद्या और संतान भाव में चंद्रमा का शुभ गोचर आपकी रचनात्मकता और बौद्धिक क्षमता को चरम शिखर पर ले जाएगा। कला, साहित्य और शिक्षा के क्षेत्र से जुड़े जातकों के लिए आज का दिन अत्यंत श्रेष्ठ और उन्नतिदायक है।", 
+        en: "The auspicious transit of the Moon in the fifth house of education and progeny will take your creativity and intellectual capacity to the highest peak. Today is extremely superior and progressive for natives associated with art, literature, and education." 
+      }
+    },
+    ratings: { health: 5, wealth: 4, love: 5, career: 4 },
+    career: {
+      hi: "आपके नवीन विचारों और अद्वितीय कार्यशैली से कार्यक्षेत्र में आपको पूर्ण सफलता और सम्मान प्राप्त होगा। अपने अर्जित ज्ञान और अनुभव का सही दिशा में उपयोग करें, आपकी व्यावसायिक विजय और उन्नति पूर्णतः निश्चित है।",
+      en: "You will achieve complete success and honor in the workspace through your innovative ideas and unique working style. Utilize your acquired knowledge and experience in the right direction; your professional victory and progress are fully certain."
+    },
+    love: {
+      hi: "संतान पक्ष की ओर से कोई अत्यंत सुखद और गौरवशाली समाचार प्राप्त होगा, जिससे मन प्रफुल्लित रहेगा। प्रेम जीवन में अपार मधुरता, अटूट विश्वास और पारस्परिकता की भावना में निरंतर वृद्धि दृष्टिगोचर होगी।",
+      en: "You will receive highly pleasant and glorious news from the children's side, which will keep the mind cheerful. Immense sweetness, unbreakable trust, and a feeling of mutuality will continuously be seen increasing in your love life."
+    },
+    health: {
+      hi: "आप मानसिक रूप से अत्यंत सक्रिय, सजग और प्रसन्नचित्त रहेंगे, जिसका सकारात्मक प्रभाव काया पर पड़ेगा। शारीरिक आरोग्य पूर्णतः आपके अनुकूल रहेगा, फिर भी ध्यान का अभ्यास आपको असीम शांति और आत्मबल प्रदान करेगा।",
+      en: "You will remain mentally highly active, alert, and cheerful, which will have a positive impact on your body. Physical health will remain completely favorable to you; yet, the practice of meditation will provide you with boundless peace and inner strength."
+    },
+    remedy: {
+      hi: "भगवान शिव पंचाक्षर मंत्र (ॐ नमः शिवाय) का पूर्ण श्रद्धाभाव से 108 बार जप करें।",
+      en: "Chant the Lord Shiva Panchakshara Mantra (Om Namah Shivaya) 108 times with full devotion."
+    },
+    luckyColor: { hi: "गहरा नीला (Dark Blue)", en: "Dark Blue" },
+    luckyNumber: "4",
+    luckyTime: { hi: "प्रातः 10:30 से 12:00", en: "10:30 AM to 12:00 PM" },
+    luckyDate: "November 26, 2026",
+    tagline: { hi: "उत्कृष्ट ज्ञान और रचनात्मकता ही व्यक्ति की वास्तविक और शाश्वत पहचान हैं।", en: "Excellent knowledge and creativity are the true and eternal identity of a person." }
+  },
+
+  pisces: {
+    meta: {
+      planetaryPosition: "चंद्रमा का चतुर्थ सुख और माता भाव में गोचर",
+      predictionPower: "96%",
+      expertNote: { 
+        hi: "चतुर्थ सुख और माता भाव में चंद्रमा का मंगलकारी प्रवेश घरेलू शांति और अचल संपत्ति से जुड़े कार्यों हेतु अत्यंत लाभकारी है। आज आपके मन में असीम संतोष, परम शांति और करुणा का भाव पूर्णतः जाग्रत रहेगा।", 
+        en: "The auspicious entry of the Moon into the fourth house of happiness and mother is highly beneficial for domestic peace and tasks related to real estate. Today a sense of boundless satisfaction, supreme peace, and compassion will remain fully awakened in your mind." 
+      }
+    },
+    ratings: { health: 4, wealth: 4, love: 5, career: 4 },
+    career: {
+      hi: "भूमि, भवन, कृषि अथवा वाहन से संबंधित व्यापार में आपको उत्कृष्ट आर्थिक लाभ प्राप्त होने के प्रबल योग हैं। कार्यस्थल पर अपने समस्त दायित्वों का निर्वहन अत्यंत निष्ठा, समर्पण और कुशलता के साथ पूर्ण करें।",
+      en: "There are strong yogas for you to achieve excellent financial profit in businesses related to land, building, agriculture, or vehicles. Fulfill all your responsibilities at the workplace with extreme dedication, devotion, and efficiency."
+    },
+    love: {
+      hi: "माता के स्वास्थ्य का विशेष ध्यान रखें और उनकी सेवा कर उनका पूर्ण आशीर्वाद प्राप्त करें। परिवार के सदस्यों के साथ गृह में समय व्यतीत करना आपके लिए अत्यंत सुखद, मंगलमय और आनंददायक सिद्ध होगा।",
+      en: "Take special care of your mother's health and serve her to obtain her full blessings. Spending time in the home with family members will prove to be highly pleasant, auspicious, and joyful for you."
+    },
+    health: {
+      hi: "किसी भी प्रकार के मानसिक तनाव और चिंताओं से स्वयं को दूर रखें तथा पर्याप्त विश्राम को अत्यंत महत्व दें। हृदय के स्वास्थ्य को उत्तम बनाए रखने हेतु सात्विक जीवनशैली और प्राणायाम को अपने आचरण में अपनाएं।",
+      en: "Keep yourself away from any kind of mental stress and anxieties, and give supreme importance to adequate rest. To maintain excellent heart health, adopt a sattvic lifestyle and pranayama in your conduct."
+    },
+    remedy: {
+      hi: "देवगुरु बृहस्पति के बीज मंत्र (ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः) का जप करें और पीली वस्तुओं का दान करें।",
+      en: "Chant the Beej Mantra of Devguru Jupiter (Om Gram Greem Groum Sah Gurave Namah) and donate yellow items."
     },
     luckyColor: { hi: "हल्का पीला (Pale Yellow)", en: "Pale Yellow" },
     luckyNumber: "7",
-    luckyTime: { hi: "प्रातः 08:30 से 10:00", en: "08:30 AM to 10:00 AM" },
-    luckyDate: "November 25, 2026",
-    tagline: { hi: "बौद्धिक स्पष्टता और रचनात्मकता ही जीवन का वास्तविक धन है।", en: "Intellectual clarity and creativity are the real wealth of life." }
+    luckyTime: { hi: "दोपहर 01:30 से 03:00", en: "01:30 PM to 03:00 PM" },
+    luckyDate: "November 26, 2026",
+    tagline: { hi: "पारिवारिक सुख और मानसिक शांति ही जीवन की सबसे बड़ी और अमूल्य उपलब्धि है।", en: "Family happiness and mental peace are the greatest and invaluable achievements of life." }
   }
 };
