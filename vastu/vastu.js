@@ -1,322 +1,191 @@
 // ==========================================
 // MAHADEV ASTROLOGER MA - VASTU ENGINE
+// Secure callable backend + Firestore + Telegram
 // ==========================================
 
-import {
-    db,
-    remoteConfig,
-    fetchAndActivate,
-    getString
-} from '../assets/js/firebase-config.js';
-
-import {
-    collection,
-    addDoc,
-    serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
+import { functions } from '../assets/js/firebase-config.js';
+import { httpsCallable } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-functions.js";
 
 /* =========================================================
-   🔱 1. INPUT SANITIZER
+   1. FORM CONFIGURATION & STATE
 ========================================================= */
 
 let isSubmitting = false;
-let cachedTelegramKeys = null;
+let activeSubmissionId = null;
+let activeSubmissionFingerprint = null;
+const submitVastuConsultation = httpsCallable(functions, 'submitVastuConsultation');
+const PROPERTY_TYPES = ['Residential', 'Commercial', 'Industrial'];
+const FACING_DIRECTIONS = ['North', 'South', 'East', 'West'];
+const WHATSAPP_SHORT_LINK = 'https://wa.me/message/VCK5OVBDCN7YK1';
 
-function sanitizeInput(value) {
-    if (!value) return '';
+/* =========================================================
+   2. INPUT NORMALIZATION & CLIENT VALIDATION
+   Server performs the authoritative validation again.
+========================================================= */
 
-    return value
-        .replace(/<[^>]*>?/gm, '')
-        .replace(/[{}]/g, '')
+function normalizeText(value) {
+    return String(value ?? '')
+        .normalize('NFKC')
+        .replace(/[\u0000-\u001F\u007F]/g, ' ')
+        .replace(/\s+/g, ' ')
         .trim();
 }
 
-// Telegram HTML Special Character Protection
-function escapeHTML(value) {
-    return String(value)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-}
-
-
-/* =========================================================
-   🔱 2. TELEGRAM CREDENTIAL ENGINE
-   Firebase Remote Config Integration
-========================================================= */
-
-async function getVastuTelegramKeys() {
-
-    if (cachedTelegramKeys) return cachedTelegramKeys;
-
-    await fetchAndActivate(remoteConfig);
-
-    const tg = getString(remoteConfig, 'TG_BOT_TOKEN');
-    const cid = getString(remoteConfig, 'TG_CHAT_ID');
-
-    if (!tg || !cid) {
-        throw new Error('Telegram configuration missing.');
+function validateFormData(data) {
+    if (data.name.length < 2 || data.name.length > 80) {
+        return 'Please enter a name between 2 and 80 characters.';
     }
-
-    cachedTelegramKeys = { tg, cid };
-
-    return cachedTelegramKeys;
+    if (!PROPERTY_TYPES.includes(data.propertyType)) {
+        return 'Please select a valid property type.';
+    }
+    if (!FACING_DIRECTIONS.includes(data.facing)) {
+        return 'Please select a valid entrance direction.';
+    }
+    if (data.issue.length < 5 || data.issue.length > 1200) {
+        return 'Please describe the issue in 5 to 1200 characters.';
+    }
+    return '';
 }
 
+function getFormData(form) {
+    return {
+        name: normalizeText(form.querySelector('#userName')?.value),
+        propertyType: normalizeText(form.querySelector('#propertyType')?.value),
+        facing: normalizeText(form.querySelector('#facing')?.value),
+        issue: normalizeText(form.querySelector('#issue')?.value),
+        website: normalizeText(form.querySelector('[name="website"]')?.value)
+    };
+}
 
 /* =========================================================
-   🔱 3. TELEGRAM NOTIFICATION ENGINE
+   3. UI STATE UTILITIES
 ========================================================= */
 
-async function notifyViaTelegram(formData) {
+function setSubmitting(button, status, submitting) {
+    if (button) {
+        button.disabled = submitting;
+        button.textContent = submitting ? 'SUBMITTING... 🔱' : 'SUBMIT DETAILS 🔱';
+        button.style.opacity = submitting ? '0.7' : '1';
+    }
+    if (status) status.setAttribute('aria-live', 'polite');
+}
 
-    const keys = await getVastuTelegramKeys();
+function showStatus(status, message, type = 'info') {
+    if (!status) return;
+    status.textContent = message;
+    status.dataset.state = type;
+}
 
-    const messageText = `
-🔱 <b>NEW VASTU INQUIRY</b> 🔱
+function makeSubmissionId() {
+    if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
+    const bytes = new Uint8Array(16);
+    globalThis.crypto.getRandomValues(bytes);
+    return Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
+}
 
-👤 <b>Name:</b> ${escapeHTML(formData.name)}
-🏠 <b>Property:</b> ${escapeHTML(formData.propertyType)}
-🧭 <b>Facing:</b> ${escapeHTML(formData.facing)}
+/* =========================================================
+   4. WHATSAPP HANDOFF
+========================================================= */
 
-❗ <b>Issue:</b>
-${escapeHTML(formData.issue)}
+function buildWhatsAppURL(data) {
+    const message = encodeURIComponent(
+`🔱 Vastu Audit Request 🔱
 
-📅 ${new Date().toLocaleString('en-IN')}
-`;
+Name: ${data.name}
+Property: ${data.propertyType}
+Facing: ${data.facing}
 
-    const response = await fetch(
-        `https://api.telegram.org/bot${keys.tg}/sendMessage`,
-        {
-            method: 'POST',
-
-            headers: {
-                'Content-Type': 'application/json'
-            },
-
-            body: JSON.stringify({
-                chat_id: keys.cid,
-                text: messageText,
-                parse_mode: 'HTML'
-            })
-        }
+Issue:
+${data.issue}`
     );
-
-    if (!response.ok) {
-        throw new Error(`Telegram HTTP Error: ${response.status}`);
-    }
-
-    const result = await response.json();
-
-    if (!result.ok) {
-        throw new Error(
-            result.description || 'Telegram notification failed.'
-        );
-    }
-
-    return true;
+    return `${WHATSAPP_SHORT_LINK}?text=${message}`;
 }
 
-
 /* =========================================================
-   🔱 4. BUTTON RESET UTILITY
-========================================================= */
-
-function resetButton(button) {
-
-    button.disabled = false;
-    button.style.opacity = '1';
-    button.innerHTML = 'SUBMIT DETAILS 🔱';
-
-    isSubmitting = false;
-}
-
-
-/* =========================================================
-   🔱 5. FORM SUBMISSION ENGINE
+   5. FORM SUBMISSION ENGINE
 ========================================================= */
 
 function initializeVastuForm() {
-
     const form = document.getElementById('vastuConsultForm');
+    if (!form || form.dataset.engineInitialized === 'true') return;
+    form.dataset.engineInitialized = 'true';
 
-    if (!form) return;
+    const submitButton = form.querySelector('button[type="submit"]');
+    const status = document.getElementById('formStatus');
 
-    form.addEventListener('submit', async function(event) {
-
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
-
-        // Duplicate Submission Protection
         if (isSubmitting) return;
 
-        isSubmitting = true;
-
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const statusDiv = document.getElementById('formStatus');
-
-        /* --- BUTTON LOADING STATE --- */
-
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = 'SUBMITTING... 🔱';
-        submitBtn.style.opacity = '0.7';
-
-        statusDiv.textContent = 'Connecting to Mahadev Server...';
-
-
-        /* --- SANITIZED FORM DATA --- */
-
-        const formData = {
-
-            name: sanitizeInput(
-                document.getElementById('userName').value
-            ),
-
-            propertyType: sanitizeInput(
-                document.getElementById('propertyType').value
-            ),
-
-            facing: sanitizeInput(
-                document.getElementById('facing').value
-            ),
-
-            issue: sanitizeInput(
-                document.getElementById('issue').value
-            )
-        };
-
-
-        /* --- FORM VALIDATION --- */
-
-        if (
-            !formData.name ||
-            !formData.propertyType ||
-            !formData.facing ||
-            !formData.issue
-        ) {
-
-            statusDiv.textContent =
-                'Please fill all fields properly.';
-
-            resetButton(submitBtn);
-
+        const data = getFormData(form);
+        const validationMessage = validateFormData(data);
+        if (validationMessage) {
+            showStatus(status, validationMessage, 'error');
             return;
         }
 
+        // A honeypot value is silently rejected by the backend.
+        // Do not send the honeypot field as user content.
+        const fingerprint = JSON.stringify({ name: data.name, propertyType: data.propertyType, facing: data.facing, issue: data.issue });
+        if (!activeSubmissionId || activeSubmissionFingerprint !== fingerprint) {
+            activeSubmissionId = makeSubmissionId();
+            activeSubmissionFingerprint = fingerprint;
+        }
+        const submissionId = activeSubmissionId;
+        isSubmitting = true;
+        setSubmitting(submitButton, status, true);
+        showStatus(status, 'Securely submitting your Vastu enquiry...', 'loading');
 
         try {
+            const result = await submitVastuConsultation({
+                submissionId,
+                name: data.name,
+                propertyType: data.propertyType,
+                facing: data.facing,
+                issue: data.issue,
+                website: data.website
+            });
 
-            /* -----------------------------------------
-               STEP 1: FIRESTORE SAVE
-            ----------------------------------------- */
-
-            await addDoc(
-                collection(db, 'vastu_consultations'),
-                {
-                    ...formData,
-                    source: 'Vastu_Page_Form',
-                    timestamp: serverTimestamp()
-                }
+            const notificationSent = result.data?.notificationStatus === 'sent';
+            activeSubmissionId = null;
+            activeSubmissionFingerprint = null;
+            showStatus(
+                status,
+                notificationSent
+                    ? 'Pranaam! Your Vastu enquiry has been received successfully. 🔱'
+                    : 'Your enquiry is safely received. Our notification system will retry shortly. 🔱',
+                'success'
             );
 
-
-            /* -----------------------------------------
-               STEP 2: TELEGRAM NOTIFICATION
-            ----------------------------------------- */
-
-            let telegramStatus = true;
-
-            try {
-
-                await notifyViaTelegram(formData);
-
-                console.log(
-                    '🔱 Vastu Telegram Notification Sent Successfully.'
-                );
-
-            } catch (telegramError) {
-
-                telegramStatus = false;
-
-                console.error(
-                    '🔱 Telegram Notification Error:',
-                    telegramError
-                );
-            }
-
-
-            /* -----------------------------------------
-               STEP 3: WHATSAPP MESSAGE PREPARATION
-            ----------------------------------------- */
-
-            const whatsappMessage = encodeURIComponent(
-
-`🔱 Vastu Audit Request 🔱
-
-Name: ${formData.name}
-Property: ${formData.propertyType}
-Facing: ${formData.facing}
-
-Issue:
-${formData.issue}`
-
-            );
-
-            const whatsappURL =
-                `https://wa.me/message/VCK5OVBDCN7YK1?text=${whatsappMessage}`;
-
-
-            /* -----------------------------------------
-               STEP 4: SUCCESS STATUS
-            ----------------------------------------- */
-
-            if (telegramStatus) {
-
-                statusDiv.textContent =
-                    'Pranaam! Details submitted successfully 🔱';
-
-            } else {
-
-                statusDiv.textContent =
-                    'Your enquiry is saved. Notification is pending. 🔱';
-
-            }
-
+            const whatsappURL = buildWhatsAppURL(data);
             form.reset();
 
-
-            /* -----------------------------------------
-               STEP 5: WHATSAPP REDIRECT
-            ----------------------------------------- */
-
-            setTimeout(() => {
-
-                window.location.href = whatsappURL;
-
-            }, 1200);
-
+            // Let the user read the confirmation before opening WhatsApp.
+            window.setTimeout(() => {
+                window.location.assign(whatsappURL);
+            }, 1600);
 
         } catch (error) {
-
-            console.error(
-                '🔱 Vastu Form Submission Error:',
-                error
-            );
-
-            statusDiv.textContent =
-                'Submission failed. Please try again.';
-
-            resetButton(submitBtn);
-
+            console.error('Vastu submission failed:', error);
+            const message = error?.code === 'functions/resource-exhausted'
+                ? 'Too many requests. Please try again later.'
+                : ['functions/failed-precondition', 'functions/permission-denied', 'functions/unauthenticated'].includes(error?.code)
+                    ? 'Security verification is not ready. Please contact us on WhatsApp.'
+                    : 'We could not submit your enquiry. Please try again or contact us on WhatsApp.';
+            showStatus(status, message, 'error');
+        } finally {
+            isSubmitting = false;
+            setSubmitting(submitButton, status, false);
         }
-
     });
-
 }
 
-
 /* =========================================================
-   🔱 6. SAFE STARTUP
+   6. SAFE STARTUP
 ========================================================= */
 
-window.addEventListener('load', initializeVastuForm);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeVastuForm, { once: true });
+} else {
+    initializeVastuForm();
+}
